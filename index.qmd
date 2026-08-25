@@ -1,5 +1,5 @@
 ---
-title: "STA314-Website"
+title: "STA314"
 ---
 
 This is a Quarto website.
