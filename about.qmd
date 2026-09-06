@@ -12,15 +12,15 @@ Below is a tentative schedule of topics for the term. You can find the lecture s
 |:----------:|:-----------|:----------:|:-----------|:-----------|:-----------|
 | 1 | Introduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours | [HTML Slides](Week1.html) | \- | — | Ch. 2 |
 | 2 | Model Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap | \- | \- | \- | Ch. 2, 5 |
-| 3 | Linear Regression | \- | \- | \- | Ch. 3 |
+| 3 | Linear Regression | \- | \- | Assignment 1 Released, Sept. 23rd | Ch. 3 |
 | 4 | Regularization and Feature Selection | \- | \- | \- | Ch. 6 |
-| 5 | Classification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN | \- | \- | \- | Ch. 4 |
+| 5 | Classification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN | \- | \- | Assignment 1 Due, Oct. 7 | Ch. 4 |
 | 6 | Moving Beyond Linearity | \- | \- | \- | Ch. 7 |
 | 7 | Decision Trees | \- | \- | \- | Ch. 8 |
 | 8 | **Reading Week** | \- | \- | \- | \- |
-| 9 | Ensemble Methods: Bagging, Random Forests, Boosting | \- | \- | \- | Ch. 8 |
+| 9 | Ensemble Methods: Bagging, Random Forests, Boosting | \- | \- | Midterm, Nov. 4 | Ch. 8 |
 | 10 | Gradient Descent and Stochastic Gradient Descent | \- | \- | \- | \- |
-| 11 | Unsupervised Learning: PCA and Clustering | \- | \- | \- | Ch. 10 |
+| 11 | Unsupervised Learning: PCA and Clustering | \- | \- | Assignment 2 Released, Nov. 18 | Ch. 10 |
 | 12 | Neural Networks | \- | \- | \- | \- |
-| 13 | Deep Learning, Generative AI, and Course Review | \- | \- | \- | \- |
+| 13 | Deep Learning, Generative AI, and Course Review | \- | \- | Assignment 2 Due, Dec 2nd | \- |
 :::
