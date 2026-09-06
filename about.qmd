@@ -8,8 +8,8 @@ Below is a tentative schedule of topics for the term. You can find the lecture s
 
 ::: smaller
 | Week | Topics | Lecture Slides | Tutorial | Assessments | Suggested Reading \[ISL\] |
-|:-----------------:|:-----------------|:-----------------:|:-----------------|
-| 1 | Introduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours | [HTML Slides](Week1.html) |  | — | Ch. 2 |
+|:-----------------:|:-----------------|:-----------------:|:-----------------|:-----------------|:-----------------|
+| 1 | Introduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours | [HTML Slides](Week1.html) | - | — | Ch. 2 |
 | 2 | Model Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap | |  | \- | Ch. 2, 5 |
 | 3 | Linear Regression | |  | — | Ch. 3 |
 | 4 | Regularization and Feature Selection | |  | \- | Ch. 6 |
