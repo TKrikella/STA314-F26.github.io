@@ -54,5 +54,173 @@
     "title": "STA314",
     "section": "Computing",
     "text": "Computing\nStatistical programming is an essential part of this course. We will use R throughout this course, which is a free, open-source statistical programming language widely used for data analysis and reproducible research.\nThe software is publicly available for free at https://mirror.csclub.uwaterloo.ca/CRAN/, and it is also highly recommended to install RStudio (https://posit.co/downloads/) for an interactive programming environment. Note that the University of Toronto offers an open-source web application to use R and RStudio: https://r.datatools.utoronto.ca/."
+  },
+  {
+    "objectID": "Week1.html#what-is-machine-learning",
+    "href": "Week1.html#what-is-machine-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "What is machine learning?",
+    "text": "What is machine learning?\nMachine learning is the science of learning patterns from data\nThe goal is to use data to:\n\nunderstand relationships between variables\nmake predictions for new observations\ndiscover hidden structures in data\n\nExamples:\n\nPredict whether a patient will respond to a treatment\nPredict house prices from characteristics\nIdentify spam emails\nGroup customers based on purchasing behaviour"
+  },
+  {
+    "objectID": "Week1.html#types-of-machine-learning-problems",
+    "href": "Week1.html#types-of-machine-learning-problems",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Types of Machine Learning Problems",
+    "text": "Types of Machine Learning Problems\nSupervised Learning: Machine is given data and examples of what to predict.\nUnsupervised Learning: Machine is given data, but not what to predict.\nReinforcement Learning: Machine gets data by interacting with an environment and tries to minimize cost."
+  },
+  {
+    "objectID": "Week1.html#the-basics-of-supervised-learning",
+    "href": "Week1.html#the-basics-of-supervised-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "The Basics of Supervised Learning",
+    "text": "The Basics of Supervised Learning\nWe have an outcome measurement, \\(Y\\) (also called the dependent variable, response, or target).\nWe have a vector of \\(p\\) predictor measurements, \\(X\\) (also called the inputs, regressors, covariates, features, or independent variables).\nWe have training data \\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\) which are observations (also called instances or realizations) of the measurement \\((X,Y)\\).\nIn regression problems, \\(Y\\) is quantitative (e.g. price, blood pressure).\nIn classification problems, \\(Y\\) takes values in a finite, unordered set (survived/died, digit 0-9, cancer class of tissue sample)"
+  },
+  {
+    "objectID": "Week1.html#main-tasks-in-supervised-learning",
+    "href": "Week1.html#main-tasks-in-supervised-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Main Tasks in Supervised Learning",
+    "text": "Main Tasks in Supervised Learning\nOn the basis of the training data, we would like to:\n\n\nPrediction: accurately predict future outcomes (\\(Y\\)).\nEstimation: understand how features (\\(X\\)) affect the outcome (\\(Y\\)).\nModel Selection: find the best model for predicting the outcome (\\(Y\\)), or which features (\\(X\\)) affect the outcome (\\(Y\\)).\nInference: assess the quality of our prediction, estimation, and model selection."
+  },
+  {
+    "objectID": "Week1.html#examples-of-supervised-learning",
+    "href": "Week1.html#examples-of-supervised-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Supervised Learning",
+    "text": "Examples of Supervised Learning\nSpam Emails Detection\nConsider a dataset consisting of 4600 emails sent to an individual.\n\nEach is labeled as spam or email\n\nThe goal is to build a customized spam filter.\nWe use the relative frequency of 57 words and punctuation marks in the email as features.\n\n\n\n\nType\nTatiana\nyou\nUofT\nfree\n!\nedu\nremove\n\n\n\n\nSpam\n0\n2.26\n0.02\n0.54\n0.51\n0.01\n0.28\n\n\nEmail\n1.27\n1.27\n0.90\n0.07\n0.11\n0.29\n0.01"
+  },
+  {
+    "objectID": "Week1.html#examples-of-supervised-learning-1",
+    "href": "Week1.html#examples-of-supervised-learning-1",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Supervised Learning",
+    "text": "Examples of Supervised Learning\nDetecting Skin Cancer from Images\nTraditionally, melanoma (skin cancer) has been detected through painful and time-consuming biopsies.\nRecently new methods have emerged which use computer-aided detection for early melanoma diagnosis.\nThe machine learning models were trained using image data."
+  },
+  {
+    "objectID": "Week1.html#examples-of-supervised-learning-2",
+    "href": "Week1.html#examples-of-supervised-learning-2",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Supervised Learning",
+    "text": "Examples of Supervised Learning\nDetect Numbers in a Handwritten Postal Code"
+  },
+  {
+    "objectID": "Week1.html#examples-of-supervised-learning-3",
+    "href": "Week1.html#examples-of-supervised-learning-3",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Supervised Learning",
+    "text": "Examples of Supervised Learning\nRecommender Systems"
+  },
+  {
+    "objectID": "Week1.html#examples-of-supervised-learning-4",
+    "href": "Week1.html#examples-of-supervised-learning-4",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Supervised Learning",
+    "text": "Examples of Supervised Learning\nSpeech-to-Text, Personal Assistants, Speech Identification"
+  },
+  {
+    "objectID": "Week1.html#the-basics-of-unsupervised-learning",
+    "href": "Week1.html#the-basics-of-unsupervised-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "The Basics of Unsupervised Learning",
+    "text": "The Basics of Unsupervised Learning\nWe have a set of features, \\(X\\), measured on a sample.\nWe do not have an outcome variable, \\(Y\\).\nThe objective is more ambiguous\n\nfind groups of samples that behave similarly\nfind features that behave similarly\nfind linear combinations of features with the most variation\n\nIt is difficult to assess the quality of the model\nDifferent from supervised learning, but can be useful as a pre-processing step for supervised learning"
+  },
+  {
+    "objectID": "Week1.html#examples-of-unsupervised-learning",
+    "href": "Week1.html#examples-of-unsupervised-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Unsupervised Learning",
+    "text": "Examples of Unsupervised Learning\nImage Segmentation"
+  },
+  {
+    "objectID": "Week1.html#examples-of-unsupervised-learning-1",
+    "href": "Week1.html#examples-of-unsupervised-learning-1",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Unsupervised Learning",
+    "text": "Examples of Unsupervised Learning\nClustering"
+  },
+  {
+    "objectID": "Week1.html#examples-of-unsupervised-learning-2",
+    "href": "Week1.html#examples-of-unsupervised-learning-2",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Examples of Unsupervised Learning",
+    "text": "Examples of Unsupervised Learning\nNatural Language Processing"
+  },
+  {
+    "objectID": "Week1.html#a-common-goal",
+    "href": "Week1.html#a-common-goal",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "A common goal",
+    "text": "A common goal\nBoth statistics and machine learning ask:\n\nHow can we use data to learn about the world?\n\nThe difference is often one of emphasis:\n\n\n\nStatistics\nMachine Learning\n\n\n\n\nExplanation\nPrediction\n\n\nInference\nGeneralization\n\n\nParameter estimates\nFlexible models\n\n\nUncertainty quantification\nPredictive performance\n\n\n\nIn practice, modern data science combines both perspectives."
+  },
+  {
+    "objectID": "Week1.html#prediction",
+    "href": "Week1.html#prediction",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "1. Prediction",
+    "text": "1. Prediction\nGiven new values of \\(X\\):\n\\[\nX_{new}\n\\]\nwe want to predict:\n\\[\nY_{new}\n\\]\nExample:\nPredict a patient’s risk of disease based on their characteristics."
+  },
+  {
+    "objectID": "Week1.html#inference",
+    "href": "Week1.html#inference",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "2. Inference",
+    "text": "2. Inference\nWe want to understand relationships.\nExamples:\n\nWhich variables are important?\nHow does changing \\(X\\) affect \\(Y\\)?\nWhat is the strength of association?"
+  },
+  {
+    "objectID": "Week1.html#supervised-learning",
+    "href": "Week1.html#supervised-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Supervised Learning",
+    "text": "Supervised Learning\nWe observe both:\n\\[\n(X_i,Y_i)\n\\]\nThe goal is to learn a relationship between predictors and an outcome.\nExamples:\n\nPredicting blood pressure from age and BMI\nClassifying images as cats or dogs"
+  },
+  {
+    "objectID": "Week1.html#unsupervised-learning",
+    "href": "Week1.html#unsupervised-learning",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Unsupervised Learning",
+    "text": "Unsupervised Learning\nWe only observe:\n\\[\nX_i\n\\]\nThere is no outcome variable.\nThe goal is to discover structure.\nExamples:\n\nGrouping customers\nFinding patterns in gene expression\nReducing dimensions of data"
+  },
+  {
+    "objectID": "Week1.html#two-major-tasks",
+    "href": "Week1.html#two-major-tasks",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Two major tasks",
+    "text": "Two major tasks\nRegression\nThe response is quantitative.\nExamples:\n\\[\nY = \\text{blood pressure}\n\\]\n\\[\nY = \\text{house price}\n\\]\nClassification\nThe response is categorical.\nExamples:\n\\[\nY =\n\\begin{cases}\n0 & \\text{no disease}\\\\\n1 & \\text{disease}\n\\end{cases}\n\\]\nor:\n\\[\nY \\in \\{\\text{spam},\\text{not spam}\\}\n\\]"
+  },
+  {
+    "objectID": "Week1.html#regression-1",
+    "href": "Week1.html#regression-1",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Regression",
+    "text": "Regression\nPredict a number:\n[ =72.5 ]\nExample:\n\nWhat is the expected survival time?"
+  },
+  {
+    "objectID": "Week1.html#classification-1",
+    "href": "Week1.html#classification-1",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Classification",
+    "text": "Classification\nPredict a class:\n[ = ]\nExample:\n\nDoes this patient have cancer?"
+  },
+  {
+    "objectID": "Week1.html#training-data",
+    "href": "Week1.html#training-data",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Training data",
+    "text": "Training data\nUsed to fit the model.\n\\[\n\\{(X_1,Y_1),...,(X_n,Y_n)\\}\n\\]\nThe model learns patterns from these observations."
+  },
+  {
+    "objectID": "Week1.html#test-data",
+    "href": "Week1.html#test-data",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Test data",
+    "text": "Test data\nUsed to evaluate performance.\nNew observations:\n\\[\n(X_{new},Y_{new})\n\\]\nThe goal:\n[ ]"
+  },
+  {
+    "objectID": "Week1.html#model-evaluation",
+    "href": "Week1.html#model-evaluation",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Model Evaluation",
+    "text": "Model Evaluation\nWe will discuss:\n\ntraining vs test error\ncross-validation\nbootstrap\nbias-variance tradeoff\nchoosing model complexity"
   }
 ]
