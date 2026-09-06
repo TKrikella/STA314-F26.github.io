@@ -5,6 +5,7 @@ project:
     - index.qmd
     - about.qmd
     - Week1.qmd
+    - Course-Introduction.qmd
 
 website:
   title: "STA314"

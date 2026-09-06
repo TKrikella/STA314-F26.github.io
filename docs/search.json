@@ -222,5 +222,117 @@
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "Model Evaluation",
     "text": "Model Evaluation\nWe will discuss:\n\ntraining vs test error\ncross-validation\nbootstrap\nbias-variance tradeoff\nchoosing model complexity"
+  },
+  {
+    "objectID": "Course-Introduction.html#about-me",
+    "href": "Course-Introduction.html#about-me",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "About Me",
+    "text": "About Me\n\n\nTatiana Krikella (she/her)\n\nAssistant Professor, Teaching Stream\n\n\nEducation\n\nUndergrad: University of Windsor\nMasters: University of Windsor\nPhD: University of Waterloo\n\n\n\nAbout me\n\nI like to travel\nI like to bake\nMy Goodreads book challenge this year is 45\nI started running this summer\n\n\n\n\n\nMy PhD graduation, 2024."
+  },
+  {
+    "objectID": "Course-Introduction.html#about-you",
+    "href": "Course-Introduction.html#about-you",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "About you",
+    "text": "About you\nNow it’s time for me to get to know you!\nGo to:\nAccess Code:\nNote: We will be using mathmatize throughout the semester."
+  },
+  {
+    "objectID": "Course-Introduction.html#about-this-course",
+    "href": "Course-Introduction.html#about-this-course",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "About This Course",
+    "text": "About This Course\n\nThis course is a broad introduction to machine learning from a statistical perspective\nWe put emphasis on intuition and basic mathematical derivati0ons of how and why popular machine learning methods work\nWe will focus on understanding methodology rather than implementing complicated machine learning algorithms/delving into deep theory\nYou will learn examples of applying popular machine learning methods to real datasets in R\nThe textbook we are using also has examples in Python if you would like to practice applying these methods in a different language"
+  },
+  {
+    "objectID": "Course-Introduction.html#about-this-course-1",
+    "href": "Course-Introduction.html#about-this-course-1",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "About This Course",
+    "text": "About This Course\nWe will cover two types of learning problems:\nSupervised Learning (80%)\n\nRegression\nClassification\n\n\nUnsupervised Learning (20%)\n\nDimension reduction\nClustering\nMatrix Factorization"
+  },
+  {
+    "objectID": "Course-Introduction.html#course-motivation",
+    "href": "Course-Introduction.html#course-motivation",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Course Motivation",
+    "text": "Course Motivation\n“I’ve heard that neural networks solve everything, can we just learn those?”\n\n\nThere’s a whole world of problems where neural networks don’t work\nThe techniques in this course are still the first things to try for a wide range of problems\n\nE.g., try logistic regression before building a deep neural net!\nIt is important to accurately assess the performance of a method, to know how well or how badly it works or will work. (Easier for simple methods)\nHow confident are we to claim the effectiveness of a newly designed vaccine?"
+  },
+  {
+    "objectID": "Course-Introduction.html#course-motivation-1",
+    "href": "Course-Introduction.html#course-motivation-1",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Course Motivation",
+    "text": "Course Motivation\n“I’ve heard that neural networks solve everything, can we just learn those?”\n\n\nThe principles you learn in this course will be essential to understand and apply neural nets.\n\nIt is important to understand the ideas behind the various techniques, in order to know how and when to use them.\nAdvanced algorithms are built on the simpler ones.\n\nStatistical learning is a fundamental ingredient in the training of a modern data scientist / quantitative analyst\n\nscience (biology, neuroscience, medicine)\nindustry (tech company, transportation)\nfinance (quant, trading, bank)\n…"
+  },
+  {
+    "objectID": "Course-Introduction.html#do-i-have-the-appropriate-background",
+    "href": "Course-Introduction.html#do-i-have-the-appropriate-background",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Do I Have the Appropriate Background?",
+    "text": "Do I Have the Appropriate Background?\nLinear Algebra: vector/matrix operations such as eigenvalues and eigenvectors, eigen and singular value decompositions, inverse, trace, norms.\n\n\nCalculus: partial derivatives/gradient.\n\n\n\nProbability & Statistics: expectation, variance, covariance; Bayes’ theorem; common distributions; maximum likelihood estimation, simple linear regression, point and interval estimation, hypothesis testing, p-values.\n\n\n\nProgramming Language: We are using R in this course"
+  },
+  {
+    "objectID": "Course-Introduction.html#course-materials-important-links",
+    "href": "Course-Introduction.html#course-materials-important-links",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Course Materials & Important Links",
+    "text": "Course Materials & Important Links\nTextbook: We will mainly be using the following textbook: [ISL] Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani. An Introduction to Statistical Learning. https://www.statlearning.com\n\nCourse Webpage: Main source of information – Check regularly!\n\nQuercus: Announcements and non-public materials (i.e. solutions)\n\nPiazza: Main place for discussions.\n\nCrowdmark: We will use Crowdmark for assignment submission on Quercus."
+  },
+  {
+    "objectID": "Course-Introduction.html#delivery-details",
+    "href": "Course-Introduction.html#delivery-details",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Delivery Details",
+    "text": "Delivery Details\nUnless otherwise specified, lectures and tutorials will be held in-person.\n\n\n\n\n\n\n\n\n\n\nSection\nCategory\nTime\nLocation\n\n\n\n\nLEC0101\nLectures\nMon (10–11am)Wed (11am–1pm)\nPB B250SF 1105\n\n\n\nInstructor’s Office Hours\nMon (1–2pm)\nOPG 9165\n\n\n\nTutorials (101–104)\nMon (11am–12pm)\nSee ACORN\n\n\n\n\n\n\nTutorials are highly recommended as they contain supplementary materials to the lectures. Some weeks might not have tutorials."
+  },
+  {
+    "objectID": "Course-Introduction.html#tentative-course-schedule",
+    "href": "Course-Introduction.html#tentative-course-schedule",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Tentative Course Schedule",
+    "text": "Tentative Course Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nTopics\nReading [ISL]\nAssessments\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nCh. 2\n—\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\nCh. 2, 5\n-\n\n\n3\nLinear Regression\nCh. 3\n—\n\n\n4\nRegularization and Feature Selection\nCh. 6\n-\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\nCh. 4\n-\n\n\n6\nMoving Beyond Linearity\nCh. 7\n-\n\n\n7\nDecision Trees\nCh. 8\n-\n\n\n8\nReading Week\n-\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\nCh. 8\n-\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n-\n—\n\n\n11\nUnsupervised Learning: PCA and Clustering\nCh. 10\n-\n\n\n12\nNeural Networks\n-\n—\n\n\n13\nDeep Learning, Generative AI, and Course Review\n-\n-"
+  },
+  {
+    "objectID": "Course-Introduction.html#email-policy",
+    "href": "Course-Introduction.html#email-policy",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Email Policy",
+    "text": "Email Policy\nCourse Email:\n\nInstructor and TAs will not respond to emails sent to individual accounts\nResponse Time: It will take 24 – 48 hours to respond to emails. I will only respond during working hours (Monday – Friday, 9am – 5pm).\n\n\n\nFor questions\n\nIf it is about course material such as lectures / tutorials, or clarification question, post it to Piazza so that other students will benefit.\nIf it is related with solving practical problem sets, use the office hours"
+  },
+  {
+    "objectID": "Course-Introduction.html#course-grading-scheme",
+    "href": "Course-Introduction.html#course-grading-scheme",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Course Grading Scheme",
+    "text": "Course Grading Scheme\n\n\n\n\nAssessment\nStandard Scheme\nFlexible Scheme\n\n\n\n\nAssignment 1\n10%\n10%\n\n\nAssignment 2\n10%\n10%\n\n\nMidterm Test\n30%\n15%\n\n\nFinal Exam\n50%\n65%"
+  },
+  {
+    "objectID": "Course-Introduction.html#important-dates",
+    "href": "Course-Introduction.html#important-dates",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Important Dates",
+    "text": "Important Dates\nMidterm: October 21st, 11am – 1pm\n\nThanksgiving: October 12th (no classes, no office hours)\n\nReading Week: October 26th – 30th (no classes, no tutorials, no office hours)\n\nDrop Date: November 17th\n\nLast Day of Class: December 8th\n\nFinal Exam Period: December 10th – 22nd"
+  },
+  {
+    "objectID": "Course-Introduction.html#ai-policy---can-i-use-ai-for",
+    "href": "Course-Introduction.html#ai-policy---can-i-use-ai-for",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "AI Policy - Can I Use AI for…",
+    "text": "AI Policy - Can I Use AI for…\n General Questions: Yes – but keep in mind AI can make mistakes.\n\nAssignments: No, assignments are designed to help you learn.\n\nTests: No."
+  },
+  {
+    "objectID": "Course-Introduction.html#resources",
+    "href": "Course-Introduction.html#resources",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Resources",
+    "text": "Resources\n\nAccomodations: https://studentlife.utoronto.ca/as\n\nLearning Skills: https://www.studentlife.utoronto.ca/department/centre-for-learning-strategy-support/\n\nHealth & Wellness: https://www.studentlife.utoronto.ca/department/health-wellness/"
+  },
+  {
+    "objectID": "Course-Introduction.html#final-note",
+    "href": "Course-Introduction.html#final-note",
+    "title": "STA314: Statistical Methods for Machine Learning I",
+    "section": "Final Note",
+    "text": "Final Note\n All information is in the syllabus on the course website.\n\n\nIf you remember just one thing:\nCheck the course website regularly."
   }
 ]
