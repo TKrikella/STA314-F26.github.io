@@ -13,6 +13,7 @@ I hope this course leaves you with not only a strong foundation in statistical m
 ## Announcements
 
 -   The [Syllabus](STA314-Syllabus.pdf) is available.
+
 -   Announcements will be through [Quercus](https://q.utoronto.ca/courses/462956) and here, on the course website.
 
 ## Course Information
@@ -22,11 +23,17 @@ All information can be found in the [Syllabus](STA314-Syllabus.pdf).
 Just a few important points: 
 
 - all date information, location information, and most of the course material will be posted on this course website
+
 - non-public material will be posted on [Quercus](https://q.utoronto.ca/courses/462956)
-- to email me, email sta314\@course.utoronto.ca 
+
+- to email me, email sta314\@course.utoronto.ca
+
 - I will not respond to emails sent to my individual account 
+
 - all lectures, tutorials, and tests will be delivered in person, unless otherwise specified 
+
 - there will be one midterm test scheduled during the scheduled class time, and we will have a FAS proctored final examination 
+
 - the textbook we will be using this term is the [Introduction to Statistical Learning](https://www.statlearning.com/) by James et al.
 
 ## Computing
