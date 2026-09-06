@@ -178,7 +178,7 @@ Unless otherwise specified, lectures and tutorials will be held in-person.
 | Section | Category | Time | Location |
 |:--------------:|:-----------------|:---------------------|:---------------|
 | LEC0101 | Lectures | Mon (10–11am)<br>Wed (11am–1pm) | PB B250<br>SF 1105 |
-|  | Instructor's Office Hours | Mon (1–2pm) | OPG 9165 |
+|  | Instructor's Office Hours | Mon (1–2pm) | Online, see Quercus for link |
 |  | Tutorials (101–104) | Mon (11am–12pm) | See ACORN |
 :::
 
