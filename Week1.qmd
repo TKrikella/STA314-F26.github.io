@@ -3,6 +3,7 @@ title: "Introduction to Supervised Learning & k-Nearest Neighbours"
 subtitle: "Week 1"
 format: 
   live-revealjs:
+    css: styles.css
     html-math-method: mathjax
     scrollable: false
     slide-number: "c/t"
@@ -30,22 +31,26 @@ engine: webr
 
 ## What is machine learning?
 
-[Machine learning is the science of learning patterns from data]{style="color: maroon;"}
+[Machine learning is the science of learning patterns from data.]{style="color: maroon;"}
 
+::: fragment
 The goal is to use data to:
 
 -   understand relationships between variables
 -   make predictions for new observations
 -   discover hidden structures in data
+:::
 
 \vspace{1em}
 
+::: fragment
 Examples:
 
 -   Predict whether a patient will respond to a treatment
 -   Predict house prices from characteristics
 -   Identify spam emails
 -   Group customers based on purchasing behaviour
+:::
 
 ## Types of Machine Learning Problems
 
@@ -53,23 +58,32 @@ Examples:
 
 \vspace{1em}
 
+::: fragment
 **Unsupervised Learning**: Machine is given data, but not what to predict.
-
+:::
 \vspace{1em}
 
+::: fragment
 **Reinforcement Learning**: Machine gets data by interacting with an environment and tries to minimize cost.
+::: 
 
 ## The Basics of Supervised Learning
 
 We have an outcome measurement, $Y$ (also called the dependent variable, response, or target).
 
+::: fragment
 We have a vector of $p$ predictor measurements, $X$ (also called the inputs, regressors, covariates, features, or independent variables).
+:::
 
+::: fragment
 We have training data $(x_1, y_1), (x_2, y_2), ..., (x_n, y_n)$ which are observations (also called instances or realizations) of the measurement $(X,Y)$.
+::: 
 
+::: fragment
 In [regression]{style="color: maroon;"} problems, $Y$ is quantitative (e.g. price, blood pressure).
 
 In [classification]{style="color: maroon;"} problems, $Y$ takes values in a finite, unordered set (survived/died, digit 0-9, cancer class of tissue sample)
+:::
 
 ## Main Tasks in Supervised Learning
 
@@ -92,6 +106,7 @@ Consider a dataset consisting of 4600 emails sent to an individual.
 
 The goal is to build a customized spam filter.
 
+::: fragment
 We use the relative frequency of 57 words and punctuation marks in the email as **features**.
 
 ::: small
@@ -99,6 +114,8 @@ We use the relative frequency of 57 words and punctuation marks in the email as 
 |:------|:-------:|:----:|:-----|:----:|:----:|:----:|:------:|
 | Spam  |    0    | 2.26 | 0.02 | 0.54 | 0.51 | 0.01 |  0.28  |
 | Email |  1.27   | 1.27 | 0.90 | 0.07 | 0.11 | 0.29 |  0.01  |
+:::
+
 :::
 
 ## Examples of Supervised Learning
@@ -137,6 +154,7 @@ We have a set of features, $X$, measured on a sample.
 
 We do [not]{style="color: maroon;"} have an outcome variable, $Y$.
 
+::: fragment
 The objective is more ambiguous
 
 -   find groups of samples that behave similarly
@@ -144,8 +162,11 @@ The objective is more ambiguous
 -   find linear combinations of features with the most variation
 
 It is difficult to assess the quality of the model
+::: 
 
+::: fragment
 Different from supervised learning, but can be useful as a pre-processing step for supervised learning
+::: 
 
 ## Examples of Unsupervised Learning
 
@@ -167,6 +188,7 @@ Both statistics and machine learning ask:
 
 > How can we use data to learn about the world?
 
+::: fragment
 The difference is often one of emphasis:
 
 | Statistics                 | Machine Learning       |
@@ -175,12 +197,14 @@ The difference is often one of emphasis:
 | Inference                  | Generalization         |
 | Parameter estimates        | Flexible models        |
 | Uncertainty quantification | Predictive performance |
-
+:::
 \vspace{1em}
 
+::: fragment
 In practice, modern data science combines both perspectives.
+::: 
 
-# The Statistical Learning Problem
+## The Statistical Learning Problem
 
 Suppose we observe:
 
@@ -188,23 +212,27 @@ $$
 (X_1,Y_1), (X_2,Y_2),\ldots,(X_n,Y_n)
 $$
 
+
 where:
 
 -   $X$ = input variables (features, predictors)
 -   $Y$ = outcome variable (response)
 
+::: fragment
 We assume:
 
 $$
 Y = f(X) + \epsilon
 $$
 
+
 where:
 
 -   $f$ is the unknown relationship we want to learn
 -   $\epsilon$ represents random error
+:::
 
-# What are we trying to learn?
+## The Statistical Learning Problem
 
 The goal is to estimate:
 
@@ -218,35 +246,35 @@ $$
 \hat{Y} = \hat{f}(X)
 $$
 
-The challenge:
-
-> We do not know the true function $f$.
+> However, we do not know the true function $f$.
 
 We only observe data generated from this unknown process.
 
-# Why estimate $f$?
+
+## The Statistical Learning Problem 
+
+> Why estimate $f$?
 
 There are two main reasons.
 
-## 1. Prediction
+:::: {.columns}
 
-Given new values of $X$:
+::: {.column width="50%"}
 
-$$
-X_{new}
-$$
+#### Prediction
 
-we want to predict:
+Given new values of $X$, we want to predict $Y$.
 
-$$
-Y_{new}
-$$
+Examples: 
 
-Example:
+-   Predict a patient's risk of disease based on their characteristics.
+-   Predict when machinery will break down.
 
-Predict a patient's risk of disease based on their characteristics.
+:::
 
-## 2. Inference
+::: {.column width="50%"}
+
+#### Inference
 
 We want to understand relationships.
 
@@ -256,102 +284,11 @@ Examples:
 -   How does changing $X$ affect $Y$?
 -   What is the strength of association?
 
-# Two Types of Learning
+:::
 
-## Supervised Learning
+::::
 
-We observe both:
-
-$$
-(X_i,Y_i)
-$$
-
-The goal is to learn a relationship between predictors and an outcome.
-
-Examples:
-
--   Predicting blood pressure from age and BMI
--   Classifying images as cats or dogs
-
-## Unsupervised Learning
-
-We only observe:
-
-$$
-X_i
-$$
-
-There is no outcome variable.
-
-The goal is to discover structure.
-
-Examples:
-
--   Grouping customers
--   Finding patterns in gene expression
--   Reducing dimensions of data
-
-# Supervised Learning
-
-## Two major tasks
-
-### Regression
-
-The response is quantitative.
-
-Examples:
-
-$$
-Y = \text{blood pressure}
-$$
-
-$$
-Y = \text{house price}
-$$
-
-### Classification
-
-The response is categorical.
-
-Examples:
-
-$$
-Y =
-\begin{cases}
-0 & \text{no disease}\\
-1 & \text{disease}
-\end{cases}
-$$
-
-or:
-
-$$
-Y \in \{\text{spam},\text{not spam}\}
-$$
-
-# Regression vs Classification
-
-## Regression
-
-Predict a number:
-
-\[ \hat{Y}=72.5 \]
-
-Example:
-
-> What is the expected survival time?
-
-## Classification
-
-Predict a class:
-
-\[ \hat{Y}= \text{high risk} \]
-
-Example:
-
-> Does this patient have cancer?
-
-# How do we know if a model is good?
+## How do we know if a model is good?
 
 A model can fit the data we have...
 

@@ -60,21 +60,21 @@
     "href": "Week1.html#what-is-machine-learning",
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "What is machine learning?",
-    "text": "What is machine learning?\nMachine learning is the science of learning patterns from data\nThe goal is to use data to:\n\nunderstand relationships between variables\nmake predictions for new observations\ndiscover hidden structures in data\n\nExamples:\n\nPredict whether a patient will respond to a treatment\nPredict house prices from characteristics\nIdentify spam emails\nGroup customers based on purchasing behaviour"
+    "text": "What is machine learning?\nMachine learning is the science of learning patterns from data.\n\nThe goal is to use data to:\n\nunderstand relationships between variables\nmake predictions for new observations\ndiscover hidden structures in data\n\n\n\nExamples:\n\nPredict whether a patient will respond to a treatment\nPredict house prices from characteristics\nIdentify spam emails\nGroup customers based on purchasing behaviour"
   },
   {
     "objectID": "Week1.html#types-of-machine-learning-problems",
     "href": "Week1.html#types-of-machine-learning-problems",
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "Types of Machine Learning Problems",
-    "text": "Types of Machine Learning Problems\nSupervised Learning: Machine is given data and examples of what to predict.\nUnsupervised Learning: Machine is given data, but not what to predict.\nReinforcement Learning: Machine gets data by interacting with an environment and tries to minimize cost."
+    "text": "Types of Machine Learning Problems\nSupervised Learning: Machine is given data and examples of what to predict.\n\nUnsupervised Learning: Machine is given data, but not what to predict.\n\n\nReinforcement Learning: Machine gets data by interacting with an environment and tries to minimize cost."
   },
   {
     "objectID": "Week1.html#the-basics-of-supervised-learning",
     "href": "Week1.html#the-basics-of-supervised-learning",
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "The Basics of Supervised Learning",
-    "text": "The Basics of Supervised Learning\nWe have an outcome measurement, \\(Y\\) (also called the dependent variable, response, or target).\nWe have a vector of \\(p\\) predictor measurements, \\(X\\) (also called the inputs, regressors, covariates, features, or independent variables).\nWe have training data \\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\) which are observations (also called instances or realizations) of the measurement \\((X,Y)\\).\nIn regression problems, \\(Y\\) is quantitative (e.g. price, blood pressure).\nIn classification problems, \\(Y\\) takes values in a finite, unordered set (survived/died, digit 0-9, cancer class of tissue sample)"
+    "text": "The Basics of Supervised Learning\nWe have an outcome measurement, \\(Y\\) (also called the dependent variable, response, or target).\n\nWe have a vector of \\(p\\) predictor measurements, \\(X\\) (also called the inputs, regressors, covariates, features, or independent variables).\n\n\nWe have training data \\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\) which are observations (also called instances or realizations) of the measurement \\((X,Y)\\).\n\n\nIn regression problems, \\(Y\\) is quantitative (e.g. price, blood pressure).\nIn classification problems, \\(Y\\) takes values in a finite, unordered set (survived/died, digit 0-9, cancer class of tissue sample)"
   },
   {
     "objectID": "Week1.html#main-tasks-in-supervised-learning",
@@ -88,7 +88,7 @@
     "href": "Week1.html#examples-of-supervised-learning",
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "Examples of Supervised Learning",
-    "text": "Examples of Supervised Learning\nSpam Emails Detection\nConsider a dataset consisting of 4600 emails sent to an individual.\n\nEach is labeled as spam or email\n\nThe goal is to build a customized spam filter.\nWe use the relative frequency of 57 words and punctuation marks in the email as features.\n\n\n\n\nType\nTatiana\nyou\nUofT\nfree\n!\nedu\nremove\n\n\n\n\nSpam\n0\n2.26\n0.02\n0.54\n0.51\n0.01\n0.28\n\n\nEmail\n1.27\n1.27\n0.90\n0.07\n0.11\n0.29\n0.01"
+    "text": "Examples of Supervised Learning\nSpam Emails Detection\nConsider a dataset consisting of 4600 emails sent to an individual.\n\nEach is labeled as spam or email\n\nThe goal is to build a customized spam filter.\n\nWe use the relative frequency of 57 words and punctuation marks in the email as features.\n\n\n\n\nType\nTatiana\nyou\nUofT\nfree\n!\nedu\nremove\n\n\n\n\nSpam\n0\n2.26\n0.02\n0.54\n0.51\n0.01\n0.28\n\n\nEmail\n1.27\n1.27\n0.90\n0.07\n0.11\n0.29\n0.01"
   },
   {
     "objectID": "Week1.html#examples-of-supervised-learning-1",
@@ -123,7 +123,7 @@
     "href": "Week1.html#the-basics-of-unsupervised-learning",
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "The Basics of Unsupervised Learning",
-    "text": "The Basics of Unsupervised Learning\nWe have a set of features, \\(X\\), measured on a sample.\nWe do not have an outcome variable, \\(Y\\).\nThe objective is more ambiguous\n\nfind groups of samples that behave similarly\nfind features that behave similarly\nfind linear combinations of features with the most variation\n\nIt is difficult to assess the quality of the model\nDifferent from supervised learning, but can be useful as a pre-processing step for supervised learning"
+    "text": "The Basics of Unsupervised Learning\nWe have a set of features, \\(X\\), measured on a sample.\nWe do not have an outcome variable, \\(Y\\).\n\nThe objective is more ambiguous\n\nfind groups of samples that behave similarly\nfind features that behave similarly\nfind linear combinations of features with the most variation\n\nIt is difficult to assess the quality of the model\n\n\nDifferent from supervised learning, but can be useful as a pre-processing step for supervised learning"
   },
   {
     "objectID": "Week1.html#examples-of-unsupervised-learning",
@@ -151,7 +151,7 @@
     "href": "Week1.html#a-common-goal",
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "A common goal",
-    "text": "A common goal\nBoth statistics and machine learning ask:\n\nHow can we use data to learn about the world?\n\nThe difference is often one of emphasis:\n\n\n\nStatistics\nMachine Learning\n\n\n\n\nExplanation\nPrediction\n\n\nInference\nGeneralization\n\n\nParameter estimates\nFlexible models\n\n\nUncertainty quantification\nPredictive performance\n\n\n\nIn practice, modern data science combines both perspectives."
+    "text": "A common goal\nBoth statistics and machine learning ask:\n\nHow can we use data to learn about the world?\n\n\nThe difference is often one of emphasis:\n\n\n\nStatistics\nMachine Learning\n\n\n\n\nExplanation\nPrediction\n\n\nInference\nGeneralization\n\n\nParameter estimates\nFlexible models\n\n\nUncertainty quantification\nPredictive performance\n\n\n\n\n\nIn practice, modern data science combines both perspectives."
   },
   {
     "objectID": "Week1.html#prediction",
@@ -341,5 +341,47 @@
     "title": "STA314",
     "section": "",
     "text": "This course will introduce you to the statistical ideas that underpin many modern machine learning methods. Some of the concepts may be challenging, and I expect you to think critically, ask questions, and actively engage with the material. My goal is not only to help you learn the techniques, but also to develop an understanding of why they work and when they should be used. I have high expectations because I believe every student in this course is capable of developing a strong understanding of the material through effort, curiosity, and persistence.\nI am committed to creating a welcoming, respectful, and inclusive learning environment where everyone feels comfortable participating. Please don’t hesitate to ask questions during lectures, tutorials, office hours, or on Piazza. If you’re struggling, reach out early. I am here to support you throughout your learning journey.\nI hope this course leaves you with not only a strong foundation in statistical methods for machine learning, but also the confidence to think critically about data and the models you build. I’m looking forward to a great semester with all of you!"
+  },
+  {
+    "objectID": "Week1.html#regression-vs-classification",
+    "href": "Week1.html#regression-vs-classification",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Regression vs Classification",
+    "text": "Regression vs Classification\n\n\nRegression\nPredict a number\n\\[\n\\hat{Y} = 72.5\n\\]\n\nWhat is the expected survival time?\n\n\nClassification\nPredict a class\n\\[\n\\hat{Y} = \\text{high risk}\n\\]\n\nDoes this patient have cancer?"
+  },
+  {
+    "objectID": "Week1.html#the-statistical-learning-problem",
+    "href": "Week1.html#the-statistical-learning-problem",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "The Statistical Learning Problem",
+    "text": "The Statistical Learning Problem\nSuppose we observe:\n\\[\n(X_1,Y_1), (X_2,Y_2),\\ldots,(X_n,Y_n)\n\\]\nwhere:\n\n\\(X\\) = input variables (features, predictors)\n\\(Y\\) = outcome variable (response)\n\n\nWe assume:\n\\[\nY = f(X) + \\epsilon\n\\]\nwhere:\n\n\\(f\\) is the unknown relationship we want to learn\n\\(\\epsilon\\) represents random error"
+  },
+  {
+    "objectID": "Week1.html#the-statistical-learning-problem-1",
+    "href": "Week1.html#the-statistical-learning-problem-1",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "The Statistical Learning Problem",
+    "text": "The Statistical Learning Problem\nThe goal is to estimate:\n\\[\n\\hat{f}(X)\n\\]\nwhich gives predictions:\n\\[\n\\hat{Y} = \\hat{f}(X)\n\\]\n\nHowever, we do not know the true function \\(f\\).\n\nWe only observe data generated from this unknown process."
+  },
+  {
+    "objectID": "Week1.html#inference-1",
+    "href": "Week1.html#inference-1",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "2. Inference",
+    "text": "2. Inference\nWe want to understand relationships.\nExamples:\n\nWhich variables are important?\nHow does changing \\(X\\) affect \\(Y\\)?\nWhat is the strength of association?"
+  },
+  {
+    "objectID": "Week1.html#how-do-we-know-if-a-model-is-good",
+    "href": "Week1.html#how-do-we-know-if-a-model-is-good",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "How do we know if a model is good?",
+    "text": "How do we know if a model is good?\nA model can fit the data we have…\nbut we really care about:\n\nHow well does it perform on new data?"
+  },
+  {
+    "objectID": "Week1.html#the-statistical-learning-problem-2",
+    "href": "Week1.html#the-statistical-learning-problem-2",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "The Statistical Learning Problem",
+    "text": "The Statistical Learning Problem\n\nWhy estimate \\(f\\)?\n\nThere are two main reasons.\n\n\nPrediction\nGiven new values of \\(X\\), we want to predict \\(Y\\).\nExamples:\n\nPredict a patient’s risk of disease based on their characteristics.\nPredict when machinery will break down.\n\n\nInference\nWe want to understand relationships.\nExamples:\n\nWhich variables are important?\nHow does changing \\(X\\) affect \\(Y\\)?\nWhat is the strength of association?"
   }
 ]

@@ -31,6 +31,7 @@
     }
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
+  <link rel="stylesheet" href="styles.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -144,13 +145,16 @@
 </section>
 <section id="what-is-machine-learning" class="slide level2">
 <h2>What is machine learning?</h2>
-<p><span style="color: maroon;">Machine learning is the science of learning patterns from data</span></p>
+<p><span style="color: maroon;">Machine learning is the science of learning patterns from data.</span></p>
+<div class="fragment">
 <p>The goal is to use data to:</p>
 <ul>
 <li>understand relationships between variables</li>
 <li>make predictions for new observations</li>
 <li>discover hidden structures in data</li>
 </ul>
+</div>
+<div class="fragment">
 <p>Examples:</p>
 <ul>
 <li>Predict whether a patient will respond to a treatment</li>
@@ -158,20 +162,31 @@
 <li>Identify spam emails</li>
 <li>Group customers based on purchasing behaviour</li>
 </ul>
+</div>
 </section>
 <section id="types-of-machine-learning-problems" class="slide level2">
 <h2>Types of Machine Learning Problems</h2>
 <p><strong>Supervised Learning</strong>: Machine is given data and examples of what to predict.</p>
+<div class="fragment">
 <p><strong>Unsupervised Learning</strong>: Machine is given data, but not what to predict.</p>
+</div>
+<div class="fragment">
 <p><strong>Reinforcement Learning</strong>: Machine gets data by interacting with an environment and tries to minimize cost.</p>
+</div>
 </section>
 <section id="the-basics-of-supervised-learning" class="slide level2">
 <h2>The Basics of Supervised Learning</h2>
 <p>We have an outcome measurement, <span class="math inline">\(Y\)</span> (also called the dependent variable, response, or target).</p>
+<div class="fragment">
 <p>We have a vector of <span class="math inline">\(p\)</span> predictor measurements, <span class="math inline">\(X\)</span> (also called the inputs, regressors, covariates, features, or independent variables).</p>
+</div>
+<div class="fragment">
 <p>We have training data <span class="math inline">\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\)</span> which are observations (also called instances or realizations) of the measurement <span class="math inline">\((X,Y)\)</span>.</p>
+</div>
+<div class="fragment">
 <p>In <span style="color: maroon;">regression</span> problems, <span class="math inline">\(Y\)</span> is quantitative (e.g.&nbsp;price, blood pressure).</p>
 <p>In <span style="color: maroon;">classification</span> problems, <span class="math inline">\(Y\)</span> takes values in a finite, unordered set (survived/died, digit 0-9, cancer class of tissue sample)</p>
+</div>
 </section>
 <section id="main-tasks-in-supervised-learning" class="slide level2">
 <h2>Main Tasks in Supervised Learning</h2>
@@ -193,6 +208,7 @@
 <li>Each is labeled as <strong>spam</strong> or <strong>email</strong></li>
 </ul>
 <p>The goal is to build a customized spam filter.</p>
+<div class="fragment">
 <p>We use the relative frequency of 57 words and punctuation marks in the email as <strong>features</strong>.</p>
 <div class="small">
 <table class="caption-top">
@@ -232,6 +248,7 @@
 </tbody>
 </table>
 </div>
+</div>
 </section>
 <section id="examples-of-supervised-learning-1" class="slide level2">
 <h2>Examples of Supervised Learning</h2>
@@ -260,6 +277,7 @@
 <h2>The Basics of Unsupervised Learning</h2>
 <p>We have a set of features, <span class="math inline">\(X\)</span>, measured on a sample.</p>
 <p>We do <span style="color: maroon;">not</span> have an outcome variable, <span class="math inline">\(Y\)</span>.</p>
+<div class="fragment">
 <p>The objective is more ambiguous</p>
 <ul>
 <li>find groups of samples that behave similarly</li>
@@ -267,7 +285,10 @@
 <li>find linear combinations of features with the most variation</li>
 </ul>
 <p>It is difficult to assess the quality of the model</p>
+</div>
+<div class="fragment">
 <p>Different from supervised learning, but can be useful as a pre-processing step for supervised learning</p>
+</div>
 </section>
 <section id="examples-of-unsupervised-learning" class="slide level2">
 <h2>Examples of Unsupervised Learning</h2>
@@ -292,6 +313,7 @@
 <blockquote>
 <p>How can we use data to learn about the world?</p>
 </blockquote>
+<div class="fragment">
 <p>The difference is often one of emphasis:</p>
 <table class="caption-top">
 <thead>
@@ -319,10 +341,13 @@
 </tr>
 </tbody>
 </table>
+</div>
+<div class="fragment">
 <p>In practice, modern data science combines both perspectives.</p>
-</section></section>
-<section id="the-statistical-learning-problem" class="title-slide slide level1 center">
-<h1>The Statistical Learning Problem</h1>
+</div>
+</section>
+<section id="the-statistical-learning-problem" class="slide level2">
+<h2>The Statistical Learning Problem</h2>
 <p>Suppose we observe:</p>
 <p><span class="math display">\[
 (X_1,Y_1), (X_2,Y_2),\ldots,(X_n,Y_n)
@@ -332,6 +357,7 @@
 <li><span class="math inline">\(X\)</span> = input variables (features, predictors)</li>
 <li><span class="math inline">\(Y\)</span> = outcome variable (response)</li>
 </ul>
+<div class="fragment">
 <p>We assume:</p>
 <p><span class="math display">\[
 Y = f(X) + \epsilon
@@ -341,10 +367,10 @@ Y = f(X) + \epsilon
 <li><span class="math inline">\(f\)</span> is the unknown relationship we want to learn</li>
 <li><span class="math inline">\(\epsilon\)</span> represents random error</li>
 </ul>
+</div>
 </section>
-
-<section id="what-are-we-trying-to-learn" class="title-slide slide level1 center">
-<h1>What are we trying to learn?</h1>
+<section id="the-statistical-learning-problem-1" class="slide level2">
+<h2>The Statistical Learning Problem</h2>
 <p>The goal is to estimate:</p>
 <p><span class="math display">\[
 \hat{f}(X)
@@ -353,33 +379,28 @@ Y = f(X) + \epsilon
 <p><span class="math display">\[
 \hat{Y} = \hat{f}(X)
 \]</span></p>
-<p>The challenge:</p>
 <blockquote>
-<p>We do not know the true function <span class="math inline">\(f\)</span>.</p>
+<p>However, we do not know the true function <span class="math inline">\(f\)</span>.</p>
 </blockquote>
 <p>We only observe data generated from this unknown process.</p>
 </section>
-
-<section>
-<section id="why-estimate-f" class="title-slide slide level1 center">
-<h1>Why estimate <span class="math inline">\(f\)</span>?</h1>
+<section id="the-statistical-learning-problem-2" class="slide level2">
+<h2>The Statistical Learning Problem</h2>
+<blockquote>
+<p>Why estimate <span class="math inline">\(f\)</span>?</p>
+</blockquote>
 <p>There are two main reasons.</p>
-</section>
-<section id="prediction" class="slide level2">
-<h2>1. Prediction</h2>
-<p>Given new values of <span class="math inline">\(X\)</span>:</p>
-<p><span class="math display">\[
-X_{new}
-\]</span></p>
-<p>we want to predict:</p>
-<p><span class="math display">\[
-Y_{new}
-\]</span></p>
-<p>Example:</p>
-<p>Predict a patient’s risk of disease based on their characteristics.</p>
-</section>
-<section id="inference" class="slide level2">
-<h2>2. Inference</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h4 id="prediction">Prediction</h4>
+<p>Given new values of <span class="math inline">\(X\)</span>, we want to predict <span class="math inline">\(Y\)</span>.</p>
+<p>Examples:</p>
+<ul>
+<li>Predict a patient’s risk of disease based on their characteristics.</li>
+<li>Predict when machinery will break down.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<h4 id="inference">Inference</h4>
 <p>We want to understand relationships.</p>
 <p>Examples:</p>
 <ul>
@@ -387,103 +408,16 @@ Y_{new}
 <li>How does changing <span class="math inline">\(X\)</span> affect <span class="math inline">\(Y\)</span>?</li>
 <li>What is the strength of association?</li>
 </ul>
-</section></section>
-<section>
-<section id="two-types-of-learning" class="title-slide slide level1 center">
-<h1>Two Types of Learning</h1>
-
+</div></div>
 </section>
-<section id="supervised-learning" class="slide level2">
-<h2>Supervised Learning</h2>
-<p>We observe both:</p>
-<p><span class="math display">\[
-(X_i,Y_i)
-\]</span></p>
-<p>The goal is to learn a relationship between predictors and an outcome.</p>
-<p>Examples:</p>
-<ul>
-<li>Predicting blood pressure from age and BMI</li>
-<li>Classifying images as cats or dogs</li>
-</ul>
-</section>
-<section id="unsupervised-learning" class="slide level2">
-<h2>Unsupervised Learning</h2>
-<p>We only observe:</p>
-<p><span class="math display">\[
-X_i
-\]</span></p>
-<p>There is no outcome variable.</p>
-<p>The goal is to discover structure.</p>
-<p>Examples:</p>
-<ul>
-<li>Grouping customers</li>
-<li>Finding patterns in gene expression</li>
-<li>Reducing dimensions of data</li>
-</ul>
-</section></section>
-<section>
-<section id="supervised-learning-1" class="title-slide slide level1 center">
-<h1>Supervised Learning</h1>
-
-</section>
-<section id="two-major-tasks" class="slide level2">
-<h2>Two major tasks</h2>
-<h3 id="regression">Regression</h3>
-<p>The response is quantitative.</p>
-<p>Examples:</p>
-<p><span class="math display">\[
-Y = \text{blood pressure}
-\]</span></p>
-<p><span class="math display">\[
-Y = \text{house price}
-\]</span></p>
-<h3 id="classification">Classification</h3>
-<p>The response is categorical.</p>
-<p>Examples:</p>
-<p><span class="math display">\[
-Y =
-\begin{cases}
-0 &amp; \text{no disease}\\
-1 &amp; \text{disease}
-\end{cases}
-\]</span></p>
-<p>or:</p>
-<p><span class="math display">\[
-Y \in \{\text{spam},\text{not spam}\}
-\]</span></p>
-</section></section>
-<section>
-<section id="regression-vs-classification" class="title-slide slide level1 center">
-<h1>Regression vs Classification</h1>
-
-</section>
-<section id="regression-1" class="slide level2">
-<h2>Regression</h2>
-<p>Predict a number:</p>
-<p>[ =72.5 ]</p>
-<p>Example:</p>
-<blockquote>
-<p>What is the expected survival time?</p>
-</blockquote>
-</section>
-<section id="classification-1" class="slide level2">
-<h2>Classification</h2>
-<p>Predict a class:</p>
-<p>[ = ]</p>
-<p>Example:</p>
-<blockquote>
-<p>Does this patient have cancer?</p>
-</blockquote>
-</section></section>
-<section id="how-do-we-know-if-a-model-is-good" class="title-slide slide level1 center">
-<h1>How do we know if a model is good?</h1>
+<section id="how-do-we-know-if-a-model-is-good" class="slide level2">
+<h2>How do we know if a model is good?</h2>
 <p>A model can fit the data we have…</p>
 <p>but we really care about:</p>
 <blockquote>
 <p>How well does it perform on new data?</p>
 </blockquote>
-</section>
-
+</section></section>
 <section>
 <section id="training-data-vs-test-data" class="title-slide slide level1 center">
 <h1>Training Data vs Test Data</h1>
