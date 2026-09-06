@@ -11,6 +11,20 @@
     "href": "index.html",
     "title": "STA314",
     "section": "",
-    "text": "Under Construction"
+    "text": "Syllabus"
+  },
+  {
+    "objectID": "index.html#course-information",
+    "href": "index.html#course-information",
+    "title": "STA314",
+    "section": "",
+    "text": "Syllabus"
+  },
+  {
+    "objectID": "index.html#tentative-course-schedule",
+    "href": "index.html#tentative-course-schedule",
+    "title": "STA314",
+    "section": "Tentative Course Schedule",
+    "text": "Tentative Course Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nTopics\nReading [ISL]\nAssessments\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nCh. 2\n—\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\nCh. 2, 5\n-\n\n\n3\nLinear Regression\nCh. 3\n—\n\n\n4\nRegularization and Feature Selection\nCh. 6\n-\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\nCh. 4\n-\n\n\n6\nMoving Beyond Linearity\nCh. 7\n-\n\n\n7\nDecision Trees\nCh. 8\n-\n\n\n8\nReading Week\n-\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\nCh. 8\n-\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n-\n—\n\n\n11\nUnsupervised Learning: PCA and Clustering\nCh. 10\n-\n\n\n12\nNeural Networks\n-\n—\n\n\n13\nDeep Learning, Generative AI, and Course Review\n-\n-"
   }
 ]
