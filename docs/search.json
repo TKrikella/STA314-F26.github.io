@@ -11,14 +11,14 @@
     "href": "index.html",
     "title": "STA314",
     "section": "",
-    "text": "Welcome message"
+    "text": "This course will introduce you to the statistical ideas that underpin many modern machine learning methods. Some of the concepts may be challenging, and I expect you to think critically, ask questions, and actively engage with the material. My goal is not only to help you learn the techniques, but also to develop an understanding of why they work and when they should be used. I have high expectations because I believe every student in this course is capable of developing a strong understanding of the material through effort, curiosity, and persistence.\nI am committed to creating a welcoming, respectful, and inclusive learning environment where everyone feels comfortable participating. Please don’t hesitate to ask questions during lectures, tutorials, office hours, or on Piazza. If you’re struggling, reach out early. I am here to support you throughout your learning journey.\nI hope this course leaves you with not only a strong foundation in statistical methods for machine learning, but also the confidence to think critically about data and the models you build. I’m looking forward to a great semester with all of you!"
   },
   {
     "objectID": "index.html#course-information",
     "href": "index.html#course-information",
     "title": "STA314",
     "section": "Course Information",
-    "text": "Course Information\nAll information can be found in the Syllabus.\nJust a few important points: - to email me, email sta314@course.utoronto.ca - I will not respond to emails sent to my individual account - all lectures, tutorials, and tests will be delivered in person, unless otherwise specified - there will be one midterm test scheduled during the scheduled class time, and we will have a FAS proctored final examination - the textbook we will be using this term is the Introduction to Statistical Learning by James et al."
+    "text": "Course Information\nAll information can be found in the Syllabus.\nJust a few important points:\n\nall date information, location information, and most of the course material will be posted on this course website\nnon-public material will be posted on Quercus\nto email me, email sta314@course.utoronto.ca\nI will not respond to emails sent to my individual account\nall lectures, tutorials, and tests will be delivered in person, unless otherwise specified\nthere will be one midterm test scheduled during the scheduled class time, and we will have a FAS proctored final examination\nthe textbook we will be using this term is the Introduction to Statistical Learning by James et al."
   },
   {
     "objectID": "index.html#tentative-course-schedule",
@@ -53,7 +53,7 @@
     "href": "index.html#computing",
     "title": "STA314",
     "section": "Computing",
-    "text": "Computing\nStatistical programming is an essential part of this course. We will use R throughout this course, which is a free, open-source statistical programming language widely used for data analysis and reproducible research.\nThe software is publicly available for free at https://mirror.csclub.uwaterloo.ca/CRAN/, and it is also highly recommended to install RStudio (https://posit.co/downloads/) for an interactive programming environment. Note that the University of Toronto offers an open-source web application to use R and RStudio: https://r.datatools.utoronto.ca/."
+    "text": "Computing\nStatistical programming is an essential part of this course. We will use R throughout this course, which is a free, open-source statistical programming language widely used for data analysis and reproducible research.\nThe software is publicly available for free here, and it is also highly recommended to install RStudio for an interactive programming environment. Note that the University of Toronto offers an open-source web application to use R and RStudio."
   },
   {
     "objectID": "Week1.html#what-is-machine-learning",
@@ -334,5 +334,12 @@
     "title": "STA314: Statistical Methods for Machine Learning I",
     "section": "Final Note",
     "text": "Final Note\n All information is in the syllabus on the course website.\n\n\nIf you remember just one thing:\nCheck the course website regularly."
+  },
+  {
+    "objectID": "index.html#welcome-to-statistical-methods-for-machine-learning-i",
+    "href": "index.html#welcome-to-statistical-methods-for-machine-learning-i",
+    "title": "STA314",
+    "section": "",
+    "text": "This course will introduce you to the statistical ideas that underpin many modern machine learning methods. Some of the concepts may be challenging, and I expect you to think critically, ask questions, and actively engage with the material. My goal is not only to help you learn the techniques, but also to develop an understanding of why they work and when they should be used. I have high expectations because I believe every student in this course is capable of developing a strong understanding of the material through effort, curiosity, and persistence.\nI am committed to creating a welcoming, respectful, and inclusive learning environment where everyone feels comfortable participating. Please don’t hesitate to ask questions during lectures, tutorials, office hours, or on Piazza. If you’re struggling, reach out early. I am here to support you throughout your learning journey.\nI hope this course leaves you with not only a strong foundation in statistical methods for machine learning, but also the confidence to think critically about data and the models you build. I’m looking forward to a great semester with all of you!"
   }
 ]
