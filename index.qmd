@@ -4,22 +4,18 @@ title: "STA314"
 
 ## Welcome to STA314: Statistical Methods for Machine Learning I
 
-Welcome message 
+Welcome message
 
-## Announcements 
+## Announcements
 
-- The [Syllabus](STA314-Syllabus.pdf) is available.
-- Announcements will be through Quercus and here, on the course website.
+-   The [Syllabus](STA314-Syllabus.pdf) is available.
+-   Announcements will be through Quercus and here, on the course website.
 
-## Course Information 
+## Course Information
 
 All information can be found in the [Syllabus](STA314-Syllabus.pdf).
 
-Just a few important points: 
-  - to email me, email sta314@course.utoronto.ca - I will not respond to emails sent to my individual account
-  - all lectures, tutorials, and tests will be delivered in person, unless otherwise specified 
-  - there will be one midterm test scheduled during the scheduled class time, and we will have a FAS proctored final examination 
-  - the textbook we will be using this term is the [Introduction to Statistical Learning](https://www.statlearning.com/) by James et al.
+Just a few important points: - to email me, email sta314\@course.utoronto.ca - I will not respond to emails sent to my individual account - all lectures, tutorials, and tests will be delivered in person, unless otherwise specified - there will be one midterm test scheduled during the scheduled class time, and we will have a FAS proctored final examination - the textbook we will be using this term is the [Introduction to Statistical Learning](https://www.statlearning.com/) by James et al.
 
 ## Computing
 
