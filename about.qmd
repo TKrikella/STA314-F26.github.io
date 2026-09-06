@@ -1,5 +1,6 @@
 ---
 title: "Slides"
+page-layout: full
 ---
 
 ## Tentative Course Schedule
