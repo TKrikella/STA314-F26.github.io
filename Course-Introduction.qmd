@@ -3,6 +3,7 @@ title: "STA314: Statistical Methods for Machine Learning I"
 subtitle: "Course Introduction"
 format: 
   live-revealjs:
+    css: styles.css
     html-math-method: mathjax
     scrollable: false
     slide-number: "c/t"
