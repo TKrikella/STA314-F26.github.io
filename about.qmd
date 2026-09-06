@@ -1,9 +1,25 @@
 ---
-title: "About"
+title: "Slides"
 ---
 
-About this site
+## Tentative Course Schedule 
 
-```{r}
-1 + 1
-```
+Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. 
+
+::: smaller
+| Week | Topics | Lecture Slides | Tutorial | Assessments | Suggested Reading \[ISL\] |
+|:-----------------:|:-----------------|:-----------------:|:-----------------|
+| 1 | Introduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours | [HTML Slides](Week1.html) |  | — | Ch. 2 |
+| 2 | Model Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap | |  | \- | Ch. 2, 5 |
+| 3 | Linear Regression | |  | — | Ch. 3 |
+| 4 | Regularization and Feature Selection | |  | \- | Ch. 6 |
+| 5 | Classification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN | |  | \- | Ch. 4 |
+| 6 | Moving Beyond Linearity | |  | \- | Ch. 7 |
+| 7 | Decision Trees | |  |  | Ch. 8 |
+| 8 | **Reading Week** | | \- |  | - |
+| 9 | Ensemble Methods: Bagging, Random Forests, Boosting | |  |  | Ch. 8 |
+| 10 | Gradient Descent and Stochastic Gradient Descent |  | | — | - |
+| 11 | Unsupervised Learning: PCA and Clustering | |  |  | Ch. 10 |
+| 12 | Neural Networks |  | | — | - |
+| 13 | Deep Learning, Generative AI, and Course Review |  | |  | - |
+:::

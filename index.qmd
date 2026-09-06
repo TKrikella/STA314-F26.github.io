@@ -2,27 +2,27 @@
 title: "STA314"
 ---
 
+## Welcome to STA314: Statistical Methods for Machine Learning I
+
+Welcome message 
+
+## Announcements 
+
+- The [Syllabus](STA314-Syllabus.pdf) is available.
+- Announcements will be through Quercus and here, on the course website.
+
 ## Course Information 
 
-[Syllabus](STA314-Syllabus.pdf)
+All information can be found in the [Syllabus](STA314-Syllabus.pdf).
 
+Just a few important points: 
+  - to email me, email sta314@course.utoronto.ca - I will not respond to emails sent to my individual account
+  - all lectures, tutorials, and tests will be delivered in person, unless otherwise specified 
+  - there will be one midterm test scheduled during the scheduled class time, and we will have a FAS proctored final examination 
+  - the textbook we will be using this term is the [Introduction to Statistical Learning](https://www.statlearning.com/) by James et al.
 
-## Tentative Course Schedule 
+## Computing
 
-::: smaller
-| Date | Topics | Reading \[ISL\] | Assessments |
-|:-----------------:|:-----------------|:-----------------:|:-----------------|
-| 1 | Introduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours | Ch. 2 | — |
-| 2 | Model Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap | Ch. 2, 5 | \- |
-| 3 | Linear Regression | Ch. 3 | — |
-| 4 | Regularization and Feature Selection | Ch. 6 | \- |
-| 5 | Classification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN | Ch. 4 | \- |
-| 6 | Moving Beyond Linearity | Ch. 7 | \- |
-| 7 | Decision Trees | Ch. 8 | \- |
-| 8 | **Reading Week** | \- | \- |
-| 9 | Ensemble Methods: Bagging, Random Forests, Boosting | Ch. 8 | \- |
-| 10 | Gradient Descent and Stochastic Gradient Descent | \- | — |
-| 11 | Unsupervised Learning: PCA and Clustering | Ch. 10 | \- |
-| 12 | Neural Networks | \- | — |
-| 13 | Deep Learning, Generative AI, and Course Review | \- | \- |
-:::
+Statistical programming is an essential part of this course. We will use R throughout this course, which is a free, open-source statistical programming language widely used for data analysis and reproducible research.
+
+The software is publicly available for free at https://mirror.csclub.uwaterloo.ca/CRAN/, and it is also highly recommended to install RStudio (https://posit.co/downloads/) for an interactive programming environment. Note that the University of Toronto offers an open-source web application to use R and RStudio: https://r.datatools.utoronto.ca/.

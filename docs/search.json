@@ -2,23 +2,23 @@
   {
     "objectID": "about.html",
     "href": "about.html",
-    "title": "About",
+    "title": "Slides",
     "section": "",
-    "text": "About this site\n\n1 + 1\n\n[1] 2"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nHTML Slides\n\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\n\n\n\n\n3\nLinear Regression\n\n\n\n\n4\nRegularization and Feature Selection\n\n\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\n\n\n\n\n6\nMoving Beyond Linearity\n\n\n\n\n7\nDecision Trees\n\n\n\n\n8\nReading Week\n\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\n\n\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n\n\n\n\n11\nUnsupervised Learning: PCA and Clustering\n\n\n\n\n12\nNeural Networks\n\n\n\n\n13\nDeep Learning, Generative AI, and Course Review"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "STA314",
     "section": "",
-    "text": "Syllabus"
+    "text": "Welcome message"
   },
   {
     "objectID": "index.html#course-information",
     "href": "index.html#course-information",
     "title": "STA314",
-    "section": "",
-    "text": "Syllabus"
+    "section": "Course Information",
+    "text": "Course Information\nAll information can be found in the Syllabus.\nJust a few important points: - to email me, email sta314@course.utoronto.ca - I will not respond to emails sent to my individual account - all lectures, tutorials, and tests will be delivered in person, unless otherwise specified - there will be one midterm test scheduled during the scheduled class time, and we will have a FAS proctored final examination - the textbook we will be using this term is the Introduction to Statistical Learning by James et al."
   },
   {
     "objectID": "index.html#tentative-course-schedule",
@@ -26,5 +26,33 @@
     "title": "STA314",
     "section": "Tentative Course Schedule",
     "text": "Tentative Course Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nTopics\nReading [ISL]\nAssessments\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nCh. 2\n—\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\nCh. 2, 5\n-\n\n\n3\nLinear Regression\nCh. 3\n—\n\n\n4\nRegularization and Feature Selection\nCh. 6\n-\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\nCh. 4\n-\n\n\n6\nMoving Beyond Linearity\nCh. 7\n-\n\n\n7\nDecision Trees\nCh. 8\n-\n\n\n8\nReading Week\n-\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\nCh. 8\n-\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n-\n—\n\n\n11\nUnsupervised Learning: PCA and Clustering\nCh. 10\n-\n\n\n12\nNeural Networks\n-\n—\n\n\n13\nDeep Learning, Generative AI, and Course Review\n-\n-"
+  },
+  {
+    "objectID": "about.html#tentative-course-schedule",
+    "href": "about.html#tentative-course-schedule",
+    "title": "Slides",
+    "section": "",
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nHTML Slides\n\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\n\n\n\n\n3\nLinear Regression\n\n\n\n\n4\nRegularization and Feature Selection\n\n\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\n\n\n\n\n6\nMoving Beyond Linearity\n\n\n\n\n7\nDecision Trees\n\n\n\n\n8\nReading Week\n\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\n\n\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n\n\n\n\n11\nUnsupervised Learning: PCA and Clustering\n\n\n\n\n12\nNeural Networks\n\n\n\n\n13\nDeep Learning, Generative AI, and Course Review"
+  },
+  {
+    "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
+    "href": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
+    "title": "STA314",
+    "section": "",
+    "text": "Welcome message"
+  },
+  {
+    "objectID": "index.html#announcements",
+    "href": "index.html#announcements",
+    "title": "STA314",
+    "section": "Announcements",
+    "text": "Announcements\n\nThe Syllabus is available.\nAnnouncements will be through Quercus and here, on the course website."
+  },
+  {
+    "objectID": "index.html#computing",
+    "href": "index.html#computing",
+    "title": "STA314",
+    "section": "Computing",
+    "text": "Computing\nStatistical programming is an essential part of this course. We will use R throughout this course, which is a free, open-source statistical programming language widely used for data analysis and reproducible research.\nThe software is publicly available for free at https://mirror.csclub.uwaterloo.ca/CRAN/, and it is also highly recommended to install RStudio (https://posit.co/downloads/) for an interactive programming environment. Note that the University of Toronto offers an open-source web application to use R and RStudio: https://r.datatools.utoronto.ca/."
   }
 ]
