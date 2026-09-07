@@ -33,6 +33,18 @@
   line-height: 1.35;
 }
 
+/* footnotes at bottom of slide */
+.reveal .slide-footnote {
+  position: absolute;
+  bottom: 0.5em;
+  left: 0;
+  width: 100%;
+  font-size: 0.42em;
+  color: #555;
+  line-height: 1.2;
+  border-top: 1px solid #999;
+  padding-top: 0.4em;
+}
 /* accent */
 .maroon {
   color: #7a263a;
@@ -52,4 +64,12 @@
 .reveal .footer {
   font-size: 0.38em;
   color: #555;
+}
+
+/* citations / image sources */
+.reveal .citation {
+  font-size: 0.42em;
+  color: #666;
+  line-height: 1.2;
+  margin-top: 0.5em;
 }

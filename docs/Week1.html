@@ -11,7 +11,7 @@
 <link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <title>STA314 – Introduction to Supervised Learning &amp; k-Nearest Neighbours</title>
+  <title>STA314 – Introduction to Supervised Learning &amp; Model Selection</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -131,7 +131,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Introduction to Supervised Learning &amp; k-Nearest Neighbours</h1>
+  <h1 class="title">Introduction to Supervised Learning &amp; Model Selection</h1>
   <p class="subtitle">Week 1</p>
 
 <div class="quarto-title-authors">
@@ -155,7 +155,7 @@
 </ul>
 </div>
 <div class="fragment">
-<p>Examples:</p>
+<p><strong>Examples:</strong></p>
 <ul>
 <li>Predict whether a patient will respond to a treatment</li>
 <li>Predict house prices from characteristics</li>
@@ -167,9 +167,11 @@
 <section id="types-of-machine-learning-problems" class="slide level2">
 <h2>Types of Machine Learning Problems</h2>
 <p><strong>Supervised Learning</strong>: Machine is given data and examples of what to predict.</p>
+<p><br></p>
 <div class="fragment">
 <p><strong>Unsupervised Learning</strong>: Machine is given data, but not what to predict.</p>
 </div>
+<p><br></p>
 <div class="fragment">
 <p><strong>Reinforcement Learning</strong>: Machine gets data by interacting with an environment and tries to minimize cost.</p>
 </div>
@@ -257,7 +259,10 @@
 <p>Recently new methods have emerged which use computer-aided detection for early melanoma diagnosis.</p>
 <p>The machine learning models were trained using image data.</p>
 
-<img data-src="images/Week1-Cancer.png" class="r-stretch"></section>
+<img data-src="images/Week1-Cancer.png" class="quarto-figure quarto-figure-center r-stretch" style="width:40.0%"><div class="citation">
+<p>Gouda, W., Sama, N. U., Al-Waakid, G., Humayun, M., &amp; Jhanjhi, N. Z. (2022). Detection of skin cancer based on skin lesion images using deep learning. Healthcare, 10(7), 1183. https://doi.org/10.3390/healthcare10071183</p>
+</div>
+</section>
 <section id="examples-of-supervised-learning-2" class="slide level2">
 <h2>Examples of Supervised Learning</h2>
 <p><span style="color: maroon;">Detect Numbers in a Handwritten Postal Code</span></p>
@@ -293,289 +298,433 @@
 <section id="examples-of-unsupervised-learning" class="slide level2">
 <h2>Examples of Unsupervised Learning</h2>
 <p><span style="color: maroon;">Image Segmentation</span></p>
-</section>
+<p>The goal is to cluster pixels into image regions to make it easier to analyze and understand specific parts of the image.</p>
+
+<img data-src="images/Week1-ImageSegmentation.webp" class="r-stretch"></section>
 <section id="examples-of-unsupervised-learning-1" class="slide level2">
 <h2>Examples of Unsupervised Learning</h2>
 <p><span style="color: maroon;">Clustering</span></p>
+<p>Grouping unlabeled data points into clusters based on their similarities.</p>
+
+<img data-src="images/Week1-Clustering.jpg" class="r-stretch"><div class="citation">
+<p>Vandeninden, B., De Clercq, E. M., Devleesschauwer, B., Otavova, M., Bouland, C., &amp; Faes, C. (2024). Cluster pattern analysis of environmental stressors and quantifying their impact on all-cause mortality in Belgium. <em>BMC Public Health, 24</em>(1). https://doi.org/10.1186/s12889-024-18011-0</p>
+</div>
 </section>
 <section id="examples-of-unsupervised-learning-2" class="slide level2">
 <h2>Examples of Unsupervised Learning</h2>
 <p><span style="color: maroon;">Natural Language Processing</span></p>
-</section></section>
+
+<img data-src="images/Week1-NaturalLanguageProcessing.png" class="r-stretch"></section></section>
 <section>
 <section id="introduction-to-supervised-learning" class="title-slide slide level1 center">
 <h1>Introduction to Supervised Learning</h1>
 
 </section>
-<section id="a-common-goal" class="slide level2">
-<h2>A common goal</h2>
-<p>Both statistics and machine learning ask:</p>
-<blockquote>
-<p>How can we use data to learn about the world?</p>
-</blockquote>
-<div class="fragment">
-<p>The difference is often one of emphasis:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Statistics</th>
-<th>Machine Learning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Explanation</td>
-<td>Prediction</td>
-</tr>
-<tr class="even">
-<td>Inference</td>
-<td>Generalization</td>
-</tr>
-<tr class="odd">
-<td>Parameter estimates</td>
-<td>Flexible models</td>
-</tr>
-<tr class="even">
-<td>Uncertainty quantification</td>
-<td>Predictive performance</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="fragment">
-<p>In practice, modern data science combines both perspectives.</p>
-</div>
-</section>
-<section id="the-statistical-learning-problem" class="slide level2">
-<h2>The Statistical Learning Problem</h2>
-<p>Suppose we observe:</p>
-<p><span class="math display">\[
-(X_1,Y_1), (X_2,Y_2),\ldots,(X_n,Y_n)
-\]</span></p>
-<p>where:</p>
+<section id="this-course" class="slide level2">
+<h2>This Course</h2>
+<p>In much of this course, we focus on <span style="color: maroon;">supervised learning</span>, where we are given</p>
 <ul>
-<li><span class="math inline">\(X\)</span> = input variables (features, predictors)</li>
-<li><span class="math inline">\(Y\)</span> = outcome variable (response)</li>
+<li><span style="color: maroon;">Training Set</span> <span class="math inline">\({(x_1, y_1), ..., (x_n, y_n)}\)</span> consisting of <span class="math inline">\(n\)</span> samples of
+<ul>
+<li><span style="color: maroon;">features</span> <span class="math inline">\(x_1, ..., x_n \in X\)</span> and corresponding</li>
+<li><span style="color: maroon;">outcome</span> <span class="math inline">\(y_1, ..., y_n \in Y\)</span></li>
+</ul></li>
 </ul>
 <div class="fragment">
-<p>We assume:</p>
-<p><span class="math display">\[
-Y = f(X) + \epsilon
-\]</span></p>
-<p>where:</p>
-<ul>
-<li><span class="math inline">\(f\)</span> is the unknown relationship we want to learn</li>
-<li><span class="math inline">\(\epsilon\)</span> represents random error</li>
-</ul>
+<p>The goal is to <span style="color: maroon;">learn a predictor</span> (function/mapping) <span class="math inline">\(f: X \rightarrow Y\)</span> such that for a new point <span class="math inline">\(x^* \in X\)</span>,</p>
+<p><span class="math display">\[f(x^*) \approx y^*\]</span></p>
 </div>
 </section>
-<section id="the-statistical-learning-problem-1" class="slide level2">
-<h2>The Statistical Learning Problem</h2>
-<p>The goal is to estimate:</p>
-<p><span class="math display">\[
-\hat{f}(X)
-\]</span></p>
-<p>which gives predictions:</p>
-<p><span class="math display">\[
-\hat{Y} = \hat{f}(X)
-\]</span></p>
-<blockquote>
-<p>However, we do not know the true function <span class="math inline">\(f\)</span>.</p>
-</blockquote>
-<p>We only observe data generated from this unknown process.</p>
+<section id="the-function-f" class="slide level2">
+<h2>The Function, <span class="math inline">\(f\)</span></h2>
+<p>Imagine the underlying generating mechanism between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> as <span class="math display">\[Y = f(X) + \epsilon\]</span></p>
+<p>where <span class="math inline">\(\epsilon\)</span> represents some measurement errors and other discrepancies.</p>
+<p><br></p>
+<div class="fragment">
+<p>We are given the training data <span class="math inline">\(D^{train}\)</span> consisting of <span class="math inline">\(n\)</span> i.i.d samples of <span class="math inline">\((X,Y)\)</span> following the above model, that is, <span class="math inline">\((x_1, y_1), ..., (x_n, y_n)\)</span>.</p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>Our goal is to estimate (or learn) the mapping/function <span class="math inline">\(f\)</span> based on <span class="math inline">\(D^{train}\)</span>.</p>
+</div>
 </section>
-<section id="the-statistical-learning-problem-2" class="slide level2">
-<h2>The Statistical Learning Problem</h2>
-<blockquote>
-<p>Why estimate <span class="math inline">\(f\)</span>?</p>
-</blockquote>
-<p>There are two main reasons.</p>
+<section id="example-advertising" class="slide level2">
+<h2>Example: Advertising</h2>
+<p>We are given information of <span class="math inline">\(n\)</span> products.</p>
+<p>For each product, we are given:</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span>: Sales of product <span class="math inline">\(i\)</span> in 200 different markets</li>
+<li><span class="math inline">\(x_{i1}\)</span>: TV advertising budget of product <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(x_{i2}\)</span>: Radio advertising budget of product <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(x_{i3}\)</span>: Newspaper advertising budget of product <span class="math inline">\(i\)</span></li>
+</ul>
+<div class="fragment">
+<p>Suppose the true generating model is <span class="math display">\[
+\begin{aligned}
+Y &amp;= f(X) + \epsilon \\
+  &amp;= \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \epsilon
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p><span style="color: maroon;">Knowing <span class="math inline">\(f\)</span> helps to understand how sales changes if we increase one unit of the TV advertising budget (<span class="math inline">\(X_1\)</span>).</span></p>
+</div>
+</section>
+<section id="why-estimate-f" class="slide level2">
+<h2>Why Estimate <span class="math inline">\(f\)</span>?</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h4 id="prediction">Prediction</h4>
-<p>Given new values of <span class="math inline">\(X\)</span>, we want to predict <span class="math inline">\(Y\)</span>.</p>
-<p>Examples:</p>
+<p><span style="color: maroon;"><strong>Prediction</strong></span></p>
+<p>Given a new point <span class="math inline">\(X^* = x^*\)</span>, <span class="math inline">\(\hat{f}(x^*)\)</span> is the best prediction one can hope for with respect to certain criterion.</p>
+<p><strong>Examples:</strong></p>
 <ul>
 <li>Predict a patient’s risk of disease based on their characteristics.</li>
 <li>Predict when machinery will break down.</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h4 id="inference">Inference</h4>
-<p>We want to understand relationships.</p>
-<p>Examples:</p>
+<div class="fragment">
+<p><span style="color: maroon;"><strong>Inference</strong></span></p>
+<p>We want to understand relationships between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span>.</p>
+<p><strong>Examples:</strong></p>
 <ul>
 <li>Which variables are important?</li>
 <li>How does changing <span class="math inline">\(X\)</span> affect <span class="math inline">\(Y\)</span>?</li>
 <li>What is the strength of association?</li>
 </ul>
+</div>
 </div></div>
 </section>
-<section id="how-do-we-know-if-a-model-is-good" class="slide level2">
-<h2>How do we know if a model is good?</h2>
-<p>A model can fit the data we have…</p>
-<p>but we really care about:</p>
-<blockquote>
-<p>How well does it perform on new data?</p>
-</blockquote>
-</section></section>
+<section id="estimating-f" class="slide level2">
+<h2>Estimating <span class="math inline">\(f\)</span></h2>
+<p>Let <span class="math inline">\(x_{ij}\)</span> denote the value of the <span class="math inline">\(j^{th}\)</span> feature for observation <span class="math inline">\(i\)</span>, where <span class="math inline">\(i=1,2,...,n\)</span> and <span class="math inline">\(j=1,2,...,p\)</span>.</p>
+<p>Let <span class="math inline">\(y_i\)</span> denote the response variable for the <span class="math inline">\(i^{th}\)</span> observation.</p>
+<p><br></p>
+<p>Then, the training data consists of <span class="math inline">\(D^{train} = \{(x_1,y_1), ..., (x_n, y_n)\}\)</span>, where <span class="math inline">\(x_i = (x_{i1}, ..., x_{ip})^T\)</span></p>
+<p><br></p>
+<div class="fragment">
+<p>There are two categories of approaches to estimate <span class="math inline">\(f\)</span> based on <span class="math inline">\(D^{train}\)</span>:</p>
+<ul>
+<li><span style="color: maroon;"><strong>Parametric method</strong></span></li>
+<li><span style="color: maroon;"><strong>Non-parametric method</strong></span></li>
+</ul>
+</div>
+</section>
+<section id="estimating-f-1" class="slide level2">
+<h2>Estimating <span class="math inline">\(f\)</span></h2>
+<p><span style="color: maroon;"><strong>Parametric method</strong></span></p>
+<p><strong>Step 1</strong>: Make an assumption about the function form, or shape, of <span class="math inline">\(f\)</span>.</p>
+<p><strong>Step 2</strong>: Use the training data to <em>fit</em> (or <em>train</em>) the model.</p>
+<div class="fragment">
+<p><strong>Example: Linear Model</strong></p>
+<p>The linear model is an important example of a parametric model.</p>
+<p><span class="math inline">\(Y = f(X) + \epsilon\)</span>, with <span class="math inline">\(f(X) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p\)</span>.</p>
+<p>We would estimate <span class="math inline">\(f\)</span> by <span class="math display">\[\hat{f}_{linear}(X) = \hat{\beta_0} +\hat{\beta_1}X_1 + ... + \hat{\beta_p}X_p.\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Note</strong>: constructing <span class="math inline">\(f\)</span> in this way reduces the problem of estimating a function to that of estimating (p+1) parameters</p>
+</div>
+</section>
+<section id="estimating-f-2" class="slide level2">
+<h2>Estimating <span class="math inline">\(f\)</span></h2>
+<p><span style="color: maroon;"><strong>Parametric method</strong></span></p>
+<p><strong>Example: Linear Model</strong></p>
+<p><span class="math display">\[\hat{f}_{linear}(X) = \hat{\beta_0} +\hat{\beta_1}X_1 + ... + \hat{\beta_p}X_p.\]</span></p>
+<p>The procedure of obtaining <span class="math inline">\(\hat{\beta_0}, ..., \hat{\beta_p}\)</span> is called <span style="color: maroon;"><strong>fitting</strong></span>, i.e.&nbsp;fitting the model to the training data.</p>
+<p>Even for the same parametric model, there are different ways of fitting! We will come back to this later.</p>
+</section>
+<section id="a-toy-example" class="slide level2">
+<h2>A Toy Example</h2>
+<p><span style="color: maroon;">Linear model</span></p>
+<p><span class="math display">\[
+\widehat f_{\text{linear}}(X)
+=
+\widehat\beta_0 + \widehat\beta_1 X
+\]</span></p>
+<div class="cell">
+<div>
+<div id="webr-1" class="exercise-cell">
+
+</div>
+<script type="webr-1-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOjQsImZpZy13aWR0aCI6NX0sImNvZGUiOiJcbnNldC5zZWVkKDMxNClcblxubiA8LSA2MFxueCA8LSBydW5pZihuLCAxLjUsIDUuNSlcblxuIyBUcnVlIHJlbGF0aW9uc2hpcCBpcyBzbGlnaHRseSBub25saW5lYXJcbnkgPC0gLTEuNSArIDAuMTUqeCArIDAuMTIqeF4yICsgXG4gICAgIHJub3JtKG4sIG1lYW4gPSAwLCBzZCA9IDAuNTUpXG5cbiMgRml0IGEgbGluZWFyIG1vZGVsXG5maXRfbGluZWFyIDwtIGxtKHkgfiB4KVxuXG5wbG90KHgsIHksXG4gICAgIHBjaCA9IDEsXG4gICAgIHhsYWIgPSBcIlhcIixcbiAgICAgeWxhYiA9IFwiWVwiLFxuICAgICBtYWluID0gXCJcIilcblxuYWJsaW5lKGZpdF9saW5lYXIsXG4gICAgICAgY29sID0gXCJuYXZ5XCIsXG4gICAgICAgbHdkID0gMikifQ==
+</script>
+</div>
+</div>
+</section>
+<section id="a-toy-example-1" class="slide level2">
+<h2>A Toy Example</h2>
+<p><span style="color: maroon;">Quadratic model</span></p>
+<p><span class="math display">\[
+\widehat f_{\text{quad}}(X)
+=
+\widehat\beta_0
++
+\widehat\beta_1 X
++
+\widehat\beta_2 X^2
+\]</span></p>
+<div class="cell">
+<div>
+<div id="webr-2" class="exercise-cell">
+
+</div>
+<script type="webr-2-contents">
+eyJhdHRyIjp7ImVjaG8iOnRydWUsImVkaXQiOnRydWUsImV2YWwiOnRydWUsImZpZy1oZWlnaHQiOjQsImZpZy13aWR0aCI6NX0sImNvZGUiOiJcbiMgRml0IGEgcXVhZHJhdGljIG1vZGVsXG5maXRfcXVhZCA8LSBsbSh5IH4geCArIEkoeF4yKSlcblxueF9ncmlkIDwtIHNlcShtaW4oeCksIG1heCh4KSwgbGVuZ3RoLm91dCA9IDIwMClcblxueV9oYXQgPC0gcHJlZGljdChcbiAgZml0X3F1YWQsXG4gIG5ld2RhdGEgPSBkYXRhLmZyYW1lKHggPSB4X2dyaWQpXG4pXG5cbnBsb3QoeCwgeSxcbiAgICAgcGNoID0gMSxcbiAgICAgeGxhYiA9IFwiWFwiLFxuICAgICB5bGFiID0gXCJZXCIsXG4gICAgIG1haW4gPSBcIlwiKVxuXG5saW5lcyh4X2dyaWQsIHlfaGF0LFxuICAgICAgY29sID0gXCJtYXJvb25cIixcbiAgICAgIGx3ZCA9IDIpIn0=
+</script>
+</div>
+</div>
+</section>
+<section id="trade-off-between-complexity-and-interpretability" class="slide level2">
+<h2>Trade off Between Complexity and Interpretability</h2>
+<p>The more complex the model, the more flexible to fit <span class="math inline">\(f\)</span>, but less interpretable.</p>
+<p><br></p>
+<p>Linear models are easy to interpret, neural networks are not.</p>
+<p><br></p>
+<p>Interpretation means to understand how the predictors X contribute to predicting Y.</p>
+</section>
+<section id="trade-off-between-complexity-and-interpretability-1" class="slide level2">
+<h2>Trade off Between Complexity and Interpretability</h2>
+
+<img data-src="images/Week1-ModelFlexibility.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
+<section id="estimating-f-3" class="slide level2">
+<h2>Estimating <span class="math inline">\(f\)</span></h2>
+<p><span style="color: maroon;"><strong>Non-Parametric method</strong></span></p>
+<p>These methods do not make explicit assumptions about the functional form of <span class="math inline">\(f\)</span>. Instead, we let the data determine the shape more directly.</p>
+<div class="fragment">
+<p><strong>Example: Nearest Neighbours</strong></p>
+<p>The goal is to predict <span class="math inline">\(X = x\)</span> using <span class="math inline">\(N(x)\)</span>, which is some neighbourhood of <span class="math inline">\(x\)</span>.</p>
+<p><span class="math display">\[\hat{f}(x) = \frac{1}{|N(x)|} \sum_{i:x_i \in N(x)} y_i\]</span></p>
+<p>In simple terms, the prediction is the average response of nearby observations.</p>
+</div>
+</section>
+<section id="estimating-f-4" class="slide level2">
+<h2>Estimating <span class="math inline">\(f\)</span></h2>
+<p><span style="color: maroon;"><strong>Non-Parametric method</strong></span></p>
+
+<img data-src="images/Week1-knn.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section>
+<section id="estimating-f-5" class="slide level2">
+<h2>Estimating <span class="math inline">\(f\)</span></h2>
+<p><span style="color: maroon;"><strong>Non-Parametric method</strong></span></p>
+<p>There are other, more sophisticated methods as well, such as kernel regression and spline regression.</p>
+<p><br> <strong>Pros</strong></p>
+<ul>
+<li>we don’t make assumptions on <span class="math inline">\(f\)</span></li>
+<li>it’s good at predicting for large <span class="math inline">\(n\)</span> and small <span class="math inline">\(p\)</span>, e.g.&nbsp;p <span class="math inline">\(\leq\)</span> 4</li>
+</ul>
+<p><br></p>
+<p><strong>Cons</strong></p>
+<ul>
+<li>poor performance when <span class="math inline">\(p\)</span> is large</li>
+<li><span style="color: maroon;">curse of dimensionality</span>: There are very few data points in the nearby neighbours when <span class="math inline">\(p\)</span> is large</li>
+</ul>
+</section>
+<section id="curse-of-dimensionality" class="slide level2">
+<h2>Curse of Dimensionality</h2>
+
+<img data-src="images/Week1-CurseofDimensionality.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"></section></section>
 <section>
-<section id="training-data-vs-test-data" class="title-slide slide level1 center">
-<h1>Training Data vs Test Data</h1>
+<section id="model-selection" class="title-slide slide level1 center">
+<h1>Model Selection</h1>
 
 </section>
-<section id="training-data" class="slide level2">
-<h2>Training data</h2>
-<p>Used to fit the model.</p>
-<p><span class="math display">\[
-\{(X_1,Y_1),...,(X_n,Y_n)\}
-\]</span></p>
-<p>The model learns patterns from these observations.</p>
+<section id="model-selection-1" class="slide level2">
+<h2>Model Selection</h2>
+<p><span style="color: maroon;">“All models are wrong, but some are useful”</span> George Box</p>
+<p><br></p>
+<p>We need a systematic way of choosing the best model.</p>
+<p>We start with the <span style="color: maroon;">regression</span> problems where <span class="math inline">\(Y\)</span> is continuous.</p>
 </section>
-<section id="test-data" class="slide level2">
-<h2>Test data</h2>
-<p>Used to evaluate performance.</p>
-<p>New observations:</p>
-<p><span class="math display">\[
-(X_{new},Y_{new})
-\]</span></p>
-<p>The goal:</p>
-<p>[ ]</p>
-</section></section>
-<section id="training-error" class="title-slide slide level1 center">
-<h1>Training Error</h1>
-<p>The error on the data used to fit the model:</p>
-<p><span class="math display">\[
-\frac{1}{n}
-\sum_{i=1}^{n}
-(Y_i-\hat{Y}_i)^2
-\]</span></p>
-<p>A flexible model can often make:</p>
-<p><span class="math display">\[
-\text{Training error} \approx 0
-\]</span></p>
-<p>But is this always good?</p>
-</section>
-
-<section id="example-learning-too-much-from-data" class="title-slide slide level1 center">
-<h1>Example: Learning Too Much From Data</h1>
-<p>A model that perfectly remembers the training data may fail on new data.</p>
-<p>This is called:</p>
-<p><span style="color: maroon;">Overfitting</span></p>
-<p>The model learns:</p>
+<section id="model-selection-regression" class="slide level2">
+<h2>Model Selection: Regression</h2>
+<p>Recall the setup: <span class="math display">\[ Y = f(X) + \epsilon \]</span></p>
+<p>and <span class="math inline">\(D^{train}\)</span> contains <span class="math inline">\(n\)</span> i.i.d samples of <span class="math inline">\((X,Y)\)</span>.</p>
+<div class="fragment">
+<p>Given any <span class="math inline">\(\hat{f}\)</span>, ideally, we want to evaluate <span class="math inline">\(\hat{f}\)</span> by the expected <strong>mean squared error (MSE)</strong> <span class="math display">\[E\left[(Y^* - \hat{f}(X^*))^2 \right]\]</span></p>
+<p>where</p>
 <ul>
-<li>real patterns</li>
-<li>random noise</li>
+<li><span class="math inline">\((X^*, Y^*)\)</span> is a new random pair that is independent of <span class="math inline">\(D^{train}\)</span></li>
+<li>the expectation is taken w.r.t the random pair <span class="math inline">\((X^*, Y^*)\)</span>, as well as the randomness in <span class="math inline">\(\hat{f}\)</span>.</li>
 </ul>
+</div>
 </section>
-
-<section id="first-learning-algorithm" class="title-slide slide level1 center">
-<h1>First Learning Algorithm</h1>
-
+<section id="model-selection-regression-1" class="slide level2">
+<h2>Model Selection: Regression</h2>
+<p>We cannot compute the expected MSE as we do not know either the distribution of <span class="math inline">\((X^*, Y^*)\)</span>, or that of <span class="math inline">\(D^{train}\)</span>.</p>
+<div class="fragment">
+<p>One natural option is to use <span class="math inline">\(D^{train}\)</span> to approximate the expectation by <span class="math display">\[MSE(\hat{f}) = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{f}(x_i))^2\]</span></p>
+<p>This is called the <span style="color: maroon;"><strong>training MSE</strong></span>, as it uses <span class="math inline">\(D^{train}\)</span></p>
+</div>
+<div class="fragment">
+<p>However, it is <strong>NOT</strong> a valid metric of the fit for <span class="math inline">\(\hat{f}\)</span> since it always favours more complex models.</p>
+</div>
 </section>
+<section id="model-selection-regression-2" class="slide level2">
+<h2>Model Selection: Regression</h2>
+<p><span style="color: maroon;">Test data</span> refers to the data which is not used to train the statistical model</p>
+<div class="fragment">
+<p>Suppose we have the test data <span class="math inline">\(D_{test}\)</span> containing <span class="math inline">\({(x_{T1}, y_{T1}), ..., (x_{Tm}, y_{Tm})}\)</span>. Then, we can compute the <span style="color: maroon;"><strong>test MSE</strong></span> as</p>
+<p><span class="math display">\[MSE_T(\hat{f}) = \frac{1}{m} \sum_{i=1}^m (y_{Ti} - \hat{f}(x_{Ti}))^2\]</span></p>
+</div>
+<div class="fragment">
+<p>Instead of using the training MSE, we should look at the test MSE. I.e. we select the model which yields the smallest test MSE.</p>
+</div>
+<div class="fragment">
+<p>How to calculate <span class="math inline">\(MSE_T(\hat{f})\)</span>?</p>
+<ul>
+<li>If test data is available, we can directly compute it</li>
+<li>Otherwise, we use a resampling technique called <em>cross-validation</em> which we will discuss in another lecture</li>
+</ul>
+</div>
+</section>
+<section id="training-mse-vs.-test-mse" class="slide level2">
+<h2>Training MSE vs.&nbsp;Test MSE</h2>
 
-<section id="k-nearest-neighbours-knn" class="title-slide slide level1 center">
-<h1>k-Nearest Neighbours (kNN)</h1>
-<p>Idea:</p>
+<img data-src="images/Week1-MSE.png" class="quarto-figure quarto-figure-center r-stretch" style="width:75.0%"><p><strong>Left Plot:</strong> Data simulated from <span class="math inline">\(f\)</span>, shown in black. Three estimates of <span class="math inline">\(f\)</span> are shown: the linear regression line (orange), and two non parametric fits (blue and green).</p>
+<p><strong>Right Plot</strong>: Training MSE (grey), test MSE (red), and minimum test MSE over all possible methods coming from <span class="math inline">\(\epsilon\)</span> (dashed line)</p>
+</section>
+<section id="overfitting" class="slide level2">
+<h2>Overfitting</h2>
+<p>The training MSE decreases as <span class="math inline">\(\hat{f}\)</span> gets more complex.</p>
+<p><br></p>
+<p>A highly complex <span class="math inline">\(\hat{f}\)</span> can lead to a phenomenon knows as <span style="color: maroon;">overfitting</span> the data, which essentially means it follows the noise <span class="math inline">\(\epsilon\)</span> too closely.</p>
+<p><br></p>
+<p><strong>A Simple Example</strong>: <span class="math inline">\(\hat{f}(x_i) = y_i\)</span> for all <span class="math inline">\(1 \leq i \leq n\)</span></p>
+</section>
+<section id="overfitting-example" class="slide level2">
+<h2>Overfitting Example</h2>
+<div class="cell">
+<div>
+<div id="webr-3" class="exercise-cell">
+
+</div>
+<script type="webr-3-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2V0LnNlZWQoMzE0KVxuXG5uIDwtIDMwXG5cbnggPC0gc29ydChydW5pZihuLCAwLCAxMCkpXG5cbiMgVHJ1ZSByZWxhdGlvbnNoaXBcbmYgPC0gZnVuY3Rpb24oeCkgMiArIDAuNSp4XG5cbiMgT2JzZXJ2ZWQgcmVzcG9uc2UgPSBzaWduYWwgKyBub2lzZVxueSA8LSBmKHgpICsgcm5vcm0obiwgbWVhbiA9IDAsIHNkID0gMS41KVxuXG5wbG90KHgsIHksXG4gICAgIHBjaCA9IDE5LFxuICAgICB4bGFiID0gXCJYXCIsXG4gICAgIHlsYWIgPSBcIllcIilcblxuIyBUcnVlIGYoeClcbmN1cnZlKGYoeCksXG4gICAgICBhZGQgPSBUUlVFLFxuICAgICAgbHdkID0gMyxcbiAgICAgIGNvbCA9IFwiYmxhY2tcIikifQ==
+</script>
+</div>
+</div>
+<p>The points do not lie exactly on <span class="math inline">\(f\)</span> because of the random noise, <span class="math inline">\(\epsilon\)</span>.</p>
+</section>
+<section id="overfitting-example-1" class="slide level2">
+<h2>Overfitting Example</h2>
+<div class="cell">
+<div>
+<div id="webr-4" class="exercise-cell">
+
+</div>
+<script type="webr-4-contents">
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG4jIEZpdCBhIHNpbXBsZSBsaW5lYXIgbW9kZWxcbmZpdF9zaW1wbGUgPC0gbG0oeSB+IHgpXG5cbiMgRml0IGEgbXVjaCBtb3JlIGZsZXhpYmxlIG1vZGVsXG5maXRfZmxleGlibGUgPC0gbG0oeSB+IHBvbHkoeCwgMTIpKVxuXG54X2dyaWQgPC0gc2VxKG1pbih4KSwgbWF4KHgpLCBsZW5ndGgub3V0ID0gNTAwKVxuXG5wbG90KHgsIHksXG4gICAgIHBjaCA9IDE5LFxuICAgICB4bGFiID0gXCJYXCIsXG4gICAgIHlsYWIgPSBcIllcIilcblxuIyBUcnVlIHJlbGF0aW9uc2hpcFxubGluZXMoeF9ncmlkLFxuICAgICAgZih4X2dyaWQpLFxuICAgICAgbHdkID0gMyxcbiAgICAgIGNvbCA9IFwiYmxhY2tcIilcblxuIyBTaW1wbGUgbW9kZWxcbmxpbmVzKHhfZ3JpZCxcbiAgICAgIHByZWRpY3QoZml0X3NpbXBsZSxcbiAgICAgICAgICAgICAgbmV3ZGF0YSA9IGRhdGEuZnJhbWUoeCA9IHhfZ3JpZCkpLFxuICAgICAgbHdkID0gMixcbiAgICAgIGNvbCA9IFwibmF2eVwiKVxuXG4jIEZsZXhpYmxlIG1vZGVsXG5saW5lcyh4X2dyaWQsXG4gICAgICBwcmVkaWN0KGZpdF9mbGV4aWJsZSxcbiAgICAgICAgICAgICAgbmV3ZGF0YSA9IGRhdGEuZnJhbWUoeCA9IHhfZ3JpZCkpLFxuICAgICAgbHdkID0gMixcbiAgICAgIGNvbCA9IFwibWFyb29uXCIpXG5cbmxlZ2VuZChcInRvcGxlZnRcIixcbiAgICAgICBsZWdlbmQgPSBjKFwiVHJ1ZSBmKHgpXCIsXG4gICAgICAgICAgICAgICAgICBcIkxpbmVhciBmaXRcIixcbiAgICAgICAgICAgICAgICAgIFwiRmxleGlibGUgZml0XCIpLFxuICAgICAgIGNvbCA9IGMoXCJibGFja1wiLCBcIm5hdnlcIiwgXCJtYXJvb25cIiksXG4gICAgICAgbHdkID0gYygzLCAyLCAyKSxcbiAgICAgICBidHkgPSBcIm5cIikifQ==
+</script>
+</div>
+</div>
+</section>
+<section id="back-to-the-test-mse" class="slide level2">
+<h2>Back to the Test MSE</h2>
+<p>There is a tradeoff between the test MSE and the flexibility (complexity) of the fitted model, <span class="math inline">\(\hat{f}\)</span>.</p>
+<p><br></p>
+<p>Is there a universal rule or explanation about this?</p>
+</section>
+<section id="bias-variance-decomposition" class="slide level2">
+<h2>Bias-Variance Decomposition</h2>
+<p>Let <span class="math inline">\((X^*, Y^*)\)</span> be a new random pair (independent from <span class="math inline">\(D^{train}\)</span>) following <span class="math inline">\(Y^* = f(X^*) + \epsilon^*\)</span> with <span class="math inline">\(E[\epsilon^*]=0\)</span>.</p>
+<div class="fragment">
+<p>For any estimator <span class="math inline">\(\hat{f}\)</span> (obtained from <span class="math inline">\(D^{train}\)</span>), its conditional expected MSE at any <span class="math inline">\(X^* = x^*\)</span> is</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbb{E}\left[
+    \left(Y_* - \hat{f}(X_*)\right)^2
+    \mid X_* = x_*
+\right]
+&amp;=
+\underbrace{
+    \operatorname{Var}\left(\hat{f}(x_*)\right)
+}_{\text{Variance}}
++
+\underbrace{
+    \left(
+        \mathbb{E}\left[\hat{f}(x_*)\right] - f(x_*)
+    \right)^2
+}_{\text{Bias}^2}
++
+\underbrace{
+    \operatorname{Var}(\epsilon_*)
+}_{\text{Irreducible error}}
+\\[0.5em]
+&amp;\geq \operatorname{Var}(\epsilon_*).
+\end{aligned}
+\]</span></p>
+<ul>
+<li>the first expectation is over <span class="math inline">\(\epsilon^*\)</span> as well as <span class="math inline">\(D^{train}\)</span></li>
+<li>the expected MSE <span class="math inline">\(\geq\)</span> the irreducible error</li>
+<li>an ideal <span class="math inline">\(\hat{f}\)</span> should minimize the expected MSE</li>
+</ul>
+</div>
+</section>
+<section id="bias-variance-tradeoff" class="slide level2">
+<h2>Bias-Variance Tradeoff</h2>
+<p><span style="color: maroon;"><strong>Variance</strong></span>: how much <span class="math inline">\(\hat{f}\)</span> would change if we estimated it using a different training data set</p>
+<p><br></p>
+<div class="fragment">
+<p><span style="color: maroon;"><strong>Bias</strong></span>: the systematic difference between our estimated relationship <span class="math inline">\(\hat{f}\)</span> and the true relationship <span class="math inline">\(f\)</span></p>
+<ul>
+<li><strong>Example:</strong> If the true relationship is nonlinear but we fit a linear model, a straight line cannot fully capture the true relationship, resulting in bias.</li>
+</ul>
+</div>
+</section>
+<section id="bias-variance-tradeoff-1" class="slide level2">
+<h2>Bias-Variance Tradeoff</h2>
+<p>As the complexity (i.e.&nbsp;flexibility) of <span class="math inline">\(\hat{f}\)</span> increases, the variance of <span class="math inline">\(\hat{f}\)</span> typically increases whereas its bias decreases</p>
+<div>
+<ul>
+<li class="fragment"><p>The variance of any fitted model also depends on the sample size, <span class="math inline">\(n\)</span>, and is roughly proportional to <span class="math inline">\(\frac{\text{complexity of} \quad \hat{f}}{n}\)</span></p></li>
+<li class="fragment"><p>When <span class="math inline">\(n\)</span> is small, a fitted model with high complexity performs poorly due to large variance</p></li>
+<li class="fragment"><p>When <span class="math inline">\(n\)</span> is large enough, a more complex fitted model tends to perform better as they have smaller bias than simpler models</p></li>
+</ul>
+</div>
+</section>
+<section id="bias-variance-tradeoff-2" class="slide level2">
+<h2>Bias-Variance Tradeoff</h2>
+<p>Choosing the compelxity of <span class="math inline">\(\hat{f}\)</span> based on the expected MSE involves a bias-variance tradeoff.</p>
 <blockquote>
-<p>To predict a new observation, look at the most similar observations in the training data.</p>
+<p>When two models, <span class="math inline">\(\hat{f_1}\)</span> and <span class="math inline">\(\hat{f_2}\)</span> have similar expected MSEs, we usually prefer the <em>more parsimonious</em> (less complex) one.</p>
 </blockquote>
+<div class="fragment">
+<p><strong>Why?</strong> The additional complexity provides little improvement in prediction, while potentially making the model less interpretable and more variable.</p>
+</div>
 </section>
-
-<section id="knn-regression" class="title-slide slide level1 center">
-<h1>kNN Regression</h1>
-<p>For a new observation:</p>
-<p><span class="math display">\[
-x_0
-\]</span></p>
-<p>Find the <span class="math inline">\(k\)</span> closest observations.</p>
-<p>Predict:</p>
-<p><span class="math display">\[
-\hat{f}(x_0)=
-\frac{1}{k}
-\sum_{i\in N_0}y_i
-\]</span></p>
-<p>where:</p>
+<section id="model-selection-classification" class="slide level2">
+<h2>Model Selection: Classification</h2>
+<p>The MSE is only appropriate for a <strong>quantitative outcome</strong>.</p>
+<p>One metric we can use for categorical or ordinal outcomes is the <span style="color: maroon;"><strong>expected error rate</strong></span>, defined as</p>
+<p><span class="math display">\[E[1 \{Y \neq \hat{f}(X) \}].^1\]</span></p>
+<div class="slide-footnote">
+<p><span class="math inline">\(^1\)</span>({}) is the indicator function. ({A}=1) if (A) is true and ({A}=0) otherwise.</p>
+</div>
+</section>
+<section id="model-selection-classification-1" class="slide level2">
+<h2>Model Selection: Classification</h2>
+<p>Analogously, the <span style="color: maroon;"><strong>training error rate</strong></span> is <span class="math display">\[\frac{1}{n} \sum_{i=1}^n 1 \{y_i \neq \hat{f}(x_i) \}\]</span></p>
+<p>And the <span style="color: maroon;"><strong>test error rate</strong></span> is <span class="math display">\[\frac{1}{m} \sum_{i=1}^m 1 \{y_{Ti} \neq \hat{f}(x_{Ti}) \}\]</span></p>
+<p>Of course, there also exist other metrics that can be used for classification problems.</p>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
 <ul>
-<li><span class="math inline">\(N_0\)</span> = nearest neighbours</li>
-<li><span class="math inline">\(k\)</span> = number of neighbours</li>
+<li>Supervised vs.&nbsp;unsupervised learning</li>
+<li>The goal with supervised learning is to estimate a function <span class="math inline">\(f\)</span> based on the training data for prediction or inference</li>
+<li>To estimate <span class="math inline">\(f\)</span>, we can use parametric (assume a model) or non-parametric (data-driven) methods</li>
+<li>To choose the best model, we use a metric for evaluating a given <span class="math inline">\(\hat{f}\)</span></li>
+<li>The best model yields the smallest expected test MSE (or error rate for classification problems)</li>
+<li><strong>Bias-Variance tradeoff</strong>: a more complex/flexible <span class="math inline">\(\hat{f}\)</span> has a smaller bias but larger variance</li>
 </ul>
-</section>
-
-<section id="knn-example" class="title-slide slide level1 center">
-<h1>kNN Example</h1>
-<p>Suppose we want to predict house price.</p>
-<p>A new house has:</p>
-<ul>
-<li>3 bedrooms</li>
-<li>2 bathrooms</li>
-<li>1500 square feet</li>
-</ul>
-<p>Find similar houses:</p>
-<p>Prediction:</p>
-<p><span class="math display">\[
-\hat{Y}=\frac{450+470+430}{3}
-=450
-\]</span></p>
-</section>
-
-<section id="choosing-k" class="title-slide slide level1 center">
-<h1>Choosing <span class="math inline">\(k\)</span></h1>
-<p>Small <span class="math inline">\(k\)</span>:</p>
-<ul>
-<li>very flexible model</li>
-<li>follows the data closely</li>
-<li>may overfit</li>
-</ul>
-<p>Large <span class="math inline">\(k\)</span>:</p>
-<ul>
-<li>smoother predictions</li>
-<li>may miss important patterns</li>
-</ul>
-</section>
-
-<section id="the-bias-variance-tradeoff" class="title-slide slide level1 center">
-<h1>The Bias-Variance Tradeoff</h1>
-<p>We will explore this next week.</p>
-<p>The key idea:</p>
-<blockquote>
-<p>Flexible models can capture complex patterns, but may learn noise.</p>
-</blockquote>
-<blockquote>
-<p>Simple models may miss patterns, but generalize better.</p>
-</blockquote>
-</section>
-
-<section id="summary" class="title-slide slide level1 center">
-<h1>Summary</h1>
-<p>Today we learned:</p>
-<ol type="1">
-<li>Statistical learning aims to learn relationships from data.</li>
-<li>Supervised learning predicts an outcome.</li>
-<li>Regression predicts numbers; classification predicts categories.</li>
-<li>We evaluate models based on their ability to generalize.</li>
-<li>kNN provides a simple example of learning from data.</li>
-</ol>
-</section>
-
-<section>
-<section id="next-time" class="title-slide slide level1 center">
-<h1>Next Time</h1>
-
-</section>
-<section id="model-evaluation" class="slide level2">
-<h2>Model Evaluation</h2>
-<p>We will discuss:</p>
-<ul>
-<li>training vs test error</li>
-<li>cross-validation</li>
-<li>bootstrap</li>
-<li>bias-variance tradeoff</li>
-<li>choosing model complexity</li>
-</ul>
+<p><strong>Next Class</strong>: Some algorithms of computing <span class="math inline">\(\hat{f}\)</span>!</p>
+<p><strong>Announcements</strong>: No tutorial on Monday, Sept 14.</p>
 
 
+<script type="webr-data">
+eyJvcHRpb25zIjp7ImJhc2VVcmwiOiJodHRwczovL3dlYnIuci13YXNtLm9yZy92MC41LjQvIn0sInBhY2thZ2VzIjp7InBrZ3MiOlsiZXZhbHVhdGUiLCJrbml0ciIsImh0bWx0b29scyIsImRwbHlyIiwiaW5mZXIiLCJnZ3Bsb3QyIl0sInJlcG9zIjpbXX0sInJlbmRlcl9kZiI6ImRlZmF1bHQifQ==
+</script>
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W119
+eyJjb250ZW50cyI6W3siY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC00IiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV80O1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItNCIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzQgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici00LWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItNC1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV80ID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl80LCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici13aWRnZXQtMyIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6IntcbiAgLy8gV2FpdCBmb3Igb3V0cHV0IHRvIGJlIHdyaXR0ZW4gdG8gdGhlIERPTSwgdGhlbiB0cmlnZ2VyIHdpZGdldCByZW5kZXJpbmdcbiAgYXdhaXQgX3dlYnJfdmFsdWVfMztcbiAgaWYgKHdpbmRvdy5IVE1MV2lkZ2V0cykge1xuICAgIHdpbmRvdy5IVE1MV2lkZ2V0cy5zdGF0aWNSZW5kZXIoKTtcbiAgfVxuICBpZiAod2luZG93LlBhZ2VkVGFibGVEb2MpIHtcbiAgICB3aW5kb3cuUGFnZWRUYWJsZURvYy5pbml0QWxsKCk7XG4gIH1cbn1cbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLTMiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0Iiwic291cmNlIjoidmlld29mIF93ZWJyX2VkaXRvcl8zID0ge1xuICBjb25zdCB7IFdlYlJFeGVyY2lzZUVkaXRvciwgYjY0RGVjb2RlIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuICBjb25zdCBzY3JpcHRDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItMy1jb250ZW50c1xcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGJsb2NrID0gSlNPTi5wYXJzZShiNjREZWNvZGUoc2NyaXB0Q29udGVudCkpO1xuXG4gIGNvbnN0IG9wdGlvbnMgPSBPYmplY3QuYXNzaWduKHsgaWQ6IGB3ZWJyLTMtY29udGVudHNgIH0sIGJsb2NrLmF0dHIpO1xuICBjb25zdCBlZGl0b3IgPSBuZXcgV2ViUkV4ZXJjaXNlRWRpdG9yKHdlYlJPanMud2ViUlByb21pc2UsIGJsb2NrLmNvZGUsIG9wdGlvbnMpO1xuXG4gIHJldHVybiBlZGl0b3IuY29udGFpbmVyO1xufVxuX3dlYnJfdmFsdWVfMyA9IHdlYlJPanMucHJvY2Vzcyhfd2Vicl9lZGl0b3JfMywge30pO1xuIn0seyJjZWxsTmFtZSI6IndlYnItd2lkZ2V0LTIiLCJpbmxpbmUiOmZhbHNlLCJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJ7XG4gIC8vIFdhaXQgZm9yIG91dHB1dCB0byBiZSB3cml0dGVuIHRvIHRoZSBET00sIHRoZW4gdHJpZ2dlciB3aWRnZXQgcmVuZGVyaW5nXG4gIGF3YWl0IF93ZWJyX3ZhbHVlXzI7XG4gIGlmICh3aW5kb3cuSFRNTFdpZGdldHMpIHtcbiAgICB3aW5kb3cuSFRNTFdpZGdldHMuc3RhdGljUmVuZGVyKCk7XG4gIH1cbiAgaWYgKHdpbmRvdy5QYWdlZFRhYmxlRG9jKSB7XG4gICAgd2luZG93LlBhZ2VkVGFibGVEb2MuaW5pdEFsbCgpO1xuICB9XG59XG4ifSx7ImNlbGxOYW1lIjoid2Vici0yIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldCIsInNvdXJjZSI6InZpZXdvZiBfd2Vicl9lZGl0b3JfMiA9IHtcbiAgY29uc3QgeyBXZWJSRXhlcmNpc2VFZGl0b3IsIGI2NERlY29kZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZTtcbiAgY29uc3Qgc2NyaXB0Q29udGVudCA9IGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoYHNjcmlwdFt0eXBlPVxcXCJ3ZWJyLTItY29udGVudHNcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBibG9jayA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKHNjcmlwdENvbnRlbnQpKTtcblxuICBjb25zdCBvcHRpb25zID0gT2JqZWN0LmFzc2lnbih7IGlkOiBgd2Vici0yLWNvbnRlbnRzYCB9LCBibG9jay5hdHRyKTtcbiAgY29uc3QgZWRpdG9yID0gbmV3IFdlYlJFeGVyY2lzZUVkaXRvcih3ZWJST2pzLndlYlJQcm9taXNlLCBibG9jay5jb2RlLCBvcHRpb25zKTtcblxuICByZXR1cm4gZWRpdG9yLmNvbnRhaW5lcjtcbn1cbl93ZWJyX3ZhbHVlXzIgPSB3ZWJST2pzLnByb2Nlc3MoX3dlYnJfZWRpdG9yXzIsIHt9KTtcbiJ9LHsiY2VsbE5hbWUiOiJ3ZWJyLXdpZGdldC0xIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoie1xuICAvLyBXYWl0IGZvciBvdXRwdXQgdG8gYmUgd3JpdHRlbiB0byB0aGUgRE9NLCB0aGVuIHRyaWdnZXIgd2lkZ2V0IHJlbmRlcmluZ1xuICBhd2FpdCBfd2Vicl92YWx1ZV8xO1xuICBpZiAod2luZG93LkhUTUxXaWRnZXRzKSB7XG4gICAgd2luZG93LkhUTUxXaWRnZXRzLnN0YXRpY1JlbmRlcigpO1xuICB9XG4gIGlmICh3aW5kb3cuUGFnZWRUYWJsZURvYykge1xuICAgIHdpbmRvdy5QYWdlZFRhYmxlRG9jLmluaXRBbGwoKTtcbiAgfVxufVxuIn0seyJjZWxsTmFtZSI6IndlYnItMSIsImlubGluZSI6ZmFsc2UsIm1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJzb3VyY2UiOiJ2aWV3b2YgX3dlYnJfZWRpdG9yXzEgPSB7XG4gIGNvbnN0IHsgV2ViUkV4ZXJjaXNlRWRpdG9yLCBiNjREZWNvZGUgfSA9IHdpbmRvdy5fZXhlcmNpc2Vfb2pzX3J1bnRpbWU7XG4gIGNvbnN0IHNjcmlwdENvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwid2Vici0xLWNvbnRlbnRzXFxcIl1gKS50ZXh0Q29udGVudDtcbiAgY29uc3QgYmxvY2sgPSBKU09OLnBhcnNlKGI2NERlY29kZShzY3JpcHRDb250ZW50KSk7XG5cbiAgY29uc3Qgb3B0aW9ucyA9IE9iamVjdC5hc3NpZ24oeyBpZDogYHdlYnItMS1jb250ZW50c2AgfSwgYmxvY2suYXR0cik7XG4gIGNvbnN0IGVkaXRvciA9IG5ldyBXZWJSRXhlcmNpc2VFZGl0b3Iod2ViUk9qcy53ZWJSUHJvbWlzZSwgYmxvY2suY29kZSwgb3B0aW9ucyk7XG5cbiAgcmV0dXJuIGVkaXRvci5jb250YWluZXI7XG59XG5fd2Vicl92YWx1ZV8xID0gd2ViUk9qcy5wcm9jZXNzKF93ZWJyX2VkaXRvcl8xLCB7fSk7XG4ifSx7ImNlbGxOYW1lIjoid2Vici1wcmVsdWRlIiwiaW5saW5lIjpmYWxzZSwibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoid2ViUk9qcyA9IHtcbiAgY29uc3QgeyBXZWJSLCBDaGFubmVsVHlwZSB9ID0gd2luZG93Ll9leGVyY2lzZV9vanNfcnVudGltZS5XZWJSO1xuICBjb25zdCB7XG4gICAgV2ViUkV2YWx1YXRvcixcbiAgICBXZWJSRW52aXJvbm1lbnRNYW5hZ2VyLFxuICAgIHNldHVwUixcbiAgICBiNjREZWNvZGUsXG4gICAgY29sbGFwc2VQYXRoXG4gIH0gPSB3aW5kb3cuX2V4ZXJjaXNlX29qc19ydW50aW1lO1xuXG4gIGNvbnN0IHN0YXR1c0NvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1zdGF0dXNcIik7XG4gIGNvbnN0IGluZGljYXRvckNvbnRhaW5lciA9IGRvY3VtZW50LmdldEVsZW1lbnRCeUlkKFwiZXhlcmNpc2UtbG9hZGluZy1pbmRpY2F0b3JcIik7XG4gIGluZGljYXRvckNvbnRhaW5lci5jbGFzc0xpc3QucmVtb3ZlKFwiZC1ub25lXCIpO1xuXG4gIGxldCBzdGF0dXNUZXh0ID0gZG9jdW1lbnQuY3JlYXRlRWxlbWVudChcImRpdlwiKVxuICBzdGF0dXNUZXh0LmNsYXNzTGlzdCA9IFwiZXhlcmNpc2UtbG9hZGluZy1kZXRhaWxzXCI7XG4gIHN0YXR1c1RleHQgPSBzdGF0dXNDb250YWluZXIuYXBwZW5kQ2hpbGQoc3RhdHVzVGV4dCk7XG4gIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgSW5pdGlhbGlzZWA7XG5cbiAgLy8gSG9pc3QgaW5kaWNhdG9yIG91dCBmcm9tIGZpbmFsIHNsaWRlIHdoZW4gcnVubmluZyB1bmRlciByZXZlYWxcbiAgY29uc3QgcmV2ZWFsU3RhdHVzID0gZG9jdW1lbnQucXVlcnlTZWxlY3RvcihcIi5yZXZlYWwgLmV4ZXJjaXNlLWxvYWRpbmctaW5kaWNhdG9yXCIpO1xuICBpZiAocmV2ZWFsU3RhdHVzKSB7XG4gICAgcmV2ZWFsU3RhdHVzLnJlbW92ZSgpO1xuICAgIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoXCIucmV2ZWFsID4gLnNsaWRlc1wiKS5hcHBlbmRDaGlsZChyZXZlYWxTdGF0dXMpO1xuICB9XG5cbiAgLy8gTWFrZSBhbnkgcmV2ZWFsIHNsaWRlcyB3aXRoIGxpdmUgY2VsbHMgc2Nyb2xsYWJsZVxuICBkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKFwiLnJldmVhbCAuZXhlcmNpc2UtY2VsbFwiKS5mb3JFYWNoKChlbCkgPT4ge1xuICAgIGVsLmNsb3Nlc3QoJ3NlY3Rpb24uc2xpZGUnKS5jbGFzc0xpc3QuYWRkKFwic2Nyb2xsYWJsZVwiKTtcbiAgfSlcblxuICAvLyB3ZWJSIHN1cHBsZW1lbnRhbCBkYXRhIGFuZCBvcHRpb25zXG4gIGNvbnN0IGRhdGFDb250ZW50ID0gZG9jdW1lbnQucXVlcnlTZWxlY3Rvcihgc2NyaXB0W3R5cGU9XFxcIndlYnItZGF0YVxcXCJdYCkudGV4dENvbnRlbnQ7XG4gIGNvbnN0IGRhdGEgPSBKU09OLnBhcnNlKGI2NERlY29kZShkYXRhQ29udGVudCkpO1xuXG4gIC8vIEdyYWIgbGlzdCBvZiByZXNvdXJjZXMgdG8gYmUgZG93bmxvYWRlZFxuICBjb25zdCBmaWxlc0NvbnRlbnQgPSBkb2N1bWVudC5xdWVyeVNlbGVjdG9yKGBzY3JpcHRbdHlwZT1cXFwidmZzLWZpbGVcXFwiXWApLnRleHRDb250ZW50O1xuICBjb25zdCBmaWxlcyA9IEpTT04ucGFyc2UoYjY0RGVjb2RlKGZpbGVzQ29udGVudCkpO1xuXG4gIC8vIFVzZSBQb3N0TWVzc2FnZSBjaGFubmVsIGZvciBhc3luYyBjb21tdW5pY2F0aW9uXG4gIC8vIFdlIGRvIG5vdCBleHBlY3QgdG8gdGFrZSBuZXN0ZWQgcHJvbXB0IGlucHV0IGluIFF1YXJ0byBMaXZlIGNlbGxzXG4gIGRhdGEub3B0aW9ucy5jaGFubmVsVHlwZSA9IENoYW5uZWxUeXBlLlBvc3RNZXNzYWdlO1xuXG4gIC8vIEluaXRpYWxpc2Ugd2ViUiBhbmQgc2V0dXAgZm9yIFIgY29kZSBldmFsdWF0aW9uXG4gIGxldCB3ZWJSUHJvbWlzZSA9IChhc3luYyAod2ViUikgPT4ge1xuICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgd2ViUmA7XG4gICAgYXdhaXQgd2ViUi5pbml0KCk7XG5cbiAgICAvLyBJbnN0YWxsIHByb3ZpZGVkIGxpc3Qgb2YgcGFja2FnZXNcbiAgICAvLyBFbnN1cmUgd2ViUiBkZWZhdWx0IHJlcG8gaXMgaW5jbHVkZWRcbiAgICBkYXRhLnBhY2thZ2VzLnJlcG9zLnB1c2goXCJodHRwczovL3JlcG8uci13YXNtLm9yZ1wiKVxuICAgIGF3YWl0IGRhdGEucGFja2FnZXMucGtncy5tYXAoKHBrZykgPT4gKCkgPT4ge1xuICAgICAgc3RhdHVzVGV4dC50ZXh0Q29udGVudCA9IGBEb3dubG9hZGluZyBwYWNrYWdlOiAke3BrZ31gO1xuICAgICAgcmV0dXJuIHdlYlIuZXZhbFJWb2lkKGBcbiAgICAgICAgd2Vicjo6aW5zdGFsbChwa2csIHJlcG9zID0gcmVwb3MpXG4gICAgICAgIGxpYnJhcnkocGtnLCBjaGFyYWN0ZXIub25seSA9IFRSVUUpXG4gICAgICBgLCB7IGVudjoge1xuICAgICAgICBwa2c6IHBrZyxcbiAgICAgICAgcmVwb3M6IGRhdGEucGFja2FnZXMucmVwb3MsXG4gICAgICB9fSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICAvLyBEb3dubG9hZCBhbmQgaW5zdGFsbCByZXNvdXJjZXNcbiAgICBhd2FpdCBmaWxlcy5tYXAoKGZpbGUpID0+IGFzeW5jICgpID0+IHtcbiAgICAgIGNvbnN0IG5hbWUgPSBmaWxlLnN1YnN0cmluZyhmaWxlLmxhc3RJbmRleE9mKCcvJykgKyAxKTtcbiAgICAgIHN0YXR1c1RleHQudGV4dENvbnRlbnQgPSBgRG93bmxvYWRpbmcgcmVzb3VyY2U6ICR7bmFtZX1gO1xuICAgICAgY29uc3QgcmVzcG9uc2UgPSBhd2FpdCBmZXRjaChmaWxlKTtcbiAgICAgIGlmICghcmVzcG9uc2Uub2spIHtcbiAgICAgICAgdGhyb3cgbmV3IEVycm9yKGBDYW4ndCBkb3dubG9hZCBcXGAke2ZpbGV9XFxgLiBFcnJvciAke3Jlc3BvbnNlLnN0YXR1c306IFwiJHtyZXNwb25zZS5zdGF0dXNUZXh0fVwiLmApO1xuICAgICAgfVxuICAgICAgY29uc3QgZGF0YSA9IGF3YWl0IHJlc3BvbnNlLmFycmF5QnVmZmVyKCk7XG5cbiAgICAgIC8vIFN0b3JlIFVSTHMgaW4gdGhlIGN3ZCB3aXRob3V0IGFueSBzdWJkaXJlY3Rvcnkgc3RydWN0dXJlXG4gICAgICBpZiAoZmlsZS5pbmNsdWRlcyhcIjovL1wiKSkge1xuICAgICAgICBmaWxlID0gbmFtZTtcbiAgICAgIH1cblxuICAgICAgLy8gQ29sbGFwc2UgaGlnaGVyIGRpcmVjdG9yeSBzdHJ1Y3R1cmVcbiAgICAgIGZpbGUgPSBjb2xsYXBzZVBhdGgoZmlsZSk7XG5cbiAgICAgIC8vIENyZWF0ZSBkaXJlY3RvcnkgdHJlZSwgaWdub3JpbmcgXCJkaXJlY3RvcnkgZXhpc3RzXCIgVkZTIGVycm9yc1xuICAgICAgY29uc3QgcGFydHMgPSBmaWxlLnNwbGl0KCcvJykuc2xpY2UoMCwgLTEpO1xuICAgICAgbGV0IHBhdGggPSAnJztcbiAgICAgIHdoaWxlIChwYXJ0cy5sZW5ndGggPiAwKSB7XG4gICAgICAgIHBhdGggKz0gcGFydHMuc2hpZnQoKSArICcvJztcbiAgICAgICAgY29uc3QgYW5hbHlzaXMgPSBhd2FpdCB3ZWJSLkZTLmFuYWx5emVQYXRoKHBhdGgpO1xuICAgICAgICBpZiAoIWFuYWx5c2lzLmV4aXN0cykge1xuICAgICAgICAgIHRyeSB7XG4gICAgICAgICAgICBhd2FpdCB3ZWJSLkZTLm1rZGlyKHBhdGgpO1xuICAgICAgICAgIH0gY2F0Y2ggKGUpIHtcbiAgICAgICAgICAgIHRocm93IG5ldyBFcnJvcihgRmlsZXN5c3RlbSBFcnJvcjogXCIke2UubWVzc2FnZX1cIi5gKTtcbiAgICAgICAgICB9XG4gICAgICAgIH1cbiAgICAgIH1cblxuICAgICAgLy8gV3JpdGUgdGhpcyBmaWxlIHRvIHRoZSBWRlNcbiAgICAgIHJldHVybiBhd2FpdCB3ZWJSLkZTLndyaXRlRmlsZShmaWxlLCBuZXcgVWludDhBcnJheShkYXRhKSk7XG4gICAgfSkucmVkdWNlKChjdXIsIG5leHQpID0+IGN1ci50aGVuKG5leHQpLCBQcm9taXNlLnJlc29sdmUoKSk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYEluc3RhbGxpbmcgd2ViUiBzaGltc2A7XG4gICAgYXdhaXQgd2ViUi5ldmFsUlZvaWQoYHdlYnI6OnNoaW1faW5zdGFsbCgpYCk7XG5cbiAgICBzdGF0dXNUZXh0LnRleHRDb250ZW50ID0gYFdlYlIgZW52aXJvbm1lbnQgc2V0dXBgO1xuICAgIGF3YWl0IHNldHVwUih3ZWJSLCBkYXRhKTtcblxuICAgIHN0YXR1c1RleHQucmVtb3ZlKCk7XG4gICAgaWYgKHN0YXR1c0NvbnRhaW5lci5jaGlsZHJlbi5sZW5ndGggPT0gMCkge1xuICAgICAgc3RhdHVzQ29udGFpbmVyLnBhcmVudE5vZGUucmVtb3ZlKCk7XG4gICAgfVxuICAgIHJldHVybiB3ZWJSO1xuICB9KShuZXcgV2ViUihkYXRhLm9wdGlvbnMpKTtcblxuICAvLyBLZWVwIHRyYWNrIG9mIGluaXRpYWwgT0pTIGJsb2NrIHJlbmRlclxuICBjb25zdCByZW5kZXJlZE9qcyA9IHt9O1xuXG4gIGNvbnN0IHByb2Nlc3MgPSBhc3luYyAoY29udGV4dCwgaW5wdXRzKSA9PiB7XG4gICAgY29uc3Qgd2ViUiA9IGF3YWl0IHdlYlJQcm9taXNlO1xuICAgIGNvbnN0IGV2YWx1YXRvciA9IG5ldyBXZWJSRXZhbHVhdG9yKHdlYlIsIGNvbnRleHQpXG4gICAgYXdhaXQgZXZhbHVhdG9yLnByb2Nlc3MoaW5wdXRzKTtcbiAgICByZXR1cm4gZXZhbHVhdG9yLmNvbnRhaW5lcjtcbiAgfVxuXG4gIHJldHVybiB7XG4gICAgcHJvY2VzcyxcbiAgICB3ZWJSUHJvbWlzZSxcbiAgICByZW5kZXJlZE9qcyxcbiAgfTtcbn1cbiJ9XX0=
 </script>
 <div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
 <div id="exercise-loading-status" class="d-flex gap-2">
@@ -593,7 +742,7 @@ W10=
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;">
-<span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Course Introduction</span><span style="flex: 1;"></span>
+<span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Introduction to Supervised Learning &amp; Model Selection</span><span style="flex: 1;"></span>
 </div>
 </div>
 </div></div>

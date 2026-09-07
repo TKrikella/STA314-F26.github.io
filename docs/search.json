@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nHTML Slides\n-\n—\nCh. 2\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\n-\n-\n-\nCh. 2, 5\n\n\n3\nLinear Regression\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 3\n\n\n4\nRegularization and Feature Selection\n-\n-\n-\nCh. 6\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n7\nDecision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n-\n-\n-\n-\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 10\n\n\n12\nNeural Networks\n-\n-\n-\n-\n\n\n13\nDeep Learning, Generative AI, and Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\n-"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML Slides\n-\n—\nCh. 2\n\n\n2\nK-Nearest Neighbours; Linear Regression; Model Assessment and Selection\n-\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage and Regularization\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nClassification: Bayes Classifier, (k)-NN, and Logistic Regression\n-\n-\n-\nCh. 4\n\n\n5\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "about.html#tentative-course-schedule",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nHTML Slides\n-\n—\nCh. 2\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\n-\n-\n-\nCh. 2, 5\n\n\n3\nLinear Regression\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 3\n\n\n4\nRegularization and Feature Selection\n-\n-\n-\nCh. 6\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n7\nDecision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n-\n-\n-\n-\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 10\n\n\n12\nNeural Networks\n-\n-\n-\n-\n\n\n13\nDeep Learning, Generative AI, and Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\n-"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML Slides\n-\n—\nCh. 2\n\n\n2\nK-Nearest Neighbours; Linear Regression; Model Assessment and Selection\n-\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage and Regularization\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nClassification: Bayes Classifier, (k)-NN, and Logistic Regression\n-\n-\n-\nCh. 4\n\n\n5\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
@@ -58,91 +58,91 @@
   {
     "objectID": "Week1.html#what-is-machine-learning",
     "href": "Week1.html#what-is-machine-learning",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "What is machine learning?",
     "text": "What is machine learning?\nMachine learning is the science of learning patterns from data.\n\nThe goal is to use data to:\n\nunderstand relationships between variables\nmake predictions for new observations\ndiscover hidden structures in data\n\n\n\nExamples:\n\nPredict whether a patient will respond to a treatment\nPredict house prices from characteristics\nIdentify spam emails\nGroup customers based on purchasing behaviour"
   },
   {
     "objectID": "Week1.html#types-of-machine-learning-problems",
     "href": "Week1.html#types-of-machine-learning-problems",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Types of Machine Learning Problems",
-    "text": "Types of Machine Learning Problems\nSupervised Learning: Machine is given data and examples of what to predict.\n\nUnsupervised Learning: Machine is given data, but not what to predict.\n\n\nReinforcement Learning: Machine gets data by interacting with an environment and tries to minimize cost."
+    "text": "Types of Machine Learning Problems\nSupervised Learning: Machine is given data and examples of what to predict.\n\n\nUnsupervised Learning: Machine is given data, but not what to predict.\n\n\n\nReinforcement Learning: Machine gets data by interacting with an environment and tries to minimize cost."
   },
   {
     "objectID": "Week1.html#the-basics-of-supervised-learning",
     "href": "Week1.html#the-basics-of-supervised-learning",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "The Basics of Supervised Learning",
     "text": "The Basics of Supervised Learning\nWe have an outcome measurement, \\(Y\\) (also called the dependent variable, response, or target).\n\nWe have a vector of \\(p\\) predictor measurements, \\(X\\) (also called the inputs, regressors, covariates, features, or independent variables).\n\n\nWe have training data \\((x_1, y_1), (x_2, y_2), ..., (x_n, y_n)\\) which are observations (also called instances or realizations) of the measurement \\((X,Y)\\).\n\n\nIn regression problems, \\(Y\\) is quantitative (e.g. price, blood pressure).\nIn classification problems, \\(Y\\) takes values in a finite, unordered set (survived/died, digit 0-9, cancer class of tissue sample)"
   },
   {
     "objectID": "Week1.html#main-tasks-in-supervised-learning",
     "href": "Week1.html#main-tasks-in-supervised-learning",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Main Tasks in Supervised Learning",
     "text": "Main Tasks in Supervised Learning\nOn the basis of the training data, we would like to:\n\n\nPrediction: accurately predict future outcomes (\\(Y\\)).\nEstimation: understand how features (\\(X\\)) affect the outcome (\\(Y\\)).\nModel Selection: find the best model for predicting the outcome (\\(Y\\)), or which features (\\(X\\)) affect the outcome (\\(Y\\)).\nInference: assess the quality of our prediction, estimation, and model selection."
   },
   {
     "objectID": "Week1.html#examples-of-supervised-learning",
     "href": "Week1.html#examples-of-supervised-learning",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Supervised Learning",
     "text": "Examples of Supervised Learning\nSpam Emails Detection\nConsider a dataset consisting of 4600 emails sent to an individual.\n\nEach is labeled as spam or email\n\nThe goal is to build a customized spam filter.\n\nWe use the relative frequency of 57 words and punctuation marks in the email as features.\n\n\n\n\nType\nTatiana\nyou\nUofT\nfree\n!\nedu\nremove\n\n\n\n\nSpam\n0\n2.26\n0.02\n0.54\n0.51\n0.01\n0.28\n\n\nEmail\n1.27\n1.27\n0.90\n0.07\n0.11\n0.29\n0.01"
   },
   {
     "objectID": "Week1.html#examples-of-supervised-learning-1",
     "href": "Week1.html#examples-of-supervised-learning-1",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Supervised Learning",
-    "text": "Examples of Supervised Learning\nDetecting Skin Cancer from Images\nTraditionally, melanoma (skin cancer) has been detected through painful and time-consuming biopsies.\nRecently new methods have emerged which use computer-aided detection for early melanoma diagnosis.\nThe machine learning models were trained using image data."
+    "text": "Examples of Supervised Learning\nDetecting Skin Cancer from Images\nTraditionally, melanoma (skin cancer) has been detected through painful and time-consuming biopsies.\nRecently new methods have emerged which use computer-aided detection for early melanoma diagnosis.\nThe machine learning models were trained using image data.\n\n\nGouda, W., Sama, N. U., Al-Waakid, G., Humayun, M., & Jhanjhi, N. Z. (2022). Detection of skin cancer based on skin lesion images using deep learning. Healthcare, 10(7), 1183. https://doi.org/10.3390/healthcare10071183"
   },
   {
     "objectID": "Week1.html#examples-of-supervised-learning-2",
     "href": "Week1.html#examples-of-supervised-learning-2",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Supervised Learning",
     "text": "Examples of Supervised Learning\nDetect Numbers in a Handwritten Postal Code"
   },
   {
     "objectID": "Week1.html#examples-of-supervised-learning-3",
     "href": "Week1.html#examples-of-supervised-learning-3",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Supervised Learning",
     "text": "Examples of Supervised Learning\nRecommender Systems"
   },
   {
     "objectID": "Week1.html#examples-of-supervised-learning-4",
     "href": "Week1.html#examples-of-supervised-learning-4",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Supervised Learning",
     "text": "Examples of Supervised Learning\nSpeech-to-Text, Personal Assistants, Speech Identification"
   },
   {
     "objectID": "Week1.html#the-basics-of-unsupervised-learning",
     "href": "Week1.html#the-basics-of-unsupervised-learning",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "The Basics of Unsupervised Learning",
     "text": "The Basics of Unsupervised Learning\nWe have a set of features, \\(X\\), measured on a sample.\nWe do not have an outcome variable, \\(Y\\).\n\nThe objective is more ambiguous\n\nfind groups of samples that behave similarly\nfind features that behave similarly\nfind linear combinations of features with the most variation\n\nIt is difficult to assess the quality of the model\n\n\nDifferent from supervised learning, but can be useful as a pre-processing step for supervised learning"
   },
   {
     "objectID": "Week1.html#examples-of-unsupervised-learning",
     "href": "Week1.html#examples-of-unsupervised-learning",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Unsupervised Learning",
-    "text": "Examples of Unsupervised Learning\nImage Segmentation"
+    "text": "Examples of Unsupervised Learning\nImage Segmentation\nThe goal is to cluster pixels into image regions to make it easier to analyze and understand specific parts of the image."
   },
   {
     "objectID": "Week1.html#examples-of-unsupervised-learning-1",
     "href": "Week1.html#examples-of-unsupervised-learning-1",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Unsupervised Learning",
-    "text": "Examples of Unsupervised Learning\nClustering"
+    "text": "Examples of Unsupervised Learning\nClustering\nGrouping unlabeled data points into clusters based on their similarities.\n\n\nVandeninden, B., De Clercq, E. M., Devleesschauwer, B., Otavova, M., Bouland, C., & Faes, C. (2024). Cluster pattern analysis of environmental stressors and quantifying their impact on all-cause mortality in Belgium. BMC Public Health, 24(1). https://doi.org/10.1186/s12889-024-18011-0"
   },
   {
     "objectID": "Week1.html#examples-of-unsupervised-learning-2",
     "href": "Week1.html#examples-of-unsupervised-learning-2",
-    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Examples of Unsupervised Learning",
     "text": "Examples of Unsupervised Learning\nNatural Language Processing"
   },
@@ -291,7 +291,7 @@
     "href": "Course-Introduction.html#tentative-course-schedule",
     "title": "STA314: Statistical Methods for Machine Learning I",
     "section": "Tentative Course Schedule",
-    "text": "Tentative Course Schedule\n\n\n\n\n\n\n\n\n\n\nDate\nTopics\nReading [ISL]\nAssessments\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; (k)-Nearest Neighbours\nCh. 2\n—\n\n\n2\nModel Assessment: Training/Test Error, Bias–Variance, Cross-Validation, Bootstrap\nCh. 2, 5\n-\n\n\n3\nLinear Regression\nCh. 3\n—\n\n\n4\nRegularization and Feature Selection\nCh. 6\n-\n\n\n5\nClassification: Logistic Regression, LDA/QDA, Bayes Classifier, (k)-NN\nCh. 4\n-\n\n\n6\nMoving Beyond Linearity\nCh. 7\n-\n\n\n7\nDecision Trees\nCh. 8\n-\n\n\n8\nReading Week\n-\n-\n\n\n9\nEnsemble Methods: Bagging, Random Forests, Boosting\nCh. 8\n-\n\n\n10\nGradient Descent and Stochastic Gradient Descent\n-\n—\n\n\n11\nUnsupervised Learning: PCA and Clustering\nCh. 10\n-\n\n\n12\nNeural Networks\n-\n—\n\n\n13\nDeep Learning, Generative AI, and Course Review\n-\n-"
+    "text": "Tentative Course Schedule\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nTopics\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\n—\nCh. 2\n\n\n\n\n2\nK-Nearest Neighbours; Linear Regression + Model Assessment and Selection\n-\nCh. 3, 5\n\n\n\n\n3\nShrinkage and Regularization\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n\n\n4\nClassification: Bayes Classifier, (k)-NN, and Logistic Regression\n-\nCh. 4\n\n\n\n\n5\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n\n\n6\nMoving Beyond Linearity\n-\nCh. 7\n\n\n\n\n7\nTree Based Methods: Decision Trees\n-\nCh. 8\n\n\n\n\n8\nReading Week\n-\n-\n\n\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nMidterm, Nov. 4\nCh. 8\n\n\n\n\n10\nSupport Vector Machines\n-\nCh. 9\n\n\n\n\n11\nUnsupervised Learning: PCA and Clustering\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n\n\n12\nGradient Descent and Neural Networks\n-\nCh. 10\n\n\n\n\n13\nNeural Networks, Generative AI, and Course Review\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "Course-Introduction.html#email-policy",
@@ -312,7 +312,7 @@
     "href": "Course-Introduction.html#important-dates",
     "title": "STA314: Statistical Methods for Machine Learning I",
     "section": "Important Dates",
-    "text": "Important Dates\nMidterm: October 21st, 11am – 1pm\n\nThanksgiving: October 12th (no classes, no office hours)\n\nReading Week: October 26th – 30th (no classes, no tutorials, no office hours)\n\nDrop Date: November 17th\n\nLast Day of Class: December 8th\n\nFinal Exam Period: December 10th – 22nd"
+    "text": "Important Dates\nMidterm: November 4th, 11am – 1pm\n\nThanksgiving: October 12th (no classes, no office hours)\n\nReading Week: October 26th – 30th (no classes, no tutorials, no office hours)\n\nDrop Date: November 17th\n\nLast Day of Class: December 8th\n\nFinal Exam Period: December 10th – 22nd"
   },
   {
     "objectID": "Course-Introduction.html#ai-policy---can-i-use-ai-for",
@@ -354,7 +354,7 @@
     "href": "Week1.html#the-statistical-learning-problem",
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "The Statistical Learning Problem",
-    "text": "The Statistical Learning Problem\nSuppose we observe:\n\\[\n(X_1,Y_1), (X_2,Y_2),\\ldots,(X_n,Y_n)\n\\]\nwhere:\n\n\\(X\\) = input variables (features, predictors)\n\\(Y\\) = outcome variable (response)\n\n\nWe assume:\n\\[\nY = f(X) + \\epsilon\n\\]\nwhere:\n\n\\(f\\) is the unknown relationship we want to learn\n\\(\\epsilon\\) represents random error"
+    "text": "The Statistical Learning Problem\nThe goal is to estimate:\n\\[\n\\hat{f}(X)\n\\]\nwhich gives predictions:\n\\[\n\\hat{Y} = \\hat{f}(X)\n\\]\n\nHowever, we do not know the true function \\(f\\).\n\nWe only observe data generated from this unknown process."
   },
   {
     "objectID": "Week1.html#the-statistical-learning-problem-1",
@@ -383,5 +383,229 @@
     "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
     "section": "The Statistical Learning Problem",
     "text": "The Statistical Learning Problem\n\nWhy estimate \\(f\\)?\n\nThere are two main reasons.\n\n\nPrediction\nGiven new values of \\(X\\), we want to predict \\(Y\\).\nExamples:\n\nPredict a patient’s risk of disease based on their characteristics.\nPredict when machinery will break down.\n\n\nInference\nWe want to understand relationships.\nExamples:\n\nWhich variables are important?\nHow does changing \\(X\\) affect \\(Y\\)?\nWhat is the strength of association?"
+  },
+  {
+    "objectID": "Week1.html#this-course",
+    "href": "Week1.html#this-course",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "This Course",
+    "text": "This Course\nIn much of this course, we focus on supervised learning, where we are given\n\nTraining Set \\({(x_1, y_1), ..., (x_n, y_n)}\\) consisting of \\(n\\) samples of\n\nfeatures \\(x_1, ..., x_n \\in X\\) and corresponding\noutcome \\(y_1, ..., y_n \\in Y\\)\n\n\n\nThe goal is to learn a predictor (function/mapping) \\(f: X \\rightarrow Y\\) such that for a new point \\(x^* \\in X\\),\n\\[f(x^*) \\approx y^*\\]"
+  },
+  {
+    "objectID": "Week1.html#the-function-f",
+    "href": "Week1.html#the-function-f",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "The Function, \\(f\\)",
+    "text": "The Function, \\(f\\)\nImagine the underlying generating mechanism between \\(X\\) and \\(Y\\) as \\[Y = f(X) + \\epsilon\\]\nwhere \\(\\epsilon\\) represents some measurement errors and other discrepancies.\n\n\nWe are given the training data \\(D^{train}\\) consisting of \\(n\\) i.i.d samples of \\((X,Y)\\) following the above model, that is, \\((x_1, y_1), ..., (x_n, y_n)\\).\n\n\n\nOur goal is to estimate (or learn) the mapping/function \\(f\\) based on \\(D^{train}\\)."
+  },
+  {
+    "objectID": "Week1.html#why-estimate-f",
+    "href": "Week1.html#why-estimate-f",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Why Estimate \\(f\\)?",
+    "text": "Why Estimate \\(f\\)?\n\n\nPrediction\nGiven a new point \\(X^* = x^*\\), \\(\\hat{f}(x^*)\\) is the best prediction one can hope for with respect to certain criterion.\nExamples:\n\nPredict a patient’s risk of disease based on their characteristics.\nPredict when machinery will break down.\n\n\n\nInference\nWe want to understand relationships between \\(X\\) and \\(Y\\).\nExamples:\n\nWhich variables are important?\nHow does changing \\(X\\) affect \\(Y\\)?\nWhat is the strength of association?"
+  },
+  {
+    "objectID": "Week1.html#example-advertising",
+    "href": "Week1.html#example-advertising",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Example: Advertising",
+    "text": "Example: Advertising\nWe are given information of \\(n\\) products.\nFor each product, we are given:\n\n\\(y_i\\): Sales of product \\(i\\) in 200 different markets\n\\(x_{i1}\\): TV advertising budget of product \\(i\\)\n\\(x_{i2}\\): Radio advertising budget of product \\(i\\)\n\\(x_{i3}\\): Newspaper advertising budget of product \\(i\\)\n\n\nSuppose the true generating model is \\[\n\\begin{aligned}\nY &= f(X) + \\epsilon \\\\\n  &= \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\beta_3X_3 + \\epsilon\n\\end{aligned}\n\\]\n\n\nKnowing \\(f\\) helps to understand how sales changes if we increase one unit of the TV advertising budget (\\(X_1\\))."
+  },
+  {
+    "objectID": "Week1.html#estimating-f",
+    "href": "Week1.html#estimating-f",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Estimating \\(f\\)",
+    "text": "Estimating \\(f\\)\nLet \\(x_{ij}\\) denote the value of the \\(j^{th}\\) feature for observation \\(i\\), where \\(i=1,2,...,n\\) and \\(j=1,2,...,p\\).\nLet \\(y_i\\) denote the response variable for the \\(i^{th}\\) observation.\n\nThen, the training data consists of \\(D^{train} = \\{(x_1,y_1), ..., (x_n, y_n)\\}\\), where \\(x_i = (x_{i1}, ..., x_{ip})^T\\)\n\n\nThere are two categories of approaches to estimate \\(f\\) based on \\(D^{train}\\):\n\nParametric method\nNon-parametric method"
+  },
+  {
+    "objectID": "Week1.html#estimating-f-1",
+    "href": "Week1.html#estimating-f-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Estimating \\(f\\)",
+    "text": "Estimating \\(f\\)\nParametric method\nStep 1: Make an assumption about the function form, or shape, of \\(f\\).\nStep 2: Use the training data to fit (or train) the model.\n\nExample: Linear Model\nThe linear model is an important example of a parametric model.\n\\(Y = f(X) + \\epsilon\\), with \\(f(X) = \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + ... + \\beta_pX_p\\).\nWe would estimate \\(f\\) by \\[\\hat{f}_{linear}(X) = \\hat{\\beta_0} +\\hat{\\beta_1}X_1 + ... + \\hat{\\beta_p}X_p.\\]\n\n\nNote: constructing \\(f\\) in this way reduces the problem of estimating a function to that of estimating (p+1) parameters"
+  },
+  {
+    "objectID": "Week1.html#estimating-f-2",
+    "href": "Week1.html#estimating-f-2",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Estimating \\(f\\)",
+    "text": "Estimating \\(f\\)\nParametric method\nExample: Linear Model\n\\[\\hat{f}_{linear}(X) = \\hat{\\beta_0} +\\hat{\\beta_1}X_1 + ... + \\hat{\\beta_p}X_p.\\]\nThe procedure of obtaining \\(\\hat{\\beta_0}, ..., \\hat{\\beta_p}\\) is called fitting, i.e. fitting the model to the training data.\nEven for the same parametric model, there are different ways of fitting! We will come back to this later."
+  },
+  {
+    "objectID": "Week1.html#a-toy-example",
+    "href": "Week1.html#a-toy-example",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "A Toy Example",
+    "text": "A Toy Example\nLinear model\n\\[\n\\widehat f_{\\text{linear}}(X)\n=\n\\widehat\\beta_0 + \\widehat\\beta_1 X\n\\]"
+  },
+  {
+    "objectID": "Week1.html#a-toy-example-1",
+    "href": "Week1.html#a-toy-example-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "A Toy Example",
+    "text": "A Toy Example\nQuadratic model\n\\[\n\\widehat f_{\\text{quad}}(X)\n=\n\\widehat\\beta_0\n+\n\\widehat\\beta_1 X\n+\n\\widehat\\beta_2 X^2\n\\]"
+  },
+  {
+    "objectID": "Week1.html#trade-off-between-complexity-and-interpretability",
+    "href": "Week1.html#trade-off-between-complexity-and-interpretability",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Trade off Between Complexity and Interpretability",
+    "text": "Trade off Between Complexity and Interpretability\nThe more complex the model, the more flexible to fit \\(f\\), but less interpretable.\n\nLinear models are easy to interpret, neural networks are not.\n\nInterpretation means to understand how the predictors X contribute to predicting Y."
+  },
+  {
+    "objectID": "Week1.html#trade-off-between-complexity-and-interpretability-1",
+    "href": "Week1.html#trade-off-between-complexity-and-interpretability-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Trade off Between Complexity and Interpretability",
+    "text": "Trade off Between Complexity and Interpretability"
+  },
+  {
+    "objectID": "Week1.html#estimating-f-3",
+    "href": "Week1.html#estimating-f-3",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Estimating \\(f\\)",
+    "text": "Estimating \\(f\\)\nNon-Parametric method\nThese methods do not make explicit assumptions about the functional form of \\(f\\). Instead, we let the data determine the shape more directly.\n\nExample: Nearest Neighbours\nThe goal is to predict \\(X = x\\) using \\(N(x)\\), which is some neighbourhood of \\(x\\).\n\\[\\hat{f}(x) = \\frac{1}{|N(x)|} \\sum_{i:x_i \\in N(x)} y_i\\]\nIn simple terms, the prediction is the average response of nearby observations."
+  },
+  {
+    "objectID": "Week1.html#estimating-f-4",
+    "href": "Week1.html#estimating-f-4",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Estimating \\(f\\)",
+    "text": "Estimating \\(f\\)\nNon-Parametric method"
+  },
+  {
+    "objectID": "Week1.html#estimating-f-5",
+    "href": "Week1.html#estimating-f-5",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Estimating \\(f\\)",
+    "text": "Estimating \\(f\\)\nNon-Parametric method\nThere are other, more sophisticated methods as well, such as kernel regression and spline regression.\n Pros\n\nwe don’t make assumptions on \\(f\\)\nit’s good at predicting for large \\(n\\) and small \\(p\\), e.g. p \\(\\leq\\) 4\n\n\nCons\n\npoor performance when \\(p\\) is large\ncurse of dimensionality: There are very few data points in the nearby neighbours when \\(p\\) is large"
+  },
+  {
+    "objectID": "Week1.html#curse-of-dimensionality",
+    "href": "Week1.html#curse-of-dimensionality",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Curse of Dimensionality",
+    "text": "Curse of Dimensionality"
+  },
+  {
+    "objectID": "Week1.html#model-selection-1",
+    "href": "Week1.html#model-selection-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Model Selection",
+    "text": "Model Selection\n“All models are wrong, but some are useful” George Box\n\nWe need a systematic way of choosing the best model.\nWe start with the regression problems where \\(Y\\) is continuous."
+  },
+  {
+    "objectID": "Week1.html#model-selection-regression",
+    "href": "Week1.html#model-selection-regression",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Model Selection: Regression",
+    "text": "Model Selection: Regression\nRecall the setup: \\[ Y = f(X) + \\epsilon \\]\nand \\(D^{train}\\) contains \\(n\\) i.i.d samples of \\((X,Y)\\).\n\nGiven any \\(\\hat{f}\\), ideally, we want to evaluate \\(\\hat{f}\\) by the expected mean squared error (MSE) \\[E\\left[(Y^* - \\hat{f}(X^*))^2 \\right]\\]\nwhere\n\n\\((X^*, Y^*)\\) is a new random pair that is independent of \\(D^{train}\\)\nthe expectation is taken w.r.t the random pair \\((X^*, Y^*)\\), as well as the randomness in \\(\\hat{f}\\)."
+  },
+  {
+    "objectID": "Week1.html#model-selection-regression-1",
+    "href": "Week1.html#model-selection-regression-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Model Selection: Regression",
+    "text": "Model Selection: Regression\nWe cannot compute the expected MSE as we do not know either the distribution of \\((X^*, Y^*)\\), or that of \\(D^{train}\\).\n\nOne natural option is to use \\(D^{train}\\) to approximate the expectation by \\[MSE(\\hat{f}) = \\frac{1}{n} \\sum_{i=1}^n (y_i - \\hat{f}(x_i))^2\\]\nThis is called the training MSE, as it uses \\(D^{train}\\)\n\n\nHowever, it is NOT a valid metric of the fit for \\(\\hat{f}\\) since it always favours more complex models."
+  },
+  {
+    "objectID": "Week1.html#model-selection-regression-2",
+    "href": "Week1.html#model-selection-regression-2",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Model Selection: Regression",
+    "text": "Model Selection: Regression\nTest data refers to the data which is not used to train the statistical model\n\nSuppose we have the test data \\(D_{test}\\) containing \\({(x_{T1}, y_{T1}), ..., (x_{Tm}, y_{Tm})}\\). Then, we can compute the test MSE as\n\\[MSE_T(\\hat{f}) = \\frac{1}{m} \\sum_{i=1}^m (y_{Ti} - \\hat{f}(x_{Ti}))^2\\]\n\n\nInstead of using the training MSE, we should look at the test MSE. I.e. we select the model which yields the smallest test MSE.\n\n\nHow to calculate \\(MSE_T(\\hat{f})\\)?\n\nIf test data is available, we can directly compute it\nOtherwise, we use a resampling technique called cross-validation which we will discuss in another lecture"
+  },
+  {
+    "objectID": "Week1.html#training-mse-vs.-test-mse",
+    "href": "Week1.html#training-mse-vs.-test-mse",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Training MSE vs. Test MSE",
+    "text": "Training MSE vs. Test MSE\n\nLeft Plot: Data simulated from \\(f\\), shown in black. Three estimates of \\(f\\) are shown: the linear regression line (orange), and two non parametric fits (blue and green).\nRight Plot: Training MSE (grey), test MSE (red), and minimum test MSE over all possible methods coming from \\(\\epsilon\\) (dashed line)"
+  },
+  {
+    "objectID": "Week1.html#overfitting",
+    "href": "Week1.html#overfitting",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Overfitting",
+    "text": "Overfitting\nThe training MSE decreases as \\(\\hat{f}\\) gets more complex.\n\nA highly complex \\(\\hat{f}\\) can lead to a phenomenon knows as overfitting the data, which essentially means it follows the noise \\(\\epsilon\\) too closely.\n\nA Simple Example: \\(\\hat{f}(x_i) = y_i\\) for all \\(1 \\leq i \\leq n\\)"
+  },
+  {
+    "objectID": "Week1.html#overfitting-example",
+    "href": "Week1.html#overfitting-example",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Overfitting Example",
+    "text": "Overfitting Example\n\n\n\n\n\n\n\n\nThe points do not lie exactly on \\(f\\) because of the random noise, \\(\\epsilon\\)."
+  },
+  {
+    "objectID": "Week1.html#overfitting-example-1",
+    "href": "Week1.html#overfitting-example-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Overfitting Example",
+    "text": "Overfitting Example"
+  },
+  {
+    "objectID": "Week1.html#back-to-the-test-mse",
+    "href": "Week1.html#back-to-the-test-mse",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Back to the Test MSE",
+    "text": "Back to the Test MSE\nThere is a tradeoff between the test MSE and the flexibility (complexity) of the fitted model, \\(\\hat{f}\\).\n\nIs there a universal rule or explanation about this?"
+  },
+  {
+    "objectID": "Week1.html#bias-variance-decomposition",
+    "href": "Week1.html#bias-variance-decomposition",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Bias-Variance Decomposition",
+    "text": "Bias-Variance Decomposition\nLet \\((X^*, Y^*)\\) be a new random pair (independent from \\(D^{train}\\)) following \\(Y^* = f(X^*) + \\epsilon^*\\) with \\(E[\\epsilon^*]=0\\).\n\nFor any estimator \\(\\hat{f}\\) (obtained from \\(D^{train}\\)), its conditional expected MSE at any \\(X^* = x^*\\) is\n\\[\n\\begin{aligned}\n\\mathbb{E}\\left[\n    \\left(Y_* - \\hat{f}(X_*)\\right)^2\n    \\mid X_* = x_*\n\\right]\n&=\n\\underbrace{\n    \\operatorname{Var}\\left(\\hat{f}(x_*)\\right)\n}_{\\text{Variance}}\n+\n\\underbrace{\n    \\left(\n        \\mathbb{E}\\left[\\hat{f}(x_*)\\right] - f(x_*)\n    \\right)^2\n}_{\\text{Bias}^2}\n+\n\\underbrace{\n    \\operatorname{Var}(\\epsilon_*)\n}_{\\text{Irreducible error}}\n\\\\[0.5em]\n&\\geq \\operatorname{Var}(\\epsilon_*).\n\\end{aligned}\n\\]\n\nthe first expectation is over \\(\\epsilon^*\\) as well as \\(D^{train}\\)\nthe expected MSE \\(\\geq\\) the irreducible error\nan ideal \\(\\hat{f}\\) should minimize the expected MSE"
+  },
+  {
+    "objectID": "Week1.html#bias-variance-tradeoff-1",
+    "href": "Week1.html#bias-variance-tradeoff-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\nAs the complexity (i.e. flexibility) of \\(\\hat{f}\\) increases, the variance of \\(\\hat{f}\\) typically increases whereas its bias decreases\n\n\nThe variance of any fitted model also depends on the sample size, \\(n\\), and is roughly proportional to \\(\\frac{\\text{complexity of} \\quad \\hat{f}}{n}\\)\nWhen \\(n\\) is small, a fitted model with high complexity performs poorly due to large variance\nWhen \\(n\\) is large enough, a more complex fitted model tends to perform better as they have smaller bias than simpler models"
+  },
+  {
+    "objectID": "Week1.html#bias-variance-tradeoff-2",
+    "href": "Week1.html#bias-variance-tradeoff-2",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\nChoosing the compelxity of \\(\\hat{f}\\) based on the expected MSE involves a bias-variance tradeoff.\n\nWhen two models, \\(\\hat{f_1}\\) and \\(\\hat{f_2}\\) have similar expected MSEs, we usually prefer the more parsimonious (less complex) one.\n\n\nWhy? The additional complexity provides little improvement in prediction, while potentially making the model less interpretable and more variable."
+  },
+  {
+    "objectID": "Week1.html#bias-variance-tradeoff-3",
+    "href": "Week1.html#bias-variance-tradeoff-3",
+    "title": "Introduction to Supervised Learning & k-Nearest Neighbours",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\nChoosing the compelxity of \\(\\hat{f}\\) based on the expected MSE involves a bias-variance tradeoff\n\nWhen two models, \\(\\hat{f_1}\\) and \\(\\hat{f_2}\\) have similar expected MSEs, we usually prefer the more parsimonious (less complex) one.\n\nWhy? The additional complexity provides little improvement in prediction, while potentially making the model less interpretable and more variable."
+  },
+  {
+    "objectID": "Week1.html#bias-variance-tradeoff",
+    "href": "Week1.html#bias-variance-tradeoff",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Bias-Variance Tradeoff",
+    "text": "Bias-Variance Tradeoff\nVariance: how much \\(\\hat{f}\\) would change if we estimated it using a different training data set\n\n\nBias: the systematic difference between our estimated relationship \\(\\hat{f}\\) and the true relationship \\(f\\)\n\nExample: If the true relationship is nonlinear but we fit a linear model, a straight line cannot fully capture the true relationship, resulting in bias."
+  },
+  {
+    "objectID": "Week1.html#model-selection-classification",
+    "href": "Week1.html#model-selection-classification",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Model Selection: Classification",
+    "text": "Model Selection: Classification\nThe MSE is only appropriate for a quantitative outcome.\nOne metric we can use for categorical or ordinal outcomes is the expected error rate, defined as\n\\[E[1 \\{Y \\neq \\hat{f}(X) \\}].^1\\]\n\n\\(^1\\)({}) is the indicator function. ({A}=1) if (A) is true and ({A}=0) otherwise."
+  },
+  {
+    "objectID": "Week1.html#model-selection-classification-1",
+    "href": "Week1.html#model-selection-classification-1",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Model Selection: Classification",
+    "text": "Model Selection: Classification\nAnalogously, the training error rate is \\[\\frac{1}{n} \\sum_{i=1}^n 1 \\{y_i \\neq \\hat{f}(x_i) \\}\\]\nAnd the test error rate is \\[\\frac{1}{m} \\sum_{i=1}^m 1 \\{y_{Ti} \\neq \\hat{f}(x_{Ti}) \\}\\]\nOf course, there also exist other metrics that can be used for classification problems."
+  },
+  {
+    "objectID": "Week1.html#summary",
+    "href": "Week1.html#summary",
+    "title": "Introduction to Supervised Learning & Model Selection",
+    "section": "Summary",
+    "text": "Summary\n\nSupervised vs. unsupervised learning\nThe goal with supervised learning is to estimate a function \\(f\\) based on the training data for prediction or inference\nTo estimate \\(f\\), we can use parametric (assume a model) or non-parametric (data-driven) methods\nTo choose the best model, we use a metric for evaluating a given \\(\\hat{f}\\)\nThe best model yields the smallest expected test MSE (or error rate for classification problems)\nBias-Variance tradeoff: a more complex/flexible \\(\\hat{f}\\) has a smaller bias but larger variance\n\nNext Class: Some algorithms of computing \\(\\hat{f}\\)!\nAnnouncements: No tutorial on Monday, Sept 14."
   }
 ]

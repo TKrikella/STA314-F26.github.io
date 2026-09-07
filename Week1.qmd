@@ -1,5 +1,5 @@
 ---
-title: "Introduction to Supervised Learning & k-Nearest Neighbours"
+title: "Introduction to Supervised Learning & Model Selection"
 subtitle: "Week 1"
 format: 
   live-revealjs:
@@ -7,7 +7,7 @@ format:
     html-math-method: mathjax
     scrollable: false
     slide-number: "c/t"
-    footer: '<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;"><span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Course Introduction</span><span style="flex: 1;"></span></div>'
+    footer: '<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;"><span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Introduction to Supervised Learning & Model Selection</span><span style="flex: 1;"></span></div>'
     smaller: true
     menu: 
       side: right
@@ -44,7 +44,7 @@ The goal is to use data to:
 \vspace{1em}
 
 ::: fragment
-Examples:
+**Examples:**
 
 -   Predict whether a patient will respond to a treatment
 -   Predict house prices from characteristics
@@ -56,12 +56,12 @@ Examples:
 
 **Supervised Learning**: Machine is given data and examples of what to predict.
 
-\vspace{1em}
+<br>
 
 ::: fragment
 **Unsupervised Learning**: Machine is given data, but not what to predict.
 :::
-\vspace{1em}
+<br>
 
 ::: fragment
 **Reinforcement Learning**: Machine gets data by interacting with an environment and tries to minimize cost.
@@ -128,7 +128,11 @@ Recently new methods have emerged which use computer-aided detection for early m
 
 The machine learning models were trained using image data.
 
-![](images/Week1-Cancer.png)
+![](images/Week1-Cancer.png){width="40%" fig-align="center"}
+
+:::{.citation} 
+Gouda, W., Sama, N. U., Al-Waakid, G., Humayun, M., & Jhanjhi, N. Z. (2022). Detection of skin cancer based on skin lesion images using deep learning. Healthcare, 10(7), 1183. https://doi.org/10.3390/healthcare10071183  
+::: 
 
 ## Examples of Supervised Learning
 
@@ -172,278 +176,583 @@ Different from supervised learning, but can be useful as a pre-processing step f
 
 [Image Segmentation]{style="color: maroon;"}
 
+The goal is to cluster pixels into image regions to make it easier to analyze and understand specific parts of the image.
+
+
+![](images/Week1-ImageSegmentation.webp)
+
 ## Examples of Unsupervised Learning
 
 [Clustering]{style="color: maroon;"}
+
+Grouping unlabeled data points into clusters based on their similarities. 
+
+![](images/Week1-Clustering.jpg)
+
+::: {.citation}
+Vandeninden, B., De Clercq, E. M., Devleesschauwer, B., Otavova, M., Bouland, C., & Faes, C. (2024). Cluster pattern analysis of environmental stressors and quantifying their impact on all-cause mortality in Belgium. *BMC Public Health, 24*(1). https://doi.org/10.1186/s12889-024-18011-0
+:::
 
 ## Examples of Unsupervised Learning
 
 [Natural Language Processing]{style="color: maroon;"}
 
+![](images/Week1-NaturalLanguageProcessing.png)
+
 # Introduction to Supervised Learning
 
-## A common goal
+## This Course 
 
-Both statistics and machine learning ask:
+In much of this course, we focus on [supervised learning]{style="color: maroon;"}, where we are given 
 
-> How can we use data to learn about the world?
+  - [Training Set]{style="color: maroon;"} ${(x_1, y_1), ..., (x_n, y_n)}$  consisting of $n$ samples of
+    - [features]{style="color: maroon;"} $x_1, ..., x_n \in X$ and corresponding 
+    - [outcome]{style="color: maroon;"} $y_1, ..., y_n \in Y$ 
 
-::: fragment
-The difference is often one of emphasis:
+:::{.fragment}
+The goal is to [learn a predictor]{style="color: maroon;"} (function/mapping) $f: X \rightarrow Y$ such that for a new point $x^* \in X$, 
 
-| Statistics                 | Machine Learning       |
-|----------------------------|------------------------|
-| Explanation                | Prediction             |
-| Inference                  | Generalization         |
-| Parameter estimates        | Flexible models        |
-| Uncertainty quantification | Predictive performance |
-:::
-\vspace{1em}
-
-::: fragment
-In practice, modern data science combines both perspectives.
+$$f(x^*) \approx y^*$$ 
 ::: 
 
-## The Statistical Learning Problem
+## The Function, $f$ 
 
-Suppose we observe:
+Imagine the underlying generating mechanism between $X$ and $Y$ as 
+$$Y = f(X) + \epsilon$$ 
 
+where $\epsilon$ represents some measurement errors and other discrepancies. 
+
+<br>
+
+:::{.fragment}
+We are given the training data $D^{train}$ consisting of $n$ i.i.d samples of $(X,Y)$ following the above model, that is, $(x_1, y_1), ..., (x_n, y_n)$. 
+::: 
+
+<br>
+
+:::{.fragment}
+Our goal is to estimate (or learn) the mapping/function $f$ based on $D^{train}$. 
+::: 
+
+## Example: Advertising
+
+We are given information of $n$ products. 
+
+For each product, we are given:
+
+  - $y_i$: Sales of product $i$ in 200 different markets
+  - $x_{i1}$: TV advertising budget of product $i$ 
+  - $x_{i2}$: Radio advertising budget of product $i$ 
+  - $x_{i3}$: Newspaper advertising budget of product $i$
+
+:::{.fragment}
+Suppose the true generating model is 
 $$
-(X_1,Y_1), (X_2,Y_2),\ldots,(X_n,Y_n)
+\begin{aligned}
+Y &= f(X) + \epsilon \\
+  &= \beta_0 + \beta_1X_1 + \beta_2X_2 + \beta_3X_3 + \epsilon
+\end{aligned}
 $$
-
-
-where:
-
--   $X$ = input variables (features, predictors)
--   $Y$ = outcome variable (response)
-
-::: fragment
-We assume:
-
-$$
-Y = f(X) + \epsilon
-$$
-
-
-where:
-
--   $f$ is the unknown relationship we want to learn
--   $\epsilon$ represents random error
 :::
 
-## The Statistical Learning Problem
+:::{.fragment}
+[Knowing $f$ helps to understand how sales changes if we increase one unit of the TV advertising budget ($X_1$).]{style="color: maroon;"}
+:::
 
-The goal is to estimate:
-
-$$
-\hat{f}(X)
-$$
-
-which gives predictions:
-
-$$
-\hat{Y} = \hat{f}(X)
-$$
-
-> However, we do not know the true function $f$.
-
-We only observe data generated from this unknown process.
-
-
-## The Statistical Learning Problem 
-
-> Why estimate $f$?
-
-There are two main reasons.
+## Why Estimate $f$? 
 
 :::: {.columns}
 
 ::: {.column width="50%"}
 
-#### Prediction
+[**Prediction**]{style="color: maroon;"}
 
-Given new values of $X$, we want to predict $Y$.
+Given a new point $X^* = x^*$, $\hat{f}(x^*)$ is the best prediction one can hope for with respect to certain criterion.
 
-Examples: 
+**Examples:** 
 
 -   Predict a patient's risk of disease based on their characteristics.
 -   Predict when machinery will break down.
 
 :::
 
+
 ::: {.column width="50%"}
+:::{.fragment}
+[**Inference**]{style="color: maroon;"}
 
-#### Inference
+We want to understand relationships between $X$ and $Y$.
 
-We want to understand relationships.
-
-Examples:
+**Examples:**
 
 -   Which variables are important?
 -   How does changing $X$ affect $Y$?
 -   What is the strength of association?
 
 :::
+:::
 
 ::::
 
-## How do we know if a model is good?
+## Estimating $f$ 
 
-A model can fit the data we have...
+Let $x_{ij}$ denote the value of the $j^{th}$ feature for observation $i$, where $i=1,2,...,n$ and $j=1,2,...,p$. 
 
-but we really care about:
+Let $y_i$ denote the response variable for the $i^{th}$ observation. 
 
-> How well does it perform on new data?
+<br>
 
-# Training Data vs Test Data
 
-## Training data
+Then, the training data consists of $D^{train} = \{(x_1,y_1), ..., (x_n, y_n)\}$, where $x_i = (x_{i1}, ..., x_{ip})^T$
 
-Used to fit the model.
+<br>
 
-$$
-\{(X_1,Y_1),...,(X_n,Y_n)\}
-$$
+:::{.fragment}
+There are two categories of approaches to estimate $f$ based on $D^{train}$: 
 
-The model learns patterns from these observations.
+  - [**Parametric method**]{style="color: maroon;"}
+  - [**Non-parametric method**]{style="color: maroon;"}
+::: 
 
-## Test data
+## Estimating $f$ 
+[**Parametric method**]{style="color: maroon;"} 
 
-Used to evaluate performance.
+**Step 1**: Make an assumption about the function form, or shape, of $f$. 
 
-New observations:
+**Step 2**: Use the training data to *fit* (or *train*) the model. 
 
-$$
-(X_{new},Y_{new})
-$$
+:::{.fragment}
+**Example: Linear Model**
 
-The goal:
+The linear model is an important example of a parametric model. 
 
-\[ \text{Good performance on unseen data} \]
+$Y = f(X) + \epsilon$, with $f(X) = \beta_0 + \beta_1X_1 + \beta_2X_2 + ... + \beta_pX_p$. 
 
-# Training Error
+We would estimate $f$ by 
+$$\hat{f}_{linear}(X) = \hat{\beta_0} +\hat{\beta_1}X_1 + ... + \hat{\beta_p}X_p.$$
+::: 
 
-The error on the data used to fit the model:
+:::{.fragment} 
+**Note**: constructing $f$ in this way reduces the problem of estimating a function to that of estimating (p+1) parameters
+:::
 
-$$
-\frac{1}{n}
-\sum_{i=1}^{n}
-(Y_i-\hat{Y}_i)^2
-$$
+## Estimating $f$ 
+[**Parametric method**]{style="color: maroon;"} 
 
-A flexible model can often make:
+**Example: Linear Model**
 
-$$
-\text{Training error} \approx 0
-$$
+$$\hat{f}_{linear}(X) = \hat{\beta_0} +\hat{\beta_1}X_1 + ... + \hat{\beta_p}X_p.$$
 
-But is this always good?
+The procedure of obtaining $\hat{\beta_0}, ..., \hat{\beta_p}$ is called [**fitting**]{style="color: maroon;"}, i.e. fitting the model to the training data. 
 
-# Example: Learning Too Much From Data
+Even for the same parametric model, there are different ways of fitting! We will come back to this later. 
 
-A model that perfectly remembers the training data may fail on new data.
+## A Toy Example
 
-This is called:
-
-[Overfitting]{style="color: maroon;"}
-
-The model learns:
-
--   real patterns
--   random noise
-
-# First Learning Algorithm
-
-# k-Nearest Neighbours (kNN)
-
-Idea:
-
-> To predict a new observation, look at the most similar observations in the training data.
-
-# kNN Regression
-
-For a new observation:
+[Linear model]{style="color: maroon;"}
 
 $$
-x_0
+\widehat f_{\text{linear}}(X)
+=
+\widehat\beta_0 + \widehat\beta_1 X
 $$
 
-Find the $k$ closest observations.
+```{webr}
+#| fig-width: 5
+#| fig-height: 4
 
-Predict:
+set.seed(314)
+
+n <- 60
+x <- runif(n, 1.5, 5.5)
+
+# True relationship is slightly nonlinear
+y <- -1.5 + 0.15*x + 0.12*x^2 + 
+     rnorm(n, mean = 0, sd = 0.55)
+
+# Fit a linear model
+fit_linear <- lm(y ~ x)
+
+plot(x, y,
+     pch = 1,
+     xlab = "X",
+     ylab = "Y",
+     main = "")
+
+abline(fit_linear,
+       col = "navy",
+       lwd = 2)
+```
+
+## A Toy Example 
+
+[Quadratic model]{style="color: maroon;"}
 
 $$
-\hat{f}(x_0)=
-\frac{1}{k}
-\sum_{i\in N_0}y_i
+\widehat f_{\text{quad}}(X)
+=
+\widehat\beta_0
++
+\widehat\beta_1 X
++
+\widehat\beta_2 X^2
 $$
 
-where:
+```{webr}
+#| echo: true
+#| fig-width: 5
+#| fig-height: 4
 
--   $N_0$ = nearest neighbours
--   $k$ = number of neighbours
+# Fit a quadratic model
+fit_quad <- lm(y ~ x + I(x^2))
 
-# kNN Example
+x_grid <- seq(min(x), max(x), length.out = 200)
 
-Suppose we want to predict house price.
+y_hat <- predict(
+  fit_quad,
+  newdata = data.frame(x = x_grid)
+)
 
-A new house has:
+plot(x, y,
+     pch = 1,
+     xlab = "X",
+     ylab = "Y",
+     main = "")
 
--   3 bedrooms
--   2 bathrooms
--   1500 square feet
+lines(x_grid, y_hat,
+      col = "maroon",
+      lwd = 2)
+```
 
-Find similar houses:
+## Trade off Between Complexity and Interpretability 
 
-Prediction:
+The more complex the model, the more flexible to fit $f$, but less interpretable. 
+
+<br>
+
+Linear models are easy to interpret, neural networks are not. 
+
+<br> 
+
+Interpretation means to understand how the predictors X contribute to predicting Y. 
+
+## Trade off Between Complexity and Interpretability 
+
+![](images/Week1-ModelFlexibility.png){width="75%" fig-align="center"}
+
+## Estimating $f$ 
+[**Non-Parametric method**]{style="color: maroon;"}
+
+These methods do not make explicit assumptions about the functional form of $f$. Instead, we let the data determine the shape more directly.
+
+:::{.fragment}
+**Example: Nearest Neighbours** 
+
+The goal is to predict $X = x$ using $N(x)$, which is some neighbourhood of $x$. 
+
+$$\hat{f}(x) = \frac{1}{|N(x)|} \sum_{i:x_i \in N(x)} y_i$$
+
+In simple terms, the prediction is the average response of nearby observations.
+:::
+
+## Estimating $f$ 
+[**Non-Parametric method**]{style="color: maroon;"}
+
+![](images/Week1-knn.png){width="75%" fig-align="center"}
+
+## Estimating $f$ 
+[**Non-Parametric method**]{style="color: maroon;"}
+
+There are other, more sophisticated methods as well, such as kernel regression and spline regression. 
+
+<br> 
+**Pros** 
+
+  - we don't make assumptions on $f$ 
+  - it's good at predicting for large $n$ and small $p$, e.g. p $\leq$ 4 
+
+<br> 
+
+**Cons** 
+
+  - poor performance when $p$ is large 
+  - [curse of dimensionality]{style="color: maroon;"}: There are very few data points in the nearby neighbours when $p$ is large
+  
+## Curse of Dimensionality 
+
+![](images/Week1-CurseofDimensionality.png){width="75%" fig-align="center"}
+
+# Model Selection 
+
+## Model Selection 
+
+["All models are wrong, but some are useful"]{style="color: maroon;"} George Box 
+
+<br>
+
+We need a systematic way of choosing the best model. 
+
+We start with the [regression]{style="color: maroon;"} problems where $Y$ is continuous.
+
+## Model Selection: Regression 
+
+Recall the setup: 
+$$ Y = f(X) + \epsilon $$ 
+
+and $D^{train}$ contains $n$ i.i.d samples of $(X,Y)$. 
+
+:::{.fragment}
+Given any $\hat{f}$, ideally, we want to evaluate $\hat{f}$ by the expected **mean squared error (MSE)** 
+$$E\left[(Y^* - \hat{f}(X^*))^2 \right]$$
+
+where 
+
+  - $(X^*, Y^*)$ is a new random pair that is independent of $D^{train}$ 
+  - the expectation is taken w.r.t the random pair $(X^*, Y^*)$, as well as the randomness in $\hat{f}$.
+:::
+
+## Model Selection: Regression 
+
+We cannot compute the expected MSE as we do not know either the distribution of $(X^*, Y^*)$, or that of $D^{train}$. 
+
+:::{.fragment}
+One natural option is to use $D^{train}$ to approximate the expectation by 
+$$MSE(\hat{f}) = \frac{1}{n} \sum_{i=1}^n (y_i - \hat{f}(x_i))^2$$
+
+This is called the [**training MSE**]{style="color: maroon;"}, as it uses $D^{train}$ 
+::: 
+
+:::{.fragment}
+However, it is **NOT** a valid metric of the fit for $\hat{f}$ since it always favours more complex models.
+::: 
+
+## Model Selection: Regression 
+
+[Test data]{style="color: maroon;"} refers to the data which is not used to train the statistical model 
+
+:::{.fragment}
+Suppose we have the test data $D_{test}$ containing ${(x_{T1}, y_{T1}), ..., (x_{Tm}, y_{Tm})}$. Then, we can compute the [**test MSE**]{style="color: maroon;"} as 
+
+$$MSE_T(\hat{f}) = \frac{1}{m} \sum_{i=1}^m (y_{Ti} - \hat{f}(x_{Ti}))^2$$ 
+::: 
+
+:::{.fragment}
+Instead of using the training MSE, we should look at the test MSE. I.e. we select the model which yields the smallest test MSE. 
+::: 
+
+:::{.fragment}
+How to calculate $MSE_T(\hat{f})$? 
+  
+  - If test data is available, we can directly compute it 
+  - Otherwise, we use a resampling technique called *cross-validation* which we will discuss in another lecture 
+::: 
+
+## Training MSE vs. Test MSE
+
+![](images/Week1-MSE.png){width="75%" fig-align="center"}
+
+**Left Plot:** Data simulated from $f$, shown in black. Three estimates of $f$ are shown: the linear regression line (orange), and two non parametric fits (blue and green). 
+
+**Right Plot**: Training MSE (grey), test MSE (red), and minimum test MSE over all possible methods coming from $\epsilon$ (dashed line)
+
+## Overfitting 
+
+The training MSE decreases as $\hat{f}$ gets more complex. 
+
+<br> 
+
+A highly complex $\hat{f}$ can lead to a phenomenon knows as [overfitting]{style="color: maroon;"} the data, which essentially means it follows the noise $\epsilon$ too closely. 
+
+<br> 
+
+**A Simple Example**: $\hat{f}(x_i) = y_i$ for all $1 \leq i \leq n$
+
+## Overfitting Example
+
+```{webr}
+set.seed(314)
+
+n <- 30
+
+x <- sort(runif(n, 0, 10))
+
+# True relationship
+f <- function(x) 2 + 0.5*x
+
+# Observed response = signal + noise
+y <- f(x) + rnorm(n, mean = 0, sd = 1.5)
+
+plot(x, y,
+     pch = 19,
+     xlab = "X",
+     ylab = "Y")
+
+# True f(x)
+curve(f(x),
+      add = TRUE,
+      lwd = 3,
+      col = "black")
+```
+
+The points do not lie exactly on $f$ because of the random noise, $\epsilon$.
+
+## Overfitting Example
+
+```{webr}
+
+# Fit a simple linear model
+fit_simple <- lm(y ~ x)
+
+# Fit a much more flexible model
+fit_flexible <- lm(y ~ poly(x, 12))
+
+x_grid <- seq(min(x), max(x), length.out = 500)
+
+plot(x, y,
+     pch = 19,
+     xlab = "X",
+     ylab = "Y")
+
+# True relationship
+lines(x_grid,
+      f(x_grid),
+      lwd = 3,
+      col = "black")
+
+# Simple model
+lines(x_grid,
+      predict(fit_simple,
+              newdata = data.frame(x = x_grid)),
+      lwd = 2,
+      col = "navy")
+
+# Flexible model
+lines(x_grid,
+      predict(fit_flexible,
+              newdata = data.frame(x = x_grid)),
+      lwd = 2,
+      col = "maroon")
+
+legend("topleft",
+       legend = c("True f(x)",
+                  "Linear fit",
+                  "Flexible fit"),
+       col = c("black", "navy", "maroon"),
+       lwd = c(3, 2, 2),
+       bty = "n")
+```
+
+## Back to the Test MSE 
+
+There is a tradeoff between the test MSE and the flexibility (complexity) of the fitted model, $\hat{f}$. 
+
+<br> 
+
+Is there a universal rule or explanation about this? 
+
+## Bias-Variance Decomposition 
+
+Let $(X^*, Y^*)$ be a new random pair (independent from $D^{train}$) following $Y^* = f(X^*) + \epsilon^*$ with $E[\epsilon^*]=0$. 
+
+:::{.fragment}
+For any estimator $\hat{f}$ (obtained from $D^{train}$), its conditional expected MSE at any $X^* = x^*$ is 
 
 $$
-\hat{Y}=\frac{450+470+430}{3}
-=450
+\begin{aligned}
+\mathbb{E}\left[
+    \left(Y_* - \hat{f}(X_*)\right)^2
+    \mid X_* = x_*
+\right]
+&=
+\underbrace{
+    \operatorname{Var}\left(\hat{f}(x_*)\right)
+}_{\text{Variance}}
++
+\underbrace{
+    \left(
+        \mathbb{E}\left[\hat{f}(x_*)\right] - f(x_*)
+    \right)^2
+}_{\text{Bias}^2}
++
+\underbrace{
+    \operatorname{Var}(\epsilon_*)
+}_{\text{Irreducible error}}
+\\[0.5em]
+&\geq \operatorname{Var}(\epsilon_*).
+\end{aligned}
 $$
 
-# Choosing $k$
+  - the first expectation is over $\epsilon^*$ as well as $D^{train}$ 
+  - the expected MSE $\geq$ the irreducible error 
+  - an ideal $\hat{f}$ should minimize the expected MSE 
+::: 
+## Bias-Variance Tradeoff 
 
-Small $k$:
+[**Variance**]{style="color: maroon;"}: how much $\hat{f}$ would change if we estimated it using a different training data set 
 
--   very flexible model
--   follows the data closely
--   may overfit
+<br> 
 
-Large $k$:
+:::{.fragment}
+[**Bias**]{style="color: maroon;"}: the systematic difference between our estimated relationship $\hat{f}$ and the true relationship $f$
 
--   smoother predictions
--   may miss important patterns
+  - **Example:** If the true relationship is nonlinear but we fit a linear model, a straight line cannot fully capture the true relationship, resulting in bias. 
+::: 
 
-# The Bias-Variance Tradeoff
+## Bias-Variance Tradeoff 
 
-We will explore this next week.
+As the complexity (i.e. flexibility) of $\hat{f}$ increases, the variance of $\hat{f}$ typically increases whereas its bias decreases 
 
-The key idea:
+:::{.incremental}
+  - The variance of any fitted model also depends on the sample size, $n$, and is roughly proportional to 
+  $\frac{\text{complexity of} \quad \hat{f}}{n}$
+  
+  - When $n$ is small, a fitted model with high complexity performs poorly due to large variance 
+  
+  - When $n$ is large enough, a more complex fitted model tends to perform better as they have smaller bias than simpler models
+::: 
 
-> Flexible models can capture complex patterns, but may learn noise.
+## Bias-Variance Tradeoff 
 
-> Simple models may miss patterns, but generalize better.
+Choosing the compelxity of $\hat{f}$ based on the expected MSE involves a bias-variance tradeoff. 
 
-# Summary
+> When two models, $\hat{f_1}$ and $\hat{f_2}$ have similar expected MSEs, we usually prefer the *more parsimonious* (less complex) one. 
 
-Today we learned:
+:::{.fragment}
+**Why?** The additional complexity provides little improvement in prediction, while potentially making the model less interpretable and more variable.
+::: 
 
-1.  Statistical learning aims to learn relationships from data.
-2.  Supervised learning predicts an outcome.
-3.  Regression predicts numbers; classification predicts categories.
-4.  We evaluate models based on their ability to generalize.
-5.  kNN provides a simple example of learning from data.
+## Model Selection: Classification 
 
-# Next Time
+The MSE is only appropriate for a **quantitative outcome**. 
 
-## Model Evaluation
+One metric we can use for categorical or ordinal outcomes is the [**expected error rate**]{style="color: maroon;"}, defined as 
 
-We will discuss:
+$$E[1 \{Y \neq \hat{f}(X) \}].^1$$
 
--   training vs test error
--   cross-validation
--   bootstrap
--   bias-variance tradeoff
--   choosing model complexity
+::: {.slide-footnote}
+$^1$\(\mathbf{1}\{\cdot\}\) is the indicator function. 
+\(\mathbf{1}\{A\}=1\) if \(A\) is true and \(\mathbf{1}\{A\}=0\) otherwise.
+:::
+
+## Model Selection: Classification 
+
+Analogously, the [**training error rate**]{style="color: maroon;"} is 
+$$\frac{1}{n} \sum_{i=1}^n 1 \{y_i \neq \hat{f}(x_i) \}$$
+
+And the [**test error rate**]{style="color: maroon;"} is 
+$$\frac{1}{m} \sum_{i=1}^m 1 \{y_{Ti} \neq \hat{f}(x_{Ti}) \}$$
+
+Of course, there also exist other metrics that can be used for classification problems.
+
+## Summary 
+
+- Supervised vs. unsupervised learning
+- The goal with supervised learning is to estimate a function $f$ based on the training data for prediction or inference 
+- To estimate $f$, we can use parametric (assume a model) or non-parametric (data-driven) methods 
+- To choose the best model, we use a metric for evaluating a given $\hat{f}$
+- The best model yields the smallest expected test MSE (or error rate for classification problems) 
+- **Bias-Variance tradeoff**: a more complex/flexible $\hat{f}$ has a smaller bias but larger variance 
+
+**Next Class**: Some algorithms of computing $\hat{f}$!
+
+**Announcements**: No tutorial on Monday, Sept 14. 
