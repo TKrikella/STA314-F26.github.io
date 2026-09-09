@@ -211,7 +211,7 @@ Tutorials are highly recommended as they contain supplementary materials to the 
 
 ## Email Policy
 
-**Course Email**:
+**Course Email**: sta314\@course.utoronto.ca
 
 -   Instructor and TAs will not respond to emails sent to individual accounts
 -   *Response Time*: It will take 24 – 48 hours to respond to emails. I will only respond during working hours (Monday – Friday, 9am – 5pm).
