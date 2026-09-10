@@ -1,0 +1,337 @@
+---
+title: "k-Nearest Neighbours"
+subtitle: "Week 2"
+format: 
+  live-revealjs:
+    css: styles.css
+    html-math-method: mathjax
+    scrollable: true
+    slide-number: "c/t"
+    footer: '<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;"><span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection</span><span style="flex: 1;"></span></div>'
+    smaller: true
+    menu: 
+      side: right
+      width: wide
+webr:
+  packages:
+    - dplyr
+    - infer
+    - ggplot2
+    - class
+persist: true
+editor: visual
+execute:
+  echo: true
+  warning: false
+engine: webr
+---
+
+
+# k-Nearest Neighbours (kNN)
+
+## Motivating Example
+
+Machine learning is a great tool to use to help with clinical decision making/health system planning. 
+
+One example would be to use supervised learning to predict which older patients are most likely to benefit from rehabilitation 
+
+  - Doing so would result in more efficient use of health care resources, reduction in costs, and improved quality of life for the patient
+  
+<br> 
+
+:::{.fragment}
+Let $\mathbf{x_i}$ be a set of covariates for patient $i = 1,...,n$. 
+Let $y_i$ be the binary outcome, where $y_i=1$ indicates that the patient has rehabilitation potential.
+::: 
+
+::: {style="text-align: center;"}
+:::{.fragment}
+**Motivating Question:** For a new patient that comes into the clinic, how can we predict if they would benefit from at-home rehabilitation?
+::: 
+:::
+
+
+:::{.citation} 
+Zhu, M., Chen, W., Hirdes, J. P., & Stolee, P. (2007). The K-nearest neighbor algorithm predicted rehabilitation potential better than current Clinical Assessment Protocol. Journal of clinical epidemiology, 60(10), 1015-1021.
+:::
+
+## A Classical Local Approach: Nearest Neighbours
+
+-   Consider a **classification problem** (for now)
+-   Suppose we are given a new feature vector, $\mathbf{x^*} \in \mathbb{R}^p$
+-   The idea here is the find the nearest feature vector to $\mathbf{x}$ in the training set, and use its label to predict $y^*$
+
+::: fragment
+There are many ways that we can *define nearest*, but for now we will use the [Euclidean distance]{style="color: maroon;"}, i.e.
+
+$$||\mathbf{x_i}-\mathbf{x_{i'}}||_2 = \sqrt{\sum_{j=1}^p (x_{ij} - x_{i'j})^2}$$
+:::
+
+## A Classical Local Approach: Nearest Neighbours
+::: algorithm-box
+**Algorithm: 1-NN**
+
+1.  Find example $(\mathbf{x}, y)$ (from the training data) closest to $\mathbf{x^*}$. That is: $$\mathbf{x} = \underset{\mathbf{x_i} \in \{\mathbf{x_1}, ..., \mathbf{x_n}\}}{\arg\min} \text{distance}(\mathbf{x_i}, \mathbf{x^*})$$
+
+2.  Output $y$ as the label.
+:::
+
+## A Classical Local Approach: Nearest Neighbours
+
+We can visualize the behaviour in the classification setting using a [Voronoi diagram]{style="color: maroon;"}. 
+
+This diagram is a way to divide a space into different regions based on the distance to specific points, thus it's a good way to visualize what the outcome label of a new point, $\mathbf{x^*}$ would be. 
+
+![](images/Week2-Voronoi.png){width="40%" fig-align="center"}
+
+## Nearest Neighbours: Decision Boundaries 
+
+[Decision Boundary]{style="color: maroon;"}: the boundary between regions of the feature space assigned to different categories
+
+![](images/Week2-DecisionBoundary.png){width="45%" fig-align="center"}
+
+## Nearest Neighbours
+
+Going back to our motivating example, what does this algorithm look like? 
+
+:::{.fragment}
+What are some issues that arise?
+
+:::
+
+
+## Let's Generalize: k-Nearest Neighbours
+
+Instead of just using the *nearest* neighbour, we will use the *k-nearest neighbours*. 
+
+::: algorithm-box
+**Algorithm: k-NN**
+
+1.  Find $k$ data points $(\mathbf{x_{(1)}}, y_{(1)}), ..., (\mathbf{x_{(k)}}, y_{(k)})$ (from the training data) closest to $\mathbf{x^*}$. These points are ordered by which are closest to $\mathbf{x^*}$. These points form a neighbourhood, $N_k(\mathbf{x})$.
+
+2a.  The prediction for a classification problem is majority class among the $k$ neighbours
+
+ $$
+   \hat{y}^*
+   =
+   \underset{y \in \mathcal{C}}{\arg\max}
+   \sum_{i=1}^{k}
+   \mathbf{1}\{y = y_{(i)}\},
+   $$
+where $\mathcal{C}$ is the set of possible classes. 
+
+2b.  The prediction for a regression problem is the average response among the $k$ neighbours
+
+ $$
+   \hat{y}^*
+   =
+   \frac{1}{k}\sum_{i=1}^{k} y_{(i)}.
+   $$
+:::
+
+## Toy Example: kNN
+
+Suppose we observe a new point, 
+$$
+\mathbf{x}^* = (0.5, 0)
+$$
+
+Let's use $k=5$ to predict its class, $y^*$. 
+
+```{webr-r}
+## Generate training data (pretend this is given to us already) 
+set.seed(314)
+
+n <- 100
+
+x1 <- c(
+  rnorm(n/2, mean = -1, sd = 1),
+  rnorm(n/2, mean =  1, sd = 1)
+)
+
+x2 <- c(
+  rnorm(n/2, mean =  1, sd = 1),
+  rnorm(n/2, mean = -1, sd = 1)
+)
+
+y <- factor(c(
+  rep("0", n/2),
+  rep("1", n/2)
+))
+
+data <- data.frame(x1, x2)
+
+# Our new observation
+new_point <- data.frame(
+  x1 = 0.5,
+  x2 = 0
+)
+
+# Use k-NN to classify the new point
+
+``` 
+
+## Effect of $k$ on the Decision Boundary
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-width: 12
+#| fig-height: 4
+
+library(class)
+
+set.seed(314)
+
+# Generate simple training data
+n <- 120
+
+x1 <- c(
+  rnorm(n/2, mean = -1, sd = 1),
+  rnorm(n/2, mean =  1, sd = 1)
+)
+
+x2 <- c(
+  rnorm(n/2, mean =  1, sd = 1),
+  rnorm(n/2, mean = -1, sd = 1)
+)
+
+y <- factor(c(
+  rep("Orange", n/2),
+  rep("Blue", n/2)
+))
+
+train <- data.frame(x1, x2)
+
+# Grid covering the feature space
+grid <- expand.grid(
+  x1 = seq(min(x1) - 0.5, max(x1) + 0.5, length.out = 150),
+  x2 = seq(min(x2) - 0.5, max(x2) + 0.5, length.out = 150)
+)
+
+# Plot decision boundary for a given k
+plot_knn <- function(k) {
+
+  pred <- knn(
+    train = train,
+    test = grid,
+    cl = y,
+    k = k
+  )
+
+  z <- matrix(
+    as.numeric(pred),
+    nrow = 150,
+    ncol = 150
+  )
+
+  plot(
+    x1, x2,
+    col = c("darkorange", "blue")[y],
+    pch = 19,
+    xlab = expression(X[1]),
+    ylab = expression(X[2]),
+    main = paste("k =", k),
+    asp = 1
+  )
+
+  contour(
+    unique(grid$x1),
+    unique(grid$x2),
+    z,
+    levels = 1.5,
+    add = TRUE,
+    drawlabels = FALSE,
+    lwd = 3
+  )
+}
+
+par(mfrow = c(1, 3))
+
+plot_knn(1)
+plot_knn(15)
+plot_knn(75)
+```
+
+## Tradeoffs in Choosing $k$
+
+**Small $k$** 
+
+  - More flexible decision boundary, but high variance  
+      - [Question]{style="color: maroon;"}: what does high variance mean when we're talking about $\hat{f}$?
+  - Overfitting: sensitive to random noise in the training data 
+  
+**Large $k$** 
+
+  - Less flexible decision boundary and smaller variance
+  - Underfitting: fail to capture the true decision boundary 
+
+## Tradeoffs in Choosing $k$
+
+**Balancing $k$** 
+
+  - Optimal choice of $k$ depends on number of data points, $n$ 
+  - Nice theoretical properties if 
+  
+  $$k \rightarrow \infty, \quad \text{and} \quad \frac{k}{n} \rightarrow 0$$
+[Rule of Thumb]{style="color: maroon;"}: Choose $k$ from $[1, \sqrt{n}] via cross-validation (next lecture!)
+
+## Pitfalls: The Curse of Dimensionality
+
+As we discussed last week, [kNN suffers from the curse of dimensionality!]{style="color: maroon;"} 
+
+  - In high dimensions, "most" points are approximately the same distance because they are far away from each other
+  - e.g. Motivating example
+
+:::{.fragment}
+The saving grade is that some datasets (e.g. images) may have low [intrinsic dimension]{style="color: maroon;"} 
+
+  - This means that high dimensional data may rely on a much smaller number of true independent variables than the space may suggest
+  - i.e. The true $f$ does not use all features available
+::: 
+
+## Pitfalls: Normalization 
+
+kNN can be sensitive to the ranges of different features 
+
+  - e.g. Motivating example: age (50+) vs. indicator variable representing whether the patient can bathe on their own (0 or 1)
+
+<br>
+:::{.fragment}
+A simple fix: [standardize]{style="color: maroon;"} each dimension to be zero mean and unit variance. 
+
+**Caution**: depending on the problem, the scale might be important!
+:::
+
+## Pitfalls: Computational Cost 
+
+- Computational cost for classifying test data, per data point (un-modified algorithm)
+
+  - Calculate p-dimensional Euclidean distances with $n$ data points: O($np$) (computation time increases linearly with n and with p)
+  - Sort the distances: O($n \log n$) (computation time between linear and quadratic)
+
+:::{.fragment}
+- This must be done for each test data point, which is very expensive by the standards of a learning algorithm!
+- Need to store the entire dataset in memory! 
+::: 
+
+:::{.fragment}
+- Tons of work has gone into algorithms and data structures for efficient nearest neighbors with high dimensions and/or large datasets.
+:::
+
+## Note on Other Distance Measures 
+
+Depending on the type of dataset, [different distance measures will perform better than others]{style="color: maroon;"}. 
+
+<br>
+These distance measures may differ in: 
+
+  - their sensitivity to large differences in feature values
+  - their ability to handle non-continuous features
+  - their ability to perform well in sparse feature environments
+  - etc. 
+  
+## Knowledge Check 
+
+

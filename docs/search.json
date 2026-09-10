@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nK-Nearest Neighbours; Linear Regression; Model Assessment and Selection\n-\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage and Regularization\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nClassification: Bayes Classifier, (k)-NN, and Logistic Regression\n-\n-\n-\nCh. 4\n\n\n5\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\n-\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage and Regularization\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "about.html#tentative-course-schedule",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nK-Nearest Neighbours; Linear Regression; Model Assessment and Selection\n-\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage and Regularization\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nClassification: Bayes Classifier, (k)-NN, and Logistic Regression\n-\n-\n-\nCh. 4\n\n\n5\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\n-\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage and Regularization\n-\n-\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
@@ -607,5 +607,593 @@
     "title": "Introduction to Supervised Learning & Model Selection",
     "section": "Summary",
     "text": "Summary\n\nSupervised vs. unsupervised learning\nThe goal with supervised learning is to estimate a function \\(f\\) based on the training data for prediction or inference\nTo estimate \\(f\\), we can use parametric (assume a model) or non-parametric (data-driven) methods\nTo choose the best model, we use a metric for evaluating a given \\(\\hat{f}\\)\nThe best model yields the smallest expected test MSE (or error rate for classification problems)\nBias-Variance tradeoff: a more complex/flexible \\(\\hat{f}\\) has a smaller bias but larger variance\n\nNext Class: Some algorithms of computing \\(\\hat{f}\\)!\nAnnouncements: No tutorial on Monday, Sept 14."
+  },
+  {
+    "objectID": "Week2.html",
+    "href": "Week2.html",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "",
+    "text": "Machine learning is the science of learning patterns from data.\n\nWe introduced three types of machine learning problems:\n\nSupervised Learning\nUnsupervised Learning\nReinforcement Learning\n\n\n\nThe main focus of this course is supervised learning, where we are given\n\nTraining Set \\({(x_1, y_1), ..., (x_n, y_n)}\\) consisting of \\(n\\) samples of\n\nfeatures \\(x_1, ..., x_n \\in X\\) and corresponding\noutcome \\(y_1, ..., y_n \\in Y\\)\n\n\nand the goal is to to estimate (or learn) the function \\(f: X \\rightarrow Y\\) based on \\(D^{train}\\)."
+  },
+  {
+    "objectID": "Week2.html#review-from-last-week",
+    "href": "Week2.html#review-from-last-week",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "",
+    "text": "Machine learning is the science of learning patterns from data.\n\nWe introduced three types of machine learning problems:\n\nSupervised Learning\nUnsupervised Learning\nReinforcement Learning\n\n\n\nThe main focus of this course is supervised learning, where we are given\n\nTraining Set \\({(x_1, y_1), ..., (x_n, y_n)}\\) consisting of \\(n\\) samples of\n\nfeatures \\(x_1, ..., x_n \\in X\\) and corresponding\noutcome \\(y_1, ..., y_n \\in Y\\)\n\n\nand the goal is to to estimate (or learn) the function \\(f: X \\rightarrow Y\\) based on \\(D^{train}\\)."
+  },
+  {
+    "objectID": "Week2.html#review-from-last-week-1",
+    "href": "Week2.html#review-from-last-week-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Review from Last Week",
+    "text": "Review from Last Week\nWe discussed two approaches of estimating \\(f\\) based on \\(D^{train}\\):\n\nParametric method (assume a distribution)\n\nExample: assuming a linear model\n\nNon-parametric method (data-driven)\n\nExample: k-nearest neighbours\n\n\n\nWhen choosing a model, \\(\\hat{f}\\), we need to keep in mind the bias-variance tradeoff\n\nthe balance between a model being too simple (high bias) and too complex (high variance)"
+  },
+  {
+    "objectID": "Week2.html#review-from-last-week-2",
+    "href": "Week2.html#review-from-last-week-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Review from Last Week",
+    "text": "Review from Last Week\nWhen deciding on the best model, we can use a metric such as the test MSE (regression problems) or the test error rate (classification problems)\n\nit is important to evaluate model performance using the test data, since the training MSE (or error rate) will always prefer a more complex model\n\n\nIn summary, different \\(\\hat{f}\\) are simply different algorithms/methods/predictors\n\nwe will spend this course going over many different ways to estimate \\(f\\)\nthere is no one best method"
+  },
+  {
+    "objectID": "Week2.html#learning-outcomes-for-this-week",
+    "href": "Week2.html#learning-outcomes-for-this-week",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Learning Outcomes for This Week",
+    "text": "Learning Outcomes for This Week\n\nkNN\nlinear regression\ncross validation"
+  },
+  {
+    "objectID": "Week2.html#motivating-example",
+    "href": "Week2.html#motivating-example",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Motivating Example",
+    "text": "Motivating Example\nMachine learning is a great tool to use to help with clinical decision making/health system planning.\nOne example would be to use supervised learning to predict which older patients are most likely to benefit from rehabilitation\n\nDoing so would result in more efficient use of health care resources, reduction in costs, and improved quality of life for the patient\n\n\n\nLet \\(\\mathbf{x_i}\\) be a set of covariates for patient \\(i = 1,...,n\\). Let \\(y_i\\) be the binary outcome, where \\(y_i=1\\) indicates that the patient has rehabilitation potential.\n\n\n\nMotivating Question: For a new patient that comes into the clinic, how can we predict if they would benefit from at-home rehabilitation?\n\n\n\nZhu, M., Chen, W., Hirdes, J. P., & Stolee, P. (2007). The K-nearest neighbor algorithm predicted rehabilitation potential better than current Clinical Assessment Protocol. Journal of clinical epidemiology, 60(10), 1015-1021."
+  },
+  {
+    "objectID": "Week2.html#a-classical-local-approach-nearest-neighbours",
+    "href": "Week2.html#a-classical-local-approach-nearest-neighbours",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "A Classical Local Approach: Nearest Neighbours",
+    "text": "A Classical Local Approach: Nearest Neighbours\n\nConsider a classification problem (for now)\nSuppose we are given a new feature vector, \\(\\mathbf{x^*} \\in \\mathbb{R}^p\\)\nThe idea here is the find the nearest feature vector to \\(\\mathbf{x}\\) in the training set, and use its label to predict \\(y^*\\)\n\n\nThere are many ways that we can define nearest, but for now we will use the Euclidean distance, i.e.\n\\[||\\mathbf{x_i}-\\mathbf{x_{i'}}||_2 = \\sqrt{\\sum_{j=1}^p (x_{ij} - x_{i'j})^2}\\]"
+  },
+  {
+    "objectID": "Week2.html#a-classical-local-approach-nearest-neighbours-1",
+    "href": "Week2.html#a-classical-local-approach-nearest-neighbours-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "A Classical Local Approach: Nearest Neighbours",
+    "text": "A Classical Local Approach: Nearest Neighbours\n\nAlgorithm: 1-NN\n\nFind example \\((\\mathbf{x}, y)\\) (from the training data) closest to \\(\\mathbf{x^*}\\). That is: \\[\\mathbf{x} = \\underset{\\mathbf{x_i} \\in \\{\\mathbf{x_1}, ..., \\mathbf{x_n}\\}}{\\arg\\min} \\text{distance}(\\mathbf{x_i}, \\mathbf{x^*})\\]\nOutput \\(y\\) as the label."
+  },
+  {
+    "objectID": "Week2.html#a-classical-local-approach-nearest-neighbours-2",
+    "href": "Week2.html#a-classical-local-approach-nearest-neighbours-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "A Classical Local Approach: Nearest Neighbours",
+    "text": "A Classical Local Approach: Nearest Neighbours\nWe can visualize the behaviour in the classification setting using a Voronoi diagram.\nThis diagram is a way to divide a space into different regions based on the distance to specific points, thus it’s a good way to visualize what the outcome label of a new point, \\(\\mathbf{x^*}\\) would be."
+  },
+  {
+    "objectID": "Week2.html#nearest-neighbours-decision-boundaries",
+    "href": "Week2.html#nearest-neighbours-decision-boundaries",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Nearest Neighbours: Decision Boundaries",
+    "text": "Nearest Neighbours: Decision Boundaries\nDecision Boundary: the boundary between regions of the feature space assigned to different categories"
+  },
+  {
+    "objectID": "Week2.html#nearest-neighbours",
+    "href": "Week2.html#nearest-neighbours",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Nearest Neighbours",
+    "text": "Nearest Neighbours\nGoing back to our motivating example, what does this algorithm look like?\n\nWhat are some issues that arise?"
+  },
+  {
+    "objectID": "Week2.html#lets-generalize-k-nearest-neighbours",
+    "href": "Week2.html#lets-generalize-k-nearest-neighbours",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Let’s Generalize: k-Nearest Neighbours",
+    "text": "Let’s Generalize: k-Nearest Neighbours\nInstead of just using the nearest neighbour, we will use the k-nearest neighbours.\n\nAlgorithm: k-NN\n\nFind \\(k\\) data points \\((\\mathbf{x_{(1)}}, y_{(1)}), ..., (\\mathbf{x_{(k)}}, y_{(k)})\\) (from the training data) closest to \\(\\mathbf{x^*}\\). These points are ordered by which are closest to \\(\\mathbf{x^*}\\). These points form a neighbourhood, \\(N_k(\\mathbf{x})\\).\n\n2a. The prediction for a classification problem is majority class among the \\(k\\) neighbours\n\\[\n   \\hat{y}^*\n   =\n   \\underset{y \\in \\mathcal{C}}{\\arg\\max}\n   \\sum_{i=1}^{k}\n   \\mathbf{1}\\{y = y_{(i)}\\},\n   \\] where \\(\\mathcal{C}\\) is the set of possible classes.\n2b. The prediction for a regression problem is the average response among the \\(k\\) neighbours\n\\[\n   \\hat{y}^*\n   =\n   \\frac{1}{k}\\sum_{i=1}^{k} y_{(i)}.\n   \\]"
+  },
+  {
+    "objectID": "Week2.html#toy-example-knn",
+    "href": "Week2.html#toy-example-knn",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Toy Example: kNN",
+    "text": "Toy Example: kNN\nSuppose we observe a new point, \\[\n\\mathbf{x}^* = (0.5, 0)\n\\]\nLet’s use \\(k=5\\) to predict its class, \\(y^*\\).\n## Generate training data (pretend this is given to us already) \nset.seed(314)\n\nn &lt;- 100\n\nx1 &lt;- c(\n  rnorm(n/2, mean = -1, sd = 1),\n  rnorm(n/2, mean =  1, sd = 1)\n)\n\nx2 &lt;- c(\n  rnorm(n/2, mean =  1, sd = 1),\n  rnorm(n/2, mean = -1, sd = 1)\n)\n\ny &lt;- factor(c(\n  rep(\"0\", n/2),\n  rep(\"1\", n/2)\n))\n\ndata &lt;- data.frame(x1, x2)\n\n# Our new observation\nnew_point &lt;- data.frame(\n  x1 = 0.5,\n  x2 = 0\n)\n\n# Use k-NN to classify the new point"
+  },
+  {
+    "objectID": "Week2.html#effect-of-k-on-the-decision-boundary",
+    "href": "Week2.html#effect-of-k-on-the-decision-boundary",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Effect of \\(k\\) on the Decision Boundary",
+    "text": "Effect of \\(k\\) on the Decision Boundary"
+  },
+  {
+    "objectID": "Week2.html#tradeoffs-in-choosing-k",
+    "href": "Week2.html#tradeoffs-in-choosing-k",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Tradeoffs in Choosing \\(k\\)",
+    "text": "Tradeoffs in Choosing \\(k\\)\nSmall \\(k\\)\n\nMore flexible decision boundary, but high variance\n\nQuestion: what does high variance mean when we’re talking about \\(\\hat{f}\\)?\n\nOverfitting: sensitive to random noise in the training data\n\nLarge \\(k\\)\n\nLess flexible decision boundary and smaller variance\nUnderfitting: fail to capture the true decision boundary"
+  },
+  {
+    "objectID": "Week2.html#tradeoffs-in-choosing-k-1",
+    "href": "Week2.html#tradeoffs-in-choosing-k-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Tradeoffs in Choosing \\(k\\)",
+    "text": "Tradeoffs in Choosing \\(k\\)\nBalancing \\(k\\)\n\nOptimal choice of \\(k\\) depends on number of data points, \\(n\\)\nNice theoretical properties if\n\n\\[k \\rightarrow \\infty, \\quad \\text{and} \\quad \\frac{k}{n} \\rightarrow 0\\] Rule of Thumb: Choose \\(k\\) from $[1, ] via cross-validation (next lecture!)"
+  },
+  {
+    "objectID": "Week2.html#pitfalls-the-curse-of-dimensionality",
+    "href": "Week2.html#pitfalls-the-curse-of-dimensionality",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Pitfalls: The Curse of Dimensionality",
+    "text": "Pitfalls: The Curse of Dimensionality\nAs we discussed last week, kNN suffers from the curse of dimensionality!\n\nIn high dimensions, “most” points are approximately the same distance because they are far away from each other\ne.g. Motivating example\n\n\nThe saving grade is that some datasets (e.g. images) may have low intrinsic dimension\n\nThis means that high dimensional data may rely on a much smaller number of true independent variables than the space may suggest\ni.e. The true \\(f\\) does not use all features available"
+  },
+  {
+    "objectID": "Week2.html#pitfalls-normalization",
+    "href": "Week2.html#pitfalls-normalization",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Pitfalls: Normalization",
+    "text": "Pitfalls: Normalization\nkNN can be sensitive to the ranges of different features\n\ne.g. Motivating example: age (50+) vs. indicator variable representing whether the patient can bathe on their own (0 or 1)\n\n :::{.fragment} A simple fix: standardize each dimension to be zero mean and unit variance.\nCaution: depending on the problem, the scale might be important! :::"
+  },
+  {
+    "objectID": "Week2.html#pitfalls-computational-cost",
+    "href": "Week2.html#pitfalls-computational-cost",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Pitfalls: Computational Cost",
+    "text": "Pitfalls: Computational Cost\n\nComputational cost for classifying test data, per data point (un-modified algorithm)\n\nCalculate p-dimensional Euclidean distances with \\(n\\) data points: O(\\(np\\)) (computation time increases linearly with n and with p)\nSort the distances: O(\\(n \\log n\\)) (computation time between linear and quadratic)\n\n\n\n\nThis must be done for each test data point, which is very expensive by the standards of a learning algorithm!\nNeed to store the entire dataset in memory!\n\n\n\n\nTons of work has gone into algorithms and data structures for efficient nearest neighbors with high dimensions and/or large datasets."
+  },
+  {
+    "objectID": "Week2.html#note-on-other-distance-measures",
+    "href": "Week2.html#note-on-other-distance-measures",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Note on Other Distance Measures",
+    "text": "Note on Other Distance Measures\nDepending on the type of dataset, different distance measures will perform better than others.\n These distance measures may differ in:\n\ntheir sensitivity to large differences in feature values\ntheir ability to handle non-continuous features\ntheir ability to perform well in sparse feature environments\netc."
+  },
+  {
+    "objectID": "Week2.html#knowledge-check",
+    "href": "Week2.html#knowledge-check",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Knowledge Check",
+    "text": "Knowledge Check"
+  },
+  {
+    "objectID": "Week2.html#linear-regression",
+    "href": "Week2.html#linear-regression",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nAlthough simple, and may seem a bit dull compared to other more sophisticated techniques, linear regression remains to be a very useful and widely used statistical learning method.\n\nIt is the foundation of a lot of new approaches as well."
+  },
+  {
+    "objectID": "Week2.html#linear-regression-1",
+    "href": "Week2.html#linear-regression-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nLet \\(Y \\in \\mathbb{R}\\) be the outcome and \\(X \\in \\mathbb{R}^p\\) be the (random) vector of \\(p\\) features.\nThe linear model assumes:\n\\[\n\\begin{aligned}\nY &= f(X) + \\epsilon \\\\\n  &= \\beta_0 + \\beta_1X_1 + ... + \\beta_pX_p + \\epsilon\n\\end{aligned}\n\\] where\n\n\\(\\beta_0, \\beta_1, ..., \\beta_p\\) are unknown constants\n\n\\(\\beta_0\\) is called the intercept\n\\(\\beta_j\\), for \\(1 \\leq j \\leq p\\), are the coefficients of the \\(p\\) features\n\n\\(\\epsilon\\) is the error term satisfying \\(\\mathbb{E}[\\epsilon]=0\\)"
+  },
+  {
+    "objectID": "Week2.html#linear-predictor-under-the-linear-regression-model",
+    "href": "Week2.html#linear-predictor-under-the-linear-regression-model",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Linear Predictor under the Linear Regression Model",
+    "text": "Linear Predictor under the Linear Regression Model\nIf we can estimate the unknown coefficients \\(\\beta_0, \\ldots, \\beta_p\\), then we can use the fitted model to predict the response for a new observation \\(\\mathbf{x}^* = (x_1^*, \\ldots, x_p^*)\\):\n\\[\n\\hat{f}(\\mathbf{x}^*)\n= \\hat{\\beta}_0\n+ \\hat{\\beta}_1 x_1^*\n+ \\cdots\n+ \\hat{\\beta}_p x_p^*.\n\\] :::{.fragment} Question: How do we estimate \\(\\hat{\\beta}_0, \\ldots, \\hat{\\beta}_p\\)? :::"
+  },
+  {
+    "objectID": "Week2.html#ordinary-least-squares-ols-approach",
+    "href": "Week2.html#ordinary-least-squares-ols-approach",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Ordinary Least Squares (OLS) Approach",
+    "text": "Ordinary Least Squares (OLS) Approach\nTo approximate \\(\\beta_0, ..., \\beta_p\\), we can use Ordinary Least Squares (OLS).\n\nIn the model fitting step, we use the training data, \\(D^{train}\\) to choose \\(\\beta_0, ..., \\beta_p\\) such that they minimize the mean of the squared residuals:\n\\[\n\\begin{aligned}\n(\\hat{\\beta}_0, \\ldots, \\hat{\\beta}_p)\n&= \\underset{\\alpha_0, \\ldots, \\alpha_p}{\\arg\\min}\n\\frac{1}{n}\\sum_{i=1}^n\n\\left(\ny_i - \\left[\\alpha_0 + \\alpha_1x_{i1} + \\cdots + \\alpha_px_{ip}\\right]\n\\right)^2.\n\\end{aligned}\n\\]\n\n\nOnce we have estimated the coefficients, our fitted model is\n\\[\n\\hat{f}(\\mathbf{x})\n= \\hat{\\beta}_0\n+ \\hat{\\beta}_1 x_1\n+ \\cdots\n+ \\hat{\\beta}_p x_p.\n\\]"
+  },
+  {
+    "objectID": "Week2.html#linear-regression-2",
+    "href": "Week2.html#linear-regression-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Linear Regression",
+    "text": "Linear Regression\nQuestion: What is the interpretation of \\(\\beta_0\\)?\n\nQuestion: What is the interpretation of one of the coefficients, say, \\(\\beta_1\\)?"
+  },
+  {
+    "objectID": "Week2.html#in-matrix-form",
+    "href": "Week2.html#in-matrix-form",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "In Matrix Form",
+    "text": "In Matrix Form\nUsing matrix notation,\n\n\\(\\hat{\\boldsymbol{\\beta}} = [\\hat{\\beta}_0, \\ldots, \\hat{\\beta}_p]^\\intercal \\in \\mathbb{R}^{p+1}\\), \\(\\boldsymbol{\\alpha} = [\\alpha_0, \\ldots, \\alpha_p]^\\intercal \\in \\mathbb{R}^{p+1}\\),\n\\(\\mathbf{y} = [y_1, \\ldots, y_n]^\\intercal \\in \\mathbb{R}^n\\), \\(\\mathbf{X} = [\\mathbf{x}_1, \\ldots, \\mathbf{x}_n]^\\intercal \\in \\mathbb{R}^{n \\times (p+1)}\\), with\n\\[\n\\mathbf{x}_i = [1, x_{i1}, \\ldots, x_{ip}]^\\intercal \\in \\mathbb{R}^{p+1},\n\\qquad 1 \\leq i \\leq n.\n\\]\n\n\nThe OLS estimator of \\(\\boldsymbol{\\beta}\\) is defined as\n\\[\n\\begin{aligned}\n\\hat{\\boldsymbol{\\beta}}\n&=\n\\underset{\\boldsymbol{\\alpha} \\in \\mathbb{R}^{p+1}}{\\arg\\min}\n\\frac{1}{n}\n\\sum_{i=1}^n\n\\left(y_i - \\mathbf{x}_i^\\intercal \\boldsymbol{\\alpha}\\right)^2 \\\\[0.5em]\n&=\n\\underset{\\boldsymbol{\\alpha} \\in \\mathbb{R}^{p+1}}{\\arg\\min}\n\\frac{1}{n}\n\\left\\|\n\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\alpha}\n\\right\\|_2^2.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week2.html#some-comments",
+    "href": "Week2.html#some-comments",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Some Comments",
+    "text": "Some Comments\n\nWe use the test MSE to evaluate the performance of a model, but the idea of estimating \\(f\\) by minimizing the training MSE can be applied to (almost) all supervised learning problems.\n\nSpecifically,\n\\[\\hat{f} = \\underset{g \\in \\mathcal{F}}{\\arg\\min} \\frac{1}{n} \\sum_{i=1}^n L(y_i, g(\\mathbf{x_i}))\\] where \\(L(.)\\) is a loss function and \\(\\mathcal{F}\\) is a class of choices for the function, \\(g\\).\n\n\nThe OLS approach corresponds to \\(L(a,b) = (a-b)^2\\) and\n\n\\[\\mathcal{F} = \\{\\mathbf{x} \\mapsto \\mathbf{x}^{\\intercal}\\mathbf{\\beta} : \\mathbf{\\beta} \\in \\mathbb{R}^{p+1}\\}\\]"
+  },
+  {
+    "objectID": "Week2.html#some-comments-1",
+    "href": "Week2.html#some-comments-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Some Comments",
+    "text": "Some Comments\n\nIn general, the difficulty of solving \\[\\hat{f} = \\underset{g \\in \\mathcal{F}}{\\arg\\min} \\frac{1}{n} \\sum_{i=1}^n L(y_i, g(\\mathbf{x_i}))\\] varies across problems, but the OLS approach admits a closed-form solution:\n\n\\[\\hat{\\mathbf{\\beta}} = (\\mathbf{X}^{\\intercal}\\mathbf{X})^{-1}\\mathbf{X}^{\\intercal}\\mathbf{y}\\] whenever \\(\\mathbf{X} \\in \\mathbb{R}^{n \\times (p+1)}\\) has full column rank."
+  },
+  {
+    "objectID": "Week2.html#what-is-random",
+    "href": "Week2.html#what-is-random",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "What is Random?",
+    "text": "What is Random?\nThe true parameters \\(\\boldsymbol{\\beta}\\) are fixed but unknown.\nThe training data\n\\[\n(\\mathbf{X}_1,Y_1),\\ldots,(\\mathbf{X}_n,Y_n)\n\\]\nare random observations from the population.\n\nSince \\(\\hat{\\boldsymbol{\\beta}}\\) is calculated from the training data,\n\\[\n\\boxed{\\hat{\\boldsymbol{\\beta}} \\text{ is also random.}}\n\\]\n\n\nIf we collected a different training sample, we would generally obtain a different \\(\\hat{\\boldsymbol{\\beta}}\\)."
+  },
+  {
+    "objectID": "Week2.html#the-randomness-in-the-coefficients",
+    "href": "Week2.html#the-randomness-in-the-coefficients",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "The Randomness in the Coefficients",
+    "text": "The Randomness in the Coefficients"
+  },
+  {
+    "objectID": "Week2.html#properties-of-the-ols-estimator",
+    "href": "Week2.html#properties-of-the-ols-estimator",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Properties of the OLS Estimator",
+    "text": "Properties of the OLS Estimator\nRecall that\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf{X}^{\\intercal}\\mathbf{X})^{-1}\n\\mathbf{X}^{\\intercal}\\mathbf{y}.\n\\]\nAssuming the linear model is correctly specified,\nUnbiasedness\n\\[\n\\mathbb{E}[\\hat{\\boldsymbol{\\beta}}]\n=\n\\boldsymbol{\\beta}.\n\\]\nOn average, OLS estimates the true coefficients correctly.\n\nVariance\n\\[\n\\operatorname{Cov}(\\hat{\\boldsymbol{\\beta}})\n=\n\\sigma^2\n(\\mathbf{X}^{\\intercal}\\mathbf{X})^{-1}.\n\\]\nDifferent training samples produce different estimates of \\(\\boldsymbol{\\beta}\\)."
+  },
+  {
+    "objectID": "Week2.html#important-considerations",
+    "href": "Week2.html#important-considerations",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Important Considerations",
+    "text": "Important Considerations\nEstimation of \\(\\mathbf{\\beta}\\)\n\nHow close is the point estimation \\(\\hat{\\mathbf{\\beta}}\\) to the true \\(\\hat{\\mathbf{\\beta}}\\)\n(Inference) Can we provide confidence intervals and conduct hypothesis testing of \\(\\hat{\\mathbf{\\beta}}\\)?\n\n\nPrediction of \\(Y\\) at \\(X^* = \\mathbf{x^*}\\)\n\nHow accurate is the point prediction \\(\\hat{f}(\\mathbf{x^*}) = \\mathbf{x^*}^{\\intercal}\\hat{\\mathbf{\\beta}}\\)?\n(Inference) Can we further provide prediction intervals of \\(Y\\)?\n\n\n\nVariable (Model) Selection\n\nDo all predictors help to explain \\(Y\\), or is there only a subset of the predictors that are useful? (we will discuss this later!)"
+  },
+  {
+    "objectID": "Week2.html#summary",
+    "href": "Week2.html#summary",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Summary",
+    "text": "Summary"
+  },
+  {
+    "objectID": "Week2.html#review",
+    "href": "Week2.html#review",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Review",
+    "text": "Review\nWe have covered two methods of estimating \\(f\\): kNN and linear regression.\nkNN is a non-parametric approach (data driven), while linear regression is a parametric approach, since we are assuming the relationship between \\(X\\) and \\(Y\\) is linear."
+  },
+  {
+    "objectID": "Week2.html#review-1",
+    "href": "Week2.html#review-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Review",
+    "text": "Review\nTo estimate the coefficients related to linear regression, we covered the OLS approach:\n\\[\n\\hat{f}(\\mathbf{x}) = \\mathbf{x}^{\\intercal}\\hat{\\boldsymbol{\\beta}},\n\\]\nwhere\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n\\underset{\\boldsymbol{\\alpha}}{\\arg\\min}\n\\left\\|\n\\mathbf{y} - \\mathbf{X}\\boldsymbol{\\alpha}\n\\right\\|_2^2.\n\\]\n\nWe have also learned some statistical properties of \\(\\hat{\\boldsymbol{\\beta}}\\) under the linear model\n\\[\nY = \\beta_0 + X_1\\beta_1 + \\cdots + X_p\\beta_p + \\epsilon.\n\\]\n\nUnbiasedness\nEstimation error (\\(\\ell_2\\)-norm)\nInference (confidence intervals and hypothesis testing)"
+  },
+  {
+    "objectID": "Week2.html#why-consider-alternatives-to-ols",
+    "href": "Week2.html#why-consider-alternatives-to-ols",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Why Consider Alternatives to OLS?",
+    "text": "Why Consider Alternatives to OLS?\nThere are two main motivations for considering alternative fitting procedures to OLS.\nPrediction / Estimation\nThe OLS estimator\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf{X}^{\\intercal}\\mathbf{X})^{-1}\n\\mathbf{X}^{\\intercal}\\mathbf{y}\n\\]\ncan have large variance when \\(p\\) is large.\n\nIn particular, if \\(p &gt; n\\), the OLS estimator is not unique and its variance is infinite.\n\n\nInterpretability\nBy removing irrelevant features – that is, by setting some coefficient estimates to zero – we can obtain a more parsimonious and interpretable model."
+  },
+  {
+    "objectID": "Week2.html#what-are-the-alternatives",
+    "href": "Week2.html#what-are-the-alternatives",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "What Are the Alternatives?",
+    "text": "What Are the Alternatives?\nThere are three broad alternatives to fitting OLS using all \\(p\\) predictors.\n\n\nSubset Selection\nIdentify a subset of the \\(p\\) predictors that we believe are related to the response, and fit a model using OLS on the selected predictors.\n\n\n\n\nShrinkage\nFit a model involving all \\(p\\) predictors, but shrink the estimated coefficients towards zero relative to the OLS estimates.\nThis is also known as regularization and can reduce variance. Some shrinkage methods can also perform variable selection.\n\n\n\n\nDimension Reduction\nProject the \\(p\\) predictors into an \\(r\\)-dimensional subspace, where \\(r &lt; p\\), and use the resulting \\(r\\) projections as new predictors in a linear regression model."
+  },
+  {
+    "objectID": "Week2.html#how-do-we-choose-among-models",
+    "href": "Week2.html#how-do-we-choose-among-models",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "How Do We Choose Among Models?",
+    "text": "How Do We Choose Among Models?\nSuppose we are considering two models:\n\\[\n\\begin{aligned}\n\\text{Model 1:} \\qquad\nY &= \\alpha_0 + \\alpha_1X_1 + \\epsilon, \\\\[0.5em]\n\\text{Model 2:} \\qquad\nY &= \\beta_0 + \\beta_1X_1 + \\beta_2X_2 + \\epsilon.\n\\end{aligned}\n\\]\nThese lead to different predictors at \\(\\mathbf{X} = \\mathbf{x} = (x_1,x_2)\\):\n\\[\n\\hat{f}_1(\\mathbf{x})\n=\n\\hat{\\alpha}_0 + \\hat{\\alpha}_1x_1\n\\]\nversus\n\\[\n\\hat{f}_2(\\mathbf{x})\n=\n\\hat{\\beta}_0 + \\hat{\\beta}_1x_1 + \\hat{\\beta}_2x_2.\n\\]\n\nQuestion: Which model should we choose?\nIdeally, we choose the model with the smaller expected MSE."
+  },
+  {
+    "objectID": "Week2.html#how-do-we-compare-expected-mses",
+    "href": "Week2.html#how-do-we-compare-expected-mses",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "How Do We Compare Expected MSEs?",
+    "text": "How Do We Compare Expected MSEs?\nIf we have an independent test set, \\(D^{test}\\), we can compare the test MSEs directly.\nFor Model 1:\n\\[\n\\frac{1}{m}\n\\sum_{i=1}^m\n\\left(\ny_i^{(T)}\n-\n\\hat{\\alpha}_0\n-\n\\hat{\\alpha}_1x_{i1}^{(T)}\n\\right)^2\n\\]\nand for Model 2:\n\\[\n\\frac{1}{m}\n\\sum_{i=1}^m\n\\left(\ny_i^{(T)}\n-\n\\hat{\\beta}_0\n-\n\\hat{\\beta}_1x_{i1}^{(T)}\n-\n\\hat{\\beta}_2x_{i2}^{(T)}\n\\right)^2.\n\\]\n\nQuestion: What if we don’t have an independent test set?"
+  },
+  {
+    "objectID": "Week2.html#model-selection",
+    "href": "Week2.html#model-selection",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Model Selection",
+    "text": "Model Selection\nWhen we do not have an independent test set, there are two common approaches to model selection.\n\n\n1. Estimate the expected test error\nWe can manually create a “test set” using data-splitting techniques:\n\nValidation set approach\nCross-validation\n\n\n\n\n\n2. Adjust the training error\nAlternatively, we can adjust the training error to account for model complexity:\n\nMallows’ \\(C_p\\)\nAdjusted \\(R^2\\)\nAIC\nBIC"
+  },
+  {
+    "objectID": "Week2.html#estimating-expected-test-error",
+    "href": "Week2.html#estimating-expected-test-error",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Estimating Expected Test Error",
+    "text": "Estimating Expected Test Error\nOne approach is to randomly split the available data to create a validation set that functions as a test set.\n\nValidation set approach:\nOne-time data splitting.\n\n\nCross-validation approach:\nMultiple data splits."
+  },
+  {
+    "objectID": "Week2.html#validation-set-approach",
+    "href": "Week2.html#validation-set-approach",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Validation Set Approach",
+    "text": "Validation Set Approach\nRandomly divide the available observations into two parts:\n\na training set\na validation (hold-out) set\n\n\nThe proportion assigned to each set depends on the application.\n\n\nThe model is fitted on the training set and evaluated on the validation set.\nThe resulting validation-set MSE provides an estimate of the expected test MSE."
+  },
+  {
+    "objectID": "Week2.html#validation-set-approach-1",
+    "href": "Week2.html#validation-set-approach-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Validation Set Approach",
+    "text": "Validation Set Approach\n\n\n\nTraining Set\nUsed to fit the model.\n\\[\nD^{train}\n\\]\n\n\n\n\\(\\longrightarrow\\)\n\n\n\nValidation Set\nUsed to evaluate the fitted model.\n\\[\nD^{val}\n\\]\n\n\n\n\nThe validation observations must not be used to fit the model."
+  },
+  {
+    "objectID": "Week2.html#example-auto-data",
+    "href": "Week2.html#example-auto-data",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Example: Auto Data",
+    "text": "Example: Auto Data\nPreviously, we found that there appears to be a non-linear relationship between mpg and horsepower.\nWe might therefore consider polynomial regression models of different degrees.\nQuestion: Does a cubic or higher-order polynomial provide a better fit?"
+  },
+  {
+    "objectID": "Week2.html#example-auto-data-1",
+    "href": "Week2.html#example-auto-data-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Example: Auto Data",
+    "text": "Example: Auto Data\nWe randomly split the 392 observations into:\n\n196 observations in the training set\n196 observations in the validation set\n\nWe then compare linear regression models containing polynomial terms of different degrees.\n\n\nKey observation:\nThe estimated validation error can change substantially depending on the random split.\nOne-time data splitting is not very stable."
+  },
+  {
+    "objectID": "Week2.html#drawbacks-of-the-validation-set-approach",
+    "href": "Week2.html#drawbacks-of-the-validation-set-approach",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Drawbacks of the Validation Set Approach",
+    "text": "Drawbacks of the Validation Set Approach\nThe validation set approach has two important drawbacks.\n\n1. The estimate can be highly variable.\nThe estimated test error depends on which observations happen to be placed in the training set and which are placed in the validation set.\n\n\n2. We fit the model using only part of the available data.\nSince fewer observations are used for training, the fitted model may perform worse than a model fit using the entire data set.\nAs a result, the validation-set error may tend to overestimate the test error of a model fit using all available observations.\n\n\nQuestion: How can we remedy these drawbacks?"
+  },
+  {
+    "objectID": "Week2.html#leave-one-out-cross-validation-loocv",
+    "href": "Week2.html#leave-one-out-cross-validation-loocv",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Leave-One-Out Cross-Validation (LOOCV)",
+    "text": "Leave-One-Out Cross-Validation (LOOCV)\nInstead of creating one large validation set, suppose we leave out only the first observation.\nThe validation set is\n\\[\n(\\mathbf{x}_1,y_1),\n\\]\nand the training set contains\n\\[\n(\\mathbf{x}_2,y_2),\\ldots,(\\mathbf{x}_n,y_n).\n\\]\n\nUsing the training set, fit the model \\(\\hat{f}_1\\) and predict the response for the observation that was left out:\n\\[\n\\hat{f}_1(\\mathbf{x}_1).\n\\]\nThe corresponding squared error is\n\\[\n\\text{MSE}_1\n=\n\\left(\ny_1-\\hat{f}_1(\\mathbf{x}_1)\n\\right)^2.\n\\]\n\n\nBut using only one observation to evaluate our model is not enough!"
+  },
+  {
+    "objectID": "Week2.html#leave-one-out-cross-validation-1",
+    "href": "Week2.html#leave-one-out-cross-validation-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Leave-One-Out Cross-Validation",
+    "text": "Leave-One-Out Cross-Validation\nNow repeat the procedure, leaving out the second observation.\nThe validation set is\n\\[\n(\\mathbf{x}_2,y_2),\n\\]\nwhile the remaining \\(n-1\\) observations form the training set.\nFit \\(\\hat{f}_2\\) using the training data and calculate\n\\[\n\\text{MSE}_2\n=\n\\left(\ny_2-\\hat{f}_2(\\mathbf{x}_2)\n\\right)^2.\n\\]\n\nRepeat this procedure \\(n\\) times, leaving out each observation once:\n\\[\n\\text{MSE}_1,\\text{MSE}_2,\\ldots,\\text{MSE}_n.\n\\]\nThe LOOCV estimate of the test MSE is\n\\[\n\\boxed{\nCV_{(n)}\n=\n\\frac{1}{n}\n\\sum_{i=1}^n\n\\text{MSE}_i\n}\n\\]"
+  },
+  {
+    "objectID": "Week2.html#leave-one-out-cross-validation-2",
+    "href": "Week2.html#leave-one-out-cross-validation-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Leave-One-Out Cross-Validation",
+    "text": "Leave-One-Out Cross-Validation\nIn LOOCV, every observation serves as the validation observation exactly once.\n\n\nTherefore:\n\nWe fit the model \\(n\\) times.\nEach model uses \\(n-1\\) observations for training.\nEvery observation is used once to evaluate prediction performance."
+  },
+  {
+    "objectID": "Week2.html#loocv-vs.-the-validation-set-approach",
+    "href": "Week2.html#loocv-vs.-the-validation-set-approach",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "LOOCV vs. the Validation Set Approach",
+    "text": "LOOCV vs. the Validation Set Approach\nLOOCV has several advantages over the validation set approach.\n\nMore data are used for training.\nEach LOOCV model is trained using \\(n-1\\) observations, so its training set is almost the entire data set.\n\n\nThere is no randomness in the split.\nUnlike the validation set approach, repeating LOOCV on the same data produces the same result.\n\n\nHowever, LOOCV can be computationally expensive, since the model generally needs to be fit \\(n\\) times."
+  },
+  {
+    "objectID": "Week2.html#k-fold-cross-validation-1",
+    "href": "Week2.html#k-fold-cross-validation-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "\\(k\\)-Fold Cross-Validation",
+    "text": "\\(k\\)-Fold Cross-Validation\nInstead of leaving out one observation at a time, randomly divide the data into \\(k\\) approximately equal-sized groups called folds.\n\n\nTreat the first fold as the validation set.\nFit the model using the remaining \\(k-1\\) folds.\nCalculate the prediction error on the first fold, \\(\\text{MSE}_1\\).\n\n\n\nRepeat this procedure for folds \\(2,3,\\ldots,k\\) to obtain\n\\[\n\\text{MSE}_1,\\text{MSE}_2,\\ldots,\\text{MSE}_k.\n\\]\n\n\nThe \\(k\\)-fold cross-validation estimate is\n\\[\n\\boxed{\nCV_{(k)}\n=\n\\frac{1}{k}\n\\sum_{i=1}^k\n\\text{MSE}_i\n}\n\\]"
+  },
+  {
+    "objectID": "Week2.html#k-fold-cross-validation-2",
+    "href": "Week2.html#k-fold-cross-validation-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "\\(k\\)-Fold Cross-Validation",
+    "text": "\\(k\\)-Fold Cross-Validation\n\nSome common choices are\n\\[\nk=5\n\\qquad \\text{or} \\qquad\nk=10.\n\\]\n\nLOOCV is a special case of \\(k\\)-fold cross-validation where\n\\[\nk=n.\n\\]"
+  },
+  {
+    "objectID": "Week2.html#comparing-cross-validation-methods",
+    "href": "Week2.html#comparing-cross-validation-methods",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Comparing Cross-Validation Methods",
+    "text": "Comparing Cross-Validation Methods\n\nThe figure compares:\n\nthe true test MSE\nthe LOOCV estimate\nthe 10-fold CV estimate\n\nfor three simulated data sets."
+  },
+  {
+    "objectID": "Week2.html#cross-validation-for-classification",
+    "href": "Week2.html#cross-validation-for-classification",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Cross-Validation for Classification",
+    "text": "Cross-Validation for Classification\nCross-validation can also be used for classification problems.\nFor LOOCV, we split the data in exactly the same way as before.\n\nInstead of squared error, we can calculate whether the validation observation was classified correctly:\n\\[\n\\text{Err}_i\n=\n\\mathbb{1}\n\\left\\{\ny_i \\neq \\hat{f}_i(\\mathbf{x}_i)\n\\right\\}.\n\\]\nThus,\n\\[\n\\text{Err}_i\n=\n\\begin{cases}\n1, & \\text{if the observation is misclassified},\\\\\n0, & \\text{if the observation is classified correctly}.\n\\end{cases}\n\\]\n\n\nThe LOOCV estimate of the classification error is\n\\[\n\\boxed{\nCV_{(n)}\n=\n\\frac{1}{n}\n\\sum_{i=1}^n\n\\text{Err}_i\n}\n\\]"
+  },
+  {
+    "objectID": "Week2.html#cross-validation-can-be-tricky",
+    "href": "Week2.html#cross-validation-can-be-tricky",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Cross-Validation Can Be Tricky!",
+    "text": "Cross-Validation Can Be Tricky!\nKey idea:\nIndependence between the fitted model and the validation set is essential.\nThe validation observations should not be used to fit the model.\n\n\nA Tricky Example\nSuppose we have:\n\n\\(n=100\\) observations\n\\(p=5000\\) predictors\n\nWe use the following two-step procedure:\n\nFind the 10 predictors with the largest correlation with the outcome.\nFit OLS using only these 10 predictors.\n\n\n\n\nQuestion:\nHow should we use cross-validation to estimate the expected test MSE of this entire procedure?"
+  },
+  {
+    "objectID": "Week2.html#adjusting-the-training-error",
+    "href": "Week2.html#adjusting-the-training-error",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Adjusting the Training Error",
+    "text": "Adjusting the Training Error\nInstead of directly estimating the expected test MSE using data splitting, we can adjust the training error to account for model complexity.\nCommon approaches include:\n\nMallows’ \\(C_p\\)\nAdjusted \\(R^2\\)\nAIC\nBIC\n\n\nThese approaches are generally used for parametric models, such as linear regression, and typically rely on assumptions about the model and likelihood."
+  },
+  {
+    "objectID": "Week2.html#recall-training-error",
+    "href": "Week2.html#recall-training-error",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Recall: Training Error",
+    "text": "Recall: Training Error\nFor a fitted model \\(\\hat{f}\\), let \\(\\hat{f}(\\mathbf{x}_i)\\) denote the fitted value for observation \\(i\\).\nFor a linear regression model with \\(p\\) predictors,\n\\[\n\\hat{f}(\\mathbf{x}_i)\n=\n\\mathbf{x}_i^\\intercal \\hat{\\boldsymbol{\\beta}}\n=\n\\hat{\\beta}_0\n+\n\\hat{\\beta}_1x_{i1}\n+\n\\cdots\n+\n\\hat{\\beta}_px_{ip}.\n\\]\nThe residual for observation \\(i\\) is\n\\[\ny_i - \\hat{f}(\\mathbf{x}_i).\n\\]\n\nThe residual sum of squares is\n\\[\nRSS(\\hat{f})\n=\n\\sum_{i=1}^n\n\\left(\ny_i-\\hat{f}(\\mathbf{x}_i)\n\\right)^2.\n\\]\nTherefore,\n\\[\n\\frac{1}{n}RSS(\\hat{f})\n\\]\nis simply the training MSE.\n\n\nImportant:\nTraining error generally decreases as model complexity increases."
+  },
+  {
+    "objectID": "Week2.html#mallows-c_p",
+    "href": "Week2.html#mallows-c_p",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Mallows’ \\(C_p\\)",
+    "text": "Mallows’ \\(C_p\\)\nLet \\(p\\) denote the number of parameters in the model.\nMallows’ \\(C_p\\) is defined as\n\\[\nC_p(\\hat{f})\n=\n\\frac{1}{n}\nRSS(\\hat{f})\n+\n\\frac{2p\\sigma^2}{n}.\n\\]\nWhen \\(\\sigma^2\\) is unknown, we replace it with an estimate \\(\\hat{\\sigma}^2\\).\n\nThe first term rewards good fit:\n\\[\n\\frac{1}{n}RSS(\\hat{f}).\n\\]\nThe second term penalizes model complexity:\n\\[\n\\frac{2p\\hat{\\sigma}^2}{n}.\n\\]\n\n\nWe select the model with the smallest \\(C_p\\).\n\\(C_p\\) is primarily used for selecting among linear regression models."
+  },
+  {
+    "objectID": "Week2.html#adjusted-r2",
+    "href": "Week2.html#adjusted-r2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Adjusted \\(R^2\\)",
+    "text": "Adjusted \\(R^2\\)\nRecall that the total sum of squares is\n\\[\nTSS\n=\n\\sum_{i=1}^n\n(y_i-\\bar{y})^2,\n\\]\nwhere\n\\[\n\\bar{y}\n=\n\\frac{1}{n}\n\\sum_{i=1}^n y_i.\n\\]\nThe usual \\(R^2\\) is\n\\[\nR^2(\\hat{f})\n=\n1-\n\\frac{RSS(\\hat{f})}{TSS}.\n\\]\n\nBecause \\(RSS\\) can only decrease when predictors are added,\n\\[\nR^2\n\\]\ncan only increase when predictors are added to the model."
+  },
+  {
+    "objectID": "Week2.html#adjusted-r2-1",
+    "href": "Week2.html#adjusted-r2-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Adjusted \\(R^2\\)",
+    "text": "Adjusted \\(R^2\\)\nAdjusted \\(R^2\\) accounts for the number of predictors:\n\\[\nR_{\\text{adj}}^2(\\hat{f})\n=\n1-\n\\frac{\nRSS(\\hat{f})/(n-p-1)\n}{\nTSS/(n-1)\n}.\n\\]\n\nUnlike ordinary \\(R^2\\), adjusted \\(R^2\\) penalizes the inclusion of unnecessary predictors.\n\n\nWhile\n\\[\nRSS(\\hat{f})\n\\]\nalways decreases as \\(p\\) increases,\n\\[\n\\frac{RSS(\\hat{f})}{n-p-1}\n\\]\nmay increase or decrease.\n\n\nWe prefer models with larger adjusted \\(R^2\\)."
+  },
+  {
+    "objectID": "Week2.html#adjusted-r2-vs.-r2",
+    "href": "Week2.html#adjusted-r2-vs.-r2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Adjusted \\(R^2\\) vs. \\(R^2\\)",
+    "text": "Adjusted \\(R^2\\) vs. \\(R^2\\)\nFor model selection,\n\\[\n\\underset{\\hat{f}}{\\arg\\max}\n\\ R_{\\text{adj}}^2(\\hat{f})\n\\]\nis equivalent to\n\\[\n\\underset{\\hat{f}}{\\arg\\min}\n\\frac{RSS(\\hat{f})}{n-p-1}.\n\\]\n\nKey idea:\nOrdinary \\(R^2\\) rewards adding predictors.\nAdjusted \\(R^2\\) asks whether the improvement in fit is large enough to justify the additional model complexity.\n\n\nBoth Mallows’ \\(C_p\\) and adjusted \\(R^2\\) are primarily used for selecting among linear regression models."
+  },
+  {
+    "objectID": "Week2.html#aic-and-bic",
+    "href": "Week2.html#aic-and-bic",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "AIC and BIC",
+    "text": "AIC and BIC\nSuppose \\(\\hat{f}\\) is obtained by maximum likelihood estimation, and let\n\\[\nL(\\hat{f})\n\\]\ndenote the maximized likelihood.\nThe Akaike Information Criterion is\n\\[\n\\boxed{\nAIC(\\hat{f})\n=\n-2\\log L(\\hat{f})\n+\n2p\n}\n\\]\n\nThe Bayesian Information Criterion is\n\\[\n\\boxed{\nBIC(\\hat{f})\n=\n-2\\log L(\\hat{f})\n+\n(\\log n)p\n}\n\\]"
+  },
+  {
+    "objectID": "Week2.html#aic-vs.-bic",
+    "href": "Week2.html#aic-vs.-bic",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "AIC vs. BIC",
+    "text": "AIC vs. BIC\nBoth criteria balance:\n\\[\n\\text{model fit}\n\\qquad \\text{vs.} \\qquad\n\\text{model complexity}.\n\\]\n\nFor both AIC and BIC, we select the model with the smallest value.\n\n\nBIC uses the penalty\n\\[\n(\\log n)p,\n\\]\nwhich is typically larger than the AIC penalty\n\\[\n2p.\n\\]\nTherefore, BIC tends to favor smaller models.\n\n\nIn a Gaussian linear regression model, AIC is closely related to Mallows’ \\(C_p\\) and can select the same model."
+  },
+  {
+    "objectID": "Week2.html#aic-and-bic-1",
+    "href": "Week2.html#aic-and-bic-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "AIC and BIC",
+    "text": "AIC and BIC\nTo calculate AIC or BIC, we must specify a likelihood – that is, a probability model for\n\\[\nY \\mid X.\n\\]\nWe then fit the model using maximum likelihood.\n\nUnlike \\(C_p\\) and adjusted \\(R^2\\), AIC and BIC can also be used for other parametric models, including classification models such as logistic regression."
+  },
+  {
+    "objectID": "Week2.html#example-revisited",
+    "href": "Week2.html#example-revisited",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Example Revisited",
+    "text": "Example Revisited\nSuppose we are comparing\n\\[\n\\begin{aligned}\n\\text{Model 1:}\\qquad\nY &= \\alpha_0+\\alpha_1X_1+\\epsilon,\\\\[0.5em]\n\\text{Model 2:}\\qquad\nY &= \\beta_0+\\beta_1X_1+\\beta_2X_2+\\epsilon.\n\\end{aligned}\n\\]\nTheir fitted predictors are\n\\[\n\\hat{f}_1(\\mathbf{x})\n=\n\\hat{\\alpha}_0+\\hat{\\alpha}_1x_1\n\\]\nand\n\\[\n\\hat{f}_2(\\mathbf{x})\n=\n\\hat{\\beta}_0+\\hat{\\beta}_1x_1+\\hat{\\beta}_2x_2.\n\\]\nTheir residual sums of squares are\n\\[\nRSS(\\hat{f}_1)\n=\n\\sum_{i=1}^n\n\\left(\ny_i-\\hat{\\alpha}_0-\\hat{\\alpha}_1x_{i1}\n\\right)^2\n\\]\nand\n\\[\nRSS(\\hat{f}_2)\n=\n\\sum_{i=1}^n\n\\left(\ny_i-\\hat{\\beta}_0-\\hat{\\beta}_1x_{i1}-\\hat{\\beta}_2x_{i2}\n\\right)^2.\n\\]"
+  },
+  {
+    "objectID": "Week2.html#example-model-selection-criteria",
+    "href": "Week2.html#example-model-selection-criteria",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Example: Model Selection Criteria",
+    "text": "Example: Model Selection Criteria\nFor Model 1,\n\\[\nC_p(\\hat{f}_1)\n=\n\\frac{1}{n}\n\\left[\nRSS(\\hat{f}_1)\n+\n(2\\times 1)\\sigma^2\n\\right].\n\\]\nFor Model 2,\n\\[\nC_p(\\hat{f}_2)\n=\n\\frac{1}{n}\n\\left[\nRSS(\\hat{f}_2)\n+\n(2\\times 2)\\sigma^2\n\\right].\n\\]\n\nSimilarly,\n\\[\nR_{\\text{adj}}^2(\\hat{f}_1)\n=\n1-\n\\frac{\nRSS(\\hat{f}_1)/(n-2)\n}{\nTSS/(n-1)\n}\n\\]\nand\n\\[\nR_{\\text{adj}}^2(\\hat{f}_2)\n=\n1-\n\\frac{\nRSS(\\hat{f}_2)/(n-3)\n}{\nTSS/(n-1)\n}.\n\\]"
+  },
+  {
+    "objectID": "Week2.html#data-splitting-vs.-complexity-criteria",
+    "href": "Week2.html#data-splitting-vs.-complexity-criteria",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Data Splitting vs. Complexity Criteria",
+    "text": "Data Splitting vs. Complexity Criteria\nData-splitting methods have several advantages over criteria such as \\(C_p\\), adjusted \\(R^2\\), AIC, and BIC.\n\n\nThey provide a direct estimate of test error.\nThey can be used for a wide range of models.\nThey do not require us to explicitly determine model degrees of freedom.\nThey do not always require an estimate of the error variance.\n\n\n\nHowever, data splitting also has drawbacks:\n\nIt can require a relatively large sample size.\nCross-validation can be computationally expensive.\nTheoretical guarantees for the selected model may be difficult to obtain."
+  },
+  {
+    "objectID": "Week2.html#whats-next",
+    "href": "Week2.html#whats-next",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "What’s Next?",
+    "text": "What’s Next?\nWe now have tools for comparing models:\n\nCross-validation\nMallows’ \\(C_p\\)\nAdjusted \\(R^2\\)\nAIC\nBIC\n\n\nNext, we apply these tools to model selection under the linear model."
+  },
+  {
+    "objectID": "Week2.html#model-selection-in-linear-regression",
+    "href": "Week2.html#model-selection-in-linear-regression",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Model Selection in Linear Regression",
+    "text": "Model Selection in Linear Regression\nInstead of fitting OLS using all available predictors, we can consider several alternatives.\nSubset Selection\nIdentify a subset of the \\(p\\) predictors and fit OLS using only those predictors.\n\nBest subset selection\nStepwise selection\n\n\nShrinkage Regression\n\nRidge regression\nLasso\n\n\n\nDimension Reduction\nProject the predictors into a lower-dimensional space.\nWe will return to dimension reduction later when we discuss PCA."
+  },
+  {
+    "objectID": "Week2.html#best-subset-selection-1",
+    "href": "Week2.html#best-subset-selection-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Best Subset Selection",
+    "text": "Best Subset Selection\nSuppose we have three predictors:\n\\[\n\\mathbf{X}=(X_1,X_2,X_3).\n\\]\nQuestion:\nIf we want to fit a linear regression model, what are all possible subsets of predictors?"
+  },
+  {
+    "objectID": "Week2.html#best-subset-selection-2",
+    "href": "Week2.html#best-subset-selection-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Best Subset Selection",
+    "text": "Best Subset Selection\n\nAlgorithm: Best Subset Selection\n\nLet \\(\\mathcal{M}_0\\) denote the null model containing no predictors.\nFor \\(k=1,\\ldots,p\\):\n\nFit all \\[\n{p \\choose k}\n\\] models containing exactly \\(k\\) predictors.\nSelect the best model among these models and call it \\(\\mathcal{M}_k\\).\n\n“Best” can be defined as the model with the smallest RSS, or equivalently the largest \\(R^2\\).\nSelect a single best model from\n\\[\n\\mathcal{M}_0,\\mathcal{M}_1,\\ldots,\\mathcal{M}_p\n\\]\nusing cross-validation, \\(C_p\\), AIC, BIC, or adjusted \\(R^2\\)."
+  },
+  {
+    "objectID": "Week2.html#best-subset-selection-3",
+    "href": "Week2.html#best-subset-selection-3",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Best Subset Selection",
+    "text": "Best Subset Selection\nQuestion:\nWhy can we use RSS to choose the best model among models containing exactly the same number of predictors?\n\n\nQuestion:\nCan we use RSS or ordinary \\(R^2\\) to choose the final model across different subset sizes?"
+  },
+  {
+    "objectID": "Week2.html#computational-cost-of-best-subset-selection",
+    "href": "Week2.html#computational-cost-of-best-subset-selection",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Computational Cost of Best Subset Selection",
+    "text": "Computational Cost of Best Subset Selection\nBest subset selection requires us to fit\n\\[\n{p \\choose 0}\n+\n{p \\choose 1}\n+\n{p \\choose 2}\n+\n\\cdots\n+\n{p \\choose p}.\n\\]\nUsing the binomial identity,\n\\[\n\\boxed{\n\\sum_{k=0}^p\n{p \\choose k}\n=\n2^p\n}\n\\]\nmodels must be considered.\n\nThis becomes computationally expensive very quickly as \\(p\\) increases.\n\n\nThe same general idea can be applied to other models, such as logistic regression, although the criterion used to compare models may differ."
+  },
+  {
+    "objectID": "Week2.html#forward-stepwise-selection-1",
+    "href": "Week2.html#forward-stepwise-selection-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Forward Stepwise Selection",
+    "text": "Forward Stepwise Selection\nSuppose again that\n\\[\n\\mathbf{X}=(X_1,X_2,X_3).\n\\]\nQuestion:\nWhat sequence of models would we consider using forward stepwise selection?"
+  },
+  {
+    "objectID": "Week2.html#forward-stepwise-selection-2",
+    "href": "Week2.html#forward-stepwise-selection-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Forward Stepwise Selection",
+    "text": "Forward Stepwise Selection\n\nAlgorithm: Forward Stepwise Selection\n\nLet \\(\\mathcal{M}_0\\) denote the null model containing no predictors.\nFor \\(k=0,\\ldots,p-1\\):\n\nConsider all \\(p-k\\) models that add one additional predictor to \\(\\mathcal{M}_k\\).\nChoose the best among these models and call it \\(\\mathcal{M}_{k+1}\\).\n\n“Best” is defined as the model with the smallest RSS or largest \\(R^2\\).\nSelect a single best model from\n\\[\n\\mathcal{M}_0,\\mathcal{M}_1,\\ldots,\\mathcal{M}_p\n\\]\nusing cross-validation, \\(C_p\\), AIC, BIC, or adjusted \\(R^2\\)."
+  },
+  {
+    "objectID": "Week2.html#forward-stepwise-selection-3",
+    "href": "Week2.html#forward-stepwise-selection-3",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Forward Stepwise Selection",
+    "text": "Forward Stepwise Selection\nAdvantage:\nForward stepwise selection is much more computationally efficient than best subset selection.\nAt iteration \\(k\\), we compare\n\\[\np-k\n\\]\nmodels.\nTherefore, the total number of models considered is\n\\[\n1+\n\\sum_{k=0}^{p-1}(p-k)\n=\n1+\n\\frac{p(p+1)}{2}.\n\\]\n\nThis is much smaller than\n\\[\n2^p.\n\\]\n\n\nDisadvantage:\nForward stepwise selection is a greedy procedure.\nOnce a variable enters the model, it is not reconsidered.\nTherefore, it is not guaranteed to identify the best model among all possible subsets."
+  },
+  {
+    "objectID": "Week2.html#example-credit-card-data",
+    "href": "Week2.html#example-credit-card-data",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Example: Credit Card Data",
+    "text": "Example: Credit Card Data\nThe original lecture compares the predictors selected by:\n\nbest subset selection\nforward stepwise selection\n\nfor models of different sizes.\n\nYou could reproduce this as a Quarto table if desired."
+  },
+  {
+    "objectID": "Week2.html#backward-stepwise-selection-1",
+    "href": "Week2.html#backward-stepwise-selection-1",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Backward Stepwise Selection",
+    "text": "Backward Stepwise Selection\nSuppose again that\n\\[\n\\mathbf{X}=(X_1,X_2,X_3).\n\\]\nQuestion:\nWhat sequence of models would we consider using backward stepwise selection?"
+  },
+  {
+    "objectID": "Week2.html#backward-stepwise-selection-2",
+    "href": "Week2.html#backward-stepwise-selection-2",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Backward Stepwise Selection",
+    "text": "Backward Stepwise Selection\n\nAlgorithm: Backward Stepwise Selection\n\nLet \\(\\mathcal{M}_p\\) denote the full model containing all \\(p\\) predictors.\nFor \\(k=p,p-1,\\ldots,1\\):\n\nConsider all \\(k\\) models obtained by removing one predictor from \\(\\mathcal{M}_k\\).\nChoose the best among these models and call it \\(\\mathcal{M}_{k-1}\\).\n\n“Best” is defined as the model with the smallest RSS or largest \\(R^2\\).\nSelect a single best model from\n\\[\n\\mathcal{M}_0,\\mathcal{M}_1,\\ldots,\\mathcal{M}_p\n\\]\nusing cross-validation, \\(C_p\\), AIC, BIC, or adjusted \\(R^2\\)."
+  },
+  {
+    "objectID": "Week2.html#backward-stepwise-selection-3",
+    "href": "Week2.html#backward-stepwise-selection-3",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Backward Stepwise Selection",
+    "text": "Backward Stepwise Selection\nBackward stepwise selection also considers\n\\[\n1+\\frac{p(p+1)}{2}\n\\]\nmodels.\nThis is much smaller than the\n\\[\n2^p\n\\]\nmodels required for best subset selection.\n\nHowever, backward stepwise selection is also a greedy procedure.\nIt is therefore not guaranteed to identify the globally best subset of predictors."
+  },
+  {
+    "objectID": "Week2.html#credit-card-data-best-subset-selection",
+    "href": "Week2.html#credit-card-data-best-subset-selection",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Credit Card Data: Best Subset Selection",
+    "text": "Credit Card Data: Best Subset Selection\n\nThe criteria may favor different model sizes because they apply different penalties for model complexity."
+  },
+  {
+    "objectID": "Week2.html#credit-card-data-sample-splitting",
+    "href": "Week2.html#credit-card-data-sample-splitting",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Credit Card Data: Sample Splitting",
+    "text": "Credit Card Data: Sample Splitting\n\nCross-validation or validation error can also be used to select among the candidate subset models."
+  },
+  {
+    "objectID": "Week2.html#summary-subset-selection",
+    "href": "Week2.html#summary-subset-selection",
+    "title": "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection",
+    "section": "Summary: Subset Selection",
+    "text": "Summary: Subset Selection\nBest Subset Selection\n\nSearches all possible subsets of predictors.\nCan identify the best model among the candidate subsets.\nRequires fitting up to\n\n\\[\n2^p\n\\]\nmodels.\n\nForward / Backward Stepwise Selection\n\nMuch more computationally efficient.\nConsider approximately\n\n\\[\n1+\\frac{p(p+1)}{2}\n\\]\nmodels. - Are greedy procedures. - Are not guaranteed to identify the best possible subset.\n\n\nQuestion:\nWhat should we do in practice?"
   }
 ]

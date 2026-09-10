@@ -11,11 +11,11 @@ Below is a tentative schedule of topics for the term. You can find the lecture s
 | Week | Topics | Lecture Slides | Tutorial | Assessments | Suggested Reading \[ISL\] |
 |:----------:|:-----------|:----------:|:-----------|:-----------|:-----------|
 | 1 | Introduction to Statistical Learning; Supervised Learning; Model Assessment | [HTML Slides](Week1.html)<br>[Recorded Lecture](https://youtu.be/OpLpm7I4btY)| \- | — | Ch. 2 |
-| 2 | K-Nearest Neighbours; Linear Regression; Model Assessment and Selection | \- | \- | \- | Ch. 3, 5 |
-| 3 | Shrinkage and Regularization | \- | \- | Assignment 1 Released, Sept. 23rd | Ch. 6 |
-| 4 | Classification: Bayes Classifier, \(k\)-NN, and Logistic Regression | \- | \- | \- | Ch. 4 |
-| 5 | Classification: Multiclass Logistic Regression and Discriminant Analysis | \- | \- | Assignment 1 Due, Oct. 7 | Ch. 4 |
-| 6 | Moving Beyond Linearity | \- | \- | \- | Ch. 7 |
+| 2 | Linear Regression; Model Assessment and Selection | \- | \- | \- | Ch. 3, 5 |
+| 3 | Shrinkage and Regularization | \- | \- | Assignment 1 Released, Sept. 23rd | Ch. 6 | 
+| 4 | Moving Beyond Linearity | \- | \- | \-  | Ch. 7 |
+| 5 | Classification: Bayes Classifier, kNN and Logistic Regression | \- | \- | Assignment 1 Due, Oct. 7 | Ch. 4 |
+| 6 | Classification: Multiclass Logistic Regression and Discriminant Analysis | \- | \- | \- | Ch. 4 |
 | 7 | Tree Based Methods: Decision Trees | \- | \- | \- | Ch. 8 |
 | 8 | **Reading Week** | \- | \- | \- | \- |
 | 9 | Tree Based Methods: Bagging, Random Forests, and Boosting | \- | \- | Midterm, Nov. 4 | Ch. 8 |
