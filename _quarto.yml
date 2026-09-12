@@ -4,8 +4,9 @@ project:
   render:
     - index.qmd
     - about.qmd
-    - Week*.qmd
+    - Week1.qmd
     - Course-Introduction.qmd
+    - Week2.qmd
 
 website:
   title: "STA314"

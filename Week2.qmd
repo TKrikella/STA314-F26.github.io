@@ -1,5 +1,5 @@
 ---
-title: "k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection"
+title: "Linear Regression, and Model Assessment/Selection"
 subtitle: "Week 2"
 format: 
   live-revealjs:
@@ -7,7 +7,7 @@ format:
     html-math-method: mathjax
     scrollable: true
     slide-number: "c/t"
-    footer: '<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;"><span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">k-Nearest Neighbours, Linear Regression, and Model Assessment/Selection</span><span style="flex: 1;"></span></div>'
+    footer: '<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;"><span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Linear Regression, and Model Assessment/Selection</span><span style="flex: 1;"></span></div>'
     smaller: true
     menu: 
       side: right
@@ -80,10 +80,40 @@ In summary, different $\hat{f}$ are simply different algorithms/methods/predicto
 
 ## Learning Outcomes for This Week
 
--   linear regression
--   cross validation
+By the end of this week, you will be able to... 
+
+- Explain and apply ordinary least squares (OLS) for fitting a linear regression model and interpret the resulting coefficient estimates.
+- Explain the need for model assessment and selection, including the distinction between training error and expected test error.
+- Apply validation-set, leave-one-out, and $k$-fold cross-validation to estimate test error and compare competing models.
+- Compare common model-selection criteria, including Mallows' $C_p$, adjusted $R^2$, AIC, and BIC.
+- Describe and compare subset-selection methods, including best subset, forward stepwise, and backward stepwise selection, and discuss their computational trade-offs.
 
 # Linear Regression: A Review 
+
+## Motivating Example 
+
+Chronic obstructive pulmonary disease (COPD) is a long-term lung condition that makes it progressively harder to breathe. 
+
+Despite the decreasing rates in cigarette smoking, COPD continues to be a problem.
+
+:::{.fragment}
+We wish to:
+
+  - (1) better understand the features that are associated with COPD, and 
+  - (2) predict COPD in new patients.
+::: 
+
+:::{.fragment}
+Since we care about the interpretability of the model, a natural choice is a linear model to estimate $f$!
+
+<br> 
+
+:::{.citation} 
+Kamis, A., Gadia, N., Luo, Z., Ng, S. X., & Thumbar, M. (2024). Obtaining the Most Accurate, Explainable Model for Predicting Chronic Obstructive Pulmonary Disease: Triangulation of Multiple Linear Regression and Machine Learning Methods. JMIR AI, 3, e58455.
+:::
+::: 
+
+
 
 ## Linear Regression 
 
@@ -125,6 +155,8 @@ $$
 + \cdots 
 + \hat{\beta}_p x_p^*.
 $$
+<br> 
+
 :::{.fragment}
 [Question]{style="color: maroon;"}: How do we estimate
 $\hat{\beta}_0, \ldots, \hat{\beta}_p$?
@@ -174,6 +206,26 @@ $$
 <textarea class="annotation-box"
           placeholder="Type notes here..."></textarea>
 
+## Motivating Example 
+
+:::::::: columns
+::::: {.column width="60%"}
+![](images/Week2-LRExample.png){width="75%" fig-align="center" height="60%"}
+:::::
+
+:::: {.column width="40%"}
+In the analysis of the paper our motivating example is based on, the **outcome** is the COPD rate in the population for a specific region. 
+
+They used the **features** on the left to define their linear model, and estimated the coefficients using OLS. 
+
+:::{.fragment}
+[Question]{style="color: maroon;"}: What is the interpretation of the coefficient associated with the smoking rate of the region? 
+::: 
+
+::::
+::::::::
+
+
 ## In Matrix Form 
 
 Using matrix notation,
@@ -212,7 +264,7 @@ $$
 
 ## Some Comments
 
-- We use the test MSE to evaluate the performance of a model, but the idea of estimating $f$ by minimizing the training MSE can be applied to (almost) all supervised learning problems. 
+- We use the **test MSE** to evaluate the performance of a model, but the idea of estimating $f$ by **minimizing the training MSE** can be applied to (almost) all supervised learning problems. 
 
 Specifically, 
 
@@ -236,7 +288,7 @@ whenever $\mathbf{X} \in \mathbb{R}^{n \times (p+1)}$ has full column rank.
 
 ## What is Random?
 
-The true parameters $\boldsymbol{\beta}$ are **fixed but unknown**.
+The true parameters $\boldsymbol{\beta}$ are [**fixed but unknown**]{style="color: maroon;"}.
 
 The training data
 
@@ -276,145 +328,91 @@ $$
 
 Assuming the linear model is correctly specified,
 
-[**Unbiasedness**]{style="color: maroon;"}
-
-$$
-\mathbb{E}[\hat{\boldsymbol{\beta}}]
-=
-\boldsymbol{\beta}.
-$$
-
-On average, OLS estimates the true coefficients correctly.
+- [**Unbiasedness**]{style="color: maroon;"}: $\mathbb{E}[\hat{\boldsymbol{\beta}}]=\boldsymbol{\beta}.$ 
 
 :::{.fragment}
-[**Variance**]{style="color: maroon;"}
-
+- The [**covariance matrix**]{style="color: maroon;"} of $\hat{\boldsymbol{\beta}}$ is: 
 $$
 \operatorname{Cov}(\hat{\boldsymbol{\beta}})
 =
 \sigma^2
 (\mathbf{X}^{\intercal}\mathbf{X})^{-1}.
 $$
+::: 
 
-Different training samples produce different estimates of
-$\boldsymbol{\beta}$.
+:::{.fragment}
+Together, these determine the [**expected squared estimation error ($\ell_2$)**]{style="color: maroon;"}:
+
+$$
+\boxed{
+E\left[\|\hat{\beta}-\beta\|_2^2\right]
+=
+\sigma^2\operatorname{trace}\left[(X^\top X)^{-1}\right].
+}
+$$
+:::
+
+## What Affects Estimation Error?
+
+Consider the simple case where the predictors are orthogonal and standardized:
+
+$$
+X^\top X = nI_{p+1}.
+$$
+In this case, the $\ell_2$ estimation error is:
+
+$$
+\boxed{
+E\left[\|\hat{\beta}-\beta\|_2^2\right]
+=
+\frac{\sigma^2(p+1)}{n}.
+}
+$$
+
+:::{.fragment}
+This tells us that estimation error:
+
+- $\uparrow$ as the **noise $\sigma^2$ increases**
+- $\uparrow$ as the **number of predictors $p$ increases**
+- $\downarrow$ as the **sample size $n$ increases**
+:::
+
+:::{.fragment style="text-align: center;"}
+[**Even though OLS is unbiased, its estimates can have high variance.**]{style="color: maroon;"}
 :::
 
 ## Important Considerations 
 
-Estimation of $\mathbf{\beta}$ 
+**Estimation of $\mathbf{\beta}$ **
 
   - How close is the point estimation $\hat{\mathbf{\beta}}$ to the true $\hat{\mathbf{\beta}}$
   - (Inference) Can we provide confidence intervals and conduct hypothesis testing of $\hat{\mathbf{\beta}}$? 
 
 :::{.fragment}
-Prediction of $Y$ at $X^* = \mathbf{x^*}$ 
+**Prediction of $Y$ at $X^* = \mathbf{x^*}$ **
 
   - How accurate is the point prediction $\hat{f}(\mathbf{x^*}) = \mathbf{x^*}^{\intercal}\hat{\mathbf{\beta}}$? 
   - (Inference) Can we further provide prediction intervals of $Y$? 
 ::: 
 
 :::{.fragment}
-Variable (Model) Selection 
+**Variable (Model) Selection**
 
   - Do all predictors help to explain $Y$, or is there only a subset of the predictors that are useful? (we will discuss this later!)
 :::
 
 ## Summary 
 
-# Model Assessment and Selection
+- Linear regression, although simple, remains a very popular model because of its simplicity and interpretability 
+- When fitting a linear model to training data, the problem is reduced to estimating the coefficients, $\beta_i$, $i = 0,...,p$ 
+- We can use ordinary least squares (OLS) to do this estimation 
 
-## Review
+    - the OLS approach involves minimizing the **training MSE** to estimate $\hat{f}$
+    - OLS estimates of the coefficients are unbiased
 
-We have covered two methods of estimating $f$: kNN and linear regression.
+- Once we have a linear model, how do we assess the performance? And how can we select models that better fit the data?
 
-kNN is a non-parametric approach (data driven), while linear regression is a parametric approach, since we are assuming the relationship between $X$ and $Y$ is linear. 
-
-## Review
-
-To estimate the coefficients related to linear regression, we covered the OLS approach:
-
-$$
-\hat{f}(\mathbf{x}) = \mathbf{x}^{\intercal}\hat{\boldsymbol{\beta}},
-$$
-
-where
-
-$$
-\hat{\boldsymbol{\beta}}
-=
-\underset{\boldsymbol{\alpha}}{\arg\min}
-\left\|
-\mathbf{y} - \mathbf{X}\boldsymbol{\alpha}
-\right\|_2^2.
-$$
-
-:::{.fragment}
-We have also learned some statistical properties of 
-$\hat{\boldsymbol{\beta}}$ under the linear model
-
-$$
-Y = \beta_0 + X_1\beta_1 + \cdots + X_p\beta_p + \epsilon.
-$$
-
-- Unbiasedness
-- Estimation error ($\ell_2$-norm)
-- Inference (confidence intervals and hypothesis testing)
-:::
-
-
-## Why Consider Alternatives to OLS?
-
-There are two main motivations for considering alternative fitting procedures to OLS.
-
-[Prediction / Estimation]{style="color: maroon;"}
-
-The OLS estimator
-
-$$
-\hat{\boldsymbol{\beta}}
-=
-(\mathbf{X}^{\intercal}\mathbf{X})^{-1}
-\mathbf{X}^{\intercal}\mathbf{y}
-$$
-
-can have large variance when $p$ is large.
-
-:::{.fragment}
-In particular, if $p > n$, the OLS estimator is not unique and its variance is infinite.
-:::
-
-:::{.fragment}
-[Interpretability]{style="color: maroon;"}
-
-By removing irrelevant features -- that is, by setting some coefficient estimates to zero -- we can obtain a more **parsimonious** and interpretable model.
-:::
-
-
-## What Are the Alternatives?
-
-There are three broad alternatives to fitting OLS using all $p$ predictors.
-
-:::{.fragment}
-1. **Subset Selection**
-
-   Identify a subset of the $p$ predictors that we believe are related to the response, and fit a model using OLS on the selected predictors.
-:::
-
-:::{.fragment}
-2. **Shrinkage**
-
-   Fit a model involving all $p$ predictors, but shrink the estimated coefficients towards zero relative to the OLS estimates.
-
-   This is also known as **regularization** and can reduce variance. Some shrinkage methods can also perform variable selection.
-:::
-
-:::{.fragment}
-3. **Dimension Reduction**
-
-   Project the $p$ predictors into an $r$-dimensional subspace, where $r < p$, and use the resulting $r$ projections as new predictors in a linear regression model.
-:::
-
+# Model Assessment
 
 ## How Do We Choose Among Models?
 
@@ -447,9 +445,7 @@ $$
 $$
 
 :::{.fragment}
-[Question]{style="color: maroon;"}: Which model should we choose?
-
-Ideally, we choose the model with the **smaller expected MSE**.
+Ideally, we choose the model with the [**smaller expected test MSE**]{style="color: maroon;"}.
 :::
 
 
@@ -491,37 +487,28 @@ $$
 [Question]{style="color: maroon;"}: What if we don't have an independent test set?
 :::
 
+## Model Assessment
 
-## Model Selection
+When we do not have a test set, there are two common approaches to model assessment.
 
-When we do not have an independent test set, there are two common approaches to model selection.
+<br> 
 
 :::{.fragment}
-### 1. Estimate the expected test error
+[**Estimate the expected test error**]{style="color: maroon;"}
 
 We can manually create a "test set" using **data-splitting techniques**:
-
-- Validation set approach
-- Cross-validation
 :::
 
 :::{.fragment}
-### 2. Adjust the training error
+[**Adjust the training error**]{style="color: maroon;"}
 
 Alternatively, we can adjust the training error to account for **model complexity**:
-
-- Mallows' $C_p$
-- Adjusted $R^2$
-- AIC
-- BIC
 :::
 
 
-# Cross-Validation
+## Direct Estimation of the Expected MSE: Data-Splitting Techniques
 
-## Estimating Expected Test Error
-
-One approach is to randomly split the available data to create a validation set that functions as a test set.
+One approach is to **randomly split** the available data to create a validation set that functions as a test set.
 
 :::{.fragment}
 [Validation set approach]{style="color: maroon;"}:
@@ -538,10 +525,10 @@ One approach is to randomly split the available data to create a validation set 
 
 ## Validation Set Approach
 
-Randomly divide the available observations into two parts:
+*Randomly* divide the available observations into two parts:
 
-- a **training set**
-- a **validation (hold-out) set**
+- a [**training set**]{style="color: maroon;"}
+- a [**validation (hold-out) set**]{style="color: maroon;"}
 
 :::{.fragment}
 The proportion assigned to each set depends on the application.
@@ -556,54 +543,24 @@ The resulting validation-set MSE provides an estimate of the expected test MSE.
 
 ## Validation Set Approach
 
-::: {.columns}
+Consider a dataset that has $n$ observations. 
 
-::: {.column width="45%"}
-### Training Set
+In the figure below, the 7th, 22nd, 13th observation are *randomly* assigned to the training set. 
 
-Used to **fit** the model.
+The 91st observation is *randomly* assigned to the validation set. 
 
-$$
-D^{train}
-$$
-:::
-
-::: {.column width="10%"}
-<div style="font-size: 2em; text-align: center; margin-top: 1.5em;">
-$\longrightarrow$
-</div>
-:::
-
-::: {.column width="45%"}
-### Validation Set
-
-Used to **evaluate** the fitted model.
-
-$$
-D^{val}
-$$
-:::
-
-:::
-
-:::{.fragment}
-The validation observations must **not** be used to fit the model.
-:::
+![](images/Week2-Validation.png){width="100%" fig-align="center"}
 
 
 ## Example: Auto Data
 
-Previously, we found that there appears to be a **non-linear relationship** between `mpg` and `horsepower`.
+This example is taken from the [ISL] textbook. 
 
-We might therefore consider polynomial regression models of different degrees.
+There is a **non-linear** relationship between mpg and horsepower.
 
-[Question]{style="color: maroon;"}: Does a cubic or higher-order polynomial provide a better fit?
+We might therefore consider comparing a linear model to other polynomials of higher degrees.
 
-<!-- IMAGE:
-Insert the Auto data plot from the original slide here.
-Original slide compares degree 1, degree 2, and degree 5 polynomial fits.
--->
-
+![](images/Week2-mpgExample.png){width="65%" fig-align="center"}
 
 ## Example: Auto Data
 
@@ -612,22 +569,10 @@ We randomly split the **392 observations** into:
 - 196 observations in the training set
 - 196 observations in the validation set
 
-We then compare linear regression models containing polynomial terms of different degrees.
-
-<!-- IMAGE:
-Insert the validation-error plots from the original lecture here.
-
-Left:
-Validation error for ONE random training/validation split.
-
-Right:
-Validation procedure repeated 10 times using different random splits.
--->
+![](images/Week2-validationComparison.png){width="100%" fig-align="center"}
 
 :::{.fragment}
-[Key observation]{style="color: maroon;"}:
-
-The estimated validation error can change substantially depending on the random split.
+[Key observation]{style="color: maroon;"}: The estimated validation error can change substantially depending on the random split.
 
 **One-time data splitting is not very stable.**
 :::
@@ -638,13 +583,13 @@ The estimated validation error can change substantially depending on the random 
 The validation set approach has two important drawbacks.
 
 :::{.fragment}
-**1. The estimate can be highly variable.**
+[**The estimate can be highly variable.**]{style="color: maroon;"}
 
 The estimated test error depends on which observations happen to be placed in the training set and which are placed in the validation set.
 :::
 
 :::{.fragment}
-**2. We fit the model using only part of the available data.**
+[**We fit the model using only part of the available data.**]{style="color: maroon;"}
 
 Since fewer observations are used for training, the fitted model may perform worse than a model fit using the entire data set.
 
@@ -654,9 +599,6 @@ As a result, the validation-set error may tend to **overestimate** the test erro
 :::{.fragment}
 [Question]{style="color: maroon;"}: How can we remedy these drawbacks?
 :::
-
-
-# Leave-One-Out Cross-Validation
 
 ## Leave-One-Out Cross-Validation (LOOCV)
 
@@ -674,12 +616,9 @@ $$
 (\mathbf{x}_2,y_2),\ldots,(\mathbf{x}_n,y_n).
 $$
 
-:::{.fragment}
-Using the training set, fit the model $\hat{f}_1$ and predict the response for the observation that was left out:
+## Leave-One-Out Cross-Validation (LOOCV)
 
-$$
-\hat{f}_1(\mathbf{x}_1).
-$$
+Using the training set, fit the model $\hat{f}_1$ and predict the response for the observation that was left out.
 
 The corresponding squared error is
 
@@ -690,7 +629,6 @@ $$
 y_1-\hat{f}_1(\mathbf{x}_1)
 \right)^2.
 $$
-:::
 
 :::{.fragment}
 But using only **one** observation to evaluate our model is not enough!
@@ -720,13 +658,9 @@ y_2-\hat{f}_2(\mathbf{x}_2)
 $$
 
 :::{.fragment}
-Repeat this procedure $n$ times, leaving out each observation once:
+Repeat this procedure $n$ times, leaving out each observation once to obtain $\text{MSE}_1,\text{MSE}_2,\ldots,\text{MSE}_n.$
 
-$$
-\text{MSE}_1,\text{MSE}_2,\ldots,\text{MSE}_n.
-$$
-
-The LOOCV estimate of the test MSE is
+The LOOCV estimate of the test MSE is the average of these $n$ test MSE estimates:
 
 $$
 \boxed{
@@ -742,37 +676,24 @@ $$
 
 ## Leave-One-Out Cross-Validation
 
-In LOOCV, every observation serves as the validation observation **exactly once**.
+In LOOCV, every observation serves as the validation observation **exactly once**. 
 
-<!-- IMAGE:
-Insert the LOOCV diagram from the original lecture here.
+The training set is shown in blue, the validation set in beige.
 
-Each row represents one split:
-- one observation in the validation set
-- the remaining n - 1 observations in the training set
--->
-
-:::{.fragment}
-Therefore:
-
-- We fit the model $n$ times.
-- Each model uses $n-1$ observations for training.
-- Every observation is used once to evaluate prediction performance.
-:::
-
+![](images/Week2-LOOCV.png){width="75%" fig-align="center"}
 
 ## LOOCV vs. the Validation Set Approach
 
 LOOCV has several advantages over the validation set approach.
 
 :::{.fragment}
-**More data are used for training.**
+[**More data are used for training.**]{style="color: maroon;"}
 
 Each LOOCV model is trained using $n-1$ observations, so its training set is almost the entire data set.
 :::
 
 :::{.fragment}
-**There is no randomness in the split.**
+[**There is no randomness in the split.**]{style="color: maroon;"}
 
 Unlike the validation set approach, repeating LOOCV on the same data produces the same result.
 :::
@@ -780,9 +701,6 @@ Unlike the validation set approach, repeating LOOCV on the same data produces th
 :::{.fragment}
 However, LOOCV can be **computationally expensive**, since the model generally needs to be fit $n$ times.
 :::
-
-
-# $k$-Fold Cross-Validation
 
 ## $k$-Fold Cross-Validation
 
@@ -797,11 +715,7 @@ Instead of leaving out one observation at a time, randomly divide the data into 
 :::
 
 :::{.fragment}
-Repeat this procedure for folds $2,3,\ldots,k$ to obtain
-
-$$
-\text{MSE}_1,\text{MSE}_2,\ldots,\text{MSE}_k.
-$$
+Repeat this procedure for folds $2,3,\ldots,k$ to obtain $\text{MSE}_1,\text{MSE}_2,\ldots,\text{MSE}_k.$
 :::
 
 :::{.fragment}
@@ -821,21 +735,11 @@ $$
 
 ## $k$-Fold Cross-Validation
 
-<!-- IMAGE:
-Insert the k-fold CV diagram from the original lecture here.
+![](images/Week2-CV.png){width="75%" fig-align="center"}
 
-Each row uses:
-- one fold as validation data
-- the remaining k - 1 folds as training data
--->
+## $k$-Fold Cross Validation 
 
-Some common choices are
-
-$$
-k=5
-\qquad \text{or} \qquad
-k=10.
-$$
+Some common choices are $k=5$ or $k=10$
 
 :::{.fragment}
 LOOCV is a special case of $k$-fold cross-validation where
@@ -846,33 +750,17 @@ $$
 :::
 
 
-## Comparing Cross-Validation Methods
+## Example: Auto Data 
 
-<!-- IMAGE:
-Insert the three simulation plots from the original lecture.
+![](images/Week2-LOOCVExample.png){width="75%" fig-align="center"}
 
-The plots compare:
-- True test MSE
-- LOOCV estimate
-- 10-fold CV estimate
+**Left**: LOOCV error curve 
 
-across model flexibility for three simulated data sets.
--->
-
-The figure compares:
-
-- the **true test MSE**
-- the **LOOCV estimate**
-- the **10-fold CV estimate**
-
-for three simulated data sets.
-
-
-# Cross-Validation Beyond Regression
+**Right**: 10-fold cross validation was run nine separate times each with a different random split.
 
 ## Cross-Validation for Classification
 
-Cross-validation can also be used for **classification problems**.
+We have focused on regression problems, but cross-validation can also be used for **classification problems**.
 
 For LOOCV, we split the data in exactly the same way as before.
 
@@ -917,14 +805,12 @@ $$
 
 ## Cross-Validation Can Be Tricky!
 
-[Key idea]{style="color: maroon;"}:
-
-**Independence between the fitted model and the validation set is essential.**
+[Key idea]{style="color: maroon;"}: **Independence between the fitted model and the validation set is essential.**
 
 The validation observations should **not be used to fit the model**.
 
 :::{.fragment}
-### A Tricky Example
+**A Tricky Example**
 
 Suppose we have:
 
@@ -941,14 +827,30 @@ We use the following two-step procedure:
 [Question]{style="color: maroon;"}:
 
 How should we use cross-validation to estimate the expected test MSE of this entire procedure?
+:::
+
+## Knowledge Check
+
+**1.** Suppose we use 10-fold cross-validation. How many times is each observation used for **validation**? How many times is it used for **training**?
+
+<textarea class="annotation-box"
+          placeholder="Type notes here..."></textarea>
+
+:::{.fragment}
+**2.** Suppose two models have training MSEs of 4.2 and 2.1, but their cross-validation MSEs are 5.0 and 7.3, respectively. Which model would you choose? What might explain these results?
 
 <textarea class="annotation-box"
           placeholder="Type notes here..."></textarea>
 :::
 
-# Model Selection Criteria
+:::{.fragment}
+**3.** Suppose we increase $k$ in $k$-fold cross-validation from $k=5$ to $k=10$. What happens to the size of the training set used in each fit? What happens to the size of each validation set?
 
-## Adjusting the Training Error
+<textarea class="annotation-box"
+          placeholder="Type notes here..."></textarea>
+:::
+
+## Avoid Estimating the Expected MSE: Adjust the Training Error
 
 Instead of directly estimating the expected test MSE using data splitting, we can adjust the **training error** to account for model complexity.
 
@@ -984,11 +886,7 @@ $$
 \hat{\beta}_px_{ip}.
 $$
 
-The residual for observation $i$ is
-
-$$
-y_i - \hat{f}(\mathbf{x}_i).
-$$
+The residual for observation $i$ is $y_i - \hat{f}(\mathbf{x}_i).$
 
 :::{.fragment}
 The residual sum of squares is
@@ -1002,27 +900,19 @@ y_i-\hat{f}(\mathbf{x}_i)
 \right)^2.
 $$
 
-Therefore,
-
-$$
-\frac{1}{n}RSS(\hat{f})
-$$
+Therefore, $\frac{1}{n}RSS(\hat{f})$
 
 is simply the **training MSE**.
 :::
 
 :::{.fragment}
-[Important]{style="color: maroon;"}:
-
-Training error generally **decreases as model complexity increases**.
+[**Important**]{style="color: maroon;"}: Training error generally **decreases as model complexity increases**.
 :::
 
 
 ## Mallows' $C_p$
 
-Let $p$ denote the number of parameters in the model.
-
-Mallows' $C_p$ is defined as
+Let $p$ denote the number of parameters in the model. Then, Mallows' $C_p$ is defined as
 
 $$
 C_p(\hat{f})
@@ -1056,7 +946,7 @@ $C_p$ is primarily used for selecting among linear regression models.
 :::
 
 
-## Adjusted $R^2$
+## $R^2$
 
 Recall that the total sum of squares is
 
@@ -1067,16 +957,9 @@ TSS
 (y_i-\bar{y})^2,
 $$
 
-where
+where $\bar{y} = \frac{1}{n} \sum_{i=1}^n y_i.$
 
-$$
-\bar{y}
-=
-\frac{1}{n}
-\sum_{i=1}^n y_i.
-$$
-
-The usual $R^2$ is
+Then, recall that
 
 $$
 R^2(\hat{f})
@@ -1086,13 +969,7 @@ R^2(\hat{f})
 $$
 
 :::{.fragment}
-Because $RSS$ can only decrease when predictors are added,
-
-$$
-R^2
-$$
-
-can only **increase** when predictors are added to the model.
+Because $RSS$ can only decrease when predictors are added, $R^2$ can only **increase** when predictors are added to the model.
 :::
 
 
@@ -1113,51 +990,14 @@ $$
 
 :::{.fragment}
 Unlike ordinary $R^2$, adjusted $R^2$ penalizes the inclusion of unnecessary predictors.
+
+While $RSS(\hat{f})$ always decreases as $p$ increases, $\frac{RSS(\hat{f})}{n-p-1}$ may increase or decrease.
 :::
 
-:::{.fragment}
-While
-
-$$
-RSS(\hat{f})
-$$
-
-always decreases as $p$ increases,
-
-$$
-\frac{RSS(\hat{f})}{n-p-1}
-$$
-
-may increase or decrease.
-:::
+<br> 
 
 :::{.fragment}
 We prefer models with **larger adjusted $R^2$**.
-:::
-
-
-## Adjusted $R^2$ vs. $R^2$
-
-For model selection,
-
-$$
-\underset{\hat{f}}{\arg\max}
-\ R_{\text{adj}}^2(\hat{f})
-$$
-
-is equivalent to
-
-$$
-\underset{\hat{f}}{\arg\min}
-\frac{RSS(\hat{f})}{n-p-1}.
-$$
-
-:::{.fragment}
-[Key idea]{style="color: maroon;"}:
-
-Ordinary $R^2$ rewards adding predictors.
-
-Adjusted $R^2$ asks whether the improvement in fit is large enough to justify the additional model complexity.
 :::
 
 :::{.fragment}
@@ -1167,15 +1007,9 @@ Both Mallows' $C_p$ and adjusted $R^2$ are primarily used for selecting among **
 
 ## AIC and BIC
 
-Suppose $\hat{f}$ is obtained by maximum likelihood estimation, and let
+Suppose $\hat{f}$ is obtained by maximum likelihood estimation, and let $L(\hat{f})$ denote the maximized likelihood.
 
-$$
-L(\hat{f})
-$$
-
-denote the maximized likelihood.
-
-The Akaike Information Criterion is
+The [**Akaike Information Criterion (AIC)**]{style="color: maroon;"} is
 
 $$
 \boxed{
@@ -1187,8 +1021,10 @@ AIC(\hat{f})
 }
 $$
 
+[Note]{style="color: maroon;"}: In the linear model with $\epsilon_i \sim N(0, \sigma^2)$, $AIC(\hat{f})$ is proportional to $C_p(\hat{f})$, selecting the same model.
+
 :::{.fragment}
-The Bayesian Information Criterion is
+The [**Bayesian Information Criterion (BIC)**]{style="color: maroon;"} is
 
 $$
 \boxed{
@@ -1199,6 +1035,8 @@ BIC(\hat{f})
 (\log n)p
 }
 $$
+
+[Note]{style="color: maroon;"}: BIC places a heavier penality on models with many predictors, and hense results in selecting smaller-size models compared to the AIC and $C_p$.
 :::
 
 
@@ -1216,30 +1054,23 @@ $$
 For both AIC and BIC, we select the model with the **smallest value**.
 :::
 
-:::{.fragment}
-BIC uses the penalty
-
-$$
-(\log n)p,
-$$
-
-which is typically larger than the AIC penalty
-
-$$
-2p.
-$$
-
-Therefore, BIC tends to favor **smaller models**.
-:::
+<br> 
 
 :::{.fragment}
-In a Gaussian linear regression model, AIC is closely related to Mallows' $C_p$ and can select the same model.
+
+To compute AIC and BIC, we need to specify the likelihood, i.e. the distributi9on of $Y|X$, and to compute the maximum likelihood estimator
 :::
 
+<br> 
+
+:::{.fragment}
+
+AIC and BIC can also be used for selecting parametric models in classification problems.
+:::
 
 ## AIC and BIC
 
-To calculate AIC or BIC, we must specify a likelihood -- that is, a probability model for
+To calculate AIC or BIC, we must specify a likelihood, i.e. a probability model for
 
 $$
 Y \mid X.
@@ -1252,7 +1083,7 @@ Unlike $C_p$ and adjusted $R^2$, AIC and BIC can also be used for other parametr
 :::
 
 
-## Example Revisited
+## Example
 
 Suppose we are comparing
 
@@ -1270,13 +1101,7 @@ Their fitted predictors are
 $$
 \hat{f}_1(\mathbf{x})
 =
-\hat{\alpha}_0+\hat{\alpha}_1x_1
-$$
-
-and
-
-$$
-\hat{f}_2(\mathbf{x})
+\hat{\alpha}_0+\hat{\alpha}_1x_1\quad  \text{and} \quad \hat{f}_2(\mathbf{x})
 =
 \hat{\beta}_0+\hat{\beta}_1x_1+\hat{\beta}_2x_2.
 $$
@@ -1304,7 +1129,7 @@ y_i-\hat{\beta}_0-\hat{\beta}_1x_{i1}-\hat{\beta}_2x_{i2}
 $$
 
 
-## Example: Model Selection Criteria
+## Example
 
 For Model 1,
 
@@ -1380,6 +1205,25 @@ However, data splitting also has drawbacks:
 - Theoretical guarantees for the selected model may be difficult to obtain.
 :::
 
+## Knowledge Check
+
+**1.** Suppose we fit five nested linear regression models, where each model adds one additional predictor. The training RSS decreases for every model.
+
+**Should we conclude that the model with the smallest RSS is the best model?**
+
+<textarea class="annotation-box"
+          placeholder="Type notes here..."></textarea>
+          
+<br>
+
+:::{.fragment}
+**2.** Suppose we want to choose between several $k$-Nearest Neighbours models.
+
+**Which of the model-selection approaches we have discussed would you use?**
+
+<textarea class="annotation-box"
+          placeholder="Type notes here..."></textarea>
+:::
 
 ## What's Next?
 
@@ -1395,37 +1239,92 @@ We now have tools for comparing models:
 Next, we apply these tools to **model selection under the linear model**.
 :::
 
+# Model Selection 
+
+## Review
+
+To estimate the coefficients related to linear regression (in order to estimate $f$), we covered the OLS approach:
+
+$$
+\hat{f}(\mathbf{x}) = \mathbf{x}^{\intercal}\hat{\boldsymbol{\beta}},
+$$
+
+where
+
+$$
+\hat{\boldsymbol{\beta}}
+=
+\underset{\boldsymbol{\alpha}}{\arg\min}
+\left\|
+\mathbf{y} - \mathbf{X}\boldsymbol{\alpha}
+\right\|_2^2.
+$$
+
+:::{.fragment}
+We have also learned some statistical properties of 
+$\hat{\boldsymbol{\beta}}$ under the linear model
+
+$$
+Y = \beta_0 + X_1\beta_1 + \cdots + X_p\beta_p + \epsilon.
+$$
+
+- Unbiasedness
+- Estimation error ($\ell_2$-norm)
+:::
+
+
+## Why Consider Alternatives to OLS?
+
+There are two main motivations for considering alternative fitting procedures to OLS.
+
+[Prediction / Estimation]{style="color: maroon;"}
+
+The OLS estimator
+
+$$
+\hat{\boldsymbol{\beta}}
+=
+(\mathbf{X}^{\intercal}\mathbf{X})^{-1}
+\mathbf{X}^{\intercal}\mathbf{y}
+$$
+
+can have large variance when $p$ is large.
+
+:::{.fragment}
+In particular, if $p > n$, the OLS estimator is not unique and its variance is infinite.
+:::
+
+:::{.fragment}
+[Interpretability]{style="color: maroon;"}
+
+By removing irrelevant features -- that is, by setting some coefficient estimates to zero -- we can obtain a more **parsimonious** and interpretable model.
+:::
+
+
+## What Are the Alternatives?
+
+1. [**Subset Selection**]{style="color: maroon;"}: Identify a subset of the $p$ predictors that we believe are related to the response, and fit a model using OLS on the selected predictors. 
+    
+    - Best subset selection
+    - Stepwise selection
+
+:::{.fragment}
+2. [**Shrinkage**]{style="color: maroon;"}:Fit a model involving all $p$ predictors, but shrink the estimated coefficients towards zero relative to the OLS estimates.
+
+   This is also known as **regularization** and can reduce variance. Some shrinkage methods can also perform variable selection. 
+   
+      - Ridge
+      - Lasso
+:::
+
+:::{.fragment}
+3. [**Dimension Reduction**]{style="color: maroon;"}:Project the $p$ predictors into an $r$-dimensional subspace, where $r < p$, and use the resulting $r$ projections as new predictors in a linear regression model. 
+   
+      - We will discuss later in the term
+:::
+
 
 # Subset Selection
-
-## Model Selection in Linear Regression
-
-Instead of fitting OLS using all available predictors, we can consider several alternatives.
-
-[Subset Selection]{style="color: maroon;"}
-
-Identify a subset of the $p$ predictors and fit OLS using only those predictors.
-
-- Best subset selection
-- Stepwise selection
-
-:::{.fragment}
-[Shrinkage Regression]{style="color: maroon;"}
-
-- Ridge regression
-- Lasso
-:::
-
-:::{.fragment}
-[Dimension Reduction]{style="color: maroon;"}
-
-Project the predictors into a lower-dimensional space.
-
-We will return to dimension reduction later when we discuss PCA.
-:::
-
-
-# Best Subset Selection
 
 ## Best Subset Selection
 
@@ -1452,44 +1351,17 @@ If we want to fit a linear regression model, what are **all possible subsets** o
 
 2. For $k=1,\ldots,p$:
 
-   a. Fit all
-   $$
-   {p \choose k}
-   $$
-   models containing exactly $k$ predictors.
+   a. Fit all ${p \choose k}$ models containing exactly $k$ predictors.
 
-   b. Select the best model among these models and call it $\mathcal{M}_k$.
+   b. Select the best model among these models and call it $\mathcal{M}_k$. Here, "best" can be defined as the model with the smallest RSS, or equivalently the largest $R^2$.
 
-   "Best" can be defined as the model with the smallest RSS, or equivalently the largest $R^2$.
-
-3. Select a single best model from
-
-   $$
-   \mathcal{M}_0,\mathcal{M}_1,\ldots,\mathcal{M}_p
-   $$
-
-   using cross-validation, $C_p$, AIC, BIC, or adjusted $R^2$.
+3. Select a single best model from $ \mathcal{M}_0,\mathcal{M}_1,\ldots,\mathcal{M}_p$ using cross-validation, $C_p$, AIC, BIC, or adjusted $R^2$.
 :::
 
-
-## Best Subset Selection
-
-[Question]{style="color: maroon;"}:
-
-Why can we use **RSS** to choose the best model among models containing exactly the same number of predictors?
-
-<textarea class="annotation-box"
-          placeholder="Type notes here..."></textarea>
-
-:::{.fragment}
-[Question]{style="color: maroon;"}:
-
-Can we use RSS or ordinary $R^2$ to choose the final model across **different subset sizes**?
-
-<textarea class="annotation-box"
-          placeholder="Type notes here..."></textarea>
-:::
-
+:::{.incremental}
+- Step 2 identifies the best model for each subset size. Why can we use $R^2$ here? 
+- In Step 3, can we use $RSS$ or $R^2$?
+::: 
 
 ## Computational Cost of Best Subset Selection
 
@@ -1528,9 +1400,6 @@ This becomes computationally expensive very quickly as $p$ increases.
 The same general idea can be applied to other models, such as logistic regression, although the criterion used to compare models may differ.
 :::
 
-
-# Forward Stepwise Selection
-
 ## Forward Stepwise Selection
 
 Suppose again that
@@ -1539,12 +1408,7 @@ $$
 \mathbf{X}=(X_1,X_2,X_3).
 $$
 
-[Question]{style="color: maroon;"}:
-
 What sequence of models would we consider using **forward stepwise selection**?
-
-<textarea class="annotation-box"
-          placeholder="Type notes here..."></textarea>
 
 
 ## Forward Stepwise Selection
@@ -1558,17 +1422,9 @@ What sequence of models would we consider using **forward stepwise selection**?
 
    a. Consider all $p-k$ models that add one additional predictor to $\mathcal{M}_k$.
 
-   b. Choose the best among these models and call it $\mathcal{M}_{k+1}$.
+   b. Choose the best among these models and call it $\mathcal{M}_{k+1}$. Here, "best" is defined as the model with the smallest RSS or largest $R^2$.
 
-   "Best" is defined as the model with the smallest RSS or largest $R^2$.
-
-3. Select a single best model from
-
-   $$
-   \mathcal{M}_0,\mathcal{M}_1,\ldots,\mathcal{M}_p
-   $$
-
-   using cross-validation, $C_p$, AIC, BIC, or adjusted $R^2$.
+3. Select a single best model from $\mathcal{M}_0,\mathcal{M}_1,\ldots,\mathcal{M}_p$ using cross-validation, $C_p$, AIC, BIC, or adjusted $R^2$.
 :::
 
 
@@ -1578,13 +1434,7 @@ What sequence of models would we consider using **forward stepwise selection**?
 
 Forward stepwise selection is much more computationally efficient than best subset selection.
 
-At iteration $k$, we compare
-
-$$
-p-k
-$$
-
-models.
+At iteration $k$, we compare $p-k$ models.
 
 Therefore, the total number of models considered is
 
@@ -1596,13 +1446,7 @@ $$
 \frac{p(p+1)}{2}.
 $$
 
-:::{.fragment}
-This is much smaller than
-
-$$
-2^p.
-$$
-:::
+This is much smaller than $2^p.$
 
 :::{.fragment}
 [Disadvantage]{style="color: maroon;"}:
@@ -1617,27 +1461,8 @@ Therefore, it is not guaranteed to identify the best model among all possible su
 
 ## Example: Credit Card Data
 
-The original lecture compares the predictors selected by:
 
-- best subset selection
-- forward stepwise selection
-
-for models of different sizes.
-
-<!-- IMAGE OR TABLE:
-Original slide lists:
-
-# Variables | Best subset | Forward stepwise
-1 | rating | rating
-2 | rating, income | rating, income
-3 | rating, income, student | rating, income, student
-4 | cards, income, student, limit | rating, income, student, limit
--->
-
-You could reproduce this as a Quarto table if desired.
-
-
-# Backward Stepwise Selection
+![](images/Week2 - CreditCard.png){width="100%" fig-align="center"}
 
 ## Backward Stepwise Selection
 
@@ -1647,12 +1472,8 @@ $$
 \mathbf{X}=(X_1,X_2,X_3).
 $$
 
-[Question]{style="color: maroon;"}:
 
 What sequence of models would we consider using **backward stepwise selection**?
-
-<textarea class="annotation-box"
-          placeholder="Type notes here..."></textarea>
 
 
 ## Backward Stepwise Selection
@@ -1666,37 +1487,19 @@ What sequence of models would we consider using **backward stepwise selection**?
 
    a. Consider all $k$ models obtained by removing one predictor from $\mathcal{M}_k$.
 
-   b. Choose the best among these models and call it $\mathcal{M}_{k-1}$.
+   b. Choose the best among these models and call it $\mathcal{M}_{k-1}$. Here, "best" is defined as the model with the smallest RSS or largest $R^2$.
 
-   "Best" is defined as the model with the smallest RSS or largest $R^2$.
-
-3. Select a single best model from
-
-   $$
-   \mathcal{M}_0,\mathcal{M}_1,\ldots,\mathcal{M}_p
-   $$
-
-   using cross-validation, $C_p$, AIC, BIC, or adjusted $R^2$.
+3. Select a single best model from $\mathcal{M}_0,\mathcal{M}_1,\ldots,\mathcal{M}_p$ using cross-validation, $C_p$, AIC, BIC, or adjusted $R^2$.
 :::
 
 
 ## Backward Stepwise Selection
 
-Backward stepwise selection also considers
+Backward stepwise selection also considers $1+\frac{p(p+1)}{2}$ models.
 
-$$
-1+\frac{p(p+1)}{2}
-$$
+This is much smaller than the $2^p$ models required for best subset selection.
 
-models.
-
-This is much smaller than the
-
-$$
-2^p
-$$
-
-models required for best subset selection.
+<br> 
 
 :::{.fragment}
 However, backward stepwise selection is also a **greedy procedure**.
@@ -1705,60 +1508,28 @@ It is therefore not guaranteed to identify the globally best subset of predictor
 :::
 
 
-## Credit Card Data: Best Subset Selection
+## Credit Card Data: Best Subset Selection via Mallow's $C_p$, BIC and adjusted $R^2$
 
-<!-- IMAGE:
-Insert original slide showing model selection for the Credit Card data using:
-- Mallows' Cp
-- BIC
-- Adjusted R^2
--->
-
-The criteria may favor different model sizes because they apply different penalties for model complexity.
-
+![](images/Week2-creditCardComparison.png){width="100%" fig-align="center"}
 
 ## Credit Card Data: Sample Splitting
 
-<!-- IMAGE:
-Insert original slide showing model selection using sample splitting / validation error.
--->
+![](images/Week2-creditCardComparison2.png){width="100%" fig-align="center"}
 
-Cross-validation or validation error can also be used to select among the candidate subset models.
+## Summary of This Week
 
+- **Linear regression** is a parametric approach to statistical learning and we can fit the model using **ordinary least squares (OLS)**.
 
-# Summary
+- **Data-splitting methods** can help us estimate test error
+    - one single split is unstable  
+    - can use these methods to compare both parametric and non-parametric models
 
-## Summary: Subset Selection
+- **Complexity-adjusted criteria** are tools to help us compare *parametric* models:
+    - different criteria optimize different version of the fit-complexity trade-off
 
-[Best Subset Selection]{style="color: maroon;"}
+- We introduced **subset selection** for choosing which predictors to include in the model
+    - best subset selection is computationally expensive, so forward/backward selection, although greedy, are much more realistic
 
-- Searches all possible subsets of predictors.
-- Can identify the best model among the candidate subsets.
-- Requires fitting up to
+**Next Week**: Shrinkage + Regularization 
 
-$$
-2^p
-$$
-
-models.
-
-:::{.fragment}
-[Forward / Backward Stepwise Selection]{style="color: maroon;"}
-
-- Much more computationally efficient.
-- Consider approximately
-
-$$
-1+\frac{p(p+1)}{2}
-$$
-
-models.
-- Are greedy procedures.
-- Are **not guaranteed** to identify the best possible subset.
-:::
-
-:::{.fragment}
-[Question]{style="color: maroon;"}:
-
-What should we do in practice?
-:::
+**Announcements**: Tutorials will begin on September 21st, check ACORN for location 
