@@ -16,6 +16,17 @@ I hope this course leaves you with not only a strong foundation in statistical m
 
 -   Announcements will be through [Quercus](https://q.utoronto.ca/courses/462956) and here, on the course website.
 
+## Office Hours 
+
+All office hours are conducted through Zoom. See [Quercus](https://q.utoronto.ca/courses/462956) for the Zoom links. 
+
+::: {.table-responsive}
+| Monday | Tuesday | Wednesday | Thursday | Friday |
+|:---:|:---:|:---:|:---:|:---:|
+| **Instructor** | **Yahang** | **Yichen** | **Emmett** | **Rodrigo** |
+| 1:00–2:00 PM | 2:00–3:00 PM | 1:00–2:00 PM | 3:00–4:00 PM | 9:00–10:00 AM |
+:::
+
 ## Course Information
 
 All information can be found in the [Syllabus](STA314-Syllabus.pdf).

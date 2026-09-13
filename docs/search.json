@@ -1335,5 +1335,12 @@
     "title": "Linear Regression, and Model Assessment/Selection",
     "section": "Summary of This Week",
     "text": "Summary of This Week\n\nLinear regression is a parametric approach to statistical learning and we can fit the model using ordinary least squares (OLS).\nData-splitting methods can help us estimate test error\n\none single split is unstable\n\ncan use these methods to compare both parametric and non-parametric models\n\nComplexity-adjusted criteria are tools to help us compare parametric models:\n\ndifferent criteria optimize different version of the fit-complexity trade-off\n\nWe introduced subset selection for choosing which predictors to include in the model\n\nbest subset selection is computationally expensive, so forward/backward selection, although greedy, are much more realistic\n\n\nNext Week: Shrinkage + Regularization\nAnnouncements: Tutorials will begin on September 21st, check ACORN for location"
+  },
+  {
+    "objectID": "index.html#office-hours",
+    "href": "index.html#office-hours",
+    "title": "STA314",
+    "section": "Office Hours",
+    "text": "Office Hours\nAll office hours are conducted through Zoom. See Quercus for the Zoom links.\n\n\n\n\n\n\n\n\n\n\n\nMonday\nTuesday\nWednesday\nThursday\nFriday\n\n\n\n\nInstructor\nYahang\nYichen\nEmmett\nRodrigo\n\n\n1:00–2:00 PM\n2:00–3:00 PM\n1:00–2:00 PM\n3:00–4:00 PM\n9:00–10:00 AM"
   }
 ]
