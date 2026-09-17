@@ -21,13 +21,18 @@ webr:
     - ISLR2 
     - leaps 
     - glmnet
-persist: true
+  persist: true
+  
 editor: visual
+
 execute:
   echo: true
   warning: false
+  
 engine: knitr
 ---
+
+{{< include ./_extensions/r-wasm/live/_knitr.qmd >}}
 
 ## Review from Last Week
 
