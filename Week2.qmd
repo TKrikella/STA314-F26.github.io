@@ -1461,7 +1461,6 @@ Therefore, it is not guaranteed to identify the best model among all possible su
 
 ## Example: Credit Card Data
 
-
 ![](images/Week2 - CreditCard.png){width="100%" fig-align="center"}
 
 ## Backward Stepwise Selection

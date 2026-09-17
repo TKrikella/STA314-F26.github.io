@@ -1,0 +1,395 @@
+
+---
+title: "STA314 Tutorial 1"
+subtitle: "R Review and Linear Regression"
+author: "Teaching Team of STA314"
+date: "Fall 2026"
+output: pdf_document
+---
+
+# Quick R Review
+
+## Load and inspect the data
+
+We will use the `Credit` dataset from the `ISLR2` package.
+
+```{r load-data}
+library(ISLR2)
+data("Credit")
+```
+
+```{r inspect-data}
+# First six observations
+head(Credit)
+
+# Variable names
+names(Credit)
+
+# Structure and variable types
+str(Credit)
+
+# Number of observations and variables
+dim(Credit)
+```
+
+**Quick check:** What information does `str(Credit)` provide that
+`head(Credit)` does not?
+
+## Access variables and calculate summaries
+
+The `$` operator extracts one variable from a data frame.
+
+```{r access-variables}
+# Extract Income
+Credit$Income
+
+# First five Income values
+Credit$Income[1:5]
+
+# Summary statistics
+mean(Credit$Income)
+mean(Credit$Balance)
+max(Credit$Income)
+```
+
+Before running the following commands, predict what each will return.
+
+```{r predict-output}
+Credit$Balance[1:3]
+mean(Credit$Rating)
+```
+
+## Logical conditions and subsetting
+
+```{r subsetting}
+# Logical condition
+Credit$Student == "Yes"
+
+# Select all student rows
+Credit[Credit$Student == "Yes", ]
+
+# Select particular rows and columns
+Credit[
+  Credit$Student == "Yes",
+  c("Income", "Balance")
+]
+
+# Examine categorical variables
+levels(Credit$Student)
+levels(Credit$Region)
+table(Credit$Region)
+```
+
+Recall that `data[rows, columns]` specifies the observations and variables to
+retain.
+
+# Guided Example: Credit Card Data
+
+The `Credit` dataset contains simulated information on 400 individuals. We
+will use `Balance` as the response and consider predictors including `Income`,
+`Rating`, `Student`, and `Region`.
+
+## Explore Income and Balance
+
+```{r scatterplot}
+plot(
+  Credit$Income,
+  Credit$Balance,
+  xlab = "Income",
+  ylab = "Balance",
+  pch = 19
+)
+```
+
+Based only on this plot:
+
+1. Does there appear to be a relationship between Income and Balance?
+2. Does the relationship appear approximately linear?
+3. Is there substantial variability around the relationship?
+
+## Fit a simple linear regression
+
+Consider
+
+$$
+\operatorname{Balance}_i
+= \beta_0+\beta_1\operatorname{Income}_i+\epsilon_i.
+$$
+
+```{r simple-regression}
+fit_slr <- lm(
+  Balance ~ Income,
+  data = Credit
+)
+
+summary(fit_slr)
+coef(fit_slr)
+```
+
+The fitted model is approximately
+
+$$
+\widehat{\operatorname{Balance}}
+= 246.51+6.05(\operatorname{Income}).
+$$
+
+Because Income is recorded in thousands of dollars, the estimated slope means
+that an additional $\$1{,}000$ of Income is associated with an estimated 6.05
+unit increase in Balance, on average.
+
+### Add the fitted line
+
+```{r fitted-line}
+plot(
+  Credit$Income,
+  Credit$Balance,
+  xlab = "Income",
+  ylab = "Balance",
+  pch = 19
+)
+
+abline(
+  fit_slr,
+  col = "red",
+  lwd = 2
+)
+```
+
+### Examine the residuals
+
+```{r residual-plot}
+plot(
+  fitted(fit_slr),
+  residuals(fit_slr),
+  xlab = "Fitted values",
+  ylab = "Residuals",
+  pch = 19
+)
+
+abline(
+  h = 0,
+  col = "red",
+  lty = 2,
+  lwd = 2
+)
+```
+
+What pattern would we hope to observe if the linear model were appropriate?
+Do the residuals appear completely random?
+
+## Predictions and intervals
+
+Suppose we want predictions for individuals with Income equal to 20, 40, and
+80.
+
+```{r new-income-data}
+new_data <- data.frame(
+  Income = c(20, 40, 80)
+)
+
+new_data
+```
+
+### Point predictions
+
+```{r point-predictions}
+predict(
+  fit_slr,
+  newdata = new_data
+)
+```
+
+### Confidence intervals for the mean response
+
+```{r confidence-intervals}
+predict(
+  fit_slr,
+  newdata = new_data,
+  interval = "confidence",
+  level = 0.95
+)
+```
+
+### Prediction intervals for new individuals
+
+```{r prediction-intervals}
+predict(
+  fit_slr,
+  newdata = new_data,
+  interval = "prediction",
+  level = 0.95
+)
+```
+
+The prediction intervals are wider because they account for uncertainty about
+the mean response and individual variability around the regression line.
+
+## Multiple linear regression
+
+Now model Balance using Income, Rating, and Student status.
+
+```{r multiple-regression}
+fit_mlr <- lm(
+  Balance ~ Income + Rating + Student,
+  data = Credit
+)
+
+summary(fit_mlr)
+```
+
+Answer the following:
+
+1. Interpret the estimated Income coefficient while holding Rating and Student
+   status fixed.
+2. Interpret `StudentYes` while holding Income and Rating fixed.
+3. Is `StudentYes` statistically significant at the 5% level?
+
+## Region as a categorical predictor
+
+The `Region` variable has three levels.
+
+```{r examine-region}
+levels(Credit$Region)
+table(Credit$Region)
+```
+
+Explicitly set East as the reference category and fit a model using Region.
+
+```{r region-model}
+Credit$Region <- relevel(
+  Credit$Region,
+  ref = "East"
+)
+
+fit_region <- lm(
+  Balance ~ Region,
+  data = Credit
+)
+
+summary(fit_region)
+```
+
+Interpretation:
+
+- The intercept is the estimated mean Balance among individuals in the East.
+- `RegionSouth` is the estimated difference in mean Balance between the South
+  and East.
+- `RegionWest` is the estimated difference in mean Balance between the West
+  and East.
+
+The p-values test whether each regional difference is zero. They do not test
+whether all three regional means are equal simultaneously.
+
+### Examine the model matrix
+
+```{r region-model-matrix}
+head(
+  model.matrix(fit_region)
+)
+
+contrasts(Credit$Region)
+```
+
+Although Region has three categories, R creates only two dummy variables
+because East is the reference category.
+
+## Interaction between Income and Student status
+
+The additive model assumes the same Income slope for students and
+non-students. To allow different slopes, fit an interaction model.
+
+```{r interaction-model}
+fit_interaction <- lm(
+  Balance ~ Income * Student,
+  data = Credit
+)
+
+summary(fit_interaction)
+```
+
+In an R formula,
+
+```r
+Income * Student
+```
+
+is shorthand for
+
+```r
+Income + Student + Income:Student
+```
+
+The Income slope for non-students is:
+
+```{r nonstudent-slope}
+coef(fit_interaction)["Income"]
+```
+
+The Income slope for students is:
+
+```{r student-slope}
+coef(fit_interaction)["Income"] +
+  coef(fit_interaction)["Income:StudentYes"]
+```
+
+The p-value for `Income:StudentYes` tests whether the Income slopes differ
+between students and non-students.
+
+# Practice Exercise
+
+## 1. Interpretation
+
+Use the following model:
+
+```{r exercise-a}
+fit_A <- lm(
+  Balance ~ Income + Rating + Student,
+  data = Credit
+)
+
+summary(fit_A)
+```
+
+1. What is the estimated coefficient for `StudentYes`?
+2. Interpret it in one sentence.
+3. Is it statistically significant at the 5% level?
+
+## 2. Interaction
+
+```{r exercise-b}
+fit_B <- lm(
+  Balance ~ Income * Student,
+  data = Credit
+)
+
+summary(fit_B)
+```
+
+1. What is the Income slope for non-students?
+2. What is the Income slope for students?
+3. Is there evidence that the slopes differ?
+
+## 3. Prediction
+
+Use the multiple regression model to predict Balance for two individuals:
+
+- Person 1: Income = 40, Rating = 300, Student = No;
+- Person 2: Income = 40, Rating = 300, Student = Yes.
+
+```{r exercise-c}
+new_people <- data.frame(
+  Income = c(40, 40),
+  Rating = c(300, 300),
+  Student = c("No", "Yes")
+)
+
+predict(
+  fit_A,
+  newdata = new_people,
+  interval = "confidence",
+  level = 0.95
+)
+```
+
+Why do the two individuals have different predicted Balance values even though
+they have the same Income and Rating?
