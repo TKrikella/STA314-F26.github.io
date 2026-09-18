@@ -1346,350 +1346,350 @@
   {
     "objectID": "Week3.html#review-from-last-week",
     "href": "Week3.html#review-from-last-week",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Review from Last Week",
     "text": "Review from Last Week\nTo assess models and aid with model selection, we can use the following approaches:\nData Splitting\n\none-time split (unstable)\nmultiple splits (much better, but can be computationally expensive depending on the problem)\n\n\\(k\\)-Fold cross validation!\n\n\nTraining Error Adjustment\n\nwe discussed four different criterion\nwe need distributional information so we are limited to only using parametric methods"
   },
   {
     "objectID": "Week3.html#review-from-last-week-1",
     "href": "Week3.html#review-from-last-week-1",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Review from Last Week",
     "text": "Review from Last Week\nBest subset selection\n\nSearches across all \\(2^p\\) possible models.\nCan find the best model of each size, but quickly becomes computationally expensive.\n\nStepwise subset selection\n\nForward or backward stepwise selection is more computationally affordable.\nThese are greedy procedures, so they may miss a better model.\n\n\n\nCan we obtain a simpler, more stable model without searching over subsets?\nYes: shrinkage methods."
   },
   {
     "objectID": "Week3.html#learning-outcomes",
     "href": "Week3.html#learning-outcomes",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Learning Outcomes",
-    "text": "Learning Outcomes\nBy the end of this week, you should be able to:\n\nExplain how regularization trades a small increase in bias for a reduction in variance.\nFormulate ridge and lasso regression as penalized least-squares problems.\nCompare the effects of the \\(\\ell_1\\) and \\(\\ell_2\\) penalties on coefficient estimates.\nExplain why the lasso can perform variable selection while ridge regression cannot.\nUse cross-validation to select a regularization parameter."
+    "text": "Learning Outcomes\nBy the end of this week, you should be able to:\n\nExplain how shrinkage trades a small increase in bias for a reduction in variance.\nFormulate ridge and lasso regression as penalized least-squares problems.\nCompare the effects of the \\(\\ell_1\\) and \\(\\ell_2\\) penalties on coefficient estimates.\nExplain why the lasso can perform variable selection while ridge regression cannot.\nUse cross-validation to select a regularization parameter."
   },
   {
     "objectID": "Week3.html#shrinkage-methods-1",
     "href": "Week3.html#shrinkage-methods-1",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Shrinkage Methods",
     "text": "Shrinkage Methods\nWe can fit a model containing all \\(p\\) predictors while constraining or regularizing the coefficient estimates by shrinking the coefficient estimates towards zero.\n\nShrinkage can substantially reduce the variance of the fitted model.\n\n\nThe two best known techniques for shrinking the regression coefficients towards zero are the ridge regression and the lasso"
   },
   {
     "objectID": "Week3.html#ridge-regression",
     "href": "Week3.html#ridge-regression",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Ridge Regression",
     "text": "Ridge Regression\nRecall that the OLS fitting procedure estimates \\(\\beta_0,\\ldots,\\beta_p\\) using the values that minimize\n\\[\n\\frac{1}{n}\\sum_{i=1}^{n}\n\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_jx_{ij}\\right)^2.\n\\]\n\nRidge regression instead estimates \\(\\beta_0,\\ldots,\\beta_p\\) using that values that minimize\n\\[\n\\frac{1}{n}\\sum_{i=1}^{n}\n\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_jx_{ij}\\right)^2\n+\\lambda\\sum_{j=1}^{p}\\beta_j^2,\n\\]\nwhere \\(\\lambda\\geq 0\\) is a tuning (regularization) parameter, to be determined later."
   },
   {
     "objectID": "Week3.html#comments",
     "href": "Week3.html#comments",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Comments",
     "text": "Comments\n\\[\n\\widehat{\\boldsymbol\\beta}^{\\,R}_{\\lambda}\n=\\underset{\\beta_0,\\ldots,\\beta_p}{\\operatorname{argmin}}\n\\left\\{\n\\underbrace{\\frac{1}{n}\\sum_{i=1}^{n}\n\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_jx_{ij}\\right)^2}_{\\text{RSS}}\n+\n\\underbrace{\\lambda\\sum_{j=1}^{p}\\beta_j^2}_{\\text{shrinkage penalty}}\n\\right\\}.\n\\]\n\nWe usually denote the ridge regression estimator by \\(\\widehat{\\boldsymbol\\beta}^{\\,R}_{\\lambda}\\) because different \\(\\lambda\\)s produce different coefficient estimates\nWe usually do not penalize the intercept \\(\\beta_0\\).\nRidge accepts a slightly larger RSS in exchange for smaller coefficient magnitudes.\n\n\n\\(\\lambda\\) controls the balance between fitting the training data and shrinking the coefficients."
   },
   {
     "objectID": "Week3.html#what-does-lambda-do",
     "href": "Week3.html#what-does-lambda-do",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "What Does \\(\\lambda\\) Do?",
     "text": "What Does \\(\\lambda\\) Do?\n\\[\n\\widehat{\\boldsymbol\\beta}^{\\,R}_{\\lambda}\n=\\underset{\\beta_0,\\ldots,\\beta_p}{\\operatorname{argmin}}\n\\left\\{\n\\underbrace{\\frac{1}{n}\\sum_{i=1}^{n}\n\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_jx_{ij}\\right)^2}_{\\text{RSS}}\n+\n\\underbrace{\\lambda\\sum_{j=1}^{p}\\beta_j^2}_{\\text{shrinkage penalty}}\n\\right\\}.\n\\]\nWhat happens when \\(\\lambda=0\\)?\n\nWhat happens as \\(\\lambda\\) increases?"
   },
   {
     "objectID": "Week3.html#comments-1",
     "href": "Week3.html#comments-1",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Comments",
     "text": "Comments\nSelecting a good value for \\(\\lambda\\) is critical\nCross-validation could be used to select \\(\\lambda\\)\n\n\nIn practice, we recommend the standardized predictors for ridge regression since the penalty depends on the scale of each predictor.\nWe can use the formula\n\\[\\tilde{x}_{ij} = \\frac{x_{ij}}{\\sqrt{\\frac{1}{n}\\sum_{i=1}^n (x_{ij}-\\bar{x}_j)^2}}\\]\nAll standardized predictors have standard deviation equal to one."
   },
   {
     "objectID": "Week3.html#credit-card-data-example",
     "href": "Week3.html#credit-card-data-example",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Credit Card Data Example",
     "text": "Credit Card Data Example\n\n*Left Panel: each curve corresponds to the ridge regression coefficient estimate for one of the 10 variables, plotted as a function of \\(\\lambda\\)\nRight Panel: same ridge coefficient estimates, but we now display \\(||\\widehat{\\beta}_{\\lambda}^R||_2/||\\widehat{\\beta}||_2\\), where \\(\\widehat{\\beta}\\) denotes the OLS estimator."
   },
   {
     "objectID": "Week3.html#credit-card-data-example-1",
     "href": "Week3.html#credit-card-data-example-1",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Credit Card Data Example",
     "text": "Credit Card Data Example\n\nSquared bias (black), variance (green), and the test MSE (purple) for the ridge regression. The dashed lines indicate the smallest possible MSE.\n\nRidge regression improves over OLS in terms of MSE"
   },
   {
     "objectID": "Week3.html#advantages-of-ridge-regression",
     "href": "Week3.html#advantages-of-ridge-regression",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Advantages of Ridge Regression",
-    "text": "Advantages of Ridge Regression\nRidge can predict better than OLS when OLS estimates have high variance. - It reduces variance by accepting some bias.\n\nFor a fixed value of \\(\\lambda\\), ridge regression is computationally efficient. - It is much faster than best subset selection when \\(p\\) is large."
+    "text": "Advantages of Ridge Regression\nRidge can predict better than OLS when OLS estimates have high variance.\n\nIt reduces variance by accepting some bias.\n\n\nFor a fixed value of \\(\\lambda\\), ridge regression is computationally efficient.\n\nIt is much faster than best subset selection when \\(p\\) is large."
   },
   {
     "objectID": "Week3.html#a-limitation-of-ridge-regression",
     "href": "Week3.html#a-limitation-of-ridge-regression",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Limitation of Ridge Regression",
     "text": "A Limitation of Ridge Regression\nCan ridge regression perform variable selection by setting unimportant coefficients exactly equal to zero?\n\n\nNo. Ridge shrinks coefficients towards zero, but typically retains all \\(p\\) predictors with nonzero coefficients.\n\n\n\nRidge can improve prediction, but it does not automatically produce a sparse, easily interpreted model."
   },
   {
     "objectID": "Week3.html#the-lasso",
     "href": "Week3.html#the-lasso",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "The Lasso",
     "text": "The Lasso\nThe lasso penalizes the absolute values of the coefficients.\n\n\nSpecifically, the lasso coefficients, \\(\\widehat{\\mathbf{\\beta}}_{\\lambda}^L\\), minimize the quantity:\n\\[\n\\widehat{\\boldsymbol\\beta}^{\\,L}_{\\lambda}\n=\\underset{\\beta_0,\\ldots,\\beta_p}{\\operatorname{argmin}}\n\\left\\{\n\\frac{1}{n}\\sum_{i=1}^{n}\n\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_jx_{ij}\\right)^2\n+\\lambda\\sum_{j=1}^{p}|\\beta_j|\n\\right\\}.\n\\]\nwhere \\(\\lambda \\geq 0\\) is a tuning parameter, to be determined later.\n\nRidge uses the \\(\\ell_2\\) penalty: \\(\\|\\boldsymbol\\beta\\|_2^2=\\sum_{j=1}^{p}\\beta_j^2\\).\nThe lasso uses the \\(\\ell_1\\) penalty: \\(\\|\\boldsymbol\\beta\\|_1=\\sum_{j=1}^{p}|\\beta_j|\\)."
   },
   {
     "objectID": "Week3.html#what-makes-the-lasso-different",
     "href": "Week3.html#what-makes-the-lasso-different",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "What Makes the Lasso Different?",
     "text": "What Makes the Lasso Different?\nLike ridge regression, the lasso shrinks coefficient estimates towards zero.\n\nUnlike ridge regression, the lasso can force some coefficients to be exactly zero when \\(\\lambda\\) is sufficiently large.\n\n\nIt performs automatic variable selection.\nIt produces a sparse model when only a subset of predictors receive nonzero coefficients.\nThe value of \\(\\lambda\\) is usually chosen using cross-validation."
   },
   {
     "objectID": "Week3.html#credit-card-data-example-2",
     "href": "Week3.html#credit-card-data-example-2",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Credit Card Data Example",
     "text": "Credit Card Data Example\n\nAs the penalty increases, lasso coefficient paths reach exactly zero. This is what enables variable selection."
   },
   {
     "objectID": "Week3.html#the-magic-of-the-lasso",
     "href": "Week3.html#the-magic-of-the-lasso",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "The Magic of the Lasso",
     "text": "The Magic of the Lasso\nWhy does the lasso produce exact zero estimates, while ridge regression generally does not?\n\n\nThe answer comes from the geometry of the \\(\\ell_1\\) and \\(\\ell_2\\) constraint regions."
   },
   {
     "objectID": "Week3.html#another-formulation-for-ridge-regression-and-lasso",
     "href": "Week3.html#another-formulation-for-ridge-regression-and-lasso",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Another Formulation for Ridge Regression and Lasso",
     "text": "Another Formulation for Ridge Regression and Lasso\nThe lasso solves\n\\[\n\\underset{\\beta_0,\\ldots,\\beta_p}{\\operatorname{minimize}}\n\\quad\n\\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_jx_{ij}\\right)^2\n\\quad\\text{subject to}\\quad\n\\sum_{j=1}^{p}|\\beta_j|\\leq s.\n\\]\nRidge regression solves\n\\[\n\\underset{\\beta_0,\\ldots,\\beta_p}{\\operatorname{minimize}}\n\\quad\n\\sum_{i=1}^{n}\\left(y_i-\\beta_0-\\sum_{j=1}^{p}\\beta_jx_{ij}\\right)^2\n\\quad\\text{subject to}\\quad\n\\sum_{j=1}^{p}\\beta_j^2\\leq s.\n\\]\nHere, \\(s\\geq 0\\) is related to the penalty parameter \\(\\lambda\\)."
   },
   {
     "objectID": "Week3.html#least-squares-loss-functions",
     "href": "Week3.html#least-squares-loss-functions",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Least-Squares Loss Functions",
     "text": "Least-Squares Loss Functions\nConsider the loss function \\(L(\\beta_1,\\beta_2)=\\sum_{i=1}^{n}(y_i-x_{i1}\\beta_1-x_{i2}\\beta_2)^2.\\)\n\n\nEach contour contains coefficient pairs with the same RSS. The centre is the OLS solution."
   },
   {
     "objectID": "Week3.html#why-does-the-lasso-yield-zero-estimates",
     "href": "Week3.html#why-does-the-lasso-yield-zero-estimates",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Why Does the Lasso Yield Zero Estimates?",
     "text": "Why Does the Lasso Yield Zero Estimates?\n\n\nThe lasso constraint has corners on the axes. An RSS contour often first touches the diamond at a corner, making one coefficient exactly zero. The ridge constraint is smooth, so its solution rarely lies exactly on an axis."
   },
   {
     "objectID": "Week3.html#lasso-versus-ridge",
     "href": "Week3.html#lasso-versus-ridge",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Lasso versus Ridge",
     "text": "Lasso versus Ridge\nThe lasso’s ability to produce a sparse model is a major advantage when interpretability matters.\n But which method predicts better?\n\n\nThat depends on the structure of the true signal."
   },
   {
     "objectID": "Week3.html#when-the-true-model-is-not-sparse",
     "href": "Week3.html#when-the-true-model-is-not-sparse",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "When the True Model Is Not Sparse",
     "text": "When the True Model Is Not Sparse\n\nWhen many true coefficients are nonzero, ridge and lasso can have similar bias, while ridge may achieve lower variance and lower test MSE."
   },
   {
     "objectID": "Week3.html#when-the-true-model-is-sparse",
     "href": "Week3.html#when-the-true-model-is-sparse",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "When the True Model Is Sparse",
     "text": "When the True Model Is Sparse\n\nWhen only a small number of predictors truly matter, the lasso can outperform ridge by attaining both lower bias and lower variance."
   },
   {
     "objectID": "Week3.html#conclusions-on-lasso-versus-ridge",
     "href": "Week3.html#conclusions-on-lasso-versus-ridge",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Conclusions on Lasso versus Ridge",
     "text": "Conclusions on Lasso versus Ridge\n\nNeither ridge regression nor the lasso universally dominates the other.\nThe lasso often performs well when the response is related to a relatively small number of predictors.\nBoth methods can reduce variance at the expense of some bias.\nUnlike ridge regression, the lasso performs variable selection and may yield a more interpretable model."
   },
   {
     "objectID": "Week3.html#a-simple-example",
     "href": "Week3.html#a-simple-example",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nAssume that \\(n=p\\), \\(\\mathbf X=\\mathbf I_n\\), and the intercept is fixed at \\(\\beta_0=0\\).\n\nThen\n\\[\n\\begin{bmatrix}\ny_1\\\\ \\vdots\\\\ y_p\n\\end{bmatrix}\n=\n\\begin{bmatrix}\n\\beta_1\\\\ \\vdots\\\\ \\beta_p\n\\end{bmatrix}\n+\n\\begin{bmatrix}\n\\varepsilon_1\\\\ \\vdots\\\\ \\varepsilon_p\n\\end{bmatrix},\n\\]\nwhere\n\\[\n\\mathbb E(\\varepsilon_j)=0,\n\\qquad\n\\operatorname{Var}(\\varepsilon_j)=\\sigma^2,\n\\qquad j=1,\\ldots,p.\n\\]"
   },
   {
     "objectID": "Week3.html#a-simple-example-1",
     "href": "Week3.html#a-simple-example-1",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nOLS minimizes\n\\[\n\\sum_{j=1}^{p}(y_j-\\beta_j)^2.\n\\]\n\nTherefore,\n\\[\n\\widehat\\beta_j=y_j,\n\\qquad j=1,\\ldots,p.\n\\]\n\n\nHow do we get this?"
   },
   {
     "objectID": "Week3.html#a-simple-example-2",
     "href": "Week3.html#a-simple-example-2",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nRidge regression minimizes\n\\[\n\\sum_{j=1}^{p}(y_j-\\beta_j)^2\n+\\lambda\\sum_{j=1}^{p}\\beta_j^2.\n\\]\nThis leads to the ridge estimator\n\\[\n\\widehat\\beta_j^{\\,R}=\\frac{y_j}{1+\\lambda},\n\\qquad j=1,\\ldots,p.\n\\]\nSince \\(\\lambda\\geq 0\\), every estimated coefficient is shrunk towards zero."
   },
   {
     "objectID": "Week3.html#a-simple-example-3",
     "href": "Week3.html#a-simple-example-3",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nThe lasso minimizes\n\\[\n\\sum_{j=1}^{p}(y_j-\\beta_j)^2\n+\\lambda\\sum_{j=1}^{p}|\\beta_j|.\n\\]\nThis gives estimator\n\\[\n\\widehat\\beta_j^{\\,L}\n=\n\\begin{cases}\ny_j-\\lambda/2, & y_j&gt;\\lambda/2,\\\\\n0, & |y_j|\\leq\\lambda/2,\\\\\ny_j+\\lambda/2, & y_j&lt;-\\lambda/2.\n\\end{cases}\n\\]\n\nThe estimated coefficients from Lasso are also shrunk. The above shrinkage is known as the soft-thresholding"
   },
   {
     "objectID": "Week3.html#a-simple-example-4",
     "href": "Week3.html#a-simple-example-4",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\n\nRidge shrinks continuously. The lasso applies a threshold and creates an interval of exact zeros."
   },
   {
     "objectID": "Week3.html#a-simple-example-5",
     "href": "Week3.html#a-simple-example-5",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nRecall that \\(y_j=\\beta_j+\\varepsilon_j\\) and \\(\\widehat\\beta_j=y_j\\).\nBias:\n\\[\n\\mathbb E(\\widehat\\beta_j)\n=\\mathbb E(y_j)\n=\\beta_j.\n\\]\nVariance:\n\\[\n\\operatorname{Var}(\\widehat\\beta_j)\n=\\operatorname{Var}(\\varepsilon_j)\n=\\sigma^2.\n\\]\nThus, the OLS estimator is unbiased in this example."
   },
   {
     "objectID": "Week3.html#a-simple-example-6",
     "href": "Week3.html#a-simple-example-6",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nFor the \\(j\\)th coefficient,\n\\[\n\\begin{aligned}\n\\mathbb E\\left[(\\widehat\\beta_j-\\beta_j)^2\\right]\n&=\\left\\{\\mathbb E(\\widehat\\beta_j)-\\beta_j\\right\\}^2\n+\\operatorname{Var}(\\widehat\\beta_j)\\\\\n&=\\sigma^2.\n\\end{aligned}\n\\]\nAcross all \\(p\\) coefficients,\n\\[\n\\mathbb E\\left[\\sum_{j=1}^{p}(\\widehat\\beta_j-\\beta_j)^2\\right]\n=p\\sigma^2.\n\\]"
   },
   {
     "objectID": "Week3.html#a-simple-example-7",
     "href": "Week3.html#a-simple-example-7",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nRecall that\n\\[\n\\widehat\\beta_j^{\\,R}=\\frac{y_j}{1+\\lambda}\n=\\frac{\\beta_j+\\varepsilon_j}{1+\\lambda}.\n\\]\nExpected value and bias:\n\\[\n\\mathbb E(\\widehat\\beta_j^{\\,R})=\\frac{\\beta_j}{1+\\lambda},\n\\qquad\n\\operatorname{Bias}(\\widehat\\beta_j^{\\,R})\n=-\\frac{\\lambda\\beta_j}{1+\\lambda}.\n\\]\nVariance:\n\\[\n\\operatorname{Var}(\\widehat\\beta_j^{\\,R})\n=\\frac{\\sigma^2}{(1+\\lambda)^2}.\n\\]"
   },
   {
     "objectID": "Week3.html#a-simple-example-8",
     "href": "Week3.html#a-simple-example-8",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "A Simple Example",
     "text": "A Simple Example\nFor the \\(j\\)th coefficient,\n\\[\n\\begin{aligned}\n\\mathbb E\\left[(\\widehat\\beta_j^{\\,R}-\\beta_j)^2\\right]\n&=\\operatorname{Bias}(\\widehat\\beta_j^{\\,R})^2\n+\\operatorname{Var}(\\widehat\\beta_j^{\\,R})\\\\\n&=\\frac{\\lambda^2\\beta_j^2}{(1+\\lambda)^2}\n+\\frac{\\sigma^2}{(1+\\lambda)^2}.\n\\end{aligned}\n\\]\n\nAcross all \\(p\\) coefficients,\n\\[\n\\mathbb E\\left[\\sum_{j=1}^{p}(\\widehat\\beta_j^{\\,R}-\\beta_j)^2\\right]\n=\\frac{\\lambda^2}{(1+\\lambda)^2}\\sum_{j=1}^{p}\\beta_j^2\n+\\frac{p\\sigma^2}{(1+\\lambda)^2}.\n\\]\n\n\nRidge adds bias but reduces variance. The best \\(\\lambda\\) balances these two effects."
   },
   {
     "objectID": "Week3.html#selecting-lambda-by-cross-validation",
     "href": "Week3.html#selecting-lambda-by-cross-validation",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Selecting \\(\\lambda\\) by Cross-Validation",
     "text": "Selecting \\(\\lambda\\) by Cross-Validation\n\nAlgorithm: Choosing the regularization parameter, \\(\\lambda\\)\n\nChoose a grid of candidate values for \\(\\lambda\\).\nCompute the cross-validation error for each value.\nSelect \\(\\lambda^*\\) with the smallest cross-validation error.\nRefit the model using all training observations and \\(\\lambda^*\\)."
   },
   {
     "objectID": "Week3.html#credit-card-data-example-3",
     "href": "Week3.html#credit-card-data-example-3",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Credit Card Data Example",
     "text": "Credit Card Data Example\n\nCross-validation estimates predictive performance across a sequence of candidate values for \\(\\lambda\\)."
   },
   {
     "objectID": "Week3.html#beyond-ridge-and-lasso",
     "href": "Week3.html#beyond-ridge-and-lasso",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Beyond Ridge and Lasso",
     "text": "Beyond Ridge and Lasso\nThe elastic net combines \\(\\ell_1\\) and squared \\(\\ell_2\\) penalties:\n\\[\n\\underset{\\boldsymbol\\beta}{\\operatorname{minimize}}\n\\quad\n\\|\\mathbf y-\\mathbf X\\boldsymbol\\beta\\|_2^2\n+\\lambda\\left[(1-\\alpha)\\|\\boldsymbol\\beta\\|_1\n+\\alpha\\|\\boldsymbol\\beta\\|_2^2\\right],\n\\]\nwhere \\(\\lambda\\geq 0\\) and \\(\\alpha\\in[0,1]\\).\n\n\n\n\\(\\alpha=1\\) gives ridge regression under this parameterization.\n\\(\\alpha=0\\) gives the lasso.\nIntermediate values combine both types of shrinkage."
   },
   {
     "objectID": "Week3.html#beyond-ridge-and-lasso-1",
     "href": "Week3.html#beyond-ridge-and-lasso-1",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Beyond Ridge and Lasso",
     "text": "Beyond Ridge and Lasso\nSuppose we model nonlinear effects using\n\\[\nY=\\beta_0+\\beta_1X_1+\\beta_2X_1^2\n+\\beta_3X_2+\\beta_4X_2^2+\\varepsilon.\n\\] \n\nThe group lasso may minimize\n\\[\n\\|\\mathbf y-\\mathbf X\\boldsymbol\\beta\\|_2^2\n+\\lambda\\left(\n\\sqrt{\\beta_1^2+\\beta_2^2}\n+\\sqrt{\\beta_3^2+\\beta_4^2}\n\\right).\n\\]\nHere, the linear and quadratic terms for each predictor form a group. A whole group can be set to zero simultaneously.\n\n\n\nThere are many more penalties out there!!!"
   },
   {
     "objectID": "Week3.html#regularization-in-general-settings",
     "href": "Week3.html#regularization-in-general-settings",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Regularization in General Settings",
     "text": "Regularization in General Settings\nRidge and lasso are not restricted to linear regression. More generally,\n\\[\n\\widehat{\\boldsymbol\\beta}_{\\lambda}\n=\\underset{\\boldsymbol\\beta}{\\operatorname{argmin}}\n\\left\\{\nL(\\boldsymbol\\beta;D^{\\mathrm{train}})\n+\\lambda\\,\\operatorname{Pen}(\\boldsymbol\\beta)\n\\right\\}.\n\\]\n\nOLS: \\(L=\\|\\mathbf y-\\mathbf X\\boldsymbol\\beta\\|_2^2\\) and \\(\\operatorname{Pen}=0\\).\nRidge: \\(L=\\|\\mathbf y-\\mathbf X\\boldsymbol\\beta\\|_2^2\\) and \\(\\operatorname{Pen}=\\|\\boldsymbol\\beta\\|_2^2\\).\nLasso: \\(L=\\|\\mathbf y-\\mathbf X\\boldsymbol\\beta\\|_2^2\\) and \\(\\operatorname{Pen}=\\|\\boldsymbol\\beta\\|_1\\).\n\nThe loss and penalty can be adapted to many other modelling settings."
   },
   {
     "objectID": "Week3.html#model-selection-summary",
     "href": "Week3.html#model-selection-summary",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Model Selection Summary",
     "text": "Model Selection Summary\n\nwe covered model selection for a linear model, these are alternatives to OLS\nsubset selection\n\nbest, forward, backwards\nbest can become VERY computationally intensive\nforward/backwards are greedy procedures that may not select the best model\n\nshrinkage/regularization\n\nlasso and ridge (there are many others!)\nridge regression shrinks the coefficients towards 0, but it is not a variable selection technique\nlasso acts as both a shrinkage and variable selection method"
   },
   {
     "objectID": "Week3.html#example",
     "href": "Week3.html#example",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nWe gave a simple motivating example last week where we compared two linear models\n\none of which included one feature\nthe other included two features\n\nNow, what we want to do is fit a model but decide which features should be included for the best fit.\nWe will use a variety of methods to compare."
   },
   {
     "objectID": "Week3.html#example-1",
     "href": "Week3.html#example-1",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nWe will be using the Hitters dataset from the ISLR2 package (the package corresponding to our textbook).\n\nWe want to answer the following question:\nWhich variables should we include in the model to predict a baseball player’s salary?"
   },
   {
     "objectID": "Week3.html#example-2",
     "href": "Week3.html#example-2",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example"
   },
   {
     "objectID": "Week3.html#example-3",
     "href": "Week3.html#example-3",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nBefore we start the example, just be looking at the dataset what model selection techniques might you consider? Subset selection vs. Shrinkage? Then which methods between those might be better than others?"
   },
   {
     "objectID": "Week3.html#example-4",
     "href": "Week3.html#example-4",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nWe are going to try two methods and see what happens.\nWe start with Subset Selection, and here, we will do forward stepwise selection"
   },
   {
     "objectID": "Week3.html#example-5",
     "href": "Week3.html#example-5",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nWe used the BIC as our training error adjustment, what are some other methods we could have used? When does it make sense to use BIC?\n\n\nOur optimal model via best subset selection has the following coefficient estimates:"
   },
   {
     "objectID": "Week3.html#example-6",
     "href": "Week3.html#example-6",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nWhat do we know about forward stepwise selection?"
   },
   {
     "objectID": "Week3.html#example-7",
     "href": "Week3.html#example-7",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nThe Lasso is another way to do variable selection.\nWe can use the glmnet package to apply the Lasso and answer our question."
   },
   {
     "objectID": "Week3.html#example-8",
     "href": "Week3.html#example-8",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nSo.. how do we choose \\(\\lambda\\)?\nWe will use cross validation to compare error across the lasso using a grid of \\(\\lambda\\) values.\nWe can specify this grid ourselves, or use the default in the cv.glmnet() function (which we will do)."
   },
   {
     "objectID": "Week3.html#example-9",
     "href": "Week3.html#example-9",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nThe resulting coefficients are:"
   },
   {
     "objectID": "Week3.html#example-10",
     "href": "Week3.html#example-10",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Example",
     "text": "Example\nNow, we have two different models. They chose a different number of predictors to include, with different coefficients.\n\nCan we compare these directly? Which one is better? What steps can I take to determine the better model?"
   },
   {
     "objectID": "Week3.html#summary",
     "href": "Week3.html#summary",
-    "title": "Shrinkage and Regularization",
+    "title": "Shrinkage",
     "section": "Summary",
     "text": "Summary\n\nRegularization shrinks coefficient estimates to reduce variance and may improve test error.\nRidge uses an \\(\\ell_2\\) penalty and usually retains every predictor.\nThe lasso uses an \\(\\ell_1\\) penalty and can set coefficients exactly to zero.\nNeither method always predicts better; performance depends on the underlying signal.\nCross-validation is used to select the tuning parameter \\(\\lambda\\).\nPenalized optimization extends far beyond linear regression.\n\nNext Week: Moving Beyond Linearity Assignment: Available on course website, due October 7th"
   }

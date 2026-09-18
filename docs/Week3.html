@@ -11,7 +11,7 @@
 <link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.6.42">
 
-  <title>STA314 – Shrinkage and Regularization</title>
+  <title>STA314 – Shrinkage</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -132,7 +132,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Shrinkage and Regularization</h1>
+  <h1 class="title">Shrinkage</h1>
   <p class="subtitle">Week 3</p>
 
 <div class="quarto-title-authors">
@@ -178,7 +178,7 @@
 <h2>Learning Outcomes</h2>
 <p>By the end of this week, you should be able to:</p>
 <ul>
-<li>Explain how regularization trades a small increase in bias for a reduction in variance.</li>
+<li>Explain how shrinkage trades a small increase in bias for a reduction in variance.</li>
 <li>Formulate ridge and lasso regression as penalized least-squares problems.</li>
 <li>Compare the effects of the <span class="math inline">\(\ell_1\)</span> and <span class="math inline">\(\ell_2\)</span> penalties on coefficient estimates.</li>
 <li>Explain why the lasso can perform variable selection while ridge regression cannot.</li>
@@ -283,9 +283,15 @@
 </section>
 <section id="advantages-of-ridge-regression" class="slide level2">
 <h2>Advantages of Ridge Regression</h2>
-<p>Ridge can predict better than OLS when OLS estimates have high variance. - It reduces variance by accepting some bias.</p>
+<p>Ridge can predict better than OLS when OLS estimates have high variance.</p>
+<ul>
+<li>It reduces variance by accepting some bias.</li>
+</ul>
 <p><br></p>
-<p>For a fixed value of <span class="math inline">\(\lambda\)</span>, ridge regression is computationally efficient. - It is much faster than best subset selection when <span class="math inline">\(p\)</span> is large.</p>
+<p>For a fixed value of <span class="math inline">\(\lambda\)</span>, ridge regression is computationally efficient.</p>
+<ul>
+<li>It is much faster than best subset selection when <span class="math inline">\(p\)</span> is large.</li>
+</ul>
 </section>
 <section id="a-limitation-of-ridge-regression" class="slide level2">
 <h2>A Limitation of Ridge Regression</h2>
@@ -833,7 +839,7 @@ W10=
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
 <div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;">
-<span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Shrinkage and Regularization</span><span style="flex: 1;"></span>
+<span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Shrinkage</span><span style="flex: 1;"></span>
 </div>
 </div>
 </div></div>
