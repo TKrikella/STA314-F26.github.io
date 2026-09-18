@@ -1488,7 +1488,7 @@
     "href": "Week3.html#when-the-true-model-is-not-sparse",
     "title": "Shrinkage",
     "section": "When the True Model Is Not Sparse",
-    "text": "When the True Model Is Not Sparse\n\nWhen many true coefficients are nonzero, ridge and lasso can have similar bias, while ridge may achieve lower variance and lower test MSE."
+    "text": "When the True Model Is Not Sparse\n\nLeft: Plots of squared bias (black), variance (green), and test MSE (purple) for the lasso on a simulated data set. Right: Comparison of squared bias, variance, and test MSE between lasso (solid) and ridge (dotted).\nThe crosses in both plots indicate the lasso model for which the MSE is smallest.\nWhen many true coefficients are nonzero, ridge and lasso can have similar bias, while ridge may achieve lower variance and lower test MSE."
   },
   {
     "objectID": "Week3.html#when-the-true-model-is-sparse",
@@ -1516,7 +1516,7 @@
     "href": "Week3.html#a-simple-example-1",
     "title": "Shrinkage",
     "section": "A Simple Example",
-    "text": "A Simple Example\nOLS minimizes\n\\[\n\\sum_{j=1}^{p}(y_j-\\beta_j)^2.\n\\]\n\nTherefore,\n\\[\n\\widehat\\beta_j=y_j,\n\\qquad j=1,\\ldots,p.\n\\]\n\n\nHow do we get this?"
+    "text": "A Simple Example\nOLS minimizes\n\\[\n\\sum_{j=1}^{p}(y_j-\\beta_j)^2.\n\\]\n\nTherefore,\n\\[\n\\widehat\\beta_j=y_j,\n\\qquad j=1,\\ldots,p.\n\\]"
   },
   {
     "objectID": "Week3.html#a-simple-example-2",

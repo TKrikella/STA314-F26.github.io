@@ -341,6 +341,11 @@ That depends on the structure of the true signal.
 
 ![](images/Week3-LassoVsRidgeMSEDense.png){width="80%" fig-align="center"}
 
+**Left**: Plots of squared bias (black), variance (green), and test MSE (purple) for the lasso on a simulated data set. 
+**Right**: Comparison of squared bias, variance, and test MSE between lasso (solid) and ridge (dotted). 
+
+The crosses in both plots indicate the lasso model for which the MSE is smallest. 
+
 When many true coefficients are nonzero, ridge and lasso can have similar bias, while ridge may achieve lower variance and lower test MSE.
 
 ## When the True Model Is Sparse
@@ -402,10 +407,6 @@ $$
 \widehat\beta_j=y_j,
 \qquad j=1,\ldots,p.
 $$
-::: 
-
-:::{.fragment} 
-**How do we get this?**
 ::: 
 
 

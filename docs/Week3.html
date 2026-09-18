@@ -400,7 +400,9 @@
 <section id="when-the-true-model-is-not-sparse" class="slide level2">
 <h2>When the True Model Is Not Sparse</h2>
 
-<img data-src="images/Week3-LassoVsRidgeMSEDense.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p>When many true coefficients are nonzero, ridge and lasso can have similar bias, while ridge may achieve lower variance and lower test MSE.</p>
+<img data-src="images/Week3-LassoVsRidgeMSEDense.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><strong>Left</strong>: Plots of squared bias (black), variance (green), and test MSE (purple) for the lasso on a simulated data set. <strong>Right</strong>: Comparison of squared bias, variance, and test MSE between lasso (solid) and ridge (dotted).</p>
+<p>The crosses in both plots indicate the lasso model for which the MSE is smallest.</p>
+<p>When many true coefficients are nonzero, ridge and lasso can have similar bias, while ridge may achieve lower variance and lower test MSE.</p>
 </section>
 <section id="when-the-true-model-is-sparse" class="slide level2">
 <h2>When the True Model Is Sparse</h2>
@@ -455,9 +457,6 @@ y_1\\ \vdots\\ y_p
 \widehat\beta_j=y_j,
 \qquad j=1,\ldots,p.
 \]</span></p>
-</div>
-<div class="fragment">
-<p><strong>How do we get this?</strong></p>
 </div>
 </section>
 <section id="a-simple-example-2" class="slide level2">
