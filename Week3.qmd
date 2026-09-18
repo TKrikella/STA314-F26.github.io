@@ -569,7 +569,9 @@ Ridge adds bias but reduces variance. The best $\lambda$ balances these two effe
 
 ![](images/Week3-CreditCardCV.png){width="80%" fig-align="center"}
 
-Cross-validation estimates predictive performance across a sequence of candidate values for $\lambda$.
+Cross-validation estimates predictive performance across a sequence of candidate values for $\lambda$. 
+
+Vertical line indicates the chosen $\lambda$
 
 ## Beyond Ridge and Lasso
 

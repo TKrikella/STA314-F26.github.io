@@ -1579,7 +1579,7 @@
     "href": "Week3.html#credit-card-data-example-3",
     "title": "Shrinkage",
     "section": "Credit Card Data Example",
-    "text": "Credit Card Data Example\n\nCross-validation estimates predictive performance across a sequence of candidate values for \\(\\lambda\\)."
+    "text": "Credit Card Data Example\n\nCross-validation estimates predictive performance across a sequence of candidate values for \\(\\lambda\\).\nVertical line indicates the chosen \\(\\lambda\\)"
   },
   {
     "objectID": "Week3.html#beyond-ridge-and-lasso",
