@@ -815,4 +815,5 @@ Can we compare these directly? Which one is better? What steps can I take to det
 -   Penalized optimization extends far beyond linear regression.
 
 **Next Week:** Moving Beyond Linearity
+
 **Assignment:** Available on course website, due October 7th

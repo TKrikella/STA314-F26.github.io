@@ -1691,6 +1691,6 @@
     "href": "Week3.html#summary",
     "title": "Shrinkage",
     "section": "Summary",
-    "text": "Summary\n\nRegularization shrinks coefficient estimates to reduce variance and may improve test error.\nRidge uses an \\(\\ell_2\\) penalty and usually retains every predictor.\nThe lasso uses an \\(\\ell_1\\) penalty and can set coefficients exactly to zero.\nNeither method always predicts better; performance depends on the underlying signal.\nCross-validation is used to select the tuning parameter \\(\\lambda\\).\nPenalized optimization extends far beyond linear regression.\n\nNext Week: Moving Beyond Linearity Assignment: Available on course website, due October 7th"
+    "text": "Summary\n\nRegularization shrinks coefficient estimates to reduce variance and may improve test error.\nRidge uses an \\(\\ell_2\\) penalty and usually retains every predictor.\nThe lasso uses an \\(\\ell_1\\) penalty and can set coefficients exactly to zero.\nNeither method always predicts better; performance depends on the underlying signal.\nCross-validation is used to select the tuning parameter \\(\\lambda\\).\nPenalized optimization extends far beyond linear regression.\n\nNext Week: Moving Beyond Linearity\nAssignment: Available on course website, due October 7th"
   }
 ]
