@@ -1614,63 +1614,63 @@
     "href": "Week3.html#example",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nWe gave a simple motivating example last week where we compared two linear models\n\none of which included one feature\nthe other included two features\n\nNow, what we want to do is fit a model but decide which features should be included for the best fit.\nWe will use a variety of methods to compare."
+    "text": "Example\nWe gave a simple motivating example last week where we compared two linear models\n\none of which included one feature\nthe other included two features\n\nNow, what we want to do is fit a model but decide which features should be included for the best fit.\n\nWe will be using the Hitters dataset from the ISLR2 package (the package corresponding to our textbook).\nWe want to answer the following question:\nWhich variables should we include in the model to predict a baseball player’s salary?"
   },
   {
     "objectID": "Week3.html#example-1",
     "href": "Week3.html#example-1",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nWe will be using the Hitters dataset from the ISLR2 package (the package corresponding to our textbook).\n\nWe want to answer the following question:\nWhich variables should we include in the model to predict a baseball player’s salary?"
+    "text": "Example\n\n\n\n\n\n\n\n\nBefore we start the example, just be looking at the dataset what model selection techniques might you consider? Subset selection vs. Shrinkage? Then which methods between those might be better than others? What other questions would you have before you made a decision on a technique to use?"
   },
   {
     "objectID": "Week3.html#example-2",
     "href": "Week3.html#example-2",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example"
+    "text": "Example\nWe are going to try two methods and see what happens.\nWe start with Subset Selection, and here, we will do forward stepwise selection"
   },
   {
     "objectID": "Week3.html#example-3",
     "href": "Week3.html#example-3",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nBefore we start the example, just be looking at the dataset what model selection techniques might you consider? Subset selection vs. Shrinkage? Then which methods between those might be better than others?"
+    "text": "Example\nWe used the BIC as our training error adjustment, what are some other methods we could have used? When does it make sense to use BIC?\n\n\nOur optimal model via best subset selection has the following coefficient estimates:"
   },
   {
     "objectID": "Week3.html#example-4",
     "href": "Week3.html#example-4",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nWe are going to try two methods and see what happens.\nWe start with Subset Selection, and here, we will do forward stepwise selection"
+    "text": "Example\nWhat do we know about forward stepwise selection?"
   },
   {
     "objectID": "Week3.html#example-5",
     "href": "Week3.html#example-5",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nWe used the BIC as our training error adjustment, what are some other methods we could have used? When does it make sense to use BIC?\n\n\nOur optimal model via best subset selection has the following coefficient estimates:"
+    "text": "Example\nThe Lasso is another way to do variable selection.\nWe can use the glmnet package to apply the Lasso and answer our question."
   },
   {
     "objectID": "Week3.html#example-6",
     "href": "Week3.html#example-6",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nWhat do we know about forward stepwise selection?"
+    "text": "Example\nSo.. how do we choose \\(\\lambda\\)?\nWe will use cross validation to compare error across the lasso using a grid of \\(\\lambda\\) values.\nWe can specify this grid ourselves, or use the default in the cv.glmnet() function (which we will do)."
   },
   {
     "objectID": "Week3.html#example-7",
     "href": "Week3.html#example-7",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nThe Lasso is another way to do variable selection.\nWe can use the glmnet package to apply the Lasso and answer our question."
+    "text": "Example\nThe resulting coefficients are:"
   },
   {
     "objectID": "Week3.html#example-8",
     "href": "Week3.html#example-8",
     "title": "Shrinkage",
     "section": "Example",
-    "text": "Example\nSo.. how do we choose \\(\\lambda\\)?\nWe will use cross validation to compare error across the lasso using a grid of \\(\\lambda\\) values.\nWe can specify this grid ourselves, or use the default in the cv.glmnet() function (which we will do)."
+    "text": "Example\nNow, we have two different models. They chose a different number of predictors to include, with different coefficients.\n\nCan we compare these directly? Which one is better? What steps can I take to determine the better model?"
   },
   {
     "objectID": "Week3.html#example-9",

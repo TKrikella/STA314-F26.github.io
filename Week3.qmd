@@ -671,13 +671,9 @@ We gave a simple motivating example last week where we compared two linear model
 
 Now, what we want to do is fit a model but [**decide which features should be included for the best fit**]{style="color: maroon;"}. 
 
-We will use a variety of methods to compare. 
-
-## Example 
+<br> 
 
 We will be using the Hitters dataset from the ISLR2 package (the package corresponding to our textbook). 
-
-<br> 
 
 We want to answer the following question: 
 
@@ -697,14 +693,7 @@ names(Hitters)
 
 ```
 
-## Example 
-
-Before we start the example, just be looking at the dataset what model selection techniques might you consider? Subset selection vs. Shrinkage? Then which methods between those might be better than others? 
-
-```{=html}
-<textarea class="annotation-box"
-          placeholder="Type notes here..."></textarea>
-```
+**Before we start the example, just be looking at the dataset what model selection techniques might you consider? Subset selection vs. Shrinkage? Then which methods between those might be better than others? What other questions would you have before you made a decision on a technique to use?**
 
 ## Example 
 

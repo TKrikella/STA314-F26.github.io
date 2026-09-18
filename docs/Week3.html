@@ -687,16 +687,12 @@ L(\boldsymbol\beta;D^{\mathrm{train}})
 <li>the other included two features</li>
 </ul>
 <p>Now, what we want to do is fit a model but <span style="color: maroon;"><strong>decide which features should be included for the best fit</strong></span>.</p>
-<p>We will use a variety of methods to compare.</p>
-</section>
-<section id="example-1" class="slide level2">
-<h2>Example</h2>
-<p>We will be using the Hitters dataset from the ISLR2 package (the package corresponding to our textbook).</p>
 <p><br></p>
+<p>We will be using the Hitters dataset from the ISLR2 package (the package corresponding to our textbook).</p>
 <p>We want to answer the following question:</p>
 <p><strong>Which variables should we include in the model to predict a baseball player’s salary?</strong></p>
 </section>
-<section id="example-2" class="slide level2">
+<section id="example-1" class="slide level2">
 <h2>Example</h2>
 <div class="cell">
 <div>
@@ -708,13 +704,9 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiXG5kYXRhKEhpdHRlcnMpICMg
 </script>
 </div>
 </div>
+<p><strong>Before we start the example, just be looking at the dataset what model selection techniques might you consider? Subset selection vs.&nbsp;Shrinkage? Then which methods between those might be better than others? What other questions would you have before you made a decision on a technique to use?</strong></p>
 </section>
-<section id="example-3" class="slide level2">
-<h2>Example</h2>
-<p>Before we start the example, just be looking at the dataset what model selection techniques might you consider? Subset selection vs.&nbsp;Shrinkage? Then which methods between those might be better than others?</p>
-<textarea class="annotation-box" placeholder="Type notes here..."></textarea>
-</section>
-<section id="example-4" class="slide level2">
+<section id="example-2" class="slide level2">
 <h2>Example</h2>
 <p>We are going to try two methods and see what happens.</p>
 <p>We start with <strong>Subset Selection</strong>, and here, we will do <strong>forward stepwise selection</strong></p>
@@ -729,7 +721,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiZm9yd2FyZF9maXQgPC0gcmVn
 </div>
 </div>
 </section>
-<section id="example-5" class="slide level2">
+<section id="example-3" class="slide level2">
 <h2>Example</h2>
 <p>We used the BIC as our training error adjustment, what are some other methods we could have used? When does it make sense to use BIC?</p>
 <textarea class="annotation-box" placeholder="Type notes here..."></textarea>
@@ -747,12 +739,12 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZihmb3J3YXJkX2ZpdCwg
 </div>
 </div>
 </section>
-<section id="example-6" class="slide level2">
+<section id="example-4" class="slide level2">
 <h2>Example</h2>
 <p>What do we know about forward stepwise selection?</p>
 <textarea class="annotation-box" placeholder="Type notes here..."></textarea>
 </section>
-<section id="example-7" class="slide level2">
+<section id="example-5" class="slide level2">
 <h2>Example</h2>
 <p>The <strong>Lasso</strong> is another way to do variable selection.</p>
 <p>We can use the glmnet package to apply the Lasso and answer our question.</p>
@@ -767,7 +759,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiIyB3ZSB1c2UgdGhlIGZ1bmN0
 </div>
 </div>
 </section>
-<section id="example-8" class="slide level2">
+<section id="example-6" class="slide level2">
 <h2>Example</h2>
 <p>So.. how do we choose <span class="math inline">\(\lambda\)</span>?</p>
 <p>We will use cross validation to compare error across the lasso using a grid of <span class="math inline">\(\lambda\)</span> values.</p>
@@ -783,7 +775,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoic2V0LnNlZWQoMzE0KSBcblxu
 </div>
 </div>
 </section>
-<section id="example-9" class="slide level2">
+<section id="example-7" class="slide level2">
 <h2>Example</h2>
 <p>The resulting coefficients are:</p>
 <div class="cell">
@@ -797,7 +789,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoiY29lZihjdl9sYXNzbywgcyA9
 </div>
 </div>
 </section>
-<section id="example-10" class="slide level2">
+<section id="example-8" class="slide level2">
 <h2>Example</h2>
 <p>Now, we have two different models. They chose a different number of predictors to include, with different coefficients.</p>
 <p><br></p>
