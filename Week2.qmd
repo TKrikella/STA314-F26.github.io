@@ -3,6 +3,7 @@ title: "Linear Regression, and Model Assessment/Selection"
 subtitle: "Week 2"
 format: 
   live-revealjs:
+    output-file: Week2-slides.html
     css: styles.css
     html-math-method: mathjax
     scrollable: true
