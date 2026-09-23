@@ -46,7 +46,7 @@
     "href": "index.html#announcements",
     "title": "STA314",
     "section": "Announcements",
-    "text": "Announcements\n\nThe Syllabus is available.\nAnnouncements will be through Quercus and here, on the course website."
+    "text": "Announcements\n\nAssignment 1 now available, due October 7th at 11:59pm through Crowdmark.\nThe Syllabus is available.\nAnnouncements will be through Quercus and here, on the course website."
   },
   {
     "objectID": "index.html#computing",
@@ -2525,5 +2525,12 @@
     "title": "Shrinkage",
     "section": "An Activity",
     "text": "An Activity\nA real-estate company wants to predict the sale price of homes using variables such as square footage, number of bedrooms, number of bathrooms, lot size, age of the home, distance to downtown, school quality, neighbourhood income, nearby transit access, and property taxes.\n\nThe company believes that many of these predictors may contain useful information, although some are strongly correlated with one another.\n\nWould you prefer ridge regression or the lasso for this problem? What factors would influence your choice?"
+  },
+  {
+    "objectID": "index.html#assignments",
+    "href": "index.html#assignments",
+    "title": "STA314",
+    "section": "Assignments",
+    "text": "Assignments\n\n\n\n\nAssignment\nDue Date\n\n\n\n\nAssignment 1\nOctober 7, 11:59pm\n\n\nAssignment 2\nDecember 2, 11:59pm"
   }
 ]

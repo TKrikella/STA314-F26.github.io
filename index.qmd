@@ -10,7 +10,18 @@ I am committed to creating a welcoming, respectful, and inclusive learning envir
 
 I hope this course leaves you with not only a strong foundation in statistical methods for machine learning, but also the confidence to think critically about data and the models you build. I'm looking forward to a great semester with all of you!
 
+## Assignments 
+
+::: {.table-responsive}
+| Assignment | Due Date |
+|:----------:|:--------:|
+| [Assignment 1](STA314_Assignment_1.pdf) | October 7, 11:59pm |
+| Assignment 2 | December 2, 11:59pm |
+:::
+
 ## Announcements
+
+-   Assignment 1 now available, due October 7th at 11:59pm through Crowdmark. 
 
 -   The [Syllabus](STA314-Syllabus.pdf) is available.
 
