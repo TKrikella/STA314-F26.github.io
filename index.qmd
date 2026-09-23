@@ -21,6 +21,8 @@ I hope this course leaves you with not only a strong foundation in statistical m
 
 ## Announcements
 
+- Department of Statistical Sciences is hosting a graduate school open house on Saturday, September 26th. [See the website](https://www.statistics.utoronto.ca/events/doss-graduate-school-open-house) for more information and to register!
+
 -   Assignment 1 now available, due October 7th at 11:59pm through Crowdmark. 
 
 -   The [Syllabus](STA314-Syllabus.pdf) is available.
