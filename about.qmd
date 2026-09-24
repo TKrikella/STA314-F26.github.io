@@ -13,7 +13,7 @@ Below is a tentative schedule of topics for the term. You can find the lecture s
 | 1 | Introduction to Statistical Learning; Supervised Learning; Model Assessment | [HTML Slides](Week1.html)<br>[PDF Slides](Week1 - PDF.pdf)<br>[Recorded Lecture](https://youtu.be/OpLpm7I4btY)| \- | — | Ch. 2 |
 | 2 | Linear Regression; Model Assessment and Selection | [HTML Slides](Week2-slides.html)<br>[PDF Slides](Week2 - PDF.pdf)<br>[Annotated Slides](Week2-Annotated.pdf) | \- | \- | Ch. 3, 5 |
 | 3 | Shrinkage/Regularization | [HTML Slides](Week3.html)<br>[PDF Slides](Week3-PDF.pdf)<br>[Annotated Slides](Week3-Annotated.pdf) | [Slides](Tutorial1-Slides.pdf)<br>[R Code](Tutorial1.Rmd)<br>[RMarkdown PDF](Tutorial1.pdf) | [Assignment 1 Released](STA314_Assignment_1.pdf), Sept. 23rd | Ch. 6 | 
-| 4 | Moving Beyond Linearity | \- | \- | \-  | Ch. 7 |
+| 4 | Gradient Descent; Moving Beyond Linearity | [HTML Slides](Week4.html)<br>[PDF Slides](Week4-PDF.pdf) | [R Code](Tutorial2.Rmd)<br>[RMarkdown PDF](Tutorial2.pdf) | \-  | Ch. 7 |
 | 5 | Classification: Bayes Classifier, kNN and Logistic Regression | \- | \- | Assignment 1 Due, Oct. 7 | Ch. 4 |
 | 6 | Classification: Multiclass Logistic Regression and Discriminant Analysis | \- | \- | \- | Ch. 4 |
 | 7 | Tree Based Methods: Decision Trees | \- | \- | \- | Ch. 8 |
@@ -21,6 +21,6 @@ Below is a tentative schedule of topics for the term. You can find the lecture s
 | 9 | Tree Based Methods: Bagging, Random Forests, and Boosting | \- | \- | Midterm, Nov. 4 | Ch. 8 |
 | 10 | Support Vector Machines | \- | \- | \- | Ch. 9 |
 | 11 | Unsupervised Learning: PCA and Clustering | \- | \- | Assignment 2 Released, Nov. 18 | Ch. 12 |
-| 12 | Gradient Descent; Neural Networks | \- | \- | \- | Ch. 10 |
-| 13 | Neural Networks;Generative AI; Course Review | \- | \- | Assignment 2 Due, Dec 2nd | Ch. 10 |
+| 12 | Neural Networks | \- | \- | \- | Ch. 10 |
+| 13 | Neural Networks; Generative AI; Course Review | \- | \- | Assignment 2 Due, Dec 2nd | Ch. 10 |
 :::

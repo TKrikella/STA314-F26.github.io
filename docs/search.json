@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "about.html#tentative-course-schedule",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nMoving Beyond Linearity\n-\n-\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nGradient Descent; Neural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks;Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\n-\n-\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
@@ -1696,28 +1696,28 @@
   {
     "objectID": "Week4.html#learning-outcomes",
     "href": "Week4.html#learning-outcomes",
-    "title": "Moving Beyond Linearity",
-    "section": "",
-    "text": "By the end of this lecture, you should be able to:\n\ndistinguish linearity in the parameters from linearity in the features;\ncompare polynomial regression, step functions, and regression splines;\nexplain how neighborhood size controls the bias-variance tradeoff in local methods;\ndescribe how local regression improves on an unweighted local average; and\ninterpret the additive structure, strengths, and limitations of a GAM."
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of this week, you should be able to:\n\nExplain how gradient descent minimizes an objective function and describe the role of the learning rate.\nExplain why convexity is useful for optimization.\nDescribe how polynomial regression, step functions, and splines can model nonlinear relationships.\nCompare kNN, weighted kNN, and local regression as local modelling approaches.\nExplain how generalized additive models extend nonlinear modelling to multiple predictors."
   },
   {
     "objectID": "Week4.html#review-regularized-linear-regression",
     "href": "Week4.html#review-regularized-linear-regression",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Review: Regularized Linear Regression",
-    "text": "Review: Regularized Linear Regression\n\nOrdinary least squares can perform poorly when \\(p\\) is large relative to \\(n\\).\nRidge and the lasso can improve test performance by:\n\nreducing variance;\naccepting some additional bias.\n\nThe benefit can be substantial when the true coefficients are small or sparse.\n\n\nIf only \\(s \\ll p\\) features are predictive, we would ideally fit the model using only those \\(s\\) features."
+    "text": "Review: Regularized Linear Regression\n\nOrdinary least squares can perform poorly when \\(p\\) is large relative to \\(n\\).\n\ni.e. estimates can have high variance\n\n\n\nRidge and the lasso can improve test performance by:\n\nreducing variance;\naccepting some additional bias.\n\n\n\n\nThe benefit can be substantial when the true coefficients are small or sparse.\n\n\nIf only \\(s \\ll p\\) features are predictive, we would ideally fit the model using only those \\(s\\) features."
   },
   {
     "objectID": "Week4.html#linearity-in-features-vs.-parameters",
     "href": "Week4.html#linearity-in-features-vs.-parameters",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Linearity in Features vs. Parameters",
     "text": "Linearity in Features vs. Parameters\nSuppose \\(X=(X_1,X_2)\\). A standard linear model is\n\\[\nY=\\beta_0+\\beta_1X_1+\\beta_2X_2+\\varepsilon.\n\\]\nWhat about\n\\[\nY=\\beta_0+\\beta_1X_1+\\beta_2X_2+\\beta_3X_1^2+\\beta_4X_2^2+\\beta_5X_1X_2+\\varepsilon?\n\\]\n\nThis model is nonlinear in the features, but still linear in the parameters \\(\\boldsymbol\\beta=(\\beta_0,\\ldots,\\beta_5)^\\top\\)."
   },
   {
     "objectID": "Week4.html#why-does-that-distinction-matter",
     "href": "Week4.html#why-does-that-distinction-matter",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Why Does That Distinction Matter?",
     "text": "Why Does That Distinction Matter?\nBecause the model remains linear in \\(\\boldsymbol\\beta\\), we can still use familiar tools:\nEstimation\n\nOrdinary least squares\nMaximum likelihood for a GLM\n\nModel building\n\nSubset selection\nRidge regression\nThe lasso\n\n\nThe linear model framework is more flexible than a straight-line relationship."
   },
@@ -1726,14 +1726,14 @@
     "href": "Week4.html#moving-beyond-linearity",
     "title": "Moving Beyond Linearity",
     "section": "Moving Beyond Linearity",
-    "text": "Moving Beyond Linearity\nWe consider the following extensons to relax the linearity assumption (in the feature space):\nFor one predictor \\((p=1)\\):\n\npolynomial regression;\nstep functions; and\nregression splines.\n\nFor several predictors \\((p&gt;1)\\):\n\nnearest-neighbor and local regression; and\ngeneralized additive models."
+    "text": "Moving Beyond Linearity\nWe consider the following extensions to relax the linearity assumption in the feature space:\nFor one predictor \\((p=1)\\):\n\npolynomial regression;\nstep functions; and\nregression splines.\n\nFor several predictors \\((p&gt;1)\\):\n\nnearest-neighbor and local regression; and\ngeneralized additive models."
   },
   {
     "objectID": "Week4.html#polynomial-regression",
     "href": "Week4.html#polynomial-regression",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Polynomial Regression",
-    "text": "Polynomial Regression\nPolynomial regression assumes\n\\[\ny_i=\\beta_0+\\beta_1x_i+\\beta_2x_i^2+\\cdots+\\beta_dx_i^d+\\varepsilon_i.\n\\]\n\nIt is nonlinear in \\(x\\), but linear in the coefficients.\nIt can be fit using OLS, ridge, or the lasso.\nThe coefficients themselves are not interpretable; we are more interested in the trend of the fitted function \\[\n\\widehat f(x)=\\widehat\\beta_0+\\widehat\\beta_1x+\\cdots+\\widehat\\beta_dx^d.\n\\]"
+    "text": "Polynomial Regression\nPolynomial regression extends the linear model\n\\[y_i = \\beta_0 + \\beta_1x_i + \\epsilon_i\\] to settings where the relationship between the predictors and the response is non linear by adding extra predictors, obtained by raising each of the original predictors to a power:\n\\[\ny_i=\\beta_0+\\beta_1x_i+\\beta_2x_i^2+\\cdots+\\beta_dx_i^d+\\varepsilon_i.\n\\]\n\n\nIt is nonlinear in \\(x\\), but linear in the coefficients.\nIt can be fit using OLS, ridge, or the lasso.\n\n\n\n\n\nThe coefficients themselves are not interpretable; we are more interested in the trend of the fitted function \\[\n\\widehat f(x)=\\widehat\\beta_0+\\widehat\\beta_1x+\\cdots+\\widehat\\beta_dx^d.\n\\]"
   },
   {
     "objectID": "Week4.html#choosing-the-polynomial-degree",
@@ -1745,16 +1745,16 @@
   {
     "objectID": "Week4.html#polynomial-regression-wage-data",
     "href": "Week4.html#polynomial-regression-wage-data",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Polynomial Regression: Wage Data",
-    "text": "Polynomial Regression: Wage Data\n\n\n\n\n\n\nLeft: The solid blue curve is a degree-4 polynomial of wage as a function of age, fit by the OLS. The dotted curves are estimated 95/% confidence intervals\nRight: Model the binary event \\(1\\{\\text{wage}&gt;250\\}\\) by logistic regression, with a degree-4 polynomial."
+    "text": "Polynomial Regression: Wage Data\n\n\nLeft: The solid blue curve is a degree-4 polynomial of wage as a function of age, fit by the OLS. The dotted curves are estimated 95/% confidence intervals\nRight: Model the binary event \\(1\\{\\text{wage}&gt;250\\}\\) by logistic regression, with a degree-4 polynomial."
   },
   {
     "objectID": "Week4.html#step-functions",
     "href": "Week4.html#step-functions",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Step Functions",
-    "text": "Step Functions\nPolynomial regression imposes a global shape. A step function instead divides the range of \\(X\\) into regions.\nFor pre-specified \\(K\\) cut points \\(c_1&lt;\\cdots&lt;c_K\\), define\n\\[\n\\begin{aligned}\nC_0(X)&=I(X&lt;c_1),\\\\\nC_1(X)&=I(c_1\\le X&lt;c_2),\\\\\n&\\ \\vdots\\\\\nC_K(X)&=I(c_K\\le X).\n\\end{aligned}\n\\]\nThese \\(K+1\\) dummy variables sum to 1."
+    "text": "Step Functions\nPolynomial regression imposes a global shape. A step function instead divides the range of \\(X\\) into regions.\n\n\nFor pre-specified \\(K\\) cut points \\(c_1&lt;\\cdots&lt;c_K\\), define\n\\[\n\\begin{aligned}\nC_0(X)&=I(X&lt;c_1),\\\\\nC_1(X)&=I(c_1\\le X&lt;c_2),\\\\\n&\\ \\vdots\\\\\nC_K(X)&=I(c_K\\le X).\n\\end{aligned}\n\\]\nThese \\(K+1\\) dummy variables sum to 1."
   },
   {
     "objectID": "Week4.html#step-function-model",
@@ -1766,72 +1766,72 @@
   {
     "objectID": "Week4.html#step-functions-wage-data",
     "href": "Week4.html#step-functions-wage-data",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Step Functions: Wage Data",
-    "text": "Step Functions: Wage Data\n\n\n\n\n\n\nLeft: The solid blue curve is a step function of wage as a function of age, fit by least squares. The dotted curves indicate an estimated 95/% confidence interval.\nRight: Model the binary event \\(1\\{\\text{wage}&gt;250\\}\\) by logistic regression, with a step function."
+    "text": "Step Functions: Wage Data\n\n\nLeft: The solid blue curve is a step function of wage as a function of age, fit by least squares. The dotted curves indicate an estimated 95/% confidence interval.\nRight: Model the binary event \\(1\\{\\text{wage}&gt;250\\}\\) by logistic regression, with a step function."
   },
   {
     "objectID": "Week4.html#step-functions-strengths-and-limitations",
     "href": "Week4.html#step-functions-strengths-and-limitations",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Step Functions: Strengths and Limitations",
-    "text": "Step Functions: Strengths and Limitations\n\n\nStrengths\n\nEasy to fit\nEasy to explain\nCoefficients compare interpretable groups\nCommon in biostatistics and epidemiology\n\n\nLimitations\n\nThe fitted relationship is discontinuous\nImportant trends can be hidden\nResults can depend strongly on the cut points\n\n\n\n\nCan we combine the local flexibility of step functions with the smoothness of polynomials?"
+    "text": "Step Functions: Strengths and Limitations\n\n\nStrengths\n\nEasy to fit\nEasy to explain\nCoefficients compare interpretable groups\nCommon in biostatistics and epidemiology\n\n\nLimitations\n\nThe fitted relationship is discontinuous\nImportant trends can be hidden\nResults can depend strongly on the cut points"
   },
   {
     "objectID": "Week4.html#piecewise-polynomials",
     "href": "Week4.html#piecewise-polynomials",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Piecewise Polynomials",
-    "text": "Piecewise Polynomials\nInstead of fitting one polynomial over the full range of \\(X\\), fit different polynomials in different regions.\n\nThe cut point \\(c\\) is called a knot.\nWith \\(K\\) knots, there are \\(K+1\\) regions.\nMore knots allow greater local flexibility."
+    "text": "Piecewise Polynomials\nInstead of fitting one polynomial over the full range of \\(X\\), fit different polynomials in different regions.\n\\[\ny_i =\n\\begin{cases}\n\\beta_{01} + \\beta_{11}x_i + \\beta_{21}x_i^2 + \\beta_{31}x_i^3 + \\epsilon_i,\n& \\text{if } x_i &lt; c, \\\\[6pt]\n\\beta_{02} + \\beta_{12}x_i + \\beta_{22}x_i^2 + \\beta_{32}x_i^3 + \\epsilon_i,\n& \\text{if } x_i \\geq c.\n\\end{cases}\n\\]\n\n\n\nThe cut point \\(c\\), i.e. where the coefficients change, is called a knot.\nWith \\(K\\) knots, there are \\(K+1\\) regions.\nMore knots allow greater local flexibility."
   },
   {
     "objectID": "Week4.html#piecewise-polynomials-wage-data",
     "href": "Week4.html#piecewise-polynomials-wage-data",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Piecewise Polynomials: Wage Data",
-    "text": "Piecewise Polynomials: Wage Data\n\nWithout constraints at the knots, adjacent polynomial pieces may fail to meet - or may meet with sharp corners."
+    "text": "Piecewise Polynomials: Wage Data\n\nWithout constraints at the knots, adjacent polynomial pieces may fail to meet, or may meet with sharp corners."
   },
   {
     "objectID": "Week4.html#from-piecewise-polynomials-to-splines",
     "href": "Week4.html#from-piecewise-polynomials-to-splines",
     "title": "Moving Beyond Linearity",
     "section": "From Piecewise Polynomials to Splines",
-    "text": "From Piecewise Polynomials to Splines\nAt each knot, we can impose constraints:\n\nContinuity: the adjacent pieces have the same function value.\nSmoothness: their first derivatives agree.\nMore smoothness: higher-order derivatives also agree.\n\n\nA degree-\\(d\\) spline is made of degree-\\(d\\) polynomial pieces whose derivatives through order \\(d-1\\) are continuous at every knot."
+    "text": "From Piecewise Polynomials to Splines\nAt each knot, we can impose constraints:\n\nContinuity: the adjacent pieces have the same function value.\nSmoothness: their first derivatives agree.\nMore smoothness: higher-order derivatives also agree.\n\n\nThe constrained polynomials are called splines. A degree-\\(d\\) spline is made of degree-\\(d\\) polynomial pieces whose derivatives through order \\(d-1\\) are continuous at every knot.\n\n\nHow can we construct the degree-\\(d\\) spline?"
   },
   {
     "objectID": "Week4.html#linear-splines",
     "href": "Week4.html#linear-splines",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Linear Splines",
-    "text": "Linear Splines\nWith knots \\(\\xi_1&lt;\\cdots&lt;\\xi_K\\), a linear spline can be written as\n\\[\ny_i=\\beta_0+\\beta_1x_i+\\sum_{k=1}^{K}\\beta_{k+1}(x_i-\\xi_k)_+ +\\varepsilon_i,\n\\]\nwhere\n\\[\n(x_i-\\xi_k)_+=\n\\begin{cases}\nx_i-\\xi_k, & x_i&gt;\\xi_k,\\\\\n0, & x_i\\le \\xi_k.\n\\end{cases}\n\\]\n\n\\(\\beta_1\\) is the slope before the first knot; each \\(\\beta_{k+1}\\) is the change in slope after knot \\(\\xi_k\\)."
+    "text": "Linear Splines\nA linear spline has piecewise linear functions continuous at each knot. That is, with knots at \\(\\xi_1&lt;\\cdots&lt;\\xi_K\\),\n\\[\ny_i=\\beta_0+\\beta_1x_i+\\sum_{k=1}^{K}\\beta_{k+1}(x_i-\\xi_k)_+ +\\varepsilon_i,\n\\]\nwhere\n\\[\n(x_i-\\xi_k)_+=\n\\begin{cases}\nx_i-\\xi_k, & x_i&gt;\\xi_k,\\\\\n0, & x_i\\le \\xi_k.\n\\end{cases}\n\\] is called the truncated power basis function, and \\(\\xi_k\\) is the knot.\n\n\nInterpretation of \\(\\beta_1\\): the averaged increase of \\(Y\\) associated with one unit of \\(X\\) for \\(X &lt; \\xi_1\\)."
   },
   {
     "objectID": "Week4.html#basis-functions",
     "href": "Week4.html#basis-functions",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Basis Functions",
-    "text": "Basis Functions\nMany nonlinear models can be expressed as\n\\[\ny_i=\\beta_0+\\sum_{k=1}^{M}\\beta_k b_k(x_i)+\\varepsilon_i,\n\\]\nwhere the \\(b_k(\\cdot)\\) are known transformations called basis functions.\n\n\n\nModel\nExample basis functions\n\n\n\n\nPolynomial\n\\(b_k(x)=x^k\\)\n\n\nStep function\n\\(b_k(x)=C_k(x)\\)\n\n\nLinear spline\n\\(b_1(x)=x\\), \\(b_{k+1}(x)=(x-\\xi_k)_+\\)\n\n\n\n\nOnce the basis is constructed, fitting the model is just linear regression on transformed predictors."
+    "text": "Basis Functions\nThe models we have just discussed are all special cases of a basis function approach.\nThe idea is to have a family of functions/transformations that can be applied to a variable, \\(X\\), and instead of fitting a linear model in \\(X\\), we fit\n\\[\ny_i=\\beta_0+\\sum_{k=1}^{M}\\beta_k b_k(x_i)+\\varepsilon_i,\n\\]\nwhere the \\(b_k(\\cdot)\\) are the known functions/transformations (we specify them ahead of time).\n\n\n\n\nModel\nExample basis functions\n\n\n\n\nPolynomial\n\\(b_k(x)=x^k\\)\n\n\nStep function\n\\(b_k(x)=C_k(x)\\)\n\n\nLinear spline\n\\(b_1(x)=x\\), \\(b_{k+1}(x)=(x-\\xi_k)_+\\)\n\n\n\n\n\nOnce the basis is constructed, fitting the model is just linear regression.\n\n\nA very common choice for a basis function is a regression spline, which we discuss next."
   },
   {
     "objectID": "Week4.html#how-a-linear-spline-is-built",
     "href": "Week4.html#how-a-linear-spline-is-built",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "How a Linear Spline Is Built",
-    "text": "How a Linear Spline Is Built\nThe truncated linear term is zero before the knot and grows linearly afterward. Adding it to the original line changes the slope without creating a jump."
+    "text": "How a Linear Spline Is Built\n\nThe truncated linear term is zero before the knot and grows linearly afterward. Adding it to the original line changes the slope without creating a jump."
   },
   {
     "objectID": "Week4.html#cubic-splines",
     "href": "Week4.html#cubic-splines",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Cubic Splines",
-    "text": "Cubic Splines\nA cubic spline uses piecewise cubic polynomials with continuous first and second derivatives at each knot.\nWith \\(K\\) knots, one truncated-power basis is\n\\[\nb_1(x)=x,\\quad b_2(x)=x^2,\\quad b_3(x)=x^3,\n\\]\n\\[\nb_{k+3}(x)=(x-\\xi_k)_+^3,\\qquad k=1,\\ldots,K.\n\\]\nThe resulting regression model has \\(K+4\\) coefficients, including the intercept."
+    "text": "Cubic Splines\nA cubic spline uses piecewise cubic polynomials with continuous first and second derivatives at each knot. Again, we start off with a basis for a cubic polynomial, then add one truncated power basis function per knot.\n\nThat is, with \\(K\\) knots at \\(\\xi_1 &lt; \\xi_2 &lt; ... &lt;\\xi_k\\),\n\\[y_i = \\beta_0 + \\beta_1b_1(x_i) + \\beta_2b_2(x_i) + ... + \\beta_{K+3}b_{K+3}(x_i) + \\epsilon_i\\] where \\(b_k(.)\\) are basis functions\n\\[\nb_1(x)=x,\\quad b_2(x)=x^2,\\quad b_3(x)=x^3,\n\\]\n\\[\nb_{k+3}(x)=(x-\\xi_k)_+^3,\\qquad k=1,\\ldots,K.\n\\]"
   },
   {
     "objectID": "Week4.html#how-a-cubic-spline-is-built",
     "href": "Week4.html#how-a-cubic-spline-is-built",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "How a Cubic Spline Is Built",
-    "text": "How a Cubic Spline Is Built\nThe truncated cubic term changes the curve only after the knot. The pieces join smoothly in value, slope, and curvature."
+    "text": "How a Cubic Spline Is Built\n\nThe truncated cubic term changes the curve only after the knot. The pieces join smoothly in value, slope, and curvature."
   },
   {
     "objectID": "Week4.html#natural-cubic-splines",
@@ -1850,16 +1850,16 @@
   {
     "objectID": "Week4.html#connecting-the-univariate-methods",
     "href": "Week4.html#connecting-the-univariate-methods",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Connecting the Univariate Methods",
-    "text": "Connecting the Univariate Methods\nPolynomial regression\nGlobal smooth structure; can be unstable at the edges.\nStep functions\nLocal and interpretable; discontinuous and sensitive to cut points.\nRegression splines\nPiecewise polynomials joined smoothly at knots.\nSmoothing splines\nUse many knots and control smoothness through a penalty."
+    "text": "Connecting the Univariate Methods\nPolynomial regression\nGlobal smooth structure; can be unstable at the edges.\n\nStep functions\nLocal and interpretable; discontinuous and sensitive to cut points.\n\nRegression splines\nPiecewise polynomials joined smoothly at knots.\n\nSmoothing splines\nUse many knots and control smoothness through a penalty."
   },
   {
     "objectID": "Week4.html#what-changes-when-p1",
     "href": "Week4.html#what-changes-when-p1",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "What Changes When \\(p>1\\)?",
-    "text": "What Changes When \\(p&gt;1\\)?\n\nTensor-product spline bases can grow rapidly with \\(p\\).\nLocal methods are practical in low dimensions:\n\nnearest-neighbor regression;\nlocal linear regression.\n\nGeneralized additive models remain useful when \\(p\\) is larger because they impose additivity.\n\n\nWhy do local methods become difficult as dimension grows? We will return to the curse of dimensionality."
+    "text": "What Changes When \\(p&gt;1\\)?\n\nSplines can be used for \\(p &lt; 4\\) (number of basis functions grows exponentially in \\(p\\))\n\n\n\n\nLocal approach for \\(p &lt; 4\\)\n\nnearest neighbour approach\nlocal regression\n\n\n\n\n\n\nGeneralized Additive Models (GAM) for large \\(p\\)"
   },
   {
     "objectID": "Week4.html#k-nearest-neighbor-regression",
@@ -1920,9 +1920,9 @@
   {
     "objectID": "Week4.html#weighted-k-nearest-neighbors",
     "href": "Week4.html#weighted-k-nearest-neighbors",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Weighted \\(k\\)-Nearest Neighbors",
-    "text": "Weighted \\(k\\)-Nearest Neighbors\nOrdinary \\(k\\)-NN assigns equal weight \\(1/k\\) to every neighbor. More generally,\n\\[\n\\widehat f(x_0)=\\sum_{i\\in N_k(x_0)}K(x_i,x_0)y_i,\n\\]\nwith\n\\[\nK(x_i,x_0)\\ge 0,\\qquad \\sum_{i\\in N_k(x_0)}K(x_i,x_0)=1.\n\\]\n\nNearby observations can be given more influence than observations near the edge of the neighborhood."
+    "text": "Weighted \\(k\\)-Nearest Neighbors\nOrdinary \\(k\\)-NN assigns equal weight \\(1/k\\) to every neighbor.\n\nMore generally, we can choose a weight such that\n\\[\n\\widehat f(x_0)=\\sum_{i\\in N_k(x_0)}K(x_i,x_0)y_i,\n\\]\nwith\n\\[\nK(x_i,x_0)\\ge 0,\\qquad \\sum_{i\\in N_k(x_0)}K(x_i,x_0)=1.\n\\]\n\n\nNearby observations can be given more influence than observations near the edge of the neighborhood."
   },
   {
     "objectID": "Week4.html#inverse-distance-weights",
@@ -1962,9 +1962,9 @@
   {
     "objectID": "Week4.html#local-regression-algorithm",
     "href": "Week4.html#local-regression-algorithm",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Local Regression Algorithm",
-    "text": "Local Regression Algorithm\n\n\nChoose a neighborhood size or span \\(s\\).\nFor target \\(x_0\\), identify the closest \\(s\\times100\\%\\) of the observations.\nAssign weights that decrease with distance from \\(x_0\\).\nFit a weighted least-squares line or polynomial in that neighborhood.\nUse the fitted value at \\(x_0\\) as \\(\\widehat f(x_0)\\).\nRepeat across target values."
+    "text": "Local Regression Algorithm\n\n\nGather the fraction of \\(s=k/n\\) of training points whose \\(x_i\\) are closest to \\(x_0\\)\nAssign a weight \\(K_{i0}=K(x_i, x_0)\\) to each point in this neighbourhood, so that the point furthest away from \\(x_0\\) has weight zero, and the closest has the highest weight. All but these \\(k\\) nearest neighbours get weight zero.\nFit a weighted least-squares regression of the \\(y_i\\) on the \\(x_i\\) using the aforementioned weights, by finding \\(\\widehat{\\beta}_0\\) and \\(\\widehat{\\beta}_1\\) that minimize \\[\\sum_{i=1}^n K_{i0}(y_i-\\beta_0-\\beta_1x_i)^2\\]\nThe fitted value at \\(x_0\\) is given by \\(\\widehat{f}(x_0)=\\widehat{\\beta}_0 + \\widehat{\\beta}_1x_0\\)"
   },
   {
     "objectID": "Week4.html#comparing-local-fits",
@@ -1992,7 +1992,7 @@
     "href": "Week4.html#generalized-additive-models-1",
     "title": "Moving Beyond Linearity",
     "section": "Generalized Additive Models",
-    "text": "Generalized Additive Models\nA generalized additive model (GAM) allows a separate nonlinear function for each predictor while preserving additivity:\n\\[\ny_i=\\beta_0+f_1(x_{i1})+\\cdots+f_p(x_{ip})+\\varepsilon_i.\n\\]\nEach \\(f_j\\) could be:\n\nlinear;\npolynomial;\na step function;\na spline; or\na local smoother."
+    "text": "Generalized Additive Models\nA generalized additive model (GAM) allows a separate nonlinear function for each predictor while preserving additivity:\n\\[\ny_i=\\beta_0+f_1(x_{i1})+\\cdots+f_p(x_{ip})+\\varepsilon_i.\n\\]\n\nEach \\(f_j\\) could be:\n\nlinear;\npolynomial;\na step function;\na spline; or\na local regression.\n\n\n\nCan be applied to classification problems."
   },
   {
     "objectID": "Week4.html#gams-for-classification",
@@ -2004,23 +2004,23 @@
   {
     "objectID": "Week4.html#gam-wage-data",
     "href": "Week4.html#gam-wage-data",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "GAM: Wage Data",
-    "text": "GAM: Wage Data\nConsider\n\\[\n\\text{wage}=\\beta_0+f_1(\\text{year})+f_2(\\text{age})+f_3(\\text{education})+\\varepsilon.\n\\]\n\\(f_1\\) and \\(f_2\\) are natural splines; \\(f_3\\) is a step function for the qualitative predictor education.\n\nFigure adapted from James et al., An Introduction to Statistical Learning, Chapter 7."
+    "text": "GAM: Wage Data\nConsider the wage data\n\\[\n\\text{wage}=\\beta_0+f_1(\\text{year})+f_2(\\text{age})+f_3(\\text{education})+\\varepsilon.\n\\]\n\n\\(f_1\\) and \\(f_2\\) are natural splines; \\(f_3\\) is a step function for the qualitative predictor education."
   },
   {
     "objectID": "Week4.html#gams-strengths-and-limitations",
     "href": "Week4.html#gams-strengths-and-limitations",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "GAMs: Strengths and Limitations",
-    "text": "GAMs: Strengths and Limitations\n\n\n\nStrengths\n\nFlexible nonlinear effects\nOften better prediction than a purely linear model\nEach effect can be visualized while holding others fixed\nAdditivity avoids a fully multivariate smoother\n\n\n\n\nLimitation\nThe default additive model does not capture interactions.\nTo include an interaction, we must add one explicitly, for example \\(f_{12}(X_1,X_2)\\)."
+    "text": "GAMs: Strengths and Limitations\n\nGAMs allow us to fit a non-linear function \\(f_j\\) to each \\(X_j\\): model complicated relationship between the response and the original feature space\n\n\n\nThe non-linear fit can potentially improve prediction accuracy\n\n\n\nBecause the model is additive, we can still examine the effect of each \\(X_j\\) on \\(Y\\) individually while holding all of the other variables fixed.\n\n\n\nIt avoids the curse of dimensionality by assuming additivity\n\n\n\nHowever, GAMs fail to incorporate the interaction of variables."
   },
   {
     "objectID": "Week4.html#summary",
     "href": "Week4.html#summary",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Summary",
-    "text": "Summary\n\nLinear regression with transformed features covers polynomial regression, step functions, regression splines, and additive models.\nSplines achieve local flexibility while maintaining smoothness at the knots.\nIn local methods, neighborhood size controls the bias-variance tradeoff.\nLocal linear regression replaces a local average with a locally fitted trend.\nGAMs combine flexible univariate effects while retaining interpretability through additivity.\n\n\nNext: tree-based methods provide another way to model nonlinearities and interactions."
+    "text": "Summary\nGradient descent gives us a general way to solve optimization problems of the form\n\\[\n\\widehat{\\mathbf w}\n=\n\\arg\\min_{\\mathbf w}\n\\mathcal J(\\mathbf w).\n\\]\nThe basic recipe is:\n\\[\n\\boxed{\n\\text{initialize}\n\\;\\longrightarrow\\;\n\\text{compute gradient}\n\\;\\longrightarrow\\;\n\\text{step downhill}\n\\;\\longrightarrow\\;\n\\text{repeat}\n}\n\\]\nKey ideas:\n\nthe gradient tells us the direction of steepest increase;\nthe negative gradient points downhill;\nthe learning rate determines the step size;\nconvexity helps guarantee that we are moving toward a global optimum;\nbatch, stochastic, and mini-batch gradient descent trade off computation and noise."
   },
   {
     "objectID": "Week4.html#references",
@@ -2543,8 +2543,435 @@
   {
     "objectID": "Week4.html#polynomial-regression-1",
     "href": "Week4.html#polynomial-regression-1",
-    "title": "Moving Beyond Linearity",
+    "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Polynomial Regression",
-    "text": "Polynomial Regression\n\nIn practice, the degree \\(d\\) is usually small - often no greater than 3 or 4.\nWe can choose \\(d\\) using cross-validation.\nPolynomial terms can also be used for classification\n\nFor instance, in the logistic regression below (we will come back to this later), this can be fit by maximizing the likelihood \\[\n\\operatorname{logit}\\{P(Y_i=1\\mid X_i=x_i)\\}\n=\\beta_0+\\beta_1x_i+\\cdots+\\beta_dx_i^d.\n\\]\n\n\nNote: High-degree polynomials can behave erratically near the boundaries and are particularly unreliable for extrapolation."
+    "text": "Polynomial Regression\n\nIn practice, the degree \\(d\\) is usually small, often no greater than 3 or 4.\nWe can choose \\(d\\) using cross-validation.\n\n\n\n\nPolynomial terms can also be used for classification\n\nFor instance, in the logistic regression below (we will come back to this later), this can be fit by maximizing the likelihood \\[\n\\operatorname{logit}\\{P(Y_i=1\\mid X_i=x_i)\\}\n=\\beta_0+\\beta_1x_i+\\cdots+\\beta_dx_i^d.\n\\]\n\n\n\n\n\nNote: High-degree polynomials can behave erratically near the boundaries and are particularly unreliable for extrapolation."
+  },
+  {
+    "objectID": "Week4.html#step-functions-1",
+    "href": "Week4.html#step-functions-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Step-Functions",
+    "text": "Step-Functions\nUsing the first interval as the reference category,\n\\[\ny_i=\\beta_0+\\beta_1C_1(x_i)+\\cdots+\\beta_KC_K(x_i)+\\varepsilon_i.\n\\]\n\n\n\nThe model can be fit by OLS or a shrinkage method.\nFor a given value \\(X\\), at most one of \\(C_1, C_2, ..., C_K\\) can be non-zero.\n\\(\\beta_0\\) is the mean response in the reference interval \\(X&lt;c_1\\).\n\\(\\beta_j\\) is the mean difference in the response \\(Y\\) for \\(c_j \\leq X \\leq c_{j+1}\\) relative to \\(X &lt; c_1\\)."
+  },
+  {
+    "objectID": "Week4.html#natural-splines",
+    "href": "Week4.html#natural-splines",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Natural Splines",
+    "text": "Natural Splines\nA natural spline is a regression spline with additional boundary constraints: the function is required to be linear at the boundary.\nThis reduces instability near the boundaries, where there are fewer observations and ordinary cubic splines can have high variance."
+  },
+  {
+    "objectID": "Week4.html#more-on-splines",
+    "href": "Week4.html#more-on-splines",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "More on Splines",
+    "text": "More on Splines\nChoosing the number and locations of the knots\n\nPlace knots at selected quantiles of the data or place on the range of \\(X\\) with equal space. Oftentimes, the placement of knots is not very crucial.\nWe use cross validation to choose \\(K\\)\n\n\nPolynomial regressions and step functions are special cases of splines\n\nAnother variant: Smoothing spline (ISLR 7.5)"
+  },
+  {
+    "objectID": "Week4.html#k-nearest-neighbor",
+    "href": "Week4.html#k-nearest-neighbor",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "\\(k\\)-Nearest-Neighbor",
+    "text": "\\(k\\)-Nearest-Neighbor\n\nTo predict at \\(X=x_0\\):\n\nChoose \\(k\\in\\{1,\\ldots,n\\}\\).\nFind the \\(k\\) training points closest to \\(x_0\\); call their index set \\(N_k(x_0)\\).\nAverage their responses:\n\n\\[\n\\widehat f(x_0)=\\frac{1}{k}\\sum_{i\\in N_k(x_0)}y_i.\n\\]"
+  },
+  {
+    "objectID": "Week4.html#k-nearest-neighbor-the-role-of-k",
+    "href": "Week4.html#k-nearest-neighbor-the-role-of-k",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "\\(k\\)-Nearest-Neighbor: The Role of \\(k\\)",
+    "text": "\\(k\\)-Nearest-Neighbor: The Role of \\(k\\)"
+  },
+  {
+    "objectID": "Week4.html#k1-nearest-neighbour",
+    "href": "Week4.html#k1-nearest-neighbour",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "\\(k=1\\) Nearest Neighbour",
+    "text": "\\(k=1\\) Nearest Neighbour"
+  },
+  {
+    "objectID": "Week4.html#k3-nearest-neighbour",
+    "href": "Week4.html#k3-nearest-neighbour",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "\\(k=3\\) Nearest Neighbour",
+    "text": "\\(k=3\\) Nearest Neighbour"
+  },
+  {
+    "objectID": "Week4.html#k10-nearest-neighbour",
+    "href": "Week4.html#k10-nearest-neighbour",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "\\(k=10\\) Nearest Neighbour",
+    "text": "\\(k=10\\) Nearest Neighbour"
+  },
+  {
+    "objectID": "Week4.html#role-of-k",
+    "href": "Week4.html#role-of-k",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Role of \\(k\\)",
+    "text": "Role of \\(k\\)"
+  },
+  {
+    "objectID": "Week4.html#role-of-k-1",
+    "href": "Week4.html#role-of-k-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Role of \\(k\\)",
+    "text": "Role of \\(k\\)\n \n\n\n\nSmaller \\(k\\)\nLarger \\(k\\)\n\n\n\n\nMore flexible\nSmoother\n\n\nLower bias\nHigher bias\n\n\nHigher variance\nLower variance\n\n\n\n\n\nChoose \\(k\\) using cross-validation.\nThe best \\(k\\) is the one that gives the lowest estimated test error (not necessarily the smoothest-looking curve)."
+  },
+  {
+    "objectID": "Week4.html#choice-of-the-weight",
+    "href": "Week4.html#choice-of-the-weight",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Choice of the Weight",
+    "text": "Choice of the Weight\nOne popular choice is the so-called inverse distance weighting (IDW).\nOf course there are other more sophisticated weighting schemes.\n\n\nFor \\(x_i\\in N_k(x_0)\\), define\n\\[\nd_i=\\lVert x_i-x_0\\rVert_2,\n\\qquad\n\\operatorname{ID}_i=\\frac{1}{d_i}.\n\\]\nNormalize the inverse distances:\n\\[\nK(x_i,x_0)=\\frac{\\operatorname{ID}_i}\n{\\sum_{j\\in N_k(x_0)}\\operatorname{ID}_j}.\n\\]\n\n\nIn implementation, handle \\(d_i=0\\) separately: if the target matches a training point exactly, that response can receive all the weight."
+  },
+  {
+    "objectID": "Week4.html#weighted-knn-vs-knn-k3",
+    "href": "Week4.html#weighted-knn-vs-knn-k3",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Weighted \\(k\\)NN vs \\(k\\)NN (\\(k=3\\))",
+    "text": "Weighted \\(k\\)NN vs \\(k\\)NN (\\(k=3\\))"
+  },
+  {
+    "objectID": "Week4.html#generalization-of-knn-local-regression",
+    "href": "Week4.html#generalization-of-knn-local-regression",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Generalization of \\(k\\)NN: Local Regression",
+    "text": "Generalization of \\(k\\)NN: Local Regression\nRecall that \\(k\\)NN predicts by using the local average of the responses\n\\[\n\\widehat f(x_0)=\\frac{1}{k}\\sum_{i\\in N_k(x_0)}y_i.\n\\]\n\nLocal linear regression instead fits a line near \\(x_0\\):\n\\[\n\\widehat f(x_0)=\\widehat\\beta_0+\\widehat\\beta_1x_0,\n\\]\nwhere\n\\[\n(\\widehat\\beta_0,\\widehat\\beta_1)\n=\\arg\\min_{\\beta_0,\\beta_1}\n\\sum_{i\\in N_k(x_0)}(y_i-\\beta_0-\\beta_1x_i)^2.\n\\]"
+  },
+  {
+    "objectID": "Week4.html#k-nn-vs.-local-linear-regression-k-10",
+    "href": "Week4.html#k-nn-vs.-local-linear-regression-k-10",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "\\(k\\)-NN vs. Local Linear Regression (\\(k = 10\\))",
+    "text": "\\(k\\)-NN vs. Local Linear Regression (\\(k = 10\\))"
+  },
+  {
+    "objectID": "Week4.html#local-linear-regression",
+    "href": "Week4.html#local-linear-regression",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Local (Linear) Regression",
+    "text": "Local (Linear) Regression\nLocal Regression predicts at a target point \\(x_0\\) using only the nearby training observations in a weighted scheme.\n\n\nAt a target \\(x_0\\), solve\n\\[\n(\\widehat\\beta_0,\\widehat\\beta_1)\n=\\arg\\min_{\\beta_0,\\beta_1}\n\\sum_{i\\in N_k(x_0)}K(x_i,x_0)\n(y_i-\\beta_0-\\beta_1x_i)^2,\n\\]\nand predict\n\\[\n\\widehat f(x_0)=\\widehat\\beta_0+\\widehat\\beta_1x_0.\n\\]\nusing the weighted least squares."
+  },
+  {
+    "objectID": "Week4.html#knn-vs-local-linear-regression-k10",
+    "href": "Week4.html#knn-vs-local-linear-regression-k10",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "\\(k\\)NN vs Local Linear Regression (\\(k=10\\))",
+    "text": "\\(k\\)NN vs Local Linear Regression (\\(k=10\\))"
+  },
+  {
+    "objectID": "Week4.html#simulated-example",
+    "href": "Week4.html#simulated-example",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Simulated Example",
+    "text": "Simulated Example\n\nThe blue curve is true \\(f(x)\\), and the light orange curve is the local regression \\(\\widehat{f}(x)\\). The orange points are local to the target point \\(x_0\\), represented by the orange vertical line. The yellow bell-shape indicates weights assigned to each point. The fit \\(\\widehat{f}(x_0)\\) at \\(x_0\\) is obtained by fitting a weighted linear regression (orange line segment), and using the fitted value at \\(x_0\\) (orange solid dot) as the estimate \\(\\widehat{f}(x_0)\\)."
+  },
+  {
+    "objectID": "Week4.html#local-regression",
+    "href": "Week4.html#local-regression",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Local Regression",
+    "text": "Local Regression\n\nThe size of the neighbourhood (fraction \\(s\\) of training data) is a tuning parameter, which can be chosen by cross validation\n\n\n\nThe weight of each point in the neighbourhood needs to be specified\n\n\n\nWhen we have two dimensional predictors \\(X_1\\) and \\(X_2\\), we can simply use 2-dimensional neighborhoods, and fit bivariate linear regression models using the observations that are near each target point in 2-dimensional space.\n\n\n\nHowever, local regression can perform poorly if \\(p \\geq 4\\) (the curse of dimensionality)"
+  },
+  {
+    "objectID": "Week4.html#linear-models",
+    "href": "Week4.html#linear-models",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Linear Models",
+    "text": "Linear Models\nSo far, we’ve mainly focused on linear models.\n\nThey are simply to describe and implement, and have advantages over other approaches in terms of interpretation and inference.\n\n\nHowever, because the linearity assumption is almost always an approximation, linear regression can have significant limitations in terms of predictive power.\n\n\n\nWe can improve upon least squares using ridge regression and the lasso by reducing the complexity of the model (i.e. the variance of the estimates), but we are still using a linear model which can only be improved so much!"
+  },
+  {
+    "objectID": "Week4.html#constraints-and-splines",
+    "href": "Week4.html#constraints-and-splines",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Constraints and Splines",
+    "text": "Constraints and Splines\nAt each knot, we can impose constraints:\n\nContinuity: the adjacent pieces have the same function value.\nSmoothness: their first derivatives agree.\nMore smoothness: higher-order derivatives also agree.\n\n\n\nThe constrained polynomials are called splines.\n\nA degree-\\(d\\) spline is a piecewise degree-\\(d\\) polynomial, with continuity in derivatives up to degree \\(d-1\\) at each knot.\n\n\n\nHow can we construct the degree-\\(d\\) spline?"
+  },
+  {
+    "objectID": "Week4.html#linear-splines-1",
+    "href": "Week4.html#linear-splines-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Linear Splines",
+    "text": "Linear Splines\nFor example, with three knots, we start off with a basis for a linear polynomial, then add one truncated power basis function per knot:\n\\[\ny\n=\n\\beta_0+\\beta_1x\n+\\beta_2(x-\\xi_1)_+\n+\\beta_3(x-\\xi_2)_+\n+\\beta_4(x-\\xi_3)_+.\n\\]\n\nTherefore, the slope in each region is\n\\[\n\\begin{aligned}\nx \\leq \\xi_1\n&: \\quad \\beta_1, \\\\[4pt]\n\\xi_1 &lt; x \\leq \\xi_2\n&: \\quad \\beta_1+\\beta_2, \\\\[4pt]\n\\xi_2 &lt; x \\leq \\xi_3\n&: \\quad \\beta_1+\\beta_2+\\beta_3, \\\\[4pt]\nx &gt; \\xi_3\n&: \\quad \\beta_1+\\beta_2+\\beta_3+\\beta_4.\n\\end{aligned}\n\\]\n\n\nBecause each new term \\((x-\\xi_k)_+\\) is zero at the knot \\(\\xi_k\\), the pieces meet at each knot. Thus, the fitted function is continuous, making it a spline."
+  },
+  {
+    "objectID": "Week4.html#objective-functions",
+    "href": "Week4.html#objective-functions",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Objective Functions",
+    "text": "Objective Functions\nSo far, we have defined our regression estimates by asking them to minimize an objective function.\n\nFor ordinary least squares:\n\\[\n\\min_{\\boldsymbol{\\beta}}\n\\sum_{i=1}^n\n\\left(y_i-\\beta_0-\\sum_{j=1}^p x_{ij}\\beta_j\\right)^2\n\\]\n\n\nFor ridge regression:\n\\[\n\\min_{\\boldsymbol{\\beta}}\n\\left\\{\n\\sum_{i=1}^n\n\\left(y_i-\\beta_0-\\sum_{j=1}^p x_{ij}\\beta_j\\right)^2\n+\n\\lambda\\sum_{j=1}^p \\beta_j^2\n\\right\\}\n\\]\n\n\nFor the Lasso:\n\\[\n\\min_{\\boldsymbol{\\beta}}\n\\left\\{\n\\sum_{i=1}^n\n\\left(y_i-\\beta_0-\\sum_{j=1}^p x_{ij}\\beta_j\\right)^2\n+\n\\lambda\\sum_{j=1}^p |\\beta_j|\n\\right\\}\n\\]"
+  },
+  {
+    "objectID": "Week4.html#objective-functions-1",
+    "href": "Week4.html#objective-functions-1",
+    "title": "Moving Beyond Linearity",
+    "section": "Objective Functions",
+    "text": "Objective Functions\nFor some problems, we can solve for the minimizing parameters directly.\n\nFor example, ordinary least squares has the familiar solution\n\\[\n\\hat{\\boldsymbol{\\beta}}\n=\n(\\mathbf X^\\top \\mathbf X)^{-1}\\mathbf X^\\top\\mathbf y.\n\\]\n\n\nBut many statistical learning problems:\n\nhave many parameters;\nhave complicated objective functions;\ndo not have a convenient closed-form solution.\n\n\n\nGradient Descent: Start with some parameter values and repeatedly take a small step in the direction that decreases the objective function."
+  },
+  {
+    "objectID": "Week4.html#cubic-splines-1",
+    "href": "Week4.html#cubic-splines-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Cubic Splines",
+    "text": "Cubic Splines\nBut wait.. we know a spline must have continuity in derivatives up to degree \\(d-1\\) at each knot.\nHow can we check this condition?"
+  },
+  {
+    "objectID": "Week4.html#a-general-minimization-problem",
+    "href": "Week4.html#a-general-minimization-problem",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "A General Minimization Problem",
+    "text": "A General Minimization Problem\nSuppose we want to solve\n\\[\n\\widehat{\\mathbf w}\n=\n\\arg\\min_{\\mathbf w\\in\\Theta}\n\\mathcal J(\\mathbf w;\\mathcal D^{\\text{train}})\n:=\n\\arg\\min_{\\mathbf w\\in\\Theta}\n\\mathcal J(\\mathbf w).\n\\]\nwhere\n\n\\(\\mathcal J(\\mathbf w)\\) is a differentiable function in \\(\\mathbf w=(w_1,\\ldots,w_p)\\);\n\\(\\Theta\\) is the parameter space for \\(\\mathbf w\\), typically a subset of \\(\\mathbb R^p\\).\n\n\nThe optimal solution, if it exists in the interior, must occur at a critical point i.e. point to which the derivative is zero (partial derivatives to zero for multi-dimensional parameter)"
+  },
+  {
+    "objectID": "Week4.html#finding-the-optimal-solution",
+    "href": "Week4.html#finding-the-optimal-solution",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Finding the Optimal Solution",
+    "text": "Finding the Optimal Solution\nA partial derivative measures how a multivariable function changes with respect to one argument while holding the others fixed.\nFor example,\n\\[\n\\frac{\\partial}{\\partial w_1}\\mathcal J(w_1,w_2)\n=\n\\lim_{h\\to 0}\n\\frac{\n\\mathcal J(w_1+h,w_2)-\\mathcal J(w_1,w_2)\n}{h}.\n\\]\n\nThe minimum must occur at a point where the partial derivatives are zero\n\\[\n\\nabla \\mathcal J(\\mathbf w)\n=\n\\begin{bmatrix}\n\\frac{\\partial \\mathcal J}{\\partial w_1}\\\\\n\\vdots\\\\\n\\frac{\\partial \\mathcal J}{\\partial w_p}\n\\end{bmatrix}\n=\n\\mathbf 0.\n\\]\n\n\nThis implies a system of equations, which we can solve analytically in some scenarios.\nWe may also use optimization techniques that iteratively get us closer to the solution."
+  },
+  {
+    "objectID": "Week4.html#direct-solution-ols",
+    "href": "Week4.html#direct-solution-ols",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Direct Solution: OLS",
+    "text": "Direct Solution: OLS\nFor ordinary least squares,\n\\[\n\\widehat{\\mathbf w}\n=\n\\arg\\min_{\\mathbf w\\in\\mathbb R^p}\n\\mathcal J(\\mathbf w)\n=\n\\arg\\min_{\\mathbf w\\in\\mathbb R^p}\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2.\n\\]\nThe partial derivatives w.r.t \\(\\mathbf{w}\\) are\n\\[\n\\frac{\\partial \\mathcal J}{\\partial \\mathbf w}\n=\n-2\\mathbf X^\\top(\\mathbf y-\\mathbf X\\mathbf w).\n\\]\n(If not familiar with multi-dimensional derivatives, calculate \\(\\frac{\\partial \\mathcal{J}}{\\partial w_j}\\) and stack them together)\n\nSetting this equal to zero gives\n\\[\n\\mathbf X^\\top\\mathbf X\\widehat{\\mathbf w}\n=\n\\mathbf X^\\top\\mathbf y,\n\\]\nso, when the inverse exists:\n\\[\n\\boxed{\n\\widehat{\\mathbf w}\n=\n(\\mathbf X^\\top\\mathbf X)^{-1}\\mathbf X^\\top\\mathbf y\n}\n\\]"
+  },
+  {
+    "objectID": "Week4.html#direct-solution-ridge",
+    "href": "Week4.html#direct-solution-ridge",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Direct Solution: Ridge",
+    "text": "Direct Solution: Ridge\nFor ridge regression,\n\\[\n\\widehat{\\mathbf w}^{\\,R}_\\lambda\n=\n\\arg\\min_{\\mathbf w\\in\\mathbb R^p}\n\\left\\{\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_2^2\n\\right\\}.\n\\]\nThe partial derivatives w.r.t \\(\\mathbf{w}\\) are\n\\[\n\\frac{\\partial \\mathcal J}{\\partial \\mathbf w}\n=\n-2\\mathbf X^\\top(\\mathbf y-\\mathbf X\\mathbf w)\n+\n2\\lambda\\mathbf w.\n\\]\n\nSetting this equal to zero gives\n\\[\n(\\mathbf X^\\top\\mathbf X+\\lambda\\mathbf I_p)\n\\widehat{\\mathbf w}^{\\,R}_\\lambda\n=\n\\mathbf X^\\top\\mathbf y,\n\\]\nand therefore\n\\[\n\\boxed{\n\\widehat{\\mathbf w}^{\\,R}_\\lambda\n=\n(\\mathbf X^\\top\\mathbf X+\\lambda\\mathbf I_p)^{-1}\n\\mathbf X^\\top\\mathbf y\n}\n\\]"
+  },
+  {
+    "objectID": "Week4.html#gradient-descent",
+    "href": "Week4.html#gradient-descent",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\nNow consider a second way to solve\n\\[\n\\widehat{\\mathbf w}\n=\n\\arg\\min_{\\mathbf w}\\mathcal J(\\mathbf w).\n\\]\nwhich is more broadly applicable: gradient descent.\n\n\nMany times, we do not have a convenient direct solution to\n\\[\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}} = 0.\n\\]\nGradient descent is an iterative algorithm.\nRather than solving directly for the optimum, we repeatedly update the parameters so that we move toward a smaller value of the objective."
+  },
+  {
+    "objectID": "Week4.html#the-basic-idea",
+    "href": "Week4.html#the-basic-idea",
+    "title": "Moving Beyond Linearity",
+    "section": "The Basic Idea",
+    "text": "The Basic Idea\nWe initialize \\(\\mathbf w\\) at some starting value, for example\n\\[\n\\mathbf w^{(0)}=\\mathbf 0,\n\\]\nand repeatedly adjust it in the direction of steepest descent of \\(\\mathcal J\\).\n\nThe key question is:\n\nAt the current value of \\(\\mathbf w\\), which direction moves us downhill the fastest?\n\n\n\nThe gradient points in the direction of steepest increase.\nSo the negative gradient points in the direction of steepest decrease."
+  },
+  {
+    "objectID": "Week4.html#the-gradient-descent-update",
+    "href": "Week4.html#the-gradient-descent-update",
+    "title": "Moving Beyond Linearity",
+    "section": "The Gradient Descent Update",
+    "text": "The Gradient Descent Update\nAt the current iterate \\(\\mathbf w^{(0)}\\), the gradient is\n\\[\n\\nabla\\mathcal J(\\mathbf w^{(0)}).\n\\]\nBecause this points uphill, we update in the opposite direction:\n\\[\n\\boxed{\n\\mathbf w^{(1)}\n=\n\\mathbf w^{(0)}\n-\n\\alpha\n\\nabla\\mathcal J(\\mathbf w^{(0)})\n}\n\\]\nwhere \\(\\alpha&gt;0\\) is the learning rate, or step size.\n\nIf \\(\\alpha\\) is sufficiently small, then typically\n\\[\n\\mathcal J(\\mathbf w^{(1)})\n&lt;\n\\mathcal J(\\mathbf w^{(0)}),\n\\]\nunless the gradient is already zero."
+  },
+  {
+    "objectID": "Week4.html#gradient-descent-coordinatewise-view",
+    "href": "Week4.html#gradient-descent-coordinatewise-view",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Gradient Descent: Coordinatewise View",
+    "text": "Gradient Descent: Coordinatewise View\nFor iterations \\(k=0,1,2,\\ldots\\), and for each \\(j\\in\\{1,\\ldots,p\\}\\),\n\\[\n\\boxed{\nw_j^{(k+1)}\n\\leftarrow\nw_j^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal J}{\\partial w_j}\n\\right|_{\\mathbf w=\\mathbf w^{(k)}}\n}\n\\]\n\n\nThe learning rate (or step size), \\(\\alpha\\), controls the size of each update.\n\nlarger \\(\\alpha\\): parameters change more quickly;\nsmaller \\(\\alpha\\): parameters change more slowly.\n\n\n\nTypical values may be small, such as \\(0.01\\) or \\(0.0001\\), although the appropriate scale depends on the problem."
+  },
+  {
+    "objectID": "Week4.html#gradient-descent-for-ols",
+    "href": "Week4.html#gradient-descent-for-ols",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Gradient Descent for OLS",
+    "text": "Gradient Descent for OLS\nFor OLS,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2.\n\\] :::{.fragment} Update rule in vector form at the \\((k+1)\\)th iteration:\n\\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right).\n\\end{aligned}\n\\]\nInitialization: \\(\\mathbf{w}^{(0)}=0\\) :::"
+  },
+  {
+    "objectID": "Week4.html#gradient-descent-for-ridge",
+    "href": "Week4.html#gradient-descent-for-ridge",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Gradient Descent for Ridge",
+    "text": "Gradient Descent for Ridge\nFor ridge regression,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_2^2.\n\\] \n\nUpdate rule in vector form at the \\((k+1)\\)th iteration: \\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right)\n-\n2\\alpha\\lambda\\mathbf{w}^{(k)}.\n\\end{aligned}\n\\]\nInitialization: \\(\\mathbf{w}^{(0)}=0\\)\n\n\nThe final term is the contribution from the ridge penalty and pulls the coefficients toward zero."
+  },
+  {
+    "objectID": "Week4.html#what-about-the-lasso",
+    "href": "Week4.html#what-about-the-lasso",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "What About the Lasso?",
+    "text": "What About the Lasso?\nFor the lasso,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_1.\n\\]\nThe difficulty is that\n\\[\n\\|\\mathbf w\\|_1\n=\n\\sum_{j=1}^p |w_j|\n\\]\nis not differentiable at \\(w_j=0\\).\n\nSo ordinary gradient descent cannot be applied in exactly the same way at those points."
+  },
+  {
+    "objectID": "Week4.html#subgradients",
+    "href": "Week4.html#subgradients",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Subgradients",
+    "text": "Subgradients\nFor convex functions that are not differentiable everywhere, we can use a subgradient at \\(\\mathbf{x}\\), defined as:\n\\[\n\\partial \\mathcal{J}(\\mathbf{x})\n:=\n\\left\\{\nv :\n\\mathcal{J}(\\mathbf{y})\n\\geq\n\\mathcal{J}(\\mathbf{x})\n+\n(\\mathbf{y}-\\mathbf{x})^{\\top}v,\n\\quad\n\\forall \\mathbf{y}\\in\\Theta\n\\right\\}.\n\\]\nFor \\(f(x)=|x|\\),\n\\[\n\\partial f(x)\n=\n\\begin{cases}\n1, & x&gt;0,\\\\\n-1, & x&lt;0,\\\\\n(-1,1), & x=0.\n\\end{cases}\n\\]\nFor \\(f(\\mathbf{x})=\\|\\mathbf x\\|_1\\),\n\\[\n[\\partial f(\\mathbf{x})]_j\n=\n\\begin{cases}\n1, & x_j&gt;0,\\\\\n-1, & x_j&lt;0,\\\\\n(-1,1), & x_j=0.\n\\end{cases}\n\\]\n\nThis gives us a generalized notion of “slope” even at the kink at zero."
+  },
+  {
+    "objectID": "Week4.html#subgradient-descent-for-the-lasso",
+    "href": "Week4.html#subgradient-descent-for-the-lasso",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Subgradient Descent for the Lasso",
+    "text": "Subgradient Descent for the Lasso\nFor the Lasso,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_1.\n\\]\nUpdate rule in vector form at the (\\(k+1\\))th iteration:\n\\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right)\n-\n\\left.\n\\alpha \\lambda \\,\n\\partial\\left(\\lVert \\mathbf{w}\\rVert_1\\right)\n\\right|_{\\mathbf{w}^{(k)}}.\n\\end{aligned}\n\\] Initialization: \\(\\mathbf{w}^{(0)}=0\\)"
+  },
+  {
+    "objectID": "Week4.html#when-do-we-stop",
+    "href": "Week4.html#when-do-we-stop",
+    "title": "Moving Beyond Linearity",
+    "section": "When Do We Stop?",
+    "text": "When Do We Stop?\nBecause gradient descent is iterative, we need a stopping criterion.\nWe might stop when:\n\nthe objective value barely changes,\n\n\\[\n\\left|\n\\mathcal J(\\mathbf w^{(k+1)})\n-\n\\mathcal J(\\mathbf w^{(k)})\n\\right|\n\\le \\varepsilon;\n\\]\n\nthe parameters barely change,\n\n\\[\n\\|\\mathbf w^{(k+1)}-\\mathbf w^{(k)}\\|_2\n\\le \\varepsilon;\n\\]\n\nor we reach a maximum number of iterations, such as \\(M=1000\\)."
+  },
+  {
+    "objectID": "Week4.html#when-do-we-expect-gradient-descent-to-work",
+    "href": "Week4.html#when-do-we-expect-gradient-descent-to-work",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "When Do We Expect Gradient Descent to Work?",
+    "text": "When Do We Expect Gradient Descent to Work?\nRecall that we are trying to solve\n\\[\n\\widehat{\\mathbf w}\n=\n\\arg\\min_{\\mathbf w\\in\\Theta}\n\\mathcal J(\\mathbf w).\n\\]\n\n\nObviously, \\(\\mathcal J\\) should be differentiable.\n\nIf \\(\\mathcal J\\) is also convex, and \\(\\Theta\\) is a convex set, then gradient descent with a suitable choice of step size guarantees to find the optimal solution.\nIn many cases, \\(\\Theta=\\mathbb R^p\\), which is convex."
+  },
+  {
+    "objectID": "Week4.html#convex-sets",
+    "href": "Week4.html#convex-sets",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Convex Sets",
+    "text": "Convex Sets\nA set \\(S\\) is convex if for any \\(\\mathbf x_0,\\mathbf x_1\\in S\\),\n\\[\n(1-\\lambda)\\mathbf x_0+\\lambda\\mathbf x_1\\in S\n\\qquad\n\\text{for every } 0\\le\\lambda\\le 1.\n\\]\n\nIn words:\n\nIf you draw a straight line between any two points in the set, the entire line segment stays inside the set.\n\n\n\nThe Euclidean space \\(\\mathbb R^p\\) is convex."
+  },
+  {
+    "objectID": "Week4.html#convex-functions",
+    "href": "Week4.html#convex-functions",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Convex Functions",
+    "text": "Convex Functions\nA function \\(f\\) is convex if for any \\(x_0,x_1\\) in its domain,\n\\[\nf\\left((1-\\lambda)x_0+\\lambda x_1\\right)\n\\le\n(1-\\lambda)f(x_0)+\\lambda f(x_1)\n\\]\nfor every \\(\\lambda\\in[0,1]\\).\n\n\nIntuitively, a convex function is bowl-shaped.\n\n\n\nWhy do we care?\nFor a convex objective, every local minimum is also a global minimum."
+  },
+  {
+    "objectID": "Week4.html#how-can-we-tell-if-a-loss-is-convex",
+    "href": "Week4.html#how-can-we-tell-if-a-loss-is-convex",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "How Can We Tell if a Loss is Convex?",
+    "text": "How Can We Tell if a Loss is Convex?\n\nWe can verify the definition directly.\n\n\n\n\nIf \\(f\\) is twice differentiable and\n\n\\[\nf''(x)\\ge 0\n\\]\nfor all \\(x\\), then \\(f\\) is convex.\n\n\nFor example, the least squares loss function \\((y-t)^2\\) is convex as a function of \\(t\\)\n\n\nLikewise, the loss function in logistic regression\n\\[\n-yt+\\log(1+e^t)\n\\]\nis convex in \\(t\\)."
+  },
+  {
+    "objectID": "Week4.html#convexity-and-linear-predictors",
+    "href": "Week4.html#convexity-and-linear-predictors",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Convexity and Linear Predictors",
+    "text": "Convexity and Linear Predictors\nLinear transformations preserve convexity in many of the forms we use in statistical learning.\nIf \\(f\\) is a convex function and \\(g\\) is a linear function, then both \\(f \\circ g\\) and \\(g \\circ f\\) are convex.\nFor example, the least squares loss \\((y-\\mathbf x^\\top\\mathbf w)^2\\) is convex as a function of \\(\\mathbf w\\).\nLikewise, the negative log-likelihood under logistic regression,\n\\[\n-y\\mathbf x^\\top\\mathbf w\n+\n\\log\\left(1+e^{\\mathbf x^\\top\\mathbf w}\\right),\n\\]\nis convex in \\(\\mathbf w\\).\n\nTherefore sums of these losses over observations are also convex."
+  },
+  {
+    "objectID": "Week4.html#why-gradient-descent-for-linear-regression",
+    "href": "Week4.html#why-gradient-descent-for-linear-regression",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Why Gradient Descent for Linear Regression?",
+    "text": "Why Gradient Descent for Linear Regression?\nThe linear regression objective\n\\[\n\\sum_{i=1}^n\n(y_i-\\mathbf x_i^\\top\\mathbf w)^2\n\\]\nis convex.\nSo why use gradient descent when a closed-form solution exists?\n\nWhen \\(p\\) is large, directly computing\n\\[\n(\\mathbf X^\\top\\mathbf X)^{-1}\\mathbf X^\\top\\mathbf y\n\\]\nmay be expensive.\n\n\nA gradient descent update can be computationally attractive because it avoids explicitly inverting a large matrix."
+  },
+  {
+    "objectID": "Week4.html#the-learning-rate-matters",
+    "href": "Week4.html#the-learning-rate-matters",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "The Learning Rate Matters",
+    "text": "The Learning Rate Matters\nThe learning rate \\(\\alpha\\) is a hyperparameter that we need to tune. Its value can dramatically affect optimization.\n\n\nWe often try several candidate learning rates and examine their optimization behaviour."
+  },
+  {
+    "objectID": "Week4.html#training-curves",
+    "href": "Week4.html#training-curves",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Training Curves",
+    "text": "Training Curves\nA useful diagnostic is to look at the training cost: plot the training cost as a function of iteration.\n\n\n\nTraining curves can help identify:\n\nvery slow convergence;\nunstable updates;\na learning rate that may be too small or too large.\n\n\n\nImportant: the training cost could be used to check whether the optimization problem reaches certain convergence. But:\n\nIt does not tell whether we reach the global minimum or not\nIt does not tell us anything on the performance of the fitted model"
+  },
+  {
+    "objectID": "Week4.html#batch-gradient-descent",
+    "href": "Week4.html#batch-gradient-descent",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Batch Gradient Descent",
+    "text": "Batch Gradient Descent\nRecall for OLS that:\n\\[\n\\widehat{\\mathbf w}^{(k+1)}\n=\n\\widehat{\\mathbf w}^{(k)}\n+\n\\alpha\n\\sum_{i=1}^n\n\\left[\ny_i-\\mathbf x_i^\\top\\widehat{\\mathbf w}^{(k)}\n\\right]\\mathbf x_i.\n\\] \n\nComputing the gradient requires summing over all of the training examples, which can be done via matrix / vector operations.\n\nThe fact that it uses all training samples is known as batch training."
+  },
+  {
+    "objectID": "Week4.html#stochastic-gradient-descent",
+    "href": "Week4.html#stochastic-gradient-descent",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Stochastic Gradient Descent",
+    "text": "Stochastic Gradient Descent\nBatch gradient descent can be expensive when \\(n\\) is extremely large.\nStochastic gradient descent (SGD) uses only one randomly selected training example for each update.\n\n\nAt iteration \\(k\\):\n\nchoose \\(i\\in\\{1,\\ldots,n\\}\\) at random;\nupdate using only observation \\(i\\).\n\n\n\nFor OLS,\n\\[\n\\boxed{\n\\widehat{\\mathbf w}^{(k+1)}\n=\n\\widehat{\\mathbf w}^{(k)}\n+\n\\alpha\n\\left[\ny_i-\\mathbf x_i^\\top\\widehat{\\mathbf w}^{(k)}\n\\right]\\mathbf x_i\n}\n\\]"
+  },
+  {
+    "objectID": "Week4.html#why-use-sgd",
+    "href": "Week4.html#why-use-sgd",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Why Use SGD?",
+    "text": "Why Use SGD?\nPros\n\nComputational cost of each SGD update is independent of \\(n\\)!\nSGD can make significant progress before even seeing all the data!\nMathematical justification: the gradients between SGD and GD have the same expectation for i.i.d. data.\n\n\nCons\n\nWe are using only a single training example to estimate the gradient, so the variance in the estimate may be high.\n\n\n\nCompromise Approach\n\ncompute the gradients on a randomly chosen medium-sized set of training examples \\(\\mathcal{M} \\subset \\{1, ..., n\\}\\), called a mini-batch\nStochastic gradients computed on larger mini-batches have smaller variance.\nThe mini-batch size \\(|\\mathcal{M}|\\) is a hyperparameter that needs to be set"
+  },
+  {
+    "objectID": "Week4.html#mini-batch-gradient-descent",
+    "href": "Week4.html#mini-batch-gradient-descent",
+    "title": "Moving Beyond Linearity",
+    "section": "Mini-Batch Gradient Descent",
+    "text": "Mini-Batch Gradient Descent\nA compromise between batch gradient descent and SGD is to use a mini-batch.\nLet\n\\[\n\\mathcal M\\subset\\{1,\\ldots,n\\}\n\\]\nbe a randomly selected subset of the training observations.\nWe compute the gradient using only observations in \\(\\mathcal M\\).\n\nLarger mini-batches:\n\nreduce the variance of the gradient estimate;\nbut require more computation per update.\n\n\n\nThe mini-batch size \\(|\\mathcal M|\\) is another hyperparameter."
+  },
+  {
+    "objectID": "Week4.html#batch-gd-vs.-sgd",
+    "href": "Week4.html#batch-gd-vs.-sgd",
+    "title": "Moving Beyond Linearity",
+    "section": "Batch GD vs. SGD",
+    "text": "Batch GD vs. SGD\nBatch gradient descent\n\nuses all observations;\nproduces a more stable estimate of the gradient;\ntends to move smoothly downhill.\n\nStochastic gradient descent\n\nuses one observation at a time;\nhas much noisier updates;\nmay zig-zag around the objective surface;\nstill moves downhill on average.\n\n\nMain Idea\nBatch GD gives a precise but expensive direction.\nSGD gives a noisy but cheap direction."
+  },
+  {
+    "objectID": "Week4.html#learning-rates-in-sgd",
+    "href": "Week4.html#learning-rates-in-sgd",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Learning Rates in SGD",
+    "text": "Learning Rates in SGD\nWith stochastic optimization, the learning rate also controls the size of the fluctuations caused by noisy gradient estimates.\n\n\nTypical strategy\n\nUse a large learning rate early in training so you can get close to the optimum\nGradually decay the learning rate to reduce the fluctuations"
+  },
+  {
+    "objectID": "Week4.html#moving-beyond-linearity-1",
+    "href": "Week4.html#moving-beyond-linearity-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Moving Beyond Linearity",
+    "text": "Moving Beyond Linearity\nWe consider the following extensions to relax the linearity assumption in the feature space:\nFor one predictor \\((p=1)\\):\n\npolynomial regression;\nstep functions; and\nregression splines.\n\nFor several predictors \\((p&gt;1)\\):\n\nnearest-neighbor and local regression; and\ngeneralized additive models."
+  },
+  {
+    "objectID": "Week4.html#generalized-additive-models",
+    "href": "Week4.html#generalized-additive-models",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Generalized Additive Models",
+    "text": "Generalized Additive Models\nA generalized additive model (GAM) allows a separate nonlinear function for each predictor while preserving additivity:\n\\[\ny_i=\\beta_0+f_1(x_{i1})+\\cdots+f_p(x_{ip})+\\varepsilon_i.\n\\]\n\nEach \\(f_j\\) could be:\n\nlinear;\npolynomial;\na step function;\na spline; or\na local regression.\n\n\n\nCan be applied to classification problems."
+  },
+  {
+    "objectID": "Week4.html#summary-1",
+    "href": "Week4.html#summary-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Summary",
+    "text": "Summary\n\nGradient descent provides a general iterative approach for minimizing an objective function\n\nThe learning rate controls the size of each update, while convexity helps ensure that optimization leads to a global minimum.\n\nLinear models can represent nonlinear relationships in the predictors by transforming the original features.\n\nPolynomial regression, step functions, and splines are different ways of constructing flexible nonlinear relationships.\nkNN and local regression take a local approach:\n\nGAMs combine separate nonlinear functions of multiple predictors while retaining an additive and interpretable structure.\nThe amount of flexibility in these methods is typically controlled by a tuning parameter, which can be selected using cross-validation.\n\nNext Week: Classification!\nAnnouncements: Assignment 1 due Oct. 7"
+  },
+  {
+    "objectID": "Week4.html#gradient-descent-1",
+    "href": "Week4.html#gradient-descent-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\nWe initialize \\(\\mathbf w\\) at some reasonable starting value, (e.g. all zeros) and repeatedly adjust it in the direction of steepest descent of the loss function \\(\\mathcal J\\).\n\n\n\nWhat is the direction of the steepest descent of \\(\\mathcal{J}(\\mathbf{w})\\) at \\(\\mathbf{w}\\)?"
+  },
+  {
+    "objectID": "Week4.html#gradient-descent-2",
+    "href": "Week4.html#gradient-descent-2",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\nBy definition, the direction of the greatest increase in \\(\\mathcal{J}(\\mathbf{w})\\) at \\(\\mathbf{w}^{(0)}\\) is its gradient:\n\\[\n\\frac{\\partial \\mathcal{J}(\\mathbf{w})}{\\partial \\mathbf{w}}\\bigg|_{\\mathbf{w}=\\mathbf{w}^{(0)}} \\in \\mathbb{R}^p\n\\]\n\nSo, we update \\(\\mathbf{w}\\) in the opposite direction of the gradient at \\(\\mathbf{w}^{(0)}\\):\n\\[\n\\boxed{\n\\mathbf w^{(1)}\n=\n\\mathbf w^{(0)}\n-\n\\alpha\n\\frac{\\partial \\mathcal{J}(\\mathbf{w})}{\\partial \\mathbf{w}}\\bigg|_{\\mathbf{w}=\\mathbf{w}^{(0)}}\n}\n\\] for some \\(\\alpha &gt; 0\\).\n\n\nIf \\(\\alpha\\) is chosen small, then \\[\n\\mathcal{J}(\\mathbf{w}^{(1)}) &lt; \\mathcal{J}(\\mathbf{w}^{(0)})\n\\] unless \\(\\frac{\\partial \\mathcal{J}(\\mathbf{w})}{\\partial \\mathbf{w}}\\) at \\(\\mathbf{w}^{(0)}\\) is zero."
+  },
+  {
+    "objectID": "Week4.html#stopping-criteria",
+    "href": "Week4.html#stopping-criteria",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Stopping Criteria",
+    "text": "Stopping Criteria\nBecause gradient descent is iterative, we need a stopping criterion.\nWe might stop when:\n\nthe objective value barely changes,\n\n\\[\n\\left|\n\\mathcal J(\\mathbf w^{(k+1)})\n-\n\\mathcal J(\\mathbf w^{(k)})\n\\right|\n\\le \\varepsilon;\n\\] :::{.fragment} 2. the parameters barely change,\n\\[\n\\|\\mathbf w^{(k+1)}-\\mathbf w^{(k)}\\|_2\n\\le \\varepsilon;\n\\] :::\n\n\nor we reach a maximum number of iterations, such as \\(M=1000\\)."
+  },
+  {
+    "objectID": "Week4.html#stochastic-gradient-descent-1",
+    "href": "Week4.html#stochastic-gradient-descent-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Stochastic Gradient Descent",
+    "text": "Stochastic Gradient Descent\n\nBatch gradient descent moves directly downhill\nSGD takes steps in a noisy direction, but moves downhill on average"
+  },
+  {
+    "objectID": "Week4.html#how-can-we-tell-if-a-loss-is-convex-1",
+    "href": "Week4.html#how-can-we-tell-if-a-loss-is-convex-1",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "How Can We Tell if a Loss is Convex?",
+    "text": "How Can We Tell if a Loss is Convex?\n\nLinear transformations preserve convexity in many of the forms we use in statistical learning.\n\n\n\nIf \\(f\\) is a convex function and \\(g\\) is a linear function, then both \\(f \\circ g\\) and \\(g \\circ f\\) are convex.\nFor example, the least squares loss \\((y-\\mathbf x^\\top\\mathbf w)^2\\) is convex as a function of \\(\\mathbf w\\).\n\n\nLikewise, the negative log-likelihood under logistic regression,\n\\[\n-y\\mathbf x^\\top\\mathbf w\n+\n\\log\\left(1+e^{\\mathbf x^\\top\\mathbf w}\\right),\n\\]\nis convex in \\(\\mathbf w\\).\n\n\nTherefore sums of these losses over observations are also convex."
+  },
+  {
+    "objectID": "Week4.html#summary-2",
+    "href": "Week4.html#summary-2",
+    "title": "Gradient Descent and Moving Beyond Linearity",
+    "section": "Summary",
+    "text": "Summary\n\nGradient descent provides a general iterative approach for minimizing an objective function: \\[\n\\text{initialize}\n\\longrightarrow\n\\text{compute gradient}\n\\longrightarrow\n\\text{step downhill}\n\\longrightarrow\n\\text{repeat}.\n\\]\nThe learning rate controls the size of each update, while convexity helps ensure that optimization leads to a global minimum.\nLinear models can represent nonlinear relationships in the predictors by transforming the original features.\nPolynomial regression, step functions, and splines are different ways of constructing flexible nonlinear relationships.\n\nPolynomials impose a global shape.\nStep functions divide the predictor into regions.\nSplines fit smooth piecewise polynomials.\n\nkNN and local regression take a local approach:\n\nkNN averages nearby responses;\nweighted kNN gives closer observations more influence;\nlocal regression fits a weighted regression using nearby observations.\n\nGAMs combine separate nonlinear functions of multiple predictors while retaining an additive and interpretable structure.\nThe amount of flexibility in these methods is typically controlled by a tuning parameter, which can be selected using cross-validation."
   }
 ]

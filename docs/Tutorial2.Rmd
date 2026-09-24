@@ -1,0 +1,603 @@
+---
+title: "Cross-Validation, Ridge Regression, and the Lasso"
+author: "Teaching Team of STA314"
+date: "Fall 2026"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = "center",
+  out.width = "80%"
+)
+
+set.seed(442)
+```
+
+# Learning objectives
+
+By the end of this tutorial, you should be able to:
+
+1. explain why training error is not a reliable estimate of test error;
+2. implement the validation-set approach and $k$-fold cross-validation in R;
+3. use cross-validation to compare models of different complexity;
+4. fit ridge and lasso regression models using `glmnet`; and
+5. use cross-validation to select the tuning parameter $\lambda$.
+
+# Setup
+
+This tutorial uses the `Auto` and `Hitters` datasets from the `ISLR2` package and the `glmnet` package for ridge and lasso regression.
+
+If necessary, install the packages once by running:
+
+```{r install-packages, eval=FALSE}
+install.packages(c("ISLR2", "glmnet"))
+```
+
+```{r load-packages}
+library(ISLR2)
+library(glmnet)
+```
+
+# Cross-validation
+
+We begin by modelling fuel efficiency, measured by `mpg`, using the `Auto` dataset. Our immediate goal is to compare polynomial regression models that use `horsepower` to predict `mpg`.
+
+```{r auto-data}
+data("Auto")
+
+dim(Auto)
+head(Auto)
+summary(Auto$mpg)
+```
+
+## Why not use training error?
+
+If we evaluate a model on the same observations used to fit it, a more flexible model will generally have a smaller residual sum of squares and training MSE. This does not guarantee that it will predict new observations well.
+
+We therefore estimate test error using observations that were not used to fit the model.
+
+## The validation-set approach
+
+The validation-set approach randomly divides the observations into two groups:
+
+- a **training set**, used to fit the model; and
+- a **validation set**, used to estimate its prediction error.
+
+The split below places half of the observations in each set.
+
+```{r validation-split}
+set.seed(442)
+
+n <- nrow(Auto)
+train_id <- sample(seq_len(n), size = floor(n / 2))
+
+Auto_train <- Auto[train_id, ]
+Auto_valid <- Auto[-train_id, ]
+
+nrow(Auto_train)
+nrow(Auto_valid)
+```
+
+We first fit a simple linear regression using `horsepower` as the only predictor.
+
+```{r validation-linear}
+fit_linear <- lm(mpg ~ horsepower, data = Auto_train)
+
+valid_pred <- predict(fit_linear, newdata = Auto_valid)
+valid_mse <- mean((Auto_valid$mpg - valid_pred)^2)
+
+valid_mse
+```
+
+To compare polynomial models efficiently, we create a function that fits a polynomial of a specified degree and returns its validation MSE.
+
+```{r validation-function}
+validation_mse <- function(degree, train_data, valid_data) {
+  fit <- lm(
+    mpg ~ poly(horsepower, degree = degree, raw = TRUE),
+    data = train_data
+  )
+
+  predictions <- predict(fit, newdata = valid_data)
+  mean((valid_data$mpg - predictions)^2)
+}
+
+degrees <- 1:5
+
+validation_results <- data.frame(
+  degree = degrees,
+  validation_MSE = sapply(
+    degrees,
+    validation_mse,
+    train_data = Auto_train,
+    valid_data = Auto_valid
+  )
+)
+
+validation_results
+```
+
+```{r validation-plot, fig.height=4.5, fig.width=7}
+plot(
+  validation_results$degree,
+  validation_results$validation_MSE,
+  type = "b",
+  pch = 19,
+  xlab = "Polynomial degree",
+  ylab = "Validation MSE",
+  main = "Validation error by model complexity"
+)
+```
+
+The quadratic model will often improve substantially on the linear model, while additional polynomial terms may provide little improvement.
+
+### Sensitivity to the split
+
+A limitation of the validation-set approach is that the result depends on which observations happen to enter the validation set. We can repeat the procedure using several random splits.
+
+```{r repeated-validation}
+validation_by_seed <- function(seed, degrees = 1:5) {
+  set.seed(seed)
+  train_id <- sample(seq_len(nrow(Auto)), size = floor(nrow(Auto) / 2))
+
+  train_data <- Auto[train_id, ]
+  valid_data <- Auto[-train_id, ]
+
+  sapply(
+    degrees,
+    validation_mse,
+    train_data = train_data,
+    valid_data = valid_data
+  )
+}
+
+split_results <- sapply(c(1, 2, 3, 4, 5), validation_by_seed)
+rownames(split_results) <- paste0("Degree_", 1:5)
+colnames(split_results) <- paste0("Seed_", 1:5)
+
+round(split_results, 2)
+```
+
+The estimates vary because each model is evaluated on only one validation set. This motivates $k$-fold cross-validation.
+
+## $k$-fold cross-validation
+
+In $k$-fold cross-validation:
+
+1. randomly divide the data into $k$ approximately equal-sized folds;
+2. hold out one fold and fit the model using the other $k-1$ folds;
+3. calculate the prediction error on the held-out fold;
+4. repeat until every fold has served as the validation fold; and
+5. average the $k$ validation errors.
+
+For squared-error loss, the estimate is
+
+$$
+\operatorname{CV}_{(k)}
+=
+\frac{1}{n}\sum_{i=1}^{n}
+\left(y_i-\widehat f^{\,(-v(i))}(x_i)\right)^2,
+$$
+
+where $v(i)$ identifies the fold containing observation $i$, and $\widehat f^{\,(-v(i))}$ is fitted without that fold.
+
+The function below implements $k$-fold CV directly. Writing out the loop makes clear that each observation is used for validation exactly once.
+
+```{r kfold-function}
+kfold_mse <- function(data, degree, k = 10, seed = 442) {
+  set.seed(seed)
+
+  # Randomly assign observations to approximately equal-sized folds.
+  fold_id <- sample(rep(1:k, length.out = nrow(data)))
+  squared_errors <- numeric(nrow(data))
+
+  for (fold in 1:k) {
+    train_data <- data[fold_id != fold, ]
+    valid_data <- data[fold_id == fold, ]
+
+    fit <- lm(
+      mpg ~ poly(horsepower, degree = degree, raw = TRUE),
+      data = train_data
+    )
+
+    predictions <- predict(fit, newdata = valid_data)
+    squared_errors[fold_id == fold] <- (valid_data$mpg - predictions)^2
+  }
+
+  mean(squared_errors)
+}
+```
+
+We now use the **same folds for every polynomial degree**, making the model comparison fair.
+
+```{r ten-fold-cv}
+degrees <- 1:5
+
+cv_results <- data.frame(
+  degree = degrees,
+  CV_MSE = sapply(
+    degrees,
+    function(d) kfold_mse(Auto, degree = d, k = 10, seed = 442)
+  )
+)
+
+cv_results
+```
+
+```{r cv-plot, fig.height=4.5, fig.width=7}
+plot(
+  cv_results$degree,
+  cv_results$CV_MSE,
+  type = "b",
+  pch = 19,
+  xlab = "Polynomial degree",
+  ylab = "10-fold cross-validation MSE",
+  main = "10-fold CV error by model complexity"
+)
+```
+
+Which degree would you choose? 
+
+## Leave-one-out cross-validation
+
+Leave-one-out cross-validation (LOOCV) is the special case $k=n$. Each validation fold contains one observation.
+
+```{r loocv}
+loocv_results <- data.frame(
+  degree = degrees,
+  LOOCV_MSE = sapply(
+    degrees,
+    function(d) kfold_mse(
+      Auto,
+      degree = d,
+      k = nrow(Auto),
+      seed = 442
+    )
+  )
+)
+
+loocv_results
+```
+
+LOOCV uses nearly all observations to fit each model, but it requires fitting the model $n$ times. Ten-fold CV usually gives a similar conclusion at a lower computational cost.
+
+## What happens after cross-validation?
+
+Cross-validation is used to **choose the model**, not to obtain a final set of coefficients. Once we choose the polynomial degree, we refit that model using the full dataset.
+
+```{r refit-polynomial}
+chosen_degree <- cv_results$degree[which.min(cv_results$CV_MSE)]
+
+final_auto_model <- lm(
+  mpg ~ poly(horsepower, degree = chosen_degree, raw = TRUE),
+  data = Auto
+)
+
+chosen_degree
+coef(final_auto_model)
+```
+
+We do **not** average the coefficient estimates from the $k$ fitted models. Those fits were temporary and were used to estimate validation error.
+
+# Ridge regression and the lasso
+
+We now apply cross-validation to choose the tuning parameter for two regularized regression methods.
+
+Let $\mathbf y$ be the response vector, $\mathbf X$ the design matrix, and $\boldsymbol\beta$ the coefficient vector. Ordinary least squares minimizes
+
+$$
+\operatorname{RSS}
+=
+\sum_{i=1}^{n}
+\left(y_i-\beta_0-\sum_{j=1}^{p}x_{ij}\beta_j\right)^2.
+$$
+
+OLS can be unstable when predictors are highly correlated, when $p$ is large relative to $n$, or when an overly flexible model has high variance. Ridge and lasso regression add a penalty to shrink the coefficient estimates toward zero.
+
+The intercept $\beta_0$ is typically **not penalized**.
+
+## Ridge regression
+
+Ridge regression solves
+
+$$
+\underset{\beta_0,\boldsymbol\beta}{\operatorname{minimize}}
+\left\{
+\sum_{i=1}^{n}
+\left(y_i-\beta_0-\sum_{j=1}^{p}x_{ij}\beta_j\right)^2
++\lambda\sum_{j=1}^{p}\beta_j^2
+\right\}.
+$$
+
+The $L_2$ penalty shrinks coefficients smoothly toward zero, but generally does not set them exactly equal to zero. Ridge is often useful when many predictors contribute to the response or when predictors are highly correlated.
+
+## The lasso
+
+The lasso solves
+
+$$
+\underset{\beta_0,\boldsymbol\beta}{\operatorname{minimize}}
+\left\{
+\sum_{i=1}^{n}
+\left(y_i-\beta_0-\sum_{j=1}^{p}x_{ij}\beta_j\right)^2
++\lambda\sum_{j=1}^{p}|\beta_j|
+\right\}.
+$$
+
+The $L_1$ penalty can set some coefficient estimates exactly equal to zero. The lasso therefore performs shrinkage and variable selection simultaneously.
+
+## The role of $\lambda$
+
+- When $\lambda=0$, both methods reduce to OLS.
+- As $\lambda$ increases, the coefficients are shrunk more strongly toward zero.
+- More shrinkage generally increases bias but decreases variance.
+- We use cross-validation to choose $\lambda$ based on estimated prediction error.
+
+Because the penalty acts directly on coefficient size, predictors should be placed on comparable scales. By default, `glmnet()` standardizes predictors before fitting the model and returns coefficients on their original scales.
+
+# Preparing the `Hitters` data
+
+We use the `Hitters` dataset to predict a baseball player's salary from measures of performance and experience.
+
+```{r hitters-data}
+data("Hitters")
+
+dim(Hitters)
+head(Hitters)
+```
+
+Some players have missing salary values. We remove those observations before fitting the models.
+
+```{r hitters-clean}
+Hitters <- na.omit(Hitters)
+
+# glmnet requires a numeric predictor matrix.
+# model.matrix() automatically creates dummy variables for factors.
+x <- model.matrix(Salary ~ ., data = Hitters)[, -1]
+y <- Hitters$Salary
+
+dim(x)
+head(x)
+```
+
+We remove the first column of `model.matrix()` because it is the intercept column. `glmnet()` fits an unpenalized intercept automatically.
+
+# Ridge regression in R
+
+In `glmnet()`, `alpha = 0` fits ridge regression and `alpha = 1` fits the lasso. These uses of `alpha` should not be confused with a hypothesis-test significance level.
+
+We first fit ridge regression over a grid of $\lambda$ values selected by `glmnet()`.
+
+```{r ridge-path}
+ridge_fit <- glmnet(
+  x = x,
+  y = y,
+  alpha = 0,
+  standardize = TRUE
+)
+
+ridge_fit
+```
+
+Each column of the fitted coefficient matrix corresponds to one value of $\lambda$.
+
+```{r ridge-coefficients}
+dim(coef(ridge_fit))
+
+# First few lambda values considered by glmnet
+head(ridge_fit$lambda)
+
+# Coefficients at one value along the path
+coef(ridge_fit, s = ridge_fit$lambda[50])
+```
+
+The coefficient path shows how the estimates change with $\lambda$.
+
+```{r ridge-path-plot, fig.height=5.5, fig.width=8}
+plot(
+  ridge_fit,
+  xvar = "lambda",
+  label = TRUE,
+  main = "Ridge coefficient paths"
+)
+```
+
+Moving toward larger $\log(\lambda)$ values applies a stronger penalty, so all coefficient estimates move closer to zero. Ridge generally retains every predictor.
+
+## Selecting $\lambda$ using $k$-fold CV
+
+For each candidate $\lambda$, `cv.glmnet()` performs the following steps:
+
+1. fit the ridge model on $k-1$ folds;
+2. predict the held-out fold;
+3. repeat until every fold has been held out;
+4. average the held-out squared errors; and
+5. compare the mean CV error across the candidate $\lambda$ values.
+
+We explicitly create the fold assignments so ridge and lasso use the same folds.
+
+```{r folds}
+set.seed(442)
+K <- 10
+fold_id <- sample(rep(1:K, length.out = nrow(x)))
+table(fold_id)
+```
+
+```{r ridge-cv}
+cv_ridge <- cv.glmnet(
+  x = x,
+  y = y,
+  alpha = 0,
+  foldid = fold_id,
+  type.measure = "mse",
+  standardize = TRUE
+)
+
+cv_ridge$lambda.min
+cv_ridge$lambda.1se
+```
+
+`lambda.min` is the value with the smallest estimated CV error. `lambda.1se` is the largest value whose CV error is within one standard error of the minimum; it applies more shrinkage and may be preferred when a simpler or more stable model is desired.
+
+```{r ridge-cv-plot, fig.height=5.5, fig.width=8}
+plot(cv_ridge, main = "Cross-validation for ridge regression")
+```
+
+The dashed vertical lines identify `lambda.min` and `lambda.1se`.
+
+```{r ridge-final-coefficients}
+ridge_coef_min <- coef(cv_ridge, s = "lambda.min")
+ridge_coef_1se <- coef(cv_ridge, s = "lambda.1se")
+
+ridge_coef_min
+```
+
+The model stored by `cv.glmnet()` has already been refitted to the full dataset along the complete $\lambda$ sequence. Calling `coef()` at the chosen $\lambda$ therefore returns the final coefficient estimates; we do not average coefficients across folds.
+
+# The lasso in R
+
+We now repeat the analysis using `alpha = 1`.
+
+```{r lasso-path}
+lasso_fit <- glmnet(
+  x = x,
+  y = y,
+  alpha = 1,
+  standardize = TRUE
+)
+
+plot(
+  lasso_fit,
+  xvar = "lambda",
+  label = TRUE,
+  main = "Lasso coefficient paths"
+)
+```
+
+For a sufficiently large $\lambda$, all lasso coefficients are zero. As $\lambda$ decreases, predictors enter the model.
+
+```{r lasso-cv}
+cv_lasso <- cv.glmnet(
+  x = x,
+  y = y,
+  alpha = 1,
+  foldid = fold_id,
+  type.measure = "mse",
+  standardize = TRUE
+)
+
+cv_lasso$lambda.min
+cv_lasso$lambda.1se
+```
+
+```{r lasso-cv-plot, fig.height=5.5, fig.width=8}
+plot(cv_lasso, main = "Cross-validation for the lasso")
+```
+
+```{r lasso-final-coefficients}
+lasso_coef_min <- coef(cv_lasso, s = "lambda.min")
+lasso_coef_1se <- coef(cv_lasso, s = "lambda.1se")
+
+lasso_coef_min
+```
+
+We can identify the predictors selected by the lasso at `lambda.min`.
+
+```{r selected-predictors}
+lasso_coef_vector <- as.vector(lasso_coef_min)
+names(lasso_coef_vector) <- rownames(lasso_coef_min)
+
+selected_predictors <- names(lasso_coef_vector)[
+  lasso_coef_vector != 0 & names(lasso_coef_vector) != "(Intercept)"
+]
+
+removed_predictors <- names(lasso_coef_vector)[
+  lasso_coef_vector == 0 & names(lasso_coef_vector) != "(Intercept)"
+]
+
+selected_predictors
+removed_predictors
+length(selected_predictors)
+```
+
+# Comparing ridge and lasso
+
+The minimum cross-validated MSE for each method is stored in its `cvm` vector.
+
+```{r compare-methods}
+comparison <- data.frame(
+  method = c("Ridge", "Lasso"),
+  lambda_min = c(cv_ridge$lambda.min, cv_lasso$lambda.min),
+  minimum_CV_MSE = c(min(cv_ridge$cvm), min(cv_lasso$cvm)),
+  nonzero_predictors = c(
+    sum(as.vector(coef(cv_ridge, s = "lambda.min"))[-1] != 0),
+    sum(as.vector(coef(cv_lasso, s = "lambda.min"))[-1] != 0)
+  )
+)
+
+comparison
+```
+
+Because the methods use different penalty definitions, their numerical $\lambda$ values should not be compared directly. Compare their cross-validated errors and model properties instead.
+
+In general:
+
+- **Ridge** is attractive when many predictors carry signal, especially when predictors are correlated.
+- **Lasso** is attractive when a sparse, more interpretable model is plausible.
+- Neither method is universally better; cross-validation helps assess predictive performance for the data at hand.
+
+# Optional: estimating final test error
+
+The CV error used to choose $\lambda$ is a model-selection estimate. If we want an especially clean, final estimate of generalization performance, we can set aside a test set before tuning. The test set must not be used to choose the method or $\lambda$.
+
+```{r final-test-example, eval=FALSE}
+set.seed(442)
+test_id <- sample(seq_len(nrow(x)), size = floor(0.25 * nrow(x)))
+
+x_train <- x[-test_id, ]
+y_train <- y[-test_id]
+x_test  <- x[test_id, ]
+y_test  <- y[test_id]
+
+# Create folds using the training observations only.
+train_fold_id <- sample(rep(1:10, length.out = nrow(x_train)))
+
+cv_lasso_train <- cv.glmnet(
+  x_train,
+  y_train,
+  alpha = 1,
+  foldid = train_fold_id,
+  type.measure = "mse"
+)
+
+test_predictions <- predict(
+  cv_lasso_train,
+  newx = x_test,
+  s = "lambda.min"
+)
+
+test_mse <- mean((y_test - as.vector(test_predictions))^2)
+test_mse
+```
+
+# Summary
+
+- A single validation split is simple, but its estimated error can depend strongly on the random split.
+- $k$-fold CV averages performance across several held-out folds and generally gives a more stable model comparison.
+- After using CV to choose a model, refit that model on all available training data; do not average the fold-specific coefficients.
+- Ridge uses an $L_2$ penalty and usually retains all predictors.
+- The lasso uses an $L_1$ penalty and can set some coefficients exactly to zero.
+- The penalty parameter $\lambda$ controls the bias--variance trade-off and is commonly selected using cross-validation.
+
+# Discussion questions
+
+1. Why might the validation-set estimate change when we change the random seed?
+2. Why should the same folds be used when comparing several candidate models?
+3. Why is standardization especially important for ridge and lasso regression?
+4. What is the practical difference between `lambda.min` and `lambda.1se`?
+5. If ridge has a slightly smaller CV error but lasso uses far fewer predictors, which model would you choose? What additional context would affect your decision?
+

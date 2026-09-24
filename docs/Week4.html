@@ -1,0 +1,1984 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <title>STA314 – Gradient Descent and Moving Beyond Linearity</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Gradient Descent and Moving Beyond Linearity</h1>
+  <p class="subtitle">Week 4</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="learning-outcomes" class="slide level2">
+<h2>Learning Outcomes</h2>
+<p>By the end of this week, you should be able to:</p>
+<ul>
+<li>Explain how gradient descent minimizes an objective function and describe the role of the learning rate.</li>
+<li>Explain why convexity is useful for optimization.</li>
+<li>Describe how polynomial regression, step functions, and splines can model nonlinear relationships.</li>
+<li>Compare kNN, weighted kNN, and local regression as local modelling approaches.</li>
+<li>Explain how generalized additive models extend nonlinear modelling to multiple predictors.</li>
+</ul>
+</section>
+<section id="review-regularized-linear-regression" class="slide level2">
+<h2>Review: Regularized Linear Regression</h2>
+<ul>
+<li>Ordinary least squares can perform poorly when <span class="math inline">\(p\)</span> is large relative to <span class="math inline">\(n\)</span>.<br>
+</li>
+<li>i.e.&nbsp;estimates can have high variance</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Ridge and the lasso can improve test performance by:
+<ul>
+<li>reducing variance;</li>
+<li>accepting some additional bias.</li>
+</ul></li>
+</ul>
+<p><br></p>
+<ul>
+<li>The benefit can be substantial when the true coefficients are <strong>small</strong> or <strong>sparse</strong>.</li>
+</ul>
+<div class="fragment">
+<p>If only <span class="math inline">\(s \ll p\)</span> features are predictive, we would ideally fit the model using only those <span class="math inline">\(s\)</span> features.</p>
+</div>
+</section>
+<section id="objective-functions" class="slide level2">
+<h2>Objective Functions</h2>
+<p>So far, we have defined our regression estimates by asking them to <strong>minimize an objective function</strong>.</p>
+<div class="fragment">
+<p>For ordinary least squares:</p>
+<p><span class="math display">\[
+\min_{\boldsymbol{\beta}}
+\sum_{i=1}^n
+\left(y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j\right)^2
+\]</span></p>
+</div>
+<div class="fragment">
+<p>For ridge regression:</p>
+<p><span class="math display">\[
+\min_{\boldsymbol{\beta}}
+\left\{
+\sum_{i=1}^n
+\left(y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j\right)^2
++
+\lambda\sum_{j=1}^p \beta_j^2
+\right\}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>For the Lasso:</p>
+<p><span class="math display">\[
+\min_{\boldsymbol{\beta}}
+\left\{
+\sum_{i=1}^n
+\left(y_i-\beta_0-\sum_{j=1}^p x_{ij}\beta_j\right)^2
++
+\lambda\sum_{j=1}^p |\beta_j|
+\right\}
+\]</span></p>
+</div>
+</section>
+<section id="a-general-minimization-problem" class="slide level2">
+<h2>A General Minimization Problem</h2>
+<p>Suppose we want to solve</p>
+<p><span class="math display">\[
+\widehat{\mathbf w}
+=
+\arg\min_{\mathbf w\in\Theta}
+\mathcal J(\mathbf w;\mathcal D^{\text{train}})
+:=
+\arg\min_{\mathbf w\in\Theta}
+\mathcal J(\mathbf w).
+\]</span></p>
+<p>where</p>
+<ul>
+<li><span class="math inline">\(\mathcal J(\mathbf w)\)</span> is a differentiable function in <span class="math inline">\(\mathbf w=(w_1,\ldots,w_p)\)</span>;</li>
+<li><span class="math inline">\(\Theta\)</span> is the parameter space for <span class="math inline">\(\mathbf w\)</span>, typically a subset of <span class="math inline">\(\mathbb R^p\)</span>.</li>
+</ul>
+<div class="fragment">
+<p>The optimal solution, if it exists in the interior, must occur at a <strong>critical point</strong> i.e.&nbsp;point to which the derivative is zero (partial derivatives to zero for multi-dimensional parameter)</p>
+</div>
+</section>
+<section id="finding-the-optimal-solution" class="slide level2">
+<h2>Finding the Optimal Solution</h2>
+<p>A <strong>partial derivative</strong> measures how a multivariable function changes with respect to one argument while holding the others fixed.</p>
+<p>For example,</p>
+<p><span class="math display">\[
+\frac{\partial}{\partial w_1}\mathcal J(w_1,w_2)
+=
+\lim_{h\to 0}
+\frac{
+\mathcal J(w_1+h,w_2)-\mathcal J(w_1,w_2)
+}{h}.
+\]</span></p>
+<div class="fragment">
+<p>The minimum must occur at a point where the partial derivatives are zero</p>
+<p><span class="math display">\[
+\nabla \mathcal J(\mathbf w)
+=
+\begin{bmatrix}
+\frac{\partial \mathcal J}{\partial w_1}\\
+\vdots\\
+\frac{\partial \mathcal J}{\partial w_p}
+\end{bmatrix}
+=
+\mathbf 0.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>This implies a system of equations, which we can solve analytically in some scenarios.</p>
+<p>We may also use optimization techniques that iteratively get us closer to the solution.</p>
+</div>
+</section>
+<section id="direct-solution-ols" class="slide level2">
+<h2>Direct Solution: OLS</h2>
+<p>For ordinary least squares,</p>
+<p><span class="math display">\[
+\widehat{\mathbf w}
+=
+\arg\min_{\mathbf w\in\mathbb R^p}
+\mathcal J(\mathbf w)
+=
+\arg\min_{\mathbf w\in\mathbb R^p}
+\|\mathbf y-\mathbf X\mathbf w\|_2^2.
+\]</span></p>
+<p>The partial derivatives w.r.t <span class="math inline">\(\mathbf{w}\)</span> are</p>
+<p><span class="math display">\[
+\frac{\partial \mathcal J}{\partial \mathbf w}
+=
+-2\mathbf X^\top(\mathbf y-\mathbf X\mathbf w).
+\]</span></p>
+<p>(If not familiar with multi-dimensional derivatives, calculate <span class="math inline">\(\frac{\partial \mathcal{J}}{\partial w_j}\)</span> and stack them together)</p>
+<div class="fragment">
+<p>Setting this equal to zero gives</p>
+<p><span class="math display">\[
+\mathbf X^\top\mathbf X\widehat{\mathbf w}
+=
+\mathbf X^\top\mathbf y,
+\]</span></p>
+<p>so, when the inverse exists:</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\mathbf w}
+=
+(\mathbf X^\top\mathbf X)^{-1}\mathbf X^\top\mathbf y
+}
+\]</span></p>
+</div>
+</section>
+<section id="direct-solution-ridge" class="slide level2">
+<h2>Direct Solution: Ridge</h2>
+<p>For ridge regression,</p>
+<p><span class="math display">\[
+\widehat{\mathbf w}^{\,R}_\lambda
+=
+\arg\min_{\mathbf w\in\mathbb R^p}
+\left\{
+\|\mathbf y-\mathbf X\mathbf w\|_2^2
++
+\lambda\|\mathbf w\|_2^2
+\right\}.
+\]</span></p>
+<p>The partial derivatives w.r.t <span class="math inline">\(\mathbf{w}\)</span> are</p>
+<p><span class="math display">\[
+\frac{\partial \mathcal J}{\partial \mathbf w}
+=
+-2\mathbf X^\top(\mathbf y-\mathbf X\mathbf w)
++
+2\lambda\mathbf w.
+\]</span></p>
+<div class="fragment">
+<p>Setting this equal to zero gives</p>
+<p><span class="math display">\[
+(\mathbf X^\top\mathbf X+\lambda\mathbf I_p)
+\widehat{\mathbf w}^{\,R}_\lambda
+=
+\mathbf X^\top\mathbf y,
+\]</span></p>
+<p>and therefore</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\mathbf w}^{\,R}_\lambda
+=
+(\mathbf X^\top\mathbf X+\lambda\mathbf I_p)^{-1}
+\mathbf X^\top\mathbf y
+}
+\]</span></p>
+</div>
+</section>
+<section id="gradient-descent" class="slide level2">
+<h2>Gradient Descent</h2>
+<p>Now consider a second way to solve</p>
+<p><span class="math display">\[
+\widehat{\mathbf w}
+=
+\arg\min_{\mathbf w}\mathcal J(\mathbf w).
+\]</span></p>
+<p>which is more broadly applicable: <span style="color: maroon;"><strong>gradient descent</strong></span>.</p>
+<p><br></p>
+<div class="fragment">
+<p>Many times, we do <strong>not</strong> have a convenient direct solution to</p>
+<p><span class="math display">\[
+\frac{\partial \mathcal{J}}{\partial \mathbf{w}} = 0.
+\]</span></p>
+<p>Gradient descent is an <strong>iterative algorithm</strong>.</p>
+<p>Rather than solving directly for the optimum, we repeatedly update the parameters so that we move toward a smaller value of the objective.</p>
+</div>
+</section>
+<section id="gradient-descent-1" class="slide level2">
+<h2>Gradient Descent</h2>
+<p>We initialize <span class="math inline">\(\mathbf w\)</span> at some reasonable starting value, (e.g.&nbsp;all zeros) and repeatedly adjust it in the direction of <strong>steepest descent</strong> of the loss function <span class="math inline">\(\mathcal J\)</span>.</p>
+
+<img data-src="images/Week4-SteepestDescent.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<blockquote>
+<p>What is the direction of the steepest descent of <span class="math inline">\(\mathcal{J}(\mathbf{w})\)</span> at <span class="math inline">\(\mathbf{w}\)</span>?</p>
+</blockquote>
+</div>
+</section>
+<section id="gradient-descent-2" class="slide level2">
+<h2>Gradient Descent</h2>
+<p>By definition, the direction of the greatest increase in <span class="math inline">\(\mathcal{J}(\mathbf{w})\)</span> at <span class="math inline">\(\mathbf{w}^{(0)}\)</span> is its <span style="color: maroon;">gradient</span>:</p>
+<p><span class="math display">\[
+\frac{\partial \mathcal{J}(\mathbf{w})}{\partial \mathbf{w}}\bigg|_{\mathbf{w}=\mathbf{w}^{(0)}} \in \mathbb{R}^p
+\]</span></p>
+<div class="fragment">
+<p>So, we update <span class="math inline">\(\mathbf{w}\)</span> in the <strong>opposite</strong> direction of the gradient at <span class="math inline">\(\mathbf{w}^{(0)}\)</span>:</p>
+<p><span class="math display">\[
+\boxed{
+\mathbf w^{(1)}
+=
+\mathbf w^{(0)}
+-
+\alpha
+\frac{\partial \mathcal{J}(\mathbf{w})}{\partial \mathbf{w}}\bigg|_{\mathbf{w}=\mathbf{w}^{(0)}}
+}
+\]</span> for some <span class="math inline">\(\alpha &gt; 0\)</span>.</p>
+</div>
+<div class="fragment">
+<p>If <span class="math inline">\(\alpha\)</span> is chosen small, then <span class="math display">\[
+\mathcal{J}(\mathbf{w}^{(1)}) &lt; \mathcal{J}(\mathbf{w}^{(0)})
+\]</span> unless <span class="math inline">\(\frac{\partial \mathcal{J}(\mathbf{w})}{\partial \mathbf{w}}\)</span> at <span class="math inline">\(\mathbf{w}^{(0)}\)</span> is zero.</p>
+</div>
+</section>
+<section id="gradient-descent-coordinatewise-view" class="slide level2">
+<h2>Gradient Descent: Coordinatewise View</h2>
+<p>For iterations <span class="math inline">\(k=0,1,2,\ldots\)</span>, and for each <span class="math inline">\(j\in\{1,\ldots,p\}\)</span>,</p>
+<p><span class="math display">\[
+\boxed{
+w_j^{(k+1)}
+\leftarrow
+w_j^{(k)}
+-
+\alpha
+\left.
+\frac{\partial \mathcal J}{\partial w_j}
+\right|_{\mathbf w=\mathbf w^{(k)}}
+}
+\]</span></p>
+<p><br></p>
+<div class="fragment">
+<p>The <span style="color: maroon;"><strong>learning rate</strong></span> (or step size), <span class="math inline">\(\alpha\)</span>, controls the size of each update.</p>
+<ul>
+<li>larger <span class="math inline">\(\alpha\)</span>: parameters change more quickly;</li>
+<li>smaller <span class="math inline">\(\alpha\)</span>: parameters change more slowly.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Typical values may be small, such as <span class="math inline">\(0.01\)</span> or <span class="math inline">\(0.0001\)</span>, although the appropriate scale depends on the problem.</p>
+</div>
+</section>
+<section id="gradient-descent-for-ols" class="slide level2">
+<h2>Gradient Descent for OLS</h2>
+<p>For OLS,</p>
+<p><span class="math display">\[
+\mathcal J(\mathbf w)
+=
+\|\mathbf y-\mathbf X\mathbf w\|_2^2.
+\]</span> :::{.fragment} Update rule in vector form at the <span class="math inline">\((k+1)\)</span>th iteration:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{w}^{(k+1)}
+&amp;\leftarrow
+\mathbf{w}^{(k)}
+-
+\alpha
+\left.
+\frac{\partial \mathcal{J}}{\partial \mathbf{w}}
+\right|_{\mathbf{w}=\mathbf{w}^{(k)}} \\
+&amp;=
+\mathbf{w}^{(k)}
++
+2\alpha \mathbf{X}^{\top}
+\left(
+\mathbf{y}
+-
+\mathbf{X}\mathbf{w}^{(k)}
+\right).
+\end{aligned}
+\]</span></p>
+<p>Initialization: <span class="math inline">\(\mathbf{w}^{(0)}=0\)</span> :::</p>
+</section>
+<section id="gradient-descent-for-ridge" class="slide level2">
+<h2>Gradient Descent for Ridge</h2>
+<p>For ridge regression,</p>
+<p><span class="math display">\[
+\mathcal J(\mathbf w)
+=
+\|\mathbf y-\mathbf X\mathbf w\|_2^2
++
+\lambda\|\mathbf w\|_2^2.
+\]</span> <br></p>
+<div class="fragment">
+<p>Update rule in vector form at the <span class="math inline">\((k+1)\)</span>th iteration: <span class="math display">\[
+\begin{aligned}
+\mathbf{w}^{(k+1)}
+&amp;\leftarrow
+\mathbf{w}^{(k)}
+-
+\alpha
+\left.
+\frac{\partial \mathcal{J}}{\partial \mathbf{w}}
+\right|_{\mathbf{w}=\mathbf{w}^{(k)}} \\
+&amp;=
+\mathbf{w}^{(k)}
++
+2\alpha \mathbf{X}^{\top}
+\left(
+\mathbf{y}
+-
+\mathbf{X}\mathbf{w}^{(k)}
+\right)
+-
+2\alpha\lambda\mathbf{w}^{(k)}.
+\end{aligned}
+\]</span></p>
+<p>Initialization: <span class="math inline">\(\mathbf{w}^{(0)}=0\)</span></p>
+</div>
+<div class="fragment">
+<p>The final term is the contribution from the ridge penalty and pulls the coefficients toward zero.</p>
+</div>
+</section>
+<section id="what-about-the-lasso" class="slide level2">
+<h2>What About the Lasso?</h2>
+<p>For the lasso,</p>
+<p><span class="math display">\[
+\mathcal J(\mathbf w)
+=
+\|\mathbf y-\mathbf X\mathbf w\|_2^2
++
+\lambda\|\mathbf w\|_1.
+\]</span></p>
+<p>The difficulty is that</p>
+<p><span class="math display">\[
+\|\mathbf w\|_1
+=
+\sum_{j=1}^p |w_j|
+\]</span></p>
+<p>is <strong>not differentiable at <span class="math inline">\(w_j=0\)</span></strong>.</p>
+<div class="fragment">
+<p>So ordinary gradient descent cannot be applied in exactly the same way at those points.</p>
+</div>
+</section>
+<section id="subgradients" class="slide level2">
+<h2>Subgradients</h2>
+<p>For convex functions that are not differentiable everywhere, we can use a <strong>subgradient</strong> at <span class="math inline">\(\mathbf{x}\)</span>, defined as:</p>
+<p><span class="math display">\[
+\partial \mathcal{J}(\mathbf{x})
+:=
+\left\{
+v :
+\mathcal{J}(\mathbf{y})
+\geq
+\mathcal{J}(\mathbf{x})
++
+(\mathbf{y}-\mathbf{x})^{\top}v,
+\quad
+\forall \mathbf{y}\in\Theta
+\right\}.
+\]</span></p>
+<p>For <span class="math inline">\(f(x)=|x|\)</span>,</p>
+<p><span class="math display">\[
+\partial f(x)
+=
+\begin{cases}
+1, &amp; x&gt;0,\\
+-1, &amp; x&lt;0,\\
+(-1,1), &amp; x=0.
+\end{cases}
+\]</span></p>
+<p>For <span class="math inline">\(f(\mathbf{x})=\|\mathbf x\|_1\)</span>,</p>
+<p><span class="math display">\[
+[\partial f(\mathbf{x})]_j
+=
+\begin{cases}
+1, &amp; x_j&gt;0,\\
+-1, &amp; x_j&lt;0,\\
+(-1,1), &amp; x_j=0.
+\end{cases}
+\]</span></p>
+<div class="fragment">
+<p>This gives us a generalized notion of “slope” even at the kink at zero.</p>
+</div>
+</section>
+<section id="subgradient-descent-for-the-lasso" class="slide level2">
+<h2>Subgradient Descent for the Lasso</h2>
+<p>For the Lasso,</p>
+<p><span class="math display">\[
+\mathcal J(\mathbf w)
+=
+\|\mathbf y-\mathbf X\mathbf w\|_2^2
++
+\lambda\|\mathbf w\|_1.
+\]</span></p>
+<p>Update rule in vector form at the (<span class="math inline">\(k+1\)</span>)th iteration:</p>
+<p><span class="math display">\[
+\begin{aligned}
+\mathbf{w}^{(k+1)}
+&amp;\leftarrow
+\mathbf{w}^{(k)}
+-
+\alpha
+\left.
+\frac{\partial \mathcal{J}}{\partial \mathbf{w}}
+\right|_{\mathbf{w}=\mathbf{w}^{(k)}} \\
+&amp;=
+\mathbf{w}^{(k)}
++
+2\alpha \mathbf{X}^{\top}
+\left(
+\mathbf{y}
+-
+\mathbf{X}\mathbf{w}^{(k)}
+\right)
+-
+\left.
+\alpha \lambda \,
+\partial\left(\lVert \mathbf{w}\rVert_1\right)
+\right|_{\mathbf{w}^{(k)}}.
+\end{aligned}
+\]</span> Initialization: <span class="math inline">\(\mathbf{w}^{(0)}=0\)</span></p>
+</section>
+<section id="stopping-criteria" class="slide level2 scrollable">
+<h2>Stopping Criteria</h2>
+<p>Because gradient descent is iterative, we need a <strong>stopping criterion</strong>.</p>
+<p>We might stop when:</p>
+<ol type="1">
+<li>the objective value barely changes,</li>
+</ol>
+<p><span class="math display">\[
+\left|
+\mathcal J(\mathbf w^{(k+1)})
+-
+\mathcal J(\mathbf w^{(k)})
+\right|
+\le \varepsilon;
+\]</span> :::{.fragment} 2. the parameters barely change,</p>
+<p><span class="math display">\[
+\|\mathbf w^{(k+1)}-\mathbf w^{(k)}\|_2
+\le \varepsilon;
+\]</span> :::</p>
+<div class="fragment">
+<ol start="3" type="1">
+<li>or we reach a maximum number of iterations, such as <span class="math inline">\(M=1000\)</span>.</li>
+</ol>
+</div>
+</section>
+<section id="when-do-we-expect-gradient-descent-to-work" class="slide level2">
+<h2>When Do We Expect Gradient Descent to Work?</h2>
+<p>Recall that we are trying to solve</p>
+<p><span class="math display">\[
+\widehat{\mathbf w}
+=
+\arg\min_{\mathbf w\in\Theta}
+\mathcal J(\mathbf w).
+\]</span></p>
+<div class="fragment">
+<ul>
+<li>Obviously, <span class="math inline">\(\mathcal J\)</span> should be differentiable.<br>
+</li>
+<li>If <span class="math inline">\(\mathcal J\)</span> is also <strong>convex</strong>, and <span class="math inline">\(\Theta\)</span> is a convex set, then gradient descent with a suitable choice of step size guarantees to find the optimal solution.</li>
+<li>In many cases, <span class="math inline">\(\Theta=\mathbb R^p\)</span>, which is convex.</li>
+</ul>
+</div>
+</section>
+<section id="convex-sets" class="slide level2">
+<h2>Convex Sets</h2>
+<p>A set <span class="math inline">\(S\)</span> is <strong>convex</strong> if for any <span class="math inline">\(\mathbf x_0,\mathbf x_1\in S\)</span>,</p>
+<p><span class="math display">\[
+(1-\lambda)\mathbf x_0+\lambda\mathbf x_1\in S
+\qquad
+\text{for every } 0\le\lambda\le 1.
+\]</span></p>
+<div class="fragment">
+<p>In words:</p>
+<blockquote>
+<p>If you draw a straight line between any two points in the set, the entire line segment stays inside the set.</p>
+</blockquote>
+</div>
+<div class="fragment">
+<p>The Euclidean space <span class="math inline">\(\mathbb R^p\)</span> is convex.</p>
+</div>
+</section>
+<section id="convex-functions" class="slide level2">
+<h2>Convex Functions</h2>
+<p>A function <span class="math inline">\(f\)</span> is <strong>convex</strong> if for any <span class="math inline">\(x_0,x_1\)</span> in its domain,</p>
+<p><span class="math display">\[
+f\left((1-\lambda)x_0+\lambda x_1\right)
+\le
+(1-\lambda)f(x_0)+\lambda f(x_1)
+\]</span></p>
+<p>for every <span class="math inline">\(\lambda\in[0,1]\)</span>.</p>
+<p><br></p>
+<div class="fragment">
+<p>Intuitively, a convex function is <strong>bowl-shaped</strong>.</p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p><strong>Why do we care?</strong></p>
+<p>For a convex objective, every local minimum is also a global minimum.</p>
+</div>
+</section>
+<section id="how-can-we-tell-if-a-loss-is-convex" class="slide level2 scrollable">
+<h2>How Can We Tell if a Loss is Convex?</h2>
+<ol type="1">
+<li>We can verify the definition directly.</li>
+</ol>
+<p><br></p>
+<div class="fragment">
+<ol start="2" type="1">
+<li>If <span class="math inline">\(f\)</span> is twice differentiable and</li>
+</ol>
+<p><span class="math display">\[
+f''(x)\ge 0
+\]</span></p>
+<p>for all <span class="math inline">\(x\)</span>, then <span class="math inline">\(f\)</span> is convex.</p>
+</div>
+<div class="fragment">
+<p>For example, the least squares loss function <span class="math inline">\((y-t)^2\)</span> is convex as a function of <span class="math inline">\(t\)</span></p>
+</div>
+<div class="fragment">
+<p>Likewise, the loss function in logistic regression</p>
+<p><span class="math display">\[
+-yt+\log(1+e^t)
+\]</span></p>
+<p>is convex in <span class="math inline">\(t\)</span>.</p>
+</div>
+</section>
+<section id="how-can-we-tell-if-a-loss-is-convex-1" class="slide level2 scrollable">
+<h2>How Can We Tell if a Loss is Convex?</h2>
+<ol start="3" type="1">
+<li><strong>Linear transformations preserve convexity</strong> in many of the forms we use in statistical learning.</li>
+</ol>
+<p><br></p>
+<div class="fragment">
+<p>If <span class="math inline">\(f\)</span> is a convex function and <span class="math inline">\(g\)</span> is a linear function, then both <span class="math inline">\(f \circ g\)</span> and <span class="math inline">\(g \circ f\)</span> are convex.</p>
+<p>For example, the least squares loss <span class="math inline">\((y-\mathbf x^\top\mathbf w)^2\)</span> is convex as a function of <span class="math inline">\(\mathbf w\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Likewise, the negative log-likelihood under logistic regression,</p>
+<p><span class="math display">\[
+-y\mathbf x^\top\mathbf w
++
+\log\left(1+e^{\mathbf x^\top\mathbf w}\right),
+\]</span></p>
+<p>is convex in <span class="math inline">\(\mathbf w\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Therefore sums of these losses over observations are also convex.</p>
+</div>
+</section>
+<section id="why-gradient-descent-for-linear-regression" class="slide level2">
+<h2>Why Gradient Descent for Linear Regression?</h2>
+<p>The linear regression objective</p>
+<p><span class="math display">\[
+\sum_{i=1}^n
+(y_i-\mathbf x_i^\top\mathbf w)^2
+\]</span></p>
+<p>is convex.</p>
+<p>So why use gradient descent when a closed-form solution exists?</p>
+<div class="fragment">
+<p>When <span class="math inline">\(p\)</span> is large, directly computing</p>
+<p><span class="math display">\[
+(\mathbf X^\top\mathbf X)^{-1}\mathbf X^\top\mathbf y
+\]</span></p>
+<p>may be expensive.</p>
+</div>
+<div class="fragment">
+<p>A gradient descent update can be computationally attractive because it avoids explicitly inverting a large matrix.</p>
+</div>
+</section>
+<section id="the-learning-rate-matters" class="slide level2">
+<h2>The Learning Rate Matters</h2>
+<p>The learning rate <span class="math inline">\(\alpha\)</span> is a <strong>hyperparameter</strong> that we need to tune. Its value can dramatically affect optimization.</p>
+
+<img data-src="images/Week4-LearningRate.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><div class="fragment">
+<p>We often try several candidate learning rates and examine their optimization behaviour.</p>
+</div>
+</section>
+<section id="training-curves" class="slide level2">
+<h2>Training Curves</h2>
+<p>A useful diagnostic is to look at the <span style="color: maroon;"><strong>training cost</strong></span>: plot the training cost as a function of iteration.</p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<div class="fragment">
+<p>Training curves can help identify:</p>
+<ul>
+<li>very slow convergence;</li>
+<li>unstable updates;</li>
+<li>a learning rate that may be too small or too large.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Important</strong>: the training cost could be used to check whether the optimization problem reaches certain convergence. But:</p>
+<ul>
+<li>It does not tell whether we reach the global minimum or not</li>
+<li>It does not tell us anything on the performance of the fitted model</li>
+</ul>
+</div>
+</div><div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Week4-TrainingCost.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div></div>
+</section>
+<section id="batch-gradient-descent" class="slide level2">
+<h2>Batch Gradient Descent</h2>
+<p>Recall for OLS that:</p>
+<p><span class="math display">\[
+\widehat{\mathbf w}^{(k+1)}
+=
+\widehat{\mathbf w}^{(k)}
++
+\alpha
+\sum_{i=1}^n
+\left[
+y_i-\mathbf x_i^\top\widehat{\mathbf w}^{(k)}
+\right]\mathbf x_i.
+\]</span> <br></p>
+<div class="fragment">
+<p>Computing the gradient requires summing over <strong>all</strong> of the training examples, which can be done via matrix / vector operations.</p>
+<p><br></p>
+<p>The fact that it uses all training samples is known as <span style="color: maroon;"><strong>batch training</strong></span>.</p>
+</div>
+</section>
+<section id="stochastic-gradient-descent" class="slide level2 scrollable">
+<h2>Stochastic Gradient Descent</h2>
+<p>Batch gradient descent can be expensive when <span class="math inline">\(n\)</span> is extremely large.</p>
+<p><span style="color: maroon;"><strong>Stochastic gradient descent (SGD)</strong></span> uses only one randomly selected training example for each update.</p>
+<p><br></p>
+<div class="fragment">
+<p>At iteration <span class="math inline">\(k\)</span>:</p>
+<ol type="1">
+<li>choose <span class="math inline">\(i\in\{1,\ldots,n\}\)</span> at random;</li>
+<li>update using only observation <span class="math inline">\(i\)</span>.</li>
+</ol>
+</div>
+<div class="fragment">
+<p>For OLS,</p>
+<p><span class="math display">\[
+\boxed{
+\widehat{\mathbf w}^{(k+1)}
+=
+\widehat{\mathbf w}^{(k)}
++
+\alpha
+\left[
+y_i-\mathbf x_i^\top\widehat{\mathbf w}^{(k)}
+\right]\mathbf x_i
+}
+\]</span></p>
+</div>
+</section>
+<section id="why-use-sgd" class="slide level2">
+<h2>Why Use SGD?</h2>
+<p><strong>Pros</strong></p>
+<ul>
+<li>Computational cost of each SGD update is independent of <span class="math inline">\(n\)</span>!</li>
+<li>SGD can make significant progress before even seeing all the data!</li>
+<li>Mathematical justification: the gradients between SGD and GD have the same expectation for i.i.d. data.</li>
+</ul>
+<div class="fragment">
+<p><strong>Cons</strong></p>
+<ul>
+<li>We are using only a single training example to estimate the gradient, so the variance in the estimate may be high.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Compromise Approach</strong></p>
+<ul>
+<li>compute the gradients on a randomly chosen medium-sized set of training examples <span class="math inline">\(\mathcal{M} \subset \{1, ..., n\}\)</span>, called a <span style="color: maroon;"><strong>mini-batch</strong></span></li>
+<li>Stochastic gradients computed on larger mini-batches have smaller variance.</li>
+<li>The mini-batch size <span class="math inline">\(|\mathcal{M}|\)</span> is a hyperparameter that needs to be set</li>
+</ul>
+</div>
+</section>
+<section id="stochastic-gradient-descent-1" class="slide level2">
+<h2>Stochastic Gradient Descent</h2>
+<ul>
+<li>Batch gradient descent moves directly downhill</li>
+<li>SGD takes steps in a noisy direction, but moves downhill on average</li>
+</ul>
+
+<img data-src="images/Week4-GDvsSGD.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="learning-rates-in-sgd" class="slide level2">
+<h2>Learning Rates in SGD</h2>
+<p>With stochastic optimization, the learning rate also controls the size of the <strong>fluctuations</strong> caused by noisy gradient estimates.</p>
+
+<img data-src="images/Week4-SGDLearningRate.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><div class="fragment">
+<p>Typical strategy</p>
+<ul>
+<li>Use a large learning rate early in training so you can get close to the optimum</li>
+<li>Gradually decay the learning rate to reduce the fluctuations</li>
+</ul>
+</div>
+</section>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
+<p>Gradient descent gives us a general way to solve optimization problems of the form</p>
+<p><span class="math display">\[
+\widehat{\mathbf w}
+=
+\arg\min_{\mathbf w}
+\mathcal J(\mathbf w).
+\]</span></p>
+<p>The basic recipe is:</p>
+<p><span class="math display">\[
+\boxed{
+\text{initialize}
+\;\longrightarrow\;
+\text{compute gradient}
+\;\longrightarrow\;
+\text{step downhill}
+\;\longrightarrow\;
+\text{repeat}
+}
+\]</span></p>
+<p>Key ideas:</p>
+<ul>
+<li>the <strong>gradient</strong> tells us the direction of steepest increase;</li>
+<li>the <strong>negative gradient</strong> points downhill;</li>
+<li>the <strong>learning rate</strong> determines the step size;</li>
+<li>convexity helps guarantee that we are moving toward a global optimum;</li>
+<li>batch, stochastic, and mini-batch gradient descent trade off computation and noise.</li>
+</ul>
+</section>
+<section>
+<section id="moving-beyond-linearity" class="title-slide slide level1 center">
+<h1>Moving Beyond Linearity</h1>
+
+</section>
+<section id="linear-models" class="slide level2">
+<h2>Linear Models</h2>
+<p>So far, we’ve mainly focused on linear models.</p>
+<p><br></p>
+<p>They are simply to describe and implement, and have advantages over other approaches in terms of interpretation and inference.</p>
+<p><br></p>
+<div class="fragment">
+<p>However, because the linearity assumption is almost always an approximation, linear regression can have significant limitations in terms of predictive power.</p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>We can improve upon least squares using ridge regression and the lasso by reducing the complexity of the model (i.e.&nbsp;the variance of the estimates), but we are still using a linear model which can only be improved so much!</p>
+</div>
+</section>
+<section id="linearity-in-features-vs.-parameters" class="slide level2">
+<h2>Linearity in Features vs.&nbsp;Parameters</h2>
+<p>Suppose <span class="math inline">\(X=(X_1,X_2)\)</span>. A standard linear model is</p>
+<p><span class="math display">\[
+Y=\beta_0+\beta_1X_1+\beta_2X_2+\varepsilon.
+\]</span></p>
+<p>What about</p>
+<p><span class="math display">\[
+Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_1^2+\beta_4X_2^2+\beta_5X_1X_2+\varepsilon?
+\]</span></p>
+<div class="fragment">
+<p>This model is <strong>nonlinear in the features</strong>, but still <strong>linear in the parameters</strong> <span class="math inline">\(\boldsymbol\beta=(\beta_0,\ldots,\beta_5)^\top\)</span>.</p>
+</div>
+</section>
+<section id="why-does-that-distinction-matter" class="slide level2">
+<h2>Why Does That Distinction Matter?</h2>
+<p>Because the model remains linear in <span class="math inline">\(\boldsymbol\beta\)</span>, we can still use familiar tools:</p>
+<p><strong>Estimation</strong></p>
+<ul>
+<li>Ordinary least squares</li>
+<li>Maximum likelihood for a GLM</li>
+</ul>
+<p><strong>Model building</strong></p>
+<ul>
+<li>Subset selection</li>
+<li>Ridge regression</li>
+<li>The lasso</li>
+</ul>
+<div class="fragment">
+<p>The <strong>linear model framework</strong> is more flexible than a straight-line relationship.</p>
+</div>
+</section>
+<section id="moving-beyond-linearity-1" class="slide level2">
+<h2>Moving Beyond Linearity</h2>
+<p>We consider the following extensions to relax the linearity assumption in the feature space:</p>
+<p><strong>For one predictor <span class="math inline">\((p=1)\)</span>:</strong></p>
+<ul>
+<li>polynomial regression;</li>
+<li>step functions; and</li>
+<li>regression splines.</li>
+</ul>
+<p><strong>For several predictors <span class="math inline">\((p&gt;1)\)</span>:</strong></p>
+<ul>
+<li>nearest-neighbor and local regression; and</li>
+<li>generalized additive models.</li>
+</ul>
+</section>
+<section id="polynomial-regression" class="slide level2">
+<h2>Polynomial Regression</h2>
+<p><span style="color: maroon;"><strong>Polynomial regression</strong></span> extends the linear model</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1x_i + \epsilon_i\]</span> to settings where the relationship between the predictors and the response is non linear by adding extra predictors, obtained by raising each of the original predictors to a power:</p>
+<p><span class="math display">\[
+y_i=\beta_0+\beta_1x_i+\beta_2x_i^2+\cdots+\beta_dx_i^d+\varepsilon_i.
+\]</span></p>
+<div class="fragment">
+<ul>
+<li>It is nonlinear in <span class="math inline">\(x\)</span>, but linear in the coefficients.</li>
+<li>It can be fit using OLS, ridge, or the lasso.<br>
+</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li>The coefficients themselves are <span style="color: maroon;">not interpretable</span>; we are more interested in the trend of the fitted function <span class="math display">\[
+\widehat f(x)=\widehat\beta_0+\widehat\beta_1x+\cdots+\widehat\beta_dx^d.
+\]</span></li>
+</ul>
+</div>
+</section>
+<section id="polynomial-regression-1" class="slide level2">
+<h2>Polynomial Regression</h2>
+<ul>
+<li>In practice, the degree <span class="math inline">\(d\)</span> is usually small, often no greater than 3 or 4.</li>
+<li>We can choose <span class="math inline">\(d\)</span> using cross-validation.</li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>Polynomial terms can also be used for classification
+<ul>
+<li>For instance, in the logistic regression below (we will come back to this later), this can be fit by maximizing the likelihood <span class="math display">\[
+\operatorname{logit}\{P(Y_i=1\mid X_i=x_i)\}
+=\beta_0+\beta_1x_i+\cdots+\beta_dx_i^d.
+\]</span></li>
+</ul></li>
+</ul>
+</div>
+<p><br></p>
+<div class="fragment">
+<p><strong>Note</strong>: High-degree polynomials can behave erratically near the boundaries and are <span style="color: maroon;">particularly unreliable for extrapolation</span>.</p>
+</div>
+</section>
+<section id="polynomial-regression-wage-data" class="slide level2">
+<h2>Polynomial Regression: Wage Data</h2>
+
+<img data-src="images/Week4-WageData.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><ul>
+<li><strong>Left:</strong> The solid blue curve is a degree-4 polynomial of wage as a function of age, fit by the OLS. The dotted curves are estimated 95/% confidence intervals</li>
+<li><strong>Right:</strong> Model the binary event <span class="math inline">\(1\{\text{wage}&gt;250\}\)</span> by logistic regression, with a degree-4 polynomial.</li>
+</ul>
+</section>
+<section id="step-functions" class="slide level2">
+<h2>Step Functions</h2>
+<p>Polynomial regression imposes a <strong>global</strong> shape. A <span style="color: maroon;"><strong>step function</strong></span> instead divides the range of <span class="math inline">\(X\)</span> into regions.</p>
+<p><br></p>
+<div class="fragment">
+<p>For pre-specified <span class="math inline">\(K\)</span> cut points <span class="math inline">\(c_1&lt;\cdots&lt;c_K\)</span>, define</p>
+<p><span class="math display">\[
+\begin{aligned}
+C_0(X)&amp;=I(X&lt;c_1),\\
+C_1(X)&amp;=I(c_1\le X&lt;c_2),\\
+&amp;\ \vdots\\
+C_K(X)&amp;=I(c_K\le X).
+\end{aligned}
+\]</span></p>
+<p>These <span class="math inline">\(K+1\)</span> dummy variables sum to 1.</p>
+</div>
+</section>
+<section id="step-functions-1" class="slide level2">
+<h2>Step-Functions</h2>
+<p>Using the first interval as the reference category,</p>
+<p><span class="math display">\[
+y_i=\beta_0+\beta_1C_1(x_i)+\cdots+\beta_KC_K(x_i)+\varepsilon_i.
+\]</span></p>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>The model can be fit by OLS or a shrinkage method.</li>
+<li>For a given value <span class="math inline">\(X\)</span>, at most one of <span class="math inline">\(C_1, C_2, ..., C_K\)</span> can be non-zero.</li>
+<li><span class="math inline">\(\beta_0\)</span> is the mean response in the reference interval <span class="math inline">\(X&lt;c_1\)</span>.</li>
+<li><span class="math inline">\(\beta_j\)</span> is the mean difference in the response <span class="math inline">\(Y\)</span> for <span class="math inline">\(c_j \leq X \leq c_{j+1}\)</span> relative to <span class="math inline">\(X &lt; c_1\)</span>.</li>
+</ul>
+</div>
+</section>
+<section id="step-functions-wage-data" class="slide level2">
+<h2>Step Functions: Wage Data</h2>
+
+<img data-src="images/Week4-WageDataStep.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><ul>
+<li><strong>Left:</strong> The solid blue curve is a step function of wage as a function of age, fit by least squares. The dotted curves indicate an estimated 95/% confidence interval.</li>
+<li><strong>Right:</strong> Model the binary event <span class="math inline">\(1\{\text{wage}&gt;250\}\)</span> by logistic regression, with a step function.</li>
+</ul>
+</section>
+<section id="step-functions-strengths-and-limitations" class="slide level2">
+<h2>Step Functions: Strengths and Limitations</h2>
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><strong>Strengths</strong></p>
+<ul>
+<li>Easy to fit</li>
+<li>Easy to explain</li>
+<li>Coefficients compare interpretable groups</li>
+<li>Common in biostatistics and epidemiology</li>
+</ul>
+</div><div class="column" style="width:48%;">
+<p><strong>Limitations</strong></p>
+<ul>
+<li>The fitted relationship is discontinuous</li>
+<li>Important trends can be hidden</li>
+<li>Results can depend strongly on the cut points</li>
+</ul>
+</div></div>
+</section>
+<section id="basis-functions" class="slide level2">
+<h2>Basis Functions</h2>
+<p>The models we have just discussed are all special cases of a <span style="color: maroon;"><strong>basis function</strong></span> approach.</p>
+<p>The idea is to have a family of functions/transformations that can be applied to a variable, <span class="math inline">\(X\)</span>, and instead of fitting a linear model in <span class="math inline">\(X\)</span>, we fit</p>
+<p><span class="math display">\[
+y_i=\beta_0+\sum_{k=1}^{M}\beta_k b_k(x_i)+\varepsilon_i,
+\]</span></p>
+<p>where the <span class="math inline">\(b_k(\cdot)\)</span> are the <em>known</em> functions/transformations (we specify them ahead of time).</p>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Model</th>
+<th>Example basis functions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Polynomial</td>
+<td><span class="math inline">\(b_k(x)=x^k\)</span></td>
+</tr>
+<tr class="even">
+<td>Step function</td>
+<td><span class="math inline">\(b_k(x)=C_k(x)\)</span></td>
+</tr>
+<tr class="odd">
+<td>Linear spline</td>
+<td><span class="math inline">\(b_1(x)=x\)</span>, <span class="math inline">\(b_{k+1}(x)=(x-\xi_k)_+\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>Once the basis is constructed, fitting the model is just linear regression.</p>
+</div>
+<div class="fragment">
+<p>A very common choice for a basis function is a <span style="color: maroon;"><strong>regression spline</strong></span>, which we discuss next.</p>
+</div>
+</section>
+<section id="piecewise-polynomials" class="slide level2">
+<h2>Piecewise Polynomials</h2>
+<p>Instead of fitting one polynomial over the full range of <span class="math inline">\(X\)</span>, fit different polynomials in different regions.</p>
+<p><span class="math display">\[
+y_i =
+\begin{cases}
+\beta_{01} + \beta_{11}x_i + \beta_{21}x_i^2 + \beta_{31}x_i^3 + \epsilon_i,
+&amp; \text{if } x_i &lt; c, \\[6pt]
+\beta_{02} + \beta_{12}x_i + \beta_{22}x_i^2 + \beta_{32}x_i^3 + \epsilon_i,
+&amp; \text{if } x_i \geq c.
+\end{cases}
+\]</span></p>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>The cut point <span class="math inline">\(c\)</span>, i.e.&nbsp;where the coefficients change, is called a <span style="color: maroon;"><strong>knot</strong></span>.</li>
+<li>With <span class="math inline">\(K\)</span> knots, there are <span class="math inline">\(K+1\)</span> regions.</li>
+<li>More knots allow greater local flexibility.</li>
+</ul>
+</div>
+</section>
+<section id="piecewise-polynomials-wage-data" class="slide level2">
+<h2>Piecewise Polynomials: Wage Data</h2>
+
+<img data-src="images/Week4-WageDataPiecewise.png" class="quarto-figure quarto-figure-center r-stretch" style="width:100.0%"><p>Without <em>constraints</em> at the knots, adjacent polynomial pieces may fail to meet, or may meet with sharp corners.</p>
+</section>
+<section id="constraints-and-splines" class="slide level2 scrollable">
+<h2>Constraints and Splines</h2>
+<p>At each knot, we can impose constraints:</p>
+<ol type="1">
+<li><strong>Continuity:</strong> the adjacent pieces have the same function value.</li>
+<li><strong>Smoothness:</strong> their first derivatives agree.</li>
+<li><strong>More smoothness:</strong> higher-order derivatives also agree.</li>
+</ol>
+<p><br></p>
+<div class="fragment">
+<p>The constrained polynomials are called <span style="color: maroon;"><strong>splines</strong></span>.</p>
+<p><br></p>
+<p>A degree-<span class="math inline">\(d\)</span> spline is a piecewise degree-<span class="math inline">\(d\)</span> polynomial, with continuity in derivatives up to degree <span class="math inline">\(d-1\)</span> at each knot.</p>
+</div>
+<p><br></p>
+<div class="fragment">
+<p>How can we construct the degree-<span class="math inline">\(d\)</span> spline?</p>
+</div>
+</section>
+<section id="linear-splines" class="slide level2">
+<h2>Linear Splines</h2>
+<p>A <span style="color: maroon;">linear spline</span> has piecewise linear functions continuous at each knot. That is, with knots at <span class="math inline">\(\xi_1&lt;\cdots&lt;\xi_K\)</span>,</p>
+<p><span class="math display">\[
+y_i=\beta_0+\beta_1x_i+\sum_{k=1}^{K}\beta_{k+1}(x_i-\xi_k)_+ +\varepsilon_i,
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+(x_i-\xi_k)_+=
+\begin{cases}
+x_i-\xi_k, &amp; x_i&gt;\xi_k,\\
+0, &amp; x_i\le \xi_k.
+\end{cases}
+\]</span> is called the <span style="color: maroon;"><strong>truncated power basis function</strong></span>, and <span class="math inline">\(\xi_k\)</span> is the knot.</p>
+<p><br></p>
+<div class="fragment">
+<p><strong>Interpretation of <span class="math inline">\(\beta_1\)</span></strong>: the averaged increase of <span class="math inline">\(Y\)</span> associated with one unit of <span class="math inline">\(X\)</span> for <span class="math inline">\(X &lt; \xi_1\)</span>.</p>
+</div>
+</section>
+<section id="linear-splines-1" class="slide level2">
+<h2>Linear Splines</h2>
+<p>For example, with three knots, we start off with a basis for a linear polynomial, then add one truncated power basis function per knot:</p>
+<p><span class="math display">\[
+y
+=
+\beta_0+\beta_1x
++\beta_2(x-\xi_1)_+
++\beta_3(x-\xi_2)_+
++\beta_4(x-\xi_3)_+.
+\]</span></p>
+<div class="fragment">
+<p>Therefore, the slope in each region is</p>
+<p><span class="math display">\[
+\begin{aligned}
+x \leq \xi_1
+&amp;: \quad \beta_1, \\[4pt]
+\xi_1 &lt; x \leq \xi_2
+&amp;: \quad \beta_1+\beta_2, \\[4pt]
+\xi_2 &lt; x \leq \xi_3
+&amp;: \quad \beta_1+\beta_2+\beta_3, \\[4pt]
+x &gt; \xi_3
+&amp;: \quad \beta_1+\beta_2+\beta_3+\beta_4.
+\end{aligned}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Because each new term <span class="math inline">\((x-\xi_k)_+\)</span> is zero at the knot <span class="math inline">\(\xi_k\)</span>, the pieces meet at each knot. Thus, the fitted function is <strong>continuous</strong>, making it a <strong>spline</strong>.</p>
+</div>
+</section>
+<section id="how-a-linear-spline-is-built" class="slide level2">
+<h2>How a Linear Spline Is Built</h2>
+
+<img data-src="images/Week4-LinearSpline.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p>The truncated linear term is zero before the knot and grows linearly afterward. Adding it to the original line changes the slope without creating a jump.</p>
+</section>
+<section id="cubic-splines" class="slide level2">
+<h2>Cubic Splines</h2>
+<p>A <span style="color: maroon;">cubic spline</span> uses piecewise cubic polynomials with continuous first and second derivatives at each knot. Again, we start off with a basis for a cubic polynomial, then add one truncated power basis function per knot.</p>
+<div class="fragment">
+<p>That is, with <span class="math inline">\(K\)</span> knots at <span class="math inline">\(\xi_1 &lt; \xi_2 &lt; ... &lt;\xi_k\)</span>,</p>
+<p><span class="math display">\[y_i = \beta_0 + \beta_1b_1(x_i) + \beta_2b_2(x_i) + ... + \beta_{K+3}b_{K+3}(x_i) + \epsilon_i\]</span> where <span class="math inline">\(b_k(.)\)</span> are basis functions</p>
+<p><span class="math display">\[
+b_1(x)=x,\quad b_2(x)=x^2,\quad b_3(x)=x^3,
+\]</span></p>
+<p><span class="math display">\[
+b_{k+3}(x)=(x-\xi_k)_+^3,\qquad k=1,\ldots,K.
+\]</span></p>
+</div>
+</section>
+<section id="cubic-splines-1" class="slide level2">
+<h2>Cubic Splines</h2>
+<p>But wait.. we know a spline must have continuity in derivatives up to degree <span class="math inline">\(d-1\)</span> at each knot.</p>
+<p>How can we check this condition?</p>
+<textarea class="annotation-box" placeholder="Type notes here..."></textarea>
+</section>
+<section id="how-a-cubic-spline-is-built" class="slide level2">
+<h2>How a Cubic Spline Is Built</h2>
+
+<img data-src="images/Week4-CubicSpline.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p>The truncated cubic term changes the curve only after the knot. The pieces join smoothly in value, slope, and curvature.</p>
+</section>
+<section id="natural-splines" class="slide level2">
+<h2>Natural Splines</h2>
+<p>A <span style="color: maroon;">natural spline</span> is a regression spline with additional boundary constraints: the function is required to be linear at the boundary.</p>
+<p>This reduces instability near the boundaries, where there are fewer observations and ordinary cubic splines can have high variance.</p>
+
+<img data-src="images/Week4-NaturalSpline.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="more-on-splines" class="slide level2">
+<h2>More on Splines</h2>
+<p><strong>Choosing the number and locations of the knots</strong></p>
+<ul>
+<li>Place knots at selected quantiles of the data or place on the range of <span class="math inline">\(X\)</span> with equal space. Oftentimes, the placement of knots is not very crucial.</li>
+<li>We use cross validation to choose <span class="math inline">\(K\)</span></li>
+</ul>
+<p><br></p>
+<p>Polynomial regressions and step functions are special cases of splines</p>
+<p><br></p>
+<p>Another variant: Smoothing spline (ISLR 7.5)</p>
+</section>
+<section id="what-changes-when-p1" class="slide level2">
+<h2>What Changes When <span class="math inline">\(p&gt;1\)</span>?</h2>
+<ul>
+<li>Splines can be used for <span class="math inline">\(p &lt; 4\)</span> (number of basis functions grows exponentially in <span class="math inline">\(p\)</span>)</li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>Local approach for <span class="math inline">\(p &lt; 4\)</span>
+<ul>
+<li>nearest neighbour approach</li>
+<li>local regression</li>
+</ul></li>
+</ul>
+</div>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li>Generalized Additive Models (GAM) for large <span class="math inline">\(p\)</span></li>
+</ul>
+</div>
+</section>
+<section id="k-nearest-neighbor" class="slide level2 scrollable">
+<h2><span class="math inline">\(k\)</span>-Nearest-Neighbor</h2>
+<div class="algorithm-box">
+<p><strong>To predict at</strong> <span class="math inline">\(X=x_0\)</span>:</p>
+<ol type="1">
+<li>Choose <span class="math inline">\(k\in\{1,\ldots,n\}\)</span>.</li>
+<li>Find the <span class="math inline">\(k\)</span> training points closest to <span class="math inline">\(x_0\)</span>; call their index set <span class="math inline">\(N_k(x_0)\)</span>.</li>
+<li>Average their responses:</li>
+</ol>
+<p><span class="math display">\[
+\widehat f(x_0)=\frac{1}{k}\sum_{i\in N_k(x_0)}y_i.
+\]</span></p>
+</div>
+</section>
+<section id="k-nearest-neighbor-the-role-of-k" class="slide level2">
+<h2><span class="math inline">\(k\)</span>-Nearest-Neighbor: The Role of <span class="math inline">\(k\)</span></h2>
+
+<img data-src="images/Week4-kNNBlank.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="k1-nearest-neighbour" class="slide level2">
+<h2><span class="math inline">\(k=1\)</span> Nearest Neighbour</h2>
+
+<img data-src="images/Week4-kNN1.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="k3-nearest-neighbour" class="slide level2">
+<h2><span class="math inline">\(k=3\)</span> Nearest Neighbour</h2>
+
+<img data-src="images/Week4-kNN3.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="k10-nearest-neighbour" class="slide level2">
+<h2><span class="math inline">\(k=10\)</span> Nearest Neighbour</h2>
+
+<img data-src="images/Week4-kNN10.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="role-of-k" class="slide level2">
+<h2>Role of <span class="math inline">\(k\)</span></h2>
+
+<img data-src="images/Week4-kNNCompare.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="role-of-k-1" class="slide level2">
+<h2>Role of <span class="math inline">\(k\)</span></h2>
+<p><br> <br></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Smaller <span class="math inline">\(k\)</span></th>
+<th>Larger <span class="math inline">\(k\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>More flexible</td>
+<td>Smoother</td>
+</tr>
+<tr class="even">
+<td>Lower bias</td>
+<td>Higher bias</td>
+</tr>
+<tr class="odd">
+<td>Higher variance</td>
+<td>Lower variance</td>
+</tr>
+</tbody>
+</table>
+<p><br></p>
+<div class="fragment">
+<p>Choose <span class="math inline">\(k\)</span> using <span style="color: maroon;">cross-validation</span>.</p>
+<p>The best <span class="math inline">\(k\)</span> is the one that gives the lowest estimated test error (not necessarily the smoothest-looking curve).</p>
+</div>
+</section>
+<section id="weighted-k-nearest-neighbors" class="slide level2">
+<h2>Weighted <span class="math inline">\(k\)</span>-Nearest Neighbors</h2>
+<p>Ordinary <span class="math inline">\(k\)</span>-NN assigns equal weight <span class="math inline">\(1/k\)</span> to every neighbor.</p>
+<p><br></p>
+<p>More generally, we can choose a weight such that</p>
+<p><span class="math display">\[
+\widehat f(x_0)=\sum_{i\in N_k(x_0)}K(x_i,x_0)y_i,
+\]</span></p>
+<p>with</p>
+<p><span class="math display">\[
+K(x_i,x_0)\ge 0,\qquad \sum_{i\in N_k(x_0)}K(x_i,x_0)=1.
+\]</span></p>
+<p><br></p>
+<div class="fragment">
+<p>Nearby observations can be given more influence than observations near the edge of the neighborhood.</p>
+</div>
+</section>
+<section id="choice-of-the-weight" class="slide level2">
+<h2>Choice of the Weight</h2>
+<p>One popular choice is the so-called <span style="color: maroon;">inverse distance weighting</span> (IDW).</p>
+<p>Of course there are other more sophisticated weighting schemes.</p>
+<p><br></p>
+<div class="fragment">
+<p>For <span class="math inline">\(x_i\in N_k(x_0)\)</span>, define</p>
+<p><span class="math display">\[
+d_i=\lVert x_i-x_0\rVert_2,
+\qquad
+\operatorname{ID}_i=\frac{1}{d_i}.
+\]</span></p>
+<p>Normalize the inverse distances:</p>
+<p><span class="math display">\[
+K(x_i,x_0)=\frac{\operatorname{ID}_i}
+{\sum_{j\in N_k(x_0)}\operatorname{ID}_j}.
+\]</span></p>
+</div>
+<div class="fragment">
+<p>In implementation, handle <span class="math inline">\(d_i=0\)</span> separately: if the target matches a training point exactly, that response can receive all the weight.</p>
+</div>
+</section>
+<section id="weighted-knn-vs-knn-k3" class="slide level2">
+<h2>Weighted <span class="math inline">\(k\)</span>NN vs <span class="math inline">\(k\)</span>NN (<span class="math inline">\(k=3\)</span>)</h2>
+
+<img data-src="images/Week4-kNNWeight3.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="generalization-of-knn-local-regression" class="slide level2">
+<h2>Generalization of <span class="math inline">\(k\)</span>NN: Local Regression</h2>
+<p>Recall that <span class="math inline">\(k\)</span>NN predicts by using the local average of the <span style="color: maroon;">responses</span></p>
+<p><span class="math display">\[
+\widehat f(x_0)=\frac{1}{k}\sum_{i\in N_k(x_0)}y_i.
+\]</span></p>
+<div class="fragment">
+<p>Local linear regression instead fits a line near <span class="math inline">\(x_0\)</span>:</p>
+<p><span class="math display">\[
+\widehat f(x_0)=\widehat\beta_0+\widehat\beta_1x_0,
+\]</span></p>
+<p>where</p>
+<p><span class="math display">\[
+(\widehat\beta_0,\widehat\beta_1)
+=\arg\min_{\beta_0,\beta_1}
+\sum_{i\in N_k(x_0)}(y_i-\beta_0-\beta_1x_i)^2.
+\]</span></p>
+</div>
+</section>
+<section id="k-nn-vs.-local-linear-regression-k-10" class="slide level2">
+<h2><span class="math inline">\(k\)</span>-NN vs.&nbsp;Local Linear Regression (<span class="math inline">\(k = 10\)</span>)</h2>
+
+<img data-src="images/Week4-kNNLocalRegression.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"></section>
+<section id="local-regression-algorithm" class="slide level2 scrollable">
+<h2>Local Regression Algorithm</h2>
+<div class="algorithm-box">
+<ol type="1">
+<li>Gather the fraction of <span class="math inline">\(s=k/n\)</span> of training points whose <span class="math inline">\(x_i\)</span> are closest to <span class="math inline">\(x_0\)</span></li>
+<li>Assign a weight <span class="math inline">\(K_{i0}=K(x_i, x_0)\)</span> to each point in this neighbourhood, so that the point furthest away from <span class="math inline">\(x_0\)</span> has weight zero, and the closest has the highest weight. All but these <span class="math inline">\(k\)</span> nearest neighbours get weight zero.</li>
+<li>Fit a <em>weighted least-squares regression</em> of the <span class="math inline">\(y_i\)</span> on the <span class="math inline">\(x_i\)</span> using the aforementioned weights, by finding <span class="math inline">\(\widehat{\beta}_0\)</span> and <span class="math inline">\(\widehat{\beta}_1\)</span> that minimize <span class="math display">\[\sum_{i=1}^n K_{i0}(y_i-\beta_0-\beta_1x_i)^2\]</span></li>
+<li>The fitted value at <span class="math inline">\(x_0\)</span> is given by <span class="math inline">\(\widehat{f}(x_0)=\widehat{\beta}_0 + \widehat{\beta}_1x_0\)</span></li>
+</ol>
+</div>
+</section>
+<section id="simulated-example" class="slide level2">
+<h2>Simulated Example</h2>
+
+<img data-src="images/Week4-SimulatedExample.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p>The blue curve is true <span class="math inline">\(f(x)\)</span>, and the light orange curve is the local regression <span class="math inline">\(\widehat{f}(x)\)</span>. The orange points are local to the target point <span class="math inline">\(x_0\)</span>, represented by the orange vertical line. The yellow bell-shape indicates weights assigned to each point. The fit <span class="math inline">\(\widehat{f}(x_0)\)</span> at <span class="math inline">\(x_0\)</span> is obtained by fitting a weighted linear regression (orange line segment), and using the fitted value at <span class="math inline">\(x_0\)</span> (orange solid dot) as the estimate <span class="math inline">\(\widehat{f}(x_0)\)</span>.</p>
+</section>
+<section id="local-regression" class="slide level2">
+<h2>Local Regression</h2>
+<ul>
+<li>The size of the neighbourhood (fraction <span class="math inline">\(s\)</span> of training data) is a tuning parameter, which can be chosen by cross validation</li>
+</ul>
+<p><br></p>
+<ul>
+<li>The weight of each point in the neighbourhood needs to be specified</li>
+</ul>
+<p><br></p>
+<ul>
+<li>When we have two dimensional predictors <span class="math inline">\(X_1\)</span> and <span class="math inline">\(X_2\)</span>, we can simply use 2-dimensional neighborhoods, and fit bivariate linear regression models using the observations that are near each target point in 2-dimensional space.</li>
+</ul>
+<p><br></p>
+<ul>
+<li>However, local regression can perform poorly if <span class="math inline">\(p \geq 4\)</span> (the curse of dimensionality)</li>
+</ul>
+</section>
+<section id="generalized-additive-models" class="slide level2">
+<h2>Generalized Additive Models</h2>
+<p>A <span style="color: maroon;">generalized additive model</span> (GAM) allows a separate nonlinear function for each predictor while preserving additivity:</p>
+<p><span class="math display">\[
+y_i=\beta_0+f_1(x_{i1})+\cdots+f_p(x_{ip})+\varepsilon_i.
+\]</span></p>
+<div class="fragment">
+<p>Each <span class="math inline">\(f_j\)</span> could be:</p>
+<ul>
+<li>linear;</li>
+<li>polynomial;</li>
+<li>a step function;</li>
+<li>a spline; or</li>
+<li>a local regression.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Can be applied to classification problems.</p>
+</div>
+</section>
+<section id="gam-wage-data" class="slide level2">
+<h2>GAM: Wage Data</h2>
+<p>Consider the wage data</p>
+<p><span class="math display">\[
+\text{wage}=\beta_0+f_1(\text{year})+f_2(\text{age})+f_3(\text{education})+\varepsilon.
+\]</span></p>
+
+<img data-src="images/Week4-WageGAM.png" class="quarto-figure quarto-figure-center r-stretch" style="width:80.0%"><p><span class="math inline">\(f_1\)</span> and <span class="math inline">\(f_2\)</span> are natural splines; <span class="math inline">\(f_3\)</span> is a step function for the qualitative predictor education.</p>
+</section>
+<section id="gams-strengths-and-limitations" class="slide level2">
+<h2>GAMs: Strengths and Limitations</h2>
+<ul>
+<li>GAMs allow us to fit a non-linear function <span class="math inline">\(f_j\)</span> to each <span class="math inline">\(X_j\)</span>: model complicated relationship between the response and the original feature space</li>
+</ul>
+<p><br></p>
+<ul>
+<li>The non-linear fit can potentially improve prediction accuracy</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Because the model is additive, we can still examine the effect of each <span class="math inline">\(X_j\)</span> on <span class="math inline">\(Y\)</span> individually while holding all of the other variables fixed.</li>
+</ul>
+<p><br></p>
+<ul>
+<li>It avoids the curse of dimensionality by assuming additivity</li>
+</ul>
+<p><br></p>
+<ul>
+<li>However, GAMs fail to incorporate the interaction of variables.</li>
+</ul>
+</section>
+<section id="summary-1" class="slide level2">
+<h2>Summary</h2>
+<ul>
+<li><p><strong>Gradient descent</strong> provides a general iterative approach for minimizing an objective function</p>
+<ul>
+<li>The <strong>learning rate</strong> controls the size of each update, while convexity helps ensure that optimization leads to a global minimum.</li>
+</ul></li>
+<li><p>Linear models can represent <strong>nonlinear relationships in the predictors</strong> by transforming the original features.</p>
+<ul>
+<li><strong>Polynomial regression, step functions, and splines</strong> are different ways of constructing flexible nonlinear relationships.</li>
+<li><strong>kNN and local regression</strong> take a local approach:</li>
+</ul></li>
+<li><p><strong>GAMs</strong> combine separate nonlinear functions of multiple predictors while retaining an additive and interpretable structure.</p></li>
+<li><p>The amount of flexibility in these methods is typically controlled by a <strong>tuning parameter</strong>, which can be selected using cross-validation.</p></li>
+</ul>
+<p><strong>Next Week:</strong> Classification!</p>
+<p><strong>Announcements:</strong> Assignment 1 due Oct.&nbsp;7</p>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;">
+<span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Gradient Descent; Moving Beyond Linearity</span><span style="flex: 1;"></span>
+</div>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide"},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../..";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>
