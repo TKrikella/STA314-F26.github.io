@@ -288,6 +288,7 @@ We initialize $\mathbf w$ at some reasonable starting value, (e.g. all zeros) an
 
 ::: fragment
 > What is the direction of the steepest descent of $\mathcal{J}(\mathbf{w})$ at $\mathbf{w}$?
+
 :::
 
 ## Gradient Descent

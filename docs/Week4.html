@@ -418,7 +418,7 @@ w_j^{(k)}
 <p>Typical values may be small, such as <span class="math inline">\(0.01\)</span> or <span class="math inline">\(0.0001\)</span>, although the appropriate scale depends on the problem.</p>
 </div>
 </section>
-<section id="gradient-descent-for-ols" class="slide level2 scrollable">
+<section id="gradient-descent-for-ols" class="slide level2">
 <h2>Gradient Descent for OLS</h2>
 <p>For OLS,</p>
 <p><span class="math display">\[
@@ -449,7 +449,9 @@ w_j^{(k)}
 \right).
 \end{aligned}
 \]</span></p>
-<p>Initialization: <span class="math inline">\(\mathbf{w}^{(0)}=0\)</span> :::</p>
+<p>Initialization: <span class="math inline">\(\mathbf{w}^{(0)}=0\)</span></p>
+</div>
+</section>
 <section id="gradient-descent-for-ridge" class="slide level2">
 <h2>Gradient Descent for Ridge</h2>
 <p>For ridge regression,</p>
@@ -461,8 +463,8 @@ w_j^{(k)}
 \lambda\|\mathbf w\|_2^2.
 \]</span></p>
 <p><br></p>
-<div class="fragment">
-<p>Update rule in vector form at the <span class="math inline">\((k+1)\)</span>th iteration: <span class="math display">\[
+<p>Update rule in vector form at the <span class="math inline">\((k+1)\)</span>th iteration:</p>
+<p><span class="math display">\[
 \begin{aligned}
 \mathbf{w}^{(k+1)}
 &amp;\leftarrow
@@ -486,10 +488,7 @@ w_j^{(k)}
 \end{aligned}
 \]</span></p>
 <p>Initialization: <span class="math inline">\(\mathbf{w}^{(0)}=0\)</span></p>
-</div>
-<div class="fragment">
 <p>The final term is the contribution from the ridge penalty and pulls the coefficients toward zero.</p>
-</div>
 </section>
 <section id="what-about-the-lasso" class="slide level2">
 <h2>What About the Lasso?</h2>
@@ -611,8 +610,7 @@ v :
 \|\mathbf w^{(k+1)}-\mathbf w^{(k)}\|_2
 \le \varepsilon;
 \]</span></p>
-</section>
-</div>
+<p>:::</p>
 <div class="fragment">
 <ol start="3" type="1">
 <li>or we reach a maximum number of iterations, such as <span class="math inline">\(M=1000\)</span>.</li>
