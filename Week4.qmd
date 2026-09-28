@@ -36,28 +36,28 @@ engine: knitr
 
 By the end of this week, you should be able to:
 
-- Explain how gradient descent minimizes an objective function and describe the role of the learning rate.
-- Explain why convexity is useful for optimization.
-- Describe how polynomial regression, step functions, and splines can model nonlinear relationships.
-- Compare kNN, weighted kNN, and local regression as local modelling approaches.
-- Explain how generalized additive models extend nonlinear modelling to multiple predictors.
+-   Explain how gradient descent minimizes an objective function and describe the role of the learning rate.
+-   Explain why convexity is useful for optimization.
+-   Describe how polynomial regression, step functions, and splines can model nonlinear relationships.
+-   Compare kNN, weighted kNN, and local regression as local modelling approaches.
+-   Explain how generalized additive models extend nonlinear modelling to multiple predictors.
 
 ## Review: Regularized Linear Regression
 
--   Ordinary least squares can perform poorly when $p$ is large relative to $n$.  
-  - i.e. estimates can have high variance
+-   Ordinary least squares can perform poorly when $p$ is large relative to $n$.\
+-   i.e. estimates can have high variance
 
-<br> 
+<br>
 
 -   Ridge and the lasso can improve test performance by:
     -   reducing variance;
     -   accepting some additional bias.
-    
-<br> 
-    
+
+<br>
+
 -   The benefit can be substantial when the true coefficients are **small** or **sparse**.
 
-::: {.fragment}
+::: fragment
 If only $s \ll p$ features are predictive, we would ideally fit the model using only those $s$ features.
 :::
 
@@ -65,7 +65,7 @@ If only $s \ll p$ features are predictive, we would ideally fit the model using 
 
 So far, we have defined our regression estimates by asking them to **minimize an objective function**.
 
-:::{.fragment}
+::: fragment
 For ordinary least squares:
 
 $$
@@ -75,7 +75,7 @@ $$
 $$
 :::
 
-:::{.fragment}
+::: fragment
 For ridge regression:
 
 $$
@@ -89,7 +89,7 @@ $$
 $$
 :::
 
-:::{.fragment}
+::: fragment
 For the Lasso:
 
 $$
@@ -117,14 +117,13 @@ $$
 \mathcal J(\mathbf w).
 $$
 
-
 where
 
-- $\mathcal J(\mathbf w)$ is a differentiable function in $\mathbf w=(w_1,\ldots,w_p)$;
-- $\Theta$ is the parameter space for $\mathbf w$, typically a subset of $\mathbb R^p$.
+-   $\mathcal J(\mathbf w)$ is a differentiable function in $\mathbf w=(w_1,\ldots,w_p)$;
+-   $\Theta$ is the parameter space for $\mathbf w$, typically a subset of $\mathbb R^p$.
 
-:::{.fragment}
-The optimal solution, if it exists in the interior, must occur at a **critical point** i.e. point to which the derivative is zero (partial derivatives to zero for multi-dimensional parameter) 
+::: fragment
+The optimal solution, if it exists in the interior, must occur at a **critical point** i.e. point to which the derivative is zero (partial derivatives to zero for multi-dimensional parameter)
 :::
 
 ## Finding the Optimal Solution
@@ -142,7 +141,7 @@ $$
 }{h}.
 $$
 
-:::{.fragment}
+::: fragment
 The minimum must occur at a point where the partial derivatives are zero
 
 $$
@@ -156,11 +155,10 @@ $$
 =
 \mathbf 0.
 $$
-
 :::
 
-:::{.fragment}
-This implies a system of equations, which we can solve analytically in some scenarios. 
+::: fragment
+This implies a system of equations, which we can solve analytically in some scenarios.
 
 We may also use optimization techniques that iteratively get us closer to the solution.
 :::
@@ -187,10 +185,9 @@ $$
 -2\mathbf X^\top(\mathbf y-\mathbf X\mathbf w).
 $$
 
-(If not familiar with multi-dimensional derivatives, calculate $\frac{\partial \mathcal{J}}{\partial w_j}$ and stack them together) 
+(If not familiar with multi-dimensional derivatives, calculate $\frac{\partial \mathcal{J}}{\partial w_j}$ and stack them together)
 
-
-:::{.fragment}
+::: fragment
 Setting this equal to zero gives
 
 $$
@@ -208,7 +205,7 @@ $$
 (\mathbf X^\top\mathbf X)^{-1}\mathbf X^\top\mathbf y
 }
 $$
-::: 
+:::
 
 ## Direct Solution: Ridge
 
@@ -235,7 +232,7 @@ $$
 2\lambda\mathbf w.
 $$
 
-:::{.fragment}
+::: fragment
 Setting this equal to zero gives
 
 $$
@@ -255,7 +252,7 @@ $$
 \mathbf X^\top\mathbf y
 }
 $$
-::: 
+:::
 
 ## Gradient Descent
 
@@ -269,9 +266,9 @@ $$
 
 which is more broadly applicable: [**gradient descent**]{style="color: maroon;"}.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 Many times, we do **not** have a convenient direct solution to
 
 $$
@@ -285,14 +282,12 @@ Rather than solving directly for the optimum, we repeatedly update the parameter
 
 ## Gradient Descent
 
-We initialize $\mathbf w$ at some reasonable starting value, (e.g. all zeros)  and repeatedly adjust it in the direction of **steepest descent** of the loss function $\mathcal J$.
+We initialize $\mathbf w$ at some reasonable starting value, (e.g. all zeros) and repeatedly adjust it in the direction of **steepest descent** of the loss function $\mathcal J$.
 
 ![](images/Week4-SteepestDescent.png){width="80%" fig-align="center"}
 
-:::{.fragment}
-
+::: fragment
 > What is the direction of the steepest descent of $\mathcal{J}(\mathbf{w})$ at $\mathbf{w}$?
-
 :::
 
 ## Gradient Descent
@@ -303,8 +298,8 @@ $$
 \frac{\partial \mathcal{J}(\mathbf{w})}{\partial \mathbf{w}}\bigg|_{\mathbf{w}=\mathbf{w}^{(0)}} \in \mathbb{R}^p
 $$
 
-:::{.fragment}
-So, we update $\mathbf{w}$ in the **opposite** direction of the gradient at $\mathbf{w}^{(0)}$: 
+::: fragment
+So, we update $\mathbf{w}$ in the **opposite** direction of the gradient at $\mathbf{w}^{(0)}$:
 
 $$
 \boxed{
@@ -315,16 +310,13 @@ $$
 \alpha
 \frac{\partial \mathcal{J}(\mathbf{w})}{\partial \mathbf{w}}\bigg|_{\mathbf{w}=\mathbf{w}^{(0)}}
 }
-$$
-for some $\alpha > 0$.
-::: 
+$$ for some $\alpha > 0$.
+:::
 
-:::{.fragment} 
-If $\alpha$ is chosen small, then 
-$$
+::: fragment
+If $\alpha$ is chosen small, then $$
 \mathcal{J}(\mathbf{w}^{(1)}) < \mathcal{J}(\mathbf{w}^{(0)})
-$$
-unless $\frac{\partial \mathcal{J}(\mathbf{w})}{\partial \mathbf{w}}$ at $\mathbf{w}^{(0)}$ is zero.
+$$ unless $\frac{\partial \mathcal{J}(\mathbf{w})}{\partial \mathbf{w}}$ at $\mathbf{w}^{(0)}$ is zero.
 :::
 
 ## Gradient Descent: Coordinatewise View
@@ -346,16 +338,15 @@ $$
 
 <br>
 
-:::{.fragment}
+::: fragment
 The [**learning rate**]{style="color: maroon;"} (or step size), $\alpha$, controls the size of each update.
 
-  - larger $\alpha$: parameters change more quickly;
-  - smaller $\alpha$: parameters change more slowly.
-::: 
+-   larger $\alpha$: parameters change more quickly;
+-   smaller $\alpha$: parameters change more slowly.
+:::
 
-:::{.fragment}
-Typical values may be small, such as $0.01$ or $0.0001$, although the
-appropriate scale depends on the problem.
+::: fragment
+Typical values may be small, such as $0.01$ or $0.0001$, although the appropriate scale depends on the problem.
 :::
 
 ## Gradient Descent for OLS
@@ -366,8 +357,10 @@ $$
 \mathcal J(\mathbf w)
 =
 \|\mathbf y-\mathbf X\mathbf w\|_2^2.
-$$
-:::{.fragment}
+$$ 
+
+:::{.fragment} 
+
 Update rule in vector form at the $(k+1)$th iteration:
 
 $$
@@ -392,8 +385,7 @@ $$
 \end{aligned}
 $$
 
-Initialization: $\mathbf{w}^{(0)}=0$
-::: 
+Initialization: $\mathbf{w}^{(0)}=0$ :::
 
 ## Gradient Descent for Ridge
 
@@ -405,11 +397,12 @@ $$
 \|\mathbf y-\mathbf X\mathbf w\|_2^2
 +
 \lambda\|\mathbf w\|_2^2.
-$$
-<br> 
+$$ 
 
-:::{.fragment}
-Update rule in vector form at the $(k+1)$th iteration:
+<br>
+
+::: fragment
+Update rule in vector form at the $(k+1)$th iteration: 
 $$
 \begin{aligned}
 \mathbf{w}^{(k+1)}
@@ -434,12 +427,11 @@ $$
 \end{aligned}
 $$
 
-Initialization: $\mathbf{w}^{(0)}=0$ 
-::: 
+Initialization: $\mathbf{w}^{(0)}=0$
+:::
 
-:::{.fragment}
-The final term is the contribution from the ridge penalty and pulls the
-coefficients toward zero.
+::: fragment
+The final term is the contribution from the ridge penalty and pulls the coefficients toward zero.
 :::
 
 ## What About the Lasso?
@@ -462,15 +454,15 @@ $$
 \sum_{j=1}^p |w_j|
 $$
 
-is **not differentiable at $w_j=0$**.
+is **not differentiable at** $w_j=0$.
 
-:::{.fragment}
+::: fragment
 So ordinary gradient descent cannot be applied in exactly the same way at those points.
 :::
 
 ## Subgradients
 
-For convex functions that are not differentiable everywhere, we can use a **subgradient** at $\mathbf{x}$, defined as: 
+For convex functions that are not differentiable everywhere, we can use a **subgradient** at $\mathbf{x}$, defined as:
 
 $$
 \partial \mathcal{J}(\mathbf{x})
@@ -511,13 +503,13 @@ $$
 \end{cases}
 $$
 
-:::{.fragment}
+::: fragment
 This gives us a generalized notion of "slope" even at the kink at zero.
 :::
 
 ## Subgradient Descent for the Lasso
 
-For the Lasso, 
+For the Lasso,
 
 $$
 \mathcal J(\mathbf w)
@@ -527,7 +519,7 @@ $$
 \lambda\|\mathbf w\|_1.
 $$
 
-Update rule in vector form at the ($k+1$)th iteration: 
+Update rule in vector form at the ($k+1$)th iteration:
 
 $$
 \begin{aligned}
@@ -554,8 +546,7 @@ $$
 \partial\left(\lVert \mathbf{w}\rVert_1\right)
 \right|_{\mathbf{w}^{(k)}}.
 \end{aligned}
-$$
-Initialization: $\mathbf{w}^{(0)}=0$ 
+$$ Initialization: $\mathbf{w}^{(0)}=0$
 
 ## Stopping Criteria
 
@@ -563,7 +554,7 @@ Because gradient descent is iterative, we need a **stopping criterion**.
 
 We might stop when:
 
-1. the objective value barely changes,
+1.  the objective value barely changes,
 
 $$
 \left|
@@ -572,19 +563,20 @@ $$
 \mathcal J(\mathbf w^{(k)})
 \right|
 \le \varepsilon;
-$$
-:::{.fragment}
-2. the parameters barely change,
+$$ 
+
+:::{.fragment} 2. the parameters barely change,
 
 $$
 \|\mathbf w^{(k+1)}-\mathbf w^{(k)}\|_2
 \le \varepsilon;
-$$
-::: 
+$$ 
 
-:::{.fragment}
-3. or we reach a maximum number of iterations, such as $M=1000$.
-::: 
+:::
+
+::: fragment
+3.  or we reach a maximum number of iterations, such as $M=1000$.
+:::
 
 ## When Do We Expect Gradient Descent to Work?
 
@@ -597,12 +589,11 @@ $$
 \mathcal J(\mathbf w).
 $$
 
-:::{.fragment} 
-- Obviously, $\mathcal J$ should be differentiable.  
-- If $\mathcal J$ is also **convex**, and $\Theta$ is a convex set, then gradient descent with a suitable choice of step size guarantees to find the optimal solution.
-- In many cases, $\Theta=\mathbb R^p$, which is convex.
+::: fragment
+-   Obviously, $\mathcal J$ should be differentiable.\
+-   If $\mathcal J$ is also **convex**, and $\Theta$ is a convex set, then gradient descent with a suitable choice of step size guarantees to find the optimal solution.
+-   In many cases, $\Theta=\mathbb R^p$, which is convex.
 :::
-
 
 ## Convex Sets
 
@@ -614,17 +605,15 @@ $$
 \text{for every } 0\le\lambda\le 1.
 $$
 
-:::{.fragment}
+::: fragment
 In words:
 
-> If you draw a straight line between any two points in the set, the
-> entire line segment stays inside the set.
+> If you draw a straight line between any two points in the set, the entire line segment stays inside the set.
 :::
 
-:::{.fragment}
+::: fragment
 The Euclidean space $\mathbb R^p$ is convex.
 :::
-
 
 ## Convex Functions
 
@@ -638,42 +627,41 @@ $$
 
 for every $\lambda\in[0,1]$.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 Intuitively, a convex function is **bowl-shaped**.
 :::
 
-<br> 
+<br>
 
-:::{.fragment }
+::: fragment
 **Why do we care?**
 
 For a convex objective, every local minimum is also a global minimum.
 :::
 
-
 ## How Can We Tell if a Loss is Convex?
 
-1. We can verify the definition directly.
+1.  We can verify the definition directly.
 
 <br>
 
-:::{.fragment}
-2. If $f$ is twice differentiable and
+::: fragment
+2.  If $f$ is twice differentiable and
 
 $$
 f''(x)\ge 0
 $$
 
 for all $x$, then $f$ is convex.
-::: 
-
-:::{.fragment}
-For example, the least squares loss function  $(y-t)^2$ is convex as a function of $t$
 :::
 
-:::{.fragment}
+::: fragment
+For example, the least squares loss function $(y-t)^2$ is convex as a function of $t$
+:::
+
+::: fragment
 Likewise, the loss function in logistic regression
 
 $$
@@ -685,17 +673,17 @@ is convex in $t$.
 
 ## How Can We Tell if a Loss is Convex?
 
-3. **Linear transformations preserve convexity** in many of the forms we use in statistical learning. 
+3.  **Linear transformations preserve convexity** in many of the forms we use in statistical learning.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 If $f$ is a convex function and $g$ is a linear function, then both $f \circ g$ and $g \circ f$ are convex.
 
 For example, the least squares loss $(y-\mathbf x^\top\mathbf w)^2$ is convex as a function of $\mathbf w$.
-::: 
+:::
 
-:::{.fragment}
+::: fragment
 Likewise, the negative log-likelihood under logistic regression,
 
 $$
@@ -705,9 +693,9 @@ $$
 $$
 
 is convex in $\mathbf w$.
-::: 
+:::
 
-:::{.fragment}
+::: fragment
 Therefore sums of these losses over observations are also convex.
 :::
 
@@ -724,7 +712,7 @@ is convex.
 
 So why use gradient descent when a closed-form solution exists?
 
-:::{.fragment}
+::: fragment
 When $p$ is large, directly computing
 
 $$
@@ -734,9 +722,8 @@ $$
 may be expensive.
 :::
 
-:::{.fragment}
-A gradient descent update can be computationally attractive because it
-avoids explicitly inverting a large matrix.
+::: fragment
+A gradient descent update can be computationally attractive because it avoids explicitly inverting a large matrix.
 :::
 
 ## The Learning Rate Matters
@@ -745,7 +732,7 @@ The learning rate $\alpha$ is a **hyperparameter** that we need to tune. Its val
 
 ![](images/Week4-LearningRate.png){width="80%" fig-align="center"}
 
-:::{.fragment}
+::: fragment
 We often try several candidate learning rates and examine their optimization behaviour.
 :::
 
@@ -753,30 +740,28 @@ We often try several candidate learning rates and examine their optimization beh
 
 A useful diagnostic is to look at the [**training cost**]{style="color: maroon;"}: plot the training cost as a function of iteration.
 
-:::::::: columns
+::::::: columns
 ::::: {.column width="60%"}
-:::{.fragment}
+::: fragment
 Training curves can help identify:
 
-- very slow convergence;
-- unstable updates;
-- a learning rate that may be too small or too large.
+-   very slow convergence;
+-   unstable updates;
+-   a learning rate that may be too small or too large.
 :::
 
-:::{.fragment}
-**Important**: the training cost could be used to check whether the optimization problem reaches certain convergence. But: 
+::: fragment
+**Important**: the training cost could be used to check whether the optimization problem reaches certain convergence. But:
 
-  - It does not tell whether we reach the global minimum or not 
-  - It does not tell us anything on the performance of the fitted model
+-   It does not tell whether we reach the global minimum or not
+-   It does not tell us anything on the performance of the fitted model
 :::
-
 :::::
 
-:::: {.column width="40%"}
+::: {.column width="40%"}
 ![](images/Week4-TrainingCost.png){width="100%" fig-align="center"}
-
-::::
-::::::::
+:::
+:::::::
 
 ## Batch Gradient Descent
 
@@ -792,16 +777,15 @@ $$
 \left[
 y_i-\mathbf x_i^\top\widehat{\mathbf w}^{(k)}
 \right]\mathbf x_i.
-$$
-<br> 
+$$ <br>
 
-:::{.fragment}
+::: fragment
 Computing the gradient requires summing over **all** of the training examples, which can be done via matrix / vector operations.
 
-<br> 
+<br>
 
 The fact that it uses all training samples is known as [**batch training**]{style="color: maroon;"}.
-::: 
+:::
 
 ## Stochastic Gradient Descent
 
@@ -809,16 +793,16 @@ Batch gradient descent can be expensive when $n$ is extremely large.
 
 [**Stochastic gradient descent (SGD)**]{style="color: maroon;"} uses only one randomly selected training example for each update.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 At iteration $k$:
 
-1. choose $i\in\{1,\ldots,n\}$ at random;
-2. update using only observation $i$.
-::: 
+1.  choose $i\in\{1,\ldots,n\}$ at random;
+2.  update using only observation $i$.
+:::
 
-:::{.fragment}
+::: fragment
 For OLS,
 
 $$
@@ -833,55 +817,53 @@ y_i-\mathbf x_i^\top\widehat{\mathbf w}^{(k)}
 \right]\mathbf x_i
 }
 $$
-::: 
+:::
 
 ## Why Use SGD?
 
 **Pros**
 
-- Computational cost of each SGD update is independent of $n$!
-- SGD can make significant progress before even seeing all the data!
-- Mathematical justification: the gradients between SGD and GD have the same expectation for i.i.d. data.
+-   Computational cost of each SGD update is independent of $n$!
+-   SGD can make significant progress before even seeing all the data!
+-   Mathematical justification: the gradients between SGD and GD have the same expectation for i.i.d. data.
 
-:::{.fragment}
-**Cons** 
+::: fragment
+**Cons**
 
-- We are using only a single training example to estimate the gradient, so the variance in the estimate may be high.
-::: 
+-   We are using only a single training example to estimate the gradient, so the variance in the estimate may be high.
+:::
 
-:::{.fragment}
-**Compromise Approach** 
+::: fragment
+**Compromise Approach**
 
-- compute the gradients on a randomly chosen medium-sized set of training examples $\mathcal{M} \subset \{1, ..., n\}$, called a [**mini-batch**]{style="color: maroon;"}
-- Stochastic gradients computed on larger mini-batches have smaller variance. 
-- The mini-batch size $|\mathcal{M}|$ is a hyperparameter that needs to be set
-::: 
+-   compute the gradients on a randomly chosen medium-sized set of training examples $\mathcal{M} \subset \{1, ..., n\}$, called a [**mini-batch**]{style="color: maroon;"}
+-   Stochastic gradients computed on larger mini-batches have smaller variance.
+-   The mini-batch size $|\mathcal{M}|$ is a hyperparameter that needs to be set
+:::
 
 ## Stochastic Gradient Descent
 
-- Batch gradient descent moves directly downhill 
-- SGD takes steps in a noisy direction, but moves downhill on average 
+-   Batch gradient descent moves directly downhill
+-   SGD takes steps in a noisy direction, but moves downhill on average
 
 ![](images/Week4-GDvsSGD.png){width="70%" fig-align="center"}
 
 ## Learning Rates in SGD
 
-With stochastic optimization, the learning rate also controls the size of
-the **fluctuations** caused by noisy gradient estimates.
+With stochastic optimization, the learning rate also controls the size of the **fluctuations** caused by noisy gradient estimates.
 
 ![](images/Week4-SGDLearningRate.png){width="70%" fig-align="center"}
 
-:::{.fragment}
+::: fragment
 Typical strategy
 
-- Use a large learning rate early in training so you can get close to the optimum
--  Gradually decay the learning rate to reduce the fluctuations
-::: 
+-   Use a large learning rate early in training so you can get close to the optimum
+-   Gradually decay the learning rate to reduce the fluctuations
+:::
 
 ## Summary
 
-Gradient descent gives us a general way to solve optimization problems of
-the form
+Gradient descent gives us a general way to solve optimization problems of the form
 
 $$
 \widehat{\mathbf w}
@@ -906,34 +888,33 @@ $$
 
 Key ideas:
 
-- the **gradient** tells us the direction of steepest increase;
-- the **negative gradient** points downhill;
-- the **learning rate** determines the step size;
-- convexity helps guarantee that we are moving toward a global optimum;
-- batch, stochastic, and mini-batch gradient descent trade off computation
-  and noise.
+-   the **gradient** tells us the direction of steepest increase;
+-   the **negative gradient** points downhill;
+-   the **learning rate** determines the step size;
+-   convexity helps guarantee that we are moving toward a global optimum;
+-   batch, stochastic, and mini-batch gradient descent trade off computation and noise.
 
 # Moving Beyond Linearity
 
-## Linear Models 
+## Linear Models
 
-So far, we've mainly focused on linear models. 
+So far, we've mainly focused on linear models.
 
-<br> 
+<br>
 
-They are simply to describe and implement, and have advantages over other approaches in terms of interpretation and inference. 
+They are simply to describe and implement, and have advantages over other approaches in terms of interpretation and inference.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 However, because the linearity assumption is almost always an approximation, linear regression can have significant limitations in terms of predictive power.
-::: 
+:::
 
-<br> 
+<br>
 
-:::{.fragment}
-We can improve upon least squares using ridge regression and the lasso by reducing the complexity of the model (i.e. the variance of the estimates), but we are still using a linear model which can only be improved so much! 
-::: 
+::: fragment
+We can improve upon least squares using ridge regression and the lasso by reducing the complexity of the model (i.e. the variance of the estimates), but we are still using a linear model which can only be improved so much!
+:::
 
 ## Linearity in Features vs. Parameters
 
@@ -949,7 +930,7 @@ $$
 Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_1^2+\beta_4X_2^2+\beta_5X_1X_2+\varepsilon?
 $$
 
-::: {.fragment}
+::: fragment
 This model is **nonlinear in the features**, but still **linear in the parameters** $\boldsymbol\beta=(\beta_0,\ldots,\beta_5)^\top$.
 :::
 
@@ -968,7 +949,7 @@ Because the model remains linear in $\boldsymbol\beta$, we can still use familia
 -   Ridge regression
 -   The lasso
 
-::: {.fragment}
+::: fragment
 The **linear model framework** is more flexible than a straight-line relationship.
 :::
 
@@ -976,38 +957,36 @@ The **linear model framework** is more flexible than a straight-line relationshi
 
 We consider the following extensions to relax the linearity assumption in the feature space:
 
-**For one predictor $(p=1)$:**
+**For one predictor** $(p=1)$:
 
 -   polynomial regression;
 -   step functions; and
 -   regression splines.
 
-**For several predictors $(p>1)$:**
+**For several predictors** $(p>1)$:
 
 -   nearest-neighbor and local regression; and
 -   generalized additive models.
 
 ## Polynomial Regression
 
-[**Polynomial regression**]{style="color: maroon;"} extends the linear model 
+[**Polynomial regression**]{style="color: maroon;"} extends the linear model
 
-$$y_i = \beta_0 + \beta_1x_i + \epsilon_i$$
-to settings where the relationship between the predictors and the response is non linear by adding extra predictors, obtained by raising each of the original predictors to a power:
+$$y_i = \beta_0 + \beta_1x_i + \epsilon_i$$ to settings where the relationship between the predictors and the response is non linear by adding extra predictors, obtained by raising each of the original predictors to a power:
 
 $$
 y_i=\beta_0+\beta_1x_i+\beta_2x_i^2+\cdots+\beta_dx_i^d+\varepsilon_i.
 $$
 
-:::{.fragment}
+::: fragment
 -   It is nonlinear in $x$, but linear in the coefficients.
--   It can be fit using OLS, ridge, or the lasso.  
-::: 
+-   It can be fit using OLS, ridge, or the lasso.\
+:::
 
-:::{.fragment}
--   The coefficients themselves are [not interpretable]{style="color: maroon;"}; we are more interested in the trend of the fitted function
-$$
-\widehat f(x)=\widehat\beta_0+\widehat\beta_1x+\cdots+\widehat\beta_dx^d.
-$$
+::: fragment
+-   The coefficients themselves are [not interpretable]{style="color: maroon;"}; we are more interested in the trend of the fitted function $$
+    \widehat f(x)=\widehat\beta_0+\widehat\beta_1x+\cdots+\widehat\beta_dx^d.
+    $$
 :::
 
 ## Polynomial Regression
@@ -1015,24 +994,21 @@ $$
 -   In practice, the degree $d$ is usually small, often no greater than 3 or 4.
 -   We can choose $d$ using cross-validation.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 -   Polynomial terms can also be used for classification
-    - For instance, in the logistic regression below (we will come back to this later), this can be fit by maximizing the likelihood
-$$
-\operatorname{logit}\{P(Y_i=1\mid X_i=x_i)\}
-=\beta_0+\beta_1x_i+\cdots+\beta_dx_i^d.
-$$
+    -   For instance, in the logistic regression below (we will come back to this later), this can be fit by maximizing the likelihood $$
+        \operatorname{logit}\{P(Y_i=1\mid X_i=x_i)\}
+        =\beta_0+\beta_1x_i+\cdots+\beta_dx_i^d.
+        $$
+:::
 
-::: 
+<br>
 
-<br> 
-
-:::{.fragment}
+::: fragment
 **Note**: High-degree polynomials can behave erratically near the boundaries and are [particularly unreliable for extrapolation]{style="color: maroon;"}.
-::: 
-
+:::
 
 ## Polynomial Regression: Wage Data
 
@@ -1045,9 +1021,9 @@ $$
 
 Polynomial regression imposes a **global** shape. A [**step function**]{style="color: maroon;"} instead divides the range of $X$ into regions.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 For pre-specified $K$ cut points $c_1<\cdots<c_K$, define
 
 $$
@@ -1060,7 +1036,7 @@ C_K(X)&=I(c_K\le X).
 $$
 
 These $K+1$ dummy variables sum to 1.
-::: 
+:::
 
 ## Step-Functions
 
@@ -1070,15 +1046,14 @@ $$
 y_i=\beta_0+\beta_1C_1(x_i)+\cdots+\beta_KC_K(x_i)+\varepsilon_i.
 $$
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 -   The model can be fit by OLS or a shrinkage method.
 -   For a given value $X$, at most one of $C_1, C_2, ..., C_K$ can be non-zero.
 -   $\beta_0$ is the mean response in the reference interval $X<c_1$.
 -   $\beta_j$ is the mean difference in the response $Y$ for $c_j \leq X \leq c_{j+1}$ relative to $X < c_1$.
-::: 
-
+:::
 
 ## Step Functions: Wage Data
 
@@ -1110,7 +1085,7 @@ $$
 
 ## Basis Functions
 
-The models we have just discussed are all special cases of a [**basis function**]{style="color: maroon;"} approach. 
+The models we have just discussed are all special cases of a [**basis function**]{style="color: maroon;"} approach.
 
 The idea is to have a family of functions/transformations that can be applied to a variable, $X$, and instead of fitting a linear model in $X$, we fit
 
@@ -1120,19 +1095,19 @@ $$
 
 where the $b_k(\cdot)$ are the *known* functions/transformations (we specify them ahead of time).
 
-:::{.fragment}
+::: fragment
 | Model         | Example basis functions              |
 |---------------|--------------------------------------|
 | Polynomial    | $b_k(x)=x^k$                         |
 | Step function | $b_k(x)=C_k(x)$                      |
 | Linear spline | $b_1(x)=x$, $b_{k+1}(x)=(x-\xi_k)_+$ |
-::: 
+:::
 
-::: {.fragment}
+::: fragment
 Once the basis is constructed, fitting the model is just linear regression.
-::: 
+:::
 
-:::{.fragment} 
+::: fragment
 A very common choice for a basis function is a [**regression spline**]{style="color: maroon;"}, which we discuss next.
 :::
 
@@ -1150,13 +1125,13 @@ y_i =
 \end{cases}
 $$
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 -   The cut point $c$, i.e. where the coefficients change, is called a [**knot**]{style="color: maroon;"}.
 -   With $K$ knots, there are $K+1$ regions.
 -   More knots allow greater local flexibility.
-::: 
+:::
 
 ## Piecewise Polynomials: Wage Data
 
@@ -1172,25 +1147,25 @@ At each knot, we can impose constraints:
 2.  **Smoothness:** their first derivatives agree.
 3.  **More smoothness:** higher-order derivatives also agree.
 
-<br> 
+<br>
 
-::: {.fragment}
-The constrained polynomials are called [**splines**]{style="color: maroon;"}. 
+::: fragment
+The constrained polynomials are called [**splines**]{style="color: maroon;"}.
 
-<br> 
+<br>
 
 A degree-$d$ spline is a piecewise degree-$d$ polynomial, with continuity in derivatives up to degree $d-1$ at each knot.
 :::
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 How can we construct the degree-$d$ spline?
 :::
 
 ## Linear Splines
 
-A [linear spline]{style="color: maroon;"} has piecewise linear functions continuous at each knot. That is, with knots at $\xi_1<\cdots<\xi_K$, 
+A [linear spline]{style="color: maroon;"} has piecewise linear functions continuous at each knot. That is, with knots at $\xi_1<\cdots<\xi_K$,
 
 $$
 y_i=\beta_0+\beta_1x_i+\sum_{k=1}^{K}\beta_{k+1}(x_i-\xi_k)_+ +\varepsilon_i,
@@ -1204,13 +1179,12 @@ $$
 x_i-\xi_k, & x_i>\xi_k,\\
 0, & x_i\le \xi_k.
 \end{cases}
-$$
-is called the [**truncated power basis function**]{style="color: maroon;"}, and $\xi_k$ is the knot.
+$$ is called the [**truncated power basis function**]{style="color: maroon;"}, and $\xi_k$ is the knot.
 
-<br> 
+<br>
 
-::: {.fragment}
-**Interpretation of $\beta_1$**: the averaged increase of $Y$ associated with one unit of $X$ for $X < \xi_1$.
+::: fragment
+**Interpretation of** $\beta_1$: the averaged increase of $Y$ associated with one unit of $X$ for $X < \xi_1$.
 :::
 
 ## Linear Splines
@@ -1226,7 +1200,7 @@ y
 +\beta_4(x-\xi_3)_+.
 $$
 
-:::{.fragment}
+::: fragment
 Therefore, the slope in each region is
 
 $$
@@ -1241,12 +1215,11 @@ x > \xi_3
 &: \quad \beta_1+\beta_2+\beta_3+\beta_4.
 \end{aligned}
 $$
+:::
 
-::: 
-
-:::{.fragment}
+::: fragment
 Because each new term $(x-\xi_k)_+$ is zero at the knot $\xi_k$, the pieces meet at each knot. Thus, the fitted function is **continuous**, making it a **spline**.
-::: 
+:::
 
 ## How a Linear Spline Is Built
 
@@ -1258,11 +1231,10 @@ The truncated linear term is zero before the knot and grows linearly afterward. 
 
 A [cubic spline]{style="color: maroon;"} uses piecewise cubic polynomials with continuous first and second derivatives at each knot. Again, we start off with a basis for a cubic polynomial, then add one truncated power basis function per knot.
 
-:::{.fragment}
-That is, with $K$ knots at $\xi_1 < \xi_2 < ... <\xi_k$, 
+::: fragment
+That is, with $K$ knots at $\xi_1 < \xi_2 < ... <\xi_k$,
 
-$$y_i = \beta_0 + \beta_1b_1(x_i) + \beta_2b_2(x_i) + ... + \beta_{K+3}b_{K+3}(x_i) + \epsilon_i$$
-where $b_k(.)$ are basis functions 
+$$y_i = \beta_0 + \beta_1b_1(x_i) + \beta_2b_2(x_i) + ... + \beta_{K+3}b_{K+3}(x_i) + \epsilon_i$$ where $b_k(.)$ are basis functions
 
 $$
 b_1(x)=x,\quad b_2(x)=x^2,\quad b_3(x)=x^3,
@@ -1271,13 +1243,13 @@ $$
 $$
 b_{k+3}(x)=(x-\xi_k)_+^3,\qquad k=1,\ldots,K.
 $$
-::: 
+:::
 
-## Cubic Splines 
+## Cubic Splines
 
-But wait.. we know a spline must have continuity in derivatives up to degree $d-1$ at each knot. 
+But wait.. we know a spline must have continuity in derivatives up to degree $d-1$ at each knot.
 
-How can we check this condition? 
+How can we check this condition?
 
 ```{=html}
 <textarea class="annotation-box"
@@ -1305,33 +1277,31 @@ This reduces instability near the boundaries, where there are fewer observations
 -   Place knots at selected quantiles of the data or place on the range of $X$ with equal space. Oftentimes, the placement of knots is not very crucial.
 -   We use cross validation to choose $K$
 
-<br> 
+<br>
 
 Polynomial regressions and step functions are special cases of splines
 
-<br> 
+<br>
 
 Another variant: Smoothing spline (ISLR 7.5)
 
 ## What Changes When $p>1$?
 
-- Splines can be used for $p < 4$ (number of basis functions grows exponentially in $p$)
+-   Splines can be used for $p < 4$ (number of basis functions grows exponentially in $p$)
 
-<br> 
+<br>
 
-:::{.fragment}
-- Local approach for $p < 4$ 
-  - nearest neighbour approach
-  - local regression 
-  
-::: 
+::: fragment
+-   Local approach for $p < 4$
+    -   nearest neighbour approach
+    -   local regression
+:::
 
-<br> 
+<br>
 
-:::{.fragment}
-- Generalized Additive Models (GAM) for large $p$
-::: 
-
+::: fragment
+-   Generalized Additive Models (GAM) for large $p$
+:::
 
 ## $k$-Nearest-Neighbor
 
@@ -1369,8 +1339,7 @@ $$
 
 ## Role of $k$
 
-<br> 
-<br> 
+<br> <br>
 
 | Smaller $k$     | Larger $k$     |
 |-----------------|----------------|
@@ -1378,19 +1347,19 @@ $$
 | Lower bias      | Higher bias    |
 | Higher variance | Lower variance |
 
-<br> 
+<br>
 
-::: {.fragment}
-Choose $k$ using [cross-validation]{style="color: maroon;"}. 
+::: fragment
+Choose $k$ using [cross-validation]{style="color: maroon;"}.
 
 The best $k$ is the one that gives the lowest estimated test error (not necessarily the smoothest-looking curve).
 :::
 
 ## Weighted $k$-Nearest Neighbors
 
-Ordinary $k$-NN assigns equal weight $1/k$ to every neighbor. 
+Ordinary $k$-NN assigns equal weight $1/k$ to every neighbor.
 
-<br> 
+<br>
 
 More generally, we can choose a weight such that
 
@@ -1404,21 +1373,21 @@ $$
 K(x_i,x_0)\ge 0,\qquad \sum_{i\in N_k(x_0)}K(x_i,x_0)=1.
 $$
 
-<br> 
+<br>
 
-::: {.fragment}
+::: fragment
 Nearby observations can be given more influence than observations near the edge of the neighborhood.
 :::
 
 ## Choice of the Weight
 
-One popular choice is the so-called [inverse distance weighting]{style="color: maroon;"} (IDW). 
+One popular choice is the so-called [inverse distance weighting]{style="color: maroon;"} (IDW).
 
 Of course there are other more sophisticated weighting schemes.
 
-<br> 
+<br>
 
-:::{.fragment}
+::: fragment
 For $x_i\in N_k(x_0)$, define
 
 $$
@@ -1433,16 +1402,15 @@ $$
 K(x_i,x_0)=\frac{\operatorname{ID}_i}
 {\sum_{j\in N_k(x_0)}\operatorname{ID}_j}.
 $$
-::: 
+:::
 
-::: {.fragment}
+::: fragment
 In implementation, handle $d_i=0$ separately: if the target matches a training point exactly, that response can receive all the weight.
 :::
 
 ## Weighted $k$NN vs $k$NN ($k=3$)
 
 ![](images/Week4-kNNWeight3.png){width="80%" fig-align="center"}
-
 
 ## Generalization of $k$NN: Local Regression
 
@@ -1452,7 +1420,7 @@ $$
 \widehat f(x_0)=\frac{1}{k}\sum_{i\in N_k(x_0)}y_i.
 $$
 
-:::{.fragment}
+::: fragment
 Local linear regression instead fits a line near $x_0$:
 
 $$
@@ -1466,24 +1434,22 @@ $$
 =\arg\min_{\beta_0,\beta_1}
 \sum_{i\in N_k(x_0)}(y_i-\beta_0-\beta_1x_i)^2.
 $$
-::: 
+:::
 
 ## $k$-NN vs. Local Linear Regression ($k = 10$)
 
 ![](images/Week4-kNNLocalRegression.png){width="80%" fig-align="center"}
 
-
 ## Local Regression Algorithm
 
 ::: algorithm-box
 1.  Gather the fraction of $s=k/n$ of training points whose $x_i$ are closest to $x_0$
-3.  Assign a weight $K_{i0}=K(x_i, x_0)$ to each point in this neighbourhood, so that the point furthest away from $x_0$ has weight zero, and the closest has the highest weight. All but these $k$ nearest neighbours get weight zero.
-4.  Fit a *weighted least-squares regression* of the $y_i$ on the $x_i$ using the aforementioned weights, by finding $\widehat{\beta}_0$ and $\widehat{\beta}_1$ that minimize 
-$$\sum_{i=1}^n K_{i0}(y_i-\beta_0-\beta_1x_i)^2$$
-5.  The fitted value at $x_0$ is given by $\widehat{f}(x_0)=\widehat{\beta}_0 + \widehat{\beta}_1x_0$
+2.  Assign a weight $K_{i0}=K(x_i, x_0)$ to each point in this neighbourhood, so that the point furthest away from $x_0$ has weight zero, and the closest has the highest weight. All but these $k$ nearest neighbours get weight zero.
+3.  Fit a *weighted least-squares regression* of the $y_i$ on the $x_i$ using the aforementioned weights, by finding $\widehat{\beta}_0$ and $\widehat{\beta}_1$ that minimize $$\sum_{i=1}^n K_{i0}(y_i-\beta_0-\beta_1x_i)^2$$
+4.  The fitted value at $x_0$ is given by $\widehat{f}(x_0)=\widehat{\beta}_0 + \widehat{\beta}_1x_0$
 :::
 
-## Simulated Example 
+## Simulated Example
 
 ![](images/Week4-SimulatedExample.png){width="80%" fig-align="center"}
 
@@ -1491,19 +1457,19 @@ The blue curve is true $f(x)$, and the light orange curve is the local regressio
 
 ## Local Regression
 
-- The size of the neighbourhood (fraction $s$ of training data) is a tuning parameter, which can be chosen by cross validation  
+-   The size of the neighbourhood (fraction $s$ of training data) is a tuning parameter, which can be chosen by cross validation
 
 <br>
 
-- The weight of each point in the neighbourhood needs to be specified 
+-   The weight of each point in the neighbourhood needs to be specified
 
-<br> 
+<br>
 
-- When we have two dimensional predictors $X_1$ and $X_2$, we can simply use 2-dimensional neighborhoods, and fit bivariate linear regression models using the observations that are near each target point in 2-dimensional space.
+-   When we have two dimensional predictors $X_1$ and $X_2$, we can simply use 2-dimensional neighborhoods, and fit bivariate linear regression models using the observations that are near each target point in 2-dimensional space.
 
-<br> 
+<br>
 
-- However, local regression can perform poorly if $p \geq 4$ (the curse of dimensionality) 
+-   However, local regression can perform poorly if $p \geq 4$ (the curse of dimensionality)
 
 ## Generalized Additive Models
 
@@ -1513,7 +1479,7 @@ $$
 y_i=\beta_0+f_1(x_{i1})+\cdots+f_p(x_{ip})+\varepsilon_i.
 $$
 
-:::{.fragment}
+::: fragment
 Each $f_j$ could be:
 
 -   linear;
@@ -1521,11 +1487,11 @@ Each $f_j$ could be:
 -   a step function;
 -   a spline; or
 -   a local regression.
-::: 
+:::
 
-:::{.fragment}
+::: fragment
 Can be applied to classification problems.
-::: 
+:::
 
 ## GAM: Wage Data
 
@@ -1541,37 +1507,38 @@ $f_1$ and $f_2$ are natural splines; $f_3$ is a step function for the qualitativ
 
 ## GAMs: Strengths and Limitations
 
-- GAMs allow us to fit a non-linear function $f_j$ to each $X_j$: model complicated relationship between the response and the original feature space
-
-<br> 
-
-- The non-linear fit can potentially improve prediction accuracy 
-
-<br> 
-
-- Because the model is additive, we can still examine the effect of each $X_j$ on $Y$ individually while holding all of the other variables fixed. 
+-   GAMs allow us to fit a non-linear function $f_j$ to each $X_j$: model complicated relationship between the response and the original feature space
 
 <br>
 
-- It avoids the curse of dimensionality by assuming additivity 
+-   The non-linear fit can potentially improve prediction accuracy
 
-<br> 
+<br>
 
-- However, GAMs fail to incorporate the interaction of variables.
+-   Because the model is additive, we can still examine the effect of each $X_j$ on $Y$ individually while holding all of the other variables fixed.
 
+<br>
+
+-   It avoids the curse of dimensionality by assuming additivity
+
+<br>
+
+-   However, GAMs fail to incorporate the interaction of variables.
 
 ## Summary
 
-- **Gradient descent** provides a general iterative approach for minimizing an objective function
-  - The **learning rate** controls the size of each update, while convexity helps ensure that optimization leads to a global minimum.
+-   **Gradient descent** provides a general iterative approach for minimizing an objective function
 
-- Linear models can represent **nonlinear relationships in the predictors** by transforming the original features.
-  - **Polynomial regression, step functions, and splines** are different ways of constructing flexible nonlinear relationships.
-  - **kNN and local regression** take a local approach:
+    -   The **learning rate** controls the size of each update, while convexity helps ensure that optimization leads to a global minimum.
 
-- **GAMs** combine separate nonlinear functions of multiple predictors while retaining an additive and interpretable structure.
+-   Linear models can represent **nonlinear relationships in the predictors** by transforming the original features.
 
-- The amount of flexibility in these methods is typically controlled by a **tuning parameter**, which can be selected using cross-validation.
+    -   **Polynomial regression, step functions, and splines** are different ways of constructing flexible nonlinear relationships.
+    -   **kNN and local regression** take a local approach:
+
+-   **GAMs** combine separate nonlinear functions of multiple predictors while retaining an additive and interpretable structure.
+
+-   The amount of flexibility in these methods is typically controlled by a **tuning parameter**, which can be selected using cross-validation.
 
 **Next Week:** Classification!
 

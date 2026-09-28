@@ -418,14 +418,16 @@ w_j^{(k)}
 <p>Typical values may be small, such as <span class="math inline">\(0.01\)</span> or <span class="math inline">\(0.0001\)</span>, although the appropriate scale depends on the problem.</p>
 </div>
 </section>
-<section id="gradient-descent-for-ols" class="slide level2">
+<section id="gradient-descent-for-ols" class="slide level2 scrollable">
 <h2>Gradient Descent for OLS</h2>
 <p>For OLS,</p>
 <p><span class="math display">\[
 \mathcal J(\mathbf w)
 =
 \|\mathbf y-\mathbf X\mathbf w\|_2^2.
-\]</span> :::{.fragment} Update rule in vector form at the <span class="math inline">\((k+1)\)</span>th iteration:</p>
+\]</span></p>
+<div class="fragment">
+<p>Update rule in vector form at the <span class="math inline">\((k+1)\)</span>th iteration:</p>
 <p><span class="math display">\[
 \begin{aligned}
 \mathbf{w}^{(k+1)}
@@ -448,7 +450,6 @@ w_j^{(k)}
 \end{aligned}
 \]</span></p>
 <p>Initialization: <span class="math inline">\(\mathbf{w}^{(0)}=0\)</span> :::</p>
-</section>
 <section id="gradient-descent-for-ridge" class="slide level2">
 <h2>Gradient Descent for Ridge</h2>
 <p>For ridge regression,</p>
@@ -458,7 +459,8 @@ w_j^{(k)}
 \|\mathbf y-\mathbf X\mathbf w\|_2^2
 +
 \lambda\|\mathbf w\|_2^2.
-\]</span> <br></p>
+\]</span></p>
+<p><br></p>
 <div class="fragment">
 <p>Update rule in vector form at the <span class="math inline">\((k+1)\)</span>th iteration: <span class="math display">\[
 \begin{aligned}
@@ -505,7 +507,7 @@ w_j^{(k)}
 =
 \sum_{j=1}^p |w_j|
 \]</span></p>
-<p>is <strong>not differentiable at <span class="math inline">\(w_j=0\)</span></strong>.</p>
+<p>is <strong>not differentiable at</strong> <span class="math inline">\(w_j=0\)</span>.</p>
 <div class="fragment">
 <p>So ordinary gradient descent cannot be applied in exactly the same way at those points.</p>
 </div>
@@ -603,11 +605,14 @@ v :
 \mathcal J(\mathbf w^{(k)})
 \right|
 \le \varepsilon;
-\]</span> :::{.fragment} 2. the parameters barely change,</p>
+\]</span></p>
+<p>:::{.fragment} 2. the parameters barely change,</p>
 <p><span class="math display">\[
 \|\mathbf w^{(k+1)}-\mathbf w^{(k)}\|_2
 \le \varepsilon;
-\]</span> :::</p>
+\]</span></p>
+</section>
+</div>
 <div class="fragment">
 <ol start="3" type="1">
 <li>or we reach a maximum number of iterations, such as <span class="math inline">\(M=1000\)</span>.</li>
@@ -949,13 +954,13 @@ Y=\beta_0+\beta_1X_1+\beta_2X_2+\beta_3X_1^2+\beta_4X_2^2+\beta_5X_1X_2+\varepsi
 <section id="moving-beyond-linearity-1" class="slide level2">
 <h2>Moving Beyond Linearity</h2>
 <p>We consider the following extensions to relax the linearity assumption in the feature space:</p>
-<p><strong>For one predictor <span class="math inline">\((p=1)\)</span>:</strong></p>
+<p><strong>For one predictor</strong> <span class="math inline">\((p=1)\)</span>:</p>
 <ul>
 <li>polynomial regression;</li>
 <li>step functions; and</li>
 <li>regression splines.</li>
 </ul>
-<p><strong>For several predictors <span class="math inline">\((p&gt;1)\)</span>:</strong></p>
+<p><strong>For several predictors</strong> <span class="math inline">\((p&gt;1)\)</span>:</p>
 <ul>
 <li>nearest-neighbor and local regression; and</li>
 <li>generalized additive models.</li>
@@ -1175,7 +1180,7 @@ x_i-\xi_k, &amp; x_i&gt;\xi_k,\\
 \]</span> is called the <span style="color: maroon;"><strong>truncated power basis function</strong></span>, and <span class="math inline">\(\xi_k\)</span> is the knot.</p>
 <p><br></p>
 <div class="fragment">
-<p><strong>Interpretation of <span class="math inline">\(\beta_1\)</span></strong>: the averaged increase of <span class="math inline">\(Y\)</span> associated with one unit of <span class="math inline">\(X\)</span> for <span class="math inline">\(X &lt; \xi_1\)</span>.</p>
+<p><strong>Interpretation of</strong> <span class="math inline">\(\beta_1\)</span>: the averaged increase of <span class="math inline">\(Y\)</span> associated with one unit of <span class="math inline">\(X\)</span> for <span class="math inline">\(X &lt; \xi_1\)</span>.</p>
 </div>
 </section>
 <section id="linear-splines-1" class="slide level2">
