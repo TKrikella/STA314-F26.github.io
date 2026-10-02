@@ -1,0 +1,477 @@
+---
+title: "Tutorial3"
+author: "Teaching Team of STA314"
+date: "2026-09-24"
+output: pdf_document
+---
+
+# Section 2: Gradient Descent
+
+### Quick Review: Gradient Descent with OLS
+
+From our lecture last week, gradient descent is an **iterative optimization algorithm** used to minimize an objective function when:
+
+-   a **closed-form solution** is not available (e.g., logistic regression, neural networks),
+-   solving directly is **too expensive** (e.g., very large $n$ and/or $p$), or
+-   the objective involves **non-smooth penalties** (e.g., the Lasso uses an $L_1$ penalty, which is not differentiable at 0, so we can use subgradients).
+
+Suppose we want to solve
+
+$$
+\widehat{\boldsymbol{\beta}}
+=
+\arg\min_{\boldsymbol{\beta}\in\Theta}
+J(\boldsymbol{\beta}),
+$$
+
+where $J(\boldsymbol{\beta})$ is our objective function and $\Theta$ is the parameter space.
+
+Starting from an initial guess $\boldsymbol{\beta}^{(0)}$ (often all zeros), gradient descent updates
+
+$$
+\boldsymbol{\beta}^{(t+1)}
+=
+\boldsymbol{\beta}^{(t)}
+-
+\alpha
+\nabla J\left(\boldsymbol{\beta}^{(t)}\right),
+$$
+
+where $\nabla J(\boldsymbol{\beta})$ is the **gradient**, which points in the direction of steepest increase. Therefore, moving in the negative gradient direction decreases $J(\boldsymbol{\beta})$, provided the step size is suitable.
+
+**Learning rate** $\alpha$ (step size):
+
+-   $\alpha$ too small: slow progress
+-   $\alpha$ too large: oscillations
+-   $\alpha$ much too large: instability or divergence
+
+**Stopping criteria (examples):**
+
+-   $\left\|\nabla J(\boldsymbol{\beta}^{(t)})\right\|$ is very small
+-   $\left\|\boldsymbol{\beta}^{(t+1)}-\boldsymbol{\beta}^{(t)}\right\|$ is very small
+-   reach a maximum number of iterations
+
+**Why use gradient descent even if a direct solution exists, as in linear regression?**
+
+For ordinary least squares,
+
+$$
+\widehat{\boldsymbol{\beta}}
+=
+(X^\top X)^{-1}X^\top y.
+$$
+
+However, computing and solving this system can become expensive when the number of predictors is very large. Gradient-based methods can instead update the parameters iteratively and can be adapted to stochastic or mini-batch settings.
+
+**Variants:**
+
+-   **Batch GD:** uses all training observations for each update
+-   **SGD:** uses one observation for each update
+-   **Mini-batch GD:** uses a small batch of observations for each update
+
+## Section 2.1 Example Walkthrough
+
+### Example setup: Linear Regression + Gradient Descent
+
+We will use a simple simulated linear regression example to illustrate gradient descent and see why the choice of learning rate matters.
+
+For each $i=1,\ldots,n$, generate
+
+$$
+x_i \sim N(0,1),
+$$
+
+and
+
+$$
+y_i = 2 + 3x_i + \epsilon_i,
+\qquad
+\epsilon_i \sim N(0,1).
+$$
+
+Therefore, the true regression coefficients are
+
+$$
+\beta_0 = 2,
+\qquad
+\beta_1 = 3.
+$$ 
+
+### Matrix notation
+
+Let
+
+$$
+\mathbf{y}
+=
+\begin{pmatrix}
+y_1\\
+\vdots\\
+y_n
+\end{pmatrix},
+$$
+
+and let $X$ be the $n\times 2$ design matrix
+
+$$
+X
+=
+\begin{pmatrix}
+1 & x_1\\
+1 & x_2\\
+\vdots & \vdots\\
+1 & x_n
+\end{pmatrix}.
+$$
+
+Let
+
+$$
+\boldsymbol{\beta}
+=
+\begin{pmatrix}
+\beta_0\\
+\beta_1
+\end{pmatrix}.
+$$
+
+Then the model can be written as
+
+$$
+\mathbf{y}=X\boldsymbol{\beta}+\boldsymbol{\epsilon}.
+$$
+
+### Objective function
+
+We fit linear regression by minimizing the sum of squared errors:
+
+$$
+J(\boldsymbol{\beta})
+=
+\|\mathbf{y}-X\boldsymbol{\beta}\|_2^2.
+$$
+
+Equivalently,
+
+$$
+J(\boldsymbol{\beta})
+=
+(\mathbf{y}-X\boldsymbol{\beta})^\top
+(\mathbf{y}-X\boldsymbol{\beta}).
+$$
+
+Some implementations use a scaled objective such as
+
+$$
+\frac{1}{n}
+\|\mathbf{y}-X\boldsymbol{\beta}\|_2^2.
+$$
+
+Scaling does not change the minimizing value of $\boldsymbol{\beta}$, but it does rescale the gradient and therefore changes what values of the learning rate $\alpha$ are reasonable.
+
+### Gradient of the objective
+
+For
+
+$$
+J(\boldsymbol{\beta})
+=
+\|\mathbf{y}-X\boldsymbol{\beta}\|_2^2,
+$$
+
+the gradient is
+
+$$
+\nabla J(\boldsymbol{\beta})
+=
+2X^\top(X\boldsymbol{\beta}-\mathbf{y}).
+$$
+
+For ordinary least squares, we could set
+
+$$
+\nabla J(\boldsymbol{\beta})=0
+$$
+
+and solve directly for $\boldsymbol{\beta}$. Instead, we will use gradient descent to illustrate the optimization procedure.
+
+### Gradient descent update rule
+
+Gradient descent starts with some initial value $\boldsymbol{\beta}^{(0)}$. Here, we initialize both coefficients at zero.
+
+At each iteration,
+
+$$
+\boldsymbol{\beta}^{(t+1)}
+=
+\boldsymbol{\beta}^{(t)}
+-
+\alpha
+\nabla J\left(\boldsymbol{\beta}^{(t)}\right).
+$$
+
+For our least squares objective,
+
+$$
+\boldsymbol{\beta}^{(t+1)}
+=
+\boldsymbol{\beta}^{(t)}
+-
+2\alpha X^\top
+\left(
+X\boldsymbol{\beta}^{(t)}-\mathbf{y}
+\right).
+$$
+
+### Why compare two learning rates?
+
+The learning rate $\alpha$ controls how far we move at every iteration:
+
+-   $\alpha$ too small: slow progress
+-   $\alpha$ too large: the algorithm may overshoot the minimum
+-   $\alpha$ much too large: the algorithm may diverge
+
+**Before running gradient descent**
+
+-   We know the true coefficients are $\beta_0=2$ and $\beta_1=3$. Do we expect the fitted coefficients to be exactly 2 and 3?
+-   If we initialize gradient descent at (0,0), what do you expect the first update to do?
+-   Does the gradient descent know where the minimum is?
+
+First, let us simulate the data.
+
+```{r}
+set.seed(0)
+
+n <- 200
+
+x <- rnorm(n)
+
+y <- 2 + 3 * x + rnorm(n, mean = 0, sd = 1)
+
+# Design matrix: first column is the intercept
+X <- cbind(1, x)
+
+p <- ncol(X)
+
+head(X)
+```
+
+Now define the sum of squared errors,
+
+$$
+J(\boldsymbol{\beta})
+=
+\|\mathbf{y}-X\boldsymbol{\beta}\|_2^2,
+$$
+
+and its gradient.
+
+```{r}
+# Objective function:
+# J(beta) = ||y - X beta||^2
+
+sse <- function(beta) {
+  
+  residuals <- y - X %*% beta
+  
+  sum(residuals^2)
+}
+
+
+# Gradient:
+
+grad_sse <- function(beta) {
+  
+  as.vector(
+    2 * t(X) %*% (X %*% beta - y)
+  )
+}
+```
+
+Next, write a function that performs gradient descent for a specified learning rate.
+
+```{r}
+run_gd <- function(alpha, T = 200, beta0 = rep(0, p)) {
+  
+  beta <- beta0
+  
+  fvals <- numeric(T)
+  
+  for (t in 1:T) {
+    
+    # Gradient descent update
+    beta <- beta - alpha * grad_sse(beta)
+    
+    # Store the value of the objective function
+    fvals[t] <- sse(beta)
+  }
+  
+  list(
+    beta = beta,
+    fvals = fvals
+  )
+}
+```
+
+For comparison, we can fit ordinary least squares using `lm()`.
+
+```{r}
+ols_fit <- lm(y ~ x)
+
+beta_ols <- coef(ols_fit)
+
+beta_ols
+```
+
+We should obtain estimates close to the true coefficients
+
+$$
+\beta_0=2,
+\qquad
+\beta_1=3.
+$$
+
+Now compare two learning rates.
+
+```{r}
+# A reasonably small learning rate
+alpha_safe <- 0.002
+
+# Reasonable learning rate
+alpha_ok <- 0.9 * alpha_safe
+
+# Learning rate that is too large
+alpha_bad <- 10 * alpha_safe
+
+
+# Run gradient descent
+gd_ok <- run_gd(
+  alpha = alpha_ok,
+  T = 80
+)
+
+gd_bad <- run_gd(
+  alpha = alpha_bad,
+  T = 80
+)
+```
+
+### Reasonable learning rate
+
+```{r}
+beta_ok <- gd_ok$beta
+f_ok <- gd_ok$fvals
+
+cat("Gradient descent with reasonable learning rate\n")
+cat("alpha =", alpha_ok, "\n\n")
+
+cat("Final beta:\n")
+print(round(beta_ok, 6))
+
+cat("\nOLS beta:\n")
+print(round(beta_ols, 6))
+
+cat("\nSSE at final beta:", round(sse(beta_ok), 6), "\n")
+
+cat(
+  "Distance between GD and OLS estimates:",
+  sqrt(sum((beta_ok - beta_ols)^2)),
+  "\n"
+)
+
+cat("\nFirst 5 SSE values:\n")
+print(round(head(f_ok, 5), 4))
+
+cat("\nLast 5 SSE values:\n")
+print(round(tail(f_ok, 5), 4))
+```
+
+**Discussion**
+
+-   What evidence in the output tells us that the gradient descent is converging?
+-   Why does the gradient descent estimate eventually agree with the OLS estimate?
+-   When should we stop iterating?
+
+**Next...**
+
+-   What do you predict will happen with a larger learning rate?
+-   When would a larger learning rate be helpful?
+
+### Learning rate that is too large
+
+```{r}
+beta_bad <- gd_bad$beta
+f_bad <- gd_bad$fvals
+
+cat("Gradient descent with too-large learning rate\n")
+cat("alpha =", alpha_bad, "\n\n")
+
+cat("Final beta:\n")
+print(beta_bad)
+
+cat("\nFirst 10 SSE values:\n")
+print(head(f_bad, 10))
+```
+
+With this much larger learning rate, the parameter updates repeatedly overshoot the minimum. Rather than decreasing, the objective function becomes larger and larger.
+
+### Plotting the optimization path
+
+Since the SSE for the unstable learning rate becomes extremely large, it is useful to plot the SSE on a $\log_{10}$ scale.
+
+```{r}
+iterations <- seq_along(f_ok)
+
+ylim <- range(
+  c(log10(f_ok), log10(f_bad)),
+  finite = TRUE
+)
+
+plot(
+  iterations,
+  log10(f_ok),
+  type = "l",
+  lwd = 2,
+  col = "blue",
+  ylim = ylim,
+  xlab = "Iteration",
+  ylab = expression(log[10](SSE)),
+  main = "Gradient Descent Training Curve"
+)
+
+lines(
+  iterations,
+  log10(f_bad),
+  lwd = 2,
+  col = "orange"
+)
+
+legend(
+  "topleft",
+  legend = c(
+    paste0("alpha = ", alpha_ok, " (reasonable)"),
+    paste0("alpha = ", alpha_bad, " (too large)")
+  ),
+  col = c("blue", "orange"),
+  lty = 1,
+  lwd = 2
+)
+```
+
+We could also plot the MSE or RMSE rather than the SSE. The overall pattern would be the same.
+
+### Extra Discussion
+
+1.  Looking at the two runs above, what is the trade-off when choosing the learning rate $\alpha$?
+
+2.  Suppose the algorithm is converging, but extremely slowly. What would you try changing?
+
+3.  Suppose the objective function starts increasing rapidly. What would you try changing?
+
+4.  Would changing the starting value of $\boldsymbol{\beta}$ fix a learning rate that is much too large?
+
+5.  At convergence, what should be approximately true about the gradient?
+
+6.  How could we choose an appropriate learning rate given the data?
+
+*Hint: Think about the second derivative*
