@@ -386,7 +386,9 @@ $$
 \end{aligned}
 $$
 
-Initialization: $\mathbf{w}^{(0)}=0$ :::
+Initialization: $\mathbf{w}^{(0)}=0$ 
+
+:::
 
 ## Gradient Descent for Ridge
 
@@ -402,8 +404,8 @@ $$
 
 <br>
 
-::: fragment
 Update rule in vector form at the $(k+1)$th iteration: 
+
 $$
 \begin{aligned}
 \mathbf{w}^{(k+1)}
@@ -429,11 +431,9 @@ $$
 $$
 
 Initialization: $\mathbf{w}^{(0)}=0$
-:::
 
-::: fragment
+
 The final term is the contribution from the ridge penalty and pulls the coefficients toward zero.
-:::
 
 ## What About the Lasso?
 

@@ -2776,14 +2776,14 @@
     "href": "Week4.html#gradient-descent-for-ols",
     "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Gradient Descent for OLS",
-    "text": "Gradient Descent for OLS\nFor OLS,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2.\n\\]\n\nUpdate rule in vector form at the \\((k+1)\\)th iteration:\n\\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right).\n\\end{aligned}\n\\]\nInitialization: \\(\\mathbf{w}^{(0)}=0\\) :::\n\nGradient Descent for Ridge\nFor ridge regression,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_2^2.\n\\]\n\n\nUpdate rule in vector form at the \\((k+1)\\)th iteration: \\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right)\n-\n2\\alpha\\lambda\\mathbf{w}^{(k)}.\n\\end{aligned}\n\\]\nInitialization: \\(\\mathbf{w}^{(0)}=0\\)\n\n\nThe final term is the contribution from the ridge penalty and pulls the coefficients toward zero.\n\n\n\nWhat About the Lasso?\nFor the lasso,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_1.\n\\]\nThe difficulty is that\n\\[\n\\|\\mathbf w\\|_1\n=\n\\sum_{j=1}^p |w_j|\n\\]\nis not differentiable at \\(w_j=0\\).\n\nSo ordinary gradient descent cannot be applied in exactly the same way at those points.\n\n\n\nSubgradients\nFor convex functions that are not differentiable everywhere, we can use a subgradient at \\(\\mathbf{x}\\), defined as:\n\\[\n\\partial \\mathcal{J}(\\mathbf{x})\n:=\n\\left\\{\nv :\n\\mathcal{J}(\\mathbf{y})\n\\geq\n\\mathcal{J}(\\mathbf{x})\n+\n(\\mathbf{y}-\\mathbf{x})^{\\top}v,\n\\quad\n\\forall \\mathbf{y}\\in\\Theta\n\\right\\}.\n\\]\nFor \\(f(x)=|x|\\),\n\\[\n\\partial f(x)\n=\n\\begin{cases}\n1, & x&gt;0,\\\\\n-1, & x&lt;0,\\\\\n(-1,1), & x=0.\n\\end{cases}\n\\]\nFor \\(f(\\mathbf{x})=\\|\\mathbf x\\|_1\\),\n\\[\n[\\partial f(\\mathbf{x})]_j\n=\n\\begin{cases}\n1, & x_j&gt;0,\\\\\n-1, & x_j&lt;0,\\\\\n(-1,1), & x_j=0.\n\\end{cases}\n\\]\n\nThis gives us a generalized notion of “slope” even at the kink at zero.\n\n\n\nSubgradient Descent for the Lasso\nFor the Lasso,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_1.\n\\]\nUpdate rule in vector form at the (\\(k+1\\))th iteration:\n\\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right)\n-\n\\left.\n\\alpha \\lambda \\,\n\\partial\\left(\\lVert \\mathbf{w}\\rVert_1\\right)\n\\right|_{\\mathbf{w}^{(k)}}.\n\\end{aligned}\n\\] Initialization: \\(\\mathbf{w}^{(0)}=0\\)\n\n\nStopping Criteria\nBecause gradient descent is iterative, we need a stopping criterion.\nWe might stop when:\n\nthe objective value barely changes,\n\n\\[\n\\left|\n\\mathcal J(\\mathbf w^{(k+1)})\n-\n\\mathcal J(\\mathbf w^{(k)})\n\\right|\n\\le \\varepsilon;\n\\]\n:::{.fragment} 2. the parameters barely change,\n\\[\n\\|\\mathbf w^{(k+1)}-\\mathbf w^{(k)}\\|_2\n\\le \\varepsilon;\n\\]\n\n\n\n\nor we reach a maximum number of iterations, such as \\(M=1000\\)."
+    "text": "Gradient Descent for OLS\nFor OLS,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2.\n\\]\n\nUpdate rule in vector form at the \\((k+1)\\)th iteration:\n\\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right).\n\\end{aligned}\n\\]\nInitialization: \\(\\mathbf{w}^{(0)}=0\\)"
   },
   {
     "objectID": "Week4.html#gradient-descent-for-ridge",
     "href": "Week4.html#gradient-descent-for-ridge",
     "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Gradient Descent for Ridge",
-    "text": "Gradient Descent for Ridge\nFor ridge regression,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_2^2.\n\\]\n\n\nUpdate rule in vector form at the \\((k+1)\\)th iteration: \\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right)\n-\n2\\alpha\\lambda\\mathbf{w}^{(k)}.\n\\end{aligned}\n\\]\nInitialization: \\(\\mathbf{w}^{(0)}=0\\)\n\n\nThe final term is the contribution from the ridge penalty and pulls the coefficients toward zero."
+    "text": "Gradient Descent for Ridge\nFor ridge regression,\n\\[\n\\mathcal J(\\mathbf w)\n=\n\\|\\mathbf y-\\mathbf X\\mathbf w\\|_2^2\n+\n\\lambda\\|\\mathbf w\\|_2^2.\n\\]\n\nUpdate rule in vector form at the \\((k+1)\\)th iteration:\n\\[\n\\begin{aligned}\n\\mathbf{w}^{(k+1)}\n&\\leftarrow\n\\mathbf{w}^{(k)}\n-\n\\alpha\n\\left.\n\\frac{\\partial \\mathcal{J}}{\\partial \\mathbf{w}}\n\\right|_{\\mathbf{w}=\\mathbf{w}^{(k)}} \\\\\n&=\n\\mathbf{w}^{(k)}\n+\n2\\alpha \\mathbf{X}^{\\top}\n\\left(\n\\mathbf{y}\n-\n\\mathbf{X}\\mathbf{w}^{(k)}\n\\right)\n-\n2\\alpha\\lambda\\mathbf{w}^{(k)}.\n\\end{aligned}\n\\]\nInitialization: \\(\\mathbf{w}^{(0)}=0\\)\nThe final term is the contribution from the ridge penalty and pulls the coefficients toward zero."
   },
   {
     "objectID": "Week4.html#what-about-the-lasso",
@@ -2951,7 +2951,7 @@
     "href": "Week4.html#stopping-criteria",
     "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Stopping Criteria",
-    "text": "Stopping Criteria\nBecause gradient descent is iterative, we need a stopping criterion.\nWe might stop when:\n\nthe objective value barely changes,\n\n\\[\n\\left|\n\\mathcal J(\\mathbf w^{(k+1)})\n-\n\\mathcal J(\\mathbf w^{(k)})\n\\right|\n\\le \\varepsilon;\n\\]\n:::{.fragment} 2. the parameters barely change,\n\\[\n\\|\\mathbf w^{(k+1)}-\\mathbf w^{(k)}\\|_2\n\\le \\varepsilon;\n\\]"
+    "text": "Stopping Criteria\nBecause gradient descent is iterative, we need a stopping criterion.\nWe might stop when:\n\nthe objective value barely changes,\n\n\\[\n\\left|\n\\mathcal J(\\mathbf w^{(k+1)})\n-\n\\mathcal J(\\mathbf w^{(k)})\n\\right|\n\\le \\varepsilon;\n\\]\n:::{.fragment} 2. the parameters barely change,\n\\[\n\\|\\mathbf w^{(k+1)}-\\mathbf w^{(k)}\\|_2\n\\le \\varepsilon;\n\\]\n:::\n\n\nor we reach a maximum number of iterations, such as \\(M=1000\\)."
   },
   {
     "objectID": "Week4.html#stochastic-gradient-descent-1",
@@ -2973,5 +2973,460 @@
     "title": "Gradient Descent and Moving Beyond Linearity",
     "section": "Summary",
     "text": "Summary\n\nGradient descent provides a general iterative approach for minimizing an objective function: \\[\n\\text{initialize}\n\\longrightarrow\n\\text{compute gradient}\n\\longrightarrow\n\\text{step downhill}\n\\longrightarrow\n\\text{repeat}.\n\\]\nThe learning rate controls the size of each update, while convexity helps ensure that optimization leads to a global minimum.\nLinear models can represent nonlinear relationships in the predictors by transforming the original features.\nPolynomial regression, step functions, and splines are different ways of constructing flexible nonlinear relationships.\n\nPolynomials impose a global shape.\nStep functions divide the predictor into regions.\nSplines fit smooth piecewise polynomials.\n\nkNN and local regression take a local approach:\n\nkNN averages nearby responses;\nweighted kNN gives closer observations more influence;\nlocal regression fits a weighted regression using nearby observations.\n\nGAMs combine separate nonlinear functions of multiple predictors while retaining an additive and interpretable structure.\nThe amount of flexibility in these methods is typically controlled by a tuning parameter, which can be selected using cross-validation."
+  },
+  {
+    "objectID": "Week5.html#review-case-study",
+    "href": "Week5.html#review-case-study",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Review: Case Study",
+    "text": "Review: Case Study\nA hospital wants to build a model to predict a patient’s recovery time after surgery, measured in days. They have data from 2,000 previous patients and 22 predictors, including:\n\nage; BMI; length of surgery; blood loss during surgery; several pre-operative blood test measurements; physical activity level; sleep duration; 15 additional clinical measurements\n\n\nExploratory analysis suggests that:\n\nrecovery time tends to increase with age, but the relationship does not appear linear;\nthe effect of BMI may also be nonlinear;\nseveral of the blood-test measurements are strongly correlated;\nsome of the clinical measurements may have little or no relationship with recovery time.\n\n\n\nCome up with a modelling plan\n\nWhat model or models would you consider and why?\nHow would you compare models, and how would you estimate how well your final model will perform on new patients?"
+  },
+  {
+    "objectID": "Week5.html#learning-outcomes",
+    "href": "Week5.html#learning-outcomes",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of this lecture, you should be able to:\n\nExplain the Bayes classifier and why the Bayes error rate represents the smallest achievable expected classification error.\nDescribe how kNN performs classification, explain how \\(k\\) affects model flexibility, and use cross-validation to select \\(k\\).\nInterpret logistic regressioncoefficients and predicted probabilities, and explain how maximum likelihood and gradient descent estimate the model parameters.\nEvaluate binary classifiers using a confusion matrix and appropriate performance metrics, and explain how changing the classification threshold affects false positives and false negatives."
+  },
+  {
+    "objectID": "Week5.html#introduction-to-classification-problems",
+    "href": "Week5.html#introduction-to-classification-problems",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Introduction to Classification Problems",
+    "text": "Introduction to Classification Problems\nThe response variable \\(Y\\) is qualitative: it takes values in a set of class labels \\(\\mathcal{C}\\).\n\nBinary classification: \\(|\\mathcal{C}|=2\\)\n\nEmail: \\(\\{\\text{spam},\\text{not spam}\\}\\)\nPatient status: \\(\\{\\text{cancer},\\text{no cancer}\\}\\)\n\n\nMulticlass classification: \\(|\\mathcal{C}|&gt;2\\)\n\nHandwritten digit: \\(\\{0,1,\\ldots,9\\}\\)\nEye colour: \\(\\{\\text{brown},\\text{blue},\\text{green}\\}\\)"
+  },
+  {
+    "objectID": "Week5.html#classification",
+    "href": "Week5.html#classification",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Classification",
+    "text": "Classification\nGiven training data \\(\\mathcal{D}_{\\mathrm{train}}=\\{(x_1,y_1),\\ldots,(x_n,y_n)\\}\\), with \\(x_i\\in\\mathbb{R}^p\\) and \\(y_i\\in\\mathcal{C}\\), we want to:\n\nBuild a classifier \\(\\hat f:\\mathbb{R}^p\\to\\mathcal{C}\\) that assigns a class label \\(\\hat f(x)\\) to a new observation \\(x\\).\nAssess its classification accuracy.\nUnderstand how the predictors affect its classifications."
+  },
+  {
+    "objectID": "Week5.html#regression-or-classification",
+    "href": "Week5.html#regression-or-classification",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Regression or Classification?",
+    "text": "Regression or Classification?\nDetermine whether each scenario is a classification or regressi0on problem.\n\nWe collect a set of data on the top 500 firms in the US. For each firm we record profit, number of employees, industry and the CEO salary. We are interested in understanding which factors affect CEO salary.\n\n\n\nWe are considering launching a new product and wish to know whether it will be a success or a failure. We collect data on 20 similar products that were previously launched. For each product we have recorded whether it was a success or failure, price charged for the product, marketing budget, competition price, and ten other variables.\n\n\n\nWe are interested in predicting the % change in the USD/Euro exchange rate in relation to the weekly changes in the world stock markets. Hence we collect weekly data for all of 2012. For each week we record the % change in the USD/Euro, the % change in the US market, the % change in the British market, and the % change in the German market."
+  },
+  {
+    "objectID": "Week5.html#measuring-classification-error",
+    "href": "Week5.html#measuring-classification-error",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Measuring Classification Error",
+    "text": "Measuring Classification Error\nLet \\((X,Y)\\) be a new observation independent of the training data. Let us encode the labels as\n\\[\nC = \\{0,1,2,...,K-1\\}.\n\\]\nFor any classifier \\(\\hat f\\), we evaluate it based on the expected error rate\n\\[\n\\mathbb{E}\\!\\left[\\mathbf{1}\\{Y\\ne\\hat f(X)\\}\\right].\n\\]\n\nQuestion: Which classifier has the smallest expected error?"
+  },
+  {
+    "objectID": "Week5.html#an-analogy-with-regression",
+    "href": "Week5.html#an-analogy-with-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "An Analogy with Regression",
+    "text": "An Analogy with Regression\nIn regression, under \\(Y=f^*(X)+\\varepsilon\\), the regression function is the best predictor: for any \\(x \\in \\mathbb{R}^p\\),\n\\[\nf^*(x)=\\mathbb{E}(Y\\mid X=x)\n=\\underset{\\widehat{f}(x)}{\\arg\\min}\\;\\mathbb{E}\\!\\left[(Y-\\widehat{f}(X))^2\\mid X=x\\right].\n\\]\nIts MSE is the smallest (i.e. the irreducible error),\n\\[\n\\mathbb{E}[(Y - f^*(X))^2] = Var(\\epsilon) = \\sigma^2\n\\]"
+  },
+  {
+    "objectID": "Week5.html#the-bayes-classifier",
+    "href": "Week5.html#the-bayes-classifier",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "The Bayes Classifier",
+    "text": "The Bayes Classifier\nThe Bayes classifier (sometimes called Bayes rule) is a function: \\(f^*: \\mathbb{R}^p \\rightarrow C\\) that minimizes the expected error rate as\n\\[\nf^*(x)=\\underset{\\widehat{f}(x)\\in C}{\\arg\\min}\\;\\mathbb{E}[1\\{Y \\neq \\widehat{f}(X)\\}|X=x] \\quad \\forall x \\in \\mathbb{R}^p.\n\\] Correspondingly, its expected error rate\n\\[\n\\mathbb{E}[1\\{Y \\neq f^*(X)\\}]\n\\]\nis called the Bayes error rate which is the smallest."
+  },
+  {
+    "objectID": "Week5.html#deriving-the-bayes-classifier",
+    "href": "Week5.html#deriving-the-bayes-classifier",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Deriving the Bayes Classifier",
+    "text": "Deriving the Bayes Classifier\nFor any \\(x \\in \\mathbb{R}^p\\),\n\\[\n\\begin{aligned}\nf^*(x)\n&= \\underset{\\widehat{f}(x)\\in C}{\\arg\\min}\\;\\mathbb{E}[1\\{Y \\neq \\widehat{f}(X)\\}|X=x] \\\\\n&= \\underset{\\widehat{f}(x)\\in C}{\\arg\\min}\\; \\mathbb{P}\\{Y \\neq \\widehat{f}(X)|X=x\\} \\\\\n&= \\underset{\\widehat{f}(x)\\in C}{\\arg\\max}\\; \\mathbb{P}\\{Y = \\widehat{f}(X)|X=x\\}\n\\end{aligned}\n\\]\nIt is easy to see that\n\\[\n\\underset{k\\in C}{\\arg\\max}\\; \\mathbb{P}\\{Y = k|X=x\\}\n\\] The Bayes classifier, \\(f^*\\), is our target to estimate/learn in classification problems."
+  },
+  {
+    "objectID": "Week5.html#bayes-error-rate",
+    "href": "Week5.html#bayes-error-rate",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Bayes Error Rate",
+    "text": "Bayes Error Rate\nThe Bayes error rate at \\(X=x\\) is\n\\[\n\\begin{aligned}\n\\mathbb{E}[\\mathbf{1}\\{Y\\ne f^*(x)\\}\\mid X=x]\n&=\\mathbb{P}(Y\\ne f^*(x)\\mid X=x)\\\\\n&=1-\\mathbb{P}(Y=f^*(x)\\mid X=x) \\\\\n&=1-\\underset{j\\in C}{\\max}\\; \\mathbb{P}\\{Y = j \\mid X=x\\}\n\\end{aligned}\n\\]\n\nThe Bayes error rate is:\n\nbetween 0 and 1\ntypically \\(\\neq\\) 0\n\n\n\nIn general, the overall Bayes error rate is given by\n\\[\n1 - \\mathbb{E}\\left(\\underset{j\\in C}{\\max}\\; \\mathbb{P}(y=j \\mid X=x) \\right)\n\\] where the expectation averages the probability over all possible values of \\(X\\)."
+  },
+  {
+    "objectID": "Week5.html#binary-classification",
+    "href": "Week5.html#binary-classification",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Binary Classification",
+    "text": "Binary Classification\nFor \\(\\mathcal{C}=\\{0,1\\}\\), define the conditional probability:\n\\[p(x)=\\mathbb{P}(Y=1\\mid X=x),\\qquad p:\\mathbb{R}^p\\to\\{0,1\\}.\\]\nThe Bayes rule is\n\\[\nf^*(x)=\n\\begin{cases}\n1,&p(x)\\geq 0.5,\\\\\n0,&p(x)&lt;0.5.\n\\end{cases}\n\\]\nThe choice at exactly \\(0.5\\) is arbitrary: both labels have the same conditional error."
+  },
+  {
+    "objectID": "Week5.html#example-the-binary-case",
+    "href": "Week5.html#example-the-binary-case",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Example: The Binary Case",
+    "text": "Example: The Binary Case\n\nA simulated data set consisting of 100 observations in each of two groups, indicated in blue and in orange. The purple dashed line represents the Bayes decision boundary. The orange background grid indicates the region in which a test observation will be assigned to the orange class, and the blue background grid indicates the region in which a test observation will be assigned to the blue class."
+  },
+  {
+    "objectID": "Week5.html#k-nearest-neighbours-for-classification",
+    "href": "Week5.html#k-nearest-neighbours-for-classification",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "K-Nearest Neighbours for Classification",
+    "text": "K-Nearest Neighbours for Classification\nFor real data, we do not know the conditional distribution of \\(Y\\) given \\(X\\), so computing the Bayes classifier is impossible.\n\nHowever, we can use the k-Nearest Neighbours approach, which estimates the conditional distribution of \\(Y\\) given \\(X\\), and then classifies a given observation to the class with the highest estimated probability."
+  },
+  {
+    "objectID": "Week5.html#a-classical-local-approach-nearest-neighbours",
+    "href": "Week5.html#a-classical-local-approach-nearest-neighbours",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "A Classical Local Approach: Nearest Neighbours",
+    "text": "A Classical Local Approach: Nearest Neighbours\n\nConsider a classification problem\nSuppose we are given a new feature vector, \\(\\mathbf{x^*} \\in \\mathbb{R}^p\\)\nThe idea here is the find the nearest feature vector to \\(\\mathbf{x}\\) in the training set, and use its label to predict \\(y^*\\)\n\n\nThere are many ways that we can define nearest, but for now we will use the Euclidean distance, i.e.\n\\[||\\mathbf{x_i}-\\mathbf{x_{i'}}||_2 = \\sqrt{\\sum_{j=1}^p (x_{ij} - x_{i'j})^2}\\]"
+  },
+  {
+    "objectID": "Week5.html#a-classical-local-approach-nearest-neighbours-1",
+    "href": "Week5.html#a-classical-local-approach-nearest-neighbours-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "A Classical Local Approach: Nearest Neighbours",
+    "text": "A Classical Local Approach: Nearest Neighbours\n\nAlgorithm: 1-NN\n\nFind example \\((\\mathbf{x}, y)\\) (from the training data) closest to \\(\\mathbf{x^*}\\). That is: \\[\\mathbf{x} = \\underset{\\mathbf{x_i} \\in \\{\\mathbf{x_1}, ..., \\mathbf{x_n}\\}}{\\arg\\min} \\text{distance}(\\mathbf{x_i}, \\mathbf{x^*})\\]\nOutput \\(y\\) as the label."
+  },
+  {
+    "objectID": "Week5.html#a-classical-local-approach-nearest-neighbours-2",
+    "href": "Week5.html#a-classical-local-approach-nearest-neighbours-2",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "A Classical Local Approach: Nearest Neighbours",
+    "text": "A Classical Local Approach: Nearest Neighbours\nWe can visualize the behaviour in the classification setting using a Voronoi diagram.\nThis diagram is a way to divide a space into different regions based on the distance to specific points, thus it’s a good way to visualize what the outcome label of a new point, \\(\\mathbf{x^*}\\) would be."
+  },
+  {
+    "objectID": "Week5.html#nearest-neighbours-decision-boundaries",
+    "href": "Week5.html#nearest-neighbours-decision-boundaries",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Nearest Neighbours: Decision Boundaries",
+    "text": "Nearest Neighbours: Decision Boundaries\nDecision Boundary: the boundary between regions of the feature space assigned to different categories"
+  },
+  {
+    "objectID": "Week5.html#lets-generalize-k-nearest-neighbours",
+    "href": "Week5.html#lets-generalize-k-nearest-neighbours",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Let’s Generalize: k-Nearest Neighbours",
+    "text": "Let’s Generalize: k-Nearest Neighbours\nInstead of just using the nearest neighbour, we will use the k-nearest neighbours.\n\nAlgorithm: k-NN for Classification\n\nFind \\(k\\) data points \\((\\mathbf{x_{(1)}}, y_{(1)}), ..., (\\mathbf{x_{(k)}}, y_{(k)})\\) (from the training data) closest to \\(\\mathbf{x^*}\\). These points are ordered by which are closest to \\(\\mathbf{x^*}\\). These points form a neighbourhood, \\(N_k(\\mathbf{x})\\).\nThe prediction for a classification problem is majority class among the \\(k\\) neighbours\n\n\\[\n   \\hat{y}^*\n   =\n   \\underset{y \\in \\mathcal{C}}{\\arg\\max}\n   \\sum_{i=1}^{k}\n   \\mathbf{1}\\{y = y_{(i)}\\},\n\\]\nwhere \\(\\mathcal{C}\\) is the set of possible classes."
+  },
+  {
+    "objectID": "Week5.html#knn",
+    "href": "Week5.html#knn",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "kNN",
+    "text": "kNN\nBelow, the \\(k\\)NN approach, using \\(k=3\\), is shown in a simple situation of six blue and six orange observations.\n\nLeft: Test observation is the black cross. The three closest points are shown within the green circle. The prediction will be that the test observation belongs to the blue class, since that is the most commonly-occuring class.\nRight: \\(k\\)NN decision boundary is shown in black."
+  },
+  {
+    "objectID": "Week5.html#knn-1",
+    "href": "Week5.html#knn-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "kNN",
+    "text": "kNN\n\nThe black curve indicates the \\(k\\)NN decision boundary on simulated data using K = 10. The Bayes decision boundary is shown as a purple dashed line."
+  },
+  {
+    "objectID": "Week5.html#tradeoffs-in-choosing-k",
+    "href": "Week5.html#tradeoffs-in-choosing-k",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Tradeoffs in Choosing \\(k\\)",
+    "text": "Tradeoffs in Choosing \\(k\\)\nSmall \\(k\\)\n\nMore flexible decision boundary, but high variance\n\nQuestion: what does high variance mean when we’re talking about \\(\\hat{f}\\)?\n\nOverfitting: sensitive to random noise in the training data\n\nLarge \\(k\\)\n\nLess flexible decision boundary and smaller variance\nUnderfitting: fail to capture the true decision boundary"
+  },
+  {
+    "objectID": "Week5.html#example-tradeoffs-in-choosing-k",
+    "href": "Week5.html#example-tradeoffs-in-choosing-k",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Example: Tradeoffs in Choosing \\(k\\)",
+    "text": "Example: Tradeoffs in Choosing \\(k\\)"
+  },
+  {
+    "objectID": "Week5.html#tradeoffs-in-choosing-k-1",
+    "href": "Week5.html#tradeoffs-in-choosing-k-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Tradeoffs in Choosing \\(k\\)",
+    "text": "Tradeoffs in Choosing \\(k\\)\nBalancing \\(k\\)\n\nOptimal choice of \\(k\\) depends on number of data points, \\(n\\)\n\n\nRule of Thumb: Choose \\(k\\) from \\([1, \\sqrt{n}]\\) via cross-validation."
+  },
+  {
+    "objectID": "Week5.html#pitfalls-the-curse-of-dimensionality",
+    "href": "Week5.html#pitfalls-the-curse-of-dimensionality",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Pitfalls: The Curse of Dimensionality",
+    "text": "Pitfalls: The Curse of Dimensionality\nAs we have discussed many times, kNN suffers from the curse of dimensionality!\n\nIn high dimensions, “most” points are approximately the same distance because they are far away from each other\n\n\nThe saving grade is that some datasets (e.g. images) may have low intrinsic dimension\n\nThis means that high dimensional data may rely on a much smaller number of true independent variables than the space may suggest\ni.e. The true \\(f\\) does not use all features available"
+  },
+  {
+    "objectID": "Week5.html#pitfalls-normalization",
+    "href": "Week5.html#pitfalls-normalization",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Pitfalls: Normalization",
+    "text": "Pitfalls: Normalization\n\\(k\\)NN can be sensitive to the ranges of different features\n\ne.g. Motivating example: age (50+) vs. indicator variable representing whether the patient can bathe on their own (0 or 1)\n\n\n\nA simple fix: standardize each dimension to be zero mean and unit variance.\nCaution: depending on the problem, the scale might be important!"
+  },
+  {
+    "objectID": "Week5.html#pitfalls-computational-cost",
+    "href": "Week5.html#pitfalls-computational-cost",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Pitfalls: Computational Cost",
+    "text": "Pitfalls: Computational Cost\n\nComputational cost for classifying test data, per data point (un-modified algorithm)\n\nCalculate p-dimensional Euclidean distances with \\(n\\) data points: O(\\(np\\)) (computation time increases linearly with n and with p)\nSort the distances: O(\\(n \\log n\\)) (computation time between linear and quadratic)\n\n\n\n\nThis must be done for each test data point, which is very expensive by the standards of a learning algorithm!\nNeed to store the entire dataset in memory!\n\n\n\n\nTons of work has gone into algorithms and data structures for efficient nearest neighbors with high dimensions and/or large datasets."
+  },
+  {
+    "objectID": "Week5.html#note-on-other-distance-measures",
+    "href": "Week5.html#note-on-other-distance-measures",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Note on Other Distance Measures",
+    "text": "Note on Other Distance Measures\nDepending on the type of dataset, different distance measures will perform better than others.\n These distance measures may differ in:\n\ntheir sensitivity to large differences in feature values\ntheir ability to handle non-continuous features\ntheir ability to perform well in sparse feature environments\netc."
+  },
+  {
+    "objectID": "Week5.html#knowledge-check",
+    "href": "Week5.html#knowledge-check",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Knowledge Check",
+    "text": "Knowledge Check\nWhich of the following statements are true:\n\nkNN is a parametric method.\nIncreasing \\(k\\) reduces the variance of the \\(k\\)NN prediction.\nCross-validation cannot be used to select the value of \\(k\\).\n\\(k\\)NN assigns more weights for prediction to closer neighbours."
+  },
+  {
+    "objectID": "Week5.html#knowledge-check-1",
+    "href": "Week5.html#knowledge-check-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Knowledge Check",
+    "text": "Knowledge Check\nWhich of the following statements are true:\n\nThe Bayes classifier usually has the smallest training error rate among all possible classifiers .\nThe Bayes classifier usually has the smallest expected test error rate among all possible classifiers.\n\nWhen \\(Y\\) has three categories (e.g, \\(Y \\in \\{1,2,3\\}\\)), the Bayes error rate can be greater than 0.5.\nThe training error rate of the Bayes classifier is always greater than 0."
+  },
+  {
+    "objectID": "Week5.html#why-not-use-linear-regression",
+    "href": "Week5.html#why-not-use-linear-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Why Not Use Linear Regression?",
+    "text": "Why Not Use Linear Regression?\nConsider the following problem. We are trying to predict the medical condition of a patient in the emergency room on the basis of her symptoms.\nThere are three possible diagnoses: stroke, drug overdose, and epileptic seizure.\nWe define \\(Y\\) as follows:\n\\[\nY = \\begin{cases}\n  1 \\quad \\text{if stroke}; \\\\\n  2 \\quad \\text{if drug overdose}; \\\\\n  3 \\quad \\text{if epileptic seizure}.\n\\end{cases}\n\\] Could we use OLS to fit a linear regressions model to predict \\(Y\\) on the basis of a set of predictors \\(X_1, X_2, ..., X_p\\)?"
+  },
+  {
+    "objectID": "Week5.html#why-not-use-linear-regression-1",
+    "href": "Week5.html#why-not-use-linear-regression-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Why Not Use Linear Regression?",
+    "text": "Why Not Use Linear Regression?\nFor a binary qualtitative response, the situation is better. Consider that there are only two possibilities for the patient’s medical condition:\n\\[\nY = \\begin{cases}\n  0 \\quad \\text{if stroke}; \\\\\n  1 \\quad \\text{if drug overdose}.\n\\end{cases}\n\\] We could fit a linear regression to this binary response, and predict drug overdose if \\(\\hat{p}(x) = \\hat{Y} &gt; 0.5\\) and stroke otherwise\n\nOLS gives fitted values of the form\n\\[\\hat p(x)=\\hat\\beta_0+\\hat\\beta_1x_1+\\cdots+\\hat\\beta_px_p.\\]\nThis expression can be less than 0 or greater than 1, even though probabilities must lie in \\([0,1]\\).\nA more tailored approach is needed."
+  },
+  {
+    "objectID": "Week5.html#linear-versus-logistic-regression",
+    "href": "Week5.html#linear-versus-logistic-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Linear Versus Logistic Regression",
+    "text": "Linear Versus Logistic Regression\n\nLinear regression can predict probabilities below zero; logistic regression produces predictions in \\([0,1]\\). The plotted points show the observed 0/1 default outcomes."
+  },
+  {
+    "objectID": "Week5.html#classification-approaches",
+    "href": "Week5.html#classification-approaches",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Classification Approaches",
+    "text": "Classification Approaches\nHow can we estimate \\[\np(x) = \\mathbb{P}\\{Y=1|X=x\\}\n\\]\nor, more generally,\n\\[\n\\mathbb{P}\\{Y=k\\mid X=x\\} \\quad \\forall k \\in C\n\\] for any \\(x \\in \\mathbb{R}^p\\)?\n\n\n\nParametric methods: logistic regression; discriminant analysis.\nNonparametric methods: \\(k\\)-nearest neighbours; classification trees; support vector machines.\n\nThese methods make different assumptions about the relationship between predictors and class labels."
+  },
+  {
+    "objectID": "Week5.html#how-to-select-among-a-set-of-classifiers",
+    "href": "Week5.html#how-to-select-among-a-set-of-classifiers",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "How to Select Among a Set of Classifiers",
+    "text": "How to Select Among a Set of Classifiers\nFor a given classifier \\(\\hat{f}: \\mathbb{R}^p \\rightarrow C\\), we have\n\nTraining 0-1 Error Rate\n\\[\n\\frac{1}{n}\\sum_{i=1}^n 1\\{y_i \\neq \\hat{f}(x_i)\\}\n\\]\nTest 0-1 Error Rate when we have the test data \\(\\{(x_{T_1}, y_{T_1}), ..., (x_{T_m}, y_{T_m})\\}\\),\n\\[\n\\frac{1}{m}\\sum_{i=1}^m 1\\{y_i \\neq \\hat{f}(x_{T_i})\\}\n\\]"
+  },
+  {
+    "objectID": "Week5.html#how-to-select-among-a-set-of-classifiers-1",
+    "href": "Week5.html#how-to-select-among-a-set-of-classifiers-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "How to Select Among a Set of Classifiers",
+    "text": "How to Select Among a Set of Classifiers\n\nData splitting based on 0-1 error rate when we don’t have the test data\n\nValidation-set approach\nCross-validation\n\n\n\n\nMore metrics on binary classification"
+  },
+  {
+    "objectID": "Week5.html#logistic-regression-1",
+    "href": "Week5.html#logistic-regression-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nLogistic regression is a parametric approach that postulates parametric structure on the function \\(p: \\mathcal{X} \\rightarrow [0,1]\\).\nIt is assumed that\n\\[\np(\\boldsymbol{x}) :=p(\\boldsymbol{x};\\boldsymbol\\beta)=\n\\frac{e^{\\beta_0+\\beta_1x_1+\\cdots+\\beta_px_p}}\n{1+e^{\\beta_0+\\beta_1x_1+\\cdots+\\beta_px_p}} \\quad \\forall \\boldsymbol{x} \\in \\mathcal{X}\n\\]\n\n\nThe function \\(f(t)=e^t/(1+e^t)\\) is the logistic function.\n\\(\\beta_0,\\ldots,\\beta_p\\) are the model parameters.\nFor finite coefficients and predictor values, \\(0&lt;p(\\boldsymbol{x})&lt;1\\).\n\\(p(\\boldsymbol{x};\\boldsymbol\\beta)\\) is nonlinear in both \\(\\boldsymbol{x}\\) and \\(\\boldsymbol\\beta\\)."
+  },
+  {
+    "objectID": "Week5.html#logistic-regression-2",
+    "href": "Week5.html#logistic-regression-2",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nRearranging the logistic model gives\n\\[\n\\underbrace{\\frac{p(x)}{1-p(x)}}_{\\text{odds}}\n=e^{\\beta_0+\\beta_1x_1+\\cdots+\\beta_px_p}.\n\\]\n\\[\n\\underbrace{\\log\\left(\\frac{p(x)}{1-p(x)}\\right)}_{\\text{log-odds (logit)}}\n=\\beta_0+\\beta_1x_1+\\cdots+\\beta_px_p.\n\\]\n\nOdds lie in \\((0,\\infty)\\) and log-odds lie in \\((-\\infty,\\infty)\\).\nHolding other predictors fixed, a one-unit increase in \\(X_j\\) changes the log-odds by \\(\\beta_j\\) and multiplies the odds by \\(e^{\\beta_j}\\)."
+  },
+  {
+    "objectID": "Week5.html#logistic-regression-3",
+    "href": "Week5.html#logistic-regression-3",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Logistic Regression",
+    "text": "Logistic Regression\nOur interests:\n\nPrediction: for a new predictor vector \\(\\boldsymbol{x}_0 \\in \\mathcal{X}\\), estimate the probability of class 1 and classify its corresponding label \\(y_0\\).\n\n\n\nEstimation: estimate \\(\\boldsymbol\\beta\\) using the training data."
+  },
+  {
+    "objectID": "Week5.html#predictions-at-different-levels-under-logistic-regression",
+    "href": "Week5.html#predictions-at-different-levels-under-logistic-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Predictions at Different Levels Under Logistic Regression",
+    "text": "Predictions at Different Levels Under Logistic Regression\nGiven estimates \\(\\widehat{\\boldsymbol\\beta}=(\\widehat\\beta_0,\\ldots,\\widehat\\beta_p)\\):\n\nPredict the logit at \\(\\boldsymbol{x} \\in \\mathcal{X}\\):\n\n\\[\n\\widehat{\\text{logit}}(\\boldsymbol{x})=\\widehat\\beta_0+\\widehat\\beta_1x_1+\\cdots+\\widehat\\beta_px_p.\n\\]\n\nPredict the conditional probability \\(p(\\boldsymbol{x}) = \\mathbb{P}(Y=1 \\mid X=\\boldsymbol{x})\\):\n\n\\[\n\\widehat p(x)=\\frac{e^{\\widehat\\beta_0+\\widehat\\beta_1x_1+\\cdots+\\widehat\\beta_px_p}}{1+e^{\\widehat\\beta_0+\\widehat\\beta_1x_1+\\cdots+\\widehat\\beta_px_p.}}.\n\\]\n\nClassify the label \\(Y\\) at \\(X = \\boldsymbol{x}\\):\n\n\\[\n\\widehat y=\\begin{cases}1,&\\widehat p(x)\\geq 0.5,\\\\0,&\\widehat p(x)&lt;0.5.\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "Week5.html#maximum-likelihood-estimator-mle",
+    "href": "Week5.html#maximum-likelihood-estimator-mle",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Maximum Likelihood Estimator (MLE)",
+    "text": "Maximum Likelihood Estimator (MLE)\nGiven training data \\(\\mathcal D^{\\text{train}}=\\{(x_i,y_i):i=1,\\ldots,n\\}\\) with \\(y_i\\in\\{0,1\\}\\), we estimate the parameters by maximizing the likelihood of \\(\\mathcal D^{\\mathrm{train}}\\).\n\n\nThe maximum likelihood principle: We seek the estimates of parameters such that the fitted probability are the closest to the individual’s observed outcome."
+  },
+  {
+    "objectID": "Week5.html#computing-the-mle",
+    "href": "Week5.html#computing-the-mle",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Computing the MLE",
+    "text": "Computing the MLE\nThe general steps are:\n\n\nWrite down the likelihood.\nSolve the optimization problem."
+  },
+  {
+    "objectID": "Week5.html#the-bernoulli-model",
+    "href": "Week5.html#the-bernoulli-model",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "The Bernoulli Model",
+    "text": "The Bernoulli Model\nFor the derivation, let us set \\(\\beta_0 = 0\\) such that\n\\[\np(\\mathbf x_i;\\boldsymbol\\beta)=\\frac{e^{\\mathbf x_i^\\top\\boldsymbol\\beta}}{1+e^{\\mathbf x_i^\\top\\boldsymbol\\beta}},\n\\qquad 1-p(\\mathbf x_i;\\boldsymbol\\beta)=\\frac{1}{1+e^{\\mathbf x_i^\\top\\boldsymbol\\beta}}.\n\\]\nThe data consists of \\((\\boldsymbol{x_1}, y_1), ..., (\\boldsymbol{x}_n, y_n)\\), with\n\\[\ny_i \\sim \\text{Bernoulli}(p(\\boldsymbol{x}_i; \\boldsymbol{\\beta})), \\quad 1 \\leq i \\leq n.\n\\]"
+  },
+  {
+    "objectID": "Week5.html#likelihood-under-logistic-regression",
+    "href": "Week5.html#likelihood-under-logistic-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Likelihood Under Logistic Regression",
+    "text": "Likelihood Under Logistic Regression\nThe likelihood of each data point \\((\\boldsymbol{x}_i, y_i)\\) at any \\(\\boldsymbol{\\beta}\\) is\n\\[\nL(\\boldsymbol\\beta; \\boldsymbol{x}_i, y_i) \\propto [p(\\mathbf x_i;\\boldsymbol\\beta)]^{y_i}(1-p(\\mathbf x_i;\\boldsymbol\\beta))^{1-y_i}.\n\\]\nwith\n\\[\np(\\mathbf x_i;\\boldsymbol\\beta)=\\frac{e^{\\mathbf x_i^\\top\\boldsymbol\\beta}}{1+e^{\\mathbf x_i^\\top\\boldsymbol\\beta}}\n\\] The \\(\\propto\\) sign means “proportional to”, up to some multiplicative term that does not involve the parameter \\(\\boldsymbol{\\beta}\\).\n\nThe joint likelihood of all data points is\n\\[\nL(\\boldsymbol\\beta)=\\prod_{i=1}^n [p(\\mathbf x_i;\\boldsymbol\\beta)]^{y_i}(1-p(\\mathbf x_i;\\boldsymbol\\beta))^{1-y_i}\n\\]"
+  },
+  {
+    "objectID": "Week5.html#log-likelihood-under-logistic-regression",
+    "href": "Week5.html#log-likelihood-under-logistic-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Log-Likelihood Under Logistic Regression",
+    "text": "Log-Likelihood Under Logistic Regression\nTaking logs gives\n\\[\n\\begin{aligned}\n\\ell(\\boldsymbol\\beta)\n&=\\sum_{i=1}^n\\left[y_i\\log(p(\\mathbf x_i;\\boldsymbol\\beta))+(1-y_i)\\log(1-p(\\mathbf x_i;\\boldsymbol\\beta))\\right]\\\\[0.4em]\n&=\\sum_{i=1}^n\\left[y_i\\log\\left(\\frac{p(\\mathbf x_i;\\boldsymbol\\beta)}{1-p(\\mathbf x_i;\\boldsymbol\\beta)}\\right)+\\log(1-p(\\mathbf x_i;\\boldsymbol\\beta))\\right]\\\\[0.4em]\n&=\\sum_{i=1}^n\\left[y_i\\mathbf x_i^\\top\\boldsymbol\\beta-\\log\\left(1+e^{\\mathbf x_i^\\top\\boldsymbol\\beta}\\right)\\right].\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week5.html#maximizing-the-log-likelihood",
+    "href": "Week5.html#maximizing-the-log-likelihood",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Maximizing the Log-Likelihood",
+    "text": "Maximizing the Log-Likelihood\nHow do we maximize the log likelihood\n\\[\n\\ell(\\boldsymbol\\beta)=\\sum_{i=1}^n\\left[y_i\\mathbf x_i^\\top\\boldsymbol\\beta-\\log\\left(1+e^{\\mathbf x_i^\\top\\boldsymbol\\beta}\\right)\\right]?\n\\]\n\nEquivalently, minimize \\(-\\ell(\\boldsymbol\\beta)\\) over \\(\\boldsymbol{\\beta}\\).\nSetting the derivatives equal to zero generally gives no closed-form solution.\nWe use an iterative optimization algorithm."
+  },
+  {
+    "objectID": "Week5.html#gradient-descent",
+    "href": "Week5.html#gradient-descent",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\nRecall we would like to solve\n\\[\n\\min_{\\boldsymbol{\\beta}\\in\\mathbb{R}^p}\n-\\ell(\\boldsymbol{\\beta})\n\\]\nwhere\n\\[\n-\\ell(\\boldsymbol{\\beta})\n=\n\\sum_{i=1}^{n}\n\\left[\n-y_i\\mathbf{x}_i^\\top\\boldsymbol{\\beta}\n+\n\\log\\left(1+e^{\\mathbf{x}_i^\\top\\boldsymbol{\\beta}}\\right)\n\\right].\n\\]\n\nThe gradient at any \\(\\boldsymbol{\\beta}\\) is that, for any \\(j\\in\\{1,\\ldots,p\\}\\),\n\\[\n-\\frac{\\partial\\ell(\\boldsymbol{\\beta})}{\\partial\\beta_j}\n=\n\\sum_{i=1}^{n}\n\\left[\n-y_i\n+\n\\frac{e^{\\mathbf{x}_i^\\top\\boldsymbol{\\beta}}}\n{1+e^{\\mathbf{x}_i^\\top\\boldsymbol{\\beta}}}\n\\right]x_{ij}\n\\qquad \\text{(verify this!)}\n\\]"
+  },
+  {
+    "objectID": "Week5.html#gradient-descent-updates-and-stopping",
+    "href": "Week5.html#gradient-descent-updates-and-stopping",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Gradient Descent: Updates and Stopping",
+    "text": "Gradient Descent: Updates and Stopping\nTherefore, at the \\((k+1)\\)th iteration, with the learning rate \\(\\alpha\\),\n\\[\n\\widehat{\\boldsymbol{\\beta}}^{(k+1)}\n=\n\\widehat{\\boldsymbol{\\beta}}^{(k)}\n-\n\\alpha\\sum_{i=1}^{n}\n\\left[\n-y_i\n+\n\\frac{\ne^{\\mathbf{x}_i^\\top\\widehat{\\boldsymbol{\\beta}}^{(k)}}\n}{\n1+e^{\\mathbf{x}_i^\\top\\widehat{\\boldsymbol{\\beta}}^{(k)}}\n}\n\\right]\\mathbf{x}_i.\n\\]\nInitialization \\(\\boldsymbol{\\beta}^{(0)}=\\mathbf{0}\\).\n\n\n\nThe objective value stops changing: \\(\\left|\\ell(\\widehat{\\boldsymbol{\\beta}}^{(k+1)})-\\ell(\\widehat{\\boldsymbol{\\beta}}^{(k)})\\right|\\) is small, say, \\(\\leq 10^{-6}\\).\nThe parameter stops changing: \\(\\left\\|\\widehat{\\boldsymbol{\\beta}}^{(k+1)}-\\widehat{\\boldsymbol{\\beta}}^{(k)}\\right\\|_2\\) is small or \\(\\left\\|\\widehat{\\boldsymbol{\\beta}}^{(k+1)}-\\widehat{\\boldsymbol{\\beta}}^{(k)}\\right\\|_2/\\left\\|\\widehat{\\boldsymbol{\\beta}}^{(k)}\\right\\|_2\\) is small.\nStop after \\(M\\) iterations for some specified \\(M\\), e.g. \\(M=1000\\)."
+  },
+  {
+    "objectID": "Week5.html#gradient-descent-1",
+    "href": "Week5.html#gradient-descent-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Gradient Descent",
+    "text": "Gradient Descent\nThe negative log-likelihood\n\\[\nJ(\\boldsymbol\\beta)=\\sum_{i=1}^n\\left[-y_i\\mathbf x_i^\\top\\boldsymbol\\beta+\\log\\left(1+e^{\\mathbf x_i^\\top\\boldsymbol\\beta}\\right)\\right]\n\\]\nis convex in \\(\\boldsymbol\\beta\\) (check this!).\n\nWith an appropriate learning rate, gradient descent can find a global minimum when a finite minimizer exists."
+  },
+  {
+    "objectID": "Week5.html#why-maximum-likelihood",
+    "href": "Week5.html#why-maximum-likelihood",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Why Maximum Likelihood?",
+    "text": "Why Maximum Likelihood?\nThe MLE, whenever it can be computed, has many nice properties!\n\nAsymptotically consistent:\n\n\\[\n\\widehat{\\boldsymbol\\beta}\\xrightarrow{P}\\boldsymbol\\beta\\quad\\text{as }n\\to\\infty.\n\\]\n\nAsymptotically normal:\n\n\\[\n\\sqrt n(\\widehat{\\boldsymbol\\beta}-\\boldsymbol\\beta)\\xrightarrow{d}N(\\mathbf 0,\\boldsymbol\\Sigma).\n\\]\n\nAsymptotically efficient: \\(\\Sigma\\) is the “smallest” among all asymptotic unbiased estimators\n\nLimitations include computation, model misspecification, etc."
+  },
+  {
+    "objectID": "Week5.html#inference-under-logistic-regression",
+    "href": "Week5.html#inference-under-logistic-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Inference Under Logistic Regression",
+    "text": "Inference Under Logistic Regression\nLet \\(\\widehat{\\boldsymbol{\\beta}}\\) be the MLE of \\(\\boldsymbol{\\beta}\\).\n\nThe Z-statistic is similar to the t-statistic in regression, and is defined as\n\\[\n\\frac{\\widehat{\\beta}_j}\n{\\operatorname{SE}(\\widehat{\\beta}_j)},\n\\qquad \\forall j\\in\\{0,1,\\ldots,p\\},\n\\]\nwhere \\(\\operatorname{SE}(\\widehat{\\beta}_j)\\) is the estimated asymptotic standard error of \\(\\widehat{\\beta}_j\\), equal to \\(\\sqrt{\\widehat{\\Sigma}_{jj}/n}\\) using the notation in the previous slide.\n\n\n\nIt produces a p-value for testing the null hypothesis\n\\[\nH_0:\\beta_j=0\n\\qquad \\text{vs.} \\qquad\nH_1:\\beta_j\\neq0.\n\\]\nA large absolute value of the z-statistic or a small p-value indicates evidence against \\(H_0\\)."
+  },
+  {
+    "objectID": "Week5.html#example-default-data",
+    "href": "Week5.html#example-default-data",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Example: Default Data",
+    "text": "Example: Default Data\nWe want to predict a customer’s probability of default using student status.\nDefine\n\\[\nx_i=\\begin{cases}1,&\\text{customer }i\\text{ is a student},\\\\0,&\\text{otherwise},\\end{cases}\n\\qquad\ny_i=\\begin{cases}1,&\\text{customer }i\\text{ defaults},\\\\0,&\\text{otherwise}.\\end{cases}\n\\]\nFit the logistic model\n\\[\nY_i\\mid x_i\\sim\\operatorname{Bernoulli}(p_i),\\qquad\np_i=\\frac{e^{\\beta_0+\\beta_1x_i}}{1+e^{\\beta_0+\\beta_1x_i}}.\n\\]"
+  },
+  {
+    "objectID": "Week5.html#predicted-default-probabilities",
+    "href": "Week5.html#predicted-default-probabilities",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Predicted Default Probabilities",
+    "text": "Predicted Default Probabilities\nThe fitted maximum likelihood estimates of \\(\\beta_0\\) and \\(\\beta_1\\) satisfy:\n\n\n\nTerm\nCoefficient\nStd. error\nZ-statistic\nP-value\n\n\n\n\nIntercept\n-3.5\n0.071\n-49.55\n&lt;0.0001\n\n\nStudent (Yes)\n0.405\n0.115\n3.52\n0.0004\n\n\n\nUsing the rounded coefficients:\n\\[\n\\widehat p(x=1)=\\hat{\\mathbb{P}}(\\text{default}\\mid\\text{student})=\\frac{e^{-3.5+0.405}}{1+e^{-3.5+0.405}}\\approx0.043,\n\\]\n\\[\n\\widehat p(x=0)=\\hat{\\mathbb{P}}(\\text{default}\\mid\\text{non-student})=\\frac{e^{-3.5}}{1+e^{-3.5}}\\approx0.029.\n\\]"
+  },
+  {
+    "objectID": "Week5.html#default-data-multiple-predictors",
+    "href": "Week5.html#default-data-multiple-predictors",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Default Data: Multiple Predictors",
+    "text": "Default Data: Multiple Predictors\nNow include balance (\\(X_1\\)), income in thousands of dollars (\\(X_2\\)), and student status (\\(X_3\\)):\n\\[\n\\log\\left(\\frac{p_i}{1-p_i}\\right)=\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\beta_3x_{i3}.\n\\]\n\n\n\nTerm\nCoefficient\nStd. error\nZ-statistic\nP-value\n\n\n\n\nIntercept\n-10.87\n0.492\n-22.08\n&lt;0.0001\n\n\nBalance\n0.006\n0.0002\n24.74\n&lt;0.0001\n\n\nIncome (thousands)\n0.003\n0.0082\n0.37\n0.712\n\n\nStudent (Yes)\n-0.647\n0.2362\n-2.74\n0.0062\n\n\n\nQuestion: How does the student coefficient change?"
+  },
+  {
+    "objectID": "Week5.html#evaluating-classifiers",
+    "href": "Week5.html#evaluating-classifiers",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Evaluating Classifiers",
+    "text": "Evaluating Classifiers\nSeveral metrics can evaluate a classifier.\nThe most common is classification accuracy:\n\\[\n\\operatorname{Accuracy}=\\frac{\\text{number of correct predictions}}{\\text{number of observations}}.\n\\]\n\nFor binary classification, there are a few more we can use."
+  },
+  {
+    "objectID": "Week5.html#continued-example-default-data",
+    "href": "Week5.html#continued-example-default-data",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Continued Example: Default Data",
+    "text": "Continued Example: Default Data\nClassify default using credit card balance and student status.\nThe confusion matrix of fitted logistic regression:\n\n\n\nPredicted default\nActual No\nActual Yes\nTotal\n\n\n\n\nNo\n9,644\n252\n9,896\n\n\nYes\n23\n81\n104\n\n\nTotal\n9,667\n333\n10,000\n\n\n\n\nThe training error rate is\n\\[\n\\frac{23+252}{10000}=2.75\\%.\n\\]"
+  },
+  {
+    "objectID": "Week5.html#types-of-classification-errors",
+    "href": "Week5.html#types-of-classification-errors",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Types of Classification Errors",
+    "text": "Types of Classification Errors\nThe positive class is default.\n\n\n\nPredicted default\nActual No\nActual Yes\nTotal\n\n\n\n\nNo\n9,644\n252\n9,896\n\n\nYes\n23\n81\n104\n\n\nTotal\n9,667\n333\n10,000\n\n\n\n\nFalse positive rate (FPR): the fraction of actual negatives classified as positive.\n\n\\[\n\\operatorname{FPR}=\\frac{\\operatorname{FP}}{\\operatorname{TN}+\\operatorname{FP}}=\\frac{23}{9667}\\approx0.24\\%.\n\\]\n\nFalse negative rate (FNR): the fraction of actual positives classified as negative.\n\n\\[\n\\operatorname{FNR}=\\frac{\\operatorname{FN}}{\\operatorname{TP}+\\operatorname{FN}}=\\frac{252}{333}\\approx75.7\\%.\n\\]\nA credit card company trying to identify high-risk customers misses most customers who default."
+  },
+  {
+    "objectID": "Week5.html#controlling-the-false-negative-rate",
+    "href": "Week5.html#controlling-the-false-negative-rate",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Controlling the False Negative Rate",
+    "text": "Controlling the False Negative Rate\nQuestion: How could we modify the classifier to lower its false negative rate?\n\n\nThe current rule uses a threshold of \\(0.5\\):\n\\[\n\\widehat y_i=\\begin{cases}\n1\\;\\text{(default)},&\\widehat p(x_i)\\geq0.5,\\\\\n0\\;\\text{(non-default)},&\\widehat p(x_i)&lt;0.5.\n\\end{cases}\n\\]\nWe want fewer actual defaults to receive a non-default prediction."
+  },
+  {
+    "objectID": "Week5.html#changing-the-threshold",
+    "href": "Week5.html#changing-the-threshold",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Changing the Threshold",
+    "text": "Changing the Threshold\nTo lower FNR, classify an observation as positive when\n\\[\n\\widehat p(x)\\geq t\n\\]\nfor a lower threshold \\(0\\leq t&lt;0.5\\).\n\nWhy is \\(t=0.5\\) a natural starting point?\nWhat happens when \\(t=0\\)?\nWhat happens when \\(t=1\\)?"
+  },
+  {
+    "objectID": "Week5.html#trade-off-between-fpr-and-fnr",
+    "href": "Week5.html#trade-off-between-fpr-and-fnr",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Trade-Off Between FPR and FNR",
+    "text": "Trade-Off Between FPR and FNR\nVarying the threshold changes the balance between false positives and false negatives."
+  },
+  {
+    "objectID": "Week5.html#roc-curve",
+    "href": "Week5.html#roc-curve",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "ROC Curve",
+    "text": "ROC Curve\nThe ROC curve plots FPR against TPR \\(=1-\\operatorname{FNR}\\) across thresholds.\n\nThe overall performance of a classifier, summarized over all threshholds, is given by the area under the curve (AUC). High AUC is good."
+  },
+  {
+    "objectID": "Week5.html#more-binary-classification-metrics",
+    "href": "Week5.html#more-binary-classification-metrics",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "More Binary Classification Metrics",
+    "text": "More Binary Classification Metrics\n\n\n\nActual class\nPredicted negative\nPredicted positive\nTotal\n\n\n\n\nNegative\nTN\nFP\n\\(N\\)\n\n\nPositive\nFN\nTP\n\\(P\\)\n\n\n\n\n\n\n\n\n\n\n\nMetric\nDefinition\nOther name\n\n\n\n\nFalse positive rate\n\\(\\operatorname{FP}/N\\)\n\\(1-\\text{specificity}\\)\n\n\nTrue positive rate\n\\(\\operatorname{TP}/P\\)\nSensitivity, recall\n\n\nSpecificity\n\\(\\operatorname{TN}/N\\)\nTrue negative rate\n\n\nPositive predictive value\n\\(\\operatorname{TP}/(\\operatorname{TP}+\\operatorname{FP})\\)\nPrecision\n\n\nNegative predictive value\n\\(\\operatorname{TN}/(\\operatorname{TN}+\\operatorname{FN})\\)\nNPV\n\n\n\nThe denominators distinguish metrics that condition on the actual class from those that condition on the predicted class."
+  },
+  {
+    "objectID": "Week5.html#summary",
+    "href": "Week5.html#summary",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Summary",
+    "text": "Summary\n\nThe Bayes classifier assigns each observation to the most probable class. Its expected error rate is the smallest possible, but the true conditional probabilities are usually unknown.\nkNN estimates class probabilities using nearby training observations. Choosing \\(k\\) balances flexibility and stability; scaling and dimensionality also affect performance.\nLogistic regression models the log-odds as a linear function of predictors. We estimate its coefficients by maximum likelihood using iterative optimization, then convert fitted probabilities into class labels.\nClassifier evaluation requires more than overall accuracy. Confusion-matrix metrics reveal different errors, changing the threshold trades false positives against false negatives, and ROC curves summarize this trade-off across thresholds.\n\nAnnouncements:\n\nAssignment due October 7th\nNo class, tutorial or office hour on Monday, October 12 (Thanksgiving)\n\nNext Class: Multiclass logistic regression + Linear discriminant analysis"
+  },
+  {
+    "objectID": "Week5.html#predictions-under-logistic-regression",
+    "href": "Week5.html#predictions-under-logistic-regression",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Predictions Under Logistic Regression",
+    "text": "Predictions Under Logistic Regression\nGiven estimates \\(\\widehat{\\boldsymbol\\beta}=(\\widehat\\beta_0,\\ldots,\\widehat\\beta_p)\\):\n\nPredict the logit at \\(\\boldsymbol{x} \\in \\mathcal{X}\\):\n\n\\[\n\\widehat{\\text{logit}}(\\boldsymbol{x})=\\widehat\\beta_0+\\widehat\\beta_1x_1+\\cdots+\\widehat\\beta_px_p.\n\\]\n\nPredict the conditional probability \\(p(\\boldsymbol{x}) = \\mathbb{P}(Y=1 \\mid X=\\boldsymbol{x})\\):\n\n\\[\n\\widehat p(x)=\\frac{e^{\\widehat\\beta_0+\\widehat\\beta_1x_1+\\cdots+\\widehat\\beta_px_p}}{1+e^{\\widehat\\beta_0+\\widehat\\beta_1x_1+\\cdots+\\widehat\\beta_px_p.}}.\n\\]\n\nClassify the label \\(Y\\) at \\(X = \\boldsymbol{x}\\):\n\n\\[\n\\widehat y=\\begin{cases}1,&\\widehat p(x)\\geq 0.5,\\\\0,&\\widehat p(x)&lt;0.5.\\end{cases}\n\\]"
+  },
+  {
+    "objectID": "Week5.html#example-default-data-1",
+    "href": "Week5.html#example-default-data-1",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Example: Default Data",
+    "text": "Example: Default Data\n\\[\n\\log\\left(\\frac{p_i}{1-p_i}\\right)=\\beta_0+\\beta_1x_{i1}.\n\\]\nThe fitted maximum likelihood estimates of \\(\\beta_0\\) and \\(\\beta_1\\) satisfy:\n\n\n\nTerm\nCoefficient\nStd. error\nZ-statistic\nP-value\n\n\n\n\nIntercept\n-3.5\n0.071\n-49.55\n&lt;0.0001\n\n\nStudent (Yes)\n0.405\n0.115\n3.52\n0.0004\n\n\n\n\nUsing the rounded coefficients:\n\\[\n\\widehat p(x=1)=\\hat{\\mathbb{P}}(\\text{default}\\mid\\text{student})=\\frac{e^{-3.5+0.405}}{1+e^{-3.5+0.405}}\\approx0.043,\n\\]\n\\[\n\\widehat p(x=0)=\\hat{\\mathbb{P}}(\\text{default}\\mid\\text{non-student})=\\frac{e^{-3.5}}{1+e^{-3.5}}\\approx0.029.\n\\]"
+  },
+  {
+    "objectID": "Week5.html#example-default-data-2",
+    "href": "Week5.html#example-default-data-2",
+    "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
+    "section": "Example: Default Data",
+    "text": "Example: Default Data\nNow include balance (\\(X_1\\)), income in thousands of dollars (\\(X_2\\)), and student status (\\(X_3\\)):\n\\[\n\\log\\left(\\frac{p_i}{1-p_i}\\right)=\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\beta_3x_{i3}.\n\\]\n\n\n\nTerm\nCoefficient\nStd. error\nZ-statistic\nP-value\n\n\n\n\nIntercept\n-10.87\n0.492\n-22.08\n&lt;0.0001\n\n\nBalance\n0.006\n0.0002\n24.74\n&lt;0.0001\n\n\nIncome (thousands)\n0.003\n0.0082\n0.37\n0.712\n\n\nStudent (Yes)\n-0.647\n0.2362\n-2.74\n0.0062\n\n\n\nQuestion: How does the student coefficient change?"
   }
 ]
