@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "about.html#tentative-course-schedule",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\n-\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
@@ -3428,5 +3428,278 @@
     "title": "Bayes Classifier, k-Nearest Neighbours, and Logistic Regression",
     "section": "Example: Default Data",
     "text": "Example: Default Data\nNow include balance (\\(X_1\\)), income in thousands of dollars (\\(X_2\\)), and student status (\\(X_3\\)):\n\\[\n\\log\\left(\\frac{p_i}{1-p_i}\\right)=\\beta_0+\\beta_1x_{i1}+\\beta_2x_{i2}+\\beta_3x_{i3}.\n\\]\n\n\n\nTerm\nCoefficient\nStd. error\nZ-statistic\nP-value\n\n\n\n\nIntercept\n-10.87\n0.492\n-22.08\n&lt;0.0001\n\n\nBalance\n0.006\n0.0002\n24.74\n&lt;0.0001\n\n\nIncome (thousands)\n0.003\n0.0082\n0.37\n0.712\n\n\nStudent (Yes)\n-0.647\n0.2362\n-2.74\n0.0062\n\n\n\nQuestion: How does the student coefficient change?"
+  },
+  {
+    "objectID": "Week6.html#review",
+    "href": "Week6.html#review",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Review",
+    "text": "Review\nIn the last lecture, we have learned the logistic regression for binary classification \\(Y\\in\\{0,1\\}\\).\n\nEstimating the Bayes rule at any observation \\(x\\in\\mathcal X\\) is equivalent to estimate the conditional probability \\(\\mathbb P(Y=1\\mid X=x)\\).\nLogistic regression parametrizes the conditional probability by\n\n\\[\n\\mathbb P(Y=1\\mid X=x)=\\frac{e^{\\beta_0+x^\\top\\beta}}{1+e^{\\beta_0+x^\\top\\beta}}.\n\\]\n\nWe estimate the coefficients by using MLE which can be solved by (stochastic) gradient descent."
+  },
+  {
+    "objectID": "Week6.html#motivating-example",
+    "href": "Week6.html#motivating-example",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Motivating Example",
+    "text": "Motivating Example\nRecall our motivating example, where we are trying to predict the medical condition of a patient in the emergency room on the basis of her symptoms.\nThere are three possible diagnoses: stroke, drug overdose, and epileptic seizure.\nWe define \\(Y\\) as follows:\n\\[\nY = \\begin{cases}\n  1 \\quad \\text{if stroke}; \\\\\n  2 \\quad \\text{if drug overdose}; \\\\\n  3 \\quad \\text{if epileptic seizure}.\n\\end{cases}\n\\]\nHow do we extend the ideas we discussed last week to the case where we have more than two classes?"
+  },
+  {
+    "objectID": "Week6.html#extension-to-multi-class-classification",
+    "href": "Week6.html#extension-to-multi-class-classification",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Extension to multi-class classification",
+    "text": "Extension to multi-class classification\nWhen \\(Y\\in\\{0,1,\\ldots,K-1\\}\\) for \\(K&gt;2\\), we need to estimate\n\\[p_k(x):=\\mathbb P(Y=k\\mid X=x),\\qquad\\forall\\ 1\\leq k\\leq K-1.\\]\nLogistic regression assumes\n\\[\n\\begin{aligned}\np_1(x)&=\\frac{e^{\\beta_0^{(1)}+x^\\top\\beta^{(1)}}}{1+\\sum_{k=1}^{K-1}e^{\\beta_0^{(k)}+x^\\top\\beta^{(k)}}}.\\\\\n&\\vdots\\\\\np_{K-1}(x)&=\\frac{e^{\\beta_0^{(K-1)}+x^\\top\\beta^{(K-1)}}}{1+\\sum_{k=1}^{K-1}e^{\\beta_0^{(k)}+x^\\top\\beta^{(k)}}}\n\\end{aligned}\n\\]\nand \\(p_0(x)=1-p_1(x)-\\cdots-p_{K-1}(x)\\).\nSo essentially, we select a single class (wlog, the Kth class) to serve as baseline."
+  },
+  {
+    "objectID": "Week6.html#classification",
+    "href": "Week6.html#classification",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Classification",
+    "text": "Classification\nEquivalently, for \\(k = 1, ..., K-1\\)\n\\[\n\\begin{aligned}\n\\log\\left(\\frac{p_1(x)}{p_0(x)}\\right)&=\\beta_0^{(1)}+\\beta_1^{(1)}x_1+\\cdots+\\beta_p^{(1)}x_p\\\\\n\\log\\left(\\frac{p_2(x)}{p_0(x)}\\right)&=\\beta_0^{(2)}+\\beta_1^{(2)}x_1+\\cdots+\\beta_p^{(2)}x_p\\\\\n&\\vdots\\\\\n\\log\\left(\\frac{p_{K-1}(x)}{p_0(x)}\\right)&=\\beta_0^{(K-1)}+\\beta_1^{(K-1)}x_1+\\cdots+\\beta_p^{(K-1)}x_p\n\\end{aligned}\n\\]\nChoice of the baseline (\\(Y=0\\)) is arbitrary.\nSo classification can be done immediately once \\(\\beta^{(k)}\\)’s are estimated."
+  },
+  {
+    "objectID": "Week6.html#interpretation-of-coefficients",
+    "href": "Week6.html#interpretation-of-coefficients",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Interpretation of Coefficients",
+    "text": "Interpretation of Coefficients\nWhen we fit models with different baselines, the coefficient estimates will differ.\nHowever, the predictions, log odds between any pair of classes, and the other key model outputs will remain the same.\nBut, the interpretation of the coefficients must be done with care since the coefficients are tied to the choice of baseline.\nMotivating Example: if we set epileptic seizure to be the baseline, then a one unit increase in \\(x\\)is associated with a \\(\\beta_0^{(1)}\\) increase in the log odds of stroke over epileptic seizure."
+  },
+  {
+    "objectID": "Week6.html#how-to-estimate-coefficients",
+    "href": "Week6.html#how-to-estimate-coefficients",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "How to estimate coefficients?",
+    "text": "How to estimate coefficients?\nA naive approach: separate binary logistic regressions\n\\[\\log\\left(\\frac{p_k(x)}{p_0(x)}\\right)=\\beta_0^{(k)}+\\beta_1^{(k)}x_1+\\cdots+\\beta_p^{(k)}x_p,\\qquad\\forall\\ 1\\leq k\\leq K-1.\\]\nPartition the data into \\(\\{\\mathcal D_{(1)}^{\\mathrm{train}},\\ldots,\\mathcal D_{(K-1)}^{\\mathrm{train}}\\}\\) with \\(\\mathcal D_{(k)}^{\\mathrm{train}}\\) containing all data with \\(y\\in\\{0,k\\}\\) for \\(1\\leq k\\leq K-1\\).\n\nFor each \\(1\\leq k\\leq K-1\\), use \\(\\mathcal D_{(k)}^{\\mathrm{train}}\\) to perform binary logistic regression to estimate \\(\\beta^{(k)}\\) and estimate\n\\[\\frac{p_k(x)}{p_0(x)}\\]\nAssign class label by comparing\n\\[1,\\ \\frac{p_1(x)}{p_0(x)},\\ \\frac{p_2(x)}{p_0(x)}\\ldots,\\ \\frac{p_{K-1}(x)}{p_0(x)}\\]"
+  },
+  {
+    "objectID": "Week6.html#why-naive",
+    "href": "Week6.html#why-naive",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Why naive?",
+    "text": "Why naive?\n\nEstimation of \\(\\beta^{(k)}\\)\n\nonly uses \\(\\mathcal D_{(k)}^{\\mathrm{train}}\\) containing data points in class \\(\\{0,k\\}\\)\nignore all data points in other classes\n\nThe event \\(\\{y_i=k\\}\\) is dependent on all other \\(\\{y_i=k'\\}\\) for \\(k'\\neq k\\). Intuitively, this dependence helps to estimate \\(\\beta^{(k)}\\) by pooling data from all classes.\nWhat should we use instead?"
+  },
+  {
+    "objectID": "Week6.html#mle-for-multi-class-logistic-regression",
+    "href": "Week6.html#mle-for-multi-class-logistic-regression",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "MLE for multi-class logistic regression",
+    "text": "MLE for multi-class logistic regression\nThe conditional log-likelihood of \\(y_1,\\ldots,y_n\\mid x_1,\\ldots,x_n\\) at \\((\\beta^{(1)},\\ldots,\\beta^{(K-1)})\\), with no intercepts, is proportional to\n\\[\n\\begin{aligned}\n&\\sum_{i=1}^n\\log\\left(\\prod_{k=0}^{K-1}p_k(x_i)^{\\mathbf 1\\{y_i=k\\}}\\right)\\\\\n&=\\sum_{i=1}^n\\sum_{k=0}^{K-1}\\mathbf 1\\{y_i=k\\}\\log(p_k(x_i))\\\\\n&=\\sum_{i=1}^n\\left[\\mathbf 1\\{y_i=0\\}\\log(p_0(x_i))+\\sum_{k=1}^{K-1}\\mathbf 1\\{y_i=k\\}\\log(p_k(x_i))\\right]\\\\\n&=\\sum_{i=1}^n\\left[\\sum_{k=1}^{K-1}\\mathbf 1\\{y_i=k\\}x_i^\\top\\beta^{(k)}-\\sum_{k=0}^{K-1}\\mathbf 1\\{y_i=k\\}\\log\\left(1+\\sum_{k=1}^{K-1}e^{x_i^\\top\\beta^{(k)}}\\right)\\right]\\\\\n&=\\sum_{i=1}^n\\left[\\sum_{k=1}^{K-1}\\mathbf 1\\{y_i=k\\}x_i^\\top\\beta^{(k)}-\\log\\left(1+\\sum_{k=1}^{K-1}e^{x_i^\\top\\beta^{(k)}}\\right)\\right]\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week6.html#gradient-of-ellbetak",
+    "href": "Week6.html#gradient-of-ellbetak",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Gradient of \\(\\ell(\\beta^{(k)})\\)",
+    "text": "Gradient of \\(\\ell(\\beta^{(k)})\\)\nFor any \\(1\\leq k\\leq K-1\\),\n\\[\n\\begin{aligned}\n\\frac{\\partial\\ell(\\beta^{(1)},\\ldots,\\beta^{(K-1)})}{\\partial\\beta^{(k)}}\n&=\\sum_{i=1}^n\\left[\\mathbf 1\\{y_i=k\\}x_i-\\frac{x_i e^{x_i^\\top\\beta^{(k)}}}{1+\\sum_{k=1}^{K-1}e^{x_i^\\top\\beta^{(k)}}}\\right]\\\\\n&=\\sum_{i=1}^n\\left[\\mathbf 1\\{y_i=k\\}-\\frac{e^{x_i^\\top\\beta^{(k)}}}{1+\\sum_{k=1}^{K-1}e^{x_i^\\top\\beta^{(k)}}}\\right]x_i\n\\end{aligned}\n\\]\nc.f. the binary case (\\(K=2\\))\n\\[\n\\begin{aligned}\n\\frac{\\partial\\ell(\\beta)}{\\partial\\beta}\n&=\\sum_{i=1}^n\\left[\\mathbf 1\\{y_i=1\\}-\\frac{e^{x_i^\\top\\beta}}{1+e^{x_i^\\top\\beta}}\\right]x_i\\\\\n&=\\sum_{i=1}^n\\left[y_i-\\frac{e^{x_i^\\top\\beta}}{1+e^{x_i^\\top\\beta}}\\right]x_i.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week6.html#gradient-descent",
+    "href": "Week6.html#gradient-descent",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Gradient descent",
+    "text": "Gradient descent\nTherefore, for \\(1\\leq k\\leq K\\), we update\n\\[\n\\hat\\beta_{(t+1)}^{(k)}=\\hat\\beta_{(t)}^{(k)}+\\alpha\\sum_{i=1}^n\\left[\\mathbf 1\\{y_i=k\\}-\\frac{e^{x_i^\\top\\hat\\beta_{(t)}^{(k)}}}{1+\\sum_{k=1}^{K-1}e^{x_i^\\top\\hat\\beta_{(t)}^{(k)}}}\\right]x_i.\n\\]\nRemark:\n\nthe gradient update uses data points from all classes!\nbetter estimation than the naive approach"
+  },
+  {
+    "objectID": "Week6.html#an-alternative-to-logistic-regression",
+    "href": "Week6.html#an-alternative-to-logistic-regression",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "An alternative to Logistic Regression",
+    "text": "An alternative to Logistic Regression\n\nWhen the classes are well-separated, the parameter estimates for the logistic regression model are surprisingly unstable1.\n\nDiscriminant analysis does not suffer from this problem.\n\nWhen \\(n\\) is small and we know more about the data, such as the distribution of \\(X\\mid Y=k\\)\n\nDiscriminant analysis has better performance than the logistic regression model.\n\nLogistic Regression sometimes does not handle multi-class classification well\n\nDiscriminant analysis is more suitable for multi-class classification problems.\n\n\nA paper on this."
+  },
+  {
+    "objectID": "Week6.html#discriminant-analysis-1",
+    "href": "Week6.html#discriminant-analysis-1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Discriminant Analysis",
+    "text": "Discriminant Analysis\n\nLogistic regression directly parametrizes\n\n\\[\\mathbb P(Y=k\\mid X=\\boldsymbol x),\\qquad\\forall k\\in\\mathcal C.\\]\n\nBy contrast, Discriminant Analysis parametrizes the distribution of\n\n\\[X\\mid Y=k,\\qquad\\forall k\\in\\mathcal C.\\]\n\nNormal distributions are oftentimes used."
+  },
+  {
+    "objectID": "Week6.html#discriminant-analysis-2",
+    "href": "Week6.html#discriminant-analysis-2",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Discriminant Analysis",
+    "text": "Discriminant Analysis\nWhat does parametrizing \\(X\\mid Y=k\\) buy us?\n\nBy Bayes’ theorem,\n\n\\[\\mathbb P(Y=k\\mid X=\\boldsymbol x)=\\frac{\\mathbb P(X=\\boldsymbol x\\mid Y=k)\\mathbb P(Y=k)}{\\mathbb P(X=\\boldsymbol x)}.\\]\n\nThus, to compare two classes \\(k,k'\\in\\mathcal C\\) with \\(k\\neq k'\\)\n\n\\[\n\\begin{gathered}\n\\mathbb P(Y=k\\mid X=\\boldsymbol x)\\geq\\mathbb P(Y=k'\\mid X=\\boldsymbol x)\\\\\n\\Longleftrightarrow\\ \\mathbb P(X=\\boldsymbol x\\mid Y=k)\\mathbb P(Y=k)\\geq\\mathbb P(X=\\boldsymbol x\\mid Y=k')\\mathbb P(Y=k')\n\\end{gathered}\n\\]"
+  },
+  {
+    "objectID": "Week6.html#notation-for-discriminant-analysis",
+    "href": "Week6.html#notation-for-discriminant-analysis",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Notation for discriminant analysis",
+    "text": "Notation for discriminant analysis\nSuppose we have \\(K\\) classes, \\(\\mathcal C=\\{0,1,2,\\ldots,K-1\\}\\). For any \\(k\\in\\mathcal C\\),\n\nWe write\n\n\\[\\pi_k:=\\mathbb P(Y=k)\\]\nas the prior probability that a randomly chosen observation comes from the \\(k\\)th class.\n\nWrite\n\n\\[f_k(x):=\\mathbb P(X=\\boldsymbol x\\mid Y=k)\\]\nas the conditional density function of \\(X=x\\) from class \\(k\\).\n\nIn discriminant analysis, parametric assumption is assumed on \\(f_k(boldsymbol x)\\)."
+  },
+  {
+    "objectID": "Week6.html#the-bayes-rule",
+    "href": "Week6.html#the-bayes-rule",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "The Bayes rule",
+    "text": "The Bayes rule\n\nBy the Bayes’ theorem,\n\n\\[p_k(x):=\\mathbb P(Y=k\\mid X=\\boldsymbol x)=\\frac{\\pi_k f_k(\\boldsymbol x)}{\\sum_{\\ell\\in\\mathcal C}\\pi_\\ell f_\\ell(\\boldsymbol x)}\\]\nis called the posterior probability, i.e. the probability that an observation belongs to the \\(k\\)th class given its feature.\n\nAccording to the Bayes classifier, we should classify a new point \\(x\\) according to\n\n\\[\\mathop{\\arg\\max}_{k\\in\\mathcal C}p_k(\\boldsymbol x)=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\frac{\\pi_k f_k(\\boldsymbol x)}{\\sum_{\\ell\\in\\mathcal C}\\pi_\\ell f_\\ell(\\boldsymbol x)}=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\pi_k f_k(\\boldsymbol x).\\]"
+  },
+  {
+    "objectID": "Week6.html#discriminant-analysis-for-p1",
+    "href": "Week6.html#discriminant-analysis-for-p1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Discriminant Analysis for \\(p=1\\)",
+    "text": "Discriminant Analysis for \\(p=1\\)\nAssume that\n\\[X\\mid Y=k\\sim N(\\mu_k,\\sigma_k^2),\\qquad\\forall k\\in\\mathcal C,\\]\nnamely,\n\\[f_k(x)=\\frac{1}{\\sqrt{2\\pi}\\sigma_k}e^{-\\frac{1}{2\\sigma_k^2}(x-\\mu_k)^2}.\\]\nLinear Discriminant Analysis (LDA) further assumes\n\\[\\sigma_0^2=\\sigma_1^2=\\cdots=\\sigma_{K-1}^2=\\sigma^2.\\]"
+  },
+  {
+    "objectID": "Week6.html#linear-discriminant-analysis-for-p1",
+    "href": "Week6.html#linear-discriminant-analysis-for-p1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Linear Discriminant Analysis for \\(p=1\\)",
+    "text": "Linear Discriminant Analysis for \\(p=1\\)\nAs a result,\n\\[p_k(x)=\\frac{\\pi_k f_k(x)}{\\sum_{\\ell\\in\\mathcal C}\\pi_\\ell f_\\ell(x)}=\\frac{\\pi_k e^{-\\frac{1}{2\\sigma^2}(x-\\mu_k)^2}}{\\sum_{\\ell\\in\\mathcal C}\\pi_\\ell e^{-\\frac{1}{2\\sigma^2}(x-\\mu_\\ell)^2}}.\\]\nThe Bayes rule classifies \\(X=x\\) to\n\\[\n\\begin{aligned}\n\\mathop{\\arg\\max}_{k\\in\\mathcal C}p_k(x)&=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\log(p_k(x))\\\\\n&=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\underbrace{\\frac{\\mu_k}{\\sigma^2}x-\\frac{\\mu_k^2}{2\\sigma^2}+\\log\\pi_k}_{\\delta_k(x)}\\qquad\\text{(verify!)}\n\\end{aligned}\n\\]\nThe name LDA is due to the fact that the discriminant function \\(\\delta_k(x)\\) is a linear function in \\(x\\)."
+  },
+  {
+    "objectID": "Week6.html#linear-discriminant-analysis-for-p1-1",
+    "href": "Week6.html#linear-discriminant-analysis-for-p1-1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Linear Discriminant Analysis for \\(p=1\\)",
+    "text": "Linear Discriminant Analysis for \\(p=1\\)\nFor binary case, i.e. \\(K=2\\),\n\\[\\mathop{\\arg\\max}_{k\\in\\{0,1\\}}p_k(x)=\\mathop{\\arg\\max}_{k\\in\\{0,1\\}}\\left[\\frac{\\mu_k}{\\sigma^2}x-\\frac{\\mu_k^2}{2\\sigma^2}+\\log\\pi_k\\right]\\]\nIf the priors are equal \\(\\pi_0=\\pi_1\\) and suppose \\(\\mu_1\\geq\\mu_0\\), then the Bayes classifier assigns \\(X=x\\) to\n\\[\\begin{cases}0&\\text{if }x&lt;\\frac{\\mu_0+\\mu_1}{2}\\\\1&\\text{if }x\\geq\\frac{\\mu_0+\\mu_1}{2}\\end{cases}\\]\nThe line \\(x=(\\mu_0+\\mu_1)/2\\) is called the Bayes decision boundary."
+  },
+  {
+    "objectID": "Week6.html#example-of-lda-in-binary-classification",
+    "href": "Week6.html#example-of-lda-in-binary-classification",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Example of LDA in binary classification",
+    "text": "Example of LDA in binary classification\nConsider \\(\\mu_0=-1.5\\), \\(\\mu_1=1.5\\), and \\(\\sigma=1\\). The curves are \\(p_0(x)\\) (green) and \\(p_1(x)\\) (red). The dashed vertical lines are the Bayes decision boundary.\n\\[f^*(x)=\\begin{cases}0&\\text{if }x&lt;\\frac{\\mu_0+\\mu_1}{2}=0\\\\1&\\text{if }x\\geq\\frac{\\mu_0+\\mu_1}{2}=0\\end{cases}\\]"
+  },
+  {
+    "objectID": "Week6.html#compute-the-bayes-classifier",
+    "href": "Week6.html#compute-the-bayes-classifier",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Compute the Bayes classifier",
+    "text": "Compute the Bayes classifier\nIf we know \\(\\mu_0,\\ldots,\\mu_{K-1}\\), \\(\\sigma^2\\) and \\(\\pi_0,\\ldots,\\pi_{K-1}\\), then we can construct the Bayes rule\n\\[\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\delta_k(x)=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\left\\{\\frac{\\mu_k}{\\sigma^2}x-\\frac{\\mu_k^2}{2\\sigma^2}+\\log\\pi_k\\right\\}.\\]\nHowever, we typically don’t know these parameters. We need to use the training data to estimate them!"
+  },
+  {
+    "objectID": "Week6.html#estimation-under-lda",
+    "href": "Week6.html#estimation-under-lda",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Estimation under LDA",
+    "text": "Estimation under LDA\nGiven training data \\((x_1,y_1),\\ldots,(x_n,y_n)\\), for all \\(k\\in\\mathcal C\\),\nWe have\n\\[n_k=\\sum_{i=1}^n\\mathbf 1\\{y_i=k\\}.\\]\nWe estimate \\(\\pi_k\\) by\n\\[\\hat\\pi_k=\\frac{n_k}{n}.\\]\nWe estimate \\(\\mu_k\\) and \\(\\sigma^2\\) by\n\\[\\begin{aligned}\\hat\\mu_k&=\\frac{1}{n_k}\\sum_{1\\leq i\\leq n:y_i=k}x_i\\\\\\hat\\sigma^2&=\\frac{1}{n}\\sum_{k=1}^K\\sum_{1\\leq i\\leq n:y_i=k}(x_i-\\hat\\mu_k)^2.\\end{aligned}\\]\n\nThese are actually the MLEs (verify!)."
+  },
+  {
+    "objectID": "Week6.html#the-lda-classifier",
+    "href": "Week6.html#the-lda-classifier",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "The LDA classifier",
+    "text": "The LDA classifier\nWe estimate \\(\\delta_k(x)\\) by the plug-in estimator\n\\[\\hat\\delta_k(x)=\\frac{\\hat\\mu_k}{\\hat\\sigma^2}x-\\frac{\\hat\\mu_k^2}{2\\hat\\sigma^2}+\\log\\hat\\pi_k.\\]\nThe LDA classifier assigns \\(x\\) to\n\\[\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\hat\\delta_k(x).\\]\nHow about the case when \\(p&gt;1\\)?"
+  },
+  {
+    "objectID": "Week6.html#linear-discriminant-analysis-for-p1-2",
+    "href": "Week6.html#linear-discriminant-analysis-for-p1-2",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Linear Discriminant Analysis for \\(p>1\\)",
+    "text": "Linear Discriminant Analysis for \\(p&gt;1\\)\nRecall that the posterior probability has the form\n\\[\\mathbb P(Y=k\\mid X=x)=\\frac{\\pi_k f_k(x)}{\\sum_{\\ell\\in\\mathcal C}\\pi_\\ell f_\\ell(x)},\\]\nNow, we assume\n\\[X\\mid Y=k\\sim N_p(\\mu_k,\\Sigma),\\qquad\\forall k\\in\\mathcal C,\\]\nthat is,\n\\[f_k(x)=\\frac{1}{(2\\pi)^{p/2}|\\Sigma|^{1/2}}e^{-\\frac12(x-\\mu_k)^\\top\\Sigma^{-1}(x-\\mu_k)}.\\]"
+  },
+  {
+    "objectID": "Week6.html#linear-discriminant-analysis-for-p1-3",
+    "href": "Week6.html#linear-discriminant-analysis-for-p1-3",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Linear Discriminant Analysis for \\(p>1\\)",
+    "text": "Linear Discriminant Analysis for \\(p&gt;1\\)\nThe discriminant function becomes\n\\[\\delta_k(x)=x^\\top\\Sigma^{-1}\\mu_k-\\frac12\\mu_k^\\top\\Sigma^{-1}\\mu_k+\\log\\pi_k\\]\ncompared to the univariate case\n\\[\\delta_k(x)=\\frac{\\mu_k}{\\sigma^2}x-\\frac{\\mu_k^2}{2\\sigma^2}+\\log\\pi_k.\\]\nThe Bayes decision boundaries are the set of \\(x\\) for which\n\\[\\delta_k(x)=\\delta_\\ell(x),\\qquad\\forall k\\neq\\ell,\\]\nwhich are again affine hyperplanes in \\(\\mathbb R^p\\)."
+  },
+  {
+    "objectID": "Week6.html#example",
+    "href": "Week6.html#example",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Example",
+    "text": "Example\n\nThere are three classes (orange, green and blue) with two features \\(X_1\\) and \\(X_2\\). Dashed lines are the Bayes decision boundaries. Solid lines are their estimates based on the LDA."
+  },
+  {
+    "objectID": "Week6.html#estimation-under-lda-for-p1",
+    "href": "Week6.html#estimation-under-lda-for-p1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Estimation under LDA for \\(p>1\\)",
+    "text": "Estimation under LDA for \\(p&gt;1\\)\nGiven the training data \\((x_1,y_1),\\ldots,(x_n,y_n)\\), for any \\(k\\in\\mathcal C\\),\nWe have\n\\[n_k=\\sum_{i=1}^n\\mathbf 1\\{y_i=k\\}.\\]\nWe estimate \\(\\pi_k\\) by\n\\[\\hat\\pi_k=\\frac{n_k}{n}.\\]\nThe slight difference is to estimate \\(\\mu_k\\) and \\(\\Sigma\\) by\n\\[\\begin{aligned}\\hat\\mu_k&=\\frac{1}{n_k}\\sum_{1\\leq i\\leq n:y_i=k}x_i\\\\\\hat\\Sigma&=\\frac{1}{n}\\sum_{k=1}^K\\sum_{1\\leq i\\leq n:y_i=k}(x_i-\\hat\\mu_k)(x_i-\\hat\\mu_k)^\\top.\\end{aligned}\\]"
+  },
+  {
+    "objectID": "Week6.html#a-plugin-rule-for-estimating-discriminant-functions",
+    "href": "Week6.html#a-plugin-rule-for-estimating-discriminant-functions",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "A plugin rule for estimating discriminant functions",
+    "text": "A plugin rule for estimating discriminant functions\nWe use the plugin estimator\n\\[\\hat\\delta_k(x)=x^\\top\\hat\\Sigma^{-1}\\hat\\mu_k-\\frac12\\hat\\mu_k^\\top\\hat\\Sigma^{-1}\\hat\\mu_k+\\log\\hat\\pi_k,\\qquad\\forall k\\in\\mathcal C.\\]\nThe resulting LDA classifier is\n\\[\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\hat\\delta_k(x).\\]\nOne can also estimate \\(p_k(x)\\) for each \\(k\\in\\mathcal C\\) (verify)."
+  },
+  {
+    "objectID": "Week6.html#logistic-regression-v.s.-lda-similarity",
+    "href": "Week6.html#logistic-regression-v.s.-lda-similarity",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Logistic Regression v.s. LDA: similarity",
+    "text": "Logistic Regression v.s. LDA: similarity\nFor binary classification of LDA , one can show that\n\\[\\begin{aligned}\\log\\left(\\frac{p_1(x)}{1-p_1(x)}\\right)&=\\log\\left(\\frac{p_1(x)}{p_0(x)}\\right)\\\\&=c_0+c_1x_1+\\cdots+c_px_p,\\end{aligned}\\]\nwhere the \\(c_0,c_1,\\ldots,c_p\\) depends on \\(\\pi_0,\\pi_1,\\mu_0,\\mu_1\\) and \\(\\Sigma\\).\nThe log-odds under LDA is also a linear form in both the parameters and the features."
+  },
+  {
+    "objectID": "Week6.html#logistic-regression-v.s.-lda-differences",
+    "href": "Week6.html#logistic-regression-v.s.-lda-differences",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Logistic Regression v.s. LDA: differences",
+    "text": "Logistic Regression v.s. LDA: differences\n\nLDA makes more assumption by specifying \\(X\\mid Y\\).\nThe parameters are estimated differently.\n\nLogistic regression uses the conditional likelihood based on \\(\\mathbb P(Y\\mid X)\\) (known as discriminative learning).\nLDA uses the full likelihood based on \\(\\mathbb P(X,Y)\\) (known as generative learning).\n\nIf classes are well-separated, then logistic regression is not advocated."
+  },
+  {
+    "objectID": "Week6.html#other-forms-of-discriminant-analysis",
+    "href": "Week6.html#other-forms-of-discriminant-analysis",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Other forms of Discriminant Analysis",
+    "text": "Other forms of Discriminant Analysis\nLDA specifies\n\\[X\\mid Y=k\\sim N(\\mu_k,\\Sigma),\\qquad\\forall k\\in\\mathcal C.\\]\nOther discriminant analyses change the specifications for \\(X\\mid Y=k\\).\n\nQuadratic discriminant analysis (QDA) assumes\n\n\\[X\\mid Y=k\\sim N(\\mu_k,\\Sigma_k),\\qquad\\forall k\\in\\mathcal C,\\]\nby allowing different \\(\\Sigma_k\\) across all classes."
+  },
+  {
+    "objectID": "Week6.html#quadratic-discriminant-analysis-p1",
+    "href": "Week6.html#quadratic-discriminant-analysis-p1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Quadratic Discriminant Analysis: \\(p=1\\)",
+    "text": "Quadratic Discriminant Analysis: \\(p=1\\)\nAssume that\n\\[X\\mid Y=k\\sim N(\\mu_k,\\sigma_k^2),\\qquad\\forall k\\in\\mathcal C,\\]\nnamely,\n\\[f_k(x)=\\frac{1}{\\sqrt{2\\pi}\\sigma_k}e^{-\\frac{1}{2\\sigma_k^2}(x-\\mu_k)^2}.\\]\nAs a result,\n\\[p_k(x)=\\frac{\\pi_k f_k(x)}{\\sum_{\\ell\\in\\mathcal C}\\pi_\\ell f_\\ell(x)}=\\frac{\\frac{\\pi_k}{\\sigma_k}e^{-\\frac{1}{2\\sigma_k^2}(x-\\mu_k)^2}}{\\sum_{\\ell\\in\\mathcal C}\\frac{\\pi_\\ell}{\\sigma_\\ell}e^{-\\frac{1}{2\\sigma_\\ell^2}(x-\\mu_\\ell)^2}}.\\]"
+  },
+  {
+    "objectID": "Week6.html#decision-boundary-of-qda",
+    "href": "Week6.html#decision-boundary-of-qda",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Decision boundary of QDA",
+    "text": "Decision boundary of QDA\nThe Bayes rule classifies \\(X=x\\) to\n\\[\n\\begin{aligned}\n\\mathop{\\arg\\max}_{k\\in\\mathcal C}p_k(x)&=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\log(p_k(x))\\\\\n&=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\log\\left[\\frac{\\pi_k}{\\sigma_k}e^{-\\frac{1}{2\\sigma_k^2}(x-\\mu_k)^2}\\right]\\\\\n&=\\mathop{\\arg\\max}_{k\\in\\mathcal C}\\underbrace{-\\frac{x^2}{2\\sigma_k^2}+\\frac{\\mu_k}{\\sigma_k^2}x-\\frac{\\mu_k^2}{2\\sigma_k^2}+\\log\\pi_k-\\log(\\sigma_k)}_{\\delta_k(x)}\n\\end{aligned}\n\\]\nThe name QDA is due to the fact that \\(\\delta_k(x)\\) is quadratic in \\(x\\)."
+  },
+  {
+    "objectID": "Week6.html#quadratic-discriminant-analysis-pgeq1",
+    "href": "Week6.html#quadratic-discriminant-analysis-pgeq1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Quadratic Discriminant Analysis: \\(p\\geq1\\)",
+    "text": "Quadratic Discriminant Analysis: \\(p\\geq1\\)\n\\[X\\mid Y=k\\sim N_p(\\mu_k,\\Sigma_k)\\]\nThe discriminant function becomes\n\\[\n\\begin{aligned}\n\\delta_k(x)&=\\log\\left[\\frac{\\pi_k}{|\\Sigma_k|^{1/2}}e^{-\\frac12(x-\\mu_k)^\\top\\Sigma_k^{-1}(x-\\mu_k)}\\right]\\\\\n&=x^\\top\\Sigma_k^{-1}\\mu_k-\\frac12\\mu_k^\\top\\Sigma_k^{-1}\\mu_k+\\log\\pi_k-\\frac12x^\\top\\Sigma_k^{-1}x-\\frac12\\log|\\Sigma_k|.\n\\end{aligned}\n\\]\nThe decision boundary between any class \\(k\\) and class \\(\\ell\\)\n\\[\\{x\\in\\mathbb R^p:\\delta_k(x)=\\delta_\\ell(x)\\}\\]\nis quadratic in \\(x\\)"
+  },
+  {
+    "objectID": "Week6.html#decision-boundaries-of-lda-and-qda",
+    "href": "Week6.html#decision-boundaries-of-lda-and-qda",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Decision boundaries of LDA and QDA",
+    "text": "Decision boundaries of LDA and QDA\n\nDecision boundaries of the Bayes classifier (purple dashed), LDA (black dotted), and QDA (green solid) in two scenarios."
+  },
+  {
+    "objectID": "Week6.html#estimation-of-qda",
+    "href": "Week6.html#estimation-of-qda",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Estimation of QDA",
+    "text": "Estimation of QDA\nGiven training data \\((x_1,y_1),\\ldots,(x_n,y_n)\\), for any \\(k\\in\\mathcal C\\),\nWe have\n\\[n_k=\\sum_{i=1}^n\\mathbf 1\\{y_i=k\\}.\\]\nWe estimate \\(\\pi_k\\) by\n\\[\\hat\\pi_k=\\frac{n_k}{n}.\\]\nWe estimate \\(\\mu_k\\) and \\(\\Sigma_k\\) by\n\\[\\begin{aligned}\\hat\\mu_k&=\\frac{1}{n_k}\\sum_{1\\leq i\\leq n:y_i=k}x_i\\\\\\hat\\Sigma_k&=\\frac{1}{n_k}\\sum_{1\\leq i\\leq n:y_i=k}(x_i-\\hat\\mu_k)(x_i-\\hat\\mu_k)^\\top.\\end{aligned}\\]\nPlugin estimator for \\(\\delta(x)\\)."
+  },
+  {
+    "objectID": "Week6.html#potential-problems-for-lda-and-qda-in-high-dimension",
+    "href": "Week6.html#potential-problems-for-lda-and-qda-in-high-dimension",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Potential problems for LDA and QDA in high dimension",
+    "text": "Potential problems for LDA and QDA in high dimension\nLDA: we have\n\\[(K-1)+pK+\\frac{p(p+1)}{2}\\]\nnumber of parameters to estimate.\nQDA: we have\n\\[(K-1)+pK+\\frac{p(p+1)}{2}K\\]\nnumber of parameters to estimate.\nThe estimation error is large when \\(p\\) is large comparing to \\(n\\)."
+  },
+  {
+    "objectID": "Week6.html#naive-bayes",
+    "href": "Week6.html#naive-bayes",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Naive Bayes",
+    "text": "Naive Bayes\nOther discriminant analyses: different density of \\(X\\mid Y=k\\), including non-parametric approaches.\nNaive Bayes assumes\n\\[X_1,\\ldots,X_p\\text{ are independent given }Y=k\\]\nso that\n\\[f_k(x)=\\prod_{j=1}^p f_{k,j}(x_j)\\]\n\nIt is easy to deal with both quantitative and categorical features.\nDespite the strong independence assumption within class, naive Bayes often produces good classification results."
+  },
+  {
+    "objectID": "Week6.html#naive-bayes-1",
+    "href": "Week6.html#naive-bayes-1",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Naive Bayes",
+    "text": "Naive Bayes\nFor Gaussian density\n\\[X_j\\mid Y=k\\sim N(\\mu_{k,j},\\sigma_{k,j}^2),\\]\nthis means that \\(\\Sigma_k=\\operatorname{diag}(\\sigma_{k,1}^2,\\sigma_{k,2}^2,\\ldots,\\sigma_{k,p}^2)\\) and\n\\[f_k(x)=\\prod_{j=1}^p\\frac{1}{\\sigma_{k,j}\\sqrt{2\\pi}}e^{-\\frac{1}{2\\sigma_{k,j}^2}(x_j-\\mu_{k,j})^2}\\]\nThe discriminant function is\n\\[\\delta_k(x)=-\\frac12\\sum_{j=1}^p\\frac{(x_j-\\mu_{kj})^2}{\\sigma_{kj}^2}+\\log\\pi_k-\\frac12\\sum_{j=1}^p\\log\\sigma_{kj}^2.\\]\n\nDerive the MLE by yourself!"
+  },
+  {
+    "objectID": "Week6.html#summary",
+    "href": "Week6.html#summary",
+    "title": "Multiclass Logistic Regression and Discriminant Analysis",
+    "section": "Summary",
+    "text": "Summary\n\nMulticlass logistic regression extends binary logistic regression by modelling the log-odds of each class relative to a chosen baseline class.\nDiscriminant analysis takes a different approach: instead of modelling \\(Y \\mid X\\) directly, it models the distribution of \\(X \\mid Y=k\\) and then uses Bayes’ theorem for classification.\nLDA assumes the classes have different means but share the same covariance matrix, leading to linear decision boundaries.\nQDA allows each class to have its own covariance matrix, giving more flexibility and quadratic decision boundaries.\nNaive Bayes simplifies the modelling of \\(X\\mid Y\\) by assuming the predictors are conditionally independent within each class.\n\n\nThe best classification method depends on the structure of the data and the assumptions we are willing to make.\nNext Class: Tree based methods"
   }
 ]
