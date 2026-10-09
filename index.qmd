@@ -24,7 +24,7 @@ I hope this course leaves you with not only a strong foundation in statistical m
 ::: {.table-responsive}
 | Assignment | Due Date | Information | Past Tests |
 |:----------:|:--------:|:----------:|:--------:|
-| Midterm | Nov 4th, 11am -- 1pm | |[winter26](midterm-26winter.pdf)<br>[fall24](midterm24fall.pdf)<br>[fall24-2](midterm2-24fall.pdf)<br>Created by Xin Bing |
+| Midterm | Nov 4th, 11am -- 1pm | |[winter26](midterm-26winter.pdf)<br>[fall24](midterm24fall.pdf)<br>[fall24-2](midterm2-24fall.pdf)<br>Created by Dr. Xin Bing |
 | Final | TBD | | |
 :::
 
