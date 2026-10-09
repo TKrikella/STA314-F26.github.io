@@ -3701,5 +3701,12 @@
     "title": "Multiclass Logistic Regression and Discriminant Analysis",
     "section": "Summary",
     "text": "Summary\n\nMulticlass logistic regression extends binary logistic regression by modelling the log-odds of each class relative to a chosen baseline class.\nDiscriminant analysis takes a different approach: instead of modelling \\(Y \\mid X\\) directly, it models the distribution of \\(X \\mid Y=k\\) and then uses Bayes’ theorem for classification.\nLDA assumes the classes have different means but share the same covariance matrix, leading to linear decision boundaries.\nQDA allows each class to have its own covariance matrix, giving more flexibility and quadratic decision boundaries.\nNaive Bayes simplifies the modelling of \\(X\\mid Y\\) by assuming the predictors are conditionally independent within each class.\n\n\nThe best classification method depends on the structure of the data and the assumptions we are willing to make.\nNext Class: Tree based methods"
+  },
+  {
+    "objectID": "index.html#tests",
+    "href": "index.html#tests",
+    "title": "STA314",
+    "section": "Tests",
+    "text": "Tests\n\n\n\n\nAssignment\nDue Date\nInformation\nPast Tests\n\n\n\n\nMidterm\nNov 4th, 11am – 1pm\n\nwinter26fall24fall24-2Created by Xin Bing\n\n\nFinal\nTBD"
   }
 ]
