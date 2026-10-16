@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "about.html#tentative-course-schedule",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\n-\n-\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\n-\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines\n-\n-\n-\nCh. 9\n\n\n11\nUnsupervised Learning: PCA and Clustering\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
@@ -4119,8 +4119,8 @@
     "objectID": "Week9.html#review-on-simple-decision-trees",
     "href": "Week9.html#review-on-simple-decision-trees",
     "title": "Bagging, Random Forests and Boosting",
-    "section": "Review on simple decision trees",
-    "text": "Review on simple decision trees\n\nDecision trees\n\nRegression tree\nClassification tree\n\nSelf-explanatory\nRecursive binary splitting\nCould be deeply grown trees, with large variance\nPruning"
+    "section": "",
+    "text": "Decision trees\n\nRegression tree\nClassification tree\n\nSelf-explanatory\nRecursive binary splitting\nCould be deeply grown trees, with large variance\nPruning"
   },
   {
     "objectID": "Week9.html#learning-outcomes",
@@ -4141,91 +4141,91 @@
     "href": "Week9.html#why-bagging-the-idea-of-bagging.",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Why bagging? The idea of bagging.",
-    "text": "Why bagging? The idea of bagging.\n\nGiven a set of \\(N\\) independent estimates \\(\\hat\\beta^{(1)},\\ldots,\\hat\\beta^{(N)}\\) of \\(\\beta\\), suppose\n\n\\[\n\\left|\\mathbb{E}[\\hat\\beta^{(i)}]-\\beta\\right|\\leq b,\n\\qquad \\operatorname{Var}(\\hat\\beta^{(i)})=\\sigma^2,\n\\qquad \\forall i=1,\\ldots,N.\n\\]\nThen the averaged estimate\n\\[\n\\bar\\beta:=\\frac{1}{N}\\sum_{i=1}^N\\hat\\beta^{(i)}\n\\]\nsatisfying\n\\[\n\\left|\\mathbb{E}[\\bar\\beta]-\\beta\\right|\\leq b,\n\\qquad \\operatorname{Var}(\\bar\\beta)=\\frac{\\sigma^2}{N}.\n\\]\n\nIn other words, averaging a set of independent random variables reduces the variance, meanwhile does not incur extra bias."
+    "text": "Why bagging? The idea of bagging.\nGiven a set of \\(N\\) independent estimates \\(\\hat\\beta^{(1)},\\ldots,\\hat\\beta^{(N)}\\) of \\(\\beta\\), suppose\n\\[\n\\left|\\mathbb{E}\\left[\\hat\\beta^{(i)}\\right]-\\beta\\right|\\leq b,\n\\qquad \\operatorname{Var}(\\hat\\beta^{(i)})=\\sigma^2,\n\\qquad \\forall i=1,\\ldots,N.\n\\]\nThen the averaged estimate\n\\[\n\\bar\\beta:=\\frac{1}{N}\\sum_{i=1}^N\\hat\\beta^{(i)}\n\\]\nsatisfying\n\\[\n\\left|\\mathbb{E}[\\bar\\beta]-\\beta\\right|\\leq b,\n\\qquad \\operatorname{Var}(\\bar\\beta)=\\frac{\\sigma^2}{N}.\n\\]\nIn other words, averaging a set of independent random variables reduces the variance, meanwhile does not incur extra bias."
   },
   {
     "objectID": "Week9.html#bagging-1",
     "href": "Week9.html#bagging-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Bagging",
-    "text": "Bagging\n\nTo apply bagging to regression trees, if we had \\(B\\) independent training sets, then we simply construct \\(B\\) regression trees using each of the training set, and average the resulting predictions in the end.\nSince we only have one training set, we bootstrap the same amount of data \\(B\\) times from the training set with replacement\nWe train a decision tree by using the \\(b\\)th bootstrap data and get the prediction \\(\\hat f^{*b}(x)\\) at a point \\(x\\). Bagging averages all the predictions\n\n\\[\n\\hat f_{\\mathrm{bag}}(x)=\\frac{1}{B}\\sum_{b=1}^B\\hat f^{*b}(x).\n\\]"
+    "text": "Bagging\nTo apply bagging to regression trees, if we had \\(B\\) independent training sets, then we simply construct \\(B\\) regression trees using each of the training set, and average the resulting predictions in the end.\n\nSince we only have one training set, we bootstrap the same amount of data \\(B\\) times from the training set with replacement\n\nWe train a decision tree by using the \\(b\\)th bootstrap data and get the prediction \\(\\hat f^{*b}(x)\\) at a point \\(x\\). Bagging averages all the predictions\n\\[\n\\hat f_{\\mathrm{bag}}(x)=\\frac{1}{B}\\sum_{b=1}^B\\hat f^{*b}(x).\n\\]"
   },
   {
     "objectID": "Week9.html#bagging-trees",
     "href": "Week9.html#bagging-trees",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Bagging Trees",
-    "text": "Bagging Trees\n\nThe fitted decision trees on bootstrap data sets are grown deep, and need not be pruned. Hence each individual tree has high variance, but low bias. Averaging these trees reduces the variance.\nBagging can be also applied to classification trees. For a given test observation, we can record the class predicted by each of the \\(B\\) trees, and take a majority vote."
+    "text": "Bagging Trees\nThe fitted decision trees on bootstrap data sets are grown deep, and need not be pruned. Hence each individual tree has high variance, but low bias. Averaging these trees reduces the variance.\n \nBagging can be also applied to classification trees. For a given test observation, we can record the class predicted by each of the \\(B\\) trees, and take a majority vote."
   },
   {
     "objectID": "Week9.html#out-of-bag-error-estimation",
     "href": "Week9.html#out-of-bag-error-estimation",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Out-of-Bag Error Estimation",
-    "text": "Out-of-Bag Error Estimation\n\nThere is a simple way to estimate the test error of a bagged model, without the need to perform cross-validation or the validation set approach.\nFor each bootstrap data set,\n\nIt only contains, on average, around 2/3 of the original observations.\nThe remaining 1/3 is not used to fit the decision tree, and is referred to as the out-of-bag (OOB) observations.\nWe predict the OOB observations by using the fitted decision tree."
+    "text": "Out-of-Bag Error Estimation\nThere is a simple way to estimate the test error of a bagged model, without the need to perform cross-validation or the validation set approach.\n\nFor each bootstrap data set,\n\nIt only contains, on average, around 2/3 of the original observations.\nThe remaining 1/3 is not used to fit the decision tree, and is referred to as the out-of-bag (OOB) observations.\nWe predict the OOB observations by using the fitted decision tree."
   },
   {
     "objectID": "Week9.html#out-of-bag-error-estimation-1",
     "href": "Week9.html#out-of-bag-error-estimation-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Out-of-Bag Error Estimation",
-    "text": "Out-of-Bag Error Estimation\n\nFor each observation \\(i\\), we can pool its predictions across all \\(B\\) bootstrap data sets where \\(i\\) belongs to the OOB observations.\n\nFor regression, we average\nFor classification, we vote by majority\n\nWe compute the MSE / misclassification error between predictions and the true responses over all observations."
+    "text": "Out-of-Bag Error Estimation\nFor each observation \\(i\\), we can pool its predictions across all \\(B\\) bootstrap data sets where \\(i\\) belongs to the OOB observations. - For regression, we average - For classification, we vote by majority\n \nWe compute the MSE / misclassification error between predictions and the true responses over all observations."
   },
   {
     "objectID": "Week9.html#variable-importance-measures",
     "href": "Week9.html#variable-importance-measures",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Variable Importance Measures",
-    "text": "Variable Importance Measures\n\nBagging typically reduces variance (i.e. improve accuracy) over prediction using a single decision tree.\nHowever, it can be difficult to interpret the resulting model.\nOne can obtain an overall summary of the importance of each predictor using the RSS (for bagging regression trees) or the Gini index (for bagging classification trees)."
+    "text": "Variable Importance Measures\nBagging typically reduces variance (i.e. improve accuracy) over prediction using a single decision tree.\n \nHowever, it can be difficult to interpret the resulting model.\n \nOne can obtain an overall summary of the importance of each predictor using the RSS (for bagging regression trees) or the Gini index (for bagging classification trees)."
   },
   {
     "objectID": "Week9.html#variable-importance-measures-1",
     "href": "Week9.html#variable-importance-measures-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Variable Importance Measures",
-    "text": "Variable Importance Measures\n\nIn the case of bagging regression trees, we can record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all \\(B\\) trees. In bagging classification trees, we replace RSS by the Gini index.\nA large value of decreased RSS (or Gini index) indicates an important predictor.\nA graphical representation of variable importance is easy to draw."
+    "text": "Variable Importance Measures\nIn the case of bagging regression trees, we can record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all \\(B\\) trees. In bagging classification trees, we replace RSS by the Gini index.\n\nA large value of decreased RSS (or Gini index) indicates an important predictor.\n\nA graphical representation of variable importance is easy to draw."
   },
   {
     "objectID": "Week9.html#heart-data",
     "href": "Week9.html#heart-data",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Heart Data",
-    "text": "Heart Data\n\nInsert variable-importance plot here.\nVariable importance is computed using the mean decrease in Gini index, and expressed relative to the maximum."
+    "text": "Heart Data\n\n\n\n\n\nVariable importance is computed using the mean decrease in Gini index, and expressed relative to the maximum."
   },
   {
     "objectID": "Week9.html#summary-on-bagging",
     "href": "Week9.html#summary-on-bagging",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Summary on bagging",
-    "text": "Summary on bagging\n\nBagging simply averages multiple decision trees\nBias does not increase\nVariance is reduced\n\nHow much is variance reduced?"
+    "text": "Summary on bagging\n\nBagging simply averages multiple decision trees\n\n\n\nBias does not increase\n\n\n\nVariance is reduced\nHow much is variance reduced?"
   },
   {
     "objectID": "Week9.html#random-forests",
     "href": "Week9.html#random-forests",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Random Forests",
-    "text": "Random Forests\n\nBagging is affected by the correlation among decision trees!1\nRandom forests provide an improvement over bagged trees by decorrelating the trees. This increases the variance reduction when we average the trees.\n\nCheck Prob 3 of the final exam of 2024!"
+    "text": "Random Forests\nBagging is affected by the correlation among decision trees!\n\nRandom forests provide an improvement over bagged trees by decorrelating the trees. This increases the variance reduction when we average the trees."
   },
   {
     "objectID": "Week9.html#random-forests-1",
     "href": "Week9.html#random-forests-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Random Forests",
-    "text": "Random Forests\n\nAs in bagging, we build a number of decision trees on bootstrap training samples.\nBut for building these decision trees, when each time a split in a tree is considered, a random selection of \\(m &lt; p\\) predictors is chosen as split candidates from the full set of \\(p\\) predictors.\nA fresh selection of \\(m\\) predictors is taken at each split, and a common choice of \\(m\\) is \\(m \\approx \\sqrt{p}\\).\nRandom forest with \\(m=p\\) is just bagging!"
+    "text": "Random Forests\nAs in bagging, we build a number of decision trees on bootstrap training samples.\n\nBut for building these decision trees, when each time a split in a tree is considered, a random selection of \\(m &lt; p\\) predictors is chosen as split candidates from the full set of \\(p\\) predictors.\n\nA fresh selection of \\(m\\) predictors is taken at each split, and a common choice of \\(m\\) is \\(m \\approx \\sqrt{p}\\).\n\nRandom forest with \\(m=p\\) is just bagging!"
   },
   {
     "objectID": "Week9.html#why-does-random-forest-reduce-correlations",
     "href": "Week9.html#why-does-random-forest-reduce-correlations",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Why does Random Forest Reduce Correlations?",
-    "text": "Why does Random Forest Reduce Correlations?\n\nSuppose that there is one very strong predictor in the data set, along with a number of other moderately strong predictors.\nAmong all single decision trees, most of them will use this strong predictor in the top split. All of the single trees will look quite similar and could have high correlation.\nRandom forests reduce the correlation by randomly selecting a subset of the predictors in each split of building each single tree. Indeed, on average many splits will not even consider the strong predictor."
+    "text": "Why does Random Forest Reduce Correlations?\nSuppose that there is one very strong predictor in the data set, along with a number of other moderately strong predictors.\n\nAmong all single decision trees, most of them will use this strong predictor in the top split. All of the single trees will look quite similar and could have high correlation.\n\nRandom forests reduce the correlation by randomly selecting a subset of the predictors in each split of building each single tree. Indeed, on average many splits will not even consider the strong predictor."
   },
   {
     "objectID": "Week9.html#heart-data-1",
     "href": "Week9.html#heart-data-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Heart Data",
-    "text": "Heart Data\n\nInsert Heart Data error plot here.\nThe test error (black and orange) is shown as a function of \\(B\\). Random forests were applied with \\(m=\\sqrt p\\). The dashed line indicates the test error resulting from a single classification tree. The green and blue traces show the OOB error, which is considerably lower."
+    "text": "Heart Data\n\n\n\n\n\nThe test error (black and orange) is shown as a function of \\(B\\). Random forests were applied with \\(m=\\sqrt p\\). The dashed line indicates the test error resulting from a single classification tree. The green and blue traces show the OOB error, which is considerably lower."
   },
   {
     "objectID": "Week9.html#gene-expression-data",
@@ -4239,21 +4239,21 @@
     "href": "Week9.html#gene-expression-data-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Gene Expression Data",
-    "text": "Gene Expression Data\n\nInsert Gene Expression Data error plot here.\nThe test errors are displayed as functions of the number of trees (\\(B\\)). Random forests (\\(m&lt;p\\)) lead to a slight improvement over bagging (\\(m=p\\)). A single classification tree has an error rate of 45.7%."
+    "text": "Gene Expression Data\n\n\n\n\n\nThe test errors are displayed as functions of the number of trees (\\(B\\)). Random forests (\\(m&lt;p\\)) lead to a slight improvement over bagging (\\(m=p\\)). A single classification tree has an error rate of 45.7%."
   },
   {
     "objectID": "Week9.html#boosting",
     "href": "Week9.html#boosting",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Boosting",
-    "text": "Boosting\n\nLike bagging, boosting is a general approach that can be applied to many statistical learning methods for regression and classification. We focus on the context of decision trees.\nBagging (and random forest) involves creating multiple copies of the original training data set using bootstrap, fitting a separate decision tree to each copy, and then combining all of the trees in order to create a single predictive model.\nBoosting works both similarly and also differently\n\nBoosting combines different fitted trees\nthe trees in boosting are grown sequentially: each tree is grown using information from previously grown trees\nBoosting does not involve bootstrap sampling; instead each tree is fitted on a modified version of the original data set."
+    "text": "Boosting\n\nLike bagging, boosting is a general approach that can be applied to many statistical learning methods for regression and classification. We focus on the context of decision trees.\nBagging (and random forest) involves creating multiple copies of the original training data set using bootstrap, fitting a separate decision tree to each copy, and then combining all of the trees in order to create a single predictive model.\nBoosting works both similarly and also differently\nBoosting combines different fitted trees\nthe trees in boosting are grown sequentially: each tree is grown using information from previously grown trees\nBoosting does not involve bootstrap sampling; instead each tree is fitted on a modified version of the original data set."
   },
   {
     "objectID": "Week9.html#boosting-1",
     "href": "Week9.html#boosting-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Boosting",
-    "text": "Boosting\nAlgorithm 8.2 — Boosting for Regression Trees\n\nSet \\(\\hat f(x)=0\\) and \\(r_i=y_i\\) for all \\(i\\) in the training set.\nFor \\(b=1,2,\\ldots,B\\), repeat:\n\nFit a tree \\(\\hat f^b\\) with \\(d\\) splits (\\(d+1\\) terminal nodes) to the training data \\((X,r)\\).\nUpdate \\(\\hat f\\) by adding in a shrunken version of the new tree:\n\n\\[\\hat f(x)\\leftarrow\\hat f(x)+\\lambda\\hat f^b(x).\\]\n\nUpdate the residuals,\n\n\\[r_i\\leftarrow r_i-\\lambda\\hat f^b(x_i).\\]\nOutput the boosted model,\n\n\\[\\hat f(x)=\\sum_{b=1}^B\\lambda\\hat f^b(x).\\]"
+    "text": "Boosting\nAlgorithm — Boosting for Regression Trees\n\nSet \\(\\hat f(x)=0\\) and \\(r_i=y_i\\) for all \\(i\\) in the training set.\nFor \\(b=1,2,\\ldots,B\\), repeat:\n\nFit a tree \\(\\hat f^b\\) with \\(d\\) splits (\\(d+1\\) terminal nodes) to the training data \\((X,r)\\).\nUpdate \\(\\hat f\\) by adding in a shrunken version of the new tree:\n\n\\[\\hat f(x)\\leftarrow\\hat f(x)+\\lambda\\hat f^b(x).\\]\n\nUpdate the residuals,\n\n\\[r_i\\leftarrow r_i-\\lambda\\hat f^b(x_i).\\]\nOutput the boosted model,\n\n\\[\\hat f(x)=\\sum_{b=1}^B\\lambda\\hat f^b(x).\\]"
   },
   {
     "objectID": "Week9.html#boosting-2",
@@ -4274,7 +4274,7 @@
     "href": "Week9.html#gene-expression-data-2",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Gene Expression Data",
-    "text": "Gene Expression Data\n\nInsert Gene Expression Data boosting plot here.\nFor both boosting trees, \\(\\lambda=0.01\\). Depth-1 trees slightly outperform depth-2 trees and random forests. But these differences are within their standard errors."
+    "text": "Gene Expression Data\n\n\n\n\n\nFor both boosting trees, \\(\\lambda=0.01\\). Depth-1 trees slightly outperform depth-2 trees and random forests. But these differences are within their standard errors."
   },
   {
     "objectID": "Week9.html#summary",
@@ -4289,5 +4289,12 @@
     "title": "Decision Trees and the Bootstrap",
     "section": "Example of Decision Trees—Discrete features",
     "text": "Example of Decision Trees—Discrete features\nSplit discrete features into a partition of possible values."
+  },
+  {
+    "objectID": "Week9.html",
+    "href": "Week9.html",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "",
+    "text": "Decision trees\n\nRegression tree\nClassification tree\n\nSelf-explanatory\nRecursive binary splitting\nCould be deeply grown trees, with large variance\nPruning"
   }
 ]
