@@ -1,0 +1,637 @@
+---
+title: "Tutorial4"
+author: "Teaching Team of STA314"
+output: pdf_document
+---
+
+# Roadmap and learning goals
+
+In this lab, we demonstrate nonlinear models using the `Wage` data. We investigate how wages vary with age, using **R** throughout. By the end of the lab, you should be able to:
+
+-   Fit and interpret nonlinear regression curves.
+-   Explain the difference between polynomial regression, regression splines, and natural splines.
+-   Fit generalized additive models (GAMs) with smooth terms and categorical predictors.
+-   Explain how the smoothing parameter controls flexibility.
+-   Use LOWESS to fit a local regression curve.
+-   Compare model complexity using degrees of freedom, smoothing parameters, and validation or cross-validation.
+
+## Packages and data
+
+We will use `ISLR2` for the data, `splines` for spline bases, and `mgcv` for generalized additive models. The `stats` package (included with R) supplies `lm()`, `predict()`, and `loess()`.
+
+```{r setup, message=FALSE}
+# Run this once if the packages are not installed:
+# install.packages(c("ISLR2", "mgcv"))
+
+library(ISLR2)
+library(splines)
+library(mgcv)
+
+knitr::opts_chunk$set(echo = TRUE, fig.width = 8, fig.height = 6)
+```
+
+```{r load-data}
+data("Wage", package = "ISLR2")
+y <- Wage$wage
+age <- Wage$age
+head(Wage, 3)
+
+age_grid <- seq(min(age), max(age), length.out = 100)
+age_df <- data.frame(age = age_grid)
+```
+
+We will model `wage` as a function of `age` for most of the lab. We also use `year` and `education` when we fit additive models with several predictors.
+
+# Polynomial regression
+
+A degree-$d$ polynomial regression is a linear regression in the transformed predictors:
+
+$$
+Y_i = \beta_0 + \beta_1 x_i + \beta_2 x_i^2 + \cdots + \beta_d x_i^d + \varepsilon_i.
+$$
+
+**Conceptually:** `age` $\longrightarrow$ $[1,\text{age},\text{age}^2,\ldots,\text{age}^d]$ $\longrightarrow$ linear regression $\longrightarrow$ predicted wage.
+
+Higher polynomial degrees increase flexibility, but can behave poorly near the boundaries. We begin with a fourth-degree polynomial, using `raw = TRUE` to work with ordinary powers of age.
+
+```{r polynomial-fit}
+poly_fit <- lm(wage ~ poly(age, degree = 4, raw = TRUE), data = Wage)
+summary(poly_fit)
+```
+
+## Plotting fitted curves and confidence bands
+
+We define a helper function to plot the data, a fitted curve, and its 95% confidence interval for the **conditional mean**. We will reuse this function for regression splines and natural splines.
+
+```{r helper-function}
+plot_wage_fit <- function(model, newdata, title) {
+  if (inherits(model, "gam")) {
+    # predict.gam does not support interval = "confidence".
+    p <- predict(model, newdata = newdata, se.fit = TRUE)
+    pred <- cbind(fit = p$fit,
+                  lwr = p$fit - 1.96 * p$se.fit,
+                  upr = p$fit + 1.96 * p$se.fit)
+  } else {
+    pred <- predict(model, newdata = newdata,
+                    interval = "confidence", level = 0.95)
+  }
+
+  plot(Wage$age, Wage$wage,
+       col = grDevices::adjustcolor("gray40", alpha.f = 0.4),
+       pch = 16, xlab = "Age", ylab = "Wage", main = title)
+  lines(newdata$age, pred[, "fit"], col = "blue", lwd = 3)
+  lines(newdata$age, pred[, "lwr"], col = "red", lty = 2, lwd = 2)
+  lines(newdata$age, pred[, "upr"], col = "red", lty = 2, lwd = 2)
+  invisible(pred)
+}
+```
+
+```{r polynomial-plot}
+plot_wage_fit(poly_fit, age_df, "Degree-4 Polynomial")
+```
+
+The blue line shows the fitted mean wage; the red dashed lines indicate uncertainty about the estimated mean, **not** the interval containing 95% of individual wages. Transparent points help reveal areas with dense observations.
+
+# Splines
+
+A regression spline models $f(x)$ with piecewise polynomials joined at **knots**. A common cubic spline can be written in the truncated-power basis as
+
+$$
+f(x) = \beta_0 + \beta_1x + \beta_2x^2 + \beta_3x^3
+       + \sum_{k=1}^{K}\gamma_k(x-\xi_k)_+^3,
+$$
+
+where $\xi_1,\ldots,\xi_K$ are the interior knots and $(z)_+ = \max(z,0)$.
+
+**Conceptually:** `age` $\longrightarrow$ spline basis (depends on knots) $\longrightarrow$ linear regression $\longrightarrow$ predicted wage.
+
+In R, `splines::bs()` generates the entire matrix of basis functions for splines with the specified set of knots. By default it makes cubic splines (`degree = 3`).
+
+-   Knots control where the curve is allowed to bend. More knots (or higher df) → more flexibility.
+
+## Regression splines with specified knots
+
+```{r spline-basis}
+bs_matrix <- bs(age, knots = c(25, 40, 60), degree = 3,
+                intercept = TRUE)
+dim(bs_matrix)
+```
+
+This produces a **7-column** design matrix, as expected for a **cubic spline** with **3 interior knots**.
+
+Next, we fit a cubic spline model to the `Wage` data.
+
+```{r cubic-spline-fit}
+bs_fit <- lm(wage ~ bs(age, knots = c(25, 40, 60), degree = 3),
+             data = Wage)
+summary(bs_fit)
+```
+
+Notice that there are 6 spline coefficients rather than 7. This is because, by default, `bs()` assumes `intercept=False`, since we typically have an overall intercept in the model. So it generates the spline basis with the given knots, and then discards one of the basis functions to account for the intercept.
+
+```{r cubic-spline-plot}
+plot_wage_fit(bs_fit, age_df, "Cubic Regression Spline: knots at 25, 40, 60")
+```
+
+## Choosing spline complexity through degrees of freedom
+
+We could also use the `df` (degrees of freedom) option to specify the complexity of the spline. We see above that with 3 knots, the spline basis has 6 columns or degrees of freedom. When we specify `df=6` rather than the actual knots, `bs()` will produce a spline with 3 knots chosen at uniform quantiles of the training data.
+
+```{r spline-df}
+bs_df <- bs(age, df = 6)
+attr(bs_df, "knots")
+
+bs_df_fit <- lm(wage ~ bs(age, df = 6), data = Wage)
+summary(bs_df_fit)
+```
+
+When asking for six degrees of freedom, the transform chooses knots at ages 33.75, 42.0, and 51.0, which correspond to the 25th, 50th, and 75th percentiles of `age`.
+
+# Natural splines
+
+A **natural spline** is a cubic spline with extra boundary constraints so it behaves more stably near the edges.
+
+One way to state it:
+
+-   $f(x)$ is a **cubic spline** with knots $\xi_1, \ldots, \xi_K$.
+-   It is **linear beyond the boundary knots** (equivalently, $f''(x) = 0$ outside the boundary interval).
+
+So we still model:
+
+$$
+y_i = \beta_0 + f(x_i) + \epsilon_i
+$$
+
+but $f(x)$ is restricted to avoid extreme curvature at the ends.
+
+-   Natural splines often extrapolate more reasonably than ordinary cubic splines.
+
+We use `splines::ns()` to fit a natural spline with five basis degrees of freedom (excluding the regression intercept).
+
+```{r natural-spline-fit}
+ns_fit <- lm(wage ~ ns(age, df = 5), data = Wage)
+summary(ns_fit)
+```
+
+We now plot the natural spline using our plotting function.
+
+```{r natural-spline-plot}
+plot_wage_fit(ns_fit, age_df, "Natural Spline: df = 5")
+```
+
+**Think about it:** What would you expect to happen outside the observed age range under an unrestricted polynomial, a cubic regression spline, and a natural spline?
+
+# Generalized additive models (GAMs)
+
+$$
+y \approx \beta_0 + f_1(x_1) + f_2(x_2) + \cdots + \epsilon
+$$
+
+We'll fit GAMs in R with **mgcv**:
+
+-   `gam()` uses squared-error loss (with `family = gaussian()`).
+-   You specify what to do with each feature using terms:
+    -   `s(x)`: smooth spline on predictor `x`
+    -   `x`: linear term for predictor `x`
+    -   `factor(x)`: categorical (factor) term for predictor `x`
+
+Here we use `s(age)` because we want a smooth spline on `age`.
+
+`sp` is the **smoothness penalty**:
+
+-   larger `sp` $\rightarrow$ **smoother** curve (more regularization)
+-   smaller `sp` $\rightarrow$ **wigglier** curve
+
+**Penalized fitting idea (what `sp` controls):**
+
+$$
+\hat{f} = \arg\min_f \sum_{i=1}^n (y_i - f(x_i))^2 + \lambda \int (f''(t))^2 \, dt
+$$
+
+-   $\lambda$ large $\rightarrow$ stronger penalty on curvature $\rightarrow$ smoother $f$
+-   $\lambda$ small $\rightarrow$ weaker penalty $\rightarrow$ more flexible $\rightarrow$ wigglier $f$
+
+**Layout (conceptual):**
+
+`(x1, x2, ...)` $\rightarrow$ `[f1(x1) + f2(x2) + ...]` $\rightarrow$ sum with intercept $\rightarrow$ predicted $\hat{y}$
+
+## Fit a GAM using age
+
+```{r gam-age}
+# k is the maximum basis dimension, not the chosen effective df.
+gam_age <- gam(wage ~ s(age, k = 20), data = Wage,
+               method = "REML")
+summary(gam_age)
+```
+
+```{r}
+plot_wage_fit(gam_age, age_df, "GAM: Smooth Effect of Age")
+```
+
+## Exploring the smoothing parameter
+
+The following fits use fixed smoothing parameters across several orders of magnitude. In `mgcv`, the `sp` argument supplies the smoothing parameter on the package's internal penalty scale.
+
+```{r gam-smoothing-parameter}
+sp_values <- 10^seq(-2, 6, length.out = 5)
+cols <- grDevices::hcl.colors(length(sp_values), "Dark 3")
+
+plot(age, y, pch = 16,
+     col = grDevices::adjustcolor("gray40", alpha.f = 0.35),
+     xlab = "Age", ylab = "Wage",
+     main = "GAM Curves for Different Smoothing Parameters")
+
+for (j in seq_along(sp_values)) {
+  m <- gam(wage ~ s(age, k = 20), data = Wage,
+           sp = sp_values[j], method = "REML")
+  lines(age_grid, predict(m, newdata = age_df),
+        col = cols[j], lwd = 3)
+}
+legend("topright", legend = format(sp_values, scientific = TRUE),
+       col = cols, lwd = 3, title = "sp", bty = "n")
+```
+
+In practice, we commonly let `mgcv` **estimate** the amount of smoothing, for example using restricted maximum likelihood (REML). Unlike a manual grid search over the smoothing parameter, REML estimates it as part of fitting the model.
+
+```{r gam-selected-smoothing}
+gam_opt <- gam(wage ~ s(age, k = 20), data = Wage,
+               method = "REML")
+summary(gam_opt)
+
+auto_pred <- predict(gam_opt, newdata = age_df, se.fit = TRUE)
+plot(age, y, pch = 16,
+     col = grDevices::adjustcolor("gray40", alpha.f = 0.35),
+     xlab = "Age", ylab = "Wage",
+     main = "GAM with REML-Selected Smoothing")
+lines(age_grid, auto_pred$fit, col = "blue", lwd = 3)
+lines(age_grid, auto_pred$fit + 1.96 * auto_pred$se.fit,
+      col = "red", lty = 2, lwd = 2)
+lines(age_grid, auto_pred$fit - 1.96 * auto_pred$se.fit,
+      col = "red", lty = 2, lwd = 2)
+```
+
+The **effective degrees of freedom (edf)** reported in `summary()` describe the complexity of the fitted smooth. An edf near one suggests an approximately linear effect; larger values indicate increasing nonlinear flexibility.
+
+# Additive models with several terms
+
+Generalized Additive Models (GAMs) extend linear regression by letting each predictor have its **own flexible shape**, then **adding** the effects together. This gives more flexibility than a purely linear model.
+
+We'll show two ways to fit a multivariate GAM:
+
+1.  **By hand (manual basis expansion):**
+    -   Use **natural splines** for `year` and `age`
+    -   Treat `education` as a **categorical** predictor (piecewise-constant effects)
+    -   Fit the resulting "big linear model" with `lm()`
+2.  **With `mgcv`:**
+    -   Use smoothing splines directly via the GAM API
+
+In this section, we do it **by hand** so we can keep each component (e.g., the `age` spline part) separate—this makes it easy to build **partial dependence plots** later.
+
+A **multivariate additive model** for Wage:
+
+$$
+\text{wage}_i = \beta_0 + f_{\text{year}}(\text{year}_i) + f_{\text{age}}(\text{age}_i) + \sum_j \beta_j \mathbf{1}\{\text{education}_i = j\} + \varepsilon_i
+$$
+
+This is still a **linear model in a feature/basis expansion**, but some blocks of features come from spline bases.
+
+-   Additivity makes the model interpretable (separate partial effects), but it cannot represent strong interactions unless you add interaction terms explicitly.
+
+```{r}
+library(ISLR2)
+library(splines)
+
+age <- Wage$age
+y <- Wage$wage
+
+ns_age <- ns(age, df = 4)
+ns_year <- ns(Wage$year, df = 5)
+
+Xs <- list(
+  ns_age,
+  ns_year,
+  model.matrix(~ education - 1, data = Wage)
+)
+
+X_bh <- do.call(cbind, Xs)
+
+colnames(X_bh) <- make.names(colnames(X_bh), unique = TRUE)
+
+gam_bh <- lm(wage ~ . - 1,
+             data = data.frame(wage = y, X_bh))
+
+summary(gam_bh)
+```
+
+## Partial dependence plots (by hand)
+
+To plot each term's effect, we create grids for `age` and `year` and make predictions with new design matrices while:
+
+-   varying one feature over its grid, and
+-   holding the other features fixed (e.g., at typical values).
+
+This isolates the contribution of each term for visualization.
+
+```{r}
+age_grid <- seq(min(age), max(age), length.out = 100)
+
+X_age_bh <- matrix(
+  rep(colMeans(X_bh), each = 100),
+  nrow = 100
+)
+
+colnames(X_age_bh) <- colnames(X_bh)
+
+X_age_bh[, 1:4] <- predict(ns_age, newx = age_grid)
+
+preds <- predict(
+  gam_bh,
+  newdata = as.data.frame(X_age_bh),
+  interval = "confidence",
+  level = 0.95
+)
+
+bounds_age <- preds[, c("lwr", "upr")]
+partial_age <- preds[, "fit"]
+
+center <- mean(partial_age)
+
+partial_age <- partial_age - center
+bounds_age <- bounds_age - center
+
+plot(age_grid, partial_age,
+     type = "l", col = "blue", lwd = 3,
+     xlab = "Age",
+     ylab = "Effect on wage",
+     main = "Partial dependence of age on wage")
+
+lines(age_grid, bounds_age[, 1],
+      col = "red", lty = 2, lwd = 3)
+
+lines(age_grid, bounds_age[, 2],
+      col = "red", lty = 2, lwd = 3)
+```
+
+Let's explain in some detail what we did above. The idea is to create a new prediction matrix, where all but the columns belonging to `age` are constant (and set to their training-data means). The four columns for `age` are filled in with the natural spline basis evaluated at the 100 values in `age_grid`.
+
+-   We made a grid of length 100 in `age`, and created a matrix `X_age_bh` with 100 rows and the same number of columns as `X_bh`.
+-   We replaced every row of this matrix with the column means of the original.
+-   We then replace just the first four columns representing `age` with the natural spline basis computed at the values in `age_grid`.
+-   The remaining steps should by now be familiar.
+
+We also look at the effect of `year` on `wage`; the process is the same.
+
+```{r}
+year_grid <- seq(
+  min(Wage$year),
+  max(Wage$year),
+  length.out = 100
+)
+
+X_year_bh <- matrix(
+  rep(colMeans(X_bh), each = 100),
+  nrow = 100
+)
+
+colnames(X_year_bh) <- colnames(X_bh)
+
+X_year_bh[, 5:9] <- predict(ns_year, newx = year_grid)
+
+preds <- predict(
+  gam_bh,
+  newdata = as.data.frame(X_year_bh),
+  interval = "confidence",
+  level = 0.95
+)
+
+bounds_year <- preds[, c("lwr", "upr")]
+partial_year <- preds[, "fit"]
+
+center <- mean(partial_year)
+
+partial_year <- partial_year - center
+bounds_year <- bounds_year - center
+
+plot(year_grid, partial_year,
+     type = "l", col = "blue", lwd = 3,
+     xlab = "Year",
+     ylab = "Effect on wage",
+     main = "Partial dependence of year on wage")
+
+lines(year_grid, bounds_year[, 1],
+      col = "red", lty = 2, lwd = 3)
+
+lines(year_grid, bounds_year[, 2],
+      col = "red", lty = 2, lwd = 3)
+```
+
+## Fitting with smoothing splines (`mgcv`)
+
+Now we use smoothing splines instead of natural splines.
+
+`mgcv` allows us to specify smooth terms directly using `s()` and categorical terms using factors.
+
+Since `year` has only 7 unique values, we limit its spline to 7 basis functions.
+
+```{r}
+library(mgcv)
+
+gam_full <- gam(
+  wage ~ s(age) +
+         s(year, k = 7) +
+         education,
+  data = Wage,
+  family = gaussian(),
+  method = "REML"
+)
+
+summary(gam_full)
+```
+
+The two `s()` terms result in smooth spline fits, with smoothing parameters estimated automatically by `mgcv`. For the categorical term `education`, we include an ordinary factor term to avoid any shrinkage.
+
+We produce the partial dependence plot in `age` to see the effect of these choices.
+
+The values for the plot are generated by the `mgcv` package. We can use `plot()` directly, which makes this job easier than in our last example with natural splines.
+
+```{r}
+plot(gam_full,
+     select = 1,
+     shade = FALSE,
+     se = TRUE,
+     xlab = "Age",
+     ylab = "Effect on wage",
+     main = "Partial dependence of age on wage")
+```
+
+We see that the function can be somewhat wiggly. It is more natural to specify the degrees of freedom than a value for the smoothing parameter.
+
+We refit a GAM using a basis dimension of five for both `age` and `year`, allowing up to four effective degrees of freedom for each smooth (because one degree of freedom is used by the centering constraint).
+
+```{r}
+gam_full <- gam(
+  wage ~ s(age, k = 5) +
+         s(year, k = 5) +
+         education,
+  data = Wage,
+  family = gaussian(),
+  method = "REML"
+)
+
+summary(gam_full)
+```
+
+Note that setting `k = 5` does not force the effective degrees of freedom to equal four. The smoothing parameters are still selected automatically, so the fitted effective degrees of freedom may be smaller.
+
+Repeating the plot for `age`, we can examine the resulting smooth. We also produce the plot for `year`.
+
+```{r}
+plot(gam_full,
+     select = 1,
+     shade = FALSE,
+     se = TRUE,
+     xlab = "Age",
+     ylab = "Effect on wage",
+     main = "Partial dependence of age on wage")
+```
+
+```{r}
+plot(gam_full,
+     select = 2,
+     shade = FALSE,
+     se = TRUE,
+     xlab = "Year",
+     ylab = "Effect on wage",
+     main = "Partial dependence of year on wage")
+```
+
+Finally we plot `education`, which is categorical. The partial dependence plot is different, and more suitable for the set of fitted constants for each level of this variable.
+
+```{r}
+education_levels <- levels(Wage$education)
+
+newdata <- data.frame(
+  age = rep(mean(Wage$age), length(education_levels)),
+  year = rep(mean(Wage$year), length(education_levels)),
+  education = factor(education_levels, levels = education_levels)
+)
+
+# Get education effects and standard errors
+preds <- predict(gam_full, newdata = newdata,
+                 type = "terms", se.fit = TRUE)
+
+effect <- preds$fit[, "education"]
+se <- preds$se.fit[, "education"]
+
+# Center the effects
+effect <- effect - mean(effect)
+
+# 95% confidence intervals
+lower <- effect - 1.96 * se
+upper <- effect + 1.96 * se
+
+# Bar plot
+bp <- barplot(
+  effect,
+  names.arg = education_levels,
+  col = "steelblue",
+  border = NA,
+  ylim = range(c(0, lower, upper)),
+  xlab = "Education",
+  ylab = "Effect on wage",
+  main = "Partial dependence of wage on education",
+  cex.names = 0.7
+)
+
+arrows(bp, lower, bp, upper,
+       angle = 90, code = 3, length = 0.05, lwd = 2)
+```
+
+# LOWESS (local regression)
+
+LOWESS fits a local regression around each target value $x_0$, giving observations closer to $x_0$ more weight. A local linear fit can be written as
+
+$$
+\min_{a,b}\sum_{i=1}^n w_i(x_0)\{y_i-a-b(x_i-x_0)\}^2,
+$$
+
+with fitted value $\hat f(x_0) = \hat a$. The weights decrease with distance from $x_0$.
+
+The **span** controls the fraction of data used in a local fit:
+
+-   `span = 0.2`: narrower neighborhoods, usually more flexible.
+-   `span = 0.5`: wider neighborhoods, usually smoother.
+
+Base R's `loess()` implements a closely related local polynomial method. We set `degree = 1` to use local linear fits, and `family = "gaussian"` to avoid an additional robust reweighting step.
+
+```{r lowess}
+loess_02 <- loess(wage ~ age, data = Wage,
+                  span = 0.2, degree = 1, family = "gaussian")
+loess_05 <- loess(wage ~ age, data = Wage,
+                  span = 0.5, degree = 1, family = "gaussian")
+
+pred_02 <- predict(loess_02, newdata = age_df)
+pred_05 <- predict(loess_05, newdata = age_df)
+
+plot(age, y, pch = 16,
+     col = grDevices::adjustcolor("gray40", alpha.f = 0.35),
+     xlab = "Age", ylab = "Wage",
+     main = "Local Linear Regression: Different Spans")
+lines(age_grid, pred_02, col = "blue", lwd = 3)
+lines(age_grid, pred_05, col = "red", lwd = 3)
+legend("topright", legend = c("span = 0.2", "span = 0.5"),
+       col = c("blue", "red"), lwd = 3, bty = "n")
+```
+
+*Note:* `stats::lowess()` is also available in R, but `loess()` offers a formula interface and explicit local polynomial degree, making it more convenient here.
+
+# Summary and a question to think about
+
+-   **Polynomial regression:** a global polynomial basis. Easy to fit, but high degrees can overfit or behave strangely near boundaries.
+-   **Regression splines:** piecewise polynomials joined at knots; local flexibility is controlled by knot placement and basis size.
+-   **Natural splines:** cubic splines constrained to have linear tails, often yielding more stable boundary behavior.
+-   **GAMs / smoothing splines:** additive functions with penalized smoothness; smoothing parameters control wiggliness, and effective degrees of freedom describe fitted complexity.
+-   **LOWESS:** local regression fits around target values, with the span determining neighborhood size.
+
+## How should we choose among models?
+
+There’s no single best answer—here are a few practical hints:
+
+**1. What’s the goal?** - Interpretation (clear partial effects) → splines / GAMs - Pure prediction → choose complexity by cross-validation (degree/df/lam)
+
+**2. Do you care about boundary behavior / extrapolation?** -Natural splines or stronger regularization often behave better near the edges.
+
+**3. How many predictors do you have?** - Many predictors → GAMs are a natural next step (additive structure) - LOWESS is mostly used for 1D smoothing.
+
+**4.How much data do you have?** - More data supports more flexibility; with small data, regularization matters more.
+
+## Optional exercise: Validation split
+
+Try two natural-spline models of different complexity. Compare their training and validation mean squared errors. What happens to the shape of the fitted curve as `df` increases?
+
+```{r validation-exercise}
+set.seed(442)
+train_ids <- sample(seq_len(nrow(Wage)), size = floor(0.7 * nrow(Wage)))
+train <- Wage[train_ids, ]
+test  <- Wage[-train_ids, ]
+
+# Fix the boundary knots to the observed age range, so both training
+# and validation ages are within the spline's declared support.
+all_boundaries <- range(Wage$age)
+
+fit_4 <- lm(wage ~ ns(age, df = 4, Boundary.knots = all_boundaries), data = train)
+fit_8 <- lm(wage ~ ns(age, df = 8, Boundary.knots = all_boundaries), data = train)
+
+mse <- function(actual, predicted) mean((actual - predicted)^2)
+
+results <- data.frame(
+  df = c(4, 8),
+  training_MSE = c(mse(train$wage, fitted(fit_4)),
+                   mse(train$wage, fitted(fit_8))),
+  validation_MSE = c(mse(test$wage, predict(fit_4, newdata = test)),
+                     mse(test$wage, predict(fit_8, newdata = test)))
+)
+results
+```
+
+**Discussion:** Does the model with the smaller training MSE also have the smaller validation MSE? Why might the answer differ across random splits?

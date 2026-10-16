@@ -3715,5 +3715,579 @@
     "title": "Multiclass Logistic Regression and Discriminant Analysis",
     "section": "Discriminant Analysis",
     "text": "Discriminant Analysis\nWhat does parametrizing \\(X\\mid Y=k\\) buy us?\n\nBy Bayes’ theorem,\n\n\\[\\mathbb P(Y=k\\mid X=\\boldsymbol x)=\\frac{\\mathbb P(X=\\boldsymbol x\\mid Y=k)\\mathbb P(Y=k)}{\\mathbb P(X=\\boldsymbol x)}.\\]\n\n\nThus, to compare two classes \\(k,k'\\in\\mathcal C\\) with \\(k\\neq k'\\)\n\n\\[\n\\begin{gathered}\n\\mathbb P(Y=k\\mid X=\\boldsymbol x)\\geq\\mathbb P(Y=k'\\mid X=\\boldsymbol x)\\\\\n\\Longleftrightarrow\\ \\mathbb P(X=\\boldsymbol x\\mid Y=k)\\mathbb P(Y=k)\\geq\\mathbb P(X=\\boldsymbol x\\mid Y=k')\\mathbb P(Y=k')\n\\end{gathered}\n\\]"
+  },
+  {
+    "objectID": "Week7.html#learning-outcomes",
+    "href": "Week7.html#learning-outcomes",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of this week, you should be able to:\n\nExplain how decision trees partition the feature space to make predictions for regression and classification.\nDescribe how recursive binary splitting constructs decision trees and how splitting criteria differ between regression and classification.\nExplain how cost-complexity pruning and cross-validation help prevent overfitting.\nEvaluate the advantages and limitations of decision trees compared to linear models.\nDescribe the bootstrap procedure and how it can be used to estimate the uncertainty of a statistical estimator."
+  },
+  {
+    "objectID": "Week7.html#tree-based-methods-1",
+    "href": "Week7.html#tree-based-methods-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Tree-Based Methods",
+    "text": "Tree-Based Methods\n\nTree-based methods can be applied for both regression and classification.\nSince the method can be summarized in a tree structure, these types of approaches are known as decision tree methods.\n\n\n\n\nTree-based methods are simple and useful for interpretation.\nHowever, they typically are not competitive with the best supervised learning approaches.\nWe will (later) introduce bagging, random forests, and boosting to combine multiple decision trees to improve the performance."
+  },
+  {
+    "objectID": "Week7.html#example-of-decision-trees",
+    "href": "Week7.html#example-of-decision-trees",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Example of Decision Trees",
+    "text": "Example of Decision Trees\nMake predictions by splitting on features according to a tree structure."
+  },
+  {
+    "objectID": "Week7.html#example-of-decision-trees-1",
+    "href": "Week7.html#example-of-decision-trees-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Example of Decision Trees",
+    "text": "Example of Decision Trees\nMake predictions by splitting on features according to a tree structure."
+  },
+  {
+    "objectID": "Week7.html#example-of-decision-treesdiscrete-features",
+    "href": "Week7.html#example-of-decision-treesdiscrete-features",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Example of Decision Trees—Discrete features",
+    "text": "Example of Decision Trees—Discrete features"
+  },
+  {
+    "objectID": "Week7.html#example-of-decision-treesdiscrete-features-1",
+    "href": "Week7.html#example-of-decision-treesdiscrete-features-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Example of Decision Trees—Discrete features",
+    "text": "Example of Decision Trees—Discrete features"
+  },
+  {
+    "objectID": "Week7.html#example-of-decision-treescontinuous-features",
+    "href": "Week7.html#example-of-decision-treescontinuous-features",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Example of Decision Trees—Continuous features",
+    "text": "Example of Decision Trees—Continuous features\nFor continuous features, we partition the range by checking whether that attribute is greater than or less than some threshold.\nDecision boundary is made up of rectangles."
+  },
+  {
+    "objectID": "Week7.html#terminology-of-decision-trees",
+    "href": "Week7.html#terminology-of-decision-trees",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Terminology of Decision Trees",
+    "text": "Terminology of Decision Trees\n\n\n\nAn internal node means an attribute, i.e., a feature.\nBranching is determined by the attribute value.\nChildren of a node partition the range of the attribute from the parent.\nLeaf nodes are predicted outputs."
+  },
+  {
+    "objectID": "Week7.html#decision-treesclassification-and-regression",
+    "href": "Week7.html#decision-treesclassification-and-regression",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Decision Trees—Classification and Regression",
+    "text": "Decision Trees—Classification and Regression\n\nLet \\(J\\) be the total number of paths from root to a leaf.\nEach path, \\(j\\in\\{1,2,\\ldots,J\\}\\), defines a region \\(R_j\\) of the feature space.\nLet \\(\\{(x_1^{(j)},y_1^{(j)}),\\ldots,(x_k^{(j)},y_k^{(j)})\\}\\) be the training data points that fall into \\(R_j\\)\n\n\n\n\nRegression tree:\n\ncontinuous output\nleaf value \\(y^{R_j}\\) typically set to the mean value in \\(\\{y_1^{(j)},\\ldots,y_k^{(j)}\\}\\)\n\n\n\n\n\nClassification tree:\n\ndiscrete output\nleaf value \\(y^{R_j}\\) typically set to the majority label in \\(\\{y_1^{(j)},\\ldots,y_k^{(j)}\\}\\)"
+  },
+  {
+    "objectID": "Week7.html#regression-decision-trees",
+    "href": "Week7.html#regression-decision-trees",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Regression Decision Trees",
+    "text": "Regression Decision Trees\nWe want to predict the salary of a baseball player, based on (1) the number of years that he has played in the leagues and (2) the number of hits that he made in the previous year.\n\nSalary is color-coded from low (blue, green) to high (yellow, red)."
+  },
+  {
+    "objectID": "Week7.html#what-does-a-fitted-decision-tree-look-like",
+    "href": "Week7.html#what-does-a-fitted-decision-tree-look-like",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "What does a fitted decision tree look like?",
+    "text": "What does a fitted decision tree look like?\n\nAt a given internal node, the label (of the form \\(X_j&lt;t\\)) indicates the left-hand branch emanating from that split, and the right-hand branch corresponds to \\(X_j\\ge t\\). The number in each leaf (external node) is the mean of the response for the observations that fall there."
+  },
+  {
+    "objectID": "Week7.html#partitioned-regions-for-the-hitters-data-set",
+    "href": "Week7.html#partitioned-regions-for-the-hitters-data-set",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Partitioned regions for the Hitters data set",
+    "text": "Partitioned regions for the Hitters data set\nOverall, the tree stratifies or segments the players into three regions of feature space:\n\n\n\\[R_1=\\{X\\mid\\mathrm{Years}&lt;4.5\\}\\]\n\\[R_2=\\{X\\mid\\mathrm{Years}\\ge4.5,\\ \\mathrm{Hits}&lt;117.5\\}\\]\n\\[R_3=\\{X\\mid\\mathrm{Years}\\ge4.5,\\ \\mathrm{Hits}\\ge117.5\\}.\\]"
+  },
+  {
+    "objectID": "Week7.html#interpretation-of-results",
+    "href": "Week7.html#interpretation-of-results",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Interpretation of Results",
+    "text": "Interpretation of Results\n\nYears is the most important factor in determining Salary, and players with less experience earn lower salaries than more experienced players.\n\n\n\nGiven that a player is less experienced, the number of Hits that he made in the previous year seems to play little role in his Salary.\n\n\n\n\nBut among players who have been in the major leagues for five or more years, the number of Hits made in the previous year does affect Salary, and players who made more Hits last year tend to have higher salaries.\n\n\n\n\n\nSurely an over-simplification, but compared to a regression model, it is easier to interpret, and has a nice graphical representation."
+  },
+  {
+    "objectID": "Week7.html#how-to-build-a-regression-tree",
+    "href": "Week7.html#how-to-build-a-regression-tree",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "How to Build a Regression Tree?",
+    "text": "How to Build a Regression Tree?\n\nStep 1: We divide the feature space, i.e., the set of possible values for \\(X_1,X_2,\\ldots,X_p\\), into \\(J\\) distinct and non-overlapping regions, \\(R_1,R_2,\\ldots,R_J\\).\n\n \n\n\nStep 2: For every observation that falls into the region \\(R_j\\), we make the same prediction, which is simply the mean of the response values for the training observations in \\(R_j\\)."
+  },
+  {
+    "objectID": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j",
+    "href": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?",
+    "text": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?\n\nIn theory, the splitted regions could have any shape. However, we choose to divide the feature space into multi-dimensional rectangles for ease of interpretation of the resulting predictive model.\n\n\n\nThe goal is to find rectangles \\(R_1,R_2,\\ldots,R_J\\) that minimize the residual sum of squares (RSS), given by\n\n\\[\\sum_{j=1}^{J}\\sum_{i\\in R_j}(y_i-\\bar y_{R_j})^2,\\]\nwhere\n\\[\\bar y_{R_j}=\\frac{1}{|R_j|}\\sum_{i\\in R_j}y_i\\]\nis the mean response for the training observations in \\(R_j\\)."
+  },
+  {
+    "objectID": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j-1",
+    "href": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?",
+    "text": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?\n\nUnfortunately, it is computationally infeasible to enumerate all possible partitions of the feature space into \\(J\\) boxes.\n\n\n\nFor this reason, we take a top-down, greedy approach that is known as recursive binary splitting.\n\n\n\n\nThe approach is top-down because it begins at the top of the tree and then successively splits the feature space; each split is indicated via two new branches further down on the tree.\n\n\n\n\n\nIt is greedy because at each step of the tree-building process, the best split is made at that particular step, rather than looking ahead and picking a split that will lead to a better tree in some future step."
+  },
+  {
+    "objectID": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j-2",
+    "href": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j-2",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?",
+    "text": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?\n\nWe first select the feature \\(X_j\\) among all \\(X_1,\\ldots,X_p\\), and the cutpoint \\(s\\) such that splitting the feature space into the regions \\(\\{X\\mid X_j&lt;s\\}\\) and \\(\\{X\\mid X_j\\ge s\\}\\) leads to the greatest possible reduction in RSS.\n\n\n\n\nMathematically, we seek the value of \\(j\\in\\{1,2,\\ldots,p\\}\\) and \\(s\\in\\mathbb R\\) that minimize the equation\n\n\\[\\sum_{i:x_i\\in R_1(j,s)}(y_i-\\bar y_{R_1})^2+\\sum_{i:x_i\\in R_2(j,s)}(y_i-\\bar y_{R_2})^2\\]\nwhere\n\n\\(R_1(j,s)=\\{X\\mid X_j&lt;s\\}\\) and \\(R_2(j,s)=\\{X\\mid X_j\\ge s\\}\\)\n\\(\\bar y_{R_1}\\) and \\(\\bar y_{R_2}\\) are, respectively, the averaged responses of the training data in \\(R_1(j,s)\\) and \\(R_2(j,s)\\)."
+  },
+  {
+    "objectID": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j-3",
+    "href": "Week7.html#how-to-construct-regions-r_1-r_2-ldots-r_j-3",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?",
+    "text": "How to Construct Regions \\(R_1, R_2, \\ldots, R_J\\)?\n\nNext, we repeat the process, looking for the best feature and the best cutpoint in order to further split the data, leading to the greatest reduction of RSS.\nHowever, this time, instead of splitting the entire feature space, we split one of the two previously identified regions. We now have three regions.\n\n\n\n\nThe process continues until a stopping criterion is reached\nwe may stop when no region contains more than 5 observations\n\n\n\n\n\nOnce \\(R_1,R_2,\\ldots,R_J\\) are identified, we predict the response for a given test point using the averaged response of the training observations in the region."
+  },
+  {
+    "objectID": "Week7.html#an-example-with-5-regions",
+    "href": "Week7.html#an-example-with-5-regions",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "An Example with 5 Regions",
+    "text": "An Example with 5 Regions"
+  },
+  {
+    "objectID": "Week7.html#an-example-with-5-regions-1",
+    "href": "Week7.html#an-example-with-5-regions-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "An Example with 5 Regions",
+    "text": "An Example with 5 Regions\n\nTop Left: A partition of two-dimensional feature space that could not result from recursive binary splitting.\n\n\n\nTop Right: The output of recursive binary splitting on a two-dimensional example.\n\n\n\nBottom Left: A tree corresponding to the partition in the top right panel.\n\n\n\nBottom Right: A perspective plot of the prediction surface corresponding to that tree."
+  },
+  {
+    "objectID": "Week7.html#tree-pruning",
+    "href": "Week7.html#tree-pruning",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Tree Pruning",
+    "text": "Tree Pruning\n\nThe process described above may produce good predictions on the training set, but is likely to overfit the data, leading to poor test set performance.\nThis can happen when the resulting decision tree is too complex (e.g. only one observation per region)\n\n\n\n\nA smaller tree with fewer splits (that is, fewer regions \\(R_1,R_2,\\ldots,R_J\\)) might lead to lower variance and better interpretation at the cost of a little bias.\n\n\n\n\n\nIntuitively, our goal is to select a subtree that leads to the lowest test error rate\nHowever, estimating the cross-validation error for every possible subtree is not feasible, since the number of possible subtrees is large\n\n\n\n\nWe need a way to select a small set of subtrees for consideration."
+  },
+  {
+    "objectID": "Week7.html#tree-pruning-1",
+    "href": "Week7.html#tree-pruning-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Tree Pruning",
+    "text": "Tree Pruning\n\nA common strategy is to grow a very large tree \\(T_0\\), and then prune it back in order to obtain a subtree. We use the cost complexity pruning, a.k.a. weakest link pruning.\nWe consider a sequence of trees indexed by a nonnegative tuning parameter \\(\\alpha\\). For each value of \\(\\alpha\\) find a subtree \\(T\\subset T_0\\) such that\n\n\\[\\sum_{m=1}^{|T|}\\sum_{i:x_i\\in R_m}(y_i-\\bar y_{R_m})^2+\\alpha|T|,\\]\nis minimized. Here \\(|T|\\) indicates the number of leaf nodes of the tree \\(T\\).\n\nThe tuning parameter \\(\\alpha\\) controls a trade-off between the subtree’s complexity and its fit to the training data.\n\\(\\alpha=0\\) gives \\(T_0\\)."
+  },
+  {
+    "objectID": "Week7.html#tree-pruning-2",
+    "href": "Week7.html#tree-pruning-2",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Tree Pruning",
+    "text": "Tree Pruning\n\nIt turns out that as we increase \\(\\alpha\\) from 0, branches get pruned from the tree in a nested and predictable fashion, so obtaining the whole sequence of subtrees as a function of \\(\\alpha\\) is easy.\n\n\n\nWe can select a value of \\(\\alpha\\) using a validation set or using cross-validation.\n\n\n\nWe then return to the full data set and obtain the subtree corresponding to \\(\\alpha\\)."
+  },
+  {
+    "objectID": "Week7.html#algorithm-for-building-a-regression-tree",
+    "href": "Week7.html#algorithm-for-building-a-regression-tree",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Algorithm for Building a Regression Tree",
+    "text": "Algorithm for Building a Regression Tree\nAlgorithm: Building a Regression Tree\n\nUse recursive binary splitting to grow a large tree on the training data, stopping only when each terminal node has fewer than some minimum number of observations.\nApply cost complexity pruning to the large tree in order to obtain a sequence of best subtrees, as a function of \\(\\alpha\\).\nUse \\(K\\)-fold cross-validation to choose \\(\\alpha\\). That is, divide the training observations into \\(K\\) folds. For each \\(k=1,\\ldots,K\\):\n\n\nRepeat Steps 1 and 2 on all but the \\(k\\)th fold of the training data.\nEvaluate the mean squared prediction error on the data in the left-out \\(k\\)th fold, as a function of \\(\\alpha\\).\n\nAverage the results for each value of \\(\\alpha\\), and pick \\(\\alpha\\) to minimize the average error.\n\nReturn the subtree from Step 2 that corresponds to the chosen value of \\(\\alpha\\)."
+  },
+  {
+    "objectID": "Week7.html#baseball-example",
+    "href": "Week7.html#baseball-example",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Baseball Example",
+    "text": "Baseball Example\n\nFirst, we randomly divided the data set in half, yielding 132 observations in the training set and 131 observations in the test set.\n\n\n\nWe then built a large regression tree on the training data and varied \\(\\alpha\\) to create subtrees with different numbers of terminal nodes.\n\n\n\nFinally, we performed six-fold cross-validation in order to estimate the cross-validated MSE of the trees as a function of \\(\\alpha\\)."
+  },
+  {
+    "objectID": "Week7.html#hitters-data-set",
+    "href": "Week7.html#hitters-data-set",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Hitters data set",
+    "text": "Hitters data set"
+  },
+  {
+    "objectID": "Week7.html#hitters-data-set-the-unpruned-tree",
+    "href": "Week7.html#hitters-data-set-the-unpruned-tree",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Hitters data set: the unpruned tree",
+    "text": "Hitters data set: the unpruned tree"
+  },
+  {
+    "objectID": "Week7.html#hitters-data-set-the-pruned-tree",
+    "href": "Week7.html#hitters-data-set-the-pruned-tree",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Hitters data set: the pruned tree",
+    "text": "Hitters data set: the pruned tree"
+  },
+  {
+    "objectID": "Week7.html#classification-trees",
+    "href": "Week7.html#classification-trees",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Classification Trees",
+    "text": "Classification Trees\n\nA classification tree is very similar to a regression tree, except that it is used to predict a qualitative response rather than a quantitative one.\n\n\n\nFor a classification tree, we predict that each observation belongs to the most commonly occurring class of training observations in the region to which it belongs.\n\n\n\nJust as in the regression setting, we use recursive binary splitting to grow a classification tree.\n\n\n\nBut, RSS cannot be used as a criterion for making the binary splits. What metric should we use instead?"
+  },
+  {
+    "objectID": "Week7.html#metrics-used-for-classification-trees",
+    "href": "Week7.html#metrics-used-for-classification-trees",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Metrics used for classification trees",
+    "text": "Metrics used for classification trees\n\nA natural alternative to RSS is the 0-1 misclassification error rate. For region \\(R_m\\) with \\(K\\) classes of labels: for \\(k\\in\\{1,\\ldots,K\\}\\),\n\n\\[\\hat p_{mk}=\\frac{1}{|R_m|}\\sum_{i:x_i\\in R_m}\\mathbf 1\\{y_i=k\\}\\]\n\n\nThe misclassification error rate in region \\(R_m\\) is\n\n\\[1-\\max_{k\\in\\{1,\\ldots,K\\}}\\hat p_{mk}.\\]\n\n\n\nHowever misclassification error is not sufficiently sensitive for the change of \\(\\hat p_{mk}\\), hence not suitable for finding the splits for building classification trees."
+  },
+  {
+    "objectID": "Week7.html#choosing-a-good-split",
+    "href": "Week7.html#choosing-a-good-split",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Choosing a Good Split",
+    "text": "Choosing a Good Split\nConsider the following data. Let’s split on width."
+  },
+  {
+    "objectID": "Week7.html#choosing-a-good-split-1",
+    "href": "Week7.html#choosing-a-good-split-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Choosing a Good Split",
+    "text": "Choosing a Good Split\nRecall: classify by majority.\n\nA and B have the same misclassification rate, so which is the best split? Vote!"
+  },
+  {
+    "objectID": "Week7.html#choosing-a-good-split-2",
+    "href": "Week7.html#choosing-a-good-split-2",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Choosing a Good Split",
+    "text": "Choosing a Good Split\n\nCase A feels like a better split, because the left-hand region is very certain about whether the fruit is an orange.\nCan we quantify this?"
+  },
+  {
+    "objectID": "Week7.html#quantifying-uncertainty",
+    "href": "Week7.html#quantifying-uncertainty",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Quantifying Uncertainty",
+    "text": "Quantifying Uncertainty\n\nThe entropy of a discrete random variable is a number that quantifies the uncertainty inherent in its possible outcomes.\n\n\n\nThe mathematical definition of entropy that we give in a few slides may seem arbitrary, but it can be motivated axiomatically.\n\nIf you’re interested, check: Information Theory by Robert Ash.\n\n\n\n\nTo explain entropy, consider flipping two different coins."
+  },
+  {
+    "objectID": "Week7.html#we-flip-two-different-coins",
+    "href": "Week7.html#we-flip-two-different-coins",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "We Flip Two Different Coins",
+    "text": "We Flip Two Different Coins"
+  },
+  {
+    "objectID": "Week7.html#quantifying-uncertainty-1",
+    "href": "Week7.html#quantifying-uncertainty-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Quantifying Uncertainty",
+    "text": "Quantifying Uncertainty\n\nThe entropy of a loaded coin with probability \\(p\\) of heads is given by\n\n\\[-p\\log_2(p)-(1-p)\\log_2(1-p)\\]\n\n\nNotice: the coin whose outcomes are more certain has a lower entropy.\nIn the extreme case \\(p=0\\) or \\(p=1\\), we were certain of the outcome before observing. So, we gained no certainty by observing it, i.e., entropy is 0."
+  },
+  {
+    "objectID": "Week7.html#revisiting-our-original-example",
+    "href": "Week7.html#revisiting-our-original-example",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Revisiting Our Original Example",
+    "text": "Revisiting Our Original Example\nLet’s compute the entropies associated with Split B.\n\n\n\nLeft branching: \\(\\hat p_{\\mathrm{orange}}=3/4\\) and \\(\\hat p_{\\mathrm{lemon}}=1/4\\). Its entropy is \\(-\\frac34\\log_2\\frac34-\\frac14\\log_2\\frac14\\approx0.81\\).\nRight branching: \\(\\hat p_{\\mathrm{orange}}=2/3\\) and \\(\\hat p_{\\mathrm{lemon}}=1/3\\). Its entropy is \\(-\\frac23\\log_2\\frac23-\\frac13\\log_2\\frac13\\approx0.92\\)\nThe summation of entropies is 1.73."
+  },
+  {
+    "objectID": "Week7.html#revisiting-our-original-example-1",
+    "href": "Week7.html#revisiting-our-original-example-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Revisiting Our Original Example",
+    "text": "Revisiting Our Original Example\nWhat is the information gain of split A? Very informative!\n\n\n\nLeft branching: \\(\\hat p_{\\mathrm{orange}}=1\\) and \\(\\hat p_{\\mathrm{lemon}}=0\\). Its entropy is 0.\nRight branching: \\(\\hat p_{\\mathrm{orange}}=3/5\\) and \\(\\hat p_{\\mathrm{lemon}}=2/5\\). Its entropy is \\(-\\frac35\\log_2\\frac35-\\frac25\\log_2\\frac25\\approx0.97\\)\nThe summation of entropies is 0.97. So we have less uncertainty for the second split. Uncertainty can also be understood as node purity."
+  },
+  {
+    "objectID": "Week7.html#deviance-and-gini-index",
+    "href": "Week7.html#deviance-and-gini-index",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Deviance and Gini index",
+    "text": "Deviance and Gini index\n\nFor a region \\(R_m\\), an entropy based metric is called Deviance, and is given by\n\n\\[-\\sum_{k=1}^{K}\\hat p_{mk}\\log\\hat p_{mk},\\]\n\nAnother popular metric is Gini index, defined by\n\n\\[\\sum_{k=1}^{K}\\hat p_{mk}(1-\\hat p_{mk}),\\]\na measure of total variance across the \\(K\\) classes.\n\n\nBoth Deviance and Gini index are small if all of the \\(\\hat p_{mk}\\)’s are close to zero or one. They are measures of node purity – a small value indicates that a node contains observations that most of them come from a single, dominant class."
+  },
+  {
+    "objectID": "Week7.html#misclassification-error-rate-gini-index-and-deviance",
+    "href": "Week7.html#misclassification-error-rate-gini-index-and-deviance",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Misclassification error rate, Gini index and Deviance",
+    "text": "Misclassification error rate, Gini index and Deviance\n\nIt turns out that Gini index and Deviance are quite similar numerically.\n\n\n\nOn the one hand, for building a classification tree, either Gini index or Deviance can be used for finding best splits, since they are more sensitive to node purity than the misclassification error rate.\n\n\n\nOn the other hand, all Gini index, Deviance and misclassification error can be used for pruning the tree, but the misclassification error is preferable if classification accuracy is the final goal."
+  },
+  {
+    "objectID": "Week7.html#heart-data",
+    "href": "Week7.html#heart-data",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Heart Data",
+    "text": "Heart Data\n\nThese data contain a binary outcome HD for 303 patients who presented with chest pain.\n\n\n\nAn outcome value of Yes indicates the presence of heart disease based on an angiographic test, while No means no heart disease.\n\n\n\nThere are 13 features including Age, Sex, Chol (a cholesterol measurement), Thal (maximum heart rate achieved) and other heart and lung function measurements.\n\n\n\nCross-validation yields a tree with six terminal nodes."
+  },
+  {
+    "objectID": "Week7.html#heart-data-the-unpruned-fitted-decision-tree.",
+    "href": "Week7.html#heart-data-the-unpruned-fitted-decision-tree.",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Heart Data: the unpruned fitted decision tree.",
+    "text": "Heart Data: the unpruned fitted decision tree."
+  },
+  {
+    "objectID": "Week7.html#heart-data-1",
+    "href": "Week7.html#heart-data-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Heart Data",
+    "text": "Heart Data\n\nLeft: Cross-validation error, training, and test error, for different sizes of the pruned tree.\nRight: The pruned tree corresponding to the minimal CV error."
+  },
+  {
+    "objectID": "Week7.html#trees-versus-linear-models",
+    "href": "Week7.html#trees-versus-linear-models",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Trees Versus Linear Models",
+    "text": "Trees Versus Linear Models\n\nThe linear model says\n\n\\[f(X)=\\beta_0+\\sum_{j=1}^{p}\\beta_jX_j,\\]\nwhereas the regression tree says\n\\[f(X)=\\sum_{m=1}^{J}c_m\\mathbf1\\{X\\in R_m\\}.\\]\n\n\nIf \\(f(X)\\approx X^\\top\\beta\\), then linear regression will likely work well.\nIf instead there is a highly non-linear and complex relationship between \\(X\\) and \\(Y\\), then decision trees performs better.\nThe relative performances of tree-based and classical approaches can be assessed by estimating the test error, using either cross-validation or the validation set approach."
+  },
+  {
+    "objectID": "Week7.html#advantages-and-disadvantages-of-trees",
+    "href": "Week7.html#advantages-and-disadvantages-of-trees",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Advantages and Disadvantages of Trees",
+    "text": "Advantages and Disadvantages of Trees\n\nTrees are self-explanatory. In fact, they are even easier to explain than linear regression!\nSome people believe that decision trees more closely mimic human decision-making.\nTrees can easily handle qualitative features without the need to create dummy variables.\n\n\n\n\nBut, trees generally do not have the same predictive power as other regression and classification approaches.\nRelatedly, trees could be very non-robust. In other words, a small change in the data can lead to a drastically different estimated tree.\n\n\n\n\n\nNevertheless, by aggregating many trees (via bagging, random forests, and boosting), the predictive performance can be substantially improved."
+  },
+  {
+    "objectID": "Week7.html#bootstrap-1",
+    "href": "Week7.html#bootstrap-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Bootstrap",
+    "text": "Bootstrap\n\nBootstrap is a widely used resampling (of the available data) approach!\n\n\n\nIt can be used to assess the uncertainty of basically any statistical procedure.\nFor instance, it can be used to estimate the standard errors of the estimated coefficients of a linear model.\nMuch more generally, it can even estimate the whole distribution of the estimated coefficients of a linear model.\n\n\n\nIts validity is backed up by a very general theory!"
+  },
+  {
+    "objectID": "Week7.html#an-example",
+    "href": "Week7.html#an-example",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "An example",
+    "text": "An example\n\nSuppose that we wish to invest 10K dollars in two financial assets that yield returns of \\(X\\) and \\(Y\\), respectively, where \\(X\\) and \\(Y\\) are random quantities.\n\n\n\nFor any \\(\\alpha\\in[0,1]\\), we will invest a fraction \\(\\alpha\\) of our money in \\(X\\), and will invest the remaining \\((1-\\alpha)\\) in \\(Y\\).\n\n\\[[\\alpha X+(1-\\alpha)Y]\\times10{,}000\\]\n\nWe wish to choose \\(\\alpha\\) to minimize the total risk, or variance, of our investment, that is,\n\n\\[\\min_{\\alpha\\in[0,1]}\\operatorname{Var}(\\alpha X+(1-\\alpha)Y).\\]"
+  },
+  {
+    "objectID": "Week7.html#an-example-1",
+    "href": "Week7.html#an-example-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "An example",
+    "text": "An example\n\nOne can show that the value of \\(\\alpha\\) that minimizes the risk is given by\n\n\\[\\alpha=\\frac{\\sigma_Y^2-\\sigma_{XY}}{\\sigma_X^2+\\sigma_Y^2-2\\sigma_{XY}},\\]\nwhere \\(\\sigma_Y^2=\\operatorname{Var}(Y)\\), \\(\\sigma_X^2=\\operatorname{Var}(X)\\) and \\(\\sigma_{XY}=\\operatorname{Cov}(X,Y)\\).\n\n\nIf we have past observations \\((x_1,y_1),\\ldots,(x_{100},y_{100})\\), we can estimate \\(\\alpha\\) by\n\n\\[\\hat\\alpha=\\frac{\\hat\\sigma_Y^2-\\hat\\sigma_{XY}}{\\hat\\sigma_X^2+\\hat\\sigma_Y^2-2\\hat\\sigma_{XY}}.\\]\n\n\n\nHow to estimate the variance of the estimator \\(\\hat\\alpha\\)?"
+  },
+  {
+    "objectID": "Week7.html#an-oracle-approach",
+    "href": "Week7.html#an-oracle-approach",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "An Oracle Approach",
+    "text": "An Oracle Approach\nIf we know the distribution of \\(X\\) and \\(Y\\) (usually unknown in reality), we can estimate the variance of the estimator \\(\\hat\\alpha\\) by the following strategy.\n\nWe simulate 100 paired observations of \\(X\\) and \\(Y\\) and compute\n\n\\[\\hat\\alpha=\\frac{\\hat\\sigma_Y^2-\\hat\\sigma_{XY}}{\\hat\\sigma_X^2+\\hat\\sigma_Y^2-2\\hat\\sigma_{XY}}.\\]\n\nWe repeat this procedure 1000 times, and get \\(\\hat\\alpha_1,\\ldots,\\hat\\alpha_{1000}\\).\nWe estimate \\(\\operatorname{Var}(\\hat\\alpha)\\) by\n\n\\[\\frac{1}{1000-1}\\sum_{r=1}^{1000}(\\hat\\alpha_r-\\bar\\alpha)^2,\\qquad\\text{where}\\quad\\bar\\alpha=\\frac1{1000}\\sum_{r=1}^{1000}\\hat\\alpha_r.\\]\nQuestion: Is this feasible in practice?"
+  },
+  {
+    "objectID": "Week7.html#bootstrap-2",
+    "href": "Week7.html#bootstrap-2",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Bootstrap",
+    "text": "Bootstrap\n\nThe bootstrap approach re-samples from the original data set to mimic the process of obtaining new data sets in order to quantifty the uncertainty of a given procedure.\n\n\n\nSpecifically, for a specified B (for instance, B = 1000) number of repetitions, we repeatedly sample the same amount of observations from the original data set with replacement.\n\n\n\nAs a result, data set from bootstrap might contain some observations more than once, or zero time."
+  },
+  {
+    "objectID": "Week7.html#simple-illustration-of-bootstrap",
+    "href": "Week7.html#simple-illustration-of-bootstrap",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Simple illustration of Bootstrap",
+    "text": "Simple illustration of Bootstrap"
+  },
+  {
+    "objectID": "Week7.html#bootstrap-3",
+    "href": "Week7.html#bootstrap-3",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Bootstrap",
+    "text": "Bootstrap\nNow let us apply bootstrap to estimate \\(\\operatorname{Var}(\\hat\\alpha)\\):\n\nWe denote the first bootstrap data set by \\(Z^{*1}\\), and use \\(Z^{*1}\\) to construct the estimate of \\(\\alpha\\), denoted by \\(\\hat\\alpha^{*1}\\).\n\n\n\nThis procedure is repeated \\(B\\) (say, \\(B=1000\\)): specifically we simulate \\(B\\) different bootstrap data sets, \\(Z^{*1},\\ldots,Z^{*B}\\) and \\(B\\) corresponding estimates \\(\\hat\\alpha^{*1},\\ldots,\\hat\\alpha^{*B}\\).\n\n\n\nWe estimate \\(\\operatorname{Var}(\\hat\\alpha)\\) by the sample variance of \\(\\hat\\alpha^{*1},\\ldots,\\hat\\alpha^{*B}\\):\n\n\\[\\frac1{B-1}\\sum_{b=1}^{B}(\\hat\\alpha^{*b}-\\bar\\alpha^*)^2,\\qquad\\text{where}\\quad\\bar\\alpha^*=\\frac1B\\sum_{b=1}^{B}\\hat\\alpha^{*b}.\\]"
+  },
+  {
+    "objectID": "Week7.html#example",
+    "href": "Week7.html#example",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Example",
+    "text": "Example\n\nLeft: The histogram of estimates of \\(\\alpha\\) obtained by generating 1,000 simulated data sets from the true population.\nCenter: The histogram of estimates of \\(\\alpha\\) obtained from 1,000 bootstrap samples from a single data set.\nRight: Boxplots for estimates of \\(\\alpha\\) displayed in the left and center panels."
+  },
+  {
+    "objectID": "Week7.html#bootstrap-for-quantifying-the-uncertainty-of-the-ols-estimator",
+    "href": "Week7.html#bootstrap-for-quantifying-the-uncertainty-of-the-ols-estimator",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Bootstrap for quantifying the uncertainty of the OLS estimator",
+    "text": "Bootstrap for quantifying the uncertainty of the OLS estimator\nGiven the data \\(D=\\{(x_1,y_1),\\ldots,(x_n,y_n)\\}\\), the OLS gives\n\\[\\hat\\beta=(X^\\top X)^{-1}X^\\top y.\\]\nStatistical property of \\(\\hat\\beta\\in\\mathbb R^p\\) consists of\n\nits mean\nits covariance\n\nRecall that analyses of \\(\\hat\\beta\\) such as its mean and covariance are only available under linear model assumption.\n\nits higher moments\nits whole distribution\n\nBootstrap can be used to estimate all above!"
+  },
+  {
+    "objectID": "Week7.html#bootstrap-for-quantifying-the-uncertainty-of-the-ols-estimator-1",
+    "href": "Week7.html#bootstrap-for-quantifying-the-uncertainty-of-the-ols-estimator-1",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Bootstrap for quantifying the uncertainty of the OLS estimator",
+    "text": "Bootstrap for quantifying the uncertainty of the OLS estimator\nGiven the data \\(D=\\{(x_1,y_1),\\ldots,(x_n,y_n)\\}\\), the OLS gives\n\\[\\hat\\beta=(X^\\top X)^{-1}X^\\top y.\\]\nFor \\(b=1,\\ldots,B\\),\n\nobtain the bootstrap sample \\(D^b=(X^b,y^b)\\)\ncompute \\(\\hat\\beta^b=(X^{b\\top}X^b)^{-1}X^{b\\top}y^b\\).\n\nNow for \\(\\hat\\beta_j\\), the bootstrap estimates \\(\\hat\\beta_j^1,\\ldots,\\hat\\beta_j^B\\) serve as “samples” of \\(\\hat\\beta_j\\)."
+  },
+  {
+    "objectID": "Week7.html#bootstrap-for-quantifying-the-uncertainty-of-the-ols-estimator-2",
+    "href": "Week7.html#bootstrap-for-quantifying-the-uncertainty-of-the-ols-estimator-2",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Bootstrap for quantifying the uncertainty of the OLS estimator",
+    "text": "Bootstrap for quantifying the uncertainty of the OLS estimator\nFor instance,\n\nthe mean of \\(\\hat\\beta_j\\) can be estimated by \\(\\frac1B\\sum_{b=1}^{B}\\hat\\beta_j^b.\\)\nthe variance of \\(\\hat\\beta_j\\) can be estimated by \\(\\frac1{B-1}\\sum_{b=1}^{B}\\left(\\hat\\beta_j^b-\\frac1B\\sum_{b=1}^{B}\\hat\\beta_j^b\\right)^2.\\)\n\n\n\nYou can also estimate quantiles of the distribution of \\(\\hat\\beta_j\\).\nIn fact, you can estimate the whole distribution of \\(\\hat\\beta_j\\)."
+  },
+  {
+    "objectID": "Week7.html#summary",
+    "href": "Week7.html#summary",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Summary",
+    "text": "Summary\n\nDecision Trees: Partition the feature space into regions, making predictions using the mean response (regression) or majority class (classification).\nBuilding Trees: Recursive binary splitting uses RSS for regression and measures of node purity (Gini index or deviance) for classification.\nPruning: Large trees can overfit. Cost-complexity pruning uses a tuning parameter \\(\\alpha\\), typically selected using cross-validation, to balance complexity and predictive performance.\nStrengths and Limitations: Trees are interpretable and capture non-linear relationships, but can be unstable and have lower predictive accuracy than other methods.\nBootstrap: Resampling observations with replacement allows us to approximate the sampling distribution of an estimator and quantify its uncertainty (e.g., standard errors and variance).\n\nAnnouncements: Next week is reading week!\nAfter Reading Week: More tree based methods and midterm"
+  },
+  {
+    "objectID": "Week9.html#review-on-simple-decision-trees",
+    "href": "Week9.html#review-on-simple-decision-trees",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Review on simple decision trees",
+    "text": "Review on simple decision trees\n\nDecision trees\n\nRegression tree\nClassification tree\n\nSelf-explanatory\nRecursive binary splitting\nCould be deeply grown trees, with large variance\nPruning"
+  },
+  {
+    "objectID": "Week9.html#learning-outcomes",
+    "href": "Week9.html#learning-outcomes",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of this lecture, you should be able to:\n\nExplain how bagging uses bootstrap sampling and averaging to reduce the variance of decision trees.\nDescribe how out-of-bag (OOB) error is used to estimate prediction error.\nExplain how to measure variable importance\nDescribe how random forests extend bagging\nExplain how boosting builds trees sequentially and identify its main tuning parameters.\nCompare bagging, random forests, and boosting in terms of how trees are constructed and predictions are combined."
+  },
+  {
+    "objectID": "Week9.html#bagging",
+    "href": "Week9.html#bagging",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Bagging",
+    "text": "Bagging\nBootstrap aggregation, or bagging, is a general-purpose procedure for reducing the variance of a statistical learning method.\n\n\nTwo heads are better than one!\n三个臭皮匠，顶个诸葛亮\n\n\nWe introduce it here because it is particularly useful and frequently used in the context of decision trees."
+  },
+  {
+    "objectID": "Week9.html#why-bagging-the-idea-of-bagging.",
+    "href": "Week9.html#why-bagging-the-idea-of-bagging.",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Why bagging? The idea of bagging.",
+    "text": "Why bagging? The idea of bagging.\n\nGiven a set of \\(N\\) independent estimates \\(\\hat\\beta^{(1)},\\ldots,\\hat\\beta^{(N)}\\) of \\(\\beta\\), suppose\n\n\\[\n\\left|\\mathbb{E}[\\hat\\beta^{(i)}]-\\beta\\right|\\leq b,\n\\qquad \\operatorname{Var}(\\hat\\beta^{(i)})=\\sigma^2,\n\\qquad \\forall i=1,\\ldots,N.\n\\]\nThen the averaged estimate\n\\[\n\\bar\\beta:=\\frac{1}{N}\\sum_{i=1}^N\\hat\\beta^{(i)}\n\\]\nsatisfying\n\\[\n\\left|\\mathbb{E}[\\bar\\beta]-\\beta\\right|\\leq b,\n\\qquad \\operatorname{Var}(\\bar\\beta)=\\frac{\\sigma^2}{N}.\n\\]\n\nIn other words, averaging a set of independent random variables reduces the variance, meanwhile does not incur extra bias."
+  },
+  {
+    "objectID": "Week9.html#bagging-1",
+    "href": "Week9.html#bagging-1",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Bagging",
+    "text": "Bagging\n\nTo apply bagging to regression trees, if we had \\(B\\) independent training sets, then we simply construct \\(B\\) regression trees using each of the training set, and average the resulting predictions in the end.\nSince we only have one training set, we bootstrap the same amount of data \\(B\\) times from the training set with replacement\nWe train a decision tree by using the \\(b\\)th bootstrap data and get the prediction \\(\\hat f^{*b}(x)\\) at a point \\(x\\). Bagging averages all the predictions\n\n\\[\n\\hat f_{\\mathrm{bag}}(x)=\\frac{1}{B}\\sum_{b=1}^B\\hat f^{*b}(x).\n\\]"
+  },
+  {
+    "objectID": "Week9.html#bagging-trees",
+    "href": "Week9.html#bagging-trees",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Bagging Trees",
+    "text": "Bagging Trees\n\nThe fitted decision trees on bootstrap data sets are grown deep, and need not be pruned. Hence each individual tree has high variance, but low bias. Averaging these trees reduces the variance.\nBagging can be also applied to classification trees. For a given test observation, we can record the class predicted by each of the \\(B\\) trees, and take a majority vote."
+  },
+  {
+    "objectID": "Week9.html#out-of-bag-error-estimation",
+    "href": "Week9.html#out-of-bag-error-estimation",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Out-of-Bag Error Estimation",
+    "text": "Out-of-Bag Error Estimation\n\nThere is a simple way to estimate the test error of a bagged model, without the need to perform cross-validation or the validation set approach.\nFor each bootstrap data set,\n\nIt only contains, on average, around 2/3 of the original observations.\nThe remaining 1/3 is not used to fit the decision tree, and is referred to as the out-of-bag (OOB) observations.\nWe predict the OOB observations by using the fitted decision tree."
+  },
+  {
+    "objectID": "Week9.html#out-of-bag-error-estimation-1",
+    "href": "Week9.html#out-of-bag-error-estimation-1",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Out-of-Bag Error Estimation",
+    "text": "Out-of-Bag Error Estimation\n\nFor each observation \\(i\\), we can pool its predictions across all \\(B\\) bootstrap data sets where \\(i\\) belongs to the OOB observations.\n\nFor regression, we average\nFor classification, we vote by majority\n\nWe compute the MSE / misclassification error between predictions and the true responses over all observations."
+  },
+  {
+    "objectID": "Week9.html#variable-importance-measures",
+    "href": "Week9.html#variable-importance-measures",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Variable Importance Measures",
+    "text": "Variable Importance Measures\n\nBagging typically reduces variance (i.e. improve accuracy) over prediction using a single decision tree.\nHowever, it can be difficult to interpret the resulting model.\nOne can obtain an overall summary of the importance of each predictor using the RSS (for bagging regression trees) or the Gini index (for bagging classification trees)."
+  },
+  {
+    "objectID": "Week9.html#variable-importance-measures-1",
+    "href": "Week9.html#variable-importance-measures-1",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Variable Importance Measures",
+    "text": "Variable Importance Measures\n\nIn the case of bagging regression trees, we can record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all \\(B\\) trees. In bagging classification trees, we replace RSS by the Gini index.\nA large value of decreased RSS (or Gini index) indicates an important predictor.\nA graphical representation of variable importance is easy to draw."
+  },
+  {
+    "objectID": "Week9.html#heart-data",
+    "href": "Week9.html#heart-data",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Heart Data",
+    "text": "Heart Data\n\nInsert variable-importance plot here.\nVariable importance is computed using the mean decrease in Gini index, and expressed relative to the maximum."
+  },
+  {
+    "objectID": "Week9.html#summary-on-bagging",
+    "href": "Week9.html#summary-on-bagging",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Summary on bagging",
+    "text": "Summary on bagging\n\nBagging simply averages multiple decision trees\nBias does not increase\nVariance is reduced\n\nHow much is variance reduced?"
+  },
+  {
+    "objectID": "Week9.html#random-forests",
+    "href": "Week9.html#random-forests",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Random Forests",
+    "text": "Random Forests\n\nBagging is affected by the correlation among decision trees!1\nRandom forests provide an improvement over bagged trees by decorrelating the trees. This increases the variance reduction when we average the trees.\n\nCheck Prob 3 of the final exam of 2024!"
+  },
+  {
+    "objectID": "Week9.html#random-forests-1",
+    "href": "Week9.html#random-forests-1",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Random Forests",
+    "text": "Random Forests\n\nAs in bagging, we build a number of decision trees on bootstrap training samples.\nBut for building these decision trees, when each time a split in a tree is considered, a random selection of \\(m &lt; p\\) predictors is chosen as split candidates from the full set of \\(p\\) predictors.\nA fresh selection of \\(m\\) predictors is taken at each split, and a common choice of \\(m\\) is \\(m \\approx \\sqrt{p}\\).\nRandom forest with \\(m=p\\) is just bagging!"
+  },
+  {
+    "objectID": "Week9.html#why-does-random-forest-reduce-correlations",
+    "href": "Week9.html#why-does-random-forest-reduce-correlations",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Why does Random Forest Reduce Correlations?",
+    "text": "Why does Random Forest Reduce Correlations?\n\nSuppose that there is one very strong predictor in the data set, along with a number of other moderately strong predictors.\nAmong all single decision trees, most of them will use this strong predictor in the top split. All of the single trees will look quite similar and could have high correlation.\nRandom forests reduce the correlation by randomly selecting a subset of the predictors in each split of building each single tree. Indeed, on average many splits will not even consider the strong predictor."
+  },
+  {
+    "objectID": "Week9.html#heart-data-1",
+    "href": "Week9.html#heart-data-1",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Heart Data",
+    "text": "Heart Data\n\nInsert Heart Data error plot here.\nThe test error (black and orange) is shown as a function of \\(B\\). Random forests were applied with \\(m=\\sqrt p\\). The dashed line indicates the test error resulting from a single classification tree. The green and blue traces show the OOB error, which is considerably lower."
+  },
+  {
+    "objectID": "Week9.html#gene-expression-data",
+    "href": "Week9.html#gene-expression-data",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Gene Expression Data",
+    "text": "Gene Expression Data\n\nWe applied random forests to a high-dimensional biological data set consisting of expression measurements of 4,718 genes measured on tissue samples from 349 patients.\nThere are around 20,000 genes in humans, and individual genes have different levels of activity, or expression, in particular cells, tissues, and biological conditions.\nEach of the patient samples has a qualitative label with 15 different levels: either normal or one of 14 different types of cancer.\nWe use random forests to predict cancer type based on the 500 genes that have the largest variance in the training set.\nWe randomly divided the observations into a training and a test set, and applied random forests to the training set for three different values of the number of splitting variables \\(m\\)."
+  },
+  {
+    "objectID": "Week9.html#gene-expression-data-1",
+    "href": "Week9.html#gene-expression-data-1",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Gene Expression Data",
+    "text": "Gene Expression Data\n\nInsert Gene Expression Data error plot here.\nThe test errors are displayed as functions of the number of trees (\\(B\\)). Random forests (\\(m&lt;p\\)) lead to a slight improvement over bagging (\\(m=p\\)). A single classification tree has an error rate of 45.7%."
+  },
+  {
+    "objectID": "Week9.html#boosting",
+    "href": "Week9.html#boosting",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Boosting",
+    "text": "Boosting\n\nLike bagging, boosting is a general approach that can be applied to many statistical learning methods for regression and classification. We focus on the context of decision trees.\nBagging (and random forest) involves creating multiple copies of the original training data set using bootstrap, fitting a separate decision tree to each copy, and then combining all of the trees in order to create a single predictive model.\nBoosting works both similarly and also differently\n\nBoosting combines different fitted trees\nthe trees in boosting are grown sequentially: each tree is grown using information from previously grown trees\nBoosting does not involve bootstrap sampling; instead each tree is fitted on a modified version of the original data set."
+  },
+  {
+    "objectID": "Week9.html#boosting-1",
+    "href": "Week9.html#boosting-1",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Boosting",
+    "text": "Boosting\nAlgorithm 8.2 — Boosting for Regression Trees\n\nSet \\(\\hat f(x)=0\\) and \\(r_i=y_i\\) for all \\(i\\) in the training set.\nFor \\(b=1,2,\\ldots,B\\), repeat:\n\nFit a tree \\(\\hat f^b\\) with \\(d\\) splits (\\(d+1\\) terminal nodes) to the training data \\((X,r)\\).\nUpdate \\(\\hat f\\) by adding in a shrunken version of the new tree:\n\n\\[\\hat f(x)\\leftarrow\\hat f(x)+\\lambda\\hat f^b(x).\\]\n\nUpdate the residuals,\n\n\\[r_i\\leftarrow r_i-\\lambda\\hat f^b(x_i).\\]\nOutput the boosted model,\n\n\\[\\hat f(x)=\\sum_{b=1}^B\\lambda\\hat f^b(x).\\]"
+  },
+  {
+    "objectID": "Week9.html#boosting-2",
+    "href": "Week9.html#boosting-2",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Boosting",
+    "text": "Boosting\n\nUnlike fitting a single large decision tree to the data, which might lead to overfitting, the boosting approach instead learns slowly.\nGiven the current model, we fit a decision tree to the residuals from the model. We then add this new decision tree into the fitted function and update the residuals.\nEach of these trees can be rather small, with just a few terminal nodes, determined by the parameter \\(d\\) in the algorithm.\nBy fitting small trees to the residuals, we slowly improve \\(\\hat f\\) in areas where it does not perform well. The step size \\(\\lambda\\) further slows down the learning process."
+  },
+  {
+    "objectID": "Week9.html#tuning-parameters-for-boosting",
+    "href": "Week9.html#tuning-parameters-for-boosting",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Tuning parameters for Boosting",
+    "text": "Tuning parameters for Boosting\n\nThe number of trees \\(B\\). Unlike bagging and random forests, boosting can overfit if \\(B\\) is too large, although this overfitting tends to occur slowly if at all. We use cross-validation to select \\(B\\).\nThe shrinkage parameter (step size) \\(\\lambda\\), a small positive number. This controls the rate at which boosting learns. Typical values are 0.01 or 0.001.\nThe number of splits \\(d\\) in each tree, which controls the complexity of the boosted ensemble. Often \\(d=1\\) works well, in which case each tree is a stump, consisting of a single split and resulting in an additive model."
+  },
+  {
+    "objectID": "Week9.html#gene-expression-data-2",
+    "href": "Week9.html#gene-expression-data-2",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Gene Expression Data",
+    "text": "Gene Expression Data\n\nInsert Gene Expression Data boosting plot here.\nFor both boosting trees, \\(\\lambda=0.01\\). Depth-1 trees slightly outperform depth-2 trees and random forests. But these differences are within their standard errors."
+  },
+  {
+    "objectID": "Week9.html#summary",
+    "href": "Week9.html#summary",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Summary",
+    "text": "Summary\n\nDecision trees are simple and interpretable models for regression and classification.\nHowever their prediction accuracy is often not competitive with other regression / classification methods.\nBagging, random forests and boosting can improve prediction accuracy of trees. They work by growing many trees on the training data and then combining the predictions of the resulting trees.\nThe latter two methods – random forests and boosting – are among the state-of-the-art methods for supervised learning. However their results can be difficult to interpret.\n\nAnnouncements: Midterm on Wednesday\nNext Week:"
+  },
+  {
+    "objectID": "Week7.html#example-of-decision-treesdiscrete-features-2",
+    "href": "Week7.html#example-of-decision-treesdiscrete-features-2",
+    "title": "Decision Trees and the Bootstrap",
+    "section": "Example of Decision Trees—Discrete features",
+    "text": "Example of Decision Trees—Discrete features\nSplit discrete features into a partition of possible values."
   }
 ]
