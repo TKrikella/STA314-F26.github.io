@@ -4119,8 +4119,8 @@
     "objectID": "Week9.html#review-on-simple-decision-trees",
     "href": "Week9.html#review-on-simple-decision-trees",
     "title": "Bagging, Random Forests and Boosting",
-    "section": "",
-    "text": "Decision trees\n\nRegression tree\nClassification tree\n\nSelf-explanatory\nRecursive binary splitting\nCould be deeply grown trees, with large variance\nPruning"
+    "section": "Review on simple decision trees",
+    "text": "Review on simple decision trees\n\nCan be used for both regression and classification\n\n\n\nSelf-explanatory\n\n\n\nRecursive binary splitting to build the tree\n\n\n\nCould be deeply grown trees, with large variance (i.e. prone to overfitting)\n\n\n\nPruning via cost complexity to reduce variance of tree at the expense of some bias"
   },
   {
     "objectID": "Week9.html#learning-outcomes",
@@ -4134,7 +4134,7 @@
     "href": "Week9.html#bagging",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Bagging",
-    "text": "Bagging\nBootstrap aggregation, or bagging, is a general-purpose procedure for reducing the variance of a statistical learning method.\n\n\nTwo heads are better than one!\n三个臭皮匠，顶个诸葛亮\n\n\nWe introduce it here because it is particularly useful and frequently used in the context of decision trees."
+    "text": "Bagging\nBootstrap aggregation, or bagging, is a general-purpose procedure for reducing the variance of a statistical learning method.\n\n\nTwo heads are better than one!\n\n\nWe introduce it here because it is particularly useful and frequently used in the context of decision trees."
   },
   {
     "objectID": "Week9.html#why-bagging-the-idea-of-bagging.",
@@ -4148,7 +4148,7 @@
     "href": "Week9.html#bagging-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Bagging",
-    "text": "Bagging\nTo apply bagging to regression trees, if we had \\(B\\) independent training sets, then we simply construct \\(B\\) regression trees using each of the training set, and average the resulting predictions in the end.\n\nSince we only have one training set, we bootstrap the same amount of data \\(B\\) times from the training set with replacement\n\nWe train a decision tree by using the \\(b\\)th bootstrap data and get the prediction \\(\\hat f^{*b}(x)\\) at a point \\(x\\). Bagging averages all the predictions\n\\[\n\\hat f_{\\mathrm{bag}}(x)=\\frac{1}{B}\\sum_{b=1}^B\\hat f^{*b}(x).\n\\]"
+    "text": "Bagging\nTo apply bagging to regression trees, if we had \\(B\\) independent training sets, then we simply construct \\(B\\) regression trees using each of the training set, and average the resulting predictions in the end.\n\n\nSince we only have one training set, we bootstrap the same amount of data \\(B\\) times from the training set with replacement\n\n\n\nWe train a decision tree by using the \\(b\\)th bootstrap data and get the prediction \\(\\hat f^{*b}(x)\\) at a point \\(x\\). Bagging averages all the predictions\n\\[\n\\hat f_{\\mathrm{bag}}(x)=\\frac{1}{B}\\sum_{b=1}^B\\hat f^{*b}(x).\n\\]"
   },
   {
     "objectID": "Week9.html#bagging-trees",
@@ -4162,14 +4162,14 @@
     "href": "Week9.html#out-of-bag-error-estimation",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Out-of-Bag Error Estimation",
-    "text": "Out-of-Bag Error Estimation\nThere is a simple way to estimate the test error of a bagged model, without the need to perform cross-validation or the validation set approach.\n\nFor each bootstrap data set,\n\nIt only contains, on average, around 2/3 of the original observations.\nThe remaining 1/3 is not used to fit the decision tree, and is referred to as the out-of-bag (OOB) observations.\nWe predict the OOB observations by using the fitted decision tree."
+    "text": "Out-of-Bag Error Estimation\nThere is a simple way to estimate the test error of a bagged model, without the need to perform cross-validation or the validation set approach.\n\nFor each bootstrap data set,\n\nIt only contains, on average, around 2/3 of the original observations (try Exercise 2 from Chapter 5 in the textbook!).\nThe remaining 1/3 is not used to fit the decision tree, and is referred to as the out-of-bag (OOB) observations.\nWe predict the OOB observations by using the fitted decision tree."
   },
   {
     "objectID": "Week9.html#out-of-bag-error-estimation-1",
     "href": "Week9.html#out-of-bag-error-estimation-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Out-of-Bag Error Estimation",
-    "text": "Out-of-Bag Error Estimation\nFor each observation \\(i\\), we can pool its predictions across all \\(B\\) bootstrap data sets where \\(i\\) belongs to the OOB observations. - For regression, we average - For classification, we vote by majority\n \nWe compute the MSE / misclassification error between predictions and the true responses over all observations."
+    "text": "Out-of-Bag Error Estimation\nFor each observation \\(i\\), we can pool its predictions across all \\(B\\) bootstrap data sets where \\(i\\) belongs to the OOB observations.\n\nFor regression, we average\nFor classification, we vote by majority\n\n \nWe compute the MSE / misclassification error between predictions and the true responses over all observations."
   },
   {
     "objectID": "Week9.html#variable-importance-measures",
@@ -4183,14 +4183,14 @@
     "href": "Week9.html#variable-importance-measures-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Variable Importance Measures",
-    "text": "Variable Importance Measures\nIn the case of bagging regression trees, we can record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all \\(B\\) trees. In bagging classification trees, we replace RSS by the Gini index.\n\nA large value of decreased RSS (or Gini index) indicates an important predictor.\n\nA graphical representation of variable importance is easy to draw."
+    "text": "Variable Importance Measures\nIn the case of bagging regression trees, we can record the total amount that the RSS is decreased due to splits over a given predictor, averaged over all \\(B\\) trees.\n\nIn bagging classification trees, we replace RSS by the Gini index.\n\n\nA large value of decreased RSS (or Gini index) indicates an important predictor.\n\nA graphical representation of variable importance is easy to draw."
   },
   {
     "objectID": "Week9.html#heart-data",
     "href": "Week9.html#heart-data",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Heart Data",
-    "text": "Heart Data\n\n\n\n\n\nVariable importance is computed using the mean decrease in Gini index, and expressed relative to the maximum."
+    "text": "Heart Data\n\nVariable importance is computed using the mean decrease in Gini index, and expressed relative to the maximum."
   },
   {
     "objectID": "Week9.html#summary-on-bagging",
@@ -4204,14 +4204,14 @@
     "href": "Week9.html#random-forests",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Random Forests",
-    "text": "Random Forests\nBagging is affected by the correlation among decision trees!\n\nRandom forests provide an improvement over bagged trees by decorrelating the trees. This increases the variance reduction when we average the trees."
+    "text": "Random Forests\nBagging is affected by the correlation among decision trees!\n\nIf one predictor is particularly strong, many trees will repeatedly split on it, making their predictions similar.\nex. if one tree predicts too high, then the others will also tend to predict too high when trees are highly correlated\n\n\nRandom forests provide an improvement over bagged trees by decorrelating the trees. This increases the variance reduction when we average the trees.\n\nreducing the correlation makes averaging more effective because the trees are less likely to make the same mistakes."
   },
   {
     "objectID": "Week9.html#random-forests-1",
     "href": "Week9.html#random-forests-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Random Forests",
-    "text": "Random Forests\nAs in bagging, we build a number of decision trees on bootstrap training samples.\n\nBut for building these decision trees, when each time a split in a tree is considered, a random selection of \\(m &lt; p\\) predictors is chosen as split candidates from the full set of \\(p\\) predictors.\n\nA fresh selection of \\(m\\) predictors is taken at each split, and a common choice of \\(m\\) is \\(m \\approx \\sqrt{p}\\).\n\nRandom forest with \\(m=p\\) is just bagging!"
+    "text": "Random Forests\nAs in bagging, we build a number of decision trees on bootstrap training samples.\n\nBut for building these decision trees, each time a split in a tree is considered, a random selection of \\(m &lt; p\\) predictors is chosen as split candidates from the full set of \\(p\\) predictors.\n\n\nA fresh selection of \\(m\\) predictors is taken at each split, and a common choice of \\(m\\) is \\(m \\approx \\sqrt{p}\\).\n\nRandom forest with \\(m=p\\) is just bagging!"
   },
   {
     "objectID": "Week9.html#why-does-random-forest-reduce-correlations",
@@ -4225,35 +4225,35 @@
     "href": "Week9.html#heart-data-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Heart Data",
-    "text": "Heart Data\n\n\n\n\n\nThe test error (black and orange) is shown as a function of \\(B\\). Random forests were applied with \\(m=\\sqrt p\\). The dashed line indicates the test error resulting from a single classification tree. The green and blue traces show the OOB error, which is considerably lower."
+    "text": "Heart Data\n\nThe test error (black and orange) is shown as a function of \\(B\\). Random forests were applied with \\(m=\\sqrt p\\). The dashed line indicates the test error resulting from a single classification tree. The green and blue traces show the OOB error, which is considerably lower by chance."
   },
   {
     "objectID": "Week9.html#gene-expression-data",
     "href": "Week9.html#gene-expression-data",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Gene Expression Data",
-    "text": "Gene Expression Data\n\nWe applied random forests to a high-dimensional biological data set consisting of expression measurements of 4,718 genes measured on tissue samples from 349 patients.\nThere are around 20,000 genes in humans, and individual genes have different levels of activity, or expression, in particular cells, tissues, and biological conditions.\nEach of the patient samples has a qualitative label with 15 different levels: either normal or one of 14 different types of cancer.\nWe use random forests to predict cancer type based on the 500 genes that have the largest variance in the training set.\nWe randomly divided the observations into a training and a test set, and applied random forests to the training set for three different values of the number of splitting variables \\(m\\)."
+    "text": "Gene Expression Data\n\nWe applied random forests to a high-dimensional biological data set consisting of expression measurements of 4,718 genes measured on tissue samples from 349 patients.\nThere are around 20,000 genes in humans, and individual genes have different levels of activity, or expression, in particular cells, tissues, and biological conditions.\nEach of the patient samples has a qualitative label with 15 different levels: either normal or one of 14 different types of cancer.\n\n\n\n\nWe use random forests to predict cancer type based on the 500 genes that have the largest variance in the training set.\nWe randomly divided the observations into a training and a test set, and applied random forests to the training set for three different values of the number of splitting variables \\(m\\)."
   },
   {
     "objectID": "Week9.html#gene-expression-data-1",
     "href": "Week9.html#gene-expression-data-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Gene Expression Data",
-    "text": "Gene Expression Data\n\n\n\n\n\nThe test errors are displayed as functions of the number of trees (\\(B\\)). Random forests (\\(m&lt;p\\)) lead to a slight improvement over bagging (\\(m=p\\)). A single classification tree has an error rate of 45.7%."
+    "text": "Gene Expression Data\n\nThe test errors are displayed as functions of the number of trees (\\(B\\)). Random forests (\\(m&lt;p\\)) lead to a slight improvement over bagging (\\(m=p\\)). A single classification tree has an error rate of 45.7%."
   },
   {
     "objectID": "Week9.html#boosting",
     "href": "Week9.html#boosting",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Boosting",
-    "text": "Boosting\n\nLike bagging, boosting is a general approach that can be applied to many statistical learning methods for regression and classification. We focus on the context of decision trees.\nBagging (and random forest) involves creating multiple copies of the original training data set using bootstrap, fitting a separate decision tree to each copy, and then combining all of the trees in order to create a single predictive model.\nBoosting works both similarly and also differently\nBoosting combines different fitted trees\nthe trees in boosting are grown sequentially: each tree is grown using information from previously grown trees\nBoosting does not involve bootstrap sampling; instead each tree is fitted on a modified version of the original data set."
+    "text": "Boosting\n\nLike bagging, boosting is a general approach that can be applied to many statistical learning methods for regression and classification. We focus on the context of decision trees.\nBagging (and random forest) involves creating multiple copies of the original training data set using bootstrap, fitting a separate decision tree to each copy, and then combining all of the trees in order to create a single predictive model.\n\n\nBoosting works both similarly and also differently\n\nBoosting combines a large number of decision trees\nThe trees in boosting are grown sequentially: each tree is grown using information from previously grown trees\nBoosting does not involve bootstrap sampling; instead each tree is fitted on a modified version of the original data set."
   },
   {
     "objectID": "Week9.html#boosting-1",
     "href": "Week9.html#boosting-1",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Boosting",
-    "text": "Boosting\nAlgorithm — Boosting for Regression Trees\n\nSet \\(\\hat f(x)=0\\) and \\(r_i=y_i\\) for all \\(i\\) in the training set.\nFor \\(b=1,2,\\ldots,B\\), repeat:\n\nFit a tree \\(\\hat f^b\\) with \\(d\\) splits (\\(d+1\\) terminal nodes) to the training data \\((X,r)\\).\nUpdate \\(\\hat f\\) by adding in a shrunken version of the new tree:\n\n\\[\\hat f(x)\\leftarrow\\hat f(x)+\\lambda\\hat f^b(x).\\]\n\nUpdate the residuals,\n\n\\[r_i\\leftarrow r_i-\\lambda\\hat f^b(x_i).\\]\nOutput the boosted model,\n\n\\[\\hat f(x)=\\sum_{b=1}^B\\lambda\\hat f^b(x).\\]"
+    "text": "Boosting\n\nUnlike fitting a single large decision tree to the data, which might lead to overfitting, the boosting approach instead learns slowly.\n\n\n\nGiven the current model, we fit a decision tree to the residuals from the model. We then add this new decision tree into the fitted function and update the residuals.\n\n\n\nEach of these trees can be rather small, with just a few terminal nodes, determined by the parameter \\(d\\) in the algorithm.\n\n\n\nBy fitting small trees to the residuals, we slowly improve \\(\\hat f\\) in areas where it does not perform well. The step size \\(\\lambda\\) further slows down the learning process."
   },
   {
     "objectID": "Week9.html#boosting-2",
@@ -4267,21 +4267,21 @@
     "href": "Week9.html#tuning-parameters-for-boosting",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Tuning parameters for Boosting",
-    "text": "Tuning parameters for Boosting\n\nThe number of trees \\(B\\). Unlike bagging and random forests, boosting can overfit if \\(B\\) is too large, although this overfitting tends to occur slowly if at all. We use cross-validation to select \\(B\\).\nThe shrinkage parameter (step size) \\(\\lambda\\), a small positive number. This controls the rate at which boosting learns. Typical values are 0.01 or 0.001.\nThe number of splits \\(d\\) in each tree, which controls the complexity of the boosted ensemble. Often \\(d=1\\) works well, in which case each tree is a stump, consisting of a single split and resulting in an additive model."
+    "text": "Tuning parameters for Boosting\n\nThe number of trees \\(B\\). Unlike bagging and random forests, boosting can overfit if \\(B\\) is too large, although this overfitting tends to occur slowly if at all. We use cross-validation to select \\(B\\).\n\n\n\n\nThe shrinkage parameter (step size) \\(\\lambda\\), a small positive number. This controls the rate at which boosting learns. Typical values are 0.01 or 0.001.\n\n\n\n\n\nThe number of splits \\(d\\) in each tree, which controls the complexity of the boosted ensemble. Often \\(d=1\\) works well, in which case each tree is a stump, consisting of a single split and resulting in an additive model."
   },
   {
     "objectID": "Week9.html#gene-expression-data-2",
     "href": "Week9.html#gene-expression-data-2",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Gene Expression Data",
-    "text": "Gene Expression Data\n\n\n\n\n\nFor both boosting trees, \\(\\lambda=0.01\\). Depth-1 trees slightly outperform depth-2 trees and random forests. But these differences are within their standard errors."
+    "text": "Gene Expression Data\n\nFor both boosting trees, \\(\\lambda=0.01\\). Depth-1 trees slightly outperform depth-2 trees and random forests. But these differences are within their standard errors, making none of the difference significant."
   },
   {
     "objectID": "Week9.html#summary",
     "href": "Week9.html#summary",
     "title": "Bagging, Random Forests and Boosting",
     "section": "Summary",
-    "text": "Summary\n\nDecision trees are simple and interpretable models for regression and classification.\nHowever their prediction accuracy is often not competitive with other regression / classification methods.\nBagging, random forests and boosting can improve prediction accuracy of trees. They work by growing many trees on the training data and then combining the predictions of the resulting trees.\nThe latter two methods – random forests and boosting – are among the state-of-the-art methods for supervised learning. However their results can be difficult to interpret.\n\nAnnouncements: Midterm on Wednesday\nNext Week:"
+    "text": "Summary\n\nDecision trees are simple and interpretable models for regression and classification.\nHowever their prediction accuracy is often not competitive with other regression / classification methods.\nBagging, random forests and boosting can improve prediction accuracy of trees. They work by growing many trees on the training data and then combining the predictions of the resulting trees.\nThe latter two methods, random forests and boosting, are among the state-of-the-art methods for supervised learning. However their results can be difficult to interpret.\n\nAnnouncements: Midterm on Wednesday in EX 200 during class time (11:10am - 12:50pm).\nNext Week: Support Vector Machines"
   },
   {
     "objectID": "Week7.html#example-of-decision-treesdiscrete-features-2",
@@ -4296,5 +4296,12 @@
     "title": "Bagging, Random Forests and Boosting",
     "section": "",
     "text": "Decision trees\n\nRegression tree\nClassification tree\n\nSelf-explanatory\nRecursive binary splitting\nCould be deeply grown trees, with large variance\nPruning"
+  },
+  {
+    "objectID": "Week9.html#boosting-algorithm-for-regression",
+    "href": "Week9.html#boosting-algorithm-for-regression",
+    "title": "Bagging, Random Forests and Boosting",
+    "section": "Boosting Algorithm for Regression",
+    "text": "Boosting Algorithm for Regression\n\nSet \\(\\hat f(x)=0\\) and \\(r_i=y_i\\) for all \\(i\\) in the training set.\nFor \\(b=1,2,\\ldots,B\\), repeat:\n\nFit a tree \\(\\hat f^b\\) with \\(d\\) splits (\\(d+1\\) terminal nodes) to the training data \\((X,r)\\).\nUpdate \\(\\hat f\\) by adding in a shrunken version of the new tree:\n\n\\[\\hat f(x)\\leftarrow\\hat f(x)+\\lambda\\hat f^b(x).\\]\n\nUpdate the residuals,\n\n\\[r_i\\leftarrow r_i-\\lambda\\hat f^b(x_i).\\]\nOutput the boosted model,\n\n\\[\\hat f(x)=\\sum_{b=1}^B\\lambda\\hat f^b(x).\\]"
   }
 ]
