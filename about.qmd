@@ -19,8 +19,8 @@ Below is a tentative schedule of topics for the term. You can find the lecture s
 | 7 | Tree Based Methods: Decision Trees | [HTML Slides](Week7.html)<br>[PDF Slides](Week7-PDF.pdf) | [RCode](Tutorial4.Rmd)<br>[RMarkdown PDF](Tutorial4.pdf) | \- | Ch. 8 |
 | 8 | **Reading Week** | \- | \- | \- | \- |
 | 9 | Tree Based Methods: Bagging, Random Forests, and Boosting | [HTML Slides](Week9.html)<br>[PDF Slides](Week9-PDF.pdf) | \- | Midterm, Nov. 4 | Ch. 8 |
-| 10 | Support Vector Machines | \- | \- | \- | Ch. 9 |
-| 11 | Unsupervised Learning: PCA and Clustering | \- | \- | Assignment 2 Released, Nov. 18 | Ch. 12 |
+| 10 | Support Vector Machines and Unsupervised Learning (Clustering) | \- | \- | \- | Ch. 9, Ch. 12 |
+| 11 | Unsupervised Learning: PCA and Matrix Factorization | \- | \- | Assignment 2 Released, Nov. 18 | Ch. 12 |
 | 12 | Neural Networks | \- | \- | \- | Ch. 10 |
 | 13 | Neural Networks; Generative AI; Course Review | \- | \- | Assignment 2 Due, Dec 2nd | Ch. 10 |
 :::
