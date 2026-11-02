@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\n-\n-\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\nSlides\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\n-\n-\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "about.html#tentative-course-schedule",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\n-\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\n-\n-\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\nSlides\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\n-\n-\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\n-\n-\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
@@ -4303,5 +4303,397 @@
     "title": "Bagging, Random Forests and Boosting",
     "section": "Boosting Algorithm for Regression",
     "text": "Boosting Algorithm for Regression\n\nSet \\(\\hat f(x)=0\\) and \\(r_i=y_i\\) for all \\(i\\) in the training set.\nFor \\(b=1,2,\\ldots,B\\), repeat:\n\nFit a tree \\(\\hat f^b\\) with \\(d\\) splits (\\(d+1\\) terminal nodes) to the training data \\((X,r)\\).\nUpdate \\(\\hat f\\) by adding in a shrunken version of the new tree:\n\n\\[\\hat f(x)\\leftarrow\\hat f(x)+\\lambda\\hat f^b(x).\\]\n\nUpdate the residuals,\n\n\\[r_i\\leftarrow r_i-\\lambda\\hat f^b(x_i).\\]\nOutput the boosted model,\n\n\\[\\hat f(x)=\\sum_{b=1}^B\\lambda\\hat f^b(x).\\]"
+  },
+  {
+    "objectID": "Week10.html#linear-decision-boundaries",
+    "href": "Week10.html#linear-decision-boundaries",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Linear decision boundaries",
+    "text": "Linear decision boundaries\nIn binary classification problems, we have seen examples of classifiers with decision boundaries linear in the feature space.\n\nLogistic regression:\n\n\\[\\log\\frac{P(Y=1\\mid X=x)}{P(Y=0\\mid X=x)}=\\beta_0+\\beta^\\top x.\\]\nHence, \\(P(Y=1\\mid X=x)\\ge P(Y=0\\mid X=x)\\) if and only if\n\\[\\beta_0+\\beta^\\top x\\ge0.\\]\nThe decision boundary is\n\\[\\{x\\in\\mathbb R^p:\\beta_0+\\beta^\\top x=0\\}. \\]"
+  },
+  {
+    "objectID": "Week10.html#linear-decision-boundaries-1",
+    "href": "Week10.html#linear-decision-boundaries-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Linear decision boundaries",
+    "text": "Linear decision boundaries\n\nLDA:\n\n\\[\\delta_k(x)=x^\\top\\Sigma^{-1}\\mu_k-\\frac12\\mu_k^\\top\\Sigma^{-1}\\mu_k+\\log\\pi_k,\\quad\\forall k\\in\\{0,1\\}.\\]\nHence, \\(\\delta_1(x)\\ge\\delta_0(x)\\) if and only if\n\\[\\left(x-\\frac{\\mu_0+\\mu_1}{2}\\right)^\\top\\Sigma^{-1}(\\mu_1-\\mu_0)+\\log\\frac{\\pi_1}{\\pi_0}\\ge0.\\]\nThe decision boundary is\n\\[\\{x\\in\\mathbb R^p:\\alpha_0+\\alpha^\\top x=0\\}\\]\nfor some \\(\\alpha_0\\) and \\(\\alpha\\in\\mathbb R^p\\)."
+  },
+  {
+    "objectID": "Week10.html#a-general-formulation-of-linear-classifiers",
+    "href": "Week10.html#a-general-formulation-of-linear-classifiers",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "A general formulation of linear classifiers",
+    "text": "A general formulation of linear classifiers\nBinary classification: predicting a target with two values, \\(y\\in\\{-1,+1\\}\\), (notational change from the past).\n\nConsider the linear decision boundary\n\n\\[w^\\top x+b=0\\]\nfor some weights \\(w\\in\\mathbb R^p\\) and \\(b\\in\\mathbb R\\).\n\nA good decision boundary should satisfy: for a given point \\((x,y)\\),\n\n\\[\\begin{aligned}w^\\top x+b&&gt;0,&&\\text{if }y=1\\\\w^\\top x+b&&lt;0,&&\\text{if }y=-1.\\end{aligned}\\]"
+  },
+  {
+    "objectID": "Week10.html#separating-hyperplanes",
+    "href": "Week10.html#separating-hyperplanes",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Separating Hyperplanes",
+    "text": "Separating Hyperplanes\nSuppose we are given these data points from two different classes and want to find a linear classifier that separates them."
+  },
+  {
+    "objectID": "Week10.html#separating-hyperplanes-1",
+    "href": "Week10.html#separating-hyperplanes-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Separating Hyperplanes",
+    "text": "Separating Hyperplanes\n\n\nThe decision boundary is a line in \\(\\mathbb R^2\\)\n\\(\\{x\\in\\mathbb R^p:w^\\top x+b=0\\}\\) is a hyperplane in \\((p-1)\\) dimensional space."
+  },
+  {
+    "objectID": "Week10.html#simple-intuition-and-potential-issues",
+    "href": "Week10.html#simple-intuition-and-potential-issues",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Simple Intuition and Potential Issues",
+    "text": "Simple Intuition and Potential Issues\nTo correctly classify all points we require that\n\\[\\operatorname{sign}(w^\\top x_i+b)=y_i\\qquad\\text{for all }i\\in[n].\\]\n\nWe should find \\(w\\) and \\(b\\) to meet the above goal.\n\n\nHowever:\n\nWhen the data is separable, there exists multiple solutions of \\(w\\) and \\(b\\). Which to choose?\nWhen the data is not separable, it is infeasible."
+  },
+  {
+    "objectID": "Week10.html#separable-cases",
+    "href": "Week10.html#separable-cases",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Separable Cases",
+    "text": "Separable Cases\n\nThere are multiple separating hyperplanes, determined by different parameters \\((w,b)\\)."
+  },
+  {
+    "objectID": "Week10.html#separable-cases-1",
+    "href": "Week10.html#separable-cases-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Separable Cases",
+    "text": "Separable Cases"
+  },
+  {
+    "objectID": "Week10.html#optimal-separating-hyperplane",
+    "href": "Week10.html#optimal-separating-hyperplane",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Optimal Separating Hyperplane",
+    "text": "Optimal Separating Hyperplane\nOptimal Separating Hyperplane: A hyperplane that separates two classes and maximizes the distance to the closest point from either class, i.e., maximize the margin of the classifier.\n\nIntuitively, ensuring that a classifier is not too close to any data points leads to better generalization on the test data."
+  },
+  {
+    "objectID": "Week10.html#geometry-of-points-and-planes",
+    "href": "Week10.html#geometry-of-points-and-planes",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Geometry of Points and Planes",
+    "text": "Geometry of Points and Planes\n\nRecall that the decision hyperplane is orthogonal (perpendicular) to \\(w\\). I.e., for any two points \\(x_1\\) and \\(x_2\\) on the decision hyperplane we have that\n\\[w^\\top(x_1-x_2)=0.\\]"
+  },
+  {
+    "objectID": "Week10.html#geometry-of-points-and-planes-1",
+    "href": "Week10.html#geometry-of-points-and-planes-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Geometry of Points and Planes",
+    "text": "Geometry of Points and Planes\n\nThe vector \\(w^*=\\frac{w}{\\|w\\|_2}\\) is a unit vector pointing in the same direction as \\(w\\).\nThe same hyperplane could equivalently be defined in terms of \\(w^*\\)."
+  },
+  {
+    "objectID": "Week10.html#geometry-of-points-and-planes-2",
+    "href": "Week10.html#geometry-of-points-and-planes-2",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Geometry of Points and Planes",
+    "text": "Geometry of Points and Planes\n\nQuestion: how to compute the distance from a point \\(x'\\) to the hyperplane \\(\\{x:b+w^\\top x=0\\}\\)."
+  },
+  {
+    "objectID": "Week10.html#distance-to-a-given-hyperplane",
+    "href": "Week10.html#distance-to-a-given-hyperplane",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Distance to a Given Hyperplane",
+    "text": "Distance to a Given Hyperplane\nFix the point \\(\\mathbf{x'}\\) as well as \\(\\mathbf{w}\\) and \\(b\\) which determine the hyperplane.\n\nTake the closest point \\(x_{\\mathrm{proj}}\\) on the hyperplane, which satisfies\n\n\\[\\mathbf{w}^\\top \\mathbf{x}_{\\mathrm{proj}}+b=0.\\]\n\nWe know that \\(\\mathbf{x'-x}_{\\mathrm{proj}}\\) is parallel to \\(\\mathbf{w^*=w/\\|w}\\|_2\\)\nThe distance is\n\n\\[\n\\begin{aligned}\n\\|\\mathbf{x}'-\\mathbf{x}_{\\mathrm{proj}}\\|_2\n&=\\left|(\\mathbf{x}'-\\mathbf{x}_{\\mathrm{proj}})^\\top\n\\frac{\\mathbf{w}}{\\|\\mathbf{w}\\|_2}\\right|\\\\\n&=\\frac{|\\mathbf{w}^\\top\\mathbf{x}'-\\mathbf{w}^\\top\\mathbf{x}_{\\mathrm{proj}}|}{\\|\\mathbf{w}\\|_2}\n=\\frac{|\\mathbf{w}^\\top\\mathbf{x}'+b|}{\\|\\mathbf{w}\\|_2}.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week10.html#maximizing-margin-as-an-optimization-problem",
+    "href": "Week10.html#maximizing-margin-as-an-optimization-problem",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Maximizing Margin as an Optimization Problem",
+    "text": "Maximizing Margin as an Optimization Problem\nWe want to choose \\(\\mathbf{w}\\) and \\(b\\) such that:\n\ncorrectly classify all points:\n\n\\[\n\\operatorname{sign}(\\mathbf{w}^\\top \\mathbf{x}_i+b)=y_i\n\\qquad\\text{for all }i\\in[n]\n\\]\n\nThe smallest distance of \\(\\mathbf{x}_i\\) to \\(\\{\\mathbf{x}:\\mathbf{w}^\\top \\mathbf{x}+b=0\\}\\),\n\n\\[\n\\frac{|\\mathbf{w}^\\top \\mathbf{x}_i+b|}{\\|\\mathbf{w}\\|_2},\n\\]\nis as large as possible.\nThis leads to the max-margin objective:\n\\[\n\\begin{aligned}\n\\max_{\\mathbf{w},b}\\ \\min_{i\\in[n]}\n&\\frac{|\\mathbf{w}^\\top \\mathbf{x}_i+b|}{\\|\\mathbf{w}\\|_2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge0,\n\\quad\\text{for all }i\\in[n].\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week10.html#maximizing-margin-as-an-optimization-problem-1",
+    "href": "Week10.html#maximizing-margin-as-an-optimization-problem-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Maximizing Margin as an Optimization Problem",
+    "text": "Maximizing Margin as an Optimization Problem\nEquivalently,\n\\[\n\\begin{aligned}\n\\max_{\\mathbf{w},b}\\ \\min_{i\\in[n]}\n&\\frac{y_i^2(\\mathbf{w}^\\top \\mathbf{x}_i+b)^2}{\\|\\mathbf{w}\\|_2^2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge0,\n\\quad\\text{for all }i\\in[n].\n\\end{aligned}\n\\]\nMore compactly,\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b}\\ &\\frac{\\|\\mathbf{w}\\|_2^2}{M^2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge M,\n\\quad\\text{for all }i=1,\\ldots,n.\n\\end{aligned}\n\\]\nThe constraints are called the margin constraints.\nW.l.o.g. we can set \\(M=1\\). (Why?)"
+  },
+  {
+    "objectID": "Week10.html#maximizing-margin-as-an-optimization-problem-2",
+    "href": "Week10.html#maximizing-margin-as-an-optimization-problem-2",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Maximizing Margin as an Optimization Problem",
+    "text": "Maximizing Margin as an Optimization Problem\n\n\nMax-margin objective:\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b}\\ &\\|\\mathbf{w}\\|_2^2\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1\n\\qquad i=1,\\ldots,n\n\\end{aligned}\n\\]\n\n\n\n\n\n\n\n\nIntuitively, if the margin constraint is not tight for \\(x_i\\), we could remove \\(x_i\\) from the training set and the optimal hyperplane would be the same.¹\nThe important training points are those with equality constraints, and are called support vectors.\nHence, this algorithm is called the (hard-margin) Support Vector Machine (SVM). SVM-like algorithms are often called max-margin or large-margin.\n\n¹This can be rigorously shown via the K.K.T. conditions."
+  },
+  {
+    "objectID": "Week10.html#computation-of-the-hard-margin-svm",
+    "href": "Week10.html#computation-of-the-hard-margin-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Computation of the hard-margin SVM",
+    "text": "Computation of the hard-margin SVM\nPrimal-formulation:\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b}\\ &\\|\\mathbf{w}\\|_2^2\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1\n\\qquad i=1,\\ldots,n\n\\end{aligned}\n\\]\n\nConvex, in fact, a quadratic program. (Stochastic) Gradient descent can be directly used.\nIn practice, it is more common to solve this optimization problem based on its dual formulation."
+  },
+  {
+    "objectID": "Week10.html#dual-formulation-of-the-hard-margin-svm",
+    "href": "Week10.html#dual-formulation-of-the-hard-margin-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Dual-formulation of the hard-margin SVM",
+    "text": "Dual-formulation of the hard-margin SVM\nFor \\(\\alpha_i\\ge0\\) for all \\(i=1,\\ldots,n\\), write the Lagrangian function\n\\[\nL(\\mathbf{w},b,\\alpha)=\\|\\mathbf{w}\\|_2^2+\\sum_{i=1}^n\\alpha_i[1-y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)],\n\\]\nTaking the derivative w.r.t. \\(\\mathbf{w}\\) and \\(b\\) yields\n\\[\n\\mathbf{w}=\\frac12\\sum_{i=1}^n\\alpha_i y_i \\mathbf{x}_i,\n\\qquad\n\\sum_{i=1}^n\\alpha_i y_i=0.\n\\]\nPlugging into \\(L(\\mathbf{w},b,\\alpha)\\) yields\n\\[\n\\begin{aligned}\n&\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\n+\\sum_{i=1}^n\\alpha_i\n-\\frac12\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\n-b\\sum_{i=1}^n\\alpha_i y_i\\\\\n&=\\sum_{i=1}^n\\alpha_i\n-\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week10.html#dual-formulation-of-the-hard-margin-svm-1",
+    "href": "Week10.html#dual-formulation-of-the-hard-margin-svm-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Dual-formulation of the hard-margin SVM",
+    "text": "Dual-formulation of the hard-margin SVM\nThe dual problem is\n\\[\n\\begin{aligned}\n\\max_\\alpha\\quad\n&\\sum_{i=1}^n\\alpha_i-\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\\\\\n\\text{s.t. }&\\sum_{i=1}^n\\alpha_i y_i=0,\\quad\\alpha_i\\ge0,\\quad i=1,\\ldots,n.\n\\end{aligned}\n\\]\n\nThis is a quadratic program in \\(\\alpha\\) and can be easily solved.\nIt only depends on \\(\\mathbf{x}_i^\\top \\mathbf{x}_j\\), which is very convenient to extend to cases where some basis functions \\(\\phi(\\mathbf{x}_i)\\) are used (so-called kernel trick.)"
+  },
+  {
+    "objectID": "Week10.html#k.k.t.-conditions",
+    "href": "Week10.html#k.k.t.-conditions",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "K.K.T. conditions",
+    "text": "K.K.T. conditions\nThe K.K.T. conditions ensure the following relationships between the primal and dual formulations.\n\nTheir optimal objective values are equal.\nThe optimal solutions \\(\\hat \\mathbf{w}\\) and \\(\\hat\\alpha\\) satisfy\n\n\\[\\hat{\\mathbf{w}}=\\frac12\\sum_{i=1}^n\\hat\\alpha_i y_i \\mathbf{x}_i,\\qquad\\begin{cases}\\hat\\alpha_i&gt;0,&\\text{if }y_i(\\mathbf{\\hat{w}^\\top x}_i+\\hat b)=1\\\\\\hat\\alpha_i=0,&\\text{if }y_i(\\mathbf{\\hat{w}^\\top x}_i+\\hat b)&gt;1.\\end{cases}\\]\n\nThe predicted label for any \\(\\mathbf{x}\\) is\n\n\\[\\operatorname{sign}(\\mathbf{\\hat{w}^\\top x}+\\hat b).\\]"
+  },
+  {
+    "objectID": "Week10.html#extension-to-non-separable-data-points",
+    "href": "Week10.html#extension-to-non-separable-data-points",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Extension to Non-Separable Data Points",
+    "text": "Extension to Non-Separable Data Points\nHow can we apply the max-margin principle if the data are not linearly separable?"
+  },
+  {
+    "objectID": "Week10.html#soft-margin-svm",
+    "href": "Week10.html#soft-margin-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Soft-margin SVM",
+    "text": "Soft-margin SVM\nWe introduce slack variables \\(\\zeta=(\\zeta_1,\\ldots,\\zeta_n)\\) and consider\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b,\\zeta}\\quad&\\|\\mathbf{w}\\|_2^2\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1-\\zeta_i,\\quad\\zeta_i\\ge0,\\quad\\text{for all }i=1,\\ldots,n\\\\\n&\\sum_{i=1}^n\\zeta_i\\le K.\n\\end{aligned}\n\\]\n\nMisclassification occurs if \\(\\zeta_i&gt;1\\).\n\\(\\sum_{i=1}^n\\zeta_i\\le K\\ \\Rightarrow\\) the total number of misclassified points less than \\(K\\).\n\\(K\\ge0\\) is a tuning parameter.\n\\(K=0\\) reduces to the hard-margin SVM."
+  },
+  {
+    "objectID": "Week10.html#another-interpretation-of-the-soft-margin-svm",
+    "href": "Week10.html#another-interpretation-of-the-soft-margin-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Another interpretation of the soft-margin SVM",
+    "text": "Another interpretation of the soft-margin SVM\n\nSoft-margin SVM is equivalent to, for some \\(C=C(K)\\),\n\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b,\\zeta}\\quad&\\|\\mathbf{w}\\|_2^2+C\\sum_{i=1}^n\\zeta_i\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1-\\zeta_i,\\quad\\zeta_i\\ge0,\\quad i=1,\\ldots,n.\n\\end{aligned}\n\\]\n\nThis is further equivalent to\n\n\\[\n\\min_{\\mathbf{w},b}\\ \\frac1n\\sum_{i=1}^n\\underbrace{\\max\\{0,1-y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\}}_{\\text{hinge loss}}+\\lambda\\|\\mathbf{w}\\|_2^2\n\\]\nwith \\(\\lambda=1/(nC)\\). Hence, the soft-margin SVM can be seen as a linear classifier with the hinge loss and the ridge penalty."
+  },
+  {
+    "objectID": "Week10.html#hinge-loss",
+    "href": "Week10.html#hinge-loss",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Hinge Loss",
+    "text": "Hinge Loss\nThe hinge loss:\n\\[\nL_{\\mathrm{hinge}}(\\mathbf{w},b)=\\max\\{0,1-y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\}\n\\]\nWe only want to minimize \\(1-y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\) when it is positive.\n\\[\n\\begin{aligned}\ny_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1\n&\\quad\\Rightarrow\\quad\\checkmark\\text{ + out of margin}\\\\\ny_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\in[0,1]\n&\\quad\\Rightarrow\\quad\\checkmark\\text{ but within margin}\\\\\ny_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)&lt;0\n&\\quad\\Rightarrow\\quad\\times\n\\end{aligned}\n\\]\nThe 0-1 loss\n\\[\nL_{0\\text{-}1}(\\mathbf{w},b)=\\mathbf{1}\\{y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)&lt;0\\}.\n\\]"
+  },
+  {
+    "objectID": "Week10.html#revisiting-loss-functions-for-classification",
+    "href": "Week10.html#revisiting-loss-functions-for-classification",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Revisiting Loss Functions for Classification",
+    "text": "Revisiting Loss Functions for Classification\nHinge loss compared with the 0-1 loss:\n\\[y=\\max\\{0,1-x\\}\\qquad\\text{v.s.}\\qquad y=\\mathbf1\\{x&lt;0\\}.\\]\n\nAbove, the hinge loss is shown in blue, and the 0-1 loss is shown in green."
+  },
+  {
+    "objectID": "Week10.html#primal-formulation-of-the-soft-margin-svm",
+    "href": "Week10.html#primal-formulation-of-the-soft-margin-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Primal-formulation of the soft-margin SVM",
+    "text": "Primal-formulation of the soft-margin SVM\nSoft-margin SVM is equivalent to, for some \\(C=C(K)\\),\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b,\\zeta}\\quad&\\|\\mathbf{w}\\|_2^2+C\\sum_{i=1}^n\\zeta_i\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1-\\zeta_i,\\quad\\zeta_i\\ge0,\\quad i=1,\\ldots,n.\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week10.html#dual-formulation-of-the-soft-margin-svm",
+    "href": "Week10.html#dual-formulation-of-the-soft-margin-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Dual-formulation of the soft-margin SVM",
+    "text": "Dual-formulation of the soft-margin SVM\nIt can be shown² that the dual-formulation of the soft-margin SVM is\n\\[\n\\begin{aligned}\n\\max_\\alpha\\quad\n&\\sum_{i=1}^n\\alpha_i-\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\\\\\n\\text{s.t. }&\\sum_{i=1}^n\\alpha_i y_i=0,\\quad0\\le\\alpha_i\\le C,\\quad i=1,\\ldots,n.\n\\end{aligned}\n\\]\nHere \\(C&gt;0\\) is the tuning parameter.\n²Chapter 12.2.1 in ESL."
+  },
+  {
+    "objectID": "Week10.html#kernel-svm-extension-to-non-linear-boundary",
+    "href": "Week10.html#kernel-svm-extension-to-non-linear-boundary",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Kernel SVM: extension to non-linear boundary",
+    "text": "Kernel SVM: extension to non-linear boundary\nRecall\n\\[\n\\begin{aligned}\n\\max_\\alpha\\quad\n&\\sum_{i=1}^n\\alpha_i-\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\color{red}{\\mathbf{x}_i^\\top \\mathbf{x}_j}\\\\\n\\text{s.t. }&\\sum_{i=1}^n\\alpha_i y_i=0,\\quad0\\le\\alpha_i\\le C,\\quad i=1,\\ldots,n.\n\\end{aligned}\n\\]\nRepresent \\(\\mathbf{x}_i\\) in different bases, \\(h(\\mathbf{x}_i)\\), to have non-linear boundary (in \\(\\mathbf{x}_i\\)).\nThe only change is the objective function\n\\[\n\\max_\\alpha\\ \\sum_{i=1}^n\\alpha_i-\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\color{red}{h(\\mathbf{x}_i)^\\top h(\\mathbf{x}_j)}.\n\\]"
+  },
+  {
+    "objectID": "Week10.html#kernel-trick",
+    "href": "Week10.html#kernel-trick",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Kernel trick",
+    "text": "Kernel trick\n\nWe can represent the inner-product \\(h(\\mathbf{x}_i)^\\top h(\\mathbf{x}_j)\\) by using\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=h(\\mathbf{x}_i)^\\top h(\\mathbf{x}_j),\\quad\\forall i\\ne j\\in\\{1,\\ldots,n\\}.\n\\]\n\nThe function \\(K\\) is called kernel that quantifies the similarity of two feature vectors.\nRegardless how large the space of \\(h(\\mathbf{x}_i)\\) is, all we need to compute is the pairwise kernel\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j),\\quad\\forall i\\ne j\\in\\{1,\\ldots,n\\}.\n\\]\n\nThis is known as the kernel trick."
+  },
+  {
+    "objectID": "Week10.html#examples-of-kernel-svm",
+    "href": "Week10.html#examples-of-kernel-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Examples of kernel SVM",
+    "text": "Examples of kernel SVM\n\nLinear:\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=\\mathbf{x}_i^\\top \\mathbf{x}_j\n\\]\nwith the corresponding \\(h(\\mathbf{x}_i)=\\mathbf{x}_i\\).\n\n\\(d\\)th-Degree polynomial:\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=(1+\\mathbf{x}_i^\\top \\mathbf{x}_j)^d.\n\\]\nThe corresponding \\(h\\) would be polynomials. For example, consider \\(d=2\\), \\(\\mathbf{x}_i=x_i\\) and \\(h(\\mathbf{x}_i)=[1,\\sqrt2 x_i,x_i^2]\\), then\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=h(\\mathbf{x}_i)^\\top h(\\mathbf{x}_j)=1+2x_ix_j+x_i^2x_j^2=(1+\\mathbf{x}_i^\\top \\mathbf{x}_j)^2.\n\\]\n\nRadial basis: for some \\(\\gamma&gt;0\\),\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=\\exp(-\\gamma\\|\\mathbf{x}_i-\\mathbf{x}_j\\|_2^2).\n\\]\nThe corresponding \\(h(\\mathbf{x}_i)\\) has infinite dimensions!"
+  },
+  {
+    "objectID": "Week10.html#limitations-of-svm",
+    "href": "Week10.html#limitations-of-svm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Limitations of SVM",
+    "text": "Limitations of SVM\n\nThe classifier based on SVM is\n\n\\[\\operatorname{sign}(\\mathbf{\\hat{w}^\\top x}+\\hat b).\\]\nHence, SVM does not estimate the posterior probability.\n\nFor multi-class classification problems with \\(\\mathcal C=\\{1,2,\\ldots,K\\}\\),\n\nIt is non-trivial to generalize the notion of a margin to multiclass setting.\nMany different proposals for multi-class SVMs. We discuss two commonly used ad-hoc approaches."
+  },
+  {
+    "objectID": "Week10.html#svm-one-versus-one",
+    "href": "Week10.html#svm-one-versus-one",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "SVM: One-Versus-One",
+    "text": "SVM: One-Versus-One\n\nConstruct \\(\\binom K2\\) SVMs for each pair of classes.\n\nFor classes \\(\\{1,2\\}\\), consider data \\((\\mathbf{x}_i,y_i)\\) with \\(y_i\\in\\{1,2\\}\\). Let\n\n\n\\[z_i=-\\mathbf1\\{y_i=1\\}+\\mathbf1\\{y_i=2\\}.\\]\nFit SVM by using \\((\\mathbf{x}_i,z_i)\\) with \\(y_i\\in\\{1,2\\}\\).\n\nFor classes \\(\\{1,3\\}\\), consider data \\((\\mathbf{x}_i,y_i)\\) with \\(y_i\\in\\{1,3\\}\\). Let\n\n\\[z_i=-\\mathbf1\\{y_i=1\\}+\\mathbf1\\{y_i=3\\}.\\]\nFit SVM by using \\((\\mathbf{x}_i,z_i)\\) with \\(y_i\\in\\{1,3\\}\\).\n\nRepeat for all pairs.\nFor each test point \\(\\mathbf{x}_0\\), assign it to the majority class predicted by \\(\\binom K2\\) SVMs."
+  },
+  {
+    "objectID": "Week10.html#svmone-versus-all",
+    "href": "Week10.html#svmone-versus-all",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "SVM:One-Versus-All",
+    "text": "SVM:One-Versus-All\n\nConstruct \\(K\\) SVMs by choosing each class one at a time.\n\nFor class \\(\\{1\\}\\), consider ALL data \\((x_i,y_i)\\), \\(i=1,\\ldots,n\\). Let\n\n\n\\[z_i=2\\cdot\\mathbf1\\{y_i=1\\}-1.\\]\nFit SVM and let its parameter be \\((\\hat b^{(1)},\\hat{\\mathbf{w}}^{(1)})\\).\n\nFor class \\(\\{2\\}\\), consider ALL data \\((x_i,y_i)\\), \\(i=1,\\ldots,n\\). Let\n\n\\[z_i=2\\cdot\\mathbf1\\{y_i=2\\}-1.\\]\nFit SVM and let its parameter be \\((\\hat b^{(2)},\\hat{\\mathbf{w}}^{(2)})\\).\n\nRepeat for all classes.\nFor each test point \\(x_0\\), assign it to the class\n\n\\[\\arg\\max_{k\\in\\mathcal C}\\left(\\hat b^{(k)}+\\mathbf{x_0^\\top\\hat{w}}^{(k)}\\right).\\]"
+  },
+  {
+    "objectID": "Week10.html#lda-vs-svm-vs-lr",
+    "href": "Week10.html#lda-vs-svm-vs-lr",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "LDA vs SVM vs LR",
+    "text": "LDA vs SVM vs LR\n\nSince LDA requires additional Gaussianity, SVM is more similar as LR than LDA. When Gaussianity can be justified, LDA has the best performance.\n\n\n\nSVM is less used for multi-class classification problems.\n\n\n\nSVM does not estimate the conditional probabilities, such as \\(P(Y=1\\mid X)\\), but LDA and LR do.\n\n\n\nWhen classes are separable, SVM and LDA perform better than LR. When classes are non-separable, LR (with ridge penalty) and SVM are very similar."
+  },
+  {
+    "objectID": "Week10.html#sta-314-statistical-methods-for-machine-learning-i",
+    "href": "Week10.html#sta-314-statistical-methods-for-machine-learning-i",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "STA 314: Statistical Methods for Machine Learning I",
+    "text": "STA 314: Statistical Methods for Machine Learning I"
+  },
+  {
+    "objectID": "Week10.html#unsupervised-learning",
+    "href": "Week10.html#unsupervised-learning",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Unsupervised learning",
+    "text": "Unsupervised learning\n\nUnsupervised learning is the study of learning without labels. What can we do without labels?\nHow can we even define what learning means without labels?\n\nIn some sense, the ML community does not exactly agree on what it means to do unsupervised learning, but intuitively, unsupervised learning is the task of - grouping (clustering) - explaining - finding structured data"
+  },
+  {
+    "objectID": "Week10.html#motivating-examples",
+    "href": "Week10.html#motivating-examples",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Motivating Examples",
+    "text": "Motivating Examples\nSome examples of situations where you’d use unupservised learning\n\nYou want to understand how a scientific field has changed over time. You want to take a large database of papers and model how the distribution of topics changes from year to year. But what are the topics?\nYou’re a biologist studying animal behavior, so you want to infer a high-level description of their behavior from video. You don’t know the set of behaviors ahead of time.\nYou want to reduce your energy consumption, so you take a time series of your energy consumption over time, and try to break it down into separate components (refrigerator, washing machine, etc.)."
+  },
+  {
+    "objectID": "Week10.html#two-major-unsupervised-learning-problems",
+    "href": "Week10.html#two-major-unsupervised-learning-problems",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Two major unsupervised learning problems",
+    "text": "Two major unsupervised learning problems\nCommon themes: you have some data, and you want to infer some structure underlying the data.\n\nClustering\nLow-dimensional representation"
+  },
+  {
+    "objectID": "Week10.html#clustering",
+    "href": "Week10.html#clustering",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Clustering",
+    "text": "Clustering\n\nSometimes the data form clusters, where samples within a cluster are similar to each other, and samples in different clusters are dissimilar:\n\n\n\nSuch a distribution is multimodal, since it has multiple modes, or regions of high probability mass."
+  },
+  {
+    "objectID": "Week10.html#clustering-1",
+    "href": "Week10.html#clustering-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Clustering",
+    "text": "Clustering\n\nGrouping data points into clusters, with no observed labels, is called clustering. E.g.\n\nClustering machine learning papers based on topic (deep learning, Bayesian models, reinforcement learning, etc.)\nBut topics are never observed (unsupervised).\n\nWe will study the most popular clustering algorithm: K-means."
+  },
+  {
+    "objectID": "Week10.html#example-of-results-from-k-means",
+    "href": "Week10.html#example-of-results-from-k-means",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Example of results from K-means",
+    "text": "Example of results from K-means\n\n\nA simulated data set with 150 observations in two-dimensional space. Panels show the results of applying K-means clustering with different values of K.\nThe color of each observation indicates the cluster to which it was assigned using the K-means clustering algorithm.\nThere is no ordering of the clusters, so the cluster coloring is arbitrary."
+  },
+  {
+    "objectID": "Week10.html#k-means-clustering",
+    "href": "Week10.html#k-means-clustering",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "K-means Clustering",
+    "text": "K-means Clustering\nK-means clustering is a simple approach for partitioning a data set into \\(K\\) distinct, non-overlapping clusters.\nLet \\(C_1,\\ldots,C_K\\) denote sets that form a partition of \\(\\{1,\\ldots,n\\}\\):\n\nEach observation belongs to at least one of the \\(K\\) clusters.\nNo observation belongs to more than one cluster.\n\n\\[C_k\\cap C_{k'}=\\varnothing,\\quad\\text{for all }k\\ne k'.\\]\nHence every single observation belongs to one and only one cluster. The goal is to find such partition \\(C_1,\\ldots,C_K\\) for certain purpose."
+  },
+  {
+    "objectID": "Week10.html#k-means-clustering-1",
+    "href": "Week10.html#k-means-clustering-1",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "K-means Clustering",
+    "text": "K-means Clustering\n\nThe idea behind K-means clustering is that a good clustering ensures the within-cluster variation as small as possible.\nThe within-cluster variation for cluster \\(C_k\\) is a measure \\(W(C_k)\\) on the difference among observations within a cluster.\nWe aim to find sets \\(C_1,\\ldots,C_K\\) by solving\n\n\\[\\min_{C_1,\\ldots,C_K}\\sum_{k=1}^K W(C_k).\\]\nIn words, we want to partition the observations into \\(K\\) clusters such that the total within-cluster variation, summed over all \\(K\\) clusters, is as small as possible."
+  },
+  {
+    "objectID": "Week10.html#definition-of-the-within-cluster-variation",
+    "href": "Week10.html#definition-of-the-within-cluster-variation",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Definition of the within-cluster variation",
+    "text": "Definition of the within-cluster variation\n\nIt is common to use the Euclidean distance\n\n\\[\\begin{aligned}W(C_k)&=\\frac1{|C_k|}\\sum_{i,i'\\in C_k}\\sum_{j=1}^p(x_{ij}-x_{i'j})^2\\\\&=\\frac1{|C_k|}\\sum_{i,i'\\in C_k}\\|\\mathbf{x_i-x}_{i'}\\|_2^2\\end{aligned}\\]\nwhere \\(|C_k|\\) denotes the number of observations in the \\(k\\)th cluster.\n\nLet\n\n\\[\\bar x_k=\\frac1{|C_k|}\\sum_{i\\in C_k}\\mathbf{x}_i.\\]\nVerify that\n\\[W(C_k)=\\frac1{|C_k|}\\sum_{i\\in C_k}\\|\\mathbf{x}_i-\\bar{\\mathbf{x}}_k\\|_2^2.\\]"
+  },
+  {
+    "objectID": "Week10.html#target-of-the-k-means-algorithm",
+    "href": "Week10.html#target-of-the-k-means-algorithm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Target of the K-means algorithm",
+    "text": "Target of the K-means algorithm\n\nThus, K-means aims to solve\n\n\\[\\min_{C_1,\\ldots,C_K}\\sum_{k=1}^K W(C_k)=\\min_{C_1,\\ldots,C_K}\\sum_{k=1}^K\\frac1{|C_k|}\\sum_{i\\in C_k}\\|\\mathbf{x}_i-\\bar{\\mathbf{x}}_k\\|_2^2.\\]\n\nThis is, however, a very difficult problem to solve exactly. There are almost \\(K^n\\) ways to partition \\(n\\) observations into \\(K\\) clusters."
+  },
+  {
+    "objectID": "Week10.html#a-pratical-alternating-algorithm",
+    "href": "Week10.html#a-pratical-alternating-algorithm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "A pratical alternating algorithm",
+    "text": "A pratical alternating algorithm\nHigh level overview of algorithm:\n\nInitialization: randomly initialize cluster centers\nThe algorithm iteratively alternates between two steps:\n\nAssignment step: Assign each data point to the closest cluster\nRe-center step: Move each cluster center to the mean of the data assigned to it"
+  },
+  {
+    "objectID": "Week10.html#section",
+    "href": "Week10.html#section",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "",
+    "text": "Figure from Bishop\nAnimation of the algorithm: http://shabal.in/visuals/kmeans/5.html."
+  },
+  {
+    "objectID": "Week10.html#k-means-algorithm",
+    "href": "Week10.html#k-means-algorithm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "K-means algorithm",
+    "text": "K-means algorithm\nAlgorithm 10.1 K-Means Clustering\n\nRandomly assign a number, from 1 to \\(K\\), to each of the observations. These serve as initial cluster assignments for the observations.\nIterate until the cluster assignments stop changing:\n\nFor each of the \\(K\\) clusters, compute the cluster centroid. The \\(k\\)th cluster centroid is the vector of the \\(p\\) feature means for the observations in the \\(k\\)th cluster.\nAssign each observation to the cluster whose centroid is closest (where closest is defined using Euclidean distance)."
+  },
+  {
+    "objectID": "Week10.html#why-k-means-converges",
+    "href": "Week10.html#why-k-means-converges",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Why K-means Converges",
+    "text": "Why K-means Converges\n\nK-means algorithm reduces the cost at each iteration.\n\n\\[\\min_{C_1,\\ldots,C_K}\\sum_{k=1}^K\\frac1{|C_k|}\\sum_{i\\in C_k}\\|\\mathbf{x}_i-\\bar{\\mathbf{x}}_k\\|_2^2.\\]\n\nAssignment step: fixing the centers, re-assignment will decrease the total within-cluster variation.\nRe-centering step: fixing the assignments, re-centering the data within clusters will reduce the total within-cluster variation.\nStopping criterion for convergence: when the assignments do not change in the assignment step, we have converged (to at least a local minimum)."
+  },
+  {
+    "objectID": "Week10.html#convergence-of-the-k-means-algorithm",
+    "href": "Week10.html#convergence-of-the-k-means-algorithm",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Convergence of the K-means algorithm",
+    "text": "Convergence of the K-means algorithm\n\nConvergence will always happen after a finite number of iterations, since the number of possible cluster assignments is finite\n\n\n\nK-means cost function after each assignment step (blue) and refitting step (red). The algorithm has converged after the third refitting step."
+  },
+  {
+    "objectID": "Week10.html#local-minima",
+    "href": "Week10.html#local-minima",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Local Minima",
+    "text": "Local Minima\n\n\n\nThe cost function is non-convex (so convergence is not equivalent to the global minimum)\nThere is nothing to prevent K-means getting stuck at local minima.\nPossible remedy: could try many random starting points"
+  },
+  {
+    "objectID": "Week10.html#k-means-for-vector-quantization",
+    "href": "Week10.html#k-means-for-vector-quantization",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "K-means for Vector Quantization",
+    "text": "K-means for Vector Quantization\n\nFigure from Bishop\n\nGiven image, construct “dataset” of pixels represented by their RGB pixel intensities\nRun K-means, replace each pixel by its cluster center"
+  },
+  {
+    "objectID": "Week10.html#k-means-for-image-segmentation",
+    "href": "Week10.html#k-means-for-image-segmentation",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "K-means for Image Segmentation",
+    "text": "K-means for Image Segmentation\n\n\nGiven image, construct “dataset” of pixels, represented by their HSV pixel intensities\nRun K-means to get superpixels"
+  },
+  {
+    "objectID": "Week10.html#extensions",
+    "href": "Week10.html#extensions",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Extensions",
+    "text": "Extensions\n\nNon-exhaustive clustering. Allow some of the data points not to belong to any cluster.\nOverlapping clustering. Allow some of the data points to belong to more than one clusters.\n\nSoft K-means\n\nClustering features rather than data points. Previously, we consider the clustering for data points."
+  },
+  {
+    "objectID": "Week10.html#learning-outcomes",
+    "href": "Week10.html#learning-outcomes",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes"
+  },
+  {
+    "objectID": "Week10.html#summary",
+    "href": "Week10.html#summary",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Summary",
+    "text": "Summary"
   }
 ]
