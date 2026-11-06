@@ -1,0 +1,459 @@
+---
+title: "Tutorial 6"
+author: "Teaching Team of STA314"
+output: pdf_document
+---
+
+## Roadmap
+
+In this tutorial, we will:
+
+1. Investigate **complete separation** in logistic regression and see how regularization helps.
+2. Compare **logistic regression, LDA, and QDA** on the **Smarket** data.
+3. Compare **multinomial logistic regression, LDA, and QDA** on the **iris** data, including their decision regions.
+4. Discuss how model assumptions, flexibility, and test accuracy relate to model choice.
+
+### Setup
+
+Run the following installation command **only if** any of the packages are missing:
+
+```{r install-packages, eval=FALSE}
+install.packages(c("ISLR2", "MASS", "glmnet", "nnet", "ggplot2"))
+```
+
+```{r setup, message=FALSE, warning=FALSE}
+library(ISLR2)     # Smarket dataset
+library(MASS)      # lda() and qda()
+library(glmnet)    # Regularized logistic regression
+library(nnet)      # Multinomial logistic regression
+library(ggplot2)   # Plots
+
+set.seed(0)
+```
+
+## 1. Warm-up: Complete separation in logistic regression
+
+For binary logistic regression, we model
+
+$$
+P(Y=1\mid \mathbf X=\mathbf x) =
+\frac{\exp(\beta_0+\mathbf x^T\boldsymbol\beta)}
+{1+\exp(\beta_0+\mathbf x^T\boldsymbol\beta)}.
+$$
+
+The unregularized maximum likelihood estimator maximizes the log-likelihood. If the two classes can be **completely separated**, increasing the magnitude of a separating coefficient vector drives the fitted probabilities toward 0 and 1, without attaining a finite maximum likelihood estimate.
+
+Below we create a toy **separable** dataset and show that unregularized fitting can produce huge coefficients or warnings, while regularization yields a stable, finite solution. 
+
+### Simulate separable data
+
+```{r separation-data}
+set.seed(0)
+
+x0 <- rnorm(10, mean = 0, sd = 1)
+x1 <- rnorm(10, mean = 5, sd = 1)
+
+separation_data <- data.frame(
+  x = c(x0, x1),
+  z = rnorm(20),
+  y = c(rep(0, 10), rep(1, 10))
+)
+
+# Check whether the two observed groups are separated
+max(x0) < min(x1)
+
+head(separation_data)
+```
+
+### Fit ordinary logistic regression
+
+```{r separation-glm}
+# Warnings about fitted probabilities of 0 or 1 may appear.
+fit_sep <- glm(y ~ x + z, data = separation_data, family = binomial())
+summary(fit_sep)
+coef(fit_sep)
+```
+
+```{r separation-plot, fig.width=7, fig.height=4.5}
+x_grid <- data.frame(
+  x = seq(min(separation_data$x) - 1,
+          max(separation_data$x) + 1,
+          length.out = 400),
+  z = 0
+)
+
+x_grid$p <- predict(fit_sep, newdata = x_grid, type = "response")
+
+ggplot(separation_data, aes(x = x, y = y)) +
+  geom_point(aes(color = factor(y)), size = 2.5) +
+  geom_line(data = x_grid, aes(y = p), color = "darkgreen", linewidth = 1) +
+  scale_color_manual(values = c("0" = "steelblue", "1" = "firebrick"),
+                     name = "Class") +
+  labs(title = "Logistic regression with separated classes",
+       x = "x", y = "Observed class / fitted probability") +
+  theme_minimal()
+```
+
+### Fit ridge-regularized logistic regression
+
+`glmnet()` minimizes a penalized loss. With `alpha = 0`, it uses an L2 (ridge) penalty. We specify a fixed positive `lambda` for illustration rather than choosing it by cross-validation.
+
+```{r separation-ridge}
+X_sep <- as.matrix(separation_data[, c("x", "z")])
+y_sep <- separation_data$y
+
+ridge_sep <- glmnet(X_sep, y_sep,
+                    family = "binomial", alpha = 0, lambda = 0.1)
+coef(ridge_sep)
+
+x_new <- cbind(x = x_grid$x, z = 0)
+
+x_grid$p_ridge <- as.numeric(
+  predict(ridge_sep, newx = x_new,
+          type = "response", s = 0.1)
+)
+```
+
+```{r ridge-plot, fig.width=7, fig.height=4.5}
+ggplot(separation_data, aes(x = x, y = y)) +
+  geom_point(aes(color = factor(y)), size = 2.5) +
+  geom_line(data = x_grid, aes(y = p_ridge),
+            color = "purple4", linewidth = 1) +
+  scale_color_manual(values = c("0" = "steelblue", "1" = "firebrick"),
+                     name = "Class") +
+  labs(title = "Ridge-regularized logistic regression",
+       x = "x", y = "Observed class / fitted probability") +
+  theme_minimal()
+```
+
+**Key point:** Under complete separation, an unregularized logistic regression fit may not have finite MLEs; regularization yields finite coefficients for a positive penalty.
+
+## 2. A reusable function for decision regions
+
+The function below fits no model itself. Given a **fitted classifier** and two predictors, it creates a grid, predicts the class at each grid point, and colors the resulting decision regions. We will use it for both datasets.
+
+```{r plot-helper}
+plot_decision_regions <- function(model, data, features, response, title,
+                                  grid_length = 180) {
+  stopifnot(length(features) == 2)
+
+  x_name <- features[1]
+  y_name <- features[2]
+
+  x_range <- range(data[[x_name]]) + c(-1, 1)
+  y_range <- range(data[[y_name]]) + c(-1, 1)
+
+  grid <- expand.grid(
+    seq(x_range[1], x_range[2], length.out = grid_length),
+    seq(y_range[1], y_range[2], length.out = grid_length)
+  )
+  names(grid) <- features
+
+  # predict() returns class labels for glmnet-independent classifiers
+  grid$predicted_class <- factor(predict(model, newdata = grid, type = "class"))
+  plot_data <- data
+  plot_data$observed_class <- factor(data[[response]])
+
+  ggplot() +
+    geom_raster(data = grid,
+                aes(x = .data[[x_name]], y = .data[[y_name]],
+                    fill = predicted_class), alpha = 0.3) +
+    geom_point(data = plot_data,
+               aes(x = .data[[x_name]], y = .data[[y_name]],
+                   color = observed_class), size = 1.6, alpha = 0.8) +
+    labs(title = title, x = x_name, y = y_name,
+         fill = "Predicted", color = "Observed") +
+    coord_cartesian(expand = FALSE) +
+    theme_minimal()
+}
+```
+
+**Note:** The helper is intended for the `glm`-independent `MASS::lda`, `MASS::qda` and `nnet::multinom` classifiers below, plus the logistic regression wrapper defined in the Smarket section. Its use of `type = "class"` will not work directly with a base R `glm` object.
+
+## 3. Binary classification: Smarket
+
+The `Smarket` dataset has 1,250 observations of daily S&P 500 returns from 2001 to 2005. `Lag1` through `Lag5` are percentage returns on the previous five trading days, `Volume` is trading volume, and `Direction` indicates whether the market moved **Up** or **Down**.
+
+```{r smarket-explore}
+data(Smarket)
+head(Smarket)
+str(Smarket)
+cor(Smarket[, sapply(Smarket, is.numeric)])
+```
+
+```{r smarket-volume, fig.width=7, fig.height=4}
+ggplot(Smarket, aes(x = seq_along(Volume), y = Volume)) +
+  geom_line(color = "steelblue") +
+  labs(title = "Smarket: Trading volume over time",
+       x = "Trading day (index)", y = "Volume") +
+  theme_minimal()
+```
+
+### 3.1 Logistic regression using all lag variables and Volume
+
+Binary logistic regression models the posterior probability **directly**:
+
+$$
+\log\left(\frac{P(Y=\mathrm{Up}\mid\mathbf x)}
+{1-P(Y=\mathrm{Up}\mid\mathbf x)}\right)
+=\beta_0+\mathbf x^T\boldsymbol\beta.
+$$
+
+With a 0.5 probability cutoff, its decision boundary is linear in the original predictors.
+
+```{r sigmoid, fig.width=6, fig.height=4}
+t <- seq(-8, 8, length.out = 400)
+plot(t, plogis(t), type = "l", lwd = 2,
+     main = "Sigmoid function", xlab = "t", ylab = "P(Y = 1)")
+```
+
+```{r smarket-allvars}
+logit_all <- glm(Direction ~ Lag1 + Lag2 + Lag3 + Lag4 + Lag5 + Volume,
+                 data = Smarket, family = binomial())
+summary(logit_all)
+
+prob_all <- predict(logit_all, type = "response")
+head(prob_all, 10)
+
+pred_all <- factor(ifelse(prob_all > 0.5, "Up", "Down"),
+                   levels = levels(Smarket$Direction))
+
+# Rows: predictions; columns: true classes
+table(Predicted = pred_all, Truth = Smarket$Direction)
+mean(pred_all == Smarket$Direction)  # Training accuracy
+```
+
+### 3.2 Evaluate on a held-out year
+
+Train on observations from **2001–2004** and test on **2005**. This chronological split avoids training on observations that occur after the test observations.
+
+```{r smarket-split}
+train <- subset(Smarket, Year < 2005)
+test  <- subset(Smarket, Year == 2005)
+
+nrow(train)
+nrow(test)
+
+logit_all_train <- glm(Direction ~ Lag1 + Lag2 + Lag3 + Lag4 + Lag5 + Volume,
+                       data = train, family = binomial())
+
+prob_test <- predict(logit_all_train, newdata = test, type = "response")
+pred_test <- factor(ifelse(prob_test > 0.5, "Up", "Down"),
+                    levels = levels(Smarket$Direction))
+
+table(Predicted = pred_test, Truth = test$Direction)
+mean(pred_test == test$Direction)  # Test accuracy
+```
+
+```{r smarket-baseline}
+# Accuracy from predicting the most frequent class in the training set
+majority_class <- names(which.max(table(train$Direction)))
+majority_class
+mean(test$Direction == majority_class)
+```
+
+### 3.3 Refit using only Lag1 and Lag2
+
+Using just two predictors lets us visualize the decision boundaries. For a fair comparison, all three models use **exactly the same training and test data**.
+
+```{r smarket-two-features}
+features <- c("Lag1", "Lag2")
+
+# Fit an ordinary (unpenalized) logistic regression, equivalent to glm(..., binomial).
+logit_two <- glm(Direction ~ Lag1 + Lag2,
+                 data = train, family = binomial())
+
+# Wrapper providing class predictions for the plotting helper
+logit_class <- list(fit = logit_two)
+class(logit_class) <- "logit_class"
+
+predict.logit_class <- function(object, newdata, type = "class", ...) {
+  p <- predict(object$fit, newdata = newdata, type = "response")
+  factor(ifelse(p > 0.5, "Up", "Down"), levels = c("Down", "Up"))
+}
+
+plot_decision_regions(logit_class, train, features, "Direction",
+                      "Logistic regression: Smarket training decision regions")
+
+pred_logit <- predict(logit_class, newdata = test)
+table(Predicted = pred_logit, Truth = test$Direction)
+mean(pred_logit == test$Direction)
+```
+
+
+### 3.4 Linear discriminant analysis (LDA)
+
+LDA assumes the predictor distributions within the classes are multivariate Gaussian with a **shared covariance matrix**:
+
+$$
+\mathbf X\mid Y=k \sim N_p(\boldsymbol\mu_k,\boldsymbol\Sigma).
+$$
+
+Its discriminant score is
+
+$$
+\delta_k(\mathbf x)
+=\mathbf x^T\boldsymbol\Sigma^{-1}\boldsymbol\mu_k
+-\frac12\boldsymbol\mu_k^T\boldsymbol\Sigma^{-1}\boldsymbol\mu_k
++\log\pi_k.
+$$
+
+```{r smarket-lda}
+lda_fit <- lda(Direction ~ Lag1 + Lag2, data = train)
+lda_fit
+
+# MASS::predict() returns a list; $class contains class labels.
+pred_lda <- predict(lda_fit, newdata = test)$class
+
+table(Predicted = pred_lda, Truth = test$Direction)
+mean(pred_lda == test$Direction)
+```
+
+For plotting, wrap LDA's output in a classifier that returns labels:
+
+```{r smarket-lda-plot, fig.width=7, fig.height=5}
+lda_class <- list(fit = lda_fit)
+class(lda_class) <- "lda_class"
+
+predict.lda_class <- function(object, newdata, type = "class", ...) {
+  predict(object$fit, newdata = newdata)$class
+}
+
+plot_decision_regions(lda_class, train, features, "Direction",
+                      "LDA: Smarket training decision regions")
+```
+
+### 3.5 Quadratic discriminant analysis (QDA)
+
+QDA assumes class-conditional Gaussians but allows the covariance matrix to **differ by class**:
+
+$$
+\mathbf X\mid Y=k \sim N_p(\boldsymbol\mu_k,\boldsymbol\Sigma_k).
+$$
+
+The discriminant score contains a class-specific quadratic term:
+
+$$
+\delta_k(\mathbf x)
+=-\frac12\log |\boldsymbol\Sigma_k|
+-\frac12(\mathbf x-\boldsymbol\mu_k)^T
+\boldsymbol\Sigma_k^{-1}(\mathbf x-\boldsymbol\mu_k)
++\log\pi_k.
+$$
+
+```{r smarket-qda}
+qda_fit <- qda(Direction ~ Lag1 + Lag2, data = train)
+qda_fit
+
+pred_qda <- predict(qda_fit, newdata = test)$class
+
+table(Predicted = pred_qda, Truth = test$Direction)
+mean(pred_qda == test$Direction)
+```
+
+```{r smarket-qda-plot, fig.width=7, fig.height=5}
+qda_class <- list(fit = qda_fit)
+class(qda_class) <- "qda_class"
+
+predict.qda_class <- function(object, newdata, type = "class", ...) {
+  predict(object$fit, newdata = newdata)$class
+}
+
+plot_decision_regions(qda_class, train, features, "Direction",
+                      "QDA: Smarket training decision regions")
+```
+
+### 3.6 Compare Smarket test accuracy
+
+```{r smarket-comparison}
+results_smarket <- data.frame(
+  Model = c("Logistic regression", "LDA", "QDA"),
+  Test_Accuracy = c(
+    mean(pred_logit == test$Direction),
+    mean(pred_lda == test$Direction),
+    mean(pred_qda == test$Direction)
+  )
+)
+results_smarket[order(-results_smarket$Test_Accuracy), ]
+```
+
+## 4. Multiclass classification: Iris
+
+The built-in `iris` dataset contains **three species**, with **50 observations per species**. To visualize decision regions in two dimensions, we use **petal length** and **petal width** only.
+
+```{r iris-data}
+data(iris)
+head(iris)
+table(iris$Species)
+
+iris_two <- iris[, c("Petal.Length", "Petal.Width", "Species")]
+
+# All three models are fit and displayed on the full iris dataset to
+# reproduce the original tutorial's illustrative decision-region plots.
+# These are NOT held-out test evaluations.
+```
+
+### 4.1 Multinomial logistic regression (softmax)
+
+For $K$ classes, multinomial logistic regression models the class probabilities directly:
+
+$$
+P(Y=k\mid\mathbf x)
+=\frac{\exp(\beta_{k0}+\mathbf x^T\boldsymbol\beta_k)}
+{\sum_{j=1}^{K}\exp(\beta_{j0}+\mathbf x^T\boldsymbol\beta_j)}.
+$$
+
+One class can be used as the reference class for identifiability. The **pairwise decision boundaries** are linear in the original predictors.
+
+```{r iris-multinom, fig.width=7, fig.height=5}
+multinom_fit <- multinom(Species ~ Petal.Length + Petal.Width,
+                        data = iris_two, trace = FALSE)
+summary(multinom_fit)
+
+plot_decision_regions(multinom_fit, iris_two,
+                      c("Petal.Length", "Petal.Width"), "Species",
+                      "Multinomial logistic regression: Iris")
+```
+
+
+### 4.2 Multiclass LDA
+
+```{r iris-lda, fig.width=7, fig.height=5}
+iris_lda <- lda(Species ~ Petal.Length + Petal.Width, data = iris_two)
+iris_lda_class <- list(fit = iris_lda)
+class(iris_lda_class) <- "lda_class"
+
+plot_decision_regions(iris_lda_class, iris_two,
+                      c("Petal.Length", "Petal.Width"), "Species",
+                      "LDA: Iris")
+```
+
+### 4.3 Multiclass QDA
+
+```{r iris-qda, fig.width=7, fig.height=5}
+iris_qda <- qda(Species ~ Petal.Length + Petal.Width, data = iris_two)
+iris_qda_class <- list(fit = iris_qda)
+class(iris_qda_class) <- "qda_class"
+
+plot_decision_regions(iris_qda_class, iris_two,
+                      c("Petal.Length", "Petal.Width"), "Species",
+                      "QDA: Iris")
+```
+
+
+## 5. Wrap-up: What should you remember?
+
+| Method | What is modelled? | Covariance assumption | Decision boundary in original features |
+|:--|:--|:--|:--|
+| Binary / multinomial logistic regression | $P(Y=k\mid \mathbf X)$ directly | No Gaussian covariance assumption | Linear pairwise boundaries |
+| LDA | Gaussian $\mathbf X\mid Y=k$ | Same covariance across classes | Linear pairwise boundaries |
+| QDA | Gaussian $\mathbf X\mid Y=k$ | Different covariance by class | Quadratic pairwise boundaries |
+
+**Final comprehension check (TA-led, 3 minutes)**
+
+1. A classification problem has approximately Gaussian predictors within each class, but the classes have very different covariance matrices. Which method would you consider first, and why?
+2. A training dataset has only a few observations per class and many predictors. Which may be more stable: LDA or QDA? Why?
+3. A logistic regression fit reports very large coefficients and warnings about perfect prediction. What issue should you investigate? Name one potential remedy.
+4. A model achieves 95% training accuracy and 60% test accuracy. Which value is most relevant to estimating performance on unseen data, and what might explain the difference?
+
+**Reminder:** A flexible decision boundary does not guarantee better test performance. Evaluate candidate classifiers on held-out data, and consider whether their assumptions are appropriate.

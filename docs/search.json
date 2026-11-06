@@ -4323,7 +4323,7 @@
     "href": "Week10.html#a-general-formulation-of-linear-classifiers",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "A general formulation of linear classifiers",
-    "text": "A general formulation of linear classifiers\nBinary classification: predicting a target with two values, \\(y\\in\\{-1,+1\\}\\), (notational change from the past).\n\nConsider the linear decision boundary\n\n\\[w^\\top x+b=0\\]\nfor some weights \\(w\\in\\mathbb R^p\\) and \\(b\\in\\mathbb R\\).\n\nA good decision boundary should satisfy: for a given point \\((x,y)\\),\n\n\\[\\begin{aligned}w^\\top x+b&&gt;0,&&\\text{if }y=1\\\\w^\\top x+b&&lt;0,&&\\text{if }y=-1.\\end{aligned}\\]"
+    "text": "A general formulation of linear classifiers\nBinary classification: predicting a target with two values, \\(y\\in\\{-1,+1\\}\\), (notational change from the past).\n\n\nConsider the linear decision boundary\n\n\\[w^\\top x+b=0\\]\nfor some weights \\(w\\in\\mathbb R^p\\) and \\(b\\in\\mathbb R\\).\n\nA good decision boundary should satisfy: for a given point \\((x,y)\\),\n\n\\[\\begin{aligned}w^\\top x+b&&gt;0,&&\\text{if }y=1\\\\w^\\top x+b&&lt;0,&&\\text{if }y=-1.\\end{aligned}\\]"
   },
   {
     "objectID": "Week10.html#separating-hyperplanes",
@@ -4344,7 +4344,7 @@
     "href": "Week10.html#simple-intuition-and-potential-issues",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Simple Intuition and Potential Issues",
-    "text": "Simple Intuition and Potential Issues\nTo correctly classify all points we require that\n\\[\\operatorname{sign}(w^\\top x_i+b)=y_i\\qquad\\text{for all }i\\in[n].\\]\n\nWe should find \\(w\\) and \\(b\\) to meet the above goal.\n\n\nHowever:\n\nWhen the data is separable, there exists multiple solutions of \\(w\\) and \\(b\\). Which to choose?\nWhen the data is not separable, it is infeasible."
+    "text": "Simple Intuition and Potential Issues\nTo correctly classify all points we require that\n\\[\\operatorname{sign}(w^\\top x_i+b)=y_i\\qquad\\text{for all }i\\in[n].\\]\n\nWe should find \\(w\\) and \\(b\\) to meet the above goal.\n\n\n\nHowever:\n\nWhen the data is separable, there exists multiple solutions of \\(w\\) and \\(b\\). Which to choose?\nWhen the data is not separable, it is infeasible."
   },
   {
     "objectID": "Week10.html#separable-cases",
@@ -4400,14 +4400,14 @@
     "href": "Week10.html#maximizing-margin-as-an-optimization-problem",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Maximizing Margin as an Optimization Problem",
-    "text": "Maximizing Margin as an Optimization Problem\nWe want to choose \\(\\mathbf{w}\\) and \\(b\\) such that:\n\ncorrectly classify all points:\n\n\\[\n\\operatorname{sign}(\\mathbf{w}^\\top \\mathbf{x}_i+b)=y_i\n\\qquad\\text{for all }i\\in[n]\n\\]\n\nThe smallest distance of \\(\\mathbf{x}_i\\) to \\(\\{\\mathbf{x}:\\mathbf{w}^\\top \\mathbf{x}+b=0\\}\\),\n\n\\[\n\\frac{|\\mathbf{w}^\\top \\mathbf{x}_i+b|}{\\|\\mathbf{w}\\|_2},\n\\]\nis as large as possible.\nThis leads to the max-margin objective:\n\\[\n\\begin{aligned}\n\\max_{\\mathbf{w},b}\\ \\min_{i\\in[n]}\n&\\frac{|\\mathbf{w}^\\top \\mathbf{x}_i+b|}{\\|\\mathbf{w}\\|_2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge0,\n\\quad\\text{for all }i\\in[n].\n\\end{aligned}\n\\]"
+    "text": "Maximizing Margin as an Optimization Problem\nEquivalently,\n\\[\n\\begin{aligned}\n\\max_{\\mathbf{w},b}\\ \\min_{i\\in[n]}\n&\\frac{y_i^2(\\mathbf{w}^\\top \\mathbf{x}_i+b)^2}{\\|\\mathbf{w}\\|_2^2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge0,\n\\quad\\text{for all }i\\in[n].\n\\end{aligned}\n\\]\nMore compactly,\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b}\\ &\\frac{\\|\\mathbf{w}\\|_2^2}{M^2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge M,\n\\quad\\text{for all }i=1,\\ldots,n.\n\\end{aligned}\n\\]\nThe constraints are called the margin constraints.\nW.l.o.g. we can set \\(M=1\\). (Why?)"
   },
   {
     "objectID": "Week10.html#maximizing-margin-as-an-optimization-problem-1",
     "href": "Week10.html#maximizing-margin-as-an-optimization-problem-1",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Maximizing Margin as an Optimization Problem",
-    "text": "Maximizing Margin as an Optimization Problem\nEquivalently,\n\\[\n\\begin{aligned}\n\\max_{\\mathbf{w},b}\\ \\min_{i\\in[n]}\n&\\frac{y_i^2(\\mathbf{w}^\\top \\mathbf{x}_i+b)^2}{\\|\\mathbf{w}\\|_2^2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge0,\n\\quad\\text{for all }i\\in[n].\n\\end{aligned}\n\\]\nMore compactly,\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b}\\ &\\frac{\\|\\mathbf{w}\\|_2^2}{M^2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge M,\n\\quad\\text{for all }i=1,\\ldots,n.\n\\end{aligned}\n\\]\nThe constraints are called the margin constraints.\nW.l.o.g. we can set \\(M=1\\). (Why?)"
+    "text": "Maximizing Margin as an Optimization Problem\n\n\nMax-margin objective:\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b}\\ &\\|\\mathbf{w}\\|_2^2\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1\n\\qquad i=1,\\ldots,n\n\\end{aligned}\n\\]\n\n\n\n\n\n\n\n\nIntuitively, if the margin constraint is not tight for \\(x_i\\), we could remove \\(x_i\\) from the training set and the optimal hyperplane would be the same.¹\nThe important training points are those with equality constraints, and are called support vectors.\nHence, this algorithm is called the (hard-margin) Support Vector Machine (SVM). SVM-like algorithms are often called max-margin or large-margin.\n\n¹This can be rigorously shown via the K.K.T. conditions."
   },
   {
     "objectID": "Week10.html#maximizing-margin-as-an-optimization-problem-2",
@@ -4428,7 +4428,7 @@
     "href": "Week10.html#dual-formulation-of-the-hard-margin-svm",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Dual-formulation of the hard-margin SVM",
-    "text": "Dual-formulation of the hard-margin SVM\nFor \\(\\alpha_i\\ge0\\) for all \\(i=1,\\ldots,n\\), write the Lagrangian function\n\\[\nL(\\mathbf{w},b,\\alpha)=\\|\\mathbf{w}\\|_2^2+\\sum_{i=1}^n\\alpha_i[1-y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)],\n\\]\nTaking the derivative w.r.t. \\(\\mathbf{w}\\) and \\(b\\) yields\n\\[\n\\mathbf{w}=\\frac12\\sum_{i=1}^n\\alpha_i y_i \\mathbf{x}_i,\n\\qquad\n\\sum_{i=1}^n\\alpha_i y_i=0.\n\\]\nPlugging into \\(L(\\mathbf{w},b,\\alpha)\\) yields\n\\[\n\\begin{aligned}\n&\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\n+\\sum_{i=1}^n\\alpha_i\n-\\frac12\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\n-b\\sum_{i=1}^n\\alpha_i y_i\\\\\n&=\\sum_{i=1}^n\\alpha_i\n-\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j.\n\\end{aligned}\n\\]"
+    "text": "Dual-formulation of the hard-margin SVM\nFor \\(\\alpha_i\\ge0\\) for all \\(i=1,\\ldots,n\\), write the Lagrangian function\n\\[\nL(\\mathbf{w},b,\\alpha)=\\|\\mathbf{w}\\|_2^2+\\sum_{i=1}^n\\alpha_i[1-y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)],\n\\]\n\nTaking the derivative w.r.t. \\(\\mathbf{w}\\) and \\(b\\) yields\n\\[\n\\mathbf{w}=\\frac12\\sum_{i=1}^n\\alpha_i y_i \\mathbf{x}_i,\n\\qquad\n\\sum_{i=1}^n\\alpha_i y_i=0.\n\\]\n\n\nPlugging into \\(L(\\mathbf{w},b,\\alpha)\\) yields\n\\[\n\\begin{aligned}\n&\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\n+\\sum_{i=1}^n\\alpha_i\n-\\frac12\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j\n-b\\sum_{i=1}^n\\alpha_i y_i\\\\\n&=\\sum_{i=1}^n\\alpha_i\n-\\frac14\\sum_{i=1}^n\\sum_{j=1}^n\\alpha_i\\alpha_j y_i y_j \\mathbf{x}_i^\\top \\mathbf{x}_j.\n\\end{aligned}\n\\]"
   },
   {
     "objectID": "Week10.html#dual-formulation-of-the-hard-margin-svm-1",
@@ -4442,7 +4442,7 @@
     "href": "Week10.html#k.k.t.-conditions",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "K.K.T. conditions",
-    "text": "K.K.T. conditions\nThe K.K.T. conditions ensure the following relationships between the primal and dual formulations.\n\nTheir optimal objective values are equal.\nThe optimal solutions \\(\\hat \\mathbf{w}\\) and \\(\\hat\\alpha\\) satisfy\n\n\\[\\hat{\\mathbf{w}}=\\frac12\\sum_{i=1}^n\\hat\\alpha_i y_i \\mathbf{x}_i,\\qquad\\begin{cases}\\hat\\alpha_i&gt;0,&\\text{if }y_i(\\mathbf{\\hat{w}^\\top x}_i+\\hat b)=1\\\\\\hat\\alpha_i=0,&\\text{if }y_i(\\mathbf{\\hat{w}^\\top x}_i+\\hat b)&gt;1.\\end{cases}\\]\n\nThe predicted label for any \\(\\mathbf{x}\\) is\n\n\\[\\operatorname{sign}(\\mathbf{\\hat{w}^\\top x}+\\hat b).\\]"
+    "text": "K.K.T. conditions\nThe K.K.T. conditions ensure the following relationships between the primal and dual formulations.\n\nTheir optimal objective values are equal.\nThe optimal solutions \\(\\hat{\\mathbf{w}}\\) and \\(\\hat\\alpha\\) satisfy\n\n\\[\\hat{\\mathbf{w}}=\\frac12\\sum_{i=1}^n\\hat\\alpha_i y_i \\mathbf{x}_i,\\qquad\\begin{cases}\\hat\\alpha_i&gt;0,&\\text{if }y_i(\\mathbf{\\hat{w}^\\top x}_i+\\hat b)=1\\\\\\hat\\alpha_i=0,&\\text{if }y_i(\\mathbf{\\hat{w}^\\top x}_i+\\hat b)&gt;1.\\end{cases}\\]\n\nThe predicted label for any \\(\\mathbf{x}\\) is\n\n\\[\\operatorname{sign}(\\mathbf{\\hat{w}^\\top x}+\\hat b).\\]"
   },
   {
     "objectID": "Week10.html#extension-to-non-separable-data-points",
@@ -4456,7 +4456,7 @@
     "href": "Week10.html#soft-margin-svm",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Soft-margin SVM",
-    "text": "Soft-margin SVM\nWe introduce slack variables \\(\\zeta=(\\zeta_1,\\ldots,\\zeta_n)\\) and consider\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b,\\zeta}\\quad&\\|\\mathbf{w}\\|_2^2\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1-\\zeta_i,\\quad\\zeta_i\\ge0,\\quad\\text{for all }i=1,\\ldots,n\\\\\n&\\sum_{i=1}^n\\zeta_i\\le K.\n\\end{aligned}\n\\]\n\nMisclassification occurs if \\(\\zeta_i&gt;1\\).\n\\(\\sum_{i=1}^n\\zeta_i\\le K\\ \\Rightarrow\\) the total number of misclassified points less than \\(K\\).\n\\(K\\ge0\\) is a tuning parameter.\n\\(K=0\\) reduces to the hard-margin SVM."
+    "text": "Soft-margin SVM\nWe introduce slack variables \\(\\zeta=(\\zeta_1,\\ldots,\\zeta_n)\\) and consider\n\\[\n\\begin{aligned}\n\\min_{\\mathbf{w},b,\\zeta}\\quad&\\|\\mathbf{w}\\|_2^2\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge1-\\zeta_i,\\quad\\zeta_i\\ge0,\\quad\\text{for all }i=1,\\ldots,n\\\\\n&\\sum_{i=1}^n\\zeta_i\\le K.\n\\end{aligned}\n\\]\n\n\nMisclassification occurs if \\(\\zeta_i&gt;1\\).\n\\(\\sum_{i=1}^n\\zeta_i\\le K\\ \\Rightarrow\\) the total number of misclassified points less than \\(K\\).\n\\(K\\ge0\\) is a tuning parameter.\n\\(K=0\\) reduces to the hard-margin SVM."
   },
   {
     "objectID": "Week10.html#another-interpretation-of-the-soft-margin-svm",
@@ -4512,14 +4512,14 @@
     "href": "Week10.html#examples-of-kernel-svm",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Examples of kernel SVM",
-    "text": "Examples of kernel SVM\n\nLinear:\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=\\mathbf{x}_i^\\top \\mathbf{x}_j\n\\]\nwith the corresponding \\(h(\\mathbf{x}_i)=\\mathbf{x}_i\\).\n\n\\(d\\)th-Degree polynomial:\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=(1+\\mathbf{x}_i^\\top \\mathbf{x}_j)^d.\n\\]\nThe corresponding \\(h\\) would be polynomials. For example, consider \\(d=2\\), \\(\\mathbf{x}_i=x_i\\) and \\(h(\\mathbf{x}_i)=[1,\\sqrt2 x_i,x_i^2]\\), then\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=h(\\mathbf{x}_i)^\\top h(\\mathbf{x}_j)=1+2x_ix_j+x_i^2x_j^2=(1+\\mathbf{x}_i^\\top \\mathbf{x}_j)^2.\n\\]\n\nRadial basis: for some \\(\\gamma&gt;0\\),\n\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=\\exp(-\\gamma\\|\\mathbf{x}_i-\\mathbf{x}_j\\|_2^2).\n\\]\nThe corresponding \\(h(\\mathbf{x}_i)\\) has infinite dimensions!"
+    "text": "Examples of kernel SVM\n\nLinear: \\(K(\\mathbf{x}_i,\\mathbf{x}_j)=\\mathbf{x}_i^\\top \\mathbf{x}_j\\) with the corresponding \\(h(\\mathbf{x}_i)=\\mathbf{x}_i\\).\n\n\n\n\\(d\\)th-Degree polynomial: \\(K(\\mathbf{x}_i,\\mathbf{x}_j)=(1+\\mathbf{x}_i^\\top \\mathbf{x}_j)^d.\\)\n\nThe corresponding \\(h\\) would be polynomials. For example, consider \\(d=2\\), \\(\\mathbf{x}_i=x_i\\) and \\(h(\\mathbf{x}_i)=[1,\\sqrt2 x_i,x_i^2]\\), then\n\\[\nK(\\mathbf{x}_i,\\mathbf{x}_j)=h(\\mathbf{x}_i)^\\top h(\\mathbf{x}_j)=1+2x_ix_j+x_i^2x_j^2=(1+\\mathbf{x}_i^\\top \\mathbf{x}_j)^2.\n\\]\n\n\n\nRadial basis: for some \\(\\gamma&gt;0\\), \\(K(\\mathbf{x}_i,\\mathbf{x}_j)=\\exp(-\\gamma\\|\\mathbf{x}_i-\\mathbf{x}_j\\|_2^2).\\)\n\nThe corresponding \\(h(\\mathbf{x}_i)\\) has infinite dimensions!"
   },
   {
     "objectID": "Week10.html#limitations-of-svm",
     "href": "Week10.html#limitations-of-svm",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Limitations of SVM",
-    "text": "Limitations of SVM\n\nThe classifier based on SVM is\n\n\\[\\operatorname{sign}(\\mathbf{\\hat{w}^\\top x}+\\hat b).\\]\nHence, SVM does not estimate the posterior probability.\n\nFor multi-class classification problems with \\(\\mathcal C=\\{1,2,\\ldots,K\\}\\),\n\nIt is non-trivial to generalize the notion of a margin to multiclass setting.\nMany different proposals for multi-class SVMs. We discuss two commonly used ad-hoc approaches."
+    "text": "Limitations of SVM\n\nThe classifier based on SVM is\n\n\\[\\operatorname{sign}(\\mathbf{\\hat{w}^\\top x}+\\hat b).\\]\nHence, SVM does not estimate the posterior probability.\n\n\nFor multi-class classification problems with \\(\\mathcal C=\\{1,2,\\ldots,K\\}\\),\n\nIt is non-trivial to generalize the notion of a margin to multiclass setting.\nMany different proposals for multi-class SVMs. We discuss two commonly used ad-hoc approaches."
   },
   {
     "objectID": "Week10.html#svm-one-versus-one",
@@ -4540,7 +4540,7 @@
     "href": "Week10.html#lda-vs-svm-vs-lr",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "LDA vs SVM vs LR",
-    "text": "LDA vs SVM vs LR\n\nSince LDA requires additional Gaussianity, SVM is more similar as LR than LDA. When Gaussianity can be justified, LDA has the best performance.\n\n\n\nSVM is less used for multi-class classification problems.\n\n\n\nSVM does not estimate the conditional probabilities, such as \\(P(Y=1\\mid X)\\), but LDA and LR do.\n\n\n\nWhen classes are separable, SVM and LDA perform better than LR. When classes are non-separable, LR (with ridge penalty) and SVM are very similar."
+    "text": "LDA vs SVM vs LR\n\nSince LDA requires additional Gaussianity, SVM is more similar to LR than LDA. When Gaussianity can be justified, LDA has the best performance.\n\n\n\nSVM is less used for multi-class classification problems.\n\n\n\nSVM does not estimate the conditional probabilities, such as \\(P(Y=1\\mid X)\\), but LDA and LR do.\n\n\n\nWhen classes are separable, SVM and LDA perform better than LR. When classes are non-separable, LR (with ridge penalty) and SVM are very similar."
   },
   {
     "objectID": "Week10.html#sta-314-statistical-methods-for-machine-learning-i",
@@ -4554,7 +4554,7 @@
     "href": "Week10.html#unsupervised-learning",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Unsupervised learning",
-    "text": "Unsupervised learning\n\nUnsupervised learning is the study of learning without labels. What can we do without labels?\nHow can we even define what learning means without labels?\n\nIn some sense, the ML community does not exactly agree on what it means to do unsupervised learning, but intuitively, unsupervised learning is the task of - grouping (clustering) - explaining - finding structured data"
+    "text": "Unsupervised learning\n\nUnsupervised learning is the study of learning without labels. What can we do without labels?\nHow can we even define what learning means without labels?\n\nIn some sense, the ML community does not exactly agree on what it means to do unsupervised learning, but intuitively, unsupervised learning is the task of\n\ngrouping (clustering)\nexplaining\nfinding structures in data"
   },
   {
     "objectID": "Week10.html#motivating-examples",
@@ -4596,7 +4596,7 @@
     "href": "Week10.html#k-means-clustering",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "K-means Clustering",
-    "text": "K-means Clustering\nK-means clustering is a simple approach for partitioning a data set into \\(K\\) distinct, non-overlapping clusters.\nLet \\(C_1,\\ldots,C_K\\) denote sets that form a partition of \\(\\{1,\\ldots,n\\}\\):\n\nEach observation belongs to at least one of the \\(K\\) clusters.\nNo observation belongs to more than one cluster.\n\n\\[C_k\\cap C_{k'}=\\varnothing,\\quad\\text{for all }k\\ne k'.\\]\nHence every single observation belongs to one and only one cluster. The goal is to find such partition \\(C_1,\\ldots,C_K\\) for certain purpose."
+    "text": "K-means Clustering\nK-means clustering is a simple approach for partitioning a data set into \\(K\\) distinct, non-overlapping clusters.\n\nLet \\(C_1,\\ldots,C_K\\) denote sets that form a partition of \\(\\{1,\\ldots,n\\}\\):\n\nEach observation belongs to at least one of the \\(K\\) clusters.\nNo observation belongs to more than one cluster.\n\n\\[C_k\\cap C_{k'}=\\varnothing,\\quad\\text{for all }k\\ne k'.\\]\nHence every single observation belongs to one and only one cluster. The goal is to find such partition \\(C_1,\\ldots,C_K\\) for certain purpose."
   },
   {
     "objectID": "Week10.html#k-means-clustering-1",
@@ -4610,7 +4610,7 @@
     "href": "Week10.html#definition-of-the-within-cluster-variation",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Definition of the within-cluster variation",
-    "text": "Definition of the within-cluster variation\n\nIt is common to use the Euclidean distance\n\n\\[\\begin{aligned}W(C_k)&=\\frac1{|C_k|}\\sum_{i,i'\\in C_k}\\sum_{j=1}^p(x_{ij}-x_{i'j})^2\\\\&=\\frac1{|C_k|}\\sum_{i,i'\\in C_k}\\|\\mathbf{x_i-x}_{i'}\\|_2^2\\end{aligned}\\]\nwhere \\(|C_k|\\) denotes the number of observations in the \\(k\\)th cluster.\n\nLet\n\n\\[\\bar x_k=\\frac1{|C_k|}\\sum_{i\\in C_k}\\mathbf{x}_i.\\]\nVerify that\n\\[W(C_k)=\\frac1{|C_k|}\\sum_{i\\in C_k}\\|\\mathbf{x}_i-\\bar{\\mathbf{x}}_k\\|_2^2.\\]"
+    "text": "Definition of the within-cluster variation\n\nIt is common to use the Euclidean distance\n\n\\[\\begin{aligned}W(C_k)&=\\frac1{|C_k|}\\sum_{i,i'\\in C_k}\\sum_{j=1}^p(x_{ij}-x_{i'j})^2\\\\&=\\frac1{|C_k|}\\sum_{i,i'\\in C_k}\\|\\mathbf{x_i-x}_{i'}\\|_2^2\\end{aligned}\\]\nwhere \\(|C_k|\\) denotes the number of observations in the \\(k\\)th cluster.\n\nLet \\(\\bar x_k=\\frac1{|C_k|}\\sum_{i\\in C_k}\\mathbf{x}_i.\\)\n\nVerify that\n\\[W(C_k)=\\frac1{|C_k|}\\sum_{i\\in C_k}\\|\\mathbf{x}_i-\\bar{\\mathbf{x}}_k\\|_2^2.\\]"
   },
   {
     "objectID": "Week10.html#target-of-the-k-means-algorithm",
@@ -4687,13 +4687,27 @@
     "href": "Week10.html#learning-outcomes",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Learning Outcomes",
-    "text": "Learning Outcomes"
+    "text": "Learning Outcomes\nBy the end of this week, you should be able to:\n\nExplain the intuition behind Support Vector Machines (SVMs), including separating hyperplanes, margins, and support vectors.\nDistinguish between hard-margin and soft-margin SVMs and explain the role of slack variables and regularization.\nDescribe how the kernel trick allows SVMs to construct nonlinear decision boundaries.\nExplain the distinction between supervised and unsupervised learning.\nDescribe the objective of K-means clustering and the steps of the K-means algorithm.\nDiscuss the convergence properties and limitations of K-means clustering, including sensitivity to initialization and local minima."
   },
   {
     "objectID": "Week10.html#summary",
     "href": "Week10.html#summary",
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "Summary",
-    "text": "Summary"
+    "text": "Summary\n\nSupport Vector Machines (SVMs) find a decision boundary that maximizes the margin between classes. Support vectors are the observations that determine this boundary.\nSoft-margin SVMs allow margin violations, balancing classification performance and model complexity through regularization.\nKernel trick allows SVMs to construct nonlinear decision boundaries using kernel functions.\nK-means clustering is an unsupervised learning method that partitions observations into \\(K\\) clusters by minimizing within-cluster variation.\nK-means algorithm alternates between assigning observations to the nearest centroid and updating cluster centers. It converges to a local minimum and can be sensitive to initialization.\n\nNext Week: Continuing unsupervised learning"
+  },
+  {
+    "objectID": "Week10.html#maximizing-margin-as-optimization-problem",
+    "href": "Week10.html#maximizing-margin-as-optimization-problem",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "Maximizing Margin as Optimization Problem",
+    "text": "Maximizing Margin as Optimization Problem\nWe want to choose \\(\\mathbf{w}\\) and \\(b\\) such that:\n\ncorrectly classify all points:\n\n\\[\n\\operatorname{sign}(\\mathbf{w}^\\top \\mathbf{x}_i+b)=y_i\n\\qquad\\text{for all }i\\in[n]\n\\]\n\nThe smallest distance of \\(\\mathbf{x}_i\\) to \\(\\{\\mathbf{x}:\\mathbf{w}^\\top \\mathbf{x}+b=0\\}\\),\n\n\\[\n\\frac{|\\mathbf{w}^\\top \\mathbf{x}_i+b|}{\\|\\mathbf{w}\\|_2},\n\\]\nis as large as possible.\nThis leads to the max-margin objective:\n\\[\n\\begin{aligned}\n\\max_{\\mathbf{w},b}\\ \\min_{i\\in[n]}\n&\\frac{|\\mathbf{w}^\\top \\mathbf{x}_i+b|}{\\|\\mathbf{w}\\|_2}\\\\\n\\text{s.t. }&y_i(\\mathbf{w}^\\top \\mathbf{x}_i+b)\\ge0,\n\\quad\\text{for all }i\\in[n].\n\\end{aligned}\n\\]"
+  },
+  {
+    "objectID": "Week10.html#svm-one-versus-all",
+    "href": "Week10.html#svm-one-versus-all",
+    "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
+    "section": "SVM: One-Versus-All",
+    "text": "SVM: One-Versus-All\n\nConstruct \\(K\\) SVMs by choosing each class one at a time.\n\nFor class \\(\\{1\\}\\), consider ALL data \\((x_i,y_i)\\), \\(i=1,\\ldots,n\\). Let\n\n\n\\[z_i=2\\cdot\\mathbf1\\{y_i=1\\}-1.\\]\nFit SVM and let its parameter be \\((\\hat b^{(1)},\\hat{\\mathbf{w}}^{(1)})\\).\n\nFor class \\(\\{2\\}\\), consider ALL data \\((x_i,y_i)\\), \\(i=1,\\ldots,n\\). Let\n\n\\[z_i=2\\cdot\\mathbf1\\{y_i=2\\}-1.\\]\nFit SVM and let its parameter be \\((\\hat b^{(2)},\\hat{\\mathbf{w}}^{(2)})\\).\n\nRepeat for all classes.\nFor each test point \\(x_0\\), assign it to the class\n\n\\[\\arg\\max_{k\\in\\mathcal C}\\left(\\hat b^{(k)}+\\mathbf{x_0^\\top\\hat{w}}^{(k)}\\right).\\]"
   }
 ]
