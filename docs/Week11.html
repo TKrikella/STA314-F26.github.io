@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/tabby.min.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2f5df379a58b258e96c21c0638c20c03.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="site_libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.6.42">
+
+  <title>STA314 – PCA and Matrix Factorization</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2f366650f320edcfcf53d73c80250a32.css">
+  <link rel="stylesheet" href="styles.css">
+  <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="site_libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">PCA and Matrix Factorization</h1>
+  <p class="subtitle">Week 11</p>
+
+<div class="quarto-title-authors">
+</div>
+
+</section>
+<section id="last-week-k-means-clustering" class="slide level2">
+<h2>Last week: K-means clustering</h2>
+<ul>
+<li><p><strong>Goal:</strong> Partition observations into <span class="math inline">\(K\)</span> groups so that observations within each cluster are similar.</p></li>
+<li><p>Choose cluster assignments <span class="math inline">\(C_1,\ldots,C_K\)</span> to minimize the within-cluster sum of squares:</p></li>
+</ul>
+<p><span class="math display">\[
+\min_{C_1,\ldots,C_K}\sum_{k=1}^K\sum_{i\in C_k}\|\mathbf x_i-\boldsymbol\mu_k\|_2^2.
+\]</span></p>
+<ul>
+<li><strong>Algorithm:</strong> Initialize centroids; assign each observation to its closest centroid; update each centroid to the mean of its assigned points; repeat until convergence.</li>
+</ul>
+</section>
+<section id="choosing-the-number-of-clusters-k" class="slide level2">
+<h2>Choosing the number of clusters <span class="math inline">\(K\)</span></h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Elbow method</strong></p>
+<ul>
+<li>Fit K-means for a range of <span class="math inline">\(K\)</span> values.</li>
+<li>Plot within-cluster sum of squares (WCSS) against <span class="math inline">\(K\)</span>.</li>
+<li>Look for the <strong>elbow</strong>: a point where increasing <span class="math inline">\(K\)</span> yields diminishing improvements.</li>
+<li>The elbow may be ambiguous.</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>Silhouette index</strong></p>
+<ul>
+<li>For observation <span class="math inline">\(i\)</span>, let <span class="math inline">\(a(i)\)</span> be its average distance to points in its own cluster and <span class="math inline">\(b(i)\)</span> the smallest average distance to another cluster.</li>
+</ul>
+<p><span class="math display">\[s(i)=\frac{b(i)-a(i)}{\max\{a(i),b(i)\}}.\]</span></p>
+<ul>
+<li>Choose <span class="math inline">\(K\)</span> with a relatively <strong>high average silhouette</strong> (typically compare <span class="math inline">\(K\ge2\)</span>).</li>
+<li>Values near <span class="math inline">\(1\)</span> suggest well-separated points; near <span class="math inline">\(0\)</span> suggest overlap; negative values suggest possible misassignment.</li>
+</ul>
+</div>
+</div></div>
+</section>
+<section id="learning-outcomes" class="slide level2">
+<h2>Learning Outcomes</h2>
+<p>By the end of this lecture, you should be able to:</p>
+<ul>
+<li>Explain the purpose of <strong>Principal Component Analysis (PCA)</strong> and how it reduces the dimensionality of data.</li>
+<li>Describe how principal components are constructed, including the roles of loading vectors, PC scores, and variance maximization.</li>
+<li>Explain how PCA can be used to reconstruct observations.</li>
+<li>Explain how matrix completion can predict missing entries, using recommendation systems such as Netflix as an example.</li>
+<li>Describe the main idea behind alternating least squares (ALS) for matrix completion.</li>
+</ul>
+</section>
+<section>
+<section id="principal-component-analysis" class="title-slide slide level1 center">
+<h1>Principal Component Analysis</h1>
+
+</section>
+<section id="pca-what-is-it-and-why-do-we-need-it" class="slide level2">
+<h2>PCA: What is it, and why do we need it?</h2>
+<ul>
+<li>With many measured features, visualization and interpretation become difficult.</li>
+<li>Features often move together: they may contain redundant information.</li>
+<li>PCA constructs new, <span class="maroon"><strong>uncorrelated linear combinations</strong></span> of the original variables, ordered by how <span class="maroon">much variation they capture</span>.</li>
+<li>We hope a small number of components retains most of the variation in the data.</li>
+</ul>
+<p><br> <br></p>
+<div class="fragment">
+<p><strong>PCA is unsupervised. It summarizes variation in <span class="math inline">\(\mathbf X\)</span>; it does not use an outcome <span class="math inline">\(Y\)</span></strong></p>
+</div>
+</section>
+<section id="recall-multivariate-data" class="slide level2">
+<h2>Recall: Multivariate data</h2>
+<ul>
+<li>Let <span class="math inline">\(\mathcal D=\{\mathbf x^{(1)},\ldots,\mathbf x^{(N)}\}\subset\mathbb R^D\)</span> be <span class="math inline">\(N\)</span> observations with <span class="math inline">\(D\)</span> features.</li>
+<li>Arrange the observations as <strong>rows</strong> of a matrix:</li>
+</ul>
+<p><span class="math display">\[
+\mathbf X=\begin{bmatrix}
+(\mathbf x^{(1)})^\top\\
+(\mathbf x^{(2)})^\top\\
+\vdots\\
+(\mathbf x^{(N)})^\top
+\end{bmatrix}\in\mathbb R^{N\times D}.
+\]</span></p>
+</section>
+<section id="recall-mean-and-covariance-estimators" class="slide level2">
+<h2>Recall: Mean and covariance estimators</h2>
+<ul>
+<li>Sample mean:</li>
+</ul>
+<p><span class="math display">\[\hat{\boldsymbol\mu}=\frac1N\sum_{i=1}^N\mathbf x^{(i)}.\]</span></p>
+<ul>
+<li>Sample covariance:</li>
+</ul>
+<p><span class="math display">\[\hat{\boldsymbol\Sigma}=\frac{1}{N-1}\sum_{i=1}^N(\mathbf x^{(i)}-\hat{\boldsymbol\mu})(\mathbf x^{(i)}-\hat{\boldsymbol\mu})^\top.\]</span></p>
+<ul>
+<li>The mean tells us <strong>where</strong> the data is located; covariance characterizes its <strong>spread and direction</strong>.</li>
+</ul>
+</section>
+<section id="goal-a-low-dimensional-representation" class="slide level2">
+<h2>Goal: A low-dimensional representation</h2>
+<ul>
+<li>Even when data is high dimensional, its important features can be captured by a lower-dimensional subspace.</li>
+</ul>
+
+<img data-src="images/Week11-2DPCA.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><ul>
+<li><p>Find a low-dimensional representation of your data</p>
+<ul>
+<li>computational efficiency,</li>
+<li>interpretability and visualization,</li>
+<li>potentially improved generalization.</li>
+</ul></li>
+</ul>
+</section>
+<section id="goal-a-low-dimensional-representation-1" class="slide level2 scrollable">
+<h2>Goal: A low-dimensional representation</h2>
+<ul>
+<li>Given a dataset <span class="math inline">\(\mathcal{D} = \{\mathbf{x^{(1)}, ..., x^{(N)}}\} \subset \mathbb R^D\)</span>, find a <span class="math inline">\(K\)</span>-dimensional subspace <span class="math inline">\(S \subset \mathbb R^D\)</span> with <span class="math inline">\(K&lt;D\)</span> that represents centered observations well.</li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<ul>
+<li><strong>PCA steps:</strong>
+<ol type="1">
+<li>Center the data.</li>
+<li>Project onto <span class="math inline">\(S\)</span> to obtain low-dimensional coordinates.</li>
+<li>Add the mean back to reconstruct the observations approximately.</li>
+</ol></li>
+</ul>
+</div>
+</section>
+<section id="step-1-center-the-features" class="slide level2">
+<h2>Step 1: Center the features</h2>
+<p>For each feature <span class="math inline">\(j\)</span>, subtract its sample mean:</p>
+<p><span class="math display">\[
+\bar x_j=\frac1n\sum_{i=1}^n x_{ij},\qquad
+x_{ij}^{c}=x_{ij}-\bar x_j.
+\]</span></p>
+<ul>
+<li>Centering removes effects of <strong>location</strong>: PCA should identify directions of variation, not directions toward the mean.</li>
+<li>Let <span class="math inline">\(\mathbf X_c\)</span> be the resulting centered matrix.</li>
+</ul>
+</section>
+<section id="step-1-center-the-features-1" class="slide level2">
+<h2>Step 1: Center the features</h2>
+<ul>
+<li>Subtracting the mean translates the data so its center is at the origin.</li>
+<li>Its orientation and pairwise differences do not change.</li>
+</ul>
+
+<img data-src="images/Week11-PCACentering.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="should-we-standardize-as-well" class="slide level2">
+<h2>Should we standardize as well?</h2>
+<ul>
+<li>PCA is sensitive to <strong>units of measurement</strong>.</li>
+<li>A feature measured on a large numeric scale can dominate the directions of greatest variance.</li>
+<li>Standardize when features have very different scales and comparable relative importance:</li>
+</ul>
+<p><span class="math display">\[
+x_{ij}^{\mathrm{std}}=\frac{x_{ij}-\bar x_j}{s_j}.
+\]</span></p>
+</section>
+<section id="step-2-project-onto-the-subspace-spanned-by-mathbf-u_1" class="slide level2">
+<h2><span style="font-size: 0.75em;">Step 2: Project onto the subspace spanned by <span class="math inline">\(\mathbf u_1\)</span></span></h2>
+
+<img data-src="images/Week11-2PCA.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><ul>
+<li><p>Let <span class="math inline">\(\mathbf u_1\)</span> be the unit direction of greatest variance, and let <span class="math inline">\(\mathbf u_2\)</span> be orthogonal to it.</p></li>
+<li><p>With orthonormal directions <span class="math inline">\(\mathbf Q=[\mathbf u_1\ \mathbf u_2]\)</span>:</p></li>
+</ul>
+<p><span class="math display">\[
+\operatorname{Proj}_{\mathbf u_1}
+=\mathbf Q\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\mathbf Q^\top
+=\mathbf u_1\mathbf u_1^\top.
+\]</span></p>
+</section>
+<section id="step-2-project-onto-the-subspace-spanned-by-mathbf-u_1-1" class="slide level2">
+<h2><span style="font-size: 0.75em;">Step 2: Project onto the subspace spanned by <span class="math inline">\(\mathbf u_1\)</span></span></h2>
+
+<img data-src="images/Week11-PCAProjection.png" class="quarto-figure quarto-figure-center r-stretch" style="width:55.0%"><ul>
+<li><p>Coordinates <span class="math inline">\(z=\mathbf u_1^\top(\mathbf x-\hat{\boldsymbol\mu})\)</span> along the direction <span class="math inline">\(\mathbf{u_1}\)</span> are <span class="maroon">lower dimensional representations</span> of <span class="math inline">\(\mathbf{x}\)</span>.</p></li>
+<li><p>The projection <span class="math inline">\(\mathbf u_1\mathbf u_1^\top(\mathbf x-\hat{\boldsymbol\mu})\)</span> maps the centered observation back onto the principal component direction in the original feature space.</p></li>
+</ul>
+</section>
+<section id="step-3-add-back-mean" class="slide level2">
+<h2>Step 3: Add back mean</h2>
+
+<img data-src="images/Week11-PCAReconstruction.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><p>Now we have an approximation of our original observation using only one score instead of all original features.</p>
+</section>
+<section id="what-just-happened" class="slide level2 scrollable">
+<h2>What Just Happened?</h2>
+<p>We’ve done <span class="maroon">Principal Component Analysis (PCA)</span>!</p>
+<p><br> <br></p>
+<p>To get a <span class="maroon">low dimensional reconstruction</span> for <span class="math inline">\(\mathbf{x}\)</span>:</p>
+<ol type="1">
+<li>Subtract mean: <span class="math inline">\(\mathbf{x - \hat \mu}\)</span></li>
+<li>Project on <span class="math inline">\(\mathcal S\)</span>: <span class="math inline">\(\mathbf{u_1u_1^{\top}(x - \hat \mu)}\)</span></li>
+<li>Add back mean to get the low dimensional reconstruction: <span class="math inline">\(\tilde{\mathbf x}=\hat{\boldsymbol\mu}+\mathbf u_1\mathbf u_1^\top(\mathbf x-\hat{\boldsymbol\mu}).\)</span></li>
+</ol>
+<p><br> Now let’s get into the details.</p>
+</section>
+<section id="what-are-principal-components" class="slide level2">
+<h2>What are principal components?</h2>
+<p>Consider a linear combination of the <span class="math inline">\(D\)</span> centered features:</p>
+<p><span class="math display">\[
+Z_{1}=u_{11}X_1^c+u_{21}X_2^c+\cdots+u_{D1}X_D^c.
+\]</span></p>
+<ul>
+<li><span class="math inline">\(Z_{1}\)</span> is the <strong>first principal component</strong>.</li>
+<li>The numbers <span class="math inline">\(u_{11},\ldots,u_{D1}\)</span> are its <strong>loadings</strong>.</li>
+<li>The loading vector <span class="math inline">\(\mathbf u_1=(u_{11},\ldots,u_{D1})^\top\)</span> gives a <strong>direction</strong> in feature space.</li>
+</ul>
+</section>
+<section id="the-principal-component-scores" class="slide level2">
+<h2>The principal component scores</h2>
+<p>For observation <span class="math inline">\(i\)</span>, its value along the first component is:</p>
+<p><span class="math display">\[
+z_{1}^{(i)}=\sum_{j=1}^D u_{j1}x_{j,c}^{(i)}
+=(\mathbf{x}_c^{(i)})^\top\mathbf{u}_1.
+\]</span></p>
+<ul>
+<li><span class="math inline">\(z_{1}^{(i)}\)</span> is the <strong>score</strong> for observation <span class="math inline">\(i\)</span> on PC1.</li>
+<li><strong>Loadings</strong> describe the component; <strong>scores</strong> describe the observations after projection.</li>
+</ul>
+</section>
+<section id="the-first-principal-component" class="slide level2">
+<h2>The first principal component</h2>
+<p>The first PC finds the linear combination with the <strong>largest variance</strong>:</p>
+<p><span class="math display">\[
+\boxed{
+\max_{u_{11},\ldots,u_{D1}}
+\frac1N\sum_{i=1}^N
+\left(\sum_{j=1}^Du_{j1}x_{j,c}^{(i)}\right)^2
+\quad\text{subject to}\quad
+\sum_{j=1}^Du_{j1}^2=1.
+}
+\]</span></p>
+<ul>
+<li>Because the data are centered, the mean score is zero, so the objective is proportional to the sample variance of PC1 scores.</li>
+</ul>
+</section>
+<section id="the-first-principal-component-1" class="slide level2">
+<h2>The first principal component</h2>
+<p>We show this optimization problem in matrix notation.</p>
+<p>Let <span class="math inline">\(\hat{\boldsymbol\Sigma}=\frac{1}{N-1}\mathbf X_c^\top\mathbf X_c\)</span> be the sample covariance matrix.</p>
+<ul>
+<li><p>Recall that the first principal component finds the direction <span class="math inline">\(\mathbf u_1\)</span> along which the projected data has the <strong>greatest variance</strong>.</p></li>
+<li><p>Mathematically, we solve:</p></li>
+</ul>
+<p><span class="math display">\[
+\max_{\mathbf u_1}
+\mathbf u_1^\top\hat{\boldsymbol\Sigma}\mathbf u_1
+\quad \text{subject to} \quad
+\mathbf u_1^\top\mathbf u_1=1.
+\]</span></p>
+<div class="fragment">
+<ul>
+<li><span class="math inline">\(\mathbf u_1^\top\hat{\boldsymbol\Sigma}\mathbf u_1\)</span> is the <strong>variance of the projected observations</strong>.</li>
+<li>The constraint <span class="math inline">\(\mathbf u_1^\top\mathbf u_1=1\)</span> ensures that we are optimizing over <strong>directions</strong>, rather than magnitudes.</li>
+</ul>
+</div>
+</section>
+<section id="the-first-principal-component-2" class="slide level2">
+<h2>The first principal component</h2>
+<ul>
+<li>Using Lagrangian multipliers, we solve the optimization problem and find:</li>
+</ul>
+<p><span class="math display">\[
+\hat{\boldsymbol\Sigma}\mathbf u_1
+=\lambda_1\mathbf u_1
+\]</span></p>
+<ul>
+<li>Thus, <span class="math inline">\(\mathbf u_1\)</span> is the <strong>eigenvector corresponding to the largest eigenvalue</strong> <span class="math inline">\(\lambda_1\)</span> of the covariance matrix.</li>
+<li>The eigenvalue <span class="math inline">\(\lambda_1\)</span> represents the <strong>variance captured by PC1</strong>.</li>
+<li>The second principal component is obtained using the eigenvector corresponding to the <strong>second-largest eigenvalue</strong>, which can be chosen orthogonal to <span class="math inline">\(\mathbf u_1\)</span>.</li>
+</ul>
+<p><br></p>
+<div class="fragment">
+<p><strong>PCA finds directions of maximum variance by computing the eigenvectors of the sample covariance matrix.</strong></p>
+</div>
+</section>
+<section id="general-principal-components" class="slide level2">
+<h2>General principal components</h2>
+<ul>
+<li>The <span class="math inline">\(m\)</span>th principal component is the linear combination:</li>
+</ul>
+<p><span class="math display">\[
+z_m^{(i)}=\sum_{j=1}^D u_{jm}x_{j,c}^{(i)}
+=(\mathbf x_c^{(i)})^\top\mathbf u_m.
+\]</span></p>
+<ul>
+<li>The loading vector <span class="math inline">\(\mathbf u_m\)</span> is the <strong>eigenvector corresponding to the <span class="math inline">\(m\)</span>th largest eigenvalue</strong> of the covariance matrix:</li>
+</ul>
+<p><span class="math display">\[
+\hat{\boldsymbol\Sigma}\mathbf u_m=\lambda_m\mathbf u_m.
+\]</span></p>
+</section>
+<section id="general-principal-components-1" class="slide level2">
+<h2>General principal components</h2>
+<ul>
+<li>Each PC captures the <span class="maroon"><strong>greatest remaining variance</strong></span>, subject to being orthogonal to the previous components:</li>
+</ul>
+<p><span class="math display">\[
+\max_{\mathbf u_m}\quad
+\mathbf u_m^\top\hat{\boldsymbol\Sigma}\mathbf u_m
+\quad\text{subject to}\quad
+\begin{cases}
+\|\mathbf u_m\|_2=1,\\
+\mathbf u_m^\top\mathbf u_\ell=0,\quad \ell&lt;m.
+\end{cases}
+\]</span></p>
+<ul>
+<li><p>The eigenvalue <span class="math inline">\(\lambda_m\)</span> gives the <strong>variance explained by PC<span class="math inline">\(m\)</span></strong>, with <span class="math inline">\(\lambda_1\geq\lambda_2\geq\cdots\geq 0\)</span>.</p></li>
+<li><p>Because the loading vectors are orthogonal eigenvectors of the covariance matrix, the resulting principal components are <span class="maroon"><strong>uncorrelated</strong></span></p></li>
+</ul>
+</section>
+<section id="reconstructing-the-original-observations" class="slide level2">
+<h2>Reconstructing the original observations</h2>
+<ul>
+<li>After projecting onto the first <span class="math inline">\(M\)</span> principal components, we obtain the <strong>score vector</strong>:</li>
+</ul>
+<p><span class="math display">\[
+\mathbf z^{(i)}=\mathbf U^\top(\mathbf x^{(i)}-\hat{\boldsymbol\mu}).
+\]</span></p>
+<ul>
+<li>We can use these scores and the loading vectors to <strong>approximately reconstruct</strong> the original observation:</li>
+</ul>
+<p><span class="math display">\[
+\tilde{\mathbf x}^{(i)}
+=\hat{\boldsymbol\mu}+\mathbf U\mathbf z^{(i)}
+=\hat{\boldsymbol\mu}+
+\sum_{m=1}^M z_m^{(i)}\mathbf u_m.
+\]</span></p>
+<ul>
+<li>The reconstruction <span class="math inline">\(\tilde{\mathbf x}^{(i)}\)</span> is back in the original <span class="math inline">\(D\)</span>-dimensional feature space.</li>
+<li>The more principal components we retain, the more variation we preserve and the smaller the <span class="maroon">reconstruction error</span>.</li>
+</ul>
+</section>
+<section id="putting-it-together" class="slide level2">
+<h2>Putting it Together</h2>
+<ul>
+<li><strong>Loading vector <span class="math inline">\(\mathbf u_m\)</span>:</strong> Defines the <strong>direction</strong> in feature space along which the <span class="math inline">\(m\)</span>th principal component captures variance.
+<ul>
+<li><span class="math inline">\(\mathbf u_1\)</span> points in the direction of greatest variance.</li>
+<li>Subsequent loading vectors are orthogonal and capture the greatest remaining variance.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><strong>Individual loadings <span class="math inline">\(u_{jm}\)</span>:</strong> The entries of <span class="math inline">\(\mathbf u_m\)</span>, describing how each original feature contributes to that direction.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Principal component <span class="math inline">\(Z_m\)</span>:</strong> The new variable obtained by projecting the centered features onto the loading vector:</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>PC score <span class="math inline">\(z_m^{(i)}\)</span>:</strong> The value of principal component <span class="math inline">\(m\)</span> for observation <span class="math inline">\(i\)</span>: <span class="math inline">\(z_m^{(i)}=(\mathbf x_c^{(i)})^\top\mathbf u_m.\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Reconstruction <span class="math inline">\(\tilde{\mathbf x}^{(i)}\)</span>:</strong> Approximate the original observation using the first <span class="math inline">\(M\)</span> PC scores and loading vectors, then add back the mean: <span class="math inline">\(\tilde{\mathbf x}^{(i)}=\hat{\boldsymbol\mu}+\sum_{m=1}^M z_m^{(i)}\mathbf u_m.\)</span></li>
+</ul>
+</div>
+</section>
+<section id="pca-minimizing-reconstruction-error" class="slide level2">
+<h2>PCA: Minimizing Reconstruction Error</h2>
+<ul>
+<li><p>We have defined PCA to find directions that <strong>maximize the variance</strong> of the projected data.</p></li>
+<li><p>Equivalently, PCA finds the <span class="math inline">\(M\)</span>-dimensional representation that <strong>minimizes reconstruction error</strong>:</p></li>
+</ul>
+<p><span class="math display">\[
+\min_{\operatorname{rank}(\hat{\mathbf X}_c)\leq M}
+\|\mathbf X_c-\hat{\mathbf X}_c\|_F^2.
+\]</span></p>
+<ul>
+<li>Recall that the reconstructed observation is:</li>
+</ul>
+<p><span class="math display">\[
+\tilde{\mathbf x}_c^{(i)}
+=\sum_{m=1}^M z_m^{(i)}\mathbf u_m.
+\]</span></p>
+<ul>
+<li>Since orthogonal projections decompose the variation into two parts:</li>
+</ul>
+<p><span class="math display">\[
+\|\mathbf x_c^{(i)}\|_2^2
+=
+\|\tilde{\mathbf x}_c^{(i)}\|_2^2
++
+\|\mathbf x_c^{(i)}-\tilde{\mathbf x}_c^{(i)}\|_2^2.
+\]</span></p>
+</section>
+<section id="example" class="slide level2">
+<h2>Example</h2>
+<ul>
+<li><p>Consider running PCA on 2429 19x19 greyscale images (CBCL data)</p></li>
+<li><p>We can get a good reconstruction with only 3 components</p></li>
+</ul>
+
+<img data-src="images/Week11-faces.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"><div class="fragment">
+<ul>
+<li><p><span class="maroon">PCA for pre-processing:</span> we can apply a classifier to latent representation</p>
+<ul>
+<li>Original data is 361 dimensional</li>
+<li>For face recognition, PCA with 3 components obtains 79% accuracy on face/non-face discrimination on test data, which is an improvement compared to other models (ex. Gaussian mixture models, we will not cover them in this course).</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="example-1" class="slide level2">
+<h2>Example</h2>
+<p>Principal components of face images (“eigenfaces”)</p>
+
+<img data-src="images/Week11-eigenfaces.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="pca-to-matrix-factorization" class="slide level2">
+<h2>PCA to matrix factorization</h2>
+<ul>
+<li>PCA approximates a <strong>fully observed</strong> centered data matrix with a low-rank product:</li>
+</ul>
+<p><span class="math display">\[\mathbf X_c\approx\mathbf Z\mathbf U^\top.\]</span></p>
+<ul>
+<li>What if most entries of the matrix are <strong>missing</strong>, as with user–movie ratings?</li>
+<li>This leads to <strong>matrix completion</strong>: learn low-dimensional factors using only observed entries.</li>
+</ul>
+</section></section>
+<section>
+<section id="matrix-factorization-and-completion" class="title-slide slide level1 center">
+<h1>Matrix Factorization and Completion</h1>
+
+</section>
+<section id="from-pca-to-general-matrix-factorization" class="slide level2">
+<h2>From PCA to general matrix factorization</h2>
+<ul>
+<li>PCA is a special structured low-rank factorization: <span class="math inline">\(\mathbf X_c\approx\mathbf Z\mathbf U^\top\)</span>.</li>
+<li>More generally, write a data matrix as a product of two small matrices, without requiring the PCA orthogonality constraints.</li>
+<li>For recommender systems, factors represent <strong>users and items</strong>, rather than observations and principal component directions.</li>
+</ul>
+</section>
+<section id="some-recommender-systems-in-action" class="slide level2">
+<h2>Some recommender systems in action</h2>
+
+<img data-src="images/Week11-Amazon.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="some-recommender-systems-in-action-1" class="slide level2">
+<h2>Some recommender systems in action</h2>
+
+<img data-src="images/Week1-Netflix.png" class="quarto-figure quarto-figure-center r-stretch" style="width:70.0%"></section>
+<section id="recommender-systems-the-netflix-problem" class="slide level2">
+<h2>Recommender systems: The Netflix problem</h2>
+<ul>
+<li>Users watch movies and rate them out of 5 stars</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Users only rate a few items, so we would like to infer their preference for unrated items</li>
+</ul>
+<p><br></p>
+<ul>
+<li>Recommendation systems may reflect shared interests as well as individual preferences.</li>
+</ul>
+</section>
+<section id="pca-as-a-matrix-factorization" class="slide level2">
+<h2>PCA as a Matrix Factorization</h2>
+<ul>
+<li><p>Recall PCA: project data onto a low-dimensional subspace defined by the top eigenvectors of the data covariance matrix.</p></li>
+<li><p>We consider a generalization, <strong>matrix factorization</strong>:</p>
+<ul>
+<li>View PCA as a matrix factorization problem.</li>
+<li>Extend to matrix completion, where the data matrix is only partially observed.</li>
+</ul></li>
+</ul>
+</section>
+<section id="pca-as-matrix-factorization" class="slide level2">
+<h2>PCA as Matrix Factorization</h2>
+<ul>
+<li>Recall PCA: each input vector <span class="math inline">\(\mathbf x^{(i)}\in\mathbb R^D\)</span> is approximated as <span class="math inline">\(\hat{\boldsymbol\mu}+\mathbf U\mathbf z^{(i)}\)</span>,</li>
+</ul>
+<p><span class="math display">\[
+\mathbf x^{(i)}\approx\tilde{\mathbf x}^{(i)}
+=\hat{\boldsymbol\mu}+\mathbf U\mathbf z^{(i)}.
+\]</span></p>
+<p>where:</p>
+<ul>
+<li><p><span class="math inline">\(\hat{\boldsymbol\mu}=\frac1N\sum_i\mathbf x^{(i)}\)</span> is the data mean.</p></li>
+<li><p><span class="math inline">\(\mathbf U\in\mathbb R^{D\times K}\)</span> is the orthogonal basis for the principal subspace (loading vectors).</p></li>
+<li><p><span class="math inline">\(\mathbf z^{(i)}\in\mathbb R^K\)</span> is the code vector.</p></li>
+<li><p><span class="math inline">\(\tilde{\mathbf x}^{(i)}\in\mathbb R^D\)</span> is the reconstruction or approximation of <span class="math inline">\(\mathbf x^{(i)}\)</span>.</p></li>
+<li><p>Assume for simplicity that the data is centered: <span class="math inline">\(\hat{\boldsymbol\mu}=\mathbf0\)</span>. Then the approximation looks like</p></li>
+</ul>
+<p><span class="math display">\[
+\mathbf x^{(i)}\approx\tilde{\mathbf x}^{(i)}
+=\mathbf U\mathbf z^{(i)}.
+\]</span></p>
+</section>
+<section id="pca-as-matrix-factorization-1" class="slide level2">
+<h2>PCA as Matrix Factorization</h2>
+<ul>
+<li>PCA (on centered data): input vector <span class="math inline">\(\mathbf x^{(i)}\)</span> is approximated as <span class="math inline">\(\mathbf U\mathbf z^{(i)}\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+\mathbf x^{(i)}\approx\mathbf U\mathbf z^{(i)}.
+\]</span></p>
+<ul>
+<li>Write this in matrix form. We have <span class="math inline">\(\mathbf X\approx\mathbf Z\mathbf U^\top\)</span>, where <span class="math inline">\(\mathbf X\)</span> and <span class="math inline">\(\mathbf Z\)</span> have one row per data point.</li>
+</ul>
+<p><span class="math display">\[
+\mathbf X=
+\begin{bmatrix}
+(\mathbf x^{(1)})^\top\\
+(\mathbf x^{(2)})^\top\\
+\vdots\\
+(\mathbf x^{(N)})^\top
+\end{bmatrix}
+\in\mathbb R^{N\times D} \quad \text{and} \quad
+\mathbf Z=
+\begin{bmatrix}
+(\mathbf z^{(1)})^\top\\
+(\mathbf z^{(2)})^\top\\
+\vdots\\
+(\mathbf z^{(N)})^\top
+\end{bmatrix}
+\in\mathbb R^{N\times K}.
+\]</span></p>
+<ul>
+<li>We can write the squared reconstruction error as</li>
+</ul>
+<p><span class="math display">\[
+\sum_{i=1}^N
+\|\mathbf x^{(i)}-\mathbf U\mathbf z^{(i)}\|_2^2
+=
+\|\mathbf X-\mathbf Z\mathbf U^\top\|_F^2.
+\]</span></p>
+<ul>
+<li><span class="math inline">\(\|\cdot\|_F\)</span> denotes the <strong>Frobenius norm</strong></li>
+</ul>
+</section>
+<section id="pca-as-matrix-factorization-2" class="slide level2">
+<h2>PCA as Matrix Factorization</h2>
+<ul>
+<li>So PCA is approximating <span class="math inline">\(\mathbf X\approx\mathbf Z\mathbf U^\top\)</span>, or equivalently <span class="math inline">\(\mathbf X^\top\approx\mathbf U\mathbf Z^\top.\)</span></li>
+</ul>
+
+<img data-src="images/Week11-PCAMatrixFactor.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"><ul>
+<li><p>Based on the sizes of the matrices, this is a <strong>rank-<span class="math inline">\(K\)</span> approximation</strong>.</p></li>
+<li><p>Since <span class="math inline">\(\mathbf U\)</span> was chosen to minimize reconstruction error, this is the <span class="maroon"><strong>optimal rank-<span class="math inline">\(K\)</span> approximation</strong></span>, in terms of error <span class="math inline">\(\|\mathbf X^\top-\mathbf U\mathbf Z^\top\|_F^2.\)</span></p></li>
+</ul>
+</section>
+<section id="the-netflix-problem" class="slide level2">
+<h2>The Netflix problem</h2>
+<p><strong>movie recommendation</strong>.</p>
+
+<img data-src="images/Week11-MovieRecommendation.png" class="quarto-figure quarto-figure-center r-stretch" style="width:60.0%"></section>
+<section id="matrix-completion" class="slide level2">
+<h2>Matrix Completion</h2>
+<p><strong>Matrix completion problem:</strong> Transform the table into an <span class="math inline">\(N\)</span> users by <span class="math inline">\(M\)</span> movies matrix <span class="math inline">\(\mathbf R\)</span>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/Week11-MovieTable.png" class="quarto-figure quarto-figure-center" style="width:100.0%"></p>
+</figure>
+</div>
+</div><div class="column" style="width:50%;">
+<ul>
+<li><p><strong>Data:</strong> Users rate some movies. <span class="math inline">\(R_{\text{user,movie}}\)</span> is very sparse.</p></li>
+<li><p><strong>Task:</strong> Predict missing entries, i.e., how a user would rate a movie they haven’t previously rated.</p></li>
+<li><p><strong>Evaluation Metric:</strong> Squared error (used by Netflix Competition). Is this a reasonable metric?</p></li>
+</ul>
+</div></div>
+</section>
+<section id="matrix-completion-1" class="slide level2">
+<h2>Matrix Completion</h2>
+<ul>
+<li><p>In our current setting, <strong>latent factor models</strong> attempt to explain the ratings by characterizing both movies and users on a number of factors <span class="math inline">\(K\)</span> inferred from the ratings patterns.</p></li>
+<li><p>That is, we seek representations for movies and users as vectors in <span class="math inline">\(\mathbb R^K\)</span> that can ultimately be translated to ratings.</p></li>
+</ul>
+<div class="fragment">
+<ul>
+<li>For simplicity, we can associate these factors (i.e., the dimensions of the vectors) with idealized concepts like:
+<ul>
+<li>Comedy</li>
+<li>Drama</li>
+<li>Action</li>
+<li>But also uninterpretable dimensions</li>
+</ul></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Can we use the sparse ratings matrix <span class="math inline">\(\mathbf R\)</span> to find these latent factors automatically?</strong></p>
+</div>
+</section>
+<section id="matrix-completion-2" class="slide level2">
+<h2>Matrix Completion</h2>
+<ul>
+<li>Let the representation of user <span class="math inline">\(i\)</span> in the <span class="math inline">\(K\)</span>-dimensional space be <span class="math inline">\(\mathbf u_i\)</span> and the representation of movie <span class="math inline">\(j\)</span> be <span class="math inline">\(\mathbf z_j\)</span>.
+<ul>
+<li>Intuition: maybe the first entry of <span class="math inline">\(\mathbf u_i\)</span> says how much the user likes horror films, and the first entry of <span class="math inline">\(\mathbf z_j\)</span> says how much movie <span class="math inline">\(j\)</span> is a horror film.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<ul>
+<li><p>Assume the rating user <span class="math inline">\(i\)</span> gives to movie <span class="math inline">\(j\)</span> is given by a dot product: <span class="math inline">\(R_{ij}\approx\mathbf u_i^\top\mathbf z_j.\)</span></p></li>
+<li><p>In matrix form, if</p></li>
+</ul>
+<p><span class="math display">\[
+\mathbf U=
+\begin{bmatrix}
+\mathbf u_1^\top\\
+\vdots\\
+\mathbf u_N^\top
+\end{bmatrix}
+\qquad\text{and}\qquad
+\mathbf Z^\top=
+\begin{bmatrix}
+\mathbf z_1 &amp; \cdots &amp; \mathbf z_M
+\end{bmatrix},
+\]</span></p>
+<p>then:</p>
+<p><span class="math display">\[
+\boxed{\mathbf R\approx\mathbf U\mathbf Z^\top.}
+\]</span></p>
+<ul>
+<li>This is a <strong>matrix factorization problem!</strong></li>
+</ul>
+</div>
+</section>
+<section id="matrix-completion-3" class="slide level2">
+<h2>Matrix Completion</h2>
+<ul>
+<li>Recall PCA: to enforce <span class="math inline">\(\mathbf X^\top\approx\mathbf U\mathbf Z^\top\)</span>, we minimized</li>
+</ul>
+<p><span class="math display">\[
+\min_{\mathbf U,\mathbf Z}
+\|\mathbf X^\top-\mathbf U\mathbf Z^\top\|_F^2
+=
+\sum_{i,j}
+(x_{ji}-\mathbf u_i^\top\mathbf z_j)^2.
+\]</span></p>
+<div class="fragment">
+<ul>
+<li>What’s different about the Netflix problem?
+<ul>
+<li><strong>Most entries are missing!</strong></li>
+<li>We only want to count the error for the observed entries.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="matrix-completion-4" class="slide level2">
+<h2>Matrix Completion</h2>
+<ul>
+<li><p>Let <span class="math inline">\(\mathcal O=\{(i,j):\text{entry }(i,j)\text{ of matrix }\mathbf R\text{ is observed}\}\)</span>.</p></li>
+<li><p>Using the squared error loss, matrix completion requires solving:</p></li>
+</ul>
+<p><span class="math display">\[
+\boxed{
+\min_{\mathbf U,\mathbf Z}
+\frac12\sum_{(i,j)\in\mathcal O}
+(R_{ij}-\mathbf u_i^\top\mathbf z_j)^2.
+}
+\]</span></p>
+<ul>
+<li>The objective is <strong>non-convex</strong> in <span class="math inline">\(\mathbf U\)</span> and <span class="math inline">\(\mathbf Z\)</span> jointly, and in fact it is generally NP-hard to minimize the above cost function exactly.</li>
+</ul>
+<div class="fragment">
+<ul>
+<li>As a function of either <span class="math inline">\(\mathbf U\)</span> or <span class="math inline">\(\mathbf Z\)</span> individually, the problem is convex and easy to optimize.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><span class="maroo"><strong>Alternating Least Squares (ALS):</strong></span> Fix <span class="math inline">\(\mathbf Z\)</span> and optimize <span class="math inline">\(\mathbf U\)</span>, followed by fixing <span class="math inline">\(\mathbf U\)</span> and optimizing <span class="math inline">\(\mathbf Z\)</span>, and so on until convergence.</p>
+</div>
+</section>
+<section id="alternating-least-squares" class="slide level2">
+<h2>Alternating Least Squares</h2>
+<ul>
+<li><p>Want to minimize the squared error cost with respect to the factor <span class="math inline">\(\mathbf U\)</span>. (The case of <span class="math inline">\(\mathbf Z\)</span> is exactly symmetric.)</p></li>
+<li><p>We can decompose the cost into a sum of independent terms:</p></li>
+</ul>
+<p><span class="math display">\[
+\sum_{(i,j)\in\mathcal O}
+(R_{ij}-\mathbf u_i^\top\mathbf z_j)^2
+=
+\sum_i
+\underbrace{
+\sum_{j:(i,j)\in\mathcal O}
+(R_{ij}-\mathbf u_i^\top\mathbf z_j)^2
+}_{\text{only depends on }\mathbf u_i}.
+\]</span></p>
+<p>This can be minimized independently for each <span class="math inline">\(\mathbf u_i\)</span>.</p>
+<ul>
+<li>This is a <strong>linear regression problem in disguise</strong>. Its optimal solution is:</li>
+</ul>
+<p><span class="math display">\[
+\boxed{
+\mathbf u_i=
+\left(
+\sum_{j:(i,j)\in\mathcal O}
+\mathbf z_j\mathbf z_j^\top
+\right)^{-1}
+\sum_{j:(i,j)\in\mathcal O}
+R_{ij}\mathbf z_j.
+}
+\]</span></p>
+</section>
+<section id="alternating-least-squares-1" class="slide level2 scrollable">
+<h2>Alternating Least Squares</h2>
+<p><strong>ALS for Matrix Completion problem</strong></p>
+<ol type="1">
+<li>Initialize <span class="math inline">\(\mathbf U\)</span> and <span class="math inline">\(\mathbf Z\)</span> randomly.</li>
+<li>Repeat until convergence:
+<ul>
+<li>For <span class="math inline">\(i=1,\ldots,N\)</span>, update:</li>
+</ul></li>
+</ol>
+<p><span class="math display">\[
+\mathbf u_i=
+\left(
+\sum_{j:(i,j)\in\mathcal O}
+\mathbf z_j\mathbf z_j^\top
+\right)^{-1}
+\sum_{j:(i,j)\in\mathcal O}
+R_{ij}\mathbf z_j.
+\]</span></p>
+<ul>
+<li>For <span class="math inline">\(j=1,\ldots,M\)</span>, update:</li>
+</ul>
+<p><span class="math display">\[
+\mathbf z_j=
+\left(
+\sum_{i:(i,j)\in\mathcal O}
+\mathbf u_i\mathbf u_i^\top
+\right)^{-1}
+\sum_{i:(i,j)\in\mathcal O}
+R_{ij}\mathbf u_i.
+\]</span></p>
+</section>
+<section id="week-11-summary" class="slide level2">
+<h2>Week 11 summary</h2>
+<ul>
+<li><strong>K-means</strong> partitions observations into groups, with <span class="math inline">\(K\)</span> chosen using diagnostics such as elbow or silhouette scores.</li>
+<li><strong>PCA</strong> finds directions retaining maximal variance and provides low-dimensional scores.</li>
+<li><strong>Matrix factorization</strong> represents a data matrix using lower-dimensional factors.</li>
+<li><strong>Matrix completion</strong> learns factors from observed entries to predict missing values (e.g., Netflix ratings).</li>
+<li><strong>ALS</strong> alternates between updating the two sets of latent factors.</li>
+</ul>
+<p>Announcements: Assignment 2 is now available on the course website (due Dec.&nbsp;2nd)</p>
+
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;">
+<span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">PCA and Matrix Factorization</span><span style="flex: 1;"></span>
+</div>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="site_libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="site_libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="site_libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="site_libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="site_libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="site_libs/revealjs/plugin/search/search.js"></script>
+  <script src="site_libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="site_libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"right","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true,"width":"wide"},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../..";
+    window._ojs.paths.runtimeToRoot = "../..";
+    window._ojs.paths.docToRoot = "";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+    window.document.addEventListener("DOMContentLoaded", function (event) {
+      const toggleBodyColorMode = (bsSheetEl) => {
+        const mode = bsSheetEl.getAttribute("data-mode");
+        const bodyEl = window.document.querySelector("body");
+        if (mode === "dark") {
+          bodyEl.classList.add("quarto-dark");
+          bodyEl.classList.remove("quarto-light");
+        } else {
+          bodyEl.classList.add("quarto-light");
+          bodyEl.classList.remove("quarto-dark");
+        }
+      }
+      const toggleBodyColorPrimary = () => {
+        const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+        if (bsSheetEl) {
+          toggleBodyColorMode(bsSheetEl);
+        }
+      }
+      toggleBodyColorPrimary();  
+      const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+      tabsets.forEach(function(tabset) {
+        const tabby = new Tabby('#' + tabset.id);
+      });
+      const isCodeAnnotation = (el) => {
+        for (const clz of el.classList) {
+          if (clz.startsWith('code-annotation-')) {                     
+            return true;
+          }
+        }
+        return false;
+      }
+      const onCopySuccess = function(e) {
+        // button target
+        const button = e.trigger;
+        // don't keep focus
+        button.blur();
+        // flash "checked"
+        button.classList.add('code-copy-button-checked');
+        var currentTitle = button.getAttribute("title");
+        button.setAttribute("title", "Copied!");
+        let tooltip;
+        if (window.bootstrap) {
+          button.setAttribute("data-bs-toggle", "tooltip");
+          button.setAttribute("data-bs-placement", "left");
+          button.setAttribute("data-bs-title", "Copied!");
+          tooltip = new bootstrap.Tooltip(button, 
+            { trigger: "manual", 
+              customClass: "code-copy-button-tooltip",
+              offset: [0, -8]});
+          tooltip.show();    
+        }
+        setTimeout(function() {
+          if (tooltip) {
+            tooltip.hide();
+            button.removeAttribute("data-bs-title");
+            button.removeAttribute("data-bs-toggle");
+            button.removeAttribute("data-bs-placement");
+          }
+          button.setAttribute("title", currentTitle);
+          button.classList.remove('code-copy-button-checked');
+        }, 1000);
+        // clear code selection
+        e.clearSelection();
+      }
+      const getTextToCopy = function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+      }
+      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+          text: getTextToCopy,
+          container: window.document.getElementById('quarto-embedded-source-code-modal')
+        });
+        clipboardModal.on('success', onCopySuccess);
+      }
+        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+        var mailtoRegex = new RegExp(/^mailto:/);
+          var filterRegex = new RegExp('/' + window.location.host + '/');
+        var isInternal = (href) => {
+            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+        }
+        // Inspect non-navigation links and adorn them if external
+     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+        for (var i=0; i<links.length; i++) {
+          const link = links[i];
+          if (!isInternal(link.href)) {
+            // undo the damage that might have been done by quarto-nav.js in the case of
+            // links that we want to consider external
+            if (link.dataset.originalHref !== undefined) {
+              link.href = link.dataset.originalHref;
+            }
+          }
+        }
+      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+        const config = {
+          allowHTML: true,
+          maxWidth: 500,
+          delay: 100,
+          arrow: false,
+          appendTo: function(el) {
+              return el.closest('section.slide') || el.parentElement;
+          },
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start',
+        };
+        if (contentFn) {
+          config.content = contentFn;
+        }
+        if (onTriggerFn) {
+          config.onTrigger = onTriggerFn;
+        }
+        if (onUntriggerFn) {
+          config.onUntrigger = onUntriggerFn;
+        }
+          config['offset'] = [0,0];
+          config['maxWidth'] = 700;
+        window.tippy(el, config); 
+      }
+      const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+      for (var i=0; i<noterefs.length; i++) {
+        const ref = noterefs[i];
+        tippyHover(ref, function() {
+          // use id or data attribute instead here
+          let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+          try { href = new URL(href).hash; } catch {}
+          const id = href.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note) {
+            return note.innerHTML;
+          } else {
+            return "";
+          }
+        });
+      }
+      const findCites = (el) => {
+        const parentEl = el.parentElement;
+        if (parentEl) {
+          const cites = parentEl.dataset.cites;
+          if (cites) {
+            return {
+              el,
+              cites: cites.split(' ')
+            };
+          } else {
+            return findCites(el.parentElement)
+          }
+        } else {
+          return undefined;
+        }
+      };
+      var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+      for (var i=0; i<bibliorefs.length; i++) {
+        const ref = bibliorefs[i];
+        const citeInfo = findCites(ref);
+        if (citeInfo) {
+          tippyHover(citeInfo.el, function() {
+            var popup = window.document.createElement('div');
+            citeInfo.cites.forEach(function(cite) {
+              var citeDiv = window.document.createElement('div');
+              citeDiv.classList.add('hanging-indent');
+              citeDiv.classList.add('csl-entry');
+              var biblioDiv = window.document.getElementById('ref-' + cite);
+              if (biblioDiv) {
+                citeDiv.innerHTML = biblioDiv.innerHTML;
+              }
+              popup.appendChild(citeDiv);
+            });
+            return popup.innerHTML;
+          });
+        }
+      }
+    });
+    </script>
+    
+
+</body></html>

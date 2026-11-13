@@ -4709,5 +4709,1055 @@
     "title": "Support Vector Machines and Introduction to Unsupervised Learning (Clustering)",
     "section": "SVM: One-Versus-All",
     "text": "SVM: One-Versus-All\n\nConstruct \\(K\\) SVMs by choosing each class one at a time.\n\nFor class \\(\\{1\\}\\), consider ALL data \\((x_i,y_i)\\), \\(i=1,\\ldots,n\\). Let\n\n\n\\[z_i=2\\cdot\\mathbf1\\{y_i=1\\}-1.\\]\nFit SVM and let its parameter be \\((\\hat b^{(1)},\\hat{\\mathbf{w}}^{(1)})\\).\n\nFor class \\(\\{2\\}\\), consider ALL data \\((x_i,y_i)\\), \\(i=1,\\ldots,n\\). Let\n\n\\[z_i=2\\cdot\\mathbf1\\{y_i=2\\}-1.\\]\nFit SVM and let its parameter be \\((\\hat b^{(2)},\\hat{\\mathbf{w}}^{(2)})\\).\n\nRepeat for all classes.\nFor each test point \\(x_0\\), assign it to the class\n\n\\[\\arg\\max_{k\\in\\mathcal C}\\left(\\hat b^{(k)}+\\mathbf{x_0^\\top\\hat{w}}^{(k)}\\right).\\]"
+  },
+  {
+    "objectID": "Week11.html#last-week-k-means-clustering",
+    "href": "Week11.html#last-week-k-means-clustering",
+    "title": "PCA and Matrix Factorization",
+    "section": "Last week: K-means clustering",
+    "text": "Last week: K-means clustering\n\nGoal: Partition observations into \\(K\\) groups so that observations within each cluster are similar.\nChoose cluster assignments \\(C_1,\\ldots,C_K\\) to minimize the within-cluster sum of squares:\n\n\\[\n\\min_{C_1,\\ldots,C_K}\\sum_{k=1}^K\\sum_{i\\in C_k}\\|\\mathbf x_i-\\boldsymbol\\mu_k\\|_2^2.\n\\]\n\nAlgorithm: Initialize centroids; assign each observation to its closest centroid; update each centroid to the mean of its assigned points; repeat until convergence."
+  },
+  {
+    "objectID": "Week11.html#choosing-the-number-of-clusters-k",
+    "href": "Week11.html#choosing-the-number-of-clusters-k",
+    "title": "PCA and Matrix Factorization",
+    "section": "Choosing the number of clusters \\(K\\)",
+    "text": "Choosing the number of clusters \\(K\\)\n\n\nElbow method\n\nFit K-means for a range of \\(K\\) values.\nPlot within-cluster sum of squares (WCSS) against \\(K\\).\nLook for the elbow: a point where increasing \\(K\\) yields diminishing improvements.\nThe elbow may be ambiguous.\n\n\n\nSilhouette index\n\nFor observation \\(i\\), let \\(a(i)\\) be its average distance to points in its own cluster and \\(b(i)\\) the smallest average distance to another cluster.\n\n\\[s(i)=\\frac{b(i)-a(i)}{\\max\\{a(i),b(i)\\}}.\\]\n\nChoose \\(K\\) with a relatively high average silhouette (typically compare \\(K\\ge2\\)).\nValues near \\(1\\) suggest well-separated points; near \\(0\\) suggest overlap; negative values suggest possible misassignment."
+  },
+  {
+    "objectID": "Week11.html#learning-outcomes",
+    "href": "Week11.html#learning-outcomes",
+    "title": "PCA and Matrix Factorization",
+    "section": "Learning Outcomes",
+    "text": "Learning Outcomes\nBy the end of this lecture, you should be able to:\n\nExplain the purpose of Principal Component Analysis (PCA) and how it reduces the dimensionality of data.\nDescribe how principal components are constructed, including the roles of loading vectors, PC scores, and variance maximization.\nExplain how PCA can be used to reconstruct observations.\nExplain how matrix completion can predict missing entries, using recommendation systems such as Netflix as an example.\nDescribe the main idea behind alternating least squares (ALS) for matrix completion."
+  },
+  {
+    "objectID": "Week11.html#pca",
+    "href": "Week11.html#pca",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA",
+    "text": "PCA\nConsider the scenario where we have a large set of correlated variables.\nWhen we conduct Principal Component Analysis (PCA), we summarize this set of variables with a smaller number of representative variables.\nThese new, representative variables collectively explain most of the variability in the original set.\nThus, PCA is a method used for dimensionality reduction; we can map data to a lower-dimensional space."
+  },
+  {
+    "objectID": "Week11.html#recall-multivariate-data",
+    "href": "Week11.html#recall-multivariate-data",
+    "title": "PCA and Matrix Factorization",
+    "section": "Recall: Multivariate data",
+    "text": "Recall: Multivariate data\n\nLet \\(\\mathcal D=\\{\\mathbf x^{(1)},\\ldots,\\mathbf x^{(N)}\\}\\subset\\mathbb R^D\\) be \\(N\\) observations with \\(D\\) features.\nArrange the observations as rows of a matrix:\n\n\\[\n\\mathbf X=\\begin{bmatrix}\n(\\mathbf x^{(1)})^\\top\\\\\n(\\mathbf x^{(2)})^\\top\\\\\n\\vdots\\\\\n(\\mathbf x^{(N)})^\\top\n\\end{bmatrix}\\in\\mathbb R^{N\\times D}.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#recall-mean-and-covariance-estimators",
+    "href": "Week11.html#recall-mean-and-covariance-estimators",
+    "title": "PCA and Matrix Factorization",
+    "section": "Recall: Mean and covariance estimators",
+    "text": "Recall: Mean and covariance estimators\n\nSample mean:\n\n\\[\\hat{\\boldsymbol\\mu}=\\frac1N\\sum_{i=1}^N\\mathbf x^{(i)}.\\]\n\nSample covariance:\n\n\\[\\hat{\\boldsymbol\\Sigma}=\\frac{1}{N-1}\\sum_{i=1}^N(\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu})(\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu})^\\top.\\]\n\nThe mean tells us where the data is located; covariance characterizes its spread and direction."
+  },
+  {
+    "objectID": "Week11.html#goal-a-low-dimensional-representation",
+    "href": "Week11.html#goal-a-low-dimensional-representation",
+    "title": "PCA and Matrix Factorization",
+    "section": "Goal: A low-dimensional representation",
+    "text": "Goal: A low-dimensional representation\n\nEven when data is high dimensional, its important features can be captured by a lower-dimensional subspace.\n\n\n\nFind a low-dimensional representation of your data\n\ncomputational efficiency,\ninterpretability and visualization,\npotentially improved generalization."
+  },
+  {
+    "objectID": "Week11.html#goal-a-low-dimensional-representation-1",
+    "href": "Week11.html#goal-a-low-dimensional-representation-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Goal: A low-dimensional representation",
+    "text": "Goal: A low-dimensional representation\n\nGiven a dataset \\(\\mathcal{D} = \\{\\mathbf{x^{(1)}, ..., x^{(N)}}\\} \\subset \\mathbb R^D\\), find a \\(K\\)-dimensional subspace \\(S \\subset \\mathbb R^D\\) with \\(K&lt;D\\) that represents centered observations well.\n\n\n\n\nPCA steps:\n\nCenter the data.\nProject onto \\(S\\) to obtain low-dimensional coordinates.\nAdd the mean back to reconstruct the observations approximately."
+  },
+  {
+    "objectID": "Week11.html#we-are-looking-for-directions",
+    "href": "Week11.html#we-are-looking-for-directions",
+    "title": "PCA and Matrix Factorization",
+    "section": "We are looking for directions",
+    "text": "We are looking for directions\n\n\nIn two dimensions, seek a unit vector \\(\\mathbf u_1\\) along which the data is highly variable.\nThe absolute location of the point cloud should not determine the direction we select."
+  },
+  {
+    "objectID": "Week11.html#step-1-center-the-data",
+    "href": "Week11.html#step-1-center-the-data",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 1: Center the data",
+    "text": "Step 1: Center the data\n\nWe want directions along which centered data vary the most.\nSubtract the sample mean from each observation:\n\n\\[\\mathbf x_c^{(i)}=\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu}.\\]\n\nAfter centering, the point cloud has mean \\(\\mathbf 0\\)."
+  },
+  {
+    "objectID": "Week11.html#step-2-project-onto-the-first-direction",
+    "href": "Week11.html#step-2-project-onto-the-first-direction",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: Project onto the first direction",
+    "text": "Step 2: Project onto the first direction\n\nLet \\(\\mathbf u_1\\) be the unit direction of greatest variance, and let \\(\\mathbf u_2\\) be orthogonal to it.\nProject the centered data onto the one-dimensional subspace spanned by \\(\\mathbf u_1\\).\n\n\\[z=\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu}).\\]\n\nThe scalar \\(z\\) is a lower-dimensional coordinate (also called a code)."
+  },
+  {
+    "objectID": "Week11.html#projection-as-a-matrix",
+    "href": "Week11.html#projection-as-a-matrix",
+    "title": "PCA and Matrix Factorization",
+    "section": "Projection as a matrix",
+    "text": "Projection as a matrix\n\nWith orthonormal directions \\(\\mathbf Q=[\\mathbf u_1\\ \\mathbf u_2]\\):\n\n\\[\n\\operatorname{Proj}_{\\mathbf u_1}\n=\\mathbf Q\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\mathbf Q^\\top\n=\\mathbf u_1\\mathbf u_1^\\top.\n\\]\n\nHence the centered projection is:\n\n\\[\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu}).\\]"
+  },
+  {
+    "objectID": "Week11.html#step-3-add-the-mean-back",
+    "href": "Week11.html#step-3-add-the-mean-back",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 3: Add the mean back",
+    "text": "Step 3: Add the mean back\n\nThe projected point must be returned to the original coordinate system:\n\n\\[\n\\tilde{\\mathbf x}=\\hat{\\boldsymbol\\mu}\n+\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu}).\n\\]\n\n\\(z\\) is the one-dimensional representation; \\(\\tilde{\\mathbf x}\\) is the reconstruction in \\(D\\) dimensions."
+  },
+  {
+    "objectID": "Week11.html#a-more-general-view",
+    "href": "Week11.html#a-more-general-view",
+    "title": "PCA and Matrix Factorization",
+    "section": "A more general view",
+    "text": "A more general view\n\nWe want a lower-dimensional representation \\(\\mathbf z\\) and an approximate reconstruction \\(\\tilde{\\mathbf x}\\).\nReview projection onto a \\(K\\)-dimensional subspace.\nExtend it to a translated, or affine, space.\nSelect the best space for representing the data."
+  },
+  {
+    "objectID": "Week11.html#euclidean-projection-onto-a-line",
+    "href": "Week11.html#euclidean-projection-onto-a-line",
+    "title": "PCA and Matrix Factorization",
+    "section": "Euclidean projection onto a line",
+    "text": "Euclidean projection onto a line\n\nFor a unit vector \\(\\mathbf u\\), the projection of \\(\\mathbf x\\) onto its span is:\n\n\\[\\operatorname{Proj}_{\\mathbf u}(\\mathbf x)=(\\mathbf u^\\top\\mathbf x)\\mathbf u.\\]\n\nThis is the closest point on that line to \\(\\mathbf x\\) in Euclidean distance."
+  },
+  {
+    "objectID": "Week11.html#deriving-the-projection-formula",
+    "href": "Week11.html#deriving-the-projection-formula",
+    "title": "PCA and Matrix Factorization",
+    "section": "Deriving the projection formula",
+    "text": "Deriving the projection formula\n\nFind the scalar \\(z\\) minimizing squared distance:\n\n\\[\\min_z\\frac12\\|z\\mathbf u-\\mathbf x\\|_2^2.\\]\n\nDifferentiate (using \\(\\mathbf u^\\top\\mathbf u=1\\)):\n\n\\[\\frac{\\partial}{\\partial z}\\frac12\\|z\\mathbf u-\\mathbf x\\|_2^2\n=(z\\mathbf u-\\mathbf x)^\\top\\mathbf u=z-\\mathbf u^\\top\\mathbf x.\\]\n\nSet to zero: \\(z=\\mathbf u^\\top\\mathbf x\\), so \\(\\operatorname{Proj}_{\\mathbf u}(\\mathbf x)=\\mathbf u\\mathbf u^\\top\\mathbf x\\)."
+  },
+  {
+    "objectID": "Week11.html#projection-onto-a-k-dimensional-subspace",
+    "href": "Week11.html#projection-onto-a-k-dimensional-subspace",
+    "title": "PCA and Matrix Factorization",
+    "section": "Projection onto a \\(K\\)-dimensional subspace",
+    "text": "Projection onto a \\(K\\)-dimensional subspace\n\nLet \\(\\mathbf U=[\\mathbf u_1\\ \\cdots\\ \\mathbf u_K]\\in\\mathbb R^{D\\times K}\\) have orthonormal columns: \\(\\mathbf U^\\top\\mathbf U=\\mathbf I_K\\).\nProject onto each basis direction and add the projections:\n\n\\[\\operatorname{Proj}_S(\\mathbf x)=\\sum_{j=1}^K z_j\\mathbf u_j,\n\\qquad z_j=\\mathbf u_j^\\top\\mathbf x.\\]\n\nIn matrix form:\n\n\\[\\boxed{\\mathbf z=\\mathbf U^\\top\\mathbf x,\\qquad \\operatorname{Proj}_S(\\mathbf x)=\\mathbf U\\mathbf z=\\mathbf U\\mathbf U^\\top\\mathbf x.}\\]"
+  },
+  {
+    "objectID": "Week11.html#projection-onto-an-affine-space",
+    "href": "Week11.html#projection-onto-an-affine-space",
+    "title": "PCA and Matrix Factorization",
+    "section": "Projection onto an affine space",
+    "text": "Projection onto an affine space\n\nA linear subspace passes through \\(\\mathbf 0\\); our data may be centered around \\(\\hat{\\boldsymbol\\mu}\\).\nAn affine space shifts the subspace by the mean.\n\n\\[\n\\boxed{\\mathbf z=\\mathbf U^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})}\n\\]\n\\[\n\\boxed{\\tilde{\\mathbf x}=\\hat{\\boldsymbol\\mu}+\\mathbf U\\mathbf z\n=\\hat{\\boldsymbol\\mu}+\\mathbf U\\mathbf U^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu}).}\n\\]\n\n\\(\\mathbf z\\) is the representation (code); \\(\\tilde{\\mathbf x}\\) is the reconstruction."
+  },
+  {
+    "objectID": "Week11.html#why-reduce-dimension",
+    "href": "Week11.html#why-reduce-dimension",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why reduce dimension?",
+    "text": "Why reduce dimension?\n\n\\(\\mathbf x\\in\\mathbb R^D\\), but \\(\\mathbf z\\in\\mathbb R^K\\).\nIf \\(K\\ll D\\), it can be much cheaper to store and work with \\(\\mathbf z\\).\nIf the observations lie close to their reconstructions, \\(\\mathbf z\\) retains much of the relevant geometric structure.\nLearning useful representations is called representation learning."
+  },
+  {
+    "objectID": "Week11.html#how-do-we-learn-the-subspace",
+    "href": "Week11.html#how-do-we-learn-the-subspace",
+    "title": "PCA and Matrix Factorization",
+    "section": "How do we learn the subspace?",
+    "text": "How do we learn the subspace?\n\nFix the origin at the empirical mean \\(\\hat{\\boldsymbol\\mu}\\).\nChoose \\(\\mathbf U\\in\\mathbb R^{D\\times K}\\) with orthonormal columns.\nTwo natural objectives:\n\nMinimize reconstruction error \\[\\min_{\\mathbf U}\\frac1N\\sum_{i=1}^N\\|\\mathbf x^{(i)}-\\tilde{\\mathbf x}^{(i)}\\|_2^2.\\]\nMaximize variance of the reconstructions \\[\\max_{\\mathbf U}\\frac1N\\sum_{i=1}^N\\|\\tilde{\\mathbf x}^{(i)}-\\hat{\\boldsymbol\\mu}\\|_2^2.\\]"
+  },
+  {
+    "objectID": "Week11.html#the-two-pca-criteria-are-equivalent",
+    "href": "Week11.html#the-two-pca-criteria-are-equivalent",
+    "title": "PCA and Matrix Factorization",
+    "section": "The two PCA criteria are equivalent",
+    "text": "The two PCA criteria are equivalent\n\nBecause \\(\\mathbf U^\\top\\mathbf U=\\mathbf I\\), we have:\n\n\\[\\|\\tilde{\\mathbf x}-\\hat{\\boldsymbol\\mu}\\|_2^2\n=\\|\\mathbf U\\mathbf z\\|_2^2\n=\\mathbf z^\\top\\mathbf U^\\top\\mathbf U\\mathbf z=\\|\\mathbf z\\|_2^2.\\]\n\nThe variance of the reconstructions is therefore the variance of the code vectors.\nThe key is that the reconstruction error is perpendicular to the projected component."
+  },
+  {
+    "objectID": "Week11.html#pythagorean-theorem",
+    "href": "Week11.html#pythagorean-theorem",
+    "title": "PCA and Matrix Factorization",
+    "section": "Pythagorean theorem",
+    "text": "Pythagorean theorem\n\nThe vectors \\(\\tilde{\\mathbf x}-\\hat{\\boldsymbol\\mu}\\) and \\(\\mathbf x-\\tilde{\\mathbf x}\\) are orthogonal.\n\n\\[\n\\|\\mathbf x-\\hat{\\boldsymbol\\mu}\\|_2^2\n=\\|\\tilde{\\mathbf x}-\\hat{\\boldsymbol\\mu}\\|_2^2\n+\\|\\mathbf x-\\tilde{\\mathbf x}\\|_2^2.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#maximizing-variance-minimizing-error",
+    "href": "Week11.html#maximizing-variance-minimizing-error",
+    "title": "PCA and Matrix Factorization",
+    "section": "Maximizing variance = minimizing error",
+    "text": "Maximizing variance = minimizing error\n\nAverage the Pythagorean identity over all observations:\n\n\\[\n\\underbrace{\\frac1N\\sum_i\\|\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu}\\|_2^2}_{\\text{fixed total variation}}\n=\n\\underbrace{\\frac1N\\sum_i\\|\\tilde{\\mathbf x}^{(i)}-\\hat{\\boldsymbol\\mu}\\|_2^2}_{\\text{captured variation}}\n+\n\\underbrace{\\frac1N\\sum_i\\|\\mathbf x^{(i)}-\\tilde{\\mathbf x}^{(i)}\\|_2^2}_{\\text{reconstruction error}}.\n\\]\n\nTotal variation is fixed, so maximizing captured variance equivalently minimizes reconstruction error."
+  },
+  {
+    "objectID": "Week11.html#principal-component-analysis-1",
+    "href": "Week11.html#principal-component-analysis-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Principal component analysis",
+    "text": "Principal component analysis\n\nThe empirical covariance matrix \\(\\hat{\\boldsymbol\\Sigma}\\) is symmetric and positive semidefinite.\nThe optimal \\(K\\)-dimensional PCA subspace is spanned by the top \\(K\\) eigenvectors of \\(\\hat{\\boldsymbol\\Sigma}\\).\nThese eigenvectors are called the principal components.\nThe first component captures the most variance; later components capture the most remaining variance subject to orthogonality."
+  },
+  {
+    "objectID": "Week11.html#supplement-deriving-pca-for-k1",
+    "href": "Week11.html#supplement-deriving-pca-for-k1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Supplement: Deriving PCA for \\(K=1\\)",
+    "text": "Supplement: Deriving PCA for \\(K=1\\)\n\nLet \\(\\mathbf u\\) be a unit vector and \\(z^{(i)}=\\mathbf u^\\top(\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu})\\).\nThe projected variance is proportional to:\n\n\\[\n\\frac1N\\sum_i(z^{(i)})^2\n=\\mathbf u^\\top\\left[\\frac1N\\sum_i(\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu})(\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu})^\\top\\right]\\mathbf u\n\\propto\\mathbf u^\\top\\hat{\\boldsymbol\\Sigma}\\mathbf u.\n\\]\n\nWrite \\(\\hat{\\boldsymbol\\Sigma}=\\mathbf Q\\boldsymbol\\Lambda\\mathbf Q^\\top\\) and \\(\\mathbf a=\\mathbf Q^\\top\\mathbf u\\).\n\n\\[\\mathbf u^\\top\\hat{\\boldsymbol\\Sigma}\\mathbf u\n=\\mathbf a^\\top\\boldsymbol\\Lambda\\mathbf a\n=\\sum_{j=1}^D\\lambda_j a_j^2.\\]"
+  },
+  {
+    "objectID": "Week11.html#supplement-why-the-top-eigenvector",
+    "href": "Week11.html#supplement-why-the-top-eigenvector",
+    "title": "PCA and Matrix Factorization",
+    "section": "Supplement: Why the top eigenvector?",
+    "text": "Supplement: Why the top eigenvector?\n\nSuppose \\(\\lambda_1\\ge\\lambda_2\\ge\\cdots\\ge\\lambda_D\\).\nSince \\(\\|\\mathbf u\\|_2=1\\) and \\(\\mathbf Q\\) is orthogonal, \\(\\sum_j a_j^2=1\\).\nThe weighted sum \\(\\sum_j\\lambda_j a_j^2\\) is maximized by taking \\(a_1=\\pm1\\) and all other \\(a_j=0\\).\nThus \\(\\mathbf u=\\pm\\mathbf q_1\\): the top eigenvector of the covariance matrix.\nThe higher components follow similarly, with orthogonality constraints."
+  },
+  {
+    "objectID": "Week11.html#pca-produces-decorrelated-features",
+    "href": "Week11.html#pca-produces-decorrelated-features",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA produces decorrelated features",
+    "text": "PCA produces decorrelated features\n\nLet \\(\\mathbf U\\) contain the first \\(K\\) eigenvectors and \\(\\mathbf z=\\mathbf U^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\).\nThen the covariance of the PCA coordinates is:\n\n\\[\n\\operatorname{Cov}(\\mathbf z)\n=\\mathbf U^\\top\\hat{\\boldsymbol\\Sigma}\\mathbf U\n=\\begin{pmatrix}\\lambda_1&&0\\\\&\\ddots&\\\\0&&\\lambda_K\\end{pmatrix}.\n\\]\n\nA diagonal covariance matrix means the transformed features are uncorrelated."
+  },
+  {
+    "objectID": "Week11.html#pca-recap",
+    "href": "Week11.html#pca-recap",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA recap",
+    "text": "PCA recap\n\nPCA finds a lower-dimensional representation of data.\nIt projects centered data onto a subspace maximizing projected variance, or equivalently minimizing reconstruction error.\nThe subspace is spanned by the top eigenvectors of the empirical covariance matrix.\nThe resulting coordinates are uncorrelated."
+  },
+  {
+    "objectID": "Week11.html#applying-pca-to-faces",
+    "href": "Week11.html#applying-pca-to-faces",
+    "title": "PCA and Matrix Factorization",
+    "section": "Applying PCA to faces",
+    "text": "Applying PCA to faces\n\nExample from the original lecture: \\(2{,}429\\) grayscale images of size \\(19\\times19\\) (\\(361\\) features).\nA small number of principal components can give useful reconstructions.\nThe learned directions can be interpreted as eigenfaces.\nPCA can also be used as preprocessing before a classifier or for visualization."
+  },
+  {
+    "objectID": "Week11.html#applying-pca-to-digits",
+    "href": "Week11.html#applying-pca-to-digits",
+    "title": "PCA and Matrix Factorization",
+    "section": "Applying PCA to digits",
+    "text": "Applying PCA to digits\n\nApply PCA to pixel intensities from handwritten-digit images.\nPlot observations using the first two principal-component scores to explore patterns.\nExamine how reconstruction quality changes as the number of components grows."
+  },
+  {
+    "objectID": "Week11.html#pca-as-a-matrix-factorization",
+    "href": "Week11.html#pca-as-a-matrix-factorization",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA as a Matrix Factorization",
+    "text": "PCA as a Matrix Factorization\n\nRecall PCA: project data onto a low-dimensional subspace defined by the top eigenvectors of the data covariance matrix.\nWe consider a generalization, matrix factorization:\n\nView PCA as a matrix factorization problem.\nExtend to matrix completion, where the data matrix is only partially observed."
+  },
+  {
+    "objectID": "Week11.html#pca-from-an-individual-observation-to-a-matrix",
+    "href": "Week11.html#pca-from-an-individual-observation-to-a-matrix",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA: From an individual observation to a matrix",
+    "text": "PCA: From an individual observation to a matrix\n\nFor an individual observation:\n\n\\[\\mathbf x^{(i)}\\approx\\tilde{\\mathbf x}^{(i)}\n=\\hat{\\boldsymbol\\mu}+\\mathbf U\\mathbf z^{(i)},\\]\nwhere \\(\\mathbf U\\in\\mathbb R^{D\\times K}\\) is the orthonormal principal-component basis and \\(\\mathbf z^{(i)}\\in\\mathbb R^K\\) is its code.\n\nAssume the data has been centered, so \\(\\hat{\\boldsymbol\\mu}=\\mathbf0\\):\n\n\\[\\mathbf x^{(i)}\\approx\\mathbf U\\mathbf z^{(i)}.\\]"
+  },
+  {
+    "objectID": "Week11.html#pca-as-a-matrix-factorization-matrix-form",
+    "href": "Week11.html#pca-as-a-matrix-factorization-matrix-form",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA as a matrix factorization: matrix form",
+    "text": "PCA as a matrix factorization: matrix form\n\nStack each observation and code as a row:\n\n\\[\\mathbf X\\in\\mathbb R^{N\\times D},\\qquad\n\\mathbf Z\\in\\mathbb R^{N\\times K},\\qquad\n\\mathbf U\\in\\mathbb R^{D\\times K}.\\]\n\nThen:\n\n\\[\\boxed{\\mathbf X\\approx\\mathbf Z\\mathbf U^\\top.}\\]\n\nSquared reconstruction error:\n\n\\[\\sum_{i=1}^N\\|\\mathbf x^{(i)}-\\mathbf U\\mathbf z^{(i)}\\|_2^2\n=\\|\\mathbf X-\\mathbf Z\\mathbf U^\\top\\|_F^2.\\]\n\nThe Frobenius norm is \\(\\|\\mathbf A\\|_F^2=\\sum_{i,j}A_{ij}^2\\)."
+  },
+  {
+    "objectID": "Week11.html#a-low-rank-approximation",
+    "href": "Week11.html#a-low-rank-approximation",
+    "title": "PCA and Matrix Factorization",
+    "section": "A low-rank approximation",
+    "text": "A low-rank approximation\n\\[\n\\underbrace{\\mathbf X}_{N\\times D}\\ \\approx\\\n\\underbrace{\\mathbf Z}_{N\\times K}\\\n\\underbrace{\\mathbf U^\\top}_{K\\times D}.\n\\]\n\nThis product has rank at most \\(K\\).\nPCA supplies the optimal rank-\\(K\\) approximation of a centered data matrix under squared Frobenius reconstruction error.\nA large matrix can therefore be represented using two smaller factors."
+  },
+  {
+    "objectID": "Week11.html#recommender-systems-the-netflix-problem",
+    "href": "Week11.html#recommender-systems-the-netflix-problem",
+    "title": "PCA and Matrix Factorization",
+    "section": "Recommender systems: The Netflix problem",
+    "text": "Recommender systems: The Netflix problem\n\nUsers watch movies and rate them out of 5 stars\n\n\n\nUsers only rate a few items, so we would like to infer their preference for unrated items\n\n\n\nRecommendation systems may reflect shared interests as well as individual preferences."
+  },
+  {
+    "objectID": "Week11.html#matrix-completion",
+    "href": "Week11.html#matrix-completion",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix Completion",
+    "text": "Matrix Completion\nMatrix completion problem: Transform the table into an \\(N\\) users by \\(M\\) movies matrix \\(\\mathbf R\\).\n\n\n\n\n\n\n\n\n\nData: Users rate some movies. \\(R_{\\text{user,movie}}\\) is very sparse.\nTask: Predict missing entries, i.e., how a user would rate a movie they haven’t previously rated.\nEvaluation Metric: Squared error (used by Netflix Competition). Is this a reasonable metric?"
+  },
+  {
+    "objectID": "Week11.html#latent-factors-for-users-and-movies",
+    "href": "Week11.html#latent-factors-for-users-and-movies",
+    "title": "PCA and Matrix Factorization",
+    "section": "Latent factors for users and movies",
+    "text": "Latent factors for users and movies\n\nRepresent each user and movie by vectors in a \\(K\\)-dimensional latent space.\nFactors might loosely correspond to preferences for comedy, drama, or action—but they need not be directly interpretable.\nCan we learn these factors from the sparse ratings matrix?"
+  },
+  {
+    "objectID": "Week11.html#matrix-factorization-for-ratings",
+    "href": "Week11.html#matrix-factorization-for-ratings",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix factorization for ratings",
+    "text": "Matrix factorization for ratings\n\nLet \\(\\mathbf u_i\\in\\mathbb R^K\\) represent user \\(i\\) and \\(\\mathbf z_j\\in\\mathbb R^K\\) represent movie \\(j\\).\nApproximate the rating by a dot product:\n\n\\[R_{ij}\\approx\\mathbf u_i^\\top\\mathbf z_j.\\]\n\nStack user vectors as rows of \\(\\mathbf U\\in\\mathbb R^{N\\times K}\\) and movie vectors as rows of \\(\\mathbf Z\\in\\mathbb R^{M\\times K}\\):\n\n\\[\\boxed{\\mathbf R\\approx\\mathbf U\\mathbf Z^\\top.}\\]"
+  },
+  {
+    "objectID": "Week11.html#what-changes-when-entries-are-missing",
+    "href": "Week11.html#what-changes-when-entries-are-missing",
+    "title": "PCA and Matrix Factorization",
+    "section": "What changes when entries are missing?",
+    "text": "What changes when entries are missing?\n\nIn ordinary low-rank approximation, reconstruction error sums over all entries.\nIn a ratings matrix, most entries are unobserved.\nWe therefore compute the loss using only the entries we actually know."
+  },
+  {
+    "objectID": "Week11.html#matrix-completion-objective",
+    "href": "Week11.html#matrix-completion-objective",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix completion objective",
+    "text": "Matrix completion objective\n\nDefine the set of observed indices:\n\n\\[\\mathcal O=\\{(i,j):R_{ij}\\text{ is observed}\\}.\\]\n\nMinimize observed-entry squared error:\n\n\\[\n\\boxed{\\min_{\\mathbf U,\\mathbf Z}\\frac12\\sum_{(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2.}\n\\]\n\nThe problem is not jointly convex in \\(\\mathbf U\\) and \\(\\mathbf Z\\), but becomes a least-squares problem when one factor is held fixed."
+  },
+  {
+    "objectID": "Week11.html#alternating-least-squares-als",
+    "href": "Week11.html#alternating-least-squares-als",
+    "title": "PCA and Matrix Factorization",
+    "section": "Alternating least squares (ALS)",
+    "text": "Alternating least squares (ALS)\n\nStart with initial user and movie factor vectors.\nFix the movie factors \\(\\mathbf Z\\); optimize the user factors \\(\\mathbf U\\).\nFix the user factors \\(\\mathbf U\\); optimize the movie factors \\(\\mathbf Z\\).\nRepeat until convergence.\n\n\nThis is an alternating optimization strategy, conceptually similar to alternating the two updates in K-means."
+  },
+  {
+    "objectID": "Week11.html#als-updating-one-users-factor",
+    "href": "Week11.html#als-updating-one-users-factor",
+    "title": "PCA and Matrix Factorization",
+    "section": "ALS: Updating one user’s factor",
+    "text": "ALS: Updating one user’s factor\n\nWith movie factors fixed, optimize the \\(i\\)th user’s vector independently:\n\n\\[\n\\min_{\\mathbf u_i}\\sum_{j:(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2.\n\\]\n\nThis is a linear least-squares problem.\nWhen the relevant matrix is invertible, the solution is:\n\n\\[\n\\mathbf u_i=\n\\left(\\sum_{j:(i,j)\\in\\mathcal O}\\mathbf z_j\\mathbf z_j^\\top\\right)^{-1}\n\\left(\\sum_{j:(i,j)\\in\\mathcal O}R_{ij}\\mathbf z_j\\right).\n\\]"
+  },
+  {
+    "objectID": "Week11.html#als-algorithm-for-matrix-completion",
+    "href": "Week11.html#als-algorithm-for-matrix-completion",
+    "title": "PCA and Matrix Factorization",
+    "section": "ALS algorithm for matrix completion",
+    "text": "ALS algorithm for matrix completion\n\nInitialize \\(\\mathbf U\\) and \\(\\mathbf Z\\).\nRepeat until convergence:\n\nFor each user \\(i\\), update \\(\\mathbf u_i\\) by least squares holding \\(\\mathbf Z\\) fixed.\nFor each movie \\(j\\), update \\(\\mathbf z_j\\) by least squares holding \\(\\mathbf U\\) fixed.\n\n\nThe movie update is symmetric:\n\\[\n\\mathbf z_j=\n\\left(\\sum_{i:(i,j)\\in\\mathcal O}\\mathbf u_i\\mathbf u_i^\\top\\right)^{-1}\n\\left(\\sum_{i:(i,j)\\in\\mathcal O}R_{ij}\\mathbf u_i\\right).\n\\]\nThese unregularized closed-form updates assume the relevant Gram matrices are invertible; in practice regularization or numerical least squares is common."
+  },
+  {
+    "objectID": "Week11.html#week-11-takeaways",
+    "href": "Week11.html#week-11-takeaways",
+    "title": "PCA and Matrix Factorization",
+    "section": "Week 11: Takeaways",
+    "text": "Week 11: Takeaways\n\nK-means discovers groups of observations; elbow and silhouette methods help assess choices of \\(K\\).\nPCA discovers orthogonal directions of maximum variance and yields lower-dimensional representations.\nMatrix factorization extends the low-rank idea to the full data matrix.\nMatrix completion uses observed entries to estimate missing values, for example in recommendation systems.\nALS alternates between fitting two sets of latent factors."
+  },
+  {
+    "objectID": "Week11.html#why-pca",
+    "href": "Week11.html#why-pca",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why PCA?",
+    "text": "Why PCA?\n\nIn high-dimensional data, variables may be correlated and carry overlapping information.\nPrincipal component analysis (PCA) creates new variables from linear combinations of the original features.\nThe goal is a smaller set of components that retains as much variation as possible.\n\n\nPCA is unsupervised: it does not use response labels."
+  },
+  {
+    "objectID": "Week11.html#motivating-example-usarrests",
+    "href": "Week11.html#motivating-example-usarrests",
+    "title": "PCA and Matrix Factorization",
+    "section": "Motivating example: USArrests",
+    "text": "Motivating example: USArrests\n\nThe USArrests dataset reports four variables for 50 U.S. states.\nFeatures: Murder, Assault, UrbanPop, and Rape.\nCan two new coordinates summarize the main patterns across four variables?\n\n\nhead(USArrests)\n\n           Murder Assault UrbanPop Rape\nAlabama      13.2     236       58 21.2\nAlaska       10.0     263       48 44.5\nArizona       8.1     294       80 31.0\nArkansas      8.8     190       50 19.5\nCalifornia    9.0     276       91 40.6\nColorado      7.9     204       78 38.7"
+  },
+  {
+    "objectID": "Week11.html#standardize-before-pca",
+    "href": "Week11.html#standardize-before-pca",
+    "title": "PCA and Matrix Factorization",
+    "section": "Standardize before PCA?",
+    "text": "Standardize before PCA?\n\nFeatures can use different units and scales.\nWithout standardization, high-variance variables may dominate PCA.\nIn USArrests, standardization lets us compare features on a common scale.\n\n\\[\nz_{ij}=\\frac{x_{ij}-\\bar{x}_j}{s_j}.\n\\]\n\nImportant: Scaling is a modeling choice; it is not always required."
+  },
+  {
+    "objectID": "Week11.html#what-is-the-first-principal-component",
+    "href": "Week11.html#what-is-the-first-principal-component",
+    "title": "PCA and Matrix Factorization",
+    "section": "What is the first principal component?",
+    "text": "What is the first principal component?\n\nA principal component is a linear combination of the original features.\nFor centered variables, the first component is\n\n\\[\nZ_{i1}=\\phi_{11}X_{i1}+\\phi_{21}X_{i2}+\\cdots+\\phi_{p1}X_{ip}.\n\\]\n\nThe coefficients \\(\\phi_{j1}\\) are called loadings.\nChoose these loadings to maximize the sample variance of \\(Z_{i1}\\)."
+  },
+  {
+    "objectID": "Week11.html#why-constrain-the-loadings",
+    "href": "Week11.html#why-constrain-the-loadings",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why constrain the loadings?",
+    "text": "Why constrain the loadings?\n\nOtherwise, multiplying all coefficients by an arbitrarily large number would increase variance without changing direction.\nImpose a unit-length constraint:\n\n\\[\n\\sum_{j=1}^{p}\\phi_{j1}^2=1.\n\\]\n\nThis identifies a direction, not an arbitrary scale."
+  },
+  {
+    "objectID": "Week11.html#the-first-pc-optimization",
+    "href": "Week11.html#the-first-pc-optimization",
+    "title": "PCA and Matrix Factorization",
+    "section": "The first PC: optimization",
+    "text": "The first PC: optimization\n\\[\n\\underset{\\boldsymbol\\phi_1}{\\operatorname{maximize}}\\quad\n\\frac1n\\sum_{i=1}^n\\left(\\sum_{j=1}^p\\phi_{j1}X_{ij}\\right)^2\n\\]\n\\[\n\\text{subject to}\\quad \\|\\boldsymbol\\phi_1\\|_2^2=1.\n\\]\n\nThe optimal direction is the leading eigenvector of the sample covariance matrix.\nPCA is therefore closely connected to eigendecomposition."
+  },
+  {
+    "objectID": "Week11.html#the-second-principal-component",
+    "href": "Week11.html#the-second-principal-component",
+    "title": "PCA and Matrix Factorization",
+    "section": "The second principal component",
+    "text": "The second principal component\n\nChoose a second direction capturing as much remaining variation as possible.\nIt must be orthogonal to the first loading vector:\n\n\\[\n\\boldsymbol\\phi_1^\\top\\boldsymbol\\phi_2=0.\n\\]\n\nSubsequent components are selected similarly.\nPrincipal-component scores are uncorrelated in the sample."
+  },
+  {
+    "objectID": "Week11.html#scores-versus-loadings",
+    "href": "Week11.html#scores-versus-loadings",
+    "title": "PCA and Matrix Factorization",
+    "section": "Scores versus loadings",
+    "text": "Scores versus loadings\n\n\nLoadings\n\nCoefficients defining each principal component.\nTell us how original variables contribute to a component.\n\n\nScores\n\nNew coordinate values for each observation.\nTell us where an observation falls along each component.\n\n\n\\[\n\\underbrace{Z_{im}}_{\\text{score}}=\\sum_{j=1}^{p}\\underbrace{\\phi_{jm}}_{\\text{loading}}\\underbrace{X_{ij}}_{\\text{centered feature}}.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#pca-in-r-prcomp",
+    "href": "Week11.html#pca-in-r-prcomp",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA in R: prcomp()",
+    "text": "PCA in R: prcomp()\n\nfit_pca &lt;- prcomp(USArrests, center = TRUE, scale. = TRUE)\nsummary(fit_pca)\n\nImportance of components:\n                          PC1    PC2     PC3     PC4\nStandard deviation     1.5749 0.9949 0.59713 0.41645\nProportion of Variance 0.6201 0.2474 0.08914 0.04336\nCumulative Proportion  0.6201 0.8675 0.95664 1.00000\n\n\n\nrotation: principal-component loadings.\nx: principal-component scores for the states.\nsdev: standard deviations of principal-component scores."
+  },
+  {
+    "objectID": "Week11.html#inspect-the-loadings",
+    "href": "Week11.html#inspect-the-loadings",
+    "title": "PCA and Matrix Factorization",
+    "section": "Inspect the loadings",
+    "text": "Inspect the loadings\n\nround(fit_pca$rotation, 3)\n\n            PC1    PC2    PC3    PC4\nMurder   -0.536 -0.418  0.341  0.649\nAssault  -0.583 -0.188  0.268 -0.743\nUrbanPop -0.278  0.873  0.378  0.134\nRape     -0.543  0.167 -0.818  0.089\n\n\n\nLarge absolute loadings indicate stronger contributions to a component.\nSigns tell us which variables move together or in opposite directions.\nCaution: Multiplying every loading in a component by \\(-1\\) yields an equivalent PCA solution."
+  },
+  {
+    "objectID": "Week11.html#inspect-the-scores",
+    "href": "Week11.html#inspect-the-scores",
+    "title": "PCA and Matrix Factorization",
+    "section": "Inspect the scores",
+    "text": "Inspect the scores\n\nhead(round(fit_pca$x[, 1:2], 2))\n\n             PC1   PC2\nAlabama    -0.98 -1.12\nAlaska     -1.93 -1.06\nArizona    -1.75  0.74\nArkansas    0.14 -1.11\nCalifornia -2.50  1.53\nColorado   -1.50  0.98\n\n\n\nEach state now has a score on PC1 and PC2.\nThese two coordinates let us compare states in a two-dimensional display.\nStates with nearby scores have similar standardized profiles in the retained PCA space."
+  },
+  {
+    "objectID": "Week11.html#visualizing-pca-score-plot",
+    "href": "Week11.html#visualizing-pca-score-plot",
+    "title": "PCA and Matrix Factorization",
+    "section": "Visualizing PCA: Score plot",
+    "text": "Visualizing PCA: Score plot\n\nplot(fit_pca$x[, 1:2], pch = 19,\n     xlab = \"PC1 score\", ylab = \"PC2 score\")\ntext(fit_pca$x[, 1:2], labels = rownames(USArrests),\n     pos = 3, cex = 0.55)\n\n\n\nLook for unusual observations, gradients, and broad patterns.\nPCA does not automatically identify clusters."
+  },
+  {
+    "objectID": "Week11.html#biplot-observations-and-variables",
+    "href": "Week11.html#biplot-observations-and-variables",
+    "title": "PCA and Matrix Factorization",
+    "section": "Biplot: observations and variables",
+    "text": "Biplot: observations and variables\n\nbiplot(fit_pca, scale = 0, cex = 0.65)\n\n\n\nPoints represent observations; arrows represent variables.\nArrow directions indicate how variables relate to the principal-component axes.\nInterpret the relative geometry with care: biplots depend on the chosen scaling convention."
+  },
+  {
+    "objectID": "Week11.html#how-much-information-does-each-pc-retain",
+    "href": "Week11.html#how-much-information-does-each-pc-retain",
+    "title": "PCA and Matrix Factorization",
+    "section": "How much information does each PC retain?",
+    "text": "How much information does each PC retain?\n\nThe variance of PC \\(m\\) is \\(\\lambda_m\\), the corresponding sample covariance eigenvalue.\nThe proportion of variance explained (PVE) is\n\n\\[\n\\mathrm{PVE}_m=\\frac{\\lambda_m}{\\sum_{\\ell=1}^{p}\\lambda_\\ell}.\n\\]\n\nThe cumulative PVE of the first \\(M\\) components is \\(\\sum_{m=1}^{M}\\mathrm{PVE}_m\\)."
+  },
+  {
+    "objectID": "Week11.html#example-variance-explained-in-usarrests",
+    "href": "Week11.html#example-variance-explained-in-usarrests",
+    "title": "PCA and Matrix Factorization",
+    "section": "Example: Variance explained in USArrests",
+    "text": "Example: Variance explained in USArrests\n\npve &lt;- fit_pca$sdev^2 / sum(fit_pca$sdev^2)\nround(pve, 3)\n\n[1] 0.620 0.247 0.089 0.043\n\nround(cumsum(pve), 3)\n\n[1] 0.620 0.868 0.957 1.000\n\n\n\nPC1 explains about 62% of the standardized variation.\nPC1 and PC2 together explain about 87%.\nFour variables have been summarized by two coordinates while retaining most variation."
+  },
+  {
+    "objectID": "Week11.html#scree-plot-and-cumulative-pve",
+    "href": "Week11.html#scree-plot-and-cumulative-pve",
+    "title": "PCA and Matrix Factorization",
+    "section": "Scree plot and cumulative PVE",
+    "text": "Scree plot and cumulative PVE\n\nplot(seq_along(pve), pve, type = \"b\", pch = 19,\n     xlab = \"Principal component\", ylab = \"Proportion of variance explained\",\n     ylim = c(0, 1))\n\n\n\nA scree plot displays PVE for each component.\nWe may look for diminishing returns or choose enough PCs to reach a desired cumulative PVE."
+  },
+  {
+    "objectID": "Week11.html#how-many-principal-components-should-we-use",
+    "href": "Week11.html#how-many-principal-components-should-we-use",
+    "title": "PCA and Matrix Factorization",
+    "section": "How many principal components should we use?",
+    "text": "How many principal components should we use?\n\nVisualization: Often use 2 or 3 PCs.\nCompression: Keep enough PCs to meet a desired reconstruction quality or PVE.\nDownstream prediction: Choose the number of PCs based on downstream validation performance.\n\n\nThere is no universally correct number of PCs. High variance is not necessarily the same as predictive relevance."
+  },
+  {
+    "objectID": "Week11.html#pca-as-data-reconstruction",
+    "href": "Week11.html#pca-as-data-reconstruction",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA as data reconstruction",
+    "text": "PCA as data reconstruction\n\nLet \\(\\mathbf x_i\\) be an original observation and \\(\\bar{\\mathbf x}\\) its feature mean vector.\nUsing the first \\(M\\) loading vectors, reconstruct\n\n\\[\n\\tilde{\\mathbf x}_i=\\bar{\\mathbf x}+\n\\sum_{m=1}^{M} z_{im}\\boldsymbol\\phi_m.\n\\]\n\nFor standardized PCA, first reconstruct in standardized units, then undo the scaling."
+  },
+  {
+    "objectID": "Week11.html#why-maximize-variance",
+    "href": "Week11.html#why-maximize-variance",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why maximize variance?",
+    "text": "Why maximize variance?\n\nPCA has an equivalent objective: minimize squared reconstruction error.\nThe \\(M\\)-dimensional PCA subspace solves\n\n\\[\n\\min_{\\mathrm{rank}(\\tilde{\\mathbf X})\\le M}\n\\|\\mathbf X_c-\\tilde{\\mathbf X}\\|_F^2,\n\\]\nwhere \\(\\mathbf X_c\\) is the centered data matrix.\n\nThis provides the bridge from PCA to matrix factorization."
+  },
+  {
+    "objectID": "Week11.html#matrix-form-of-pca",
+    "href": "Week11.html#matrix-form-of-pca",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix form of PCA",
+    "text": "Matrix form of PCA\n\nLet \\(\\mathbf X_c\\in\\mathbb R^{n\\times p}\\) be the centered data matrix.\nRetain \\(M\\) components with loading matrix \\(\\mathbf V_M\\in\\mathbb R^{p\\times M}\\).\nThe score matrix is \\(\\mathbf T=\\mathbf X_c\\mathbf V_M\\).\n\n\\[\n\\boxed{\\mathbf X_c\\approx\\mathbf T\\mathbf V_M^\\top.}\n\\]\n\nA large matrix is approximated by the product of two smaller matrices."
+  },
+  {
+    "objectID": "Week11.html#singular-value-decomposition-svd",
+    "href": "Week11.html#singular-value-decomposition-svd",
+    "title": "PCA and Matrix Factorization",
+    "section": "Singular value decomposition (SVD)",
+    "text": "Singular value decomposition (SVD)\n\nAny data matrix can be decomposed as\n\n\\[\n\\mathbf X_c=\\mathbf U\\mathbf D\\mathbf V^\\top.\n\\]\n\nIts first \\(M\\) singular directions yield the best rank-\\(M\\) approximation:\n\n\\[\n\\mathbf X_c\\approx\\mathbf U_M\\mathbf D_M\\mathbf V_M^\\top.\n\\]\n\nThe columns of \\(\\mathbf V_M\\) are the principal-component loading directions."
+  },
+  {
+    "objectID": "Week11.html#pca-main-takeaways",
+    "href": "Week11.html#pca-main-takeaways",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA: Main takeaways",
+    "text": "PCA: Main takeaways\n\nPCA creates uncorrelated linear combinations of the original features.\nScores locate observations; loadings define the directions.\nThe first few components retain the largest available variance.\nPCA can be seen as a low-rank approximation minimizing squared reconstruction error."
+  },
+  {
+    "objectID": "Week11.html#week-11-summary",
+    "href": "Week11.html#week-11-summary",
+    "title": "PCA and Matrix Factorization",
+    "section": "Week 11 summary",
+    "text": "Week 11 summary\n\nK-means partitions observations into groups, with \\(K\\) chosen using diagnostics such as elbow or silhouette scores.\nPCA finds directions retaining maximal variance and provides low-dimensional scores.\nMatrix factorization represents a data matrix using lower-dimensional factors.\nMatrix completion learns factors from observed entries to predict missing values (e.g., Netflix ratings).\nALS alternates between updating the two sets of latent factors.\n\nAnnouncements: Assignment 2 is now available on the course website (due Dec. 2nd)"
+  },
+  {
+    "objectID": "Week11.html#pca-what-is-it-and-why-do-we-need-it",
+    "href": "Week11.html#pca-what-is-it-and-why-do-we-need-it",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA: What is it, and why do we need it?",
+    "text": "PCA: What is it, and why do we need it?\n\nWith many measured features, visualization and interpretation become difficult.\nFeatures often move together: they may contain redundant information.\nPCA constructs new, uncorrelated linear combinations of the original variables, ordered by how much variation they capture.\nWe hope a small number of components retains most of the variation in the data.\n\n \n\nPCA is unsupervised. It summarizes variation in \\(\\mathbf X\\); it does not use an outcome \\(Y\\)"
+  },
+  {
+    "objectID": "Week11.html#road-map-for-pca",
+    "href": "Week11.html#road-map-for-pca",
+    "title": "PCA and Matrix Factorization",
+    "section": "Road map for PCA",
+    "text": "Road map for PCA\n\nCenter (and sometimes scale) the data.\nFind the first principal component: the linear combination with greatest variance.\nFind successive orthogonal components.\nCalculate scores, and optionally reconstruct the observations.\nAssess proportion of variance explained and select how many components to retain."
+  },
+  {
+    "objectID": "Week11.html#notation-and-setup",
+    "href": "Week11.html#notation-and-setup",
+    "title": "PCA and Matrix Factorization",
+    "section": "Notation and setup",
+    "text": "Notation and setup\n\n\\(n\\) observations and \\(p\\) quantitative features.\nData matrix \\(\\mathbf X\\in\\mathbb R^{n\\times p}\\) with observations in rows.\nEntry \\(x_{ij}\\) is feature \\(j\\) measured on observation \\(i\\).\n\n\\[\n\\mathbf X=\\begin{bmatrix}x_{11}&\\cdots&x_{1p}\\\\\n\\vdots&\\ddots&\\vdots\\\\x_{n1}&\\cdots&x_{np}\\end{bmatrix}.\n\\]\n\nWe will initially suppose each column is centered, \\(\\sum_{i=1}^n x_{ij}=0\\)."
+  },
+  {
+    "objectID": "Week11.html#step-1-center-the-features",
+    "href": "Week11.html#step-1-center-the-features",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 1: Center the features",
+    "text": "Step 1: Center the features\nFor each feature \\(j\\), subtract its sample mean:\n\\[\n\\bar x_j=\\frac1n\\sum_{i=1}^n x_{ij},\\qquad\nx_{ij}^{c}=x_{ij}-\\bar x_j.\n\\]\n\nCentering removes effects of location: PCA should identify directions of variation, not directions toward the mean.\nLet \\(\\mathbf X_c\\) be the resulting centered matrix."
+  },
+  {
+    "objectID": "Week11.html#centering-geometric-intuition",
+    "href": "Week11.html#centering-geometric-intuition",
+    "title": "PCA and Matrix Factorization",
+    "section": "Centering: geometric intuition",
+    "text": "Centering: geometric intuition\n\nImagine a cloud of points located far from the origin.\nSubtracting the mean translates the cloud so its center is at the origin.\nIts orientation and pairwise differences do not change."
+  },
+  {
+    "objectID": "Week11.html#should-we-standardize-as-well",
+    "href": "Week11.html#should-we-standardize-as-well",
+    "title": "PCA and Matrix Factorization",
+    "section": "Should we standardize as well?",
+    "text": "Should we standardize as well?\n\nPCA is sensitive to units of measurement.\nA feature measured on a large numeric scale can dominate the directions of greatest variance.\nStandardize when features have very different scales and comparable relative importance:\n\n\\[\nx_{ij}^{\\mathrm{std}}=\\frac{x_{ij}-\\bar x_j}{s_j}.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#step-2-what-is-a-principal-component",
+    "href": "Week11.html#step-2-what-is-a-principal-component",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: What is a principal component?",
+    "text": "Step 2: What is a principal component?\nFollowing ISLR §12.2.1, consider a linear combination of the \\(p\\) centered features:\n\\[\nZ_1=\\phi_{11}X_1+\\phi_{21}X_2+\\cdots+\\phi_{p1}X_p.\n\\]\n\n\\(Z_1\\) is the first principal component.\nThe numbers \\(\\phi_{11},\\ldots,\\phi_{p1}\\) are its loadings.\nThe loading vector \\(\\boldsymbol\\phi_1=(\\phi_{11},\\ldots,\\phi_{p1})^\\top\\) gives a direction in feature space."
+  },
+  {
+    "objectID": "Week11.html#the-principal-component-scores",
+    "href": "Week11.html#the-principal-component-scores",
+    "title": "PCA and Matrix Factorization",
+    "section": "The principal component scores",
+    "text": "The principal component scores\nFor observation \\(i\\), its value along the first component is:\n\\[\nz_{1}^{(i)}=\\sum_{j=1}^D u_{j1}x_{j,c}^{(i)}\n=(\\mathbf{x}_c^{(i)})^\\top\\mathbf{u}_1.\n\\]\n\n\\(z_{1}^{(i)}\\) is the score for observation \\(i\\) on PC1.\nLoadings describe the component; scores describe the observations after projection."
+  },
+  {
+    "objectID": "Week11.html#why-must-the-loading-vector-have-unit-length",
+    "href": "Week11.html#why-must-the-loading-vector-have-unit-length",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why must the loading vector have unit length?",
+    "text": "Why must the loading vector have unit length?\nWe impose:\n\\[\n\\sum_{j=1}^Du_{j1}^2=\\|\\mathbf u_1\\|_2^2=1.\n\\]\n\nWithout a constraint, multiplying all loadings by \\(c\\) would multiply the score variance by \\(c^2\\).\nThe optimization would then have no finite maximum.\nUnit length makes the search about the direction, not an arbitrary scaling."
+  },
+  {
+    "objectID": "Week11.html#the-first-principal-component-optimization",
+    "href": "Week11.html#the-first-principal-component-optimization",
+    "title": "PCA and Matrix Factorization",
+    "section": "The first principal component: optimization",
+    "text": "The first principal component: optimization\nThe first PC finds the linear combination with the largest variance:\n\\[\n\\boxed{\n\\max_{\\phi_{11},\\ldots,\\phi_{p1}}\n\\frac1n\\sum_{i=1}^n\n\\left(\\sum_{j=1}^p\\phi_{j1}x_{ij}\\right)^2\n\\quad\\text{subject to}\\quad\n\\sum_{j=1}^p\\phi_{j1}^2=1.\n}\n\\]\n\nThis is the key optimization in ISLR Equation (12.3).\nBecause the data are centered, the mean score is zero, so the objective is proportional to the sample variance of PC1 scores."
+  },
+  {
+    "objectID": "Week11.html#first-pc-compact-matrix-notation",
+    "href": "Week11.html#first-pc-compact-matrix-notation",
+    "title": "PCA and Matrix Factorization",
+    "section": "First PC: compact matrix notation",
+    "text": "First PC: compact matrix notation\nLet \\(\\mathbf S=\\frac1{n-1}\\mathbf X_c^\\top\\mathbf X_c\\) be the sample covariance matrix.\n\\[\n\\begin{aligned}\n\\operatorname{Var}_{\\mathrm{sample}}(\\mathbf X_c\\boldsymbol\\phi_1)\n&=\\frac1{n-1}\\|\\mathbf X_c\\boldsymbol\\phi_1\\|_2^2\\\\\n&=\\boldsymbol\\phi_1^\\top\\mathbf S\\boldsymbol\\phi_1.\n\\end{aligned}\n\\]\nHence the equivalent optimization is:\n\\[\n\\boxed{\\max_{\\|\\boldsymbol\\phi_1\\|_2=1}\n\\boldsymbol\\phi_1^\\top\\mathbf S\\boldsymbol\\phi_1.}\n\\]"
+  },
+  {
+    "objectID": "Week11.html#why-eigenvectors-appear-lagrange-multipliers",
+    "href": "Week11.html#why-eigenvectors-appear-lagrange-multipliers",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why eigenvectors appear: Lagrange multipliers",
+    "text": "Why eigenvectors appear: Lagrange multipliers\nMaximize \\(\\boldsymbol\\phi^\\top\\mathbf S\\boldsymbol\\phi\\) subject to \\(\\boldsymbol\\phi^\\top\\boldsymbol\\phi=1\\).\n\\[\n\\mathcal L(\\boldsymbol\\phi,\\lambda)=\n\\boldsymbol\\phi^\\top\\mathbf S\\boldsymbol\\phi-\n\\lambda(\\boldsymbol\\phi^\\top\\boldsymbol\\phi-1).\n\\]\nDifferentiate with respect to \\(\\boldsymbol\\phi\\):\n\\[\n\\nabla_{\\boldsymbol\\phi}\\mathcal L\n=2\\mathbf S\\boldsymbol\\phi-2\\lambda\\boldsymbol\\phi=\\mathbf0.\n\\]\nTherefore:\n\\[\n\\boxed{\\mathbf S\\boldsymbol\\phi=\\lambda\\boldsymbol\\phi.}\n\\]"
+  },
+  {
+    "objectID": "Week11.html#why-choose-the-largest-eigenvalue",
+    "href": "Week11.html#why-choose-the-largest-eigenvalue",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why choose the largest eigenvalue?",
+    "text": "Why choose the largest eigenvalue?\nIf \\(\\mathbf S\\boldsymbol\\phi=\\lambda\\boldsymbol\\phi\\) and \\(\\|\\boldsymbol\\phi\\|=1\\), then:\n\\[\n\\boldsymbol\\phi^\\top\\mathbf S\\boldsymbol\\phi\n=\\lambda\\boldsymbol\\phi^\\top\\boldsymbol\\phi=\\lambda.\n\\]\n\nAlong an eigenvector, the score variance equals its eigenvalue.\nTherefore PC1 uses the eigenvector with the largest eigenvalue.\nThe sign of the eigenvector is arbitrary: \\(\\boldsymbol\\phi\\) and \\(-\\boldsymbol\\phi\\) give the same axis."
+  },
+  {
+    "objectID": "Week11.html#step-3-the-second-principal-component",
+    "href": "Week11.html#step-3-the-second-principal-component",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 3: The second principal component",
+    "text": "Step 3: The second principal component\n\nPC2 is another linear combination:\n\n\\[\nZ_2=\\sum_{j=1}^p\\phi_{j2}X_j.\n\\]\n\nIt maximizes variance subject to being uncorrelated with PC1.\nWith symmetric covariance \\(\\mathbf S\\), this corresponds to choosing the eigenvector associated with the second-largest eigenvalue, orthogonal to \\(\\boldsymbol\\phi_1\\).\n\n\\[\n\\boldsymbol\\phi_2^\\top\\boldsymbol\\phi_1=0,\n\\qquad\\|\\boldsymbol\\phi_2\\|_2=1.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#general-principal-components",
+    "href": "Week11.html#general-principal-components",
+    "title": "PCA and Matrix Factorization",
+    "section": "General principal components",
+    "text": "General principal components\n\nThe \\(m\\)th principal component is the linear combination:\n\n\\[\nz_m^{(i)}=\\sum_{j=1}^D u_{jm}x_{j,c}^{(i)}\n=(\\mathbf x_c^{(i)})^\\top\\mathbf u_m.\n\\]\n\nThe loading vector \\(\\mathbf u_m\\) is the eigenvector corresponding to the \\(m\\)th largest eigenvalue of the covariance matrix:\n\n\\[\n\\hat{\\boldsymbol\\Sigma}\\mathbf u_m=\\lambda_m\\mathbf u_m.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#geometric-meaning-of-principal-components",
+    "href": "Week11.html#geometric-meaning-of-principal-components",
+    "title": "PCA and Matrix Factorization",
+    "section": "Geometric meaning of principal components",
+    "text": "Geometric meaning of principal components\n\nEach loading vector gives an axis through the centered data.\nScore \\(z_{im}\\) is the coordinate of observation \\(i\\) along that axis.\nPC1 points along the greatest spread; PC2 points along the largest remaining spread orthogonal to PC1."
+  },
+  {
+    "objectID": "Week11.html#pca-in-one-line-scores-and-loadings",
+    "href": "Week11.html#pca-in-one-line-scores-and-loadings",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA in one line: scores and loadings",
+    "text": "PCA in one line: scores and loadings\nCollect the first \\(M\\) loading vectors in:\n\\[\n\\mathbf\\Phi_M=[\\boldsymbol\\phi_1\\ \\cdots\\ \\boldsymbol\\phi_M]\n\\in\\mathbb R^{p\\times M},\\qquad\n\\mathbf\\Phi_M^\\top\\mathbf\\Phi_M=\\mathbf I_M.\n\\]\nThe score matrix is:\n\\[\n\\boxed{\\mathbf Z_M=\\mathbf X_c\\mathbf\\Phi_M\n\\in\\mathbb R^{n\\times M}.}\n\\]\n\nEach row of \\(\\mathbf Z_M\\) is an observation in \\(M\\)-dimensional PC coordinates."
+  },
+  {
+    "objectID": "Week11.html#step-4-projecting-onto-the-pc-subspace",
+    "href": "Week11.html#step-4-projecting-onto-the-pc-subspace",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 4: Projecting onto the PC subspace",
+    "text": "Step 4: Projecting onto the PC subspace\nFor a centered observation \\(\\mathbf x_i\\) written as a column vector:\n\\[\n\\mathbf z_i=\\mathbf\\Phi_M^\\top\\mathbf x_i.\n\\]\nIts projection back into \\(p\\)-dimensional feature space is:\n\\[\n\\boxed{\\tilde{\\mathbf x}_i\n=\\mathbf\\Phi_M\\mathbf z_i\n=\\mathbf\\Phi_M\\mathbf\\Phi_M^\\top\\mathbf x_i.}\n\\]\n\nThe score \\(\\mathbf z_i\\) has dimension \\(M\\); the reconstruction \\(\\tilde{\\mathbf x}_i\\) has dimension \\(p\\)."
+  },
+  {
+    "objectID": "Week11.html#add-the-mean-back-to-reconstruct-observations",
+    "href": "Week11.html#add-the-mean-back-to-reconstruct-observations",
+    "title": "PCA and Matrix Factorization",
+    "section": "Add the mean back to reconstruct observations",
+    "text": "Add the mean back to reconstruct observations\nIf \\(\\mathbf x_i^{\\mathrm{orig}}\\) is not centered, then:\n\\[\n\\boxed{\n\\tilde{\\mathbf x}_i^{\\mathrm{orig}}\n=\\bar{\\mathbf x}\n+\\mathbf\\Phi_M\\mathbf\\Phi_M^\\top\n(\\mathbf x_i^{\\mathrm{orig}}-\\bar{\\mathbf x}).}\n\\]\nThree-stage procedure:\n\nSubtract the mean.\nProject onto the principal-component subspace.\nAdd the mean back."
+  },
+  {
+    "objectID": "Week11.html#another-interpretation-low-rank-approximation",
+    "href": "Week11.html#another-interpretation-low-rank-approximation",
+    "title": "PCA and Matrix Factorization",
+    "section": "Another interpretation: low-rank approximation",
+    "text": "Another interpretation: low-rank approximation\nISLR §12.2.2 describes PCA as approximating the original data:\n\\[\n\\boxed{x_{ij}\\approx\\sum_{m=1}^M z_{im}\\phi_{jm}}\n\\quad\\text{(for centered data)}.\n\\]\nIn matrix notation:\n\\[\n\\boxed{\\mathbf X_c\\approx\\mathbf Z_M\\mathbf\\Phi_M^\\top.}\n\\]\n\nWe replace \\(p\\) original features with \\(M\\) scores, then approximately reconstruct all \\(p\\) features."
+  },
+  {
+    "objectID": "Week11.html#reconstruction-error-optimization",
+    "href": "Week11.html#reconstruction-error-optimization",
+    "title": "PCA and Matrix Factorization",
+    "section": "Reconstruction-error optimization",
+    "text": "Reconstruction-error optimization\nAn equivalent characterization of the first \\(M\\) PCs is minimizing squared reconstruction error:\n\\[\n\\boxed{\n\\min_{\\{z_{im}\\},\\{\\phi_{jm}\\}}\n\\sum_{i=1}^n\\sum_{j=1}^p\n\\left(x_{ij}-\\sum_{m=1}^M z_{im}\\phi_{jm}\\right)^2.\n}\n\\]\n\nThis is the PCA reconstruction formulation of ISLR Equation (12.6).\nThe fitted matrix has rank at most \\(M\\).\nStandard PCA obtains this minimum through its leading singular vectors."
+  },
+  {
+    "objectID": "Week11.html#why-minimizing-error-agrees-with-maximizing-variance",
+    "href": "Week11.html#why-minimizing-error-agrees-with-maximizing-variance",
+    "title": "PCA and Matrix Factorization",
+    "section": "Why minimizing error agrees with maximizing variance",
+    "text": "Why minimizing error agrees with maximizing variance\nFor an orthogonal projection, the fitted centered vector and the residual are perpendicular:\n\\[\n\\mathbf x_i=\\tilde{\\mathbf x}_i+\n(\\mathbf x_i-\\tilde{\\mathbf x}_i).\n\\]\nBy Pythagoras:\n\\[\n\\boxed{\\|\\mathbf x_i\\|_2^2=\n\\|\\tilde{\\mathbf x}_i\\|_2^2+\n\\|\\mathbf x_i-\\tilde{\\mathbf x}_i\\|_2^2.}\n\\]\n\nTotal variation is fixed; capturing more leaves less reconstruction error."
+  },
+  {
+    "objectID": "Week11.html#the-optimization-over-a-k-dimensional-subspace",
+    "href": "Week11.html#the-optimization-over-a-k-dimensional-subspace",
+    "title": "PCA and Matrix Factorization",
+    "section": "The optimization over a \\(K\\)-dimensional subspace",
+    "text": "The optimization over a \\(K\\)-dimensional subspace\nWriting \\(\\mathbf\\Phi_M^\\top\\mathbf\\Phi_M=\\mathbf I_M\\):\n\\[\n\\max_{\\mathbf\\Phi_M^\\top\\mathbf\\Phi_M=\\mathbf I_M}\n\\operatorname{tr}(\\mathbf\\Phi_M^\\top\\mathbf S\\mathbf\\Phi_M).\n\\]\nEquivalently:\n\\[\n\\min_{\\mathbf\\Phi_M^\\top\\mathbf\\Phi_M=\\mathbf I_M}\n\\|\\mathbf X_c-\\mathbf X_c\\mathbf\\Phi_M\\mathbf\\Phi_M^\\top\\|_F^2.\n\\]\n\nBoth select the subspace spanned by the eigenvectors of the \\(M\\) largest eigenvalues."
+  },
+  {
+    "objectID": "Week11.html#pca-through-singular-value-decomposition",
+    "href": "Week11.html#pca-through-singular-value-decomposition",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA through singular value decomposition",
+    "text": "PCA through singular value decomposition\nFor centered data:\n\\[\n\\mathbf X_c=\\mathbf L\\mathbf D\\mathbf V^\\top.\n\\]\n\nColumns of \\(\\mathbf V\\) are loading directions.\n\\(\\mathbf Z=\\mathbf X_c\\mathbf V=\\mathbf L\\mathbf D\\) contains scores.\nEigenvalues of the covariance matrix are \\(\\lambda_m=d_m^2/(n-1)\\).\n\n\\[\n\\hat{\\mathbf X}_{c,M}=\\mathbf L_M\\mathbf D_M\\mathbf V_M^\\top.\n\\]\n\nThis is the best rank-\\(M\\) approximation in squared Frobenius norm."
+  },
+  {
+    "objectID": "Week11.html#the-first-m-pcs-as-a-dimension-reduction",
+    "href": "Week11.html#the-first-m-pcs-as-a-dimension-reduction",
+    "title": "PCA and Matrix Factorization",
+    "section": "The first \\(M\\) PCs as a dimension reduction",
+    "text": "The first \\(M\\) PCs as a dimension reduction\n\\[\n\\underbrace{\\mathbf X_c}_{n\\times p}\n\\longrightarrow\n\\underbrace{\\mathbf Z_M}_{n\\times M}\n\\longrightarrow\n\\underbrace{\\hat{\\mathbf X}_{c,M}}_{n\\times p}.\n\\]\n\nCompression: store \\(M\\) scores per observation instead of \\(p\\) original coordinates.\nReconstruction: map back using loading vectors.\nWe accept some loss of detail to gain a simpler representation."
+  },
+  {
+    "objectID": "Week11.html#step-5-the-proportion-of-variance-explained-pve",
+    "href": "Week11.html#step-5-the-proportion-of-variance-explained-pve",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 5: The proportion of variance explained (PVE)",
+    "text": "Step 5: The proportion of variance explained (PVE)\nISLR §12.2.3: How much of the total variance is captured by a component?\n\\[\n\\boxed{\\mathrm{PVE}_m=\n\\frac{\\lambda_m}{\\sum_{\\ell=1}^{r}\\lambda_\\ell}},\n\\qquad r=\\min(n-1,p).\n\\]\n\n\\(\\lambda_m\\) is the variance of scores on PC\\(m\\).\nTotal variance is the sum of feature variances, equivalently \\(\\sum_\\ell\\lambda_\\ell\\).\nPVE is between 0 and 1; all PVE values sum to 1."
+  },
+  {
+    "objectID": "Week11.html#deriving-the-pve-from-data",
+    "href": "Week11.html#deriving-the-pve-from-data",
+    "title": "PCA and Matrix Factorization",
+    "section": "Deriving the PVE from data",
+    "text": "Deriving the PVE from data\nFor centered \\(\\mathbf X_c\\), the total sum of squared deviations is:\n\\[\n\\sum_{j=1}^p\\sum_{i=1}^n x_{ij}^2=\\|\\mathbf X_c\\|_F^2.\n\\]\nFor PC\\(m\\), the captured sum of squares is:\n\\[\n\\sum_{i=1}^n z_{im}^2.\n\\]\nHence:\n\\[\n\\boxed{\\mathrm{PVE}_m=\n\\frac{\\sum_{i=1}^n z_{im}^2}\n{\\sum_{j=1}^p\\sum_{i=1}^n x_{ij}^2}.}\n\\]"
+  },
+  {
+    "objectID": "Week11.html#cumulative-proportion-of-variance-explained",
+    "href": "Week11.html#cumulative-proportion-of-variance-explained",
+    "title": "PCA and Matrix Factorization",
+    "section": "Cumulative proportion of variance explained",
+    "text": "Cumulative proportion of variance explained\nThe first \\(M\\) components together explain:\n\\[\n\\boxed{\\mathrm{CPVE}(M)=\\sum_{m=1}^M\\mathrm{PVE}_m\n=\\frac{\\sum_{m=1}^M\\lambda_m}{\\sum_{\\ell=1}^r\\lambda_\\ell}.}\n\\]\n\nCPVE increases (or stays constant) with \\(M\\).\nIt reaches 100% if we retain all components with positive variance.\nThis measures variance preserved, not predictive accuracy for a particular \\(Y\\)."
+  },
+  {
+    "objectID": "Week11.html#interpreting-a-scree-plot",
+    "href": "Week11.html#interpreting-a-scree-plot",
+    "title": "PCA and Matrix Factorization",
+    "section": "Interpreting a scree plot",
+    "text": "Interpreting a scree plot\n\nA scree plot graphs PVE (or eigenvalues) against component number.\nOften the first few PCs explain most of the variance.\nA visible elbow may suggest a reasonable dimension for the representation."
+  },
+  {
+    "objectID": "Week11.html#are-principal-components-unique",
+    "href": "Week11.html#are-principal-components-unique",
+    "title": "PCA and Matrix Factorization",
+    "section": "Are principal components unique?",
+    "text": "Are principal components unique?\nISLR §12.2.4: A loading vector is not unique in sign.\nIf \\(\\boldsymbol\\phi_1\\) is a loading vector, then \\(-\\boldsymbol\\phi_1\\) describes the same axis, and:\n\\[\nz_{i1}=\\mathbf x_i^\\top\\boldsymbol\\phi_1\n\\quad\\Longrightarrow\\quad\n-z_{i1}=\\mathbf x_i^\\top(-\\boldsymbol\\phi_1).\n\\]\n\nThe product \\(z_{i1}\\boldsymbol\\phi_1\\) (and hence reconstruction) is unchanged.\nDifferent software may display all signs reversed without changing the PCA solution."
+  },
+  {
+    "objectID": "Week11.html#a-subtle-point-equal-eigenvalues",
+    "href": "Week11.html#a-subtle-point-equal-eigenvalues",
+    "title": "PCA and Matrix Factorization",
+    "section": "A subtle point: equal eigenvalues",
+    "text": "A subtle point: equal eigenvalues\n\nIf an eigenvalue is repeated, individual principal-component directions in its eigenspace may not be unique.\nAn orthonormal rotation within that tied eigenspace gives the same captured subspace and total explained variance.\nThus, sign ambiguity always exists; additional directional ambiguity can occur with eigenvalue ties.\n\n\nWhat we ultimately care about is the subspace, its explained variation, and the reconstructed observations."
+  },
+  {
+    "objectID": "Week11.html#how-many-pcs-should-we-retain",
+    "href": "Week11.html#how-many-pcs-should-we-retain",
+    "title": "PCA and Matrix Factorization",
+    "section": "How many PCs should we retain?",
+    "text": "How many PCs should we retain?\nThere is no universally correct number.\n\nScree plot: Look for a clear elbow.\nCumulative PVE: Choose a dimension giving an acceptable amount of captured variance (e.g., a context-dependent target).\nInterpretability: Is the reduced representation understandable and useful?\nDownstream task: For prediction, select \\(M\\) using validation appropriate to the supervised task."
+  },
+  {
+    "objectID": "Week11.html#pitfall-high-variance-is-not-always-useful",
+    "href": "Week11.html#pitfall-high-variance-is-not-always-useful",
+    "title": "PCA and Matrix Factorization",
+    "section": "Pitfall: high variance is not always useful",
+    "text": "Pitfall: high variance is not always useful\n\nPCA maximizes variation in \\(\\mathbf X\\), not separation of known classes or association with an outcome.\nA low-variance component can still matter for predicting \\(Y\\).\nAlways distinguish descriptive dimension reduction from supervised prediction."
+  },
+  {
+    "objectID": "Week11.html#example-usarrests",
+    "href": "Week11.html#example-usarrests",
+    "title": "PCA and Matrix Factorization",
+    "section": "Example: USArrests",
+    "text": "Example: USArrests\n\n50 states; four measured variables: Murder, Assault, UrbanPop, Rape.\nThe variables have different units and scales, so standardize first.\nQuestion: Can two PC scores summarize patterns across the four variables?\n\n\nhead(USArrests)\n\n           Murder Assault UrbanPop Rape\nAlabama      13.2     236       58 21.2\nAlaska       10.0     263       48 44.5\nArizona       8.1     294       80 31.0\nArkansas      8.8     190       50 19.5\nCalifornia    9.0     276       91 40.6\nColorado      7.9     204       78 38.7\n\napply(USArrests, 2, sd)\n\n   Murder   Assault  UrbanPop      Rape \n 4.355510 83.337661 14.474763  9.366385"
+  },
+  {
+    "objectID": "Week11.html#compute-pca-in-r",
+    "href": "Week11.html#compute-pca-in-r",
+    "title": "PCA and Matrix Factorization",
+    "section": "Compute PCA in R",
+    "text": "Compute PCA in R\n\n# `prcomp` centers and scales before computing the SVD\npca_fit &lt;- prcomp(USArrests, center = TRUE, scale. = TRUE)\nsummary(pca_fit)\n\nImportance of components:\n                          PC1    PC2     PC3     PC4\nStandard deviation     1.5749 0.9949 0.59713 0.41645\nProportion of Variance 0.6201 0.2474 0.08914 0.04336\nCumulative Proportion  0.6201 0.8675 0.95664 1.00000\n\n\n\nrotation: \\(p\\times p\\) loading matrix.\nx: \\(n\\times p\\) score matrix.\nsdev: standard deviations of PC scores."
+  },
+  {
+    "objectID": "Week11.html#inspect-loading-vectors",
+    "href": "Week11.html#inspect-loading-vectors",
+    "title": "PCA and Matrix Factorization",
+    "section": "Inspect loading vectors",
+    "text": "Inspect loading vectors\n\nround(pca_fit$rotation, 3)\n\n            PC1    PC2    PC3    PC4\nMurder   -0.536 -0.418  0.341  0.649\nAssault  -0.583 -0.188  0.268 -0.743\nUrbanPop -0.278  0.873  0.378  0.134\nRape     -0.543  0.167 -0.818  0.089\n\n\n\nEach column describes the combination of original features corresponding to a PC.\nLarge absolute loadings indicate features that contribute more strongly to that direction.\nSigns are arbitrary; interpret relative signs and magnitudes."
+  },
+  {
+    "objectID": "Week11.html#inspect-principal-component-scores",
+    "href": "Week11.html#inspect-principal-component-scores",
+    "title": "PCA and Matrix Factorization",
+    "section": "Inspect principal component scores",
+    "text": "Inspect principal component scores\n\nhead(round(pca_fit$x[, 1:2], 2))\n\n             PC1   PC2\nAlabama    -0.98 -1.12\nAlaska     -1.93 -1.06\nArizona    -1.75  0.74\nArkansas    0.14 -1.11\nCalifornia -2.50  1.53\nColorado   -1.50  0.98\n\n\n\nEach row is a state.\nIts PC1 and PC2 scores are its coordinates in the reduced two-dimensional representation."
+  },
+  {
+    "objectID": "Week11.html#plot-the-first-two-pcs",
+    "href": "Week11.html#plot-the-first-two-pcs",
+    "title": "PCA and Matrix Factorization",
+    "section": "Plot the first two PCs",
+    "text": "Plot the first two PCs\n\nplot(pca_fit$x[, 1], pca_fit$x[, 2],\n     xlab = \"PC1 score\", ylab = \"PC2 score\",\n     pch = 19, col = \"#7a263a\")\ntext(pca_fit$x[, 1], pca_fit$x[, 2],\n     labels = rownames(USArrests), pos = 3, cex = 0.55)\nabline(h = 0, v = 0, lty = 3, col = \"gray60\")\n\n\n\nCompare states according to the patterns summarized by PC1 and PC2."
+  },
+  {
+    "objectID": "Week11.html#how-much-variation-do-the-pcs-explain",
+    "href": "Week11.html#how-much-variation-do-the-pcs-explain",
+    "title": "PCA and Matrix Factorization",
+    "section": "How much variation do the PCs explain?",
+    "text": "How much variation do the PCs explain?\n\neigenvalues &lt;- pca_fit$sdev^2\npve &lt;- eigenvalues / sum(eigenvalues)\ncumulative_pve &lt;- cumsum(pve)\nround(data.frame(PC = seq_along(pve), PVE = pve,\n                 Cumulative = cumulative_pve), 3)\n\n  PC   PVE Cumulative\n1  1 0.620      0.620\n2  2 0.247      0.868\n3  3 0.089      0.957\n4  4 0.043      1.000\n\n\n\nCheck whether two PCs capture enough variation for the intended visualization."
+  },
+  {
+    "objectID": "Week11.html#scree-plot-and-cumulative-variance-explained",
+    "href": "Week11.html#scree-plot-and-cumulative-variance-explained",
+    "title": "PCA and Matrix Factorization",
+    "section": "Scree plot and cumulative variance explained",
+    "text": "Scree plot and cumulative variance explained\n\nplot(seq_along(pve), pve, type = \"b\", pch = 19,\n     xlab = \"Principal component\", ylab = \"PVE\", ylim = c(0, 1))\nlines(seq_along(pve), cumulative_pve, type = \"b\", pch = 17,\n      lty = 2)\nlegend(\"right\", legend = c(\"Individual PVE\", \"Cumulative PVE\"),\n       pch = c(19, 17), lty = c(1, 2), bty = \"n\")"
+  },
+  {
+    "objectID": "Week11.html#reconstruct-with-the-first-two-pcs",
+    "href": "Week11.html#reconstruct-with-the-first-two-pcs",
+    "title": "PCA and Matrix Factorization",
+    "section": "Reconstruct with the first two PCs",
+    "text": "Reconstruct with the first two PCs\nFor standardized data, reconstruct in standardized feature coordinates:\n\nZ2 &lt;- pca_fit$x[, 1:2, drop = FALSE]\nPhi2 &lt;- pca_fit$rotation[, 1:2, drop = FALSE]\nXhat_scaled &lt;- Z2 %*% t(Phi2)\nhead(round(Xhat_scaled, 2))\n\n           Murder Assault UrbanPop  Rape\nAlabama      0.99    0.78    -0.71  0.34\nAlaska       1.48    1.33    -0.39  0.87\nArizona      0.63    0.88     1.13  1.07\nArkansas     0.39    0.13    -1.01 -0.26\nCalifornia   0.70    1.17     2.03  1.61\nColorado     0.39    0.69     1.27  0.98\n\n\n\nTo return to the original units, undo the scaling and then add back the means."
+  },
+  {
+    "objectID": "Week11.html#pca-example-faces-and-eigenfaces",
+    "href": "Week11.html#pca-example-faces-and-eigenfaces",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA example: Faces and eigenfaces",
+    "text": "PCA example: Faces and eigenfaces\n\nOriginal lecture example: \\(2{,}429\\) grayscale face images, each \\(19\\times19\\) pixels (\\(361\\) features).\nTreat each image as one \\(361\\)-dimensional observation.\nLeading PCs capture prominent patterns of variation across the images.\nThese loading vectors can be visualized as eigenfaces."
+  },
+  {
+    "objectID": "Week11.html#faces-increasing-the-number-of-components",
+    "href": "Week11.html#faces-increasing-the-number-of-components",
+    "title": "PCA and Matrix Factorization",
+    "section": "Faces: Increasing the number of components",
+    "text": "Faces: Increasing the number of components\n\nReconstruct the same face using a small, moderate, and large number of PCs.\nWith more PCs, the image generally looks closer to the original.\nEach extra component reduces (or leaves unchanged) the total reconstruction error."
+  },
+  {
+    "objectID": "Week11.html#discussion-what-should-the-faces-example-teach-us",
+    "href": "Week11.html#discussion-what-should-the-faces-example-teach-us",
+    "title": "PCA and Matrix Factorization",
+    "section": "Discussion: What should the faces example teach us?",
+    "text": "Discussion: What should the faces example teach us?\n\nWhy does adding principal components improve reconstruction?\nWhat does an eigenface represent: one person’s face, or a direction of variation across all faces?\nWould two PCs be enough for visualizing faces? For reconstructing them?\n\n\nPCA chooses directions that collectively capture the most variation; what is a useful number of PCs depends on the task."
+  },
+  {
+    "objectID": "Week11.html#pca-summary-of-the-steps",
+    "href": "Week11.html#pca-summary-of-the-steps",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA: Summary of the steps",
+    "text": "PCA: Summary of the steps\n\nCenter, optionally standardize: \\(\\mathbf X\\to\\mathbf X_c\\).\nFind leading eigenvectors of \\(\\mathbf S\\) (or right singular vectors of \\(\\mathbf X_c\\)).\nCompute scores \\(\\mathbf Z_M=\\mathbf X_c\\mathbf\\Phi_M\\).\nReconstruct \\(\\hat{\\mathbf X}_{c,M}=\\mathbf Z_M\\mathbf\\Phi_M^\\top\\).\nCalculate PVE and choose \\(M\\) for your purpose."
+  },
+  {
+    "objectID": "Week11.html#transition-pca-to-matrix-factorization",
+    "href": "Week11.html#transition-pca-to-matrix-factorization",
+    "title": "PCA and Matrix Factorization",
+    "section": "Transition: PCA to matrix factorization",
+    "text": "Transition: PCA to matrix factorization\n\nPCA approximates a fully observed centered data matrix with a low-rank product:\n\n\\[\\mathbf X_c\\approx\\mathbf Z_M\\mathbf\\Phi_M^\\top.\\]\n\nWhat if most entries of the matrix are missing, as with user–movie ratings?\nThis leads to matrix completion: learn low-dimensional factors using only observed entries."
+  },
+  {
+    "objectID": "Week11.html#from-pca-to-general-matrix-factorization",
+    "href": "Week11.html#from-pca-to-general-matrix-factorization",
+    "title": "PCA and Matrix Factorization",
+    "section": "From PCA to general matrix factorization",
+    "text": "From PCA to general matrix factorization\n\nPCA is a special structured low-rank factorization: \\(\\mathbf X_c\\approx\\mathbf Z\\mathbf U^\\top\\).\nMore generally, write a data matrix as a product of two small matrices, without requiring the PCA orthogonality constraints.\nFor recommender systems, factors represent users and items, rather than observations and principal component directions."
+  },
+  {
+    "objectID": "Week11.html#step-1-center-the-features-1",
+    "href": "Week11.html#step-1-center-the-features-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 1: Center the features",
+    "text": "Step 1: Center the features\n\nSubtracting the mean translates the data so its center is at the origin.\nIts orientation and pairwise differences do not change."
+  },
+  {
+    "objectID": "Week11.html#step-2-project-onto-a-subspace-spanned-by-mathbfu_1",
+    "href": "Week11.html#step-2-project-onto-a-subspace-spanned-by-mathbfu_1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: Project onto a subspace spanned by \\[\\mathbf{u_1}\\]",
+    "text": "Step 2: Project onto a subspace spanned by \\[\\mathbf{u_1}\\]\n\n\n\n\n\n\nLet \\(\\mathbf u_1\\) be the unit direction of greatest variance, and let \\(\\mathbf u_2\\) be orthogonal to it.\nWith orthonormal directions \\(\\mathbf Q=[\\mathbf u_1\\ \\mathbf u_2]\\):\n\n\\[\n\\operatorname{Proj}_{\\mathbf u_1}\n=\\mathbf Q\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\mathbf Q^\\top\n=\\mathbf u_1\\mathbf u_1^\\top.\n\\] ## Step 2: Project onto a subspace spanned by \\[\\mathbf{u_1}\\]\n\n\n\n\n\n\nCoordinates \\(z=\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) along the direction \\(\\mathbf{u_1}\\) are lower dimensional representations of \\(\\mathbf{x}\\).\nProjection \\(\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) is the projection onto \\(\\mathbf{u_1}\\), centered at \\(\\mathbf{\\hat{\\mu}}\\)"
+  },
+  {
+    "objectID": "Week11.html#step-3-add-back-mean",
+    "href": "Week11.html#step-3-add-back-mean",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 3: Add back mean",
+    "text": "Step 3: Add back mean\n\nNow we have an approximation of our original observation using only one score instead of all original features."
+  },
+  {
+    "objectID": "Week11.html#what-just-happened",
+    "href": "Week11.html#what-just-happened",
+    "title": "PCA and Matrix Factorization",
+    "section": "What Just Happened?",
+    "text": "What Just Happened?\nWe’ve done Principal Component Analysis (PCA)!\n \nTo get a low dimensional reconstruction for \\(\\mathbf{x}\\):\n\nSubtract mean: \\(\\mathbf{x - \\hat \\mu}\\)\nProject on \\(\\mathcal S\\): \\(\\mathbf{u_1u_1^{\\top}(x - \\hat \\mu)}\\)\nAdd back mean to get the low dimensional reconstruction: \\(\\tilde{\\mathbf x}=\\hat{\\boldsymbol\\mu}+\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu}).\\)\n\n Now let’s get into the details."
+  },
+  {
+    "objectID": "Week11.html#what-are-principal-components",
+    "href": "Week11.html#what-are-principal-components",
+    "title": "PCA and Matrix Factorization",
+    "section": "What are principal components?",
+    "text": "What are principal components?\nConsider a linear combination of the \\(D\\) centered features:\n\\[\nZ_{1}=u_{11}X_1^c+u_{21}X_2^c+\\cdots+u_{D1}X_D^c.\n\\]\n\n\\(Z_{1}\\) is the first principal component.\nThe numbers \\(u_{11},\\ldots,u_{D1}\\) are its loadings.\nThe loading vector \\(\\mathbf u_1=(u_{11},\\ldots,u_{D1})^\\top\\) gives a direction in feature space."
+  },
+  {
+    "objectID": "Week11.html#the-first-principal-component",
+    "href": "Week11.html#the-first-principal-component",
+    "title": "PCA and Matrix Factorization",
+    "section": "The first principal component",
+    "text": "The first principal component\nThe first PC finds the linear combination with the largest variance:\n\\[\n\\boxed{\n\\max_{u_{11},\\ldots,u_{D1}}\n\\frac1N\\sum_{i=1}^N\n\\left(\\sum_{j=1}^Du_{j1}x_{j,c}^{(i)}\\right)^2\n\\quad\\text{subject to}\\quad\n\\sum_{j=1}^Du_{j1}^2=1.\n}\n\\]\n\nBecause the data are centered, the mean score is zero, so the objective is proportional to the sample variance of PC1 scores."
+  },
+  {
+    "objectID": "Week11.html#the-first-principal-component-1",
+    "href": "Week11.html#the-first-principal-component-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "The first principal component",
+    "text": "The first principal component\nWe show this optimization problem in matrix notation.\nLet \\(\\hat{\\boldsymbol\\Sigma}=\\frac{1}{N-1}\\mathbf X_c^\\top\\mathbf X_c\\) be the sample covariance matrix.\n\nRecall that the first principal component finds the direction \\(\\mathbf u_1\\) along which the projected data has the greatest variance.\nMathematically, we solve:\n\n\\[\n\\max_{\\mathbf u_1}\n\\mathbf u_1^\\top\\hat{\\boldsymbol\\Sigma}\\mathbf u_1\n\\quad \\text{subject to} \\quad\n\\mathbf u_1^\\top\\mathbf u_1=1.\n\\]\n\n\n\\(\\mathbf u_1^\\top\\hat{\\boldsymbol\\Sigma}\\mathbf u_1\\) is the variance of the projected observations.\nThe constraint \\(\\mathbf u_1^\\top\\mathbf u_1=1\\) ensures that we are optimizing over directions, rather than magnitudes."
+  },
+  {
+    "objectID": "Week11.html#the-first-principal-component-2",
+    "href": "Week11.html#the-first-principal-component-2",
+    "title": "PCA and Matrix Factorization",
+    "section": "The first principal component",
+    "text": "The first principal component\n\nUsing Lagrangian multipliers, we solve the optimization problem and find:\n\n\\[\n\\hat{\\boldsymbol\\Sigma}\\mathbf u_1\n=\\lambda_1\\mathbf u_1\n\\]\n\nThus, \\(\\mathbf u_1\\) is the eigenvector corresponding to the largest eigenvalue \\(\\lambda_1\\) of the covariance matrix.\nThe eigenvalue \\(\\lambda_1\\) represents the variance captured by PC1.\nThe second principal component is obtained using the eigenvector corresponding to the second-largest eigenvalue, which can be chosen orthogonal to \\(\\mathbf u_1\\).\n\n\n\nPCA finds directions of maximum variance by computing the eigenvectors of the sample covariance matrix."
+  },
+  {
+    "objectID": "Week11.html#reconstructing-the-original-observations",
+    "href": "Week11.html#reconstructing-the-original-observations",
+    "title": "PCA and Matrix Factorization",
+    "section": "Reconstructing the original observations",
+    "text": "Reconstructing the original observations\n\nAfter projecting onto the first \\(M\\) principal components, we obtain the score vector:\n\n\\[\n\\mathbf z^{(i)}=\\mathbf U^\\top(\\mathbf x^{(i)}-\\hat{\\boldsymbol\\mu}).\n\\]\n\nWe can use these scores and the loading vectors to approximately reconstruct the original observation:\n\n\\[\n\\tilde{\\mathbf x}^{(i)}\n=\\hat{\\boldsymbol\\mu}+\\mathbf U\\mathbf z^{(i)}\n=\\hat{\\boldsymbol\\mu}+\n\\sum_{m=1}^M z_m^{(i)}\\mathbf u_m.\n\\]\n\nThe reconstruction \\(\\tilde{\\mathbf x}^{(i)}\\) is back in the original \\(D\\)-dimensional feature space.\nThe more principal components we retain, the more variation we preserve and the smaller the reconstruction error."
+  },
+  {
+    "objectID": "Week11.html#putting-it-together",
+    "href": "Week11.html#putting-it-together",
+    "title": "PCA and Matrix Factorization",
+    "section": "Putting it Together",
+    "text": "Putting it Together\n\nLoading vector \\(\\mathbf u_m\\): Defines the direction in feature space along which the \\(m\\)th principal component captures variance.\n\n\\(\\mathbf u_1\\) points in the direction of greatest variance.\nSubsequent loading vectors are orthogonal and capture the greatest remaining variance.\n\n\n\n\nIndividual loadings \\(u_{jm}\\): The entries of \\(\\mathbf u_m\\), describing how each original feature contributes to that direction.\n\n\n\n\nPrincipal component \\(Z_m\\): The new variable obtained by projecting the centered features onto the loading vector:\n\n\n\n\nPC score \\(z_m^{(i)}\\): The value of principal component \\(m\\) for observation \\(i\\): \\(z_m^{(i)}=(\\mathbf x_c^{(i)})^\\top\\mathbf u_m.\\)\n\n\n\n\nReconstruction \\(\\tilde{\\mathbf x}^{(i)}\\): Approximate the original observation using the first \\(M\\) PC scores and loading vectors, then add back the mean: \\(\\tilde{\\mathbf x}^{(i)}=\\hat{\\boldsymbol\\mu}+\\sum_{m=1}^M z_m^{(i)}\\mathbf u_m.\\)"
+  },
+  {
+    "objectID": "Week11.html#pca-minimizing-reconstruction-error",
+    "href": "Week11.html#pca-minimizing-reconstruction-error",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA: Minimizing Reconstruction Error",
+    "text": "PCA: Minimizing Reconstruction Error\n\nWe have defined PCA to find directions that maximize the variance of the projected data.\nEquivalently, PCA finds the \\(M\\)-dimensional representation that minimizes reconstruction error:\n\n\\[\n\\min_{\\operatorname{rank}(\\hat{\\mathbf X}_c)\\leq M}\n\\|\\mathbf X_c-\\hat{\\mathbf X}_c\\|_F^2.\n\\]\n\nRecall that the reconstructed observation is:\n\n\\[\n\\tilde{\\mathbf x}_c^{(i)}\n=\\sum_{m=1}^M z_m^{(i)}\\mathbf u_m.\n\\]\n\nSince orthogonal projections decompose the variation into two parts:\n\n\\[\n\\|\\mathbf x_c^{(i)}\\|_2^2\n=\n\\|\\tilde{\\mathbf x}_c^{(i)}\\|_2^2\n+\n\\|\\mathbf x_c^{(i)}-\\tilde{\\mathbf x}_c^{(i)}\\|_2^2.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#example",
+    "href": "Week11.html#example",
+    "title": "PCA and Matrix Factorization",
+    "section": "Example",
+    "text": "Example\n\nConsider running PCA on 2429 19x19 greyscale images (CBCL data)\nWe can get a good reconstruction with only 3 components\n\n\n\n\nPCA for pre-processing: we can apply a classifier to latent representation\n\nOriginal data is 361 dimensional\nFor face recognition, PCA with 3 components obtains 79% accuracy on face/non-face discrimination on test data, which is an improvement compared to other models (ex. Gaussian mixture models, we will not cover them in this course)."
+  },
+  {
+    "objectID": "Week11.html#example-1",
+    "href": "Week11.html#example-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Example",
+    "text": "Example\nPrincipal components of face images (“eigenfaces”)"
+  },
+  {
+    "objectID": "Week11.html#pca-to-matrix-factorization",
+    "href": "Week11.html#pca-to-matrix-factorization",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA to matrix factorization",
+    "text": "PCA to matrix factorization\n\nPCA approximates a fully observed centered data matrix with a low-rank product:\n\n\\[\\mathbf X_c\\approx\\mathbf Z\\mathbf U^\\top.\\]\n\nWhat if most entries of the matrix are missing, as with user–movie ratings?\nThis leads to matrix completion: learn low-dimensional factors using only observed entries."
+  },
+  {
+    "objectID": "Week11.html#step-2-project-onto-subspace-spanned-by-mathbfu_1",
+    "href": "Week11.html#step-2-project-onto-subspace-spanned-by-mathbfu_1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: Project onto subspace spanned by \\[\\mathbf{u_1}\\]",
+    "text": "Step 2: Project onto subspace spanned by \\[\\mathbf{u_1}\\]\n\n\nLet \\(\\mathbf u_1\\) be the unit direction of greatest variance, and let \\(\\mathbf u_2\\) be orthogonal to it.\nWith orthonormal directions \\(\\mathbf Q=[\\mathbf u_1\\ \\mathbf u_2]\\):\n\n\\[\n\\operatorname{Proj}_{\\mathbf u_1}\n=\\mathbf Q\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\mathbf Q^\\top\n=\\mathbf u_1\\mathbf u_1^\\top.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#step-2-project-onto-subspace-spanned-by-mathbfu_1-1",
+    "href": "Week11.html#step-2-project-onto-subspace-spanned-by-mathbfu_1-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: Project onto subspace spanned by \\[\\mathbf{u_1}\\]",
+    "text": "Step 2: Project onto subspace spanned by \\[\\mathbf{u_1}\\]\n\n\nCoordinates \\(z=\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) along the direction \\(\\mathbf{u_1}\\) are lower dimensional representations of \\(\\mathbf{x}\\).\nProjection \\(\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) is the projection onto \\(\\mathbf{u_1}\\), centered at \\(\\mathbf{\\hat{\\mu}}\\)"
+  },
+  {
+    "objectID": "Week11.html#step-2project-onto-subspace-spanned-by-mathbfu_1",
+    "href": "Week11.html#step-2project-onto-subspace-spanned-by-mathbfu_1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2:Project onto subspace spanned by \\[\\mathbf{u_1}\\]",
+    "text": "Step 2:Project onto subspace spanned by \\[\\mathbf{u_1}\\]\n\n\nLet \\(\\mathbf u_1\\) be the unit direction of greatest variance, and let \\(\\mathbf u_2\\) be orthogonal to it.\nWith orthonormal directions \\(\\mathbf Q=[\\mathbf u_1\\ \\mathbf u_2]\\):\n\n\\[\n\\operatorname{Proj}_{\\mathbf u_1}\n=\\mathbf Q\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\mathbf Q^\\top\n=\\mathbf u_1\\mathbf u_1^\\top.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#step-2project-onto-subspace-spanned-by-mathbfu_1-1",
+    "href": "Week11.html#step-2project-onto-subspace-spanned-by-mathbfu_1-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2:Project onto subspace spanned by \\[\\mathbf{u_1}\\]",
+    "text": "Step 2:Project onto subspace spanned by \\[\\mathbf{u_1}\\]\n\n\nCoordinates \\(z=\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) along the direction \\(\\mathbf{u_1}\\) are lower dimensional representations of \\(\\mathbf{x}\\).\nProjection \\(\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) is the projection onto \\(\\mathbf{u_1}\\), centered at \\(\\mathbf{\\hat{\\mu}}\\)"
+  },
+  {
+    "objectID": "Week11.html#step-2-project-onto-subspace-spanned-by-u_1",
+    "href": "Week11.html#step-2-project-onto-subspace-spanned-by-u_1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: Project onto subspace spanned by \\[u_1\\]",
+    "text": "Step 2: Project onto subspace spanned by \\[u_1\\]\n\n\nLet \\(\\mathbf u_1\\) be the unit direction of greatest variance, and let \\(\\mathbf u_2\\) be orthogonal to it.\nWith orthonormal directions \\(\\mathbf Q=[\\mathbf u_1\\ \\mathbf u_2]\\):\n\n\\[\n\\operatorname{Proj}_{\\mathbf u_1}\n=\\mathbf Q\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\mathbf Q^\\top\n=\\mathbf u_1\\mathbf u_1^\\top.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#step-2project-onto-subspace-spanned-by-u_1",
+    "href": "Week11.html#step-2project-onto-subspace-spanned-by-u_1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2:Project onto subspace spanned by \\[u_1\\]",
+    "text": "Step 2:Project onto subspace spanned by \\[u_1\\]\n\n\nCoordinates \\(z=\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) along the direction \\(\\mathbf{u_1}\\) are lower dimensional representations of \\(\\mathbf{x}\\).\nProjection \\(\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) is the projection onto \\(\\mathbf{u_1}\\), centered at \\(\\mathbf{\\hat{\\mu}}\\)"
+  },
+  {
+    "objectID": "Week11.html#step-2-project-onto-the-subspace-spanned-by-mathbf-u_1",
+    "href": "Week11.html#step-2-project-onto-the-subspace-spanned-by-mathbf-u_1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: Project onto the subspace spanned by \\(\\mathbf u_1\\)",
+    "text": "Step 2: Project onto the subspace spanned by \\(\\mathbf u_1\\)\n\n\nLet \\(\\mathbf u_1\\) be the unit direction of greatest variance, and let \\(\\mathbf u_2\\) be orthogonal to it.\nWith orthonormal directions \\(\\mathbf Q=[\\mathbf u_1\\ \\mathbf u_2]\\):\n\n\\[\n\\operatorname{Proj}_{\\mathbf u_1}\n=\\mathbf Q\\begin{pmatrix}1&0\\\\0&0\\end{pmatrix}\\mathbf Q^\\top\n=\\mathbf u_1\\mathbf u_1^\\top.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#step-2-project-onto-the-subspace-spanned-by-mathbf-u_1-1",
+    "href": "Week11.html#step-2-project-onto-the-subspace-spanned-by-mathbf-u_1-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Step 2: Project onto the subspace spanned by \\(\\mathbf u_1\\)",
+    "text": "Step 2: Project onto the subspace spanned by \\(\\mathbf u_1\\)\n\n\nCoordinates \\(z=\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) along the direction \\(\\mathbf{u_1}\\) are lower dimensional representations of \\(\\mathbf{x}\\).\nThe projection \\(\\mathbf u_1\\mathbf u_1^\\top(\\mathbf x-\\hat{\\boldsymbol\\mu})\\) maps the centered observation back onto the principal component direction in the original feature space."
+  },
+  {
+    "objectID": "Week11.html#general-principal-components-1",
+    "href": "Week11.html#general-principal-components-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "General principal components",
+    "text": "General principal components\n\nEach PC captures the greatest remaining variance, subject to being orthogonal to the previous components:\n\n\\[\n\\max_{\\mathbf u_m}\\quad\n\\mathbf u_m^\\top\\hat{\\boldsymbol\\Sigma}\\mathbf u_m\n\\quad\\text{subject to}\\quad\n\\begin{cases}\n\\|\\mathbf u_m\\|_2=1,\\\\\n\\mathbf u_m^\\top\\mathbf u_\\ell=0,\\quad \\ell&lt;m.\n\\end{cases}\n\\]\n\nThe eigenvalue \\(\\lambda_m\\) gives the variance explained by PC\\(m\\), with \\(\\lambda_1\\geq\\lambda_2\\geq\\cdots\\geq 0\\).\nBecause the loading vectors are orthogonal eigenvectors of the covariance matrix, the resulting principal components are uncorrelated"
+  },
+  {
+    "objectID": "Week11.html#some-recommender-systems-in-action",
+    "href": "Week11.html#some-recommender-systems-in-action",
+    "title": "PCA and Matrix Factorization",
+    "section": "Some recommender systems in action",
+    "text": "Some recommender systems in action"
+  },
+  {
+    "objectID": "Week11.html#some-recommender-systems-in-action-1",
+    "href": "Week11.html#some-recommender-systems-in-action-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Some recommender systems in action",
+    "text": "Some recommender systems in action"
+  },
+  {
+    "objectID": "Week11.html#pca-as-matrix-factorization",
+    "href": "Week11.html#pca-as-matrix-factorization",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA as Matrix Factorization",
+    "text": "PCA as Matrix Factorization\n\nRecall PCA: each input vector \\(\\mathbf x^{(i)}\\in\\mathbb R^D\\) is approximated as \\(\\hat{\\boldsymbol\\mu}+\\mathbf U\\mathbf z^{(i)}\\),\n\n\\[\n\\mathbf x^{(i)}\\approx\\tilde{\\mathbf x}^{(i)}\n=\\hat{\\boldsymbol\\mu}+\\mathbf U\\mathbf z^{(i)}.\n\\]\nwhere:\n\n\\(\\hat{\\boldsymbol\\mu}=\\frac1N\\sum_i\\mathbf x^{(i)}\\) is the data mean.\n\\(\\mathbf U\\in\\mathbb R^{D\\times K}\\) is the orthogonal basis for the principal subspace (loading vectors).\n\\(\\mathbf z^{(i)}\\in\\mathbb R^K\\) is the code vector.\n\\(\\tilde{\\mathbf x}^{(i)}\\in\\mathbb R^D\\) is the reconstruction or approximation of \\(\\mathbf x^{(i)}\\).\nAssume for simplicity that the data is centered: \\(\\hat{\\boldsymbol\\mu}=\\mathbf0\\). Then the approximation looks like\n\n\\[\n\\mathbf x^{(i)}\\approx\\tilde{\\mathbf x}^{(i)}\n=\\mathbf U\\mathbf z^{(i)}.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#pca-as-matrix-factorization-1",
+    "href": "Week11.html#pca-as-matrix-factorization-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA as Matrix Factorization",
+    "text": "PCA as Matrix Factorization\n\nPCA (on centered data): input vector \\(\\mathbf x^{(i)}\\) is approximated as \\(\\mathbf U\\mathbf z^{(i)}\\):\n\n\\[\n\\mathbf x^{(i)}\\approx\\mathbf U\\mathbf z^{(i)}.\n\\]\n\nWrite this in matrix form. We have \\(\\mathbf X\\approx\\mathbf Z\\mathbf U^\\top\\), where \\(\\mathbf X\\) and \\(\\mathbf Z\\) have one row per data point.\n\n\\[\n\\mathbf X=\n\\begin{bmatrix}\n(\\mathbf x^{(1)})^\\top\\\\\n(\\mathbf x^{(2)})^\\top\\\\\n\\vdots\\\\\n(\\mathbf x^{(N)})^\\top\n\\end{bmatrix}\n\\in\\mathbb R^{N\\times D} \\quad \\text{and} \\quad\n\\mathbf Z=\n\\begin{bmatrix}\n(\\mathbf z^{(1)})^\\top\\\\\n(\\mathbf z^{(2)})^\\top\\\\\n\\vdots\\\\\n(\\mathbf z^{(N)})^\\top\n\\end{bmatrix}\n\\in\\mathbb R^{N\\times K}.\n\\]\n\nWe can write the squared reconstruction error as\n\n\\[\n\\sum_{i=1}^N\n\\|\\mathbf x^{(i)}-\\mathbf U\\mathbf z^{(i)}\\|_2^2\n=\n\\|\\mathbf X-\\mathbf Z\\mathbf U^\\top\\|_F^2.\n\\]\n\n\\(\\|\\cdot\\|_F\\) denotes the Frobenius norm"
+  },
+  {
+    "objectID": "Week11.html#pca-as-matrix-factorization-2",
+    "href": "Week11.html#pca-as-matrix-factorization-2",
+    "title": "PCA and Matrix Factorization",
+    "section": "PCA as Matrix Factorization",
+    "text": "PCA as Matrix Factorization\n\nSo PCA is approximating \\(\\mathbf X\\approx\\mathbf Z\\mathbf U^\\top\\), or equivalently \\(\\mathbf X^\\top\\approx\\mathbf U\\mathbf Z^\\top.\\)\n\n\n\nBased on the sizes of the matrices, this is a rank-\\(K\\) approximation.\nSince \\(\\mathbf U\\) was chosen to minimize reconstruction error, this is the optimal rank-\\(K\\) approximation, in terms of error \\(\\|\\mathbf X^\\top-\\mathbf U\\mathbf Z^\\top\\|_F^2.\\)"
+  },
+  {
+    "objectID": "Week11.html#the-netflix-problem",
+    "href": "Week11.html#the-netflix-problem",
+    "title": "PCA and Matrix Factorization",
+    "section": "The Netflix problem",
+    "text": "The Netflix problem\nmovie recommendation."
+  },
+  {
+    "objectID": "Week11.html#matrix-completion-1",
+    "href": "Week11.html#matrix-completion-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix Completion",
+    "text": "Matrix Completion\n\nIn our current setting, latent factor models attempt to explain the ratings by characterizing both movies and users on a number of factors \\(K\\) inferred from the ratings patterns.\nThat is, we seek representations for movies and users as vectors in \\(\\mathbb R^K\\) that can ultimately be translated to ratings.\n\n\n\nFor simplicity, we can associate these factors (i.e., the dimensions of the vectors) with idealized concepts like:\n\nComedy\nDrama\nAction\nBut also uninterpretable dimensions\n\n\n\n\nCan we use the sparse ratings matrix \\(\\mathbf R\\) to find these latent factors automatically?"
+  },
+  {
+    "objectID": "Week11.html#matrix-completion-2",
+    "href": "Week11.html#matrix-completion-2",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix Completion",
+    "text": "Matrix Completion\n\nLet the representation of user \\(i\\) in the \\(K\\)-dimensional space be \\(\\mathbf u_i\\) and the representation of movie \\(j\\) be \\(\\mathbf z_j\\).\n\nIntuition: maybe the first entry of \\(\\mathbf u_i\\) says how much the user likes horror films, and the first entry of \\(\\mathbf z_j\\) says how much movie \\(j\\) is a horror film.\n\n\n\n\nAssume the rating user \\(i\\) gives to movie \\(j\\) is given by a dot product: \\(R_{ij}\\approx\\mathbf u_i^\\top\\mathbf z_j.\\)\nIn matrix form, if\n\n\\[\n\\mathbf U=\n\\begin{bmatrix}\n\\mathbf u_1^\\top\\\\\n\\vdots\\\\\n\\mathbf u_N^\\top\n\\end{bmatrix}\n\\qquad\\text{and}\\qquad\n\\mathbf Z^\\top=\n\\begin{bmatrix}\n\\mathbf z_1 & \\cdots & \\mathbf z_M\n\\end{bmatrix},\n\\]\nthen:\n\\[\n\\boxed{\\mathbf R\\approx\\mathbf U\\mathbf Z^\\top.}\n\\]\n\nThis is a matrix factorization problem!"
+  },
+  {
+    "objectID": "Week11.html#matrix-completion-3",
+    "href": "Week11.html#matrix-completion-3",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix Completion",
+    "text": "Matrix Completion\n\nRecall PCA: to enforce \\(\\mathbf X^\\top\\approx\\mathbf U\\mathbf Z^\\top\\), we minimized\n\n\\[\n\\min_{\\mathbf U,\\mathbf Z}\n\\|\\mathbf X^\\top-\\mathbf U\\mathbf Z^\\top\\|_F^2\n=\n\\sum_{i,j}\n(x_{ji}-\\mathbf u_i^\\top\\mathbf z_j)^2.\n\\]\n\n\nWhat’s different about the Netflix problem?\n\nMost entries are missing!\nWe only want to count the error for the observed entries."
+  },
+  {
+    "objectID": "Week11.html#matrix-completion-4",
+    "href": "Week11.html#matrix-completion-4",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix Completion",
+    "text": "Matrix Completion\n\nLet \\(\\mathcal O=\\{(i,j):\\text{entry }(i,j)\\text{ of matrix }\\mathbf R\\text{ is observed}\\}\\).\nUsing the squared error loss, matrix completion requires solving:\n\n\\[\n\\boxed{\n\\min_{\\mathbf U,\\mathbf Z}\n\\frac12\\sum_{(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2.\n}\n\\]\n\nThe objective is non-convex in \\(\\mathbf U\\) and \\(\\mathbf Z\\) jointly, and in fact it is generally NP-hard to minimize the above cost function exactly.\n\n\n\nAs a function of either \\(\\mathbf U\\) or \\(\\mathbf Z\\) individually, the problem is convex and easy to optimize.\n\n\n\nAlternating Least Squares (ALS): Fix \\(\\mathbf Z\\) and optimize \\(\\mathbf U\\), followed by fixing \\(\\mathbf U\\) and optimizing \\(\\mathbf Z\\), and so on until convergence."
+  },
+  {
+    "objectID": "Week11.html#matrix-completion-5",
+    "href": "Week11.html#matrix-completion-5",
+    "title": "PCA and Matrix Factorization",
+    "section": "Matrix Completion",
+    "text": "Matrix Completion\n\nLet \\(\\mathcal O=\\{(i,j):\\text{entry }(i,j)\\text{ of matrix }\\mathbf R\\text{ is observed}\\}\\).\nUsing the squared error loss, matrix completion requires solving:\n\n\\[\n\\boxed{\n\\min_{\\mathbf U,\\mathbf Z}\n\\frac12\\sum_{(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2.\n}\n\\]\n\nThe objective is non-convex in \\(\\mathbf U\\) and \\(\\mathbf Z\\) jointly, and in fact it is generally NP-hard to minimize the above cost function exactly.\n\n\n\nAs a function of either \\(\\mathbf U\\) or \\(\\mathbf Z\\) individually, the problem is convex and easy to optimize. We can use coordinate descent, just like with K-means!\n\n\n\nAlternating Least Squares (ALS): Fix \\(\\mathbf Z\\) and optimize \\(\\mathbf U\\), followed by fixing \\(\\mathbf U\\) and optimizing \\(\\mathbf Z\\), and so on until convergence."
+  },
+  {
+    "objectID": "Week11.html#alternating-least-squares",
+    "href": "Week11.html#alternating-least-squares",
+    "title": "PCA and Matrix Factorization",
+    "section": "Alternating Least Squares",
+    "text": "Alternating Least Squares\n\nWant to minimize the squared error cost with respect to the factor \\(\\mathbf U\\). (The case of \\(\\mathbf Z\\) is exactly symmetric.)\nWe can decompose the cost into a sum of independent terms:\n\n\\[\n\\sum_{(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2\n=\n\\sum_i\n\\underbrace{\n\\sum_{j:(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2\n}_{\\text{only depends on }\\mathbf u_i}.\n\\]\nThis can be minimized independently for each \\(\\mathbf u_i\\).\n\nThis is a linear regression problem in disguise. Its optimal solution is:\n\n\\[\n\\boxed{\n\\mathbf u_i=\n\\left(\n\\sum_{j:(i,j)\\in\\mathcal O}\n\\mathbf z_j\\mathbf z_j^\\top\n\\right)^{-1}\n\\sum_{j:(i,j)\\in\\mathcal O}\nR_{ij}\\mathbf z_j.\n}\n\\]"
+  },
+  {
+    "objectID": "Week11.html#alternating-least-squares-1",
+    "href": "Week11.html#alternating-least-squares-1",
+    "title": "PCA and Matrix Factorization",
+    "section": "Alternating Least Squares",
+    "text": "Alternating Least Squares\nALS for Matrix Completion problem\n\nInitialize \\(\\mathbf U\\) and \\(\\mathbf Z\\) randomly.\nRepeat until convergence:\n\nFor \\(i=1,\\ldots,N\\), update:\n\n\n\\[\n\\mathbf u_i=\n\\left(\n\\sum_{j:(i,j)\\in\\mathcal O}\n\\mathbf z_j\\mathbf z_j^\\top\n\\right)^{-1}\n\\sum_{j:(i,j)\\in\\mathcal O}\nR_{ij}\\mathbf z_j.\n\\]\n\nFor \\(j=1,\\ldots,M\\), update:\n\n\\[\n\\mathbf z_j=\n\\left(\n\\sum_{i:(i,j)\\in\\mathcal O}\n\\mathbf u_i\\mathbf u_i^\\top\n\\right)^{-1}\n\\sum_{i:(i,j)\\in\\mathcal O}\nR_{ij}\\mathbf u_i.\n\\]"
   }
 ]

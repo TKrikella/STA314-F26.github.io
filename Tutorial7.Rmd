@@ -1,0 +1,345 @@
+---
+title: "Tutorial 7"
+author: "Teaching Team of STA314"
+output: pdf_document
+---
+
+## Imports
+
+```{r setup, message=FALSE, warning=FALSE}
+library(ISLR2)
+library(MASS)
+library(rpart)
+library(rpart.plot)
+library(randomForest)
+library(gbm)
+
+# Load Carseats data
+Carseats <- ISLR2::Carseats
+head(Carseats)
+```
+
+## Decision Trees
+
+We first consider a single decision tree. A decision tree is non-parametric method to perform regression and classification defined by a tree-like, hierarchical structure parameterized by binary splits on thresholds of different x-variables. To make predictions for a classification decision tree, we take a majority vote of the training samples in any leaf (and then for test data, find the leaf node to which a test sample maps).
+
+The following code fits a classification tree by using all features except Sales.
+
+```{r classification-tree}
+# Create High variable: 1 if Sales > 8, else 0
+High <- factor(ifelse(Carseats$Sales > 8, "Yes", "No"), levels = c("No", "Yes"))
+X <- Carseats[, names(Carseats) != "Sales"]
+
+# Convert qualitative predictors to dummy variables (One-Hot Encoding)
+X <- as.data.frame(model.matrix(~ . - 1, data = X))
+y <- High
+
+# Fit the tree
+clf <- rpart(y ~ ., data = data.frame(X, y), method = "class",
+             control = rpart.control(maxdepth = 6, cp = 0, minsplit = 2)) # Limiting depth for readability
+clf
+```
+
+To visualize the fitted classification tree, you can use the following code.
+
+```{r classification-tree-plot, fig.width=16, fig.height=8}
+# Visualization
+rpart.plot(clf, type = 2, extra = 104, fallen.leaves = TRUE,
+           box.palette = "RdYlGn", cex = 0.65)
+```
+
+W can use the `predict()` function to obtain predictions for test data. We show code below to perform a test set evaluation, using a random split to create training and test data.
+
+```{r classification-test}
+set.seed(1)
+train_idx <- sample(seq_len(nrow(X)), size = nrow(X) / 2)
+X_train <- X[train_idx, , drop = FALSE]
+X_test <- X[-train_idx, , drop = FALSE]
+y_train <- y[train_idx]
+y_test <- y[-train_idx]
+
+clf_train <- rpart(y_train ~ ., data = data.frame(X_train, y_train),
+                   method = "class",
+                   control = rpart.control(cp = 0, minsplit = 2))
+y_pred <- predict(clf_train, newdata = X_test, type = "class")
+
+cat("Confusion Matrix:\n")
+print(table(Actual = y_test, Predicted = y_pred))
+cat(sprintf("\nAccuracy: %.3f\n", mean(y_test == y_pred)))
+```
+
+We now prune the tree. We can use a cost-complexity pruning path to obtain the cost-complexity penalty parameter applied to each additional leaf. Suppose we have a large tree $T_0$ for our tree model, and want to prune it to a subtree. The cost complexity parameter $\alpha$ affects a subtree $T$ as follows:
+
+$$
+R_\alpha(T) = R(T) + \alpha |T|,
+$$
+
+where $R(T)$ is the loss function for the tree model (for regression trees, usually residual sum of squares, for classification trees, usually some impurity metric like Gini coefficient), and $|T|$ is the number of leaves in $T$. Thus, $\alpha$ acts as a "tax" on every additional leaf we add to the tree. The chosen $T$ for the model is the minimizer of $R_\alpha(T)$.
+
+```{r pruning-path}
+# Get the pruning path
+path <- clf_train$cptable
+ccp_alphas <- sort(unique(c(0, path[, "CP"])))
+ccp_alphas
+```
+
+To find the optimal size, we use a cross-validated grid search to find the optimal cost complexity.
+
+```{r pruning-cv}
+# Setup the grid search
+set.seed(1)
+folds <- sample(rep(1:5, length.out = nrow(X_train)))
+
+cv_accuracy <- sapply(ccp_alphas, function(cp_value) {
+  fold_accuracy <- sapply(1:5, function(k) {
+    fit <- rpart(y_train ~ ., data = data.frame(X_train[folds != k, , drop = FALSE],
+                                                 y_train = y_train[folds != k]),
+                 method = "class", control = rpart.control(cp = 0, minsplit = 2))
+    pruned_fit <- prune(fit, cp = cp_value)
+    predictions <- predict(pruned_fit, newdata = X_train[folds == k, , drop = FALSE],
+                           type = "class")
+    mean(predictions == y_train[folds == k])
+  })
+  mean(fold_accuracy)
+})
+
+best_alpha <- ccp_alphas[which.max(cv_accuracy)]
+cat(sprintf("Best Alpha (k): %.4f\n", best_alpha))
+```
+
+```{r pruning-cv-plot, fig.width=10, fig.height=5}
+plot(ccp_alphas, cv_accuracy, type = "s", pch = 16,
+     xlab = "effective alpha (k)", ylab = "Cross-Validated Accuracy",
+     main = "Accuracy vs Alpha for Pruning")
+points(ccp_alphas, cv_accuracy, pch = 16)
+```
+
+```{r pruned-tree}
+# Fit the pruned tree
+pruned_clf <- prune(clf_train, cp = best_alpha)
+
+# Predict and compare
+y_pred_pruned <- predict(pruned_clf, newdata = X_test, type = "class")
+
+cat("Pruned Tree Confusion Matrix:\n")
+print(table(Actual = y_test, Predicted = y_pred_pruned))
+cat(sprintf("\nPruned Accuracy: %.3f\n", mean(y_test == y_pred_pruned)))
+```
+
+```{r pruned-tree-plot, fig.width=12, fig.height=8}
+# Plot the pruned tree
+rpart.plot(pruned_clf, type = 2, extra = 104, fallen.leaves = TRUE,
+           box.palette = "RdYlGn", cex = 0.8)
+```
+
+## Regression Trees
+
+We now use the decision tree to perform regression (instead of classification). Instead of a majority vote within a leaf, predictions are made by finding the mean y-variable value within a leaf's training samples.
+
+We now demonstrate how to fit a regression tree to the Boston data set.
+
+```{r boston-data}
+Boston <- MASS::Boston
+# Match the predictors used in the Python lab (exclude 'black' / 'b').
+Boston <- Boston[, c("crim", "zn", "indus", "chas", "nox", "rm", "age",
+                     "dis", "rad", "tax", "ptratio", "lstat", "medv")]
+head(Boston)
+
+X <- Boston[, names(Boston) != "medv"]
+y <- Boston$medv
+
+set.seed(2)
+train_idx <- sample(seq_len(nrow(X)), size = floor(nrow(X) / 2))
+X_train <- X[train_idx, , drop = FALSE]
+X_test <- X[-train_idx, , drop = FALSE]
+y_train <- y[train_idx]
+y_test <- y[-train_idx]
+
+reg_tree <- rpart(y_train ~ ., data = data.frame(X_train, y_train),
+                  method = "anova",
+                  control = rpart.control(maxdepth = 3, cp = 0, minsplit = 2))
+reg_tree
+```
+
+We can plot this tree as well, but these are no longer binary class bins (and are instead colored by a color gradient of the mean Y-value in each bin)
+
+```{r regression-tree-plot, fig.width=12, fig.height=8}
+# Visualize
+rpart.plot(reg_tree, type = 2, extra = 101, fallen.leaves = TRUE,
+           box.palette = "Blues", cex = 0.8)
+```
+
+We can also evaluate the model (but using MSE instead of accuracy or other statistics obtained from the confusion matrix)
+
+```{r regression-tree-mse}
+# MSE
+y_hat <- predict(reg_tree, newdata = X_test)
+cat(sprintf("Test MSE: %.3f\n", mean((y_test - y_hat)^2)))
+```
+
+## Bagging and Random Forests
+
+While a single decision tree is a great tool for visually explaining unique categories of data, in regression especially, confining our predictions to unique leaf values' average of the y-variable can be quite limiting.
+
+We can use ensemble methods instead, which rely on the collective predictive power of a group of many weaker learners rather than one slightly stronger individual learner. These approaches lower variance compared to using a single tree. A visual way to think about it is to imagine a decision tree where we only have one x-variable. Then, a decision tree regression amounts to creating a step function, where unique intervals of the x-variable correspond to unique leaves of the tree (and therefore, different y-variable predictions). If we instead create many different decision trees, averaging them out will minimize the limitations of confining our prediction function to a single "step function".
+
+How do we create an ensemble of trees? Most simply, we can create bootstrapped datasets and fit a unique tree to each. This method is called Bootstrap Aggregation (BAGging).
+
+An intuitive way to understand why the bootstrap algorithm can be powerful is to think of the following: Suppose we have samples $X_1, \ldots, X_n \sim F$, for some distribution $F$, and then calculate a test statistic $\hat\theta = g(X_1, \ldots, X_n)$. Now, we want to estimate the distribution of $\hat\theta$.
+
+If we do not know the functional form of the distribution function $F$, we are resorted to using the empirical CDF $\hat F$ as a plug-in estimator for the distribution function. Instead of having the following process for generating a unique $\hat\theta$:
+
+1. Draw $X_1, \ldots, X_n \sim F$.
+2. Calculate $\hat\theta = g(X_1, \ldots, X_n)$.
+
+We instead can do the following:
+
+1. Draw $X_1^*, \ldots, X_n^* \sim \hat F$.
+2. Calculate $\hat\theta^* = g(X_1^*, \ldots, X_n^*)$.
+
+The bootstrap repeats the latter procedure many times. This approach is quite elegant because it bypasses the need to directly estimate the distribution of $\hat\theta$ (which requires using the change of variables formula involving $g$) when $g$ is non-parametric or "messy", such as the case when $g$ is based on the recursive splits of a decision tree.
+
+In Bagging, we aren't just interested in the distribution of $\hat\theta$; we use this "Bootstrap World" to generate a variety of likely scenarios. By averaging the results, we reduce the variance of our final model without needing to know the exact physics of the underlying population.
+
+A random forest goes a step further to create a diverse set of trees (to further reduce the covariance between trees, as bootstrapped datasets will be highly correlated). In addition to fitting unique trees on unique bootstrapped datasets, the random forest also adds randomness to which variables are considered: at each split of any tree, the random forest algorithm considers only a random subset of all x-variables (rather than all x-variables) for finding the next optimal split.
+
+In R, both bagging and random forests are handled by `randomForest()`. Bagging is simply a Random Forest where `mtry` equals the total number of features.
+
+```{r bagging}
+# Bagging (mtry = total number of features, which is 12 here)
+set.seed(1)
+bag_boston <- randomForest(x = X_train, y = y_train, mtry = 12, ntree = 100)
+
+y_hat_bag <- predict(bag_boston, newdata = X_test)
+cat(sprintf("Bagging Test MSE: %.3f\n", mean((y_test - y_hat_bag)^2)))
+```
+
+```{r bagging-plot, fig.width=8, fig.height=6}
+# 3. Plot Predicted vs. Actual values
+plot(y_hat_bag, y_test, col = rgb(0, 0, 1, 0.5), pch = 16,
+     xlab = "Predicted Values (y_hat)", ylab = "Actual Values (boston.test)",
+     main = "Bagging: Predicted vs. Actual")
+
+# Add the y=x line
+max_val <- max(y_test, y_hat_bag)
+min_val <- min(y_test, y_hat_bag)
+abline(0, 1, col = "red", lty = 2)
+```
+
+Let's try the same but for a random forest
+
+```{r random-forest}
+# Random Forest (m approx sqrt(p) or p/3. Let's try 6 as in the R lab)
+set.seed(1)
+rf_boston <- randomForest(x = X_train, y = y_train, mtry = 6, ntree = 100,
+                          importance = TRUE)
+
+y_hat_rf <- predict(rf_boston, newdata = X_test)
+cat(sprintf("Random Forest Test MSE: %.3f\n", mean((y_test - y_hat_rf)^2)))
+```
+
+```{r random-forest-plot, fig.width=8, fig.height=6}
+# 3. Plot Predicted vs. Actual values
+plot(y_hat_rf, y_test, col = rgb(0, 0.5, 0, 0.5), pch = 16,
+     xlab = "Predicted Values (y_hat)", ylab = "Actual Values (boston.test)",
+     main = "Random Forest: Predicted vs. Actual")
+
+# Add the y=x line
+abline(0, 1, col = "red", lty = 2)
+```
+
+To see variable importances in a random forest, we can use the `importance()` function on a random forest object
+
+```{r variable-importance, fig.width=8, fig.height=6}
+# Feature Importance
+importances <- importance(rf_boston, type = 2)[, 1]
+barplot(sort(importances), horiz = TRUE, las = 1,
+        main = "Feature Importance", xlab = "Increase in node purity")
+```
+
+## Boosting
+
+Another way to create an ensemble of trees is through gradient boosting. This approach is even more direct in building a de-correlated set of trees. Trees are built sequentially on "residuals" $r_i$ for a dataset with $n$ observations, where the first tree is fit setting $\hat f(x) = 0$, and then similar to gradient descent, $\hat f(x) \leftarrow \hat f(x) + \lambda \hat f_b(x)$ for subsequent trees, where $\hat f_b$ is the decision tree fitted at iteration $b$, and $\lambda$ is the step size. This makes each new tree focus on the portion of $y$ that was not explained by previous trees.
+
+We use `gbm()` for a gradient-boosted tree model. The `shrinkage` argument specifies the step size $\lambda$.
+
+```{r boosting}
+set.seed(1)
+boost_boston <- gbm(y_train ~ ., data = data.frame(X_train, y_train),
+                    distribution = "gaussian", n.trees = 5000,
+                    shrinkage = 0.01, interaction.depth = 4,
+                    n.minobsinnode = 2, bag.fraction = 1, verbose = FALSE)
+
+y_hat_boost <- predict(boost_boston, newdata = X_test, n.trees = 5000)
+cat(sprintf("Boosting Test MSE: %.3f\n", mean((y_test - y_hat_boost)^2)))
+```
+
+```{r boosting-plot, fig.width=8, fig.height=6}
+# Plot Predicted vs. Actual values
+plot(y_hat_boost, y_test, col = rgb(0.5, 0, 0.5, 0.5), pch = 16,
+     xlab = "Predicted Values (y_hat)", ylab = "Actual Values (boston.test)",
+     main = "Gradient-Boosting: Predicted vs. Actual")
+
+# Add the y=x line
+abline(0, 1, col = "red", lty = 2)
+```
+
+We can also see how the training error decreases with the training loss. To get an idea of how the test error decreases we can use predictions along the boosting path.
+
+```{r boosting-error-path, fig.width=8, fig.height=8}
+# Evaluate the error at checkpoints instead of making 5,000 separate
+# prediction calls. This shows the same trend much more efficiently.
+plot_idx <- seq(50, 5000, by = 50)
+train_error <- boost_boston$train.error[plot_idx]
+
+# gbm can predict at multiple tree counts in a single call.
+step_predictions <- predict(boost_boston, newdata = X_test,
+                            n.trees = plot_idx)
+# Rows are observations; columns are the different numbers of trees.
+step_predictions <- matrix(step_predictions, nrow = length(y_test))
+test_error <- colMeans((step_predictions - y_test)^2)
+
+plot(plot_idx, train_error, type = "l", col = "blue",
+     xlab = "Number of Trees", ylab = "Mean Squared Error")
+lines(plot_idx, test_error, col = "red")
+legend("topright", legend = c("Training", "Test"),
+       col = c("blue", "red"), lty = 1)
+```
+
+We can also play around with the step size by changing `shrinkage` argument. This parameter can also be tuned, but we do not do so here.
+
+```{r boosting-higher-shrinkage}
+# 1. Fit the model with a higher learning_rate (shrinkage=0.2)
+# interaction.depth in R is roughly equivalent to max_depth in Python
+set.seed(1)
+boost_boston_02 <- gbm(y_train ~ ., data = data.frame(X_train, y_train),
+                       distribution = "gaussian", n.trees = 5000,
+                       shrinkage = 0.2, interaction.depth = 4,
+                       n.minobsinnode = 2, bag.fraction = 1, verbose = FALSE)
+
+# 2. Predict the test data
+y_hat_boost_02 <- predict(boost_boston_02, newdata = X_test, n.trees = 5000)
+
+# 3. Compute Test MSE
+mse_boost_02 <- mean((y_test - y_hat_boost_02)^2)
+cat(sprintf("Boosting (Learning Rate 0.2) Test MSE: %.3f\n", mse_boost_02))
+```
+
+```{r comparison-table}
+results <- data.frame(
+  Method = c("Decision Tree", "Bagging", "Random Forest", "Boosting",
+             "Boosting (Learning Rate 0.2)"),
+  `Test MSE` = c(mean((y_test - y_hat)^2),
+                 mean((y_test - y_hat_bag)^2),
+                 mean((y_test - y_hat_rf)^2),
+                 mean((y_test - y_hat_boost)^2),
+                 mse_boost_02),
+  check.names = FALSE
+)
+
+# Format the MSE to 3 decimal places for a cleaner look
+results$`Test MSE` <- sprintf("%.3f", results$`Test MSE`)
+
+# Display the table
+head(results)
+```
