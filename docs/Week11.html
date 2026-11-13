@@ -828,6 +828,7 @@ z_m^{(i)}=\sum_{j=1}^D u_{jm}x_{j,c}^{(i)}
 }_{\text{only depends on }\mathbf u_i}.
 \]</span></p>
 <p>This can be minimized independently for each <span class="math inline">\(\mathbf u_i\)</span>.</p>
+<div class="fragment">
 <ul>
 <li>This is a <strong>linear regression problem in disguise</strong>. Its optimal solution is:</li>
 </ul>
@@ -842,6 +843,7 @@ z_m^{(i)}=\sum_{j=1}^D u_{jm}x_{j,c}^{(i)}
 R_{ij}\mathbf z_j.
 }
 \]</span></p>
+</div>
 </section>
 <section id="alternating-least-squares-1" class="slide level2 scrollable">
 <h2>Alternating Least Squares</h2>
@@ -875,8 +877,8 @@ R_{ij}\mathbf z_j.
 R_{ij}\mathbf u_i.
 \]</span></p>
 </section>
-<section id="week-11-summary" class="slide level2">
-<h2>Week 11 summary</h2>
+<section id="summary" class="slide level2">
+<h2>Summary</h2>
 <ul>
 <li><strong>K-means</strong> partitions observations into groups, with <span class="math inline">\(K\)</span> chosen using diagnostics such as elbow or silhouette scores.</li>
 <li><strong>PCA</strong> finds directions retaining maximal variance and provides low-dimensional scores.</li>

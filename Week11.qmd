@@ -739,7 +739,7 @@ R_{ij}\mathbf u_i.
 $$
 
 
-## Week 11 summary
+## Summary
 
 -   **K-means** partitions observations into groups, with $K$ chosen using diagnostics such as elbow or silhouette scores.
 -   **PCA** finds directions retaining maximal variance and provides low-dimensional scores.

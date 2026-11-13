@@ -5751,7 +5751,7 @@
     "href": "Week11.html#alternating-least-squares",
     "title": "PCA and Matrix Factorization",
     "section": "Alternating Least Squares",
-    "text": "Alternating Least Squares\n\nWant to minimize the squared error cost with respect to the factor \\(\\mathbf U\\). (The case of \\(\\mathbf Z\\) is exactly symmetric.)\nWe can decompose the cost into a sum of independent terms:\n\n\\[\n\\sum_{(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2\n=\n\\sum_i\n\\underbrace{\n\\sum_{j:(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2\n}_{\\text{only depends on }\\mathbf u_i}.\n\\]\nThis can be minimized independently for each \\(\\mathbf u_i\\).\n\nThis is a linear regression problem in disguise. Its optimal solution is:\n\n\\[\n\\boxed{\n\\mathbf u_i=\n\\left(\n\\sum_{j:(i,j)\\in\\mathcal O}\n\\mathbf z_j\\mathbf z_j^\\top\n\\right)^{-1}\n\\sum_{j:(i,j)\\in\\mathcal O}\nR_{ij}\\mathbf z_j.\n}\n\\]"
+    "text": "Alternating Least Squares\n\nWant to minimize the squared error cost with respect to the factor \\(\\mathbf U\\). (The case of \\(\\mathbf Z\\) is exactly symmetric.)\nWe can decompose the cost into a sum of independent terms:\n\n\\[\n\\sum_{(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2\n=\n\\sum_i\n\\underbrace{\n\\sum_{j:(i,j)\\in\\mathcal O}\n(R_{ij}-\\mathbf u_i^\\top\\mathbf z_j)^2\n}_{\\text{only depends on }\\mathbf u_i}.\n\\]\nThis can be minimized independently for each \\(\\mathbf u_i\\).\n\n\nThis is a linear regression problem in disguise. Its optimal solution is:\n\n\\[\n\\boxed{\n\\mathbf u_i=\n\\left(\n\\sum_{j:(i,j)\\in\\mathcal O}\n\\mathbf z_j\\mathbf z_j^\\top\n\\right)^{-1}\n\\sum_{j:(i,j)\\in\\mathcal O}\nR_{ij}\\mathbf z_j.\n}\n\\]"
   },
   {
     "objectID": "Week11.html#alternating-least-squares-1",
@@ -5759,5 +5759,12 @@
     "title": "PCA and Matrix Factorization",
     "section": "Alternating Least Squares",
     "text": "Alternating Least Squares\nALS for Matrix Completion problem\n\nInitialize \\(\\mathbf U\\) and \\(\\mathbf Z\\) randomly.\nRepeat until convergence:\n\nFor \\(i=1,\\ldots,N\\), update:\n\n\n\\[\n\\mathbf u_i=\n\\left(\n\\sum_{j:(i,j)\\in\\mathcal O}\n\\mathbf z_j\\mathbf z_j^\\top\n\\right)^{-1}\n\\sum_{j:(i,j)\\in\\mathcal O}\nR_{ij}\\mathbf z_j.\n\\]\n\nFor \\(j=1,\\ldots,M\\), update:\n\n\\[\n\\mathbf z_j=\n\\left(\n\\sum_{i:(i,j)\\in\\mathcal O}\n\\mathbf u_i\\mathbf u_i^\\top\n\\right)^{-1}\n\\sum_{i:(i,j)\\in\\mathcal O}\nR_{ij}\\mathbf u_i.\n\\]"
+  },
+  {
+    "objectID": "Week11.html#summary",
+    "href": "Week11.html#summary",
+    "title": "PCA and Matrix Factorization",
+    "section": "Summary",
+    "text": "Summary\n\nK-means partitions observations into groups, with \\(K\\) chosen using diagnostics such as elbow or silhouette scores.\nPCA finds directions retaining maximal variance and provides low-dimensional scores.\nMatrix factorization represents a data matrix using lower-dimensional factors.\nMatrix completion learns factors from observed entries to predict missing values (e.g., Netflix ratings).\nALS alternates between updating the two sets of latent factors.\n\nAnnouncements: Assignment 2 is now available on the course website (due Dec. 2nd)"
   }
 ]
