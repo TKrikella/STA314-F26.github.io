@@ -489,7 +489,7 @@ where:
 
 - $\hat{\boldsymbol\mu}=\frac1N\sum_i\mathbf x^{(i)}$ is the data mean.
 - $\mathbf U\in\mathbb R^{D\times K}$ is the orthogonal basis for the principal subspace (loading vectors).
-- $\mathbf z^{(i)}\in\mathbb R^K$ is the code vector.
+- $\mathbf z^{(i)}\in\mathbb R^K$ is the score vector.
 - $\tilde{\mathbf x}^{(i)}\in\mathbb R^D$ is the reconstruction or approximation of $\mathbf x^{(i)}$.
 
 - Assume for simplicity that the data is centered: $\hat{\boldsymbol\mu}=\mathbf0$. Then the approximation looks like
