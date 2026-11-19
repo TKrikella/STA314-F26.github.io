@@ -3707,7 +3707,7 @@
     "href": "index.html#tests",
     "title": "STA314",
     "section": "Tests",
-    "text": "Tests\n\n\n\n\nAssignment\nDue Date\nInformation\nPast Tests\n\n\n\n\nMidterm\nNov 4th, 11am – 1pm\nMidterm InfoMidterm Solution\nwinter26fall24fall24-2Created by Dr. Xin Bing\n\n\nFinal\nTBD"
+    "text": "Tests\n\n\n\n\nAssignment\nDue Date\nInformation\nPast Tests\n\n\n\n\nMidterm\nNov 4th, 11am – 1pm\nMidterm InfoMidterm Solution\nwinter26fall24fall24-2Created by Dr. Xin Bing\n\n\nFinal\nTBD\n\nfall24fall23fall22Created by Dr. Xin Bing"
   },
   {
     "objectID": "Week6.html#discriminant-analysis-3",
@@ -5766,5 +5766,362 @@
     "title": "PCA and Matrix Factorization",
     "section": "Summary",
     "text": "Summary\n\nK-means partitions observations into groups, with \\(K\\) chosen using diagnostics such as elbow or silhouette scores.\nPCA finds directions retaining maximal variance and provides low-dimensional scores.\nMatrix factorization represents a data matrix using lower-dimensional factors.\nMatrix completion learns factors from observed entries to predict missing values (e.g., Netflix ratings).\nALS alternates between updating the two sets of latent factors.\n\nAnnouncements: Assignment 2 is now available on the course website (due Dec. 2nd)"
+  },
+  {
+    "objectID": "Week12.html#what-we-will-cover",
+    "href": "Week12.html#what-we-will-cover",
+    "title": "Neural Networks",
+    "section": "What We Will Cover",
+    "text": "What We Will Cover\n\nFully-connected neural networks\n\nSingle-layer neural networks\nMultiple-layer neural networks\n\n\n\n\nTraining of the neural networks\n\nSpecial structured neural networks\n\nConvolutional neural networks\nRecurrent neural networks"
+  },
+  {
+    "objectID": "Week12.html#deep-neural-networks",
+    "href": "Week12.html#deep-neural-networks",
+    "title": "Neural Networks",
+    "section": "Deep Neural Networks",
+    "text": "Deep Neural Networks\nFlexible parametric methods\nGiven predictors \\(X=(X_1,\\ldots,X_p)\\), the model output is\n\\[f(X;\\theta)=f(X_1,\\ldots,X_p;\\theta),\\qquad \\theta\\in\\mathbb R^d.\\]\nThe number of parameters \\(d\\) can be much larger than \\(p\\).\n\nNeural networks represent nonlinear relationships between predictors and outputs.\nThe function \\(f\\) combines linear functions and nonlinear activation functions."
+  },
+  {
+    "objectID": "Week12.html#deep-neural-networks-regression-and-classification",
+    "href": "Week12.html#deep-neural-networks-regression-and-classification",
+    "title": "Neural Networks",
+    "section": "Deep Neural Networks: Regression and Classification",
+    "text": "Deep Neural Networks: Regression and Classification\nRegression: \\(f(X;\\theta)\\in\\mathbb R\\). Minimize squared error:\n\\[\\min_\\theta\\frac1n\\sum_{i=1}^n\\{y_i-f(x_i;\\theta)\\}^2.\\]\nClassification with \\(m\\) labels: outputs \\(f_1,\\ldots,f_m\\) are converted to probabilities by softmax:\n\\[\\widehat p_\\ell(X)=\\frac{\\exp\\{f_\\ell(X;\\theta)\\}}{\\sum_{k=1}^m\\exp\\{f_k(X;\\theta)\\}}.\\]\nThe training is done by:\n\\[\\min_\\theta-\\frac1n\\sum_{i=1}^n\\sum_{\\ell=1}^m\\mathbf1\\{y_i=\\ell\\}\\log\\widehat p_\\ell(x_i).\\]"
+  },
+  {
+    "objectID": "Week12.html#architecture-of-a-single-layer-network",
+    "href": "Week12.html#architecture-of-a-single-layer-network",
+    "title": "Neural Networks",
+    "section": "Architecture of a Single-Layer Network",
+    "text": "Architecture of a Single-Layer Network\n\nFor each hidden unit \\(j\\in\\{1,\\ldots,5\\}\\):\n\\[A_j=g(w_{j0}+w_{j1}X_1+w_{j2}X_2+w_{j3}X_3+w_{j4}X_4).\\]"
+  },
+  {
+    "objectID": "Week12.html#single-layer-neural-networks",
+    "href": "Week12.html#single-layer-neural-networks",
+    "title": "Neural Networks",
+    "section": "Single-Layer Neural Networks",
+    "text": "Single-Layer Neural Networks\nA neural network with one hidden layer has the form\n\\[\\begin{aligned}f(x)&=\\beta_0+\\sum_{i=1}^K\\beta_iA_i\\\\&=\\beta_0+\\sum_{i=1}^K\\beta_i g\\left(w_{i0}+\\sum_{j=1}^pw_{ij}x_j\\right).\\end{aligned}\\]\n\n\\(g(\\cdot)\\): activation function\n\\(K\\): number of hidden units\n\\(w_{ij}\\): hidden-layer weights\n\\(\\beta_i\\): output-layer weights\n\nThe parameters \\(\\theta\\) contain all \\(w_{ij}\\) and \\(\\beta_i\\)."
+  },
+  {
+    "objectID": "Week12.html#activation-functions",
+    "href": "Week12.html#activation-functions",
+    "title": "Neural Networks",
+    "section": "Activation Functions",
+    "text": "Activation Functions\nCommon activation functions include:\n\nSigmoid: maps into \\((0,1)\\)\n\\[g(z)=\\frac{1}{1+e^{-z}}\\]\nTanh: maps into \\((-1,1)\\)\n\\[g(z)=\\tanh(z)\\]\nReLU (rectified linear unit):\n\\[g(z)=\\max(0,z)\\]\n\nReLU is a common choice because of its simple computation."
+  },
+  {
+    "objectID": "Week12.html#activation-functions-sigmoid-versus-relu",
+    "href": "Week12.html#activation-functions-sigmoid-versus-relu",
+    "title": "Neural Networks",
+    "section": "Activation Functions: Sigmoid versus ReLU",
+    "text": "Activation Functions: Sigmoid versus ReLU\n\nWhy neural networks? An analogy is made with neurons being active (“firing”) or inactive (“silent”)."
+  },
+  {
+    "objectID": "Week12.html#multilayer-neural-networks",
+    "href": "Week12.html#multilayer-neural-networks",
+    "title": "Neural Networks",
+    "section": "Multilayer Neural Networks",
+    "text": "Multilayer Neural Networks\nA deep neural network contains multiple hidden layers representing increasingly hierarchical features.\nFor the first layer, with \\(K_1\\) hidden units:\n\\[A_i^{(1)}=g\\left(w_{i0}^{(1)}+\\sum_{j=1}^pw_{ij}^{(1)}X_j\\right),\\qquad i=1,\\ldots,K_1.\\]\nFor layer \\(\\ell=2,\\ldots,D\\):\n\\[A_i^{(\\ell)}=g\\left(w_{i0}^{(\\ell)}+\\sum_{j=1}^{K_{\\ell-1}}w_{ij}^{(\\ell)}A_j^{(\\ell-1)}\\right),\\]\nwhere \\(i=1,\\ldots,K_\\ell\\)."
+  },
+  {
+    "objectID": "Week12.html#multilayer-neural-networks-parameters",
+    "href": "Week12.html#multilayer-neural-networks-parameters",
+    "title": "Neural Networks",
+    "section": "Multilayer Neural Networks: Parameters",
+    "text": "Multilayer Neural Networks: Parameters\nSuppose hidden layer \\(\\ell\\) contains \\(K_\\ell\\) units. Its parameters are\n\\[W^{(\\ell)}\\in\\mathbb R^{K_\\ell\\times K_{\\ell-1}},\\qquad b^{(\\ell)}\\in\\mathbb R^{K_\\ell}.\\]\nThe number of parameters across these layers is\n\\[\\sum_{\\ell=1}^D K_\\ell(K_{\\ell-1}+1),\\qquad K_0=p.\\]\n\nThis counts weights and intercepts in each of the \\(D\\) layers.\nNote: parameters in a separate output layer must also be included if it is not among these \\(D\\) layers."
+  },
+  {
+    "objectID": "Week12.html#neural-networks-in-pattern-recognition",
+    "href": "Week12.html#neural-networks-in-pattern-recognition",
+    "title": "Neural Networks",
+    "section": "Neural Networks in Pattern Recognition",
+    "text": "Neural Networks in Pattern Recognition\n\nDigit recognition problems helped accelerate the development of neural networks in the late 1980s.\nRecognizing visual patterns is relatively easy for humans, whose visual system is highly developed.\nMatching human performance on many machine-recognition tasks has required decades of improvements in neural-network architectures."
+  },
+  {
+    "objectID": "Week12.html#mnist-digit-recognition",
+    "href": "Week12.html#mnist-digit-recognition",
+    "title": "Neural Networks",
+    "section": "MNIST Digit Recognition",
+    "text": "MNIST Digit Recognition\n\nEach image has 28 × 28 pixels: \\(p=784\\) grayscale input features."
+  },
+  {
+    "objectID": "Week12.html#a-multilayer-network",
+    "href": "Week12.html#a-multilayer-network",
+    "title": "Neural Networks",
+    "section": "A Multilayer Network",
+    "text": "A Multilayer Network"
+  },
+  {
+    "objectID": "Week12.html#mnist-results",
+    "href": "Week12.html#mnist-results",
+    "title": "Neural Networks",
+    "section": "MNIST Results",
+    "text": "MNIST Results\n\nThe illustrated network has \\(p=784\\) inputs, hidden layers of sizes \\(256\\) and \\(128\\), and \\(10\\) output classes. The source reports test error of 2.3% with ridge and 1.8% with dropout."
+  },
+  {
+    "objectID": "Week12.html#training-neural-networks",
+    "href": "Week12.html#training-neural-networks",
+    "title": "Neural Networks",
+    "section": "Training Neural Networks",
+    "text": "Training Neural Networks\nTechniques for training neural networks include:\n\n(Stochastic) gradient descent\n\nBackpropagation\n\nRegularization\n\nWeight penalization\nEarly stopping\nDropout"
+  },
+  {
+    "objectID": "Week12.html#training-a-neural-network",
+    "href": "Week12.html#training-a-neural-network",
+    "title": "Neural Networks",
+    "section": "Training a Neural Network",
+    "text": "Training a Neural Network\nTraining minimizes a loss function \\(J(\\theta)\\) over parameters \\(\\theta\\).\nFor regression:\n\\[J(\\theta)=\\frac1n\\sum_{i=1}^n\\{y_i-f(x_i;\\theta)\\}^2.\\]\nFor \\(m\\)-class classification:\n\\[J(\\theta)=-\\frac1n\\sum_{i=1}^n\\sum_{\\ell=1}^m\\mathbf1\\{y_i=\\ell\\}\\log\\widehat p_\\ell(x_i;\\theta).\\]\nThese loss functions are generally nonconvex in \\(\\theta\\), due to the composition of linear transformations with nonlinear activation functions."
+  },
+  {
+    "objectID": "Week12.html#gradient-descent-and-backpropagation",
+    "href": "Week12.html#gradient-descent-and-backpropagation",
+    "title": "Neural Networks",
+    "section": "Gradient Descent and Backpropagation",
+    "text": "Gradient Descent and Backpropagation\nUpdate parameters using gradient-based optimization:\n\\[\\theta^{(t+1)}=\\theta^{(t)}-\\eta\\left.\\nabla_\\theta J(\\theta)\\right|_{\\theta=\\theta^{(t)}},\\]\nwhere \\(\\eta&gt;0\\) is the learning rate.\n\nIn practice, stochastic gradient descent (SGD) and its variants are commonly used.\nBackpropagation efficiently computes gradients using the chain rule.\n\nForward pass: calculate activations, predictions and loss.\nBackward pass: calculate gradients for each layer.\nUpdate parameters using those gradients."
+  },
+  {
+    "objectID": "Week12.html#forward-propagation",
+    "href": "Week12.html#forward-propagation",
+    "title": "Neural Networks",
+    "section": "Forward Propagation",
+    "text": "Forward Propagation\nConsider a network with two hidden layers (biases omitted here), for observation \\(i\\):\n\\[J_i(\\theta)=\\frac12\\left[y_i-\\sum_{k=1}^{K_2}\\beta_k g\\left(\\sum_{j=1}^{K_1}W_{kj}^{(2)}g\\left(\\sum_{\\ell=1}^p W_{j\\ell}^{(1)}x_{i\\ell}\\right)\\right)\\right]^2.\\]\n\\[\\theta=(W^{(1)},W^{(2)},\\beta),\\]\n\\[W^{(1)}\\in\\mathbb R^{K_1\\times p},\\quad W^{(2)}\\in\\mathbb R^{K_2\\times K_1},\\quad\\beta\\in\\mathbb R^{K_2}.\\]\nGoal: compute \\(\\partial J_i/\\partial W^{(1)}\\), \\(\\partial J_i/\\partial W^{(2)}\\) and \\(\\partial J_i/\\partial\\beta\\)."
+  },
+  {
+    "objectID": "Week12.html#backpropagation-key-idea",
+    "href": "Week12.html#backpropagation-key-idea",
+    "title": "Neural Networks",
+    "section": "Backpropagation: Key Idea",
+    "text": "Backpropagation: Key Idea\nLet the pre-activation values be\n\\[z_{ij}^{(1)}=\\sum_{\\ell=1}^pW_{j\\ell}^{(1)}x_{i\\ell},\\qquad z_{ik}^{(2)}=\\sum_{j=1}^{K_1}W_{kj}^{(2)}g(z_{ij}^{(1)}).\\]\nWrite \\(e_i=f(x_i;\\theta)-y_i\\). Using the chain rule:\n\\[\\frac{\\partial J_i}{\\partial\\beta_k}=e_i\\,g(z_{ik}^{(2)}),\\]\n\\[\\frac{\\partial J_i}{\\partial W_{kj}^{(2)}}=e_i\\,\\beta_k g'(z_{ik}^{(2)})g(z_{ij}^{(1)}),\\]\n\\[\\frac{\\partial J_i}{\\partial W_{j\\ell}^{(1)}}=e_i\\left[\\sum_{k=1}^{K_2}\\beta_k g'(z_{ik}^{(2)})W_{kj}^{(2)}\\right]g'(z_{ij}^{(1)})x_{i\\ell}.\\]\n\n\n\n\n\n\nThese equations apply to the squared-error example on the preceding slide."
+  },
+  {
+    "objectID": "Week12.html#backpropagation-per-iteration",
+    "href": "Week12.html#backpropagation-per-iteration",
+    "title": "Neural Networks",
+    "section": "Backpropagation per Iteration",
+    "text": "Backpropagation per Iteration\nFor each training step \\(t\\):\n\nForward propagation: compute activations from input to output.\n\\[z_{ij}^{(1)}(\\theta^{(t)})\\;\\longrightarrow\\;z_{ik}^{(2)}(\\theta^{(t)})\\;\\longrightarrow\\;f(x_i;\\theta^{(t)}).\\]\nBackward propagation: compute gradients from output to input.\n\\[\\frac{\\partial J_i}{\\partial\\beta}\\;\\longrightarrow\\;\\frac{\\partial J_i}{\\partial W^{(2)}}\\;\\longrightarrow\\;\\frac{\\partial J_i}{\\partial W^{(1)}}.\\]\nParameter update: use gradients averaged over a minibatch to obtain \\(\\theta^{(t+1)}\\)."
+  },
+  {
+    "objectID": "Week12.html#overfitting-in-neural-networks",
+    "href": "Week12.html#overfitting-in-neural-networks",
+    "title": "Neural Networks",
+    "section": "Overfitting in Neural Networks",
+    "text": "Overfitting in Neural Networks\nDeep networks often contain many parameters.\n\nThey can easily overfit the training data.\nRegularization is therefore important.\n\nCommon techniques include:\n\nWeight decay (ridge-style penalty):\n\\[J(\\theta)+\\lambda\\lVert\\theta\\rVert_2^2.\\]\nEarly stopping: stop training when the validation error starts to increase.\nDropout: randomly deactivate hidden units during training."
+  },
+  {
+    "objectID": "Week12.html#on-regularization",
+    "href": "Week12.html#on-regularization",
+    "title": "Neural Networks",
+    "section": "On Regularization",
+    "text": "On Regularization\n\nDifferent layers can use different penalty strengths \\(\\lambda\\).\n\nHidden-layer weights are often penalized.\nOutput-layer weights may or may not be penalized.\nIntercepts are generally not penalized.\n\nLasso regularization is another option, either alongside or instead of ridge.\nOptimization by SGD may exhibit implicit regularization; its behavior in deep networks remains an active research topic."
+  },
+  {
+    "objectID": "Week12.html#early-stopping",
+    "href": "Week12.html#early-stopping",
+    "title": "Neural Networks",
+    "section": "Early Stopping",
+    "text": "Early Stopping\n\nIdea: use validation performance to choose when to stop, rather than continuing until training loss is minimized."
+  },
+  {
+    "objectID": "Week12.html#dropout",
+    "href": "Week12.html#dropout",
+    "title": "Neural Networks",
+    "section": "Dropout",
+    "text": "Dropout\nInspired partly by random forests, dropout randomly deactivates a fraction \\(\\phi\\) of hidden units when fitting the model."
+  },
+  {
+    "objectID": "Week12.html#more-on-dropout",
+    "href": "Week12.html#more-on-dropout",
+    "title": "Neural Networks",
+    "section": "More on Dropout",
+    "text": "More on Dropout\n\nReduces the tendency of nodes to become overly specialized; acts as regularization.\nA new dropout mask is sampled when processing each training batch.\nDuring training, the surviving activations may be scaled by \\(1/(1-\\phi)\\) to compensate (inverted dropout).\nIn practice, dropped units have activation set to zero; the overall architecture is unchanged.\nDropout is normally switched off during prediction."
+  },
+  {
+    "objectID": "Week12.html#things-to-tune",
+    "href": "Week12.html#things-to-tune",
+    "title": "Neural Networks",
+    "section": "Things to Tune",
+    "text": "Things to Tune\n\nNetwork size: number of hidden layers and hidden units per layer.\n\nLarge networks can be used with regularization to control overfitting.\n\nRegularization: dropout fraction \\(\\phi\\), lasso/ridge penalty strength \\(\\lambda\\), possibly varying by layer.\nOptimization: batch size, number of epochs, learning rate, and early-stopping point."
+  },
+  {
+    "objectID": "Week12.html#more-structured-neural-networks",
+    "href": "Week12.html#more-structured-neural-networks",
+    "title": "Neural Networks",
+    "section": "More Structured Neural Networks",
+    "text": "More Structured Neural Networks\nExamples of specialized architectures:\n\nRecurrent neural networks (RNNs)\nConvolutional neural networks (CNNs)\nResidual networks\nGraph neural networks\nAutoencoders\nGenerative adversarial networks (GANs)\nTransformers (attention-based networks)"
+  },
+  {
+    "objectID": "Week12.html#document-classification",
+    "href": "Week12.html#document-classification",
+    "title": "Neural Networks",
+    "section": "Document Classification",
+    "text": "Document Classification\nIMDb sentiment classification: a dataset of 25,000 labeled reviews (review, sentiment).\n\nGoal: classify each review as positive or negative."
+  },
+  {
+    "objectID": "Week12.html#feature-representation",
+    "href": "Week12.html#feature-representation",
+    "title": "Neural Networks",
+    "section": "Feature Representation",
+    "text": "Feature Representation\nConstruct a dictionary of the 10,000 most frequent words in the training reviews.\nFor each review, construct a feature vector of word indicators:\n\\[x_i\\in\\{0,1\\}^{10,000}.\\]\n\nThis bag-of-words representation does not preserve word order."
+  },
+  {
+    "objectID": "Week12.html#imdb-results",
+    "href": "Week12.html#imdb-results",
+    "title": "Neural Networks",
+    "section": "IMDb Results",
+    "text": "IMDb Results\nLasso versus a two-hidden-layer network with 16 units in each layer: both achieve accuracy around 88% in this example."
+  },
+  {
+    "objectID": "Week12.html#room-for-improvement",
+    "href": "Week12.html#room-for-improvement",
+    "title": "Neural Networks",
+    "section": "Room for Improvement",
+    "text": "Room for Improvement\nA bag-of-words representation ignores word context and order.\n\nBag of \\(n\\)-grams: record short consecutive word sequences.\n\nFor example, “blissfully long” and “blissfully short” may express different sentiments.\n\nSequence models: process documents as ordered words, accounting for preceding or following words.\n\nRecurrent neural networks and long short-term memory (LSTM)\nTransformers and models such as BERT"
+  },
+  {
+    "objectID": "Week12.html#recurrent-neural-networks-rnns",
+    "href": "Week12.html#recurrent-neural-networks-rnns",
+    "title": "Neural Networks",
+    "section": "Recurrent Neural Networks (RNNs)",
+    "text": "Recurrent Neural Networks (RNNs)\nRNNs are useful for data with a natural sequence structure:\n\nDocuments: movie reviews, news articles, social posts.\nTime series: weather, financial variables, market volumes and prices.\nRecordings: speech, audio transcription, language translation, music.\nHandwriting: handwriting recognition and optical character recognition (OCR)."
+  },
+  {
+    "objectID": "Week12.html#rnns-sequential-inputs",
+    "href": "Week12.html#rnns-sequential-inputs",
+    "title": "Neural Networks",
+    "section": "RNNs: Sequential Inputs",
+    "text": "RNNs: Sequential Inputs\nThe input for observation \\(i\\) is a sequence:\n\\[X_i=\\{X_{i1},\\ldots,X_{iL}\\},\\]\nwith associated response \\(Y_i\\).\nEach \\(X_{i\\ell}\\) may be:\n\nA number or numerical vector\nA token, word, image, or other object\n\nThe order of the observations has meaning. The goal is to use that sequential structure to better predict \\(Y_i\\)."
+  },
+  {
+    "objectID": "Week12.html#word-embedding",
+    "href": "Week12.html#word-embedding",
+    "title": "Neural Networks",
+    "section": "Word Embedding",
+    "text": "Word Embedding\nFor document classification, represent review \\(i\\) as a sequence of \\(L\\) words:\n\\[X_i=\\{X_{i1},\\ldots,X_{iL}\\},\\]\nwith sentiment label \\(Y_i\\).\nA word embedding represents each word \\(X_{i\\ell}\\) as a vector in a Euclidean space.\nOther tokenizations are possible, including characters or phrases."
+  },
+  {
+    "objectID": "Week12.html#one-hot-encoding-versus-word-embedding",
+    "href": "Week12.html#one-hot-encoding-versus-word-embedding",
+    "title": "Neural Networks",
+    "section": "One-Hot Encoding versus Word Embedding",
+    "text": "One-Hot Encoding versus Word Embedding\n\nOne-hot vectors are sparse indicators; embeddings use lower-dimensional, dense vectors."
+  },
+  {
+    "objectID": "Week12.html#word-embedding-vector-arithmetic",
+    "href": "Week12.html#word-embedding-vector-arithmetic",
+    "title": "Neural Networks",
+    "section": "Word Embedding: Vector Arithmetic",
+    "text": "Word Embedding: Vector Arithmetic\n\nFamous illustrative analogies include relationships such as woman − man + king ≈ queen.\n\nword2vec: Mikolov, Chen, Corrado and Dean (2013)\nGloVe: Pennington, Socher and Manning (2014)"
+  },
+  {
+    "objectID": "Week12.html#an-illustration-of-rnns",
+    "href": "Week12.html#an-illustration-of-rnns",
+    "title": "Neural Networks",
+    "section": "An Illustration of RNNs",
+    "text": "An Illustration of RNNs\n\n\nParameters \\(W\\), \\(B\\) and \\(U\\) are shared across time steps.\nHidden activations \\(A_1,\\ldots,A_L\\) evolve sequentially."
+  },
+  {
+    "objectID": "Week12.html#specifications-of-rnns",
+    "href": "Week12.html#specifications-of-rnns",
+    "title": "Neural Networks",
+    "section": "Specifications of RNNs",
+    "text": "Specifications of RNNs\n\nAn illustrative network uses one recurrent layer with \\(K=32\\) hidden units.\n\nIts embedding matrix is \\(E\\in\\mathbb R^{1000\\times m}\\), with \\(m=32\\).\nThe source reports about 76% IMDb test accuracy for this example with dropout.\n\nLong short-term memory (LSTM) introduces a mechanism to help retain information over longer intervals.\nHistorical context: the original source notes that some RNN configurations exceeded 95% accuracy on IMDb by early 2020. This is not a current benchmark."
+  },
+  {
+    "objectID": "Week12.html#convolutional-neural-networks-cnns",
+    "href": "Week12.html#convolutional-neural-networks-cnns",
+    "title": "Neural Networks",
+    "section": "Convolutional Neural Networks (CNNs)",
+    "text": "Convolutional Neural Networks (CNNs)\nCNNs are designed for data with spatial structure, such as images.\nA grayscale image can be represented as a matrix:\n\\[X=\\begin{pmatrix}x_{11}&x_{12}&\\cdots&x_{1n}\\\\x_{21}&x_{22}&\\cdots&x_{2n}\\\\\\vdots&\\vdots&\\ddots&\\vdots\\\\x_{m1}&x_{m2}&\\cdots&x_{mn}\\end{pmatrix}.\\]"
+  },
+  {
+    "objectID": "Week12.html#key-ideas-of-cnns",
+    "href": "Week12.html#key-ideas-of-cnns",
+    "title": "Neural Networks",
+    "section": "Key Ideas of CNNs",
+    "text": "Key Ideas of CNNs\n\nDetect low-level features, such as edges, corners and patches of color.\nCombine these to form higher-level features, such as parts of eyes or ears.\nUse the presence or absence of higher-level features for prediction.\n\nThe main components include:\n\nConvolutional layers\nPooling layers"
+  },
+  {
+    "objectID": "Week12.html#illustration-of-a-cnn",
+    "href": "Week12.html#illustration-of-a-cnn",
+    "title": "Neural Networks",
+    "section": "Illustration of a CNN",
+    "text": "Illustration of a CNN"
+  },
+  {
+    "objectID": "Week12.html#convolution-operation",
+    "href": "Week12.html#convolution-operation",
+    "title": "Neural Networks",
+    "section": "Convolution Operation",
+    "text": "Convolution Operation\nA convolution filter extracts local features of an image.\n\nFor a \\(2\\times2\\) filter,\n\\[W=\\begin{pmatrix}w_{11}&w_{12}\\\\w_{21}&w_{22}\\end{pmatrix},\\qquad z_{ij}=g(\\langle W,X_{ij}\\rangle).\\]\nA learned filter might detect a corner or an edge."
+  },
+  {
+    "objectID": "Week12.html#feature-map",
+    "href": "Week12.html#feature-map",
+    "title": "Neural Networks",
+    "section": "Feature Map",
+    "text": "Feature Map\nApplying a filter across the image produces a feature map.\n\n\nThe feature map highlights regions matching the filter.\nPadding can be used to control the output size."
+  },
+  {
+    "objectID": "Week12.html#example-of-a-convolution-step",
+    "href": "Week12.html#example-of-a-convolution-step",
+    "title": "Neural Networks",
+    "section": "Example of a Convolution Step",
+    "text": "Example of a Convolution Step\nConsider the image and filter:\n\\[X=\\begin{pmatrix}1&2&1\\\\0&3&2\\\\4&1&0\\end{pmatrix},\\qquad W=\\begin{pmatrix}1&0\\\\0&-1\\end{pmatrix}.\\]\nFirst patch:\n\\[\\langle\\begin{pmatrix}1&2\\\\0&3\\end{pmatrix},W\\rangle=1(1)+2(0)+0(0)+3(-1)=-2.\\]\nSecond patch:\n\\[\\langle\\begin{pmatrix}2&1\\\\3&2\\end{pmatrix},W\\rangle=2(1)+1(0)+3(0)+2(-1)=0.\\]\nThe first row of the feature map is \\((-2,0)\\)."
+  },
+  {
+    "objectID": "Week12.html#example-of-a-convolution-step-continued",
+    "href": "Week12.html#example-of-a-convolution-step-continued",
+    "title": "Neural Networks",
+    "section": "Example of a Convolution Step (Continued)",
+    "text": "Example of a Convolution Step (Continued)\nFor the same image \\(X\\) and filter \\(W\\):\nThird patch:\n\\[\\langle\\begin{pmatrix}0&3\\\\4&1\\end{pmatrix},W\\rangle=0(1)+3(0)+4(0)+1(-1)=-1.\\]\nFourth patch:\n\\[\\langle\\begin{pmatrix}3&2\\\\1&0\\end{pmatrix},W\\rangle=3(1)+2(0)+1(0)+0(-1)=3.\\]\nTherefore, the final feature map is\n\\[\\boxed{\\begin{pmatrix}-2&0\\\\-1&3\\end{pmatrix}}.\\]"
+  },
+  {
+    "objectID": "Week12.html#example-of-a-convolutional-filter",
+    "href": "Week12.html#example-of-a-convolutional-filter",
+    "title": "Neural Networks",
+    "section": "Example of a Convolutional Filter",
+    "text": "Example of a Convolutional Filter\n\nOriginal example: a \\(192\\times179\\) tiger image filtered using \\(15\\times15\\) vertical and horizontal patterns."
+  },
+  {
+    "objectID": "Week12.html#pooling-layer",
+    "href": "Week12.html#pooling-layer",
+    "title": "Neural Networks",
+    "section": "Pooling Layer",
+    "text": "Pooling Layer\nPooling summarizes a large feature map using a smaller one.\nWith non-overlapping \\(2\\times2\\) max pooling:\n\\[\\begin{pmatrix}1&2&5&3\\\\3&0&1&2\\\\2&1&3&4\\\\1&1&2&0\\end{pmatrix}\\quad\\longrightarrow\\quad\\begin{pmatrix}3&5\\\\2&4\\end{pmatrix}.\\]\nFor example, a \\(32\\times16\\) image is reduced to \\(16\\times8\\)."
+  },
+  {
+    "objectID": "Week12.html#typical-cnn-architecture",
+    "href": "Week12.html#typical-cnn-architecture",
+    "title": "Neural Networks",
+    "section": "Typical CNN Architecture",
+    "text": "Typical CNN Architecture\nPipeline:\n\\[\\text{Image}\\longrightarrow\\text{Convolution}\\longrightarrow\\text{Pooling}\\longrightarrow\\text{Fully connected}\\longrightarrow\\text{Output}.\\]"
+  },
+  {
+    "objectID": "Week12.html#filters-and-rgb-images",
+    "href": "Week12.html#filters-and-rgb-images",
+    "title": "Neural Networks",
+    "section": "Filters and RGB Images",
+    "text": "Filters and RGB Images\nAn RGB image \\(X\\) has dimension \\(d_1\\times d_2\\times3\\), with three color channels.\nA filter \\(Z\\) can have dimensions \\(k_1\\times k_2\\times3\\). Its output combines convolutions from all channels:\n\\[X^{(1)}*Z^{(1)}+X^{(2)}*Z^{(2)}+X^{(3)}*Z^{(3)}.\\]\n\nIf \\(Z^{(1)}=Z^{(2)}=Z^{(3)}\\), the same spatial filter is applied to each channel and the results are summed.\nIf \\(k_1=k_2=1\\), the filter computes \\(w_1X^{(1)}+w_2X^{(2)}+w_3X^{(3)}\\) at each location.\nWith five filters, the output has five feature maps."
+  },
+  {
+    "objectID": "Week12.html#example-resnet-50-on-imagenet",
+    "href": "Week12.html#example-resnet-50-on-imagenet",
+    "title": "Neural Networks",
+    "section": "Example: ResNet-50 on ImageNet",
+    "text": "Example: ResNet-50 on ImageNet"
+  },
+  {
+    "objectID": "Week12.html#more-comments-on-cnns",
+    "href": "Week12.html#more-comments-on-cnns",
+    "title": "Neural Networks",
+    "section": "More Comments on CNNs",
+    "text": "More Comments on CNNs\nCNNs use the spatial structure of images and have been highly successful in computer vision.\n\nFewer parameters than similarly sized fully connected architectures, due to local filters and shared weights.\nLocal feature detection that supports downstream tasks.\nSome robustness to small translations (depending on architecture and training).\n\nArchitecture design still requires tuning the number, type and sizes of layers.\nDropout, lasso and ridge-style regularization can also be used."
+  },
+  {
+    "objectID": "Week12.html#when-to-use-deep-learning",
+    "href": "Week12.html#when-to-use-deep-learning",
+    "title": "Neural Networks",
+    "section": "When to Use Deep Learning",
+    "text": "When to Use Deep Learning\nExamples of successes\n\nCNNs: image classification, medical imaging, computer vision.\nRNNs: sequential data, forecasting, speech and language tasks.\nTransformers: natural language processing and other applications.\n\nBut should we replace all older statistical tools with deep learning?\n\n\n\n\n\n\nConsider interpretability, sample size, computation, predictive performance and Occam’s razor. More complex models are not automatically the best models."
   }
 ]

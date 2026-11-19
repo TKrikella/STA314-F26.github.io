@@ -25,7 +25,7 @@ I hope this course leaves you with not only a strong foundation in statistical m
 | Assignment | Due Date | Information | Past Tests |
 |:----------:|:--------:|:----------:|:--------:|
 | Midterm | Nov 4th, 11am -- 1pm | [Midterm Info](STA314___Midterm_Info.pdf)<br>[Midterm Solution](https://q.utoronto.ca/courses/462956/modules) |[winter26](midterm-26winter.pdf)<br>[fall24](midterm24fall.pdf)<br>[fall24-2](midterm2-24fall.pdf)<br>Created by Dr. Xin Bing |
-| Final | TBD | | |
+| Final | TBD | | [fall24](final24fall.pdf)<br>[fall23](final23fall.pdf)<br>[fall22](final22fall.pdf)<br>Created by Dr. Xin Bing |
 :::
 
 ## Announcements
