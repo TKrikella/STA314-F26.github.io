@@ -4,7 +4,7 @@
     "href": "about.html",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\nSlides\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\nSlides\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\nHTML SlidesPDF Slides\nTutorial\n-\nCh. 10\n\n\n13\nGenerative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html",
@@ -32,7 +32,7 @@
     "href": "about.html#tentative-course-schedule",
     "title": "Slides",
     "section": "",
-    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\nSlides\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\n-\n-\n-\nCh. 10\n\n\n13\nNeural Networks; Generative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
+    "text": "Below is a tentative schedule of topics for the term. You can find the lecture slides in html format, my annotated slides as a pdf, as well as the pdf versions of the tutorial slides. When annotating the html slides in class, you can save them by printing to pdf in your browser. However, I have also included the slides in PDF format as I was made aware that the formatting can be a little strange when printing them yourself.\n\n\n\n\nWeek\nTopics\nLecture Slides\nTutorial\nAssessments\nSuggested Reading [ISL]\n\n\n\n\n1\nIntroduction to Statistical Learning; Supervised Learning; Model Assessment\nHTML SlidesPDF SlidesRecorded Lecture\n-\n—\nCh. 2\n\n\n2\nLinear Regression; Model Assessment and Selection\nHTML SlidesPDF SlidesAnnotated Slides\n-\n-\nCh. 3, 5\n\n\n3\nShrinkage/Regularization\nHTML SlidesPDF SlidesAnnotated Slides\nSlidesR CodeRMarkdown PDF\nAssignment 1 Released, Sept. 23rd\nCh. 6\n\n\n4\nGradient Descent; Moving Beyond Linearity\nHTML SlidesPDF SlidesAnnotated Slides\nR CodeRMarkdown PDF\n-\nCh. 7\n\n\n5\nClassification: Bayes Classifier, kNN and Logistic Regression\nHTML SlidesPDF SlidesAnnotated Slides\nRCodeRMarkdown PDF\nAssignment 1 Due, Oct. 7\nCh. 4\n\n\n6\nClassification: Multiclass Logistic Regression and Discriminant Analysis\nHTML SlidesPDF Slides\n-\n-\nCh. 4\n\n\n7\nTree Based Methods: Decision Trees\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 8\n\n\n8\nReading Week\n-\n-\n-\n-\n\n\n9\nTree Based Methods: Bagging, Random Forests, and Boosting\nHTML SlidesPDF Slides\nSlides\nMidterm, Nov. 4\nCh. 8\n\n\n10\nSupport Vector Machines and Unsupervised Learning (Clustering)\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\n-\nCh. 9, Ch. 12\n\n\n11\nUnsupervised Learning: PCA and Matrix Factorization\nHTML SlidesPDF Slides\nRCodeRMarkdown PDF\nAssignment 2 Released, Nov. 18\nCh. 12\n\n\n12\nNeural Networks\nHTML SlidesPDF Slides\nTutorial\n-\nCh. 10\n\n\n13\nGenerative AI; Course Review\n-\n-\nAssignment 2 Due, Dec 2nd\nCh. 10"
   },
   {
     "objectID": "index.html#welcome-to-sta314-statistical-methods-for-machine-learning-i",
@@ -5793,7 +5793,7 @@
     "href": "Week12.html#architecture-of-a-single-layer-network",
     "title": "Neural Networks",
     "section": "Architecture of a Single-Layer Network",
-    "text": "Architecture of a Single-Layer Network\n\nFor each hidden unit \\(j\\in\\{1,\\ldots,5\\}\\):\n\\[A_j=g(w_{j0}+w_{j1}X_1+w_{j2}X_2+w_{j3}X_3+w_{j4}X_4).\\]"
+    "text": "Architecture of a Single-Layer Network"
   },
   {
     "objectID": "Week12.html#single-layer-neural-networks",
@@ -5807,21 +5807,21 @@
     "href": "Week12.html#activation-functions",
     "title": "Neural Networks",
     "section": "Activation Functions",
-    "text": "Activation Functions\nCommon activation functions include:\n\nSigmoid: maps into \\((0,1)\\)\n\\[g(z)=\\frac{1}{1+e^{-z}}\\]\nTanh: maps into \\((-1,1)\\)\n\\[g(z)=\\tanh(z)\\]\nReLU (rectified linear unit):\n\\[g(z)=\\max(0,z)\\]\n\nReLU is a common choice because of its simple computation."
+    "text": "Activation Functions\nThe activation function \\(g(\\cdot)\\) introduces nonlinearity into the neural network.\n\nCommon activation functions include:\n\nSigmoid: maps into \\((0,1)\\)\n\\[g(z)=\\frac{1}{1+e^{-z}}\\]\n\n\n\n\nTanh: maps into \\((-1,1)\\)\n\\[g(z)=\\tanh(z)\\]\n\n\n\n\nReLU (rectified linear unit):\n\\[g(z)=\\max(0,z)\\]\n\nReLU is a common choice because of its simple computation."
   },
   {
     "objectID": "Week12.html#activation-functions-sigmoid-versus-relu",
     "href": "Week12.html#activation-functions-sigmoid-versus-relu",
     "title": "Neural Networks",
     "section": "Activation Functions: Sigmoid versus ReLU",
-    "text": "Activation Functions: Sigmoid versus ReLU\n\nWhy neural networks? An analogy is made with neurons being active (“firing”) or inactive (“silent”)."
+    "text": "Activation Functions: Sigmoid versus ReLU\nSigmoid: \\(g(z)=\\frac{1}{1+e^{-z}}\\) vs. ReLU: \\(g(z)=\\max(0,z)\\)\n\nWhy neural networks? An analogy is made with neurons being active (“firing”) or inactive (“silent”)."
   },
   {
     "objectID": "Week12.html#multilayer-neural-networks",
     "href": "Week12.html#multilayer-neural-networks",
     "title": "Neural Networks",
     "section": "Multilayer Neural Networks",
-    "text": "Multilayer Neural Networks\nA deep neural network contains multiple hidden layers representing increasingly hierarchical features.\nFor the first layer, with \\(K_1\\) hidden units:\n\\[A_i^{(1)}=g\\left(w_{i0}^{(1)}+\\sum_{j=1}^pw_{ij}^{(1)}X_j\\right),\\qquad i=1,\\ldots,K_1.\\]\nFor layer \\(\\ell=2,\\ldots,D\\):\n\\[A_i^{(\\ell)}=g\\left(w_{i0}^{(\\ell)}+\\sum_{j=1}^{K_{\\ell-1}}w_{ij}^{(\\ell)}A_j^{(\\ell-1)}\\right),\\]\nwhere \\(i=1,\\ldots,K_\\ell\\)."
+    "text": "Multilayer Neural Networks\nIn a multilayer neural network, each hidden layer constructs new features from the activations of the previous layer, allowing the network to learn increasingly complex representations of the predictors.\n\nFor the first layer, with \\(K_1\\) hidden units:\n\\[A_i^{(1)}=g\\left(w_{i0}^{(1)}+\\sum_{j=1}^pw_{ij}^{(1)}X_j\\right),\\qquad i=1,\\ldots,K_1.\\]\n\n\nFor layer \\(\\ell=2,\\ldots,D\\):\n\\[A_i^{(\\ell)}=g\\left(w_{i0}^{(\\ell)}+\\sum_{j=1}^{K_{\\ell-1}}w_{ij}^{(\\ell)}A_j^{(\\ell-1)}\\right),\\]\nwhere \\(i=1,\\ldots,K_\\ell\\)."
   },
   {
     "objectID": "Week12.html#multilayer-neural-networks-parameters",
@@ -5835,14 +5835,14 @@
     "href": "Week12.html#neural-networks-in-pattern-recognition",
     "title": "Neural Networks",
     "section": "Neural Networks in Pattern Recognition",
-    "text": "Neural Networks in Pattern Recognition\n\nDigit recognition problems helped accelerate the development of neural networks in the late 1980s.\nRecognizing visual patterns is relatively easy for humans, whose visual system is highly developed.\nMatching human performance on many machine-recognition tasks has required decades of improvements in neural-network architectures."
+    "text": "Neural Networks in Pattern Recognition\n\nDigit recognition problems helped accelerate the development of neural networks in the late 1980s.\n\n\n\nRecognizing visual patterns is relatively easy for humans, whose visual system is highly developed.\n\n\n\nThese tasks are not so simple for machines, and it has taken more than 30 years to refine the neural-network architectures to match human performance."
   },
   {
     "objectID": "Week12.html#mnist-digit-recognition",
     "href": "Week12.html#mnist-digit-recognition",
     "title": "Neural Networks",
     "section": "MNIST Digit Recognition",
-    "text": "MNIST Digit Recognition\n\nEach image has 28 × 28 pixels: \\(p=784\\) grayscale input features."
+    "text": "MNIST Digit Recognition"
   },
   {
     "objectID": "Week12.html#a-multilayer-network",
@@ -5856,42 +5856,42 @@
     "href": "Week12.html#mnist-results",
     "title": "Neural Networks",
     "section": "MNIST Results",
-    "text": "MNIST Results\n\nThe illustrated network has \\(p=784\\) inputs, hidden layers of sizes \\(256\\) and \\(128\\), and \\(10\\) output classes. The source reports test error of 2.3% with ridge and 1.8% with dropout."
+    "text": "MNIST Results\n\n\\(n = 60,000\\), \\(p = 784\\), \\(K_1 = 256\\), \\(K_2 = 128\\)\n\\(\\mathbf W_1\\in\\mathbb R^{784\\times 256}\\), \\(\\mathbf W_2\\in\\mathbb R^{256\\times 128}\\), \\(\\mathbf B\\in\\mathbb R^{128\\times 10}\\)\n\\(Y_i = \\frac{e^{f_i(X)}}{\\sum_{\\ell =0}^9 e^{f_\\ell(X)}}\\), for \\(i \\in \\{0,...,9\\}\\)"
   },
   {
     "objectID": "Week12.html#training-neural-networks",
     "href": "Week12.html#training-neural-networks",
     "title": "Neural Networks",
     "section": "Training Neural Networks",
-    "text": "Training Neural Networks\nTechniques for training neural networks include:\n\n(Stochastic) gradient descent\n\nBackpropagation\n\nRegularization\n\nWeight penalization\nEarly stopping\nDropout"
+    "text": "Training Neural Networks\nOur neural network contains unknown parameters:\n\n\n\\(w_{kj}\\): weights used to construct the hidden units.\n\\(\\beta_k\\): coefficients used to combine the hidden units.\n\n\nWe denote all these parameters by the vector \\(\\mathbf \\theta\\) and we estimate them by minimizing a loss function, depending on the prediction task."
   },
   {
     "objectID": "Week12.html#training-a-neural-network",
     "href": "Week12.html#training-a-neural-network",
     "title": "Neural Networks",
     "section": "Training a Neural Network",
-    "text": "Training a Neural Network\nTraining minimizes a loss function \\(J(\\theta)\\) over parameters \\(\\theta\\).\nFor regression:\n\\[J(\\theta)=\\frac1n\\sum_{i=1}^n\\{y_i-f(x_i;\\theta)\\}^2.\\]\nFor \\(m\\)-class classification:\n\\[J(\\theta)=-\\frac1n\\sum_{i=1}^n\\sum_{\\ell=1}^m\\mathbf1\\{y_i=\\ell\\}\\log\\widehat p_\\ell(x_i;\\theta).\\]\nThese loss functions are generally nonconvex in \\(\\theta\\), due to the composition of linear transformations with nonlinear activation functions."
+    "text": "Training a Neural Network\nTraining minimizes a loss function \\(J(\\theta)\\) over parameters \\(\\theta\\).\nFor regression:\n\\[J(\\theta)=\\frac1n\\sum_{i=1}^n\\{y_i-f(x_i;\\theta)\\}^2.\\]\n\nFor \\(m\\)-class classification:\n\\[J(\\theta)=-\\frac1n\\sum_{i=1}^n\\sum_{\\ell=1}^m\\mathbf1\\{y_i=\\ell\\}\\log f_\\ell(x_i;\\theta).\\]\nwhere \\(f_\\ell(x_i;\\theta)\\) is the predicted probability of class \\(\\ell\\).\n\n\n\nThese loss functions are generally nonconvex in \\(\\theta\\), due to the composition of linear transformations with nonlinear activation functions."
   },
   {
     "objectID": "Week12.html#gradient-descent-and-backpropagation",
     "href": "Week12.html#gradient-descent-and-backpropagation",
     "title": "Neural Networks",
     "section": "Gradient Descent and Backpropagation",
-    "text": "Gradient Descent and Backpropagation\nUpdate parameters using gradient-based optimization:\n\\[\\theta^{(t+1)}=\\theta^{(t)}-\\eta\\left.\\nabla_\\theta J(\\theta)\\right|_{\\theta=\\theta^{(t)}},\\]\nwhere \\(\\eta&gt;0\\) is the learning rate.\n\nIn practice, stochastic gradient descent (SGD) and its variants are commonly used.\nBackpropagation efficiently computes gradients using the chain rule.\n\nForward pass: calculate activations, predictions and loss.\nBackward pass: calculate gradients for each layer.\nUpdate parameters using those gradients."
+    "text": "Gradient Descent and Backpropagation\nUpdate parameters using gradient-based optimization:\n\\[\n\\theta^{(t+1)} = \\theta^{(t)} - \\eta \\cdot \\left. \\frac{\\partial \\mathcal{J}(\\theta)}{\\partial \\theta} \\right|_{\\theta=\\theta^{(t)}}\n\\]\nwhere \\(\\eta&gt;0\\) is the learning rate.\n\n\nIn practice, stochastic gradient descent (SGD) and its variants are commonly used.\n\n\n\n\nComputing the gradient uses the so-called backpropagation trick:\n\nForward pass: compute loss\nBackward pass: update weights"
   },
   {
     "objectID": "Week12.html#forward-propagation",
     "href": "Week12.html#forward-propagation",
     "title": "Neural Networks",
     "section": "Forward Propagation",
-    "text": "Forward Propagation\nConsider a network with two hidden layers (biases omitted here), for observation \\(i\\):\n\\[J_i(\\theta)=\\frac12\\left[y_i-\\sum_{k=1}^{K_2}\\beta_k g\\left(\\sum_{j=1}^{K_1}W_{kj}^{(2)}g\\left(\\sum_{\\ell=1}^p W_{j\\ell}^{(1)}x_{i\\ell}\\right)\\right)\\right]^2.\\]\n\\[\\theta=(W^{(1)},W^{(2)},\\beta),\\]\n\\[W^{(1)}\\in\\mathbb R^{K_1\\times p},\\quad W^{(2)}\\in\\mathbb R^{K_2\\times K_1},\\quad\\beta\\in\\mathbb R^{K_2}.\\]\nGoal: compute \\(\\partial J_i/\\partial W^{(1)}\\), \\(\\partial J_i/\\partial W^{(2)}\\) and \\(\\partial J_i/\\partial\\beta\\)."
+    "text": "Forward Propagation\nConsider a network with two hidden layers (biases omitted here), for observation \\(i\\):\n\\[J_i(\\theta)=\\frac12\\left[y_i-\\sum_{k=1}^{K_2}\\beta_k g\\left(\\sum_{j=1}^{K_1}W_{kj}^{(2)}g\\left(\\sum_{\\ell=1}^p W_{j\\ell}^{(1)}x_{i\\ell}\\right)\\right)\\right]^2.\\]\n\n\n\\[\\theta=(W^{(1)},W^{(2)},\\beta),\\]\n\\[W^{(1)}\\in\\mathbb R^{K_1\\times p},\\quad W^{(2)}\\in\\mathbb R^{K_2\\times K_1},\\quad\\beta\\in\\mathbb R^{K_2}.\\]\n\nGoal: compute \\(\\partial J_i/\\partial W^{(1)}\\), \\(\\partial J_i/\\partial W^{(2)}\\) and \\(\\partial J_i/\\partial\\beta\\)."
   },
   {
     "objectID": "Week12.html#backpropagation-key-idea",
     "href": "Week12.html#backpropagation-key-idea",
     "title": "Neural Networks",
     "section": "Backpropagation: Key Idea",
-    "text": "Backpropagation: Key Idea\nLet the pre-activation values be\n\\[z_{ij}^{(1)}=\\sum_{\\ell=1}^pW_{j\\ell}^{(1)}x_{i\\ell},\\qquad z_{ik}^{(2)}=\\sum_{j=1}^{K_1}W_{kj}^{(2)}g(z_{ij}^{(1)}).\\]\nWrite \\(e_i=f(x_i;\\theta)-y_i\\). Using the chain rule:\n\\[\\frac{\\partial J_i}{\\partial\\beta_k}=e_i\\,g(z_{ik}^{(2)}),\\]\n\\[\\frac{\\partial J_i}{\\partial W_{kj}^{(2)}}=e_i\\,\\beta_k g'(z_{ik}^{(2)})g(z_{ij}^{(1)}),\\]\n\\[\\frac{\\partial J_i}{\\partial W_{j\\ell}^{(1)}}=e_i\\left[\\sum_{k=1}^{K_2}\\beta_k g'(z_{ik}^{(2)})W_{kj}^{(2)}\\right]g'(z_{ij}^{(1)})x_{i\\ell}.\\]\n\n\n\n\n\n\nThese equations apply to the squared-error example on the preceding slide."
+    "text": "Backpropagation: Key Idea\nLet the pre-activation values be\n\\[z_{ij}^{(1)}=\\sum_{\\ell=1}^pW_{j\\ell}^{(1)}x_{i\\ell},\\qquad z_{ik}^{(2)}=\\sum_{j=1}^{K_1}W_{kj}^{(2)}g(z_{ij}^{(1)}).\\]\nWrite \\(e_i=f(x_i;\\theta)-y_i\\). Using the chain rule:\n\\[\\frac{\\partial J_i}{\\partial\\beta_k}=e_i\\,g(z_{ik}^{(2)}),\\]\n\\[\\frac{\\partial J_i}{\\partial W_{kj}^{(2)}}=e_i\\,\\beta_k g'(z_{ik}^{(2)})g(z_{ij}^{(1)}),\\]\n\\[\\frac{\\partial J_i}{\\partial W_{j\\ell}^{(1)}}=e_i\\left[\\sum_{k=1}^{K_2}\\beta_k g'(z_{ik}^{(2)})W_{kj}^{(2)}\\right]g'(z_{ij}^{(1)})x_{i\\ell}.\\]"
   },
   {
     "objectID": "Week12.html#backpropagation-per-iteration",
@@ -5905,14 +5905,14 @@
     "href": "Week12.html#overfitting-in-neural-networks",
     "title": "Neural Networks",
     "section": "Overfitting in Neural Networks",
-    "text": "Overfitting in Neural Networks\nDeep networks often contain many parameters.\n\nThey can easily overfit the training data.\nRegularization is therefore important.\n\nCommon techniques include:\n\nWeight decay (ridge-style penalty):\n\\[J(\\theta)+\\lambda\\lVert\\theta\\rVert_2^2.\\]\nEarly stopping: stop training when the validation error starts to increase.\nDropout: randomly deactivate hidden units during training."
+    "text": "Overfitting in Neural Networks\nDeep networks often contain many parameters.\n\nThey can easily overfit the training data.\nRegularization is therefore important.\n\n\nCommon techniques include:\n\nWeight decay (ridge-style penalty):\n\\[J(\\theta)+\\lambda\\lVert\\theta\\rVert_2^2.\\]\nEarly stopping: stop training when the validation error starts to increase.\nDropout: randomly deactivate hidden units during training."
   },
   {
     "objectID": "Week12.html#on-regularization",
     "href": "Week12.html#on-regularization",
     "title": "Neural Networks",
     "section": "On Regularization",
-    "text": "On Regularization\n\nDifferent layers can use different penalty strengths \\(\\lambda\\).\n\nHidden-layer weights are often penalized.\nOutput-layer weights may or may not be penalized.\nIntercepts are generally not penalized.\n\nLasso regularization is another option, either alongside or instead of ridge.\nOptimization by SGD may exhibit implicit regularization; its behavior in deep networks remains an active research topic."
+    "text": "On Regularization\n\nDifferent layers can use different penalty strengths \\(\\lambda\\).\n\nHidden-layer weights are often penalized.\nOutput-layer weights may or may not be penalized.\nIntercepts are generally not penalized.\n\n\nLasso regularization is another option, either alongside or instead of ridge.\n\n\n\nOptimization by SGD may exhibit implicit regularization; its behavior in deep networks remains an active research topic."
   },
   {
     "objectID": "Week12.html#early-stopping",
@@ -5940,7 +5940,7 @@
     "href": "Week12.html#things-to-tune",
     "title": "Neural Networks",
     "section": "Things to Tune",
-    "text": "Things to Tune\n\nNetwork size: number of hidden layers and hidden units per layer.\n\nLarge networks can be used with regularization to control overfitting.\n\nRegularization: dropout fraction \\(\\phi\\), lasso/ridge penalty strength \\(\\lambda\\), possibly varying by layer.\nOptimization: batch size, number of epochs, learning rate, and early-stopping point."
+    "text": "Things to Tune\n\nNetwork size: number of hidden layers and hidden units per layer.\n\nLarge networks can be used with regularization to control overfitting.\n\n\nRegularization: dropout fraction \\(\\phi\\), lasso/ridge penalty strength \\(\\lambda\\), possibly varying by layer.\n\n\n\nOptimization: batch size, number of epochs, learning rate, and early-stopping point."
   },
   {
     "objectID": "Week12.html#more-structured-neural-networks",
@@ -5975,7 +5975,7 @@
     "href": "Week12.html#room-for-improvement",
     "title": "Neural Networks",
     "section": "Room for Improvement",
-    "text": "Room for Improvement\nA bag-of-words representation ignores word context and order.\n\nBag of \\(n\\)-grams: record short consecutive word sequences.\n\nFor example, “blissfully long” and “blissfully short” may express different sentiments.\n\nSequence models: process documents as ordered words, accounting for preceding or following words.\n\nRecurrent neural networks and long short-term memory (LSTM)\nTransformers and models such as BERT"
+    "text": "Room for Improvement\nA bag-of-words representation ignores word context and order.\n\nBag of \\(n\\)-grams: record short consecutive word sequences.\n\nFor example, “blissfully long” and “blissfully short” may express different sentiments.\n\n\nSequence models: process documents as ordered words, accounting for preceding or following words.\n\nRecurrent neural networks and long short-term memory (LSTM)\nTransformers and models such as BERT"
   },
   {
     "objectID": "Week12.html#recurrent-neural-networks-rnns",
@@ -5989,14 +5989,14 @@
     "href": "Week12.html#rnns-sequential-inputs",
     "title": "Neural Networks",
     "section": "RNNs: Sequential Inputs",
-    "text": "RNNs: Sequential Inputs\nThe input for observation \\(i\\) is a sequence:\n\\[X_i=\\{X_{i1},\\ldots,X_{iL}\\},\\]\nwith associated response \\(Y_i\\).\nEach \\(X_{i\\ell}\\) may be:\n\nA number or numerical vector\nA token, word, image, or other object\n\nThe order of the observations has meaning. The goal is to use that sequential structure to better predict \\(Y_i\\)."
+    "text": "RNNs: Sequential Inputs\nThe input for observation \\(i\\) is a sequence:\n\\[X_i=\\{X_{i1},\\ldots,X_{iL}\\},\\]\nwith associated response \\(Y_i\\).\n\nEach \\(X_{i\\ell}\\) may be:\n\nA number or numerical vector\nA token, word, image, or other object\n\n\nThe order of the observations has meaning. The goal is to use that sequential structure to better predict \\(Y_i\\)."
   },
   {
     "objectID": "Week12.html#word-embedding",
     "href": "Week12.html#word-embedding",
     "title": "Neural Networks",
     "section": "Word Embedding",
-    "text": "Word Embedding\nFor document classification, represent review \\(i\\) as a sequence of \\(L\\) words:\n\\[X_i=\\{X_{i1},\\ldots,X_{iL}\\},\\]\nwith sentiment label \\(Y_i\\).\nA word embedding represents each word \\(X_{i\\ell}\\) as a vector in a Euclidean space.\nOther tokenizations are possible, including characters or phrases."
+    "text": "Word Embedding\nFor document classification, represent review \\(i\\) as a sequence of \\(L\\) words:\n\\[X_i=\\{X_{i1},\\ldots,X_{iL}\\},\\]\nwith sentiment label \\(Y_i\\).\n\nA word embedding represents each word \\(X_{i\\ell}\\) as a vector in a Euclidean space.\n\nOther tokenizations are possible, including characters or phrases."
   },
   {
     "objectID": "Week12.html#one-hot-encoding-versus-word-embedding",
@@ -6024,21 +6024,21 @@
     "href": "Week12.html#specifications-of-rnns",
     "title": "Neural Networks",
     "section": "Specifications of RNNs",
-    "text": "Specifications of RNNs\n\nAn illustrative network uses one recurrent layer with \\(K=32\\) hidden units.\n\nIts embedding matrix is \\(E\\in\\mathbb R^{1000\\times m}\\), with \\(m=32\\).\nThe source reports about 76% IMDb test accuracy for this example with dropout.\n\nLong short-term memory (LSTM) introduces a mechanism to help retain information over longer intervals.\nHistorical context: the original source notes that some RNN configurations exceeded 95% accuracy on IMDb by early 2020. This is not a current benchmark."
+    "text": "Specifications of RNNs\n\nAn illustrative network uses one recurrent layer with \\(K=32\\) hidden units.\n\nIts embedding matrix is \\(E\\in\\mathbb R^{1000\\times m}\\), with \\(m=32\\).\nThe source reports about 76% IMDb test accuracy for this example with dropout.\n\n\nLong short-term memory (LSTM) introduces a mechanism to help retain information over longer intervals.\n\n\n\nHistorical context: the original source notes that some RNN configurations exceeded 95% accuracy on IMDb by early 2020. This is not a current benchmark."
   },
   {
     "objectID": "Week12.html#convolutional-neural-networks-cnns",
     "href": "Week12.html#convolutional-neural-networks-cnns",
     "title": "Neural Networks",
     "section": "Convolutional Neural Networks (CNNs)",
-    "text": "Convolutional Neural Networks (CNNs)\nCNNs are designed for data with spatial structure, such as images.\nA grayscale image can be represented as a matrix:\n\\[X=\\begin{pmatrix}x_{11}&x_{12}&\\cdots&x_{1n}\\\\x_{21}&x_{22}&\\cdots&x_{2n}\\\\\\vdots&\\vdots&\\ddots&\\vdots\\\\x_{m1}&x_{m2}&\\cdots&x_{mn}\\end{pmatrix}.\\]"
+    "text": "Convolutional Neural Networks (CNNs)\nCNNs are designed for data with spatial structure, such as images.\n\nA grayscale image can be represented as a matrix:"
   },
   {
     "objectID": "Week12.html#key-ideas-of-cnns",
     "href": "Week12.html#key-ideas-of-cnns",
     "title": "Neural Networks",
     "section": "Key Ideas of CNNs",
-    "text": "Key Ideas of CNNs\n\nDetect low-level features, such as edges, corners and patches of color.\nCombine these to form higher-level features, such as parts of eyes or ears.\nUse the presence or absence of higher-level features for prediction.\n\nThe main components include:\n\nConvolutional layers\nPooling layers"
+    "text": "Key Ideas of CNNs\n\nDetect low-level features, such as edges, corners and patches of color.\nCombine these to form higher-level features, such as parts of eyes or ears.\nUse the presence or absence of higher-level features for prediction.\n\n \nThe main components include:\n\nConvolutional layers\nPooling layers"
   },
   {
     "objectID": "Week12.html#illustration-of-a-cnn",
@@ -6122,6 +6122,69 @@
     "href": "Week12.html#when-to-use-deep-learning",
     "title": "Neural Networks",
     "section": "When to Use Deep Learning",
-    "text": "When to Use Deep Learning\nExamples of successes\n\nCNNs: image classification, medical imaging, computer vision.\nRNNs: sequential data, forecasting, speech and language tasks.\nTransformers: natural language processing and other applications.\n\nBut should we replace all older statistical tools with deep learning?\n\n\n\n\n\n\nConsider interpretability, sample size, computation, predictive performance and Occam’s razor. More complex models are not automatically the best models."
+    "text": "When to Use Deep Learning\nExamples of successes\n\nclassification of MNIST dataset\nCNNs: image classification, medical imaging, computer vision.\nRNNs: sequential data, forecasting, speech and language tasks.\n\nBut should we replace all older statistical tools with deep learning?\n\n\nOccam’s Razor Principle: When faced with several methods that give roughly equivalent performance, pick the simplest.\nSimpler models are easier to fit and understand.\n\n\nWe expect deep learning to be an attractive choice when the sample size is extremely large, and when interpretability is not a high priority."
+  },
+  {
+    "objectID": "Week12.html#some-background",
+    "href": "Week12.html#some-background",
+    "title": "Neural Networks",
+    "section": "Some Background",
+    "text": "Some Background\n\nNeural networks rose to fame in the late 1980s.\nAlthough initially there was a lot of excitement, once random forests, boosting, and SVM came along, many people stopped caring about neural networks\nA core group of people kept the excitement and continued advancing the field, until the re-emergence of neural networks in 2010 under the name deep learning"
+  },
+  {
+    "objectID": "Week12.html#introduction-to-single-layer-neural-networks",
+    "href": "Week12.html#introduction-to-single-layer-neural-networks",
+    "title": "Neural Networks",
+    "section": "Introduction to (Single-Layer) Neural Networks",
+    "text": "Introduction to (Single-Layer) Neural Networks\nA neural network takes an input vector of \\(p\\) variables, \\(X=(X_1,\\ldots,X_p)\\), and builds a non-linear function \\(f(X)\\) to predict the response \\(Y\\).\n \n\nA single-layer neural network has the following components:\n\nInput layer: The original predictors \\(X_1,\\ldots,X_p\\).\nHidden layer: \\(K\\) hidden units, each receiving information from the inputs.\nOutput layer: Combines the hidden units to produce a prediction \\(f(X)\\)."
+  },
+  {
+    "objectID": "Week12.html#the-hidden-layer",
+    "href": "Week12.html#the-hidden-layer",
+    "title": "Neural Networks",
+    "section": "The Hidden Layer",
+    "text": "The Hidden Layer\nEach hidden unit computes a transformation of the original predictors.\nFor hidden unit \\(k\\):\n\\[\nA_k=h_k(X)=g\\left(w_{k0}+\\sum_{j=1}^{p}w_{kj}X_j\\right)\n\\]\nwhere:\n\n\\(w_{k0}\\) is an intercept.\n\\(w_{kj}\\) are weights assigned to the predictors.\n\\(g(\\cdot)\\) is a nonlinear activation function.\n\n\nEach hidden unit first computes a linear combination of the predictors, then applies the activation function."
+  },
+  {
+    "objectID": "Week12.html#hidden-units-as-new-features",
+    "href": "Week12.html#hidden-units-as-new-features",
+    "title": "Neural Networks",
+    "section": "Hidden Units as New Features",
+    "text": "Hidden Units as New Features\nRecall that in generalized additive models and splines, we used transformations of predictors to capture nonlinear relationships.\nNeural networks follow a similar idea:\n\nEach hidden unit creates a new feature \\(A_k=h_k(X)\\).\nThese features are nonlinear transformations of linear combinations of the original predictors.\nUnlike traditional basis functions, the transformations \\(h_k(X)\\) are learned from the data through the weights \\(w_{kj}\\).\n\n\nThe hidden layer can therefore be viewed as constructing \\(K\\) new features from the original predictors."
+  },
+  {
+    "objectID": "Week12.html#the-output-layer",
+    "href": "Week12.html#the-output-layer",
+    "title": "Neural Networks",
+    "section": "The Output Layer",
+    "text": "The Output Layer\nOnce the \\(K\\) activations have been computed, they are combined to produce the prediction:\n\\[\\begin{aligned}f(x)&=\\beta_0+\\sum_{i=1}^K\\beta_iA_i\\\\&=\\beta_0+\\sum_{i=1}^K\\beta_i g\\left(w_{i0}+\\sum_{j=1}^pw_{ij}x_j\\right).\\end{aligned}\\]\n\n\\(g(\\cdot)\\): activation function\n\\(K\\): number of hidden units\n\\(w_{ij}\\): hidden-layer weights\n\\(\\beta_i\\): output-layer weights\n\n\\[\nX \\xrightarrow{w} \\text{linear combinations}\n\\xrightarrow{g} \\text{hidden layer}\n\\xrightarrow{\\beta} \\text{output}\n\\]"
+  },
+  {
+    "objectID": "Week12.html#training-neural-networks-1",
+    "href": "Week12.html#training-neural-networks-1",
+    "title": "Neural Networks",
+    "section": "Training Neural Networks",
+    "text": "Training Neural Networks\nRegression: For a quantitative response, we typically minimize the mean squared error:\n\\[\n\\min_\\theta \\frac{1}{n}\\sum_{i=1}^n\n\\left(y_i-f(x_i;\\theta)\\right)^2\n\\]\n\nClassification: For \\(m\\) classes, the network produces \\(m\\) outputs, which are converted into probabilities using softmax:\n\\[\n\\widehat p_\\ell(X)=\n\\frac{\\exp\\{f_\\ell(X;\\theta)\\}}\n{\\sum_{k=1}^m \\exp\\{f_k(X;\\theta)\\}}\n\\]\nWe then minimize the negative multinomial log-likelihood:\n\\[\n\\min_\\theta -\\frac{1}{n}\\sum_{i=1}^n\n\\sum_{\\ell=1}^m\n\\mathbf{1}\\{y_i=\\ell\\}\\log\\widehat p_\\ell(x_i)\n\\]"
+  },
+  {
+    "objectID": "Week12.html#multilayer-neural-networks-1",
+    "href": "Week12.html#multilayer-neural-networks-1",
+    "title": "Neural Networks",
+    "section": "Multilayer Neural Networks",
+    "text": "Multilayer Neural Networks\nIf we have \\(D\\) hidden layers in total, each hidden layer \\(\\ell\\) contains \\(K_\\ell\\) hidden units with the coefficient parameters \\(\\mathbf W^{(\\ell)}\\in\\mathbb R^{K_\\ell\\times K_{\\ell-1}}\\) and the intercept \\(\\mathbf W_0^{(\\ell)}\\in\\mathbb R^{K_\\ell}\\)\n\n\nThe number of parameters across these layers is\n\\[\\sum_{\\ell=1}^D K_\\ell(K_{\\ell-1}+1).\\]\n\nWe have \\(K_0=p\\).\n\\(K_D\\) depends on whether it is a regression problem or a classification problem."
+  },
+  {
+    "objectID": "Week12.html#training-neural-networks-2",
+    "href": "Week12.html#training-neural-networks-2",
+    "title": "Neural Networks",
+    "section": "Training Neural Networks",
+    "text": "Training Neural Networks\nTechniques for training neural networks include:\n\n(Stochastic) gradient descent\n\nBackpropagation\n\nRegularization\n\nWeight penalization\nEarly stopping\nDropout"
+  },
+  {
+    "objectID": "Week12.html#summary",
+    "href": "Week12.html#summary",
+    "title": "Neural Networks",
+    "section": "Summary",
+    "text": "Summary\n\nNeural networks learn nonlinear relationships by constructing new features through hidden layers and activation functions.\nTraining: We minimize a loss function using gradient descent, with backpropagation efficiently computing gradients using the chain rule.\nRegularization: Ridge/LASSO penalties, early stopping, and dropout help prevent overfitting.\nRecurrent neural networks (RNNs): Designed for sequential data, using shared weights and hidden states to capture information from previous inputs.\nConvolutional neural networks (CNNs): Designed for spatial data, using convolutional filters to detect local patterns and pooling to reduce dimensionality.\n\n\nAnnouncements: Assignment due Dec. 2nd through Crowdmark\nFinal exam information available on the course website"
   }
 ]

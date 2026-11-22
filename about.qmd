@@ -21,6 +21,6 @@ Below is a tentative schedule of topics for the term. You can find the lecture s
 | 9 | Tree Based Methods: Bagging, Random Forests, and Boosting | [HTML Slides](Week9.html)<br>[PDF Slides](Week9-PDF.pdf) | [Slides](Midterm_Review.pdf) | Midterm, Nov. 4 | Ch. 8 |
 | 10 | Support Vector Machines and Unsupervised Learning (Clustering) | [HTML Slides](Week10.html)<br>[PDF Slides](Week10-PDF.pdf) | [RCode](Tutorial6.Rmd)<br>[RMarkdown PDF](Tutorial6.pdf) | \- | Ch. 9, Ch. 12 |
 | 11 | Unsupervised Learning: PCA and Matrix Factorization | [HTML Slides](Week11.html)<br>[PDF Slides](Week11-PDF.pdf) | [RCode](Tutorial7.Rmd)<br>[RMarkdown PDF](Tutorial7.pdf) | Assignment 2 Released, Nov. 18 | Ch. 12 |
-| 12 | Neural Networks | \- | \- | \- | Ch. 10 |
-| 13 | Neural Networks; Generative AI; Course Review | \- | \- | Assignment 2 Due, Dec 2nd | Ch. 10 |
+| 12 | Neural Networks | [HTML Slides](Week12.html)<br>[PDF Slides](Week12-PDF.pdf) | [Tutorial](https://rpubs.com/Bury/ClusteringOnPcaResults) | \- | Ch. 10 |
+| 13 | Generative AI; Course Review | \- | \- | Assignment 2 Due, Dec 2nd | Ch. 10 |
 :::
