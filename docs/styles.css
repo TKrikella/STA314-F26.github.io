@@ -123,3 +123,90 @@
 .cell-output-stdout {
   font-size: 1.5em; /* Makes text 20% larger */
 }
+
+/* Nested AI diagram */
+
+.nested-ai div {
+  border: 2px solid #a88d83;
+  border-radius: 8px;
+  padding: 0.5em;
+  margin: 0.4em;
+  font-size: 0.85em;
+  background: #f4f2e9;
+}
+
+.nested-ai div div div div {
+  background: #dfc7c2;
+}
+
+/* Tokenization examples */
+
+.token-line {
+  display: flex;
+  gap: 0.3em;
+  flex-wrap: wrap;
+}
+
+.token {
+  display: inline-block;
+  background: #e4d5ca;
+  padding: 0.2em 0.4em;
+  border-radius: 5px;
+  border: 1px solid #bba69b;
+}
+
+/* Probability distribution charts */
+
+.prob-chart div {
+  display: flex;
+  align-items: center;
+  gap: 0.35em;
+  margin: 0.5em 0;
+  font-size: 0.8em;
+}
+
+.prob-chart div span {
+  display: inline-block;
+  background: #94616a;
+  height: 0.9em;
+  min-width: 3px;
+}
+
+/* Interactive temperature demonstration */
+
+.temperature-demo {
+  font-size: 0.75em;
+  padding: 0.5em 1em;
+  background: #ede5da;
+  border-radius: 8px;
+}
+
+.temp-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 65px;
+  align-items: center;
+  gap: 12px;
+  margin: 5px 0;
+}
+
+.temp-track {
+  height: 15px;
+  background: #dcd5ca;
+  border-radius: 4px;
+}
+
+.temp-track div {
+  height: 100%;
+  background: #94616a;
+  border-radius: 4px;
+}
+
+.temperature-demo input {
+  accent-color: #853b46;
+}
+
+/* Images */
+
+.reveal img {
+  object-fit: contain;
+}

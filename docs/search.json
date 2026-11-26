@@ -3707,7 +3707,7 @@
     "href": "index.html#tests",
     "title": "STA314",
     "section": "Tests",
-    "text": "Tests\n\n\n\n\nAssignment\nDue Date\nInformation\nPast Tests\n\n\n\n\nMidterm\nNov 4th, 11am – 1pm\nMidterm InfoMidterm Solution\nwinter26fall24fall24-2Created by Dr. Xin Bing\n\n\nFinal\nTBD\n\nfall24fall23fall22Created by Dr. Xin Bing"
+    "text": "Tests\n\n\n\n\nAssignment\nDue Date\nInformation\nPast Tests\n\n\n\n\nMidterm\nNov 4th, 11am – 1pm\nMidterm InfoMidterm Solution\nwinter26fall24fall24-2Created by Dr. Xin Bing\n\n\nFinal\nDec. 13th, 2pm – 4pm\nFinal Info\nfall24fall23fall22Created by Dr. Xin Bing"
   },
   {
     "objectID": "Week6.html#discriminant-analysis-3",
@@ -6186,5 +6186,404 @@
     "title": "Neural Networks",
     "section": "Summary",
     "text": "Summary\n\nNeural networks learn nonlinear relationships by constructing new features through hidden layers and activation functions.\nTraining: We minimize a loss function using gradient descent, with backpropagation efficiently computing gradients using the chain rule.\nRegularization: Ridge/LASSO penalties, early stopping, and dropout help prevent overfitting.\nRecurrent neural networks (RNNs): Designed for sequential data, using shared weights and hidden states to capture information from previous inputs.\nConvolutional neural networks (CNNs): Designed for spatial data, using convolutional filters to detect local patterns and pooling to reduce dimensionality.\n\n\nAnnouncements: Assignment due Dec. 2nd through Crowdmark\nFinal exam information available on the course website"
+  },
+  {
+    "objectID": "Week13.html#todays-lecture",
+    "href": "Week13.html#todays-lecture",
+    "title": "Introduction to Large Language Models",
+    "section": "Today’s lecture",
+    "text": "Today’s lecture\n\nWhat is a large language model (LLM)?\nHow do transformers incorporate context?\nHow are LLMs trained?\nWhat are the ethics behind LLMs\n\n\nOur goal: understand LLMs using statistical learning concepts we already know."
+  },
+  {
+    "objectID": "Week13.html#where-do-llms-fit-in",
+    "href": "Week13.html#where-do-llms-fit-in",
+    "title": "Introduction to Large Language Models",
+    "section": "Where do LLMs fit in?",
+    "text": "Where do LLMs fit in?\n\n\n\nArtificial intelligence (AI): a broad field concerned with building systems that perform tasks associated with intelligence.\nMachine learning: learning patterns from data rather than specifying every rule manually.\nDeep learning: machine learning using neural networks with multiple layers.\nLarge language models: large neural networks trained to model language.\n\n\n\n\nArtificial intelligence\n\nMachine learning\n\nDeep learning\n\nLLMs\n\n\n\n\n\n\nGenerative AI describes systems that generate content (text, images, audio, etc.); it overlaps with these categories.\n\nTiming including title: slides 1–3: 5 min; 4–7: 10 min; 8–10: 7 min; 11–17: 17 min; 18–20: 8 min; 21–23: 8 min; 24–25: 5 min."
+  },
+  {
+    "objectID": "Week13.html#what-is-a-language-model",
+    "href": "Week13.html#what-is-a-language-model",
+    "title": "Introduction to Large Language Models",
+    "section": "What is a language model?",
+    "text": "What is a language model?\nA language model assigns probabilities to sequences of tokens.\n\nConsider the following incomplete sentence:\n\nThe capital of Canada is …\n\n\nA language model can assign probabilities to possible continuations.\nIt does not need to predict a continuous response. Instead, it predicts a probability distribution over possible next tokens."
+  },
+  {
+    "objectID": "Week13.html#in-class-activity-predict-the-next-word",
+    "href": "Week13.html#in-class-activity-predict-the-next-word",
+    "title": "Introduction to Large Language Models",
+    "section": "In-class activity: Predict the next word",
+    "text": "In-class activity: Predict the next word\n\nI went to the bank to …\n\n\nIndividually, think of a possible next word (10 seconds).\nCompare your answer with the person beside you (20 seconds).\nRaise your hand for one of: deposit, withdraw, sit, or another word.\n\n\n\nDid everyone choose the same word?\nCould more than one answer be reasonable?\nWhat information would change your prediction?\n\n\n\nAdaptation of the sticky-note idea: no materials or movement needed. Ask for a few answers, then use a show of hands. Do not imply the class vote is the model’s actual probability distribution."
+  },
+  {
+    "objectID": "Week13.html#language-modelling",
+    "href": "Week13.html#language-modelling",
+    "title": "Introduction to Large Language Models",
+    "section": "Language Modelling",
+    "text": "Language Modelling\nInstead of predicting whether an entire email is spam, suppose we want to predict the next word:\n\nThe student studied for the final …\n\n\n\nAn RNN could use its hidden state \\(a_t\\) to produce a probability distribution over a vocabulary of \\(M\\) possible words.\n\nThe output layer contains \\(M\\) units.\nUsing the softmax function, each output unit represents the predicted probability of a possible next word.\n\n\n\n\nThis is still multiclass classification, but now the classes are possible next words (e.g., exam, assignment, week).\nModern large language models (LLMs) perform this same prediction task, but typically use a different neural network architecture: the transformer."
+  },
+  {
+    "objectID": "Week13.html#a-simple-language-model-unigrams",
+    "href": "Week13.html#a-simple-language-model-unigrams",
+    "title": "Introduction to Large Language Models",
+    "section": "A simple language model: Unigrams",
+    "text": "A simple language model: Unigrams\nSuppose we have a collection of text (a corpus).\nOne simple approach is to estimate the probability of each token by its relative frequency:\n\\[\\hat P(x_t=j)=\\frac{\\text{Count}(j)}{\\text{Total number of tokens}}.\\]\n\n\nWhat is the main limitation of this model?\nIt ignores the preceding tokens! The prediction is the same regardless of the context."
+  },
+  {
+    "objectID": "Week13.html#a-simple-language-model-bigrams",
+    "href": "Week13.html#a-simple-language-model-bigrams",
+    "title": "Introduction to Large Language Models",
+    "section": "A simple language model: Bigrams",
+    "text": "A simple language model: Bigrams\nWe could instead condition on the previous token:\n\\[\\hat P(x_t=j\\mid x_{t-1}=i)=\\frac{\\text{Count}(i,j)}{\\text{Count}(i)}.\\]\nFor example, suppose our toy corpus contains the following counts:\n\n\n\nTwo-token sequence\nCount\n\n\n\n\ndrink water\n6\n\n\ndrink coffee\n3\n\n\ndrink tea\n1\n\n\n\n\n\\[\\hat P(\\text{water}\\mid\\text{drink})=\\frac{6}{10}=0.6.\\]"
+  },
+  {
+    "objectID": "Week13.html#why-do-we-need-more-context",
+    "href": "Week13.html#why-do-we-need-more-context",
+    "title": "Introduction to Large Language Models",
+    "section": "Why do we need more context?",
+    "text": "Why do we need more context?\nConsider two sequences:\n\nI deposited my money at the bank.\nI sat beside the river bank.\n\n\nA model that only looks at the last token cannot distinguish these contexts when predicting what comes next.\n\nWe could condition on more previous tokens, but the number of possible sequences grows very quickly. Many sequences will never occur in our training data.\nWe need a flexible model that can learn useful representations and generalize to new contexts."
+  },
+  {
+    "objectID": "Week13.html#next-token-prediction-as-classification",
+    "href": "Week13.html#next-token-prediction-as-classification",
+    "title": "Introduction to Large Language Models",
+    "section": "Next-token prediction as classification",
+    "text": "Next-token prediction as classification\nFor a vocabulary of \\(M\\) tokens, the output layer produces logits \\(z_1,\\ldots,z_M\\) and applies softmax:\n\\[\n\\hat p_j=\\frac{\\exp(z_j)}{\\sum_{k=1}^{M}\\exp(z_k)},\n\\qquad j=1,\\ldots,M.\n\\]\n\n\n\nContext: The capital of Canada is …\n\nWhere have we seen this before?\n\n\n\n  Ottawa\n  \n  0.75\n\n  Toronto\n  \n  0.12\n\n  located\n  \n  0.06\n\n  a\n  \n  0.04\n\n  Other\n  \n  0.03\n\n\n\nNote: These probabilities are illustrative. “Other” represents the combined probability of all remaining tokens in the vocabulary."
+  },
+  {
+    "objectID": "Week13.html#next-token-prediction-an-example",
+    "href": "Week13.html#next-token-prediction-an-example",
+    "title": "Introduction to Large Language Models",
+    "section": "Next-token prediction: An example",
+    "text": "Next-token prediction: An example\n\n\nContext: The capital of Canada is\n\nThe output is a probability distribution over the vocabulary, not a single prediction.\nThese are illustrative probabilities, not measured outputs of a real model.\n\n\n\nOttawa 0.75\n\n\nToronto 0.12\n\n\nlocated 0.06\n\n\na 0.04\n\n\nOther 0.03"
+  },
+  {
+    "objectID": "Week13.html#how-do-we-represent-text",
+    "href": "Week13.html#how-do-we-represent-text",
+    "title": "Introduction to Large Language Models",
+    "section": "How do we represent text?",
+    "text": "How do we represent text?\nNeural networks require numerical inputs. We cannot directly input a sentence as a string.\n\nTwo important steps:\n\nTokenization: break the text into smaller units and map each unit to an integer ID.\nEmbedding: map each token ID to a vector of real numbers.\n\n\n\nText \\(\\longrightarrow\\) Token IDs \\(\\longrightarrow\\) Numerical vectors"
+  },
+  {
+    "objectID": "Week13.html#tokenization",
+    "href": "Week13.html#tokenization",
+    "title": "Introduction to Large Language Models",
+    "section": "Tokenization",
+    "text": "Tokenization\nAs mentioned, a token is not necessarily a word. It can be a word, part of a word, punctuation, or another unit of text.\n\n\nFor example, a hypothetical tokenizer might split:\n\nThe model learn s quickly .\n\nand assign these tokens integer IDs:\n\\[ (12,\\ 81,\\ 35,\\ 7,\\ 92,\\ 4). \\] \n\n\nNote: Token IDs are labels, not numerical measurements.\n\n\n\nJust like word embeddings, we can represent each token using a token embedding: a low-dimensional numerical vector."
+  },
+  {
+    "objectID": "Week13.html#from-one-hot-encoding-to-embeddings",
+    "href": "Week13.html#from-one-hot-encoding-to-embeddings",
+    "title": "Introduction to Large Language Models",
+    "section": "From one-hot encoding to embeddings",
+    "text": "From one-hot encoding to embeddings\nA token \\(j\\) could be represented by a one-hot vector \\(\\mathbf e_j\\in\\mathbb R^M\\).\nInstead, let \\(E\\in\\mathbb R^{M\\times d}\\) be a matrix of trainable parameters, where typically \\(d\\ll M\\).\n\\[\\mathbf h_j=E^T\\mathbf e_j\\in\\mathbb R^d.\\]\nThis simply selects the \\(j\\)th row of \\(E\\) (written as a column vector).\n\nEach token now has a dense numerical representation. The entries of \\(E\\) are learned during training, just like other neural network weights. Tokens used in similar contexts may learn related representations. Unlike PCA, these representations are learned for a prediction objective, not by maximizing variance."
+  },
+  {
+    "objectID": "Week13.html#what-do-embeddings-capture",
+    "href": "Week13.html#what-do-embeddings-capture",
+    "title": "Introduction to Large Language Models",
+    "section": "What do embeddings capture?",
+    "text": "What do embeddings capture?\n\n\nTokens that occur in similar contexts may learn related representations.\n\nConnection to PCA: both represent information in a numerical feature space. However, embeddings are learned using a prediction objective, not by maximizing variance as in PCA.\n\n\n\n\n\n\n\nThe figure is a schematic two-dimensional illustration, not actual learned embeddings."
+  },
+  {
+    "objectID": "Week13.html#recall-recurrent-neural-networks",
+    "href": "Week13.html#recall-recurrent-neural-networks",
+    "title": "Introduction to Large Language Models",
+    "section": "Recall: Recurrent neural networks",
+    "text": "Recall: Recurrent neural networks\nAn RNN processes a sequence one element at a time. Let \\(\\mathbf x_t\\) be a numerical representation of the word at position \\(t\\).\n\\[\\mathbf h_t=g(W_x\\mathbf x_t+W_h\\mathbf h_{t-1}+\\mathbf b).\\]\n\n\nThe hidden state \\(\\mathbf h_t\\) summarizes information from the sequence up to position \\(t\\). We could use it to classify an email, or predict something about the sequence itself."
+  },
+  {
+    "objectID": "Week13.html#from-rnns-to-transformers",
+    "href": "Week13.html#from-rnns-to-transformers",
+    "title": "Introduction to Large Language Models",
+    "section": "From RNNs to transformers",
+    "text": "From RNNs to transformers\nIn an RNN, information from earlier tokens must pass through successive hidden states. This can make long-range dependencies difficult to learn. A transformer instead uses attention to combine information directly across positions.\n\nConsider the sentence:\n\nThe animal did not cross the street because it was tired.\n\n\nWhat does it refer to?\nTo interpret the token it, information from earlier tokens such as animal may be especially useful.\nAttention allows a model to learn which representations are useful when updating a token’s representation."
+  },
+  {
+    "objectID": "Week13.html#self-attention-the-main-idea",
+    "href": "Week13.html#self-attention-the-main-idea",
+    "title": "Introduction to Large Language Models",
+    "section": "Self-attention: The main idea",
+    "text": "Self-attention: The main idea\nSuppose we have a sequence of \\(T\\) token representations, \\(\\mathbf h_1,\\ldots,\\mathbf h_T\\).\nFor a particular position \\(t\\), we want to construct a new representation using information from the sequence.\n\\[\\mathbf a_t=\\sum_{i\\leq t}\\alpha_{ti}\\mathbf v_i,\\]\nwhere \\(\\mathbf v_i\\) is a learned transformation of the representation at position \\(i\\), and\n\\[\\alpha_{ti}\\geq 0,\\qquad \\sum_{i\\leq t}\\alpha_{ti}=1.\\]\nAttention is a weighted average of value vectors. The weights depend on the input context."
+  },
+  {
+    "objectID": "Week13.html#self-attention-a-visual-illustration",
+    "href": "Week13.html#self-attention-a-visual-illustration",
+    "title": "Introduction to Large Language Models",
+    "section": "Self-attention: A visual illustration",
+    "text": "Self-attention: A visual illustration\n\nThe weights shown are hypothetical. A real transformer learns its attention patterns from data; these weights alone are not a reliable explanation of its predictions."
+  },
+  {
+    "objectID": "Week13.html#queries-keys-and-values",
+    "href": "Week13.html#queries-keys-and-values",
+    "title": "Introduction to Large Language Models",
+    "section": "Queries, keys and values",
+    "text": "Queries, keys and values\nFor each input representation \\(\\mathbf h_i\\in\\mathbb R^d\\), construct three vectors:\n\\[\\mathbf q_i=W_Q\\mathbf h_i,\\qquad \\mathbf k_i=W_K\\mathbf h_i,\\qquad \\mathbf v_i=W_V\\mathbf h_i.\\]\n\nQuery: what information is relevant to this position?\nKey: what information can this position be matched on?\nValue: what information can this position contribute?\n\n\n\\(W_Q,W_K,W_V\\) are trainable weight matrices. The query and key vectors have the same dimension \\(d_k\\) so that we can take their inner product."
+  },
+  {
+    "objectID": "Week13.html#how-do-we-calculate-attention-weights",
+    "href": "Week13.html#how-do-we-calculate-attention-weights",
+    "title": "Introduction to Large Language Models",
+    "section": "How do we calculate attention weights?",
+    "text": "How do we calculate attention weights?\nFor position \\(t\\), compare its query with the keys of the available tokens:\n\\[s_{ti}=\\frac{\\mathbf q_t^T\\mathbf k_i}{\\sqrt{d_k}},\\qquad i\\leq t.\\]\nThe scaling helps control the magnitude of dot products as their dimension increases.\nApply softmax to the scores:\n\\[\\alpha_{ti}=\\frac{\\exp(s_{ti})}{\\sum_{j\\leq t}\\exp(s_{tj})}.\\]\nFinally,\n\\[\\mathbf a_t=\\sum_{i\\leq t}\\alpha_{ti}\\mathbf v_i.\\]"
+  },
+  {
+    "objectID": "Week13.html#in-class-question-attention",
+    "href": "Week13.html#in-class-question-attention",
+    "title": "Introduction to Large Language Models",
+    "section": "In-class question: Attention",
+    "text": "In-class question: Attention\nSuppose the scaled attention scores for a particular token are\n\\[s_{t1}=0,\\qquad s_{t2}=\\log(2),\\qquad s_{t3}=0.\\]\nWithout a calculator, what are the attention weights?\n\n\\[\\boldsymbol\\alpha_t=\\frac{(1,2,1)}{1+2+1}=(0.25,0.5,0.25).\\]\n\n\nIf the value vectors are \\((2,0)^T\\), \\((0,2)^T\\), and \\((2,2)^T\\), then\n\\[\\mathbf a_t=0.25\\begin{pmatrix}2\\\\0\\end{pmatrix}+0.5\\begin{pmatrix}0\\\\2\\end{pmatrix}+0.25\\begin{pmatrix}2\\\\2\\end{pmatrix}=\\begin{pmatrix}1\\\\1.5\\end{pmatrix}.\\]"
+  },
+  {
+    "objectID": "Week13.html#some-important-details-about-transformers",
+    "href": "Week13.html#some-important-details-about-transformers",
+    "title": "Introduction to Large Language Models",
+    "section": "Some important details about transformers",
+    "text": "Some important details about transformers\n\nCausal masking: in a GPT-style model, position \\(t\\) may only attend to positions \\(1,\\ldots,t\\). Otherwise, it could use future tokens when learning to predict them.\nPosition information: attention alone does not adequately encode sequence order; the architecture incorporates information about token positions.\nMultiple attention heads: different learned projections allow the network to combine information in different ways.\n\n\nWe will not go into the full architecture, but these components are repeated across multiple layers."
+  },
+  {
+    "objectID": "Week13.html#putting-it-together-a-gpt-style-model",
+    "href": "Week13.html#putting-it-together-a-gpt-style-model",
+    "title": "Introduction to Large Language Models",
+    "section": "Putting it together: A GPT-style model",
+    "text": "Putting it together: A GPT-style model\n\nA transformer block includes attention and a feedforward neural network, along with residual connections and normalization (not shown in detail).\nIn GPT-style models, attention is causal: a position cannot access future tokens. Position information is also incorporated.\n\nEmphasize this is a schematic decoder-only architecture, not the exact architecture of every LLM. During training the output at each position predicts the following token."
+  },
+  {
+    "objectID": "Week13.html#where-do-the-training-labels-come-from",
+    "href": "Week13.html#where-do-the-training-labels-come-from",
+    "title": "Introduction to Large Language Models",
+    "section": "Where do the training labels come from?",
+    "text": "Where do the training labels come from?\nSuppose we have the token sequence:\n\n\n\nInput context\nTarget token\n\n\n\n\nThe\nmodel\n\n\nThe model\nlearns\n\n\nThe model learns\nfrom\n\n\nThe model learns from\ndata\n\n\n\n\nThe text itself provides the targets! We do not need a person to manually assign a class label to each example.\nThis is an example of self-supervised learning. With causal masking, these predictions can be computed in parallel across positions during training."
+  },
+  {
+    "objectID": "Week13.html#training-an-llm-the-loss-function",
+    "href": "Week13.html#training-an-llm-the-loss-function",
+    "title": "Introduction to Large Language Models",
+    "section": "Training an LLM: The loss function",
+    "text": "Training an LLM: The loss function\nLet \\(\\boldsymbol\\theta\\) denote all trainable parameters of the model. For a training sequence, we minimize the average negative log-likelihood:\n\\[\\mathcal L(\\boldsymbol\\theta)=-\\frac{1}{T}\\sum_{t=1}^{T}\\log p_{\\boldsymbol\\theta}(x_t\\mid x_1,\\ldots,x_{t-1}).\\]\n(Here the first token is predicted from a start-of-sequence context.)\n\nIf \\(y_{tj}\\) is the one-hot indicator for the observed target token, the same loss can be written as\n\\[-\\frac{1}{T}\\sum_{t=1}^{T}\\sum_{j=1}^{M}y_{tj}\\log\\hat p_{tj}.\\]\nThis is multiclass cross-entropy!"
+  },
+  {
+    "objectID": "Week13.html#training-an-llm-optimization",
+    "href": "Week13.html#training-an-llm-optimization",
+    "title": "Introduction to Large Language Models",
+    "section": "Training an LLM: Optimization",
+    "text": "Training an LLM: Optimization\n\nPerform a forward pass to calculate the predicted token probabilities.\nCalculate the loss over a mini-batch of training data.\nUse backpropagation to compute gradients with respect to the model parameters.\nUpdate the parameters using a gradient-based optimizer (e.g., Adam).\n\n\\[\\boldsymbol\\theta\\leftarrow\\boldsymbol\\theta-\\eta\\nabla_{\\boldsymbol\\theta}\\mathcal L_{\\text{batch}}(\\boldsymbol\\theta)\\]\nThe equation illustrates a basic gradient descent step; Adam modifies the update using estimates of gradient moments."
+  },
+  {
+    "objectID": "Week13.html#pretraining-and-post-training",
+    "href": "Week13.html#pretraining-and-post-training",
+    "title": "Introduction to Large Language Models",
+    "section": "Pretraining and post-training",
+    "text": "Pretraining and post-training\n\n\nPretraining\n\nLearn general language patterns from a large corpus using next-token prediction.\nOften accounts for much of the computational cost.\n\n\nPost-training\n\nFurther adapt the pretrained model to follow instructions or meet other objectives.\nMay use supervised fine-tuning, human or AI preferences, or reinforcement learning.\n\n\n\nNot every model uses the same post-training procedure. A chatbot is more than just a raw pretrained language model."
+  },
+  {
+    "objectID": "Week13.html#generating-text-autoregressive-sampling",
+    "href": "Week13.html#generating-text-autoregressive-sampling",
+    "title": "Introduction to Large Language Models",
+    "section": "Generating text: Autoregressive sampling",
+    "text": "Generating text: Autoregressive sampling\nOnce the model has been trained, we can generate a sequence one token at a time.\n\n\nInput a prompt.\nCalculate the probability distribution for the next token.\nSelect a token (e.g., sample from the distribution).\nAppend it to the context and repeat until a stopping criterion is met.\n\n\n\nThe selected token becomes part of the input for the next prediction. Unlike training on known target sequences, generation proceeds sequentially."
+  },
+  {
+    "objectID": "Week13.html#generating-text-temperature",
+    "href": "Week13.html#generating-text-temperature",
+    "title": "Introduction to Large Language Models",
+    "section": "Generating text: Temperature",
+    "text": "Generating text: Temperature\nWe can modify the softmax probabilities at generation time using a temperature parameter \\(\\tau&gt;0\\):\n\\[p_j(\\tau)=\\frac{\\exp(z_j/\\tau)}{\\sum_{k=1}^{M}\\exp(z_k/\\tau)}.\\]\n\nTemperature: 1.0 \n\n\n\n\nLower temperature concentrates probability on high-scoring tokens; higher temperature makes the distribution more uniform. The logits in this demonstration are fixed and illustrative."
+  },
+  {
+    "objectID": "Week13.html#interactive-demonstration",
+    "href": "Week13.html#interactive-demonstration",
+    "title": "Introduction to Large Language Models",
+    "section": "Interactive demonstration",
+    "text": "Interactive demonstration\nTransformer Explainer (Georgia Tech)\nAs a class, enter a short prompt and investigate:\n\nWhat are the most likely next tokens?\nHow do the probabilities change if we modify the prompt?\nWhat happens when we change the temperature?\n\n\nOpen website in a separate tab before class. If it fails to load, use the local temperature slide and ask students to predict how adding the words “river” or “money” changes the completion of “I went to the bank to”. Suggested time 3–4 minutes."
+  },
+  {
+    "objectID": "Week13.html#does-a-high-probability-imply-a-correct-answer",
+    "href": "Week13.html#does-a-high-probability-imply-a-correct-answer",
+    "title": "Introduction to Large Language Models",
+    "section": "Does a high probability imply a correct answer?",
+    "text": "Does a high probability imply a correct answer?\n\nThe training objective rewards prediction of observed tokens. It does not directly reward factual correctness.\n\n\n\nAn LLM can generate plausible but false information (often called a hallucination).\nPredictions depend on the distribution and quality of the training data.\nPerformance may deteriorate on unfamiliar tasks or distributions.\nSampling probabilities are not calibrated probabilities that an entire answer is correct."
+  },
+  {
+    "objectID": "Week13.html#model-assessment-and-responsible-use",
+    "href": "Week13.html#model-assessment-and-responsible-use",
+    "title": "Introduction to Large Language Models",
+    "section": "Model assessment and responsible use",
+    "text": "Model assessment and responsible use\n\nGeneralization: how well does the model perform on genuinely unseen examples?\nData leakage: benchmark examples may appear in training data.\nBias: training data and post-training decisions can influence model outputs in unequal ways.\nPrivacy: sensitive information should not be entered into systems without appropriate safeguards.\n\n\nDiscussion: Suppose an LLM generates an impressive statistical analysis, including references and numerical results. What would you check before trusting it?"
+  },
+  {
+    "objectID": "Week13.html#summary-large-language-models",
+    "href": "Week13.html#summary-large-language-models",
+    "title": "Introduction to Large Language Models",
+    "section": "Summary: Large language models",
+    "text": "Summary: Large language models\n\n\n\n\n\n\n\nConcept in STA314\nConnection to LLMs\n\n\n\n\nMulticlass classification\nPredict the next token\n\n\nSoftmax\nConvert logits to probabilities\n\n\nFeature representations\nToken embeddings\n\n\nDot products and weighted averages\nSelf-attention\n\n\nNeural networks\nTransformer blocks\n\n\nCross-entropy and likelihood\nPretraining objective\n\n\nGradient descent and backpropagation\nParameter estimation\n\n\nGeneralization and model assessment\nEvaluate reliability on unseen tasks\n\n\n\n\nKey takeaway: LLMs extend familiar statistical learning principles to large-scale sequence modelling. Their scale and architecture do not remove the need for careful model assessment.\n\nReferences: UBC CPSC 330; Stanford CS224N; 3Blue1Brown; Georgia Tech Transformer Explainer."
+  },
+  {
+    "objectID": "Week13.html#further-resources",
+    "href": "Week13.html#further-resources",
+    "title": "Introduction to Large Language Models",
+    "section": "Further resources",
+    "text": "Further resources\n\nUBC CPSC 330: Fundamentals of Large Language Models\nStanford CS224N: Natural Language Processing with Deep Learning\n3Blue1Brown: Transformers, the tech behind LLMs and Attention in transformers\nGeorgia Tech: Transformer Explainer\nVaswani et al. (2017): Attention Is All You Need\n\nThe numerical examples and schematic figures in these slides are original illustrative teaching examples."
+  },
+  {
+    "objectID": "Week13.html#simple-language-models",
+    "href": "Week13.html#simple-language-models",
+    "title": "Introduction to Large Language Models",
+    "section": "Simple language models",
+    "text": "Simple language models\nA unigram model ignores context: \\(\\hat P(x_t=j)=\\text{Count}(j)/N\\).\nA bigram model conditions on the previous token:\n\\[\\hat P(x_t=j\\mid x_{t-1}=i)=\\frac{\\text{Count}(i,j)}{\\text{Count}(i)}.\\]\n\n\n\nSequence\nCount\n\n\n\n\ndrink water\n6\n\n\ndrink coffee\n3\n\n\ndrink tea\n1\n\n\n\nWhat is the estimated probability of water given drink? What is the limitation of using only one previous token?\n\n\\(6/10=0.6\\). Longer contexts matter, but counting all possible sequences quickly becomes impractical."
+  },
+  {
+    "objectID": "Week13.html#why-does-context-matter",
+    "href": "Week13.html#why-does-context-matter",
+    "title": "Introduction to Large Language Models",
+    "section": "Why does context matter?",
+    "text": "Why does context matter?\nA transformer uses an attention mechanism to combine information across positions directly.\n\nConsider the sentence:\n\nThe animal did not cross the street because it was tired.\n\n\nWhat does it refer to?\nTo interpret the token it, information from earlier tokens such as animal may be especially useful.\nAttention allows a model to learn which representations are useful when updating a token’s representation."
+  },
+  {
+    "objectID": "Week13.html#training-an-llm-optimization-and-post-training",
+    "href": "Week13.html#training-an-llm-optimization-and-post-training",
+    "title": "Introduction to Large Language Models",
+    "section": "Training an LLM: Optimization and post-training",
+    "text": "Training an LLM: Optimization and post-training\nDuring pretraining, we minimize next-token cross-entropy over large collections of text.\n\nForward pass: obtain predicted probabilities.\nBackpropagation: compute gradients of the loss.\nUpdate parameters using a gradient-based optimizer (e.g., Adam).\n\n\\[\\boldsymbol\\theta\\leftarrow\\boldsymbol\\theta-\\eta\\nabla_{\\boldsymbol\\theta}\\mathcal L_{\\text{batch}}(\\boldsymbol\\theta)\\]\n\nPost-training can further adapt the model to follow instructions and human preferences. A chatbot is more than a raw pretrained language model."
+  },
+  {
+    "objectID": "Week13.html#limitations-and-responsible-use",
+    "href": "Week13.html#limitations-and-responsible-use",
+    "title": "Introduction to Large Language Models",
+    "section": "Limitations and responsible use",
+    "text": "Limitations and responsible use\n\nPredicting likely tokens is not the same as predicting factual truth.\n\n\nHallucinations: plausible but incorrect information.\nGeneralization and leakage: performance on genuinely unseen tasks may differ from benchmark results.\nBias and privacy: training data and deployment decisions matter.\n\n\nDiscussion: An LLM generates a statistical analysis with references and numerical results. What would you check before trusting it?"
+  },
+  {
+    "objectID": "Week13.html#recall-neural-networks-for-classification",
+    "href": "Week13.html#recall-neural-networks-for-classification",
+    "title": "Introduction to Large Language Models",
+    "section": "Recall: Neural networks for classification",
+    "text": "Recall: Neural networks for classification\nSuppose we want to classify an email as spam or not spam, using numerical features such as its length and the frequency of certain words.\n\n\n\nInput: numerical features \\(\\mathbf x\\).\nHidden layers: learn nonlinear representations of \\(\\mathbf x\\).\nOutput: class probabilities (softmax).\nTraining: minimize negative log-likelihood using gradient descent with backpropogation.\n\n\n\n\n\n\n\n\n\nWhat if we wanted to use the actual sequence of words rather than a fixed set of summary features?"
+  },
+  {
+    "objectID": "Week13.html#why-does-the-order-of-words-matter",
+    "href": "Week13.html#why-does-the-order-of-words-matter",
+    "title": "Introduction to Large Language Models",
+    "section": "Why does the order of words matter?",
+    "text": "Why does the order of words matter?\nConsider the following sentences:\n\nThe dog chased the cat.\nThe cat chased the dog.\n\nWould a model using only word counts be able to distinguish these two sentences?\n\nNo! They contain exactly the same words, but have different meanings.\nWe need a neural network that can account for the sequential structure of the input. Recall the recurrent neural network (RNN)."
+  },
+  {
+    "objectID": "Week13.html#from-sequence-classification-to-language-modelling",
+    "href": "Week13.html#from-sequence-classification-to-language-modelling",
+    "title": "Introduction to Large Language Models",
+    "section": "From sequence classification to language modelling",
+    "text": "From sequence classification to language modelling\nInstead of predicting whether an entire email is spam, suppose we want to predict the next word:\n\nThe student studied for the final …\n\nAn RNN could use its final hidden state \\(\\mathbf h_t\\) to produce probabilities over a vocabulary of \\(M\\) possible tokens:\n\\[\\mathbf z_t=W_o\\mathbf h_t+\\mathbf b_o,\\qquad \\hat{\\mathbf p}_t=\\operatorname{softmax}(\\mathbf z_t).\\]\n\nThis is still multiclass classification, but now the classes are possible next tokens (e.g., exam, assignment, week).\nModern GPT-style LLMs solve this prediction task with a much larger neural network, typically using a transformer rather than recurrence."
+  },
+  {
+    "objectID": "Week13.html#ethical-considerations-bias-and-fairness",
+    "href": "Week13.html#ethical-considerations-bias-and-fairness",
+    "title": "Introduction to Large Language Models",
+    "section": "Ethical Considerations: Bias and Fairness",
+    "text": "Ethical Considerations: Bias and Fairness\nRecall that machine learning models learn patterns from their training data.\n\nWhat happens if the training data are not representative of the population?\nWhat happens if the training data contain historical biases or stereotypes?\n\n\n\nLLMs are trained on large collections of text produced by humans. As a result, they can learn and reproduce biases that exist in society.\n\nDiscussion: Suppose a company uses an AI system to screen job applications. If the model was trained using historical hiring decisions, what potential problems could arise?"
+  },
+  {
+    "objectID": "Week13.html#ethical-considerations-reliability",
+    "href": "Week13.html#ethical-considerations-reliability",
+    "title": "Introduction to Large Language Models",
+    "section": "Ethical Considerations: Reliability",
+    "text": "Ethical Considerations: Reliability\nRecall that the objective of a language model is to estimate\n\\[\nP_{\\boldsymbol{\\theta}}(x_{t+1}\\mid x_1,\\ldots,x_t).\n\\]\nThe model is trained to predict plausible subsequent tokens, not explicitly to verify whether its statements are factually correct.\n\n\nLLMs can generate incorrect information that appears convincing.\nThey can fabricate references, statistical results, and explanations.\nA fluent response does not necessarily imply a correct response.\n\nThis phenomenon is commonly referred to as hallucination."
+  },
+  {
+    "objectID": "Week13.html#ethical-considerations-beyond-predictions",
+    "href": "Week13.html#ethical-considerations-beyond-predictions",
+    "title": "Introduction to Large Language Models",
+    "section": "Ethical Considerations: Beyond Predictions",
+    "text": "Ethical Considerations: Beyond Predictions\nTraining Data and Consent\n\nWhere does the training data come from?\nDid the individuals who produced these data consent to their use?\nWho owns the content used to train these models?\n\nPrivacy\n\nWhat happens when users provide sensitive or confidential information to an AI system?\nCan a model memorize and reproduce information from its training data?\n\nTransparency and Accountability\n\nCan we explain why a model generated a particular response?\nWho is responsible when an AI-generated decision causes harm?"
+  },
+  {
+    "objectID": "Week13.html#summary",
+    "href": "Week13.html#summary",
+    "title": "Introduction to Large Language Models",
+    "section": "Summary",
+    "text": "Summary\n\nLarge language models are neural networks trained to model language through tasks such as next-token prediction.\nMany of the underlying concepts are familiar: softmax, minimizing a loss function, and gradient descent\nTransformers use attention mechanisms to capture contextual relationships between tokens.\nLLMs generate text by repeatedly predicting and selecting subsequent tokens.\nDespite their capabilities, LLMs have important ehtical considerations involving reliability, bias, privacy and interpretability.\n\n\n\nUnderstanding how machine learning models work is fundamental to understanding their limitations and using them responsibly."
+  },
+  {
+    "objectID": "Week13.html#sequence-inputs",
+    "href": "Week13.html#sequence-inputs",
+    "title": "Introduction to Large Language Models",
+    "section": "Sequence Inputs",
+    "text": "Sequence Inputs\nConsider the following sentences:\n\nThe dog chased the cat.\nThe cat chased the dog.\n\n \n\nA model using only word counts would not be able to distinguish between these two sentences.\n\nThey contain exactly the same words, but have different meanings.\n\nWe need a neural network that can account for the sequential structure of the input. Recall the recurrent neural network (RNN)."
+  },
+  {
+    "objectID": "Week13.html#recall-recurrent-neural-networks-rnns",
+    "href": "Week13.html#recall-recurrent-neural-networks-rnns",
+    "title": "Introduction to Large Language Models",
+    "section": "Recall: Recurrent Neural Networks (RNNs)",
+    "text": "Recall: Recurrent Neural Networks (RNNs)\nAn RNN processes a sequence one element at a time.\n\n\n\nInformation from previous words must be passed from one hidden state to the next.\nImportant information from earlier words may be lost when processing long sequences."
+  },
+  {
+    "objectID": "Week13.html#language-modelling-1",
+    "href": "Week13.html#language-modelling-1",
+    "title": "Introduction to Large Language Models",
+    "section": "Language Modelling",
+    "text": "Language Modelling\nA large language model (LLM) is a large neural network trained to model language. It is an example of deep learning.\n\nA token is a unit of text processed by the model. It can be an entire word, part of a word, or a punctuation mark.\n\n\n\nLet \\(x_1,\\ldots,x_T\\) denote a sequence of \\(T\\) tokens. We can express the probability of observing this sequence as:\n\\[\nP(x_1,\\ldots,x_T)=\\prod_{t=1}^{T}P(x_t\\mid x_1,\\ldots,x_{t-1}).\n\\]\nFor example,\n\\[\nP(\\text{I, love, statistics}) = P(\\text{I})P(\\text{love}\\mid\\text{I})P(\\text{statistics}\\mid\\text{I, love}).\n\\]\n\n\nRather than modelling the probability of an entire sequence directly, we train a neural network to predict the probability distribution of the next token given the preceding tokens."
+  },
+  {
+    "objectID": "Week13.html#language-modelling-2",
+    "href": "Week13.html#language-modelling-2",
+    "title": "Introduction to Large Language Models",
+    "section": "Language Modelling",
+    "text": "Language Modelling\nFor a vocabulary of \\(M\\) tokens, the output layer produces logits \\(z_1,\\ldots,z_M\\) and applies softmax:\n\\[\n\\hat p_j=\\frac{\\exp(z_j)}{\\sum_{k=1}^{M}\\exp(z_k)},\n\\qquad j=1,\\ldots,M.\n\\]\n \n\n\nThe capital of Canada is …\n\n\n\n  Ottawa\n  \n  0.75\n\n  Toronto\n  \n  0.12\n\n  located\n  \n  0.06\n\n  a\n  \n  0.04\n\n  Other\n  \n  0.03\n\n\n\n\nNote: These probabilities are illustrative. “Other” represents the combined probability of all remaining tokens in the vocabulary."
+  },
+  {
+    "objectID": "Week13.html#transformers-for-an-llm",
+    "href": "Week13.html#transformers-for-an-llm",
+    "title": "Introduction to Large Language Models",
+    "section": "Transformers for an LLM",
+    "text": "Transformers for an LLM\n\nSo why do we use transformers rather than an RNN?\n\nRecall: RNNs may lose important information from earlier tokens when processing long sequences.\nTransformers, which are another specialized architecture of neural networks, use attention to directly access information from previous tokens and assign greater weight to the most relevant ones.\n\nConsider the sentence:\n\nThe animal did not cross the street because it was tired.\n\n\nWhat does it refer to?\nTo interpret the token it, information from earlier tokens such as animal may be especially useful.\nThe attention mechanism allows the model to learn which tokens to pay more attention to in order to better understand the context."
+  },
+  {
+    "objectID": "Week13.html#transformers-for-an-llm-attention-mechanism",
+    "href": "Week13.html#transformers-for-an-llm-attention-mechanism",
+    "title": "Introduction to Large Language Models",
+    "section": "Transformers for an LLM: Attention Mechanism",
+    "text": "Transformers for an LLM: Attention Mechanism\nRecall that each token is initially represented by a numerical vector (its token embedding).\nThe goal of attention is to construct a new numerical representation of each token that incorporates information from its context.\nTo construct this new representation for token \\(t\\), we compute a weighted average:\n\\[\n\\mathbf a_t=\\sum_{i=1}^{t}\\alpha_{ti}\\mathbf v_i,\n\\qquad \\sum_{i=1}^{t}\\alpha_{ti}=1,\n\\quad \\alpha_{ti}\\geq 0.\n\\]\n\n\n\\(\\mathbf v_i\\) is a transformation of the numerical representation of token \\(i\\).\n\\(\\alpha_{ti}\\) is the attention weight assigned to token \\(i\\) when processing token \\(t\\).\nThese weights depend on the context and are computed using parameters learned during training.\n\n\n\nBefore attention: A numerical vector representing the token itself (its initial embedding).\nAfter attention: A numerical vector representing the token within its context (a contextual representation)."
+  },
+  {
+    "objectID": "Week13.html#large-language-model",
+    "href": "Week13.html#large-language-model",
+    "title": "Introduction to Large Language Models",
+    "section": "Large Language Model",
+    "text": "Large Language Model"
+  },
+  {
+    "objectID": "Week13.html#training-an-llm",
+    "href": "Week13.html#training-an-llm",
+    "title": "Introduction to Large Language Models",
+    "section": "Training an LLM",
+    "text": "Training an LLM\nLet \\(\\boldsymbol\\theta\\) denote all trainable parameters of the model.\nRecall that we are trying to predict the next token.\nWe can estimate the parameters by minimizing the average negative log-likelihood:\n\\[\n\\mathcal L(\\boldsymbol\\theta)=\n-\\frac{1}{T}\\sum_{t=1}^{T}\n\\log p_{\\boldsymbol\\theta}(x_t\\mid x_1,\\ldots,x_{t-1}).\n\\]\n\nWhere have we seen this before?\nThis is the negative log-likelihood for multiclass classification (also known as multiclass cross-entropy)."
+  },
+  {
+    "objectID": "Week13.html#training-an-llm-1",
+    "href": "Week13.html#training-an-llm-1",
+    "title": "Introduction to Large Language Models",
+    "section": "Training an LLM",
+    "text": "Training an LLM\nDuring pretraining, the model learns to predict the next token by minimizing the loss function over large collections of text.\nRecall how we train a neural network:\n\nForward pass: obtain predicted probabilities and compute the loss.\nBackpropagation: compute the gradients of the loss function.\nGradient-based optimization: update the parameters.\n\n\nDuring post-training, the pretrained model can be further trained to follow instructions and align with human preferences."
+  },
+  {
+    "objectID": "Week13.html#transformers-for-an-llm-1",
+    "href": "Week13.html#transformers-for-an-llm-1",
+    "title": "Introduction to Large Language Models",
+    "section": "Transformers for an LLM",
+    "text": "Transformers for an LLM\nRecall that each token is initially represented by a numerical vector (its token embedding).\nThe goal of attention is to construct a new numerical representation of each token that incorporates information from its context.\nTo construct this new representation for token \\(t\\), we compute a weighted average:\n\\[\n\\mathbf a_t=\\sum_{i=1}^{t}\\alpha_{ti}\\mathbf v_i,\n\\qquad \\sum_{i=1}^{t}\\alpha_{ti}=1,\n\\quad \\alpha_{ti}\\geq 0.\n\\]\n\n\n\\(\\mathbf v_i\\) is a transformation of the numerical representation of token \\(i\\).\n\\(\\alpha_{ti}\\) is the attention weight assigned to token \\(i\\) when processing token \\(t\\).\nThese weights depend on the context and are computed using parameters learned during training.\n\n\n\nBefore attention: A numerical vector representing the token itself (its initial embedding).\nAfter attention: A numerical vector representing the token within its context (a contextual representation)."
+  },
+  {
+    "objectID": "Week13.html#large-language-model-1",
+    "href": "Week13.html#large-language-model-1",
+    "title": "Introduction to Large Language Models",
+    "section": "Large Language Model",
+    "text": "Large Language Model\nParameters to be estimated:\n\nToken embeddings (entries of the embedding matrix).\nParameters used to compute the attention weights \\(\\alpha_{ti}\\).\nWeights and biases in the feedforward neural networks.\nWeights and biases in the output layer.\n\nThese parameters are learned during training by minimizing a loss function.\n\nHyperparameters to be selected or tuned:\n\nDimension of the token embeddings.\nNumber of transformer blocks.\nNumber of attention heads.\nNumber of hidden units in the feedforward neural networks.\nLearning rate, batch size, and regularization."
+  },
+  {
+    "objectID": "Week13.html#ethical-considerations-the-data-itself",
+    "href": "Week13.html#ethical-considerations-the-data-itself",
+    "title": "Introduction to Large Language Models",
+    "section": "Ethical Considerations: The Data Itself",
+    "text": "Ethical Considerations: The Data Itself\nTraining Data and Consent\n\nWhere does the training data come from?\nDid the individuals who produced these data consent to their use?\nWho owns the content used to train these models?\n\n\nPrivacy\n\nWhat happens when users provide sensitive or confidential information to an AI system?\nCan a model memorize and reproduce information from its training data?\n\n\n\nTransparency and Accountability\n\nCan we explain why a model generated a particular response?\nWho is responsible when an AI-generated decision causes harm?"
   }
 ]
