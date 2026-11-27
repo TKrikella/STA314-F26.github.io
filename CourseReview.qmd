@@ -1,0 +1,946 @@
+---
+title: "Course Review"
+subtitle: "Putting it all Together"
+format: 
+  live-revealjs:
+    css: styles.css
+    html-math-method: mathjax
+    scrollable: true
+    slide-number: "c/t"
+    footer: '<div style="font-size: 15px; display: flex; justify-content: space-between; width: 92%; margin-left: 4em;"><span style="flex: 1; text-align: left;">STA314: Statistical Methods for Machine Learning I</span><span style="flex: 1; text-align: center;">Course Review</span><span style="flex: 1;"></span></div>'
+    smaller: true
+    menu: 
+      side: right
+      width: wide
+webr:
+  packages:
+    - dplyr
+    - infer
+    - ggplot2
+    - class
+persist: true
+editor: visual
+execute:
+  echo: true
+  warning: false
+engine: knitr
+---
+
+## The Machine Learning Workflow
+
+```{=html}
+<div class="ml-workflow">
+
+  <div class="ml-step" style="--fill:#E3EDF5; --accent:#557B9E;">
+    <span class="ml-step-number">1</span>
+    <span class="ml-step-title">Define the objective</span>
+    <span class="ml-step-description">What are we trying to learn or predict?</span>
+  </div>
+
+  <div class="ml-step" style="--fill:#E3EDF5; --accent:#557B9E;">
+    <span class="ml-step-number">2</span>
+    <span class="ml-step-title">Understand and prepare the data</span>
+    <span class="ml-step-description">What are the characteristics of our data?</span>
+  </div>
+
+  <div class="ml-step" style="--fill:#E3F0E8; --accent:#478B77;">
+    <span class="ml-step-number">3</span>
+    <span class="ml-step-title">Identify candidate models</span>
+    <span class="ml-step-description">Which methods are appropriate?</span>
+  </div>
+
+  <div class="ml-step" style="--fill:#F8EFD9; --accent:#B28A45;">
+    <span class="ml-step-number">4</span>
+    <span class="ml-step-title">Train and tune the models</span>
+    <span class="ml-step-description">How do we estimate parameters and tune hyperparameters?</span>
+  </div>
+
+  <div class="ml-step" style="--fill:#EEE5F4; --accent:#9876AC;">
+    <span class="ml-step-number">5</span>
+    <span class="ml-step-title">Compare and select a model</span>
+    <span class="ml-step-description">Which model best meets our objectives?</span>
+  </div>
+
+  <div class="ml-step" style="--fill:#F5E4DD; --accent:#B8735D;">
+    <span class="ml-step-number">6</span>
+    <span class="ml-step-title">Evaluate the final model</span>
+    <span class="ml-step-description">How well does our selected model generalize?</span>
+  </div>
+
+  <div class="ml-feedback">
+    <span class="ml-feedback-label">Revisit candidate models</span>
+  </div>
+
+</div>
+```
+
+## Define the Objective
+
+```{=html}
+<div class="rv" style="--a:#557B9E;--f:#E3EDF5"><div class="rv-nav"><div class="rv-tab on" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab " style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab " style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-root">What are we trying to learn?</div><div class="rv-branches" style="--cols:2"><div class="rv-branch"><div class="rv-head">Supervised learning</div><div class="rv-card"><strong>Regression</strong><div>Predict a quantitative response.</div></div><div class="rv-card"><strong>Classification</strong><div>Predict a categorical response.</div></div></div><div class="rv-branch"><div class="rv-head">Unsupervised learning</div><div class="rv-card"><strong>Dimension reduction</strong><div>Represent observations using fewer, low dimensional features.</div></div><div class="rv-card"><strong>Clustering</strong><div>Identify groups of similar observations.</div></div></div></div></div>
+```
+
+
+## Define the Objective
+
+```{=html}
+<div class="rv" style="--a:#557B9E;--f:#E3EDF5"><div class="rv-nav"><div class="rv-tab on" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab " style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab " style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-grid" style="--cols:2"><div class="rv-card"><strong>Prediction</strong><div>How accurately can we predict new observations?<br><br>Prioritize out-of-sample performance.</div></div><div class="rv-card"><strong>Interpretation</strong><div>How is the response associated with predictors?<br><br>Prioritize meaningful, interpretable relationships.</div></div></div><div class="rv-note"><b>Discuss:</b> Would you choose the same model for both objectives?</div></div>
+```
+
+
+## Understand and Prepare the Data
+
+```{=html}
+<div class="rv" style="--a:#557B9E;--f:#E3EDF5">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab on" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-grid" style="--cols:3">
+
+    <div class="rv-card">
+      <strong>Sample size and dimension</strong>
+      <div>How large is p relative to n?</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Correlated predictors</strong>
+      <div>Unstable coefficients → consider regularization.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Different feature scales</strong>
+      <div>Consider standardizing.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Nonlinearity and interactions</strong>
+      <div>Consider flexible functional forms.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Sparsity</strong>
+      <div>Are only a few predictors believed to be informative?</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Class imbalance</strong>
+      <div>This may affect training and the choice of evaluation metric.</div>
+    </div>
+
+  </div>
+
+</div>
+```
+
+
+## Understand and Prepare the Data
+
+```{=html}
+<div class="rv" style="--a:#557B9E;--f:#E3EDF5"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab on" style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab " style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab " style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-root">Available data</div><div class="rv-branches" style="--cols:2"><div class="rv-branch"><div class="rv-head">Training data</div><div class="rv-card"><strong>Explore and preprocess</strong><div>Fit transformations on training data.</div></div><div class="rv-card"><strong>Train, tune and select</strong><div>Repeat preprocessing within validation folds.</div></div><div class="rv-card"><strong>Refit</strong><div>Fit the selected pipeline on all training data.</div></div></div><div class="rv-branch"><div class="rv-head">Held-out test data</div><div class="rv-card"><strong>Set aside</strong><div>Do not use for model or hyperparameter selection.</div></div><div class="rv-card"><strong>Final evaluation</strong><div>Apply the fitted pipeline to estimate generalization.</div></div></div></div><div class="rv-note">This split is for supervised prediction. Unsupervised exploration has different objectives.</div></div>
+```
+
+
+## Identify Candidate Models: Regression
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab " style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-root">Continuous response</div><div class="rv-branches" style="--cols:3"><div class="rv-branch"><div class="rv-head">Linear structure</div><div class="rv-card"><strong>OLS</strong><div>Interpretable baseline.</div></div><div class="rv-card"><strong>Ridge / LASSO</strong><div>Regularize or select predictors.</div></div></div><div class="rv-branch"><div class="rv-head">Nonlinear or local structure</div><div class="rv-card"><strong>Polynomial / step / splines</strong><div>Choose a suitable basis.</div></div><div class="rv-card"><strong>k-NN / local linear</strong><div>Exploit local similarity.</div></div></div><div class="rv-branch"><div class="rv-head">Complex interactions</div><div class="rv-card"><strong>Trees / ensembles</strong><div>Flexible partitioning.</div></div><div class="rv-card"><strong>Neural networks</strong><div>Flexible learned representations.</div></div></div></div></div>
+```
+
+
+## Identify Candidate Models: Regression
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-grid" style="--cols:3">
+
+    <div class="rv-card">
+      <strong>OLS</strong>
+      <div>
+        <b>Consider:</b> Approximately linear relationship;
+        relatively few predictors<br>
+        <b class="rv-plus">Advantage:</b> Simple, interpretable<br>
+        <b class="rv-minus">Limitation:</b> Sensitive to multicollinearity;
+        no unique coefficient estimates when p &gt; n;
+        limited flexibility<br>
+        <b>Tune:</b> None
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Ridge</strong>
+      <div>
+        <b>Consider:</b> Approximately linear relationship;
+        many and/or highly correlated predictors<br>
+        <b class="rv-plus">Advantage:</b> Stabilizes coefficient estimates;
+        accommodates p &gt; n<br>
+        <b class="rv-minus">Limitation:</b> Introduces shrinkage bias;
+        does not perform feature selection<br>
+        <b>Tune:</b> λ (penalty strength)
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>LASSO</strong>
+      <div>
+        <b>Consider:</b> Approximately linear relationship;
+        suspected sparsity or interest in feature selection<br>
+        <b class="rv-plus">Advantage:</b> Performs feature selection;
+        accommodates p &gt; n<br>
+        <b class="rv-minus">Limitation:</b> Introduces shrinkage bias;
+        potentially unstable selection of correlated predictors<br>
+        <b>Tune:</b> λ (penalty strength)
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rv-note">
+    Regularization introduces shrinkage bias in exchange
+    for potentially lower variance.
+  </div>
+
+</div>
+```
+
+
+## Identify Candidate Models: Regression
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-grid" style="--cols:3">
+
+    <div class="rv-card">
+      <strong>Regression splines</strong>
+      <div>
+        <b>Consider:</b> Smooth nonlinear relationships<br>
+        <b class="rv-plus">Advantage:</b> Smooth fit with local flexibility<br>
+        <b class="rv-minus">Limitation:</b> Choice of knots;
+        potentially unstable behaviour near boundaries<br>
+        <b>Tune:</b> Number and location of knots, degree<br><br>
+        <b>Natural cubic splines:</b> Impose linearity beyond
+        the boundary knots to reduce boundary instability.
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>k-NN regression</strong>
+      <div>
+        <b>Consider:</b> Nearby observations have similar
+        responses; low-dimensional data<br>
+        <b class="rv-plus">Advantage:</b> No specified
+        functional form; simple to implement<br>
+        <b class="rv-minus">Limitation:</b> Sensitive to
+        feature scales; curse of dimensionality<br>
+        <b>Tune:</b> k (number of neighbours)
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Local linear regression</strong>
+      <div>
+        <b>Consider:</b> Smooth nonlinear relationships
+        with varying local trends<br>
+        <b class="rv-plus">Advantage:</b> Flexible fit;
+        reduces boundary bias compared with local constant regression<br>
+        <b class="rv-minus">Limitation:</b> Curse of
+        dimensionality; computational cost<br>
+        <b>Tune:</b> Bandwidth
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rv-note">
+    Splines introduce flexibility through basis expansions,
+    while k-NN and local linear regression make predictions
+    using neighbouring observations.
+  </div>
+
+</div>
+```
+
+
+## Identify Candidate Models: Regression
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-grid" style="--cols:2">
+
+    <div class="rv-card">
+      <strong>Pruned regression tree</strong>
+      <div>
+        <b>Consider:</b> Nonlinear relationships;
+        interpretability is important<br>
+        <b class="rv-plus">Advantage:</b> Automatically captures
+        interactions; easy to visualize when small<br>
+        <b class="rv-minus">Limitation:</b> Potentially high variance;
+        observations in the same terminal node receive
+        the same prediction<br>
+        <b>Tune:</b> Pruning parameter, tree depth
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Bagging / Random forest</strong>
+      <div>
+        <b>Consider:</b> Nonlinear relationships; predictive performance is important<br>
+        <b class="rv-plus">Advantage:</b> Averages multiple trees
+        to reduce variance; RF further reduces correlation
+        between trees<br>
+        <b class="rv-minus">Limitation:</b> Less interpretable
+        than a single tree; limited extrapolation<br>
+        <b>Tune:</b> Number of trees, number of candidate
+        predictors per split (RF)
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Boosting</strong>
+      <div>
+        <b>Consider:</b> Nonlinear relationships;
+        predictive performance is important<br>
+        <b class="rv-plus">Advantage:</b> Sequentially fits trees
+        to correct previous prediction errors<br>
+        <b class="rv-minus">Limitation:</b> Less interpretable;
+        can overfit if not appropriately tuned<br>
+        <b>Tune:</b> Number of trees, learning rate, tree depth
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Neural network</strong>
+      <div>
+        <b>Consider:</b> Complex nonlinear relationships; predictive performance is important; large sample size<br>
+        <b class="rv-plus">Advantage:</b> Highly flexible;
+        learns complex relationships<br>
+        <b class="rv-minus">Limitation:</b> Less interpretable;
+        computationally expensive; nonconvex optimization<br>
+        <b>Tune:</b> Architecture, learning rate, regularization
+      </div>
+    </div>
+
+  </div>
+
+</div>
+```
+
+
+## Note: How Tree Ensembles Improve on a Single Tree
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab " style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-root">Regression tree: flexible rules, potentially high variance</div><div class="rv-branches" style="--cols:3"><div class="rv-branch"><div class="rv-head">Prune</div><div class="rv-card"><strong>Single tree</strong><div>Control complexity while retaining interpretability.</div></div></div><div class="rv-branch"><div class="rv-head">Average</div><div class="rv-card"><strong>Bagging</strong><div>Bootstrap trees to reduce variance.</div></div><div class="rv-card"><strong>Random forest</strong><div>Random candidate features at splits reduce tree correlation.</div></div></div><div class="rv-branch"><div class="rv-head">Improve sequentially</div><div class="rv-card"><strong>Boosting</strong><div>Fit successive trees to improve the current predictor.</div></div></div></div></div>
+```
+
+
+## Identify Candidate Models: Classification
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-root">Categorical response</div>
+
+  <div class="rv-grid" style="--cols:3">
+
+    <div class="rv-card">
+      <strong>Logistic regression</strong>
+      <div>Directly models posterior class probabilities.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>LDA / QDA / Naive Bayes</strong>
+      <div>Models class-conditional distributions and
+      applies Bayes' theorem.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>k-NN</strong>
+      <div>Classifies observations based on
+      neighbouring observations.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>SVM</strong>
+      <div>Constructs a large-margin decision boundary.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Trees / ensembles</strong>
+      <div>Partitions the feature space into regions.</div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Neural networks</strong>
+      <div>Learns complex nonlinear relationships between
+      predictors and class probabilities.</div>
+    </div>
+
+  </div>
+
+</div>
+```
+
+
+## Identify Candidate Models: Classification
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-grid" style="--cols:2">
+
+    <div class="rv-card">
+      <strong>Logistic regression (binary / multiclass)</strong>
+      <div>
+        <b>Consider:</b> Approximately linear log-odds; interpretation of predictor effects is important<br>
+        <b class="rv-plus">Advantage:</b> Interpretable coefficients;
+        no class-conditional distribution assumptions<br>
+        <b class="rv-minus">Limitation:</b> Linear decision
+        boundaries; no finite MLE under complete separation<br>
+        <b>Tune:</b> None in basic model
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>LDA</strong>
+      <div>
+        <b>Consider:</b> Approximately Gaussian class-conditional
+        distributions; common covariance<br>
+        <b class="rv-plus">Advantage:</b> Fewer parameters than QDA;
+        pooled covariance estimate<br>
+        <b class="rv-minus">Limitation:</b> Linear decision
+        boundaries; common covariance assumption<br>
+        <b>Tune:</b> None in basic model
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>QDA</strong>
+      <div>
+        <b>Consider:</b> Approximately Gaussian class-conditional
+        distributions; unequal covariances<br>
+        <b class="rv-plus">Advantage:</b> Allows quadratic
+        decision boundaries<br>
+        <b class="rv-minus">Limitation:</b> More parameters;
+        Must estimate a separate covariance matrix for each class; estimates may be unstable
+when sample sizes within classes are small<br>
+        <b>Tune:</b> None in basic model
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Naive Bayes</strong>
+      <div>
+        <b>Consider:</b> Conditional independence of
+        predictors given class is plausible; many predictors relative to the sample size<br>
+        <b class="rv-plus">Advantage:</b> Simplifies estimation (fewer parameters than QDA);
+        useful in high dimensions<br>
+        <b class="rv-minus">Limitation:</b> Conditional
+        independence assumption may be unrealistic<br>
+        <b>Tune:</b> None in basic model
+      </div>
+    </div>
+
+  </div>
+
+</div>
+```
+
+
+## Identify Candidate Models: Classification
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-grid" style="--cols:3">
+
+    <div class="rv-card">
+      <strong>k-NN</strong>
+      <div>
+        <b>Consider:</b> Nearby observations tend to belong
+        to the same class; low-dimensional data<br>
+        <b class="rv-plus">Advantage:</b> No specified functional
+        form; flexible decision boundaries<br>
+        <b class="rv-minus">Limitation:</b> Sensitive to feature
+        scales; curse of dimensionality<br>
+        <b>Tune:</b> k (number of neighbours)
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Linear SVM</strong>
+      <div>
+        <b>Consider:</b> Approximately linear decision boundary;
+        class prediction is the primary objective<br>
+        <b class="rv-plus">Advantage:</b> Maximizes the margin;
+        can handle overlapping classes using a soft margin<br>
+        <b class="rv-minus">Limitation:</b> Linear decision
+        boundary; no direct posterior probability estimates<br>
+        <b>Tune:</b> C (soft-margin cost parameter)
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Kernel SVM</strong>
+      <div>
+        <b>Consider:</b> Nonlinear decision boundary;
+        class prediction is the primary objective<br>
+        <b class="rv-plus">Advantage:</b> Captures complex
+        nonlinear decision boundaries<br>
+        <b class="rv-minus">Limitation:</b> Sensitive to feature
+        scales and tuning; less interpretable<br>
+        <b>Tune:</b> C, kernel choice and kernel parameters
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rv-note">
+    Consider these methods when classification performance
+    is more important than interpreting individual predictor
+    effects, or when we wish to avoid specifying probability
+    models. k-NN and nonlinear kernel SVMs also allow for more
+    flexible decision boundaries.
+  </div>
+
+</div>
+```
+
+
+## Identify Candidate Models: Classification
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-grid" style="--cols:2">
+
+    <div class="rv-card">
+      <strong>Pruned classification tree</strong>
+      <div>
+        <b>Consider:</b> Nonlinear decision boundaries;
+        interpretability is important<br>
+        <b class="rv-plus">Advantage:</b> Automatically captures
+        interactions; easy to visualize when small<br>
+        <b class="rv-minus">Limitation:</b> Potentially high variance;
+        observations in the same terminal node receive
+        the same class prediction<br>
+        <b>Tune:</b> Pruning parameter, tree depth
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Bagging / Random forest</strong>
+      <div>
+        <b>Consider:</b> Nonlinear decision boundaries;
+        predictive performance is more important
+        than interpretability<br>
+        <b class="rv-plus">Advantage:</b> Reduces variance by
+        combining trees; RF further reduces correlation
+        between trees<br>
+        <b class="rv-minus">Limitation:</b> Less interpretable
+        than a single tree; can still overfit<br>
+        <b>Tune:</b> Number of trees, number of candidate
+        predictors per split (RF)
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Boosting</strong>
+      <div>
+        <b>Consider:</b> Nonlinear decision boundaries;
+        predictive performance is more important
+        than interpretability<br>
+        <b class="rv-plus">Advantage:</b> Combines simple trees
+        sequentially to improve the fit; can reduce bias<br>
+        <b class="rv-minus">Limitation:</b> Less interpretable;
+        sensitive to tuning; may overfit with too many iterations<br>
+        <b>Tune:</b> Number of trees, learning rate, tree depth
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Neural network</strong>
+      <div>
+        <b>Consider:</b> Complex nonlinear decision boundaries
+        and interactions; sufficient training data<br>
+        <b class="rv-plus">Advantage:</b> Learns complex nonlinear
+        relationships between predictors and class probabilities<br>
+        <b class="rv-minus">Limitation:</b> Less interpretable;
+        computationally expensive; nonconvex optimization<br>
+        <b>Tune:</b> Architecture, learning rate, regularization
+      </div>
+    </div>
+
+  </div>
+
+  <div class="rv-note">
+    These methods can automatically capture nonlinear decision
+    boundaries and interactions without specifying them in
+    advance, often at the expense of interpretability.
+  </div>
+
+</div>
+```
+
+
+## Identify Candidate Models: Unsupervised learning
+
+```{=html}
+<div class="rv" style="--a:#478B77;--f:#E3F0E8"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab on" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab " style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-grid" style="--cols:2"><div class="rv-card"><strong>PCA</strong><div><b>Consider:</b> Reduce dimension / visualize<br><b class="rv-plus">Advantage:</b> Retains maximal variance for linear projections<br><b class="rv-minus">Limitation:</b> Scaling; variance need not imply predictive relevance<br><b>Tune:</b> Number of PCs</div></div><div class="rv-card"><strong>K-means</strong><div><b>Consider:</b> Find compact groups<br><b class="rv-plus">Advantage:</b> Simple cluster summaries<br><b class="rv-minus">Limitation:</b> Scaling, initialization, outliers<br><b>Tune:</b> Number of clusters K</div></div></div><div class="rv-note">PCA can precede K-means or supervised models.</div></div>
+```
+
+## BREAK: Course Evaluations!
+
+We are going to take a 5-minute break to give you an opportunity to complete your course evaluation!
+
+Your feedback is incredibly valuable to both me and the department. I would love to hear your thoughts on:
+
+- What you enjoyed or found helpful in this course.
+- What you think could be improved.
+- My teaching and your overall learning experience.
+- Any other suggestions or feedback you have!
+
+**The more responses we receive, the better we can 
+understand the experiences of students in this course. 
+I strongly encourage everyone to participate!**
+
+<br>
+
+::: {style="text-align:center; font-size:1.2em;"}
+[Complete your course evaluation here](https://q.utoronto.ca/courses/48756)
+:::
+
+## Training & Tuning
+
+```{=html}
+<div class="rv" style="--a:#B28A45;--f:#F8EFD9"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab " style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab on" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-grid" style="--cols:2"><div class="rv-card"><strong>Parameters: estimated during fitting</strong><div>Regression coefficients<br>Neural network weights and biases<br>Cluster centroids</div></div><div class="rv-card"><strong>Hyperparameters: chosen by the analyst</strong><div>Penalty strength λ<br>Number of neighbours k<br>Tree complexity<br>Network architecture</div></div></div><div class="rv-note">Training estimates parameters; tuning compares configurations.</div></div>
+```
+
+
+## Training & Tuning
+
+```{=html}
+<div class="rv" style="--a:#B28A45;--f:#F8EFD9"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab " style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab on" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-grid" style="--cols:3"><div class="rv-card"><strong>Regularization</strong><div>Larger λ → less flexible<br>Smaller λ → more flexible</div></div><div class="rv-card"><strong>Neighbourhood methods</strong><div>Larger k / bandwidth → smoother<br>Smaller k / bandwidth → more local</div></div><div class="rv-card"><strong>Basis expansions</strong><div>Fewer knots / lower degree → less flexible<br>More knots / higher degree → more flexible</div></div><div class="rv-card"><strong>Trees and SVM</strong><div>More pruning / smaller C → more constrained<br>Less pruning / larger C → less constrained</div></div><div class="rv-card"><strong>Boosting and neural networks</strong><div>More iterations / hidden units can increase flexibility</div></div><div class="rv-card"><strong>Bagging / random forests</strong><div>More trees mainly stabilize the ensemble.</div></div></div><div class="rv-note">Typical tendencies, holding other settings fixed.</div></div>
+```
+
+
+## Note: The Bias–Variance Trade-Off
+
+```{=html}
+<div class="rv" style="--a:#B28A45;--f:#F8EFD9"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab " style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab on" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab " style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-grid" style="--cols:3"><div class="rv-card"><strong>Too little flexibility</strong><div>High bias<br>Often low variance<br><b>Underfitting</b></div></div><div class="rv-card"><strong>Intermediate flexibility</strong><div>Balance bias and variance<br><b>Potentially good generalization</b></div></div><div class="rv-card"><strong>Too much flexibility</strong><div>Often lower bias<br>Potentially high variance<br><b>Overfitting</b></div></div></div></div>
+```
+
+
+## Model Selection: Feature Selection
+
+```{=html}
+<div class="rv" style="--a:#9876AC;--f:#EEE5F4">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab on" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-root">Which predictors should we include?</div>
+
+  <div class="rv-grid" style="--cols:2">
+
+    <div class="rv-card">
+      <strong>Best subset selection</strong>
+      <div>
+        Consider all possible subsets of predictors.<br>
+        <b class="rv-plus">Advantage:</b> Finds the best-fitting
+        subset for each model size<br>
+        <b class="rv-minus">Limitation:</b> Computationally expensive
+        as the number of predictors increases
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Forward stepwise selection</strong>
+      <div>
+        Start with no predictors and add one at a time.<br>
+        <b class="rv-plus">Advantage:</b> Computationally cheaper
+        than best subset selection<br>
+        <b class="rv-minus">Limitation:</b> Greedy search;
+        may miss the optimal subset
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>Backward stepwise selection</strong>
+      <div>
+        Start with all predictors and remove one at a time.<br>
+        <b class="rv-plus">Advantage:</b> Computationally cheaper
+        than best subset selection<br>
+        <b class="rv-minus">Limitation:</b> Greedy search;
+        the full model must be estimable
+      </div>
+    </div>
+
+    <div class="rv-card">
+      <strong>LASSO</strong>
+      <div>
+        Shrink some coefficients to exactly zero.<br>
+        <b class="rv-plus">Advantage:</b> Simultaneous
+        regularization and feature selection<br>
+        <b class="rv-minus">Limitation:</b> Potentially unstable
+        selection of correlated predictors
+      </div>
+    </div>
+
+  </div>
+
+</div>
+```
+
+## Model Selection: Comparing Candidate Models
+
+```{=html}
+<div class="rv" style="--a:#9876AC;--f:#EEE5F4">
+
+  <div class="rv-nav">
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">1. Objective</div>
+    <div class="rv-tab" style="--a:#557B9E;--f:#E3EDF5">2. Data</div>
+    <div class="rv-tab" style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div>
+    <div class="rv-tab" style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div>
+    <div class="rv-tab on" style="--a:#9876AC;--f:#EEE5F4">5. Selection</div>
+    <div class="rv-tab" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div>
+  </div>
+
+  <div class="rv-root">How do we compare candidate models?</div>
+
+  <div class="rv-branches" style="--cols:3">
+
+    <div class="rv-branch">
+      <div class="rv-head">Linear regression criteria</div>
+
+      <div class="rv-card">
+        <strong>Adjusted R² ↑</strong>
+        <div>Adjusts goodness of fit for the number
+        of predictors.</div>
+      </div>
+
+      <div class="rv-card">
+        <strong>Mallows' Cp ↓</strong>
+        <div>Accounts for model complexity when
+        estimating prediction error.</div>
+      </div>
+    </div>
+
+    <div class="rv-branch">
+      <div class="rv-head">Likelihood-based criteria</div>
+
+      <div class="rv-card">
+        <strong>AIC ↓</strong>
+        <div>Balances likelihood and model complexity.</div>
+      </div>
+
+      <div class="rv-card">
+        <strong>BIC ↓</strong>
+        <div>Typically penalizes model complexity more
+        strongly than AIC.</div>
+      </div>
+    </div>
+
+    <div class="rv-branch">
+      <div class="rv-head">Validation methods</div>
+
+      <div class="rv-card">
+        <strong>Validation set approach</strong>
+        <div>Estimate prediction error using a separate
+        validation set.</div>
+      </div>
+
+      <div class="rv-card">
+        <strong>Cross-validation</strong>
+        <div>Estimate out-of-sample prediction error
+        across multiple training and validation splits.</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+```
+
+## Evaluate the final model
+
+```{=html}
+<div class="rv" style="--a:#B8735D;--f:#F5E4DD"><div class="rv-nav"><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">1. Objective</div><div class="rv-tab " style="--a:#557B9E;--f:#E3EDF5">2. Data</div><div class="rv-tab " style="--a:#478B77;--f:#E3F0E8">3. Candidate models</div><div class="rv-tab " style="--a:#B28A45;--f:#F8EFD9">4. Training &amp; tuning</div><div class="rv-tab " style="--a:#9876AC;--f:#EEE5F4">5. Selection</div><div class="rv-tab on" style="--a:#B8735D;--f:#F5E4DD">6. Evaluation</div></div><div class="rv-grid" style="--cols:2"><div class="rv-card"><strong>Regression</strong><div>Test MSE / RMSE<br>Test R²</div></div><div class="rv-card"><strong>Classification</strong><div>Test error / accuracy<br>Confusion matrix and class-specific performance</div></div></div><div class="rv-note">Gini impurity and entropy are used for tree splitting; they are not the same as test classification error.</div></div>
+```
+
+
+## Activity 1: Predicting House Prices
+
+A real estate company has collected data on 2,000 houses, including 30 predictors such as square footage, age, location, number of bedrooms and lot size. Some predictors are highly correlated, and exploratory analysis suggests that some relationships with house price are nonlinear.
+
+<br> 
+
+The company wants to accurately predict the selling price of new listings but would also like to understand which features contribute to higher house prices.
+
+<br> 
+
+:::{.fragment} 
+Discuss your thoughts on the following questions with the people around you: 
+
+- Which three models would you consider fitting? Why? 
+- How would you compare the candidate models?  
+:::
+
+
+## Activity 2: Classifying Patients
+
+Researchers collect data on 400 patients, including 15 measurements, to predict whether a patient has a particular medical condition. Approximately 10% of patients have the condition.
+
+<br> 
+
+Some predictors appear approximately normally distributed within each class, but the researchers are unsure whether the covariance matrices are equal. They also suspect that some relationships may be nonlinear. 
+
+<br> 
+
+:::{.fragment} 
+Discuss your thoughts on the following questions with the people around you: 
+
+- Which classifiers would you consider? Why? 
+- Are there any models that you would be hesitant to fit? 
+- How would you compare predictive performance? 
+:::
+
+## Activity 3: Flexibility 
+
+A researcher fits four regression models to the same dataset. All relevant hyperparameters have been selected using five-fold cross-validation.
+
+| Model          | Training MSE | CV MSE |
+|:---------------|:------------:|:------:|
+| OLS            | 24.5         | 26.8   |
+| Ridge          | 25.2         | 25.9   |
+| Random forest  | 8.4          | 25.5   |
+| Neural network | 3.1          | 25.4   |
+
+<br> 
+
+:::{.fragment} 
+Discuss your thoughts on the following questions with the people around you: 
+
+- Which model here is the most flexible? Least flexible? 
+- Which model would you select? Why?
+- What can we learn from the differences between the training and cross validation errors? 
+:::
+
+
+## Activity 4: Discovering Structure in Customer Data 
+
+A company collects 50 measurements on 5,000 customers, describing their purchasing habits. Many of the measurements are highly correlated and are measured on different scales.
+
+<br> 
+
+The company suspects that there are different types of customers but does not know how many groups exist.
+
+<br> 
+
+:::{.fragment} 
+Discuss your thoughts on the following questions with the people around you: 
+
+- Would you apply PCA, K-Means clustering, or both? Why? 
+- How would you select the number of principal components/clusters?
+- How would you determine whether the clusters are meaningful? 
+:::
+
+## Final Thoughts
+
+Machine learning is not about memorizing a collection of algorithms or finding the most sophisticated model.
+
+It is about learning to:
+
+- Ask meaningful questions.
+- Understand the data in front of you.
+- Recognize the assumptions and limitations of your methods.
+- Make informed decisions and justify your choices.
+
+<br>
+
+:::{.fragment}
+::: {style="text-align:center; color:#478B77; font-size:1.1em;"}
+**"All models are wrong, but some are useful." - George Box**
+:::
+
+<br>
+
+If there is one thing you take away from this course, I hope it is not just *how* to fit a model, but *why* you would choose to fit it in the first place.
+:::

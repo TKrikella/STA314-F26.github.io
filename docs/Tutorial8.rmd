@@ -1,0 +1,274 @@
+---
+title: "Tutorial 8"
+author: "Teaching Team of STA314"
+output: pdf_document
+---
+
+## Support Vector Classifier
+
+We begin by generating observations from two classes and examining whether they are linearly separable.
+```{r}
+set.seed(1)
+x <- matrix(rnorm(20 * 2), ncol = 2)
+y <- c(rep(-1, 10), rep(1, 10))
+x[y == 1, ] <- x[y == 1, ] + 1
+plot(x, col = (3 - y))
+
+```
+
+Next, we fit a support vector classifier. The response variable must be encoded as a factor. We then plot the fitted classifier: support vectors are indicated by crosses, while the remaining observations are shown as circles.
+```{r}
+
+dat <- data.frame(x = x, y = as.factor(y))
+library(e1071)
+svmfit <- svm(y ~ ., data = dat, kernel = "linear", 
+    cost = 10, scale = FALSE)
+
+plot(svmfit, dat)
+
+
+```
+
+There are seven support vectors. We can identify the corresponding observations as follows:
+```{r}
+svmfit$index 
+```
+
+
+We can also obtain a summary of the fitted support vector classifier:
+```{r}
+summary(svmfit)
+``` 
+
+What happens if we use a smaller value of the cost parameter? The cost parameter controls the penalty associated with violations of the margin. Let's reduce it and examine the resulting classifier.
+```{r}
+svmfit <- svm(y ~ ., data = dat, kernel = "linear", 
+    cost = 0.1, scale = FALSE)
+plot(svmfit, dat)
+svmfit$index
+
+```
+**What changed in the decision boundary, margin, and number of support vectors? Why?**
+
+The `tune()` function performs cross-validation (10-fold by default), allowing us to select a value of the cost parameter.
+```{r}
+set.seed(1)
+tune.out <- tune(svm, y ~ ., data = dat, kernel = "linear", 
+    ranges = list(cost = c(0.001, 0.01, 0.1, 1, 5, 10, 100)))
+
+```
+
+We can use `summary()` to examine the cross-validation errors for the different values of the cost parameter:
+```{r}
+summary(tune.out)
+```
+**Which value of the cost parameter is selected as the best?**
+
+
+```{r} 
+bestmod <- tune.out$best.model
+summary(bestmod)
+
+```
+
+We can use the fitted classifier to predict class labels for new observations. Let's first generate a test dataset.
+
+```{r}
+xtest <- matrix(rnorm(20 * 2), ncol = 2)
+ytest <- sample(c(-1, 1), 20, rep = TRUE)
+xtest[ytest == 1, ] <- xtest[ytest == 1, ] + 1
+testdat <- data.frame(x = xtest, y = as.factor(ytest))
+```
+
+
+Now we predict the class labels for these test observations using the best model selected by cross-validation.
+```{r}
+ypred <- predict(bestmod, testdat)
+table(predict = ypred, truth = testdat$y)
+
+```
+
+**How should we interpret this confusion matrix? How many test observations were classified correctly?**
+
+What happens if we instead set the cost parameter to 0.01?
+```{r}
+svmfit <- svm(y ~ ., data = dat, kernel = "linear", 
+    cost = .01, scale = FALSE)
+ypred <- predict(svmfit, testdat)
+table(predict = ypred, truth = testdat$y)
+
+```
+
+**How did the test predictions change? Does a smaller cost necessarily lead to better test performance?**
+
+### Linearly Separable Classes
+
+Next, let's consider a dataset in which the two classes **are** linearly separable.
+```{r}
+x[y == 1, ] <- x[y == 1, ] + 0.5
+plot(x, col = (y + 5) / 2, pch = 19)
+
+```
+
+We fit a support vector classifier and plot the resulting decision boundary. Here, we use a very large cost parameter to strongly penalize margin violations and misclassifications.
+
+```{r}
+dat <- data.frame(x = x, y = as.factor(y))
+svmfit <- svm(y ~ ., data = dat, kernel = "linear", 
+    cost = 1e5)
+summary(svmfit)
+plot(svmfit, dat)
+
+```
+
+**What do you observe about the decision boundary and margin? Does perfect separation of the training data guarantee good performance on test data? Why or why not?**
+
+Let's compare this with a classifier fitted using a smaller cost parameter.
+```{r}
+svmfit <- svm(y ~ ., data = dat, kernel = "linear", cost = 1)
+summary(svmfit)
+plot(svmfit, dat)
+
+```
+**What changes when we decrease the cost parameter? Which model might generalize better to new observations?**
+
+## Support Vector Machine
+
+We now consider support vector machines (SVMs) with nonlinear kernels. We continue to use the `svm()` function, but change the `kernel` argument. Setting `kernel = "polynomial"` fits an SVM with a polynomial kernel, while `kernel = "radial"` uses a radial basis kernel. For a polynomial kernel, the `degree` argument specifies the polynomial degree. For a radial kernel, the `gamma` argument specifies the value of $\gamma$.
+
+First, let's generate data with a nonlinear class boundary:
+```{r}
+set.seed(1)
+x <- matrix(rnorm(200 * 2), ncol = 2)
+x[1:100, ] <- x[1:100, ] + 2
+x[101:150, ] <- x[101:150, ] - 2
+y <- c(rep(1, 150), rep(2, 50))
+dat <- data.frame(x = x, y = as.factor(y))
+
+```
+
+```{r}
+plot(x, col = y)
+```
+
+We randomly divide the data into training and test sets. We then fit an SVM with a radial kernel and $\gamma = 1$ to the training data.
+```{r}
+train <- sample(200, 100)
+svmfit <- svm(y ~ ., data = dat[train, ], kernel = "radial",  
+    gamma = 1, cost = 1)
+plot(svmfit, dat[train, ])
+```
+
+**What do you observe about the fitted decision boundary? Why might a nonlinear kernel be useful for these data?**
+
+```{r}
+summary(svmfit)
+```
+
+What happens if we increase the cost parameter? Let's compare the fitted decision boundary.
+```{r}
+svmfit <- svm(y ~ ., data = dat[train, ], kernel = "radial", 
+    gamma = 1, cost = 1e5)
+plot(svmfit, dat[train, ])
+```
+
+**What are the potential consequences of using such a large cost parameter?**
+
+Next, we use cross-validation to tune both $\gamma$ and the cost parameter for an SVM with a radial kernel.
+```{r}
+set.seed(1)
+tune.out <- tune(svm, y ~ ., data = dat[train, ], 
+    kernel = "radial", 
+    ranges = list(
+      cost = c(0.1, 1, 10, 100, 1000),
+      gamma = c(0.5, 1, 2, 3, 4)
+    )
+  )
+summary(tune.out)
+```
+**Which combination of $\gamma$ and cost is selected?**
+
+Finally, we evaluate the model selected by cross-validation on the test observations.
+```{r}
+table(
+    true = dat[-train, "y"], 
+    pred = predict(
+      tune.out$best.model, newdata = dat[-train, ]
+      )
+    )
+```
+
+**How well does the selected model classify the test observations?**
+
+## SVM with Multiple Classes
+
+When the response has more than two classes, the `svm()` function performs multiclass classification using a one-versus-one approach.
+
+Let's generate a dataset containing three classes:
+```{r}
+
+set.seed(1)
+x <- rbind(x, matrix(rnorm(50 * 2), ncol = 2))
+y <- c(y, rep(0, 50))
+x[y == 0, 2] <- x[y == 0, 2] + 2
+dat <- data.frame(x = x, y = as.factor(y))
+par(mfrow = c(1, 1))
+plot(x, col = (y + 1))
+```
+
+Now we fit an SVM with a radial kernel to the three-class dataset:
+```{r}
+svmfit <- svm(y ~ ., data = dat, kernel = "radial", 
+    cost = 10, gamma = 1)
+plot(svmfit, dat)
+
+```
+
+**What do you observe about the decision boundaries between the three classes?**
+
+## Application to Gene Expression Data
+
+We conclude with an application to the `Khan` dataset, which contains tissue samples from four types of small round blue cell tumors. Gene expression measurements are available for each sample. The dataset includes separate training (`xtrain`, `ytrain`) and test (`xtest`, `ytest`) sets.
+
+First, let's examine the dimensions of the data and the number of observations in each class:
+```{r}
+library(ISLR2)
+names(Khan)
+dim(Khan$xtrain)
+dim(Khan$xtest)
+length(Khan$ytrain)
+length(Khan$ytest)
+```
+
+```{r}
+table(Khan$ytrain)
+table(Khan$ytest)
+```
+**Why might having many more predictors than observations make model fitting challenging?**
+
+We will use an SVM to predict tumor subtype from gene expression measurements. Because the number of predictors is very large relative to the number of observations, we begin with a linear kernel rather than introducing the additional flexibility of a nonlinear kernel.
+
+```{r}
+dat <- data.frame(
+    x = Khan$xtrain, 
+    y = as.factor(Khan$ytrain)
+  )
+out <- svm(y ~ ., data = dat, kernel = "linear", 
+    cost = 10)
+summary(out)
+table(out$fitted, dat$y)
+```
+
+**What does the training confusion matrix tell us? Why might an SVM achieve very high training accuracy in a high-dimensional dataset? Does this guarantee strong test performance?**
+
+We are ultimately more interested in how the classifier performs on observations that were not used for training. Let's evaluate it on the test set.
+```{r}
+dat.te <- data.frame(
+    x = Khan$xtest, 
+    y = as.factor(Khan$ytest))
+pred.te <- predict(out, newdata = dat.te)
+table(pred.te, dat.te$y)
+```
+
+**How does the test performance compare with the training performance? What does this suggest about the classifier's ability to generalize?**
+
